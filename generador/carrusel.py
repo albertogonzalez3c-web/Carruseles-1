@@ -33,6 +33,16 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
+IDIOMA = None  # idioma activo cuando los textos vienen como {"es": ..., "en": ...}
+
+
+def t(valor):
+    """Devuelve el texto en el idioma activo si el valor es un diccionario de idiomas."""
+    if isinstance(valor, dict):
+        return valor.get(IDIOMA) or next(iter(valor.values()))
+    return valor or ""
+
+
 RAIZ = Path(__file__).resolve().parent.parent
 FUENTES = Path(__file__).resolve().parent / "fuentes"
 W, H = 1080, 1350
@@ -44,7 +54,7 @@ def fuente(peso, tam):
     return ImageFont.truetype(str(FUENTES / f"Inter-{peso}.otf"), tam)
 
 
-def abrir_foto(ruta, w=W, h=H, foco=None):
+def abrir_foto(ruta, w=W, h=H, foco=None, zoom=1):
     p = RAIZ / ruta
     if not p.exists():
         # Marcador gris para poder maquetar antes de tener la foto.
@@ -54,6 +64,14 @@ def abrir_foto(ruta, w=W, h=H, foco=None):
                fill=BLANCO, anchor="mm", align="center")
         return img
     img = ImageOps.exif_transpose(Image.open(p)).convert("RGB")
+    if zoom > 1:
+        # Recorta alrededor del foco para acercar al sujeto cuando sale pequeño en la foto.
+        fx, fy = foco or (0.5, 0.4)
+        cw, ch = img.width / zoom, img.height / zoom
+        x0 = min(max(fx * img.width - cw / 2, 0), img.width - cw)
+        y0 = min(max(fy * img.height - ch / 2, 0), img.height - ch)
+        img = img.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch)))
+        foco = (0.5, 0.3)
     # foco = [x, y] de 0 a 1: qué punto de la foto se queda en el centro del recorte.
     return ImageOps.fit(img, (w, h), Image.LANCZOS, centering=tuple(foco or (0.5, 0.4)))
 
@@ -117,9 +135,9 @@ def slide_subtitulo(s):
     img = degradado(abrir_foto(s["foto"], foco=s.get("foco")), int(H * 0.55), H, 190)
     d = ImageDraw.Draw(img, "RGBA")
     f = fuente("Bold", s.get("tam", 56))
-    lineas = partir(s.get("texto", ""), f, W - 160, d)
+    lineas = partir(t(s.get("texto", "")), f, W - 160, d)
     y = int(H * 0.80) - len(lineas) * int(f.size * 1.18) // 2
-    bloque(d, s.get("texto", ""), f, W // 2, y, W - 160, BLANCO, sombra=True)
+    bloque(d, t(s.get("texto", "")), f, W // 2, y, W - 160, BLANCO, sombra=True)
     return img
 
 
@@ -143,16 +161,16 @@ def slide_doble(s):
     img = Image.new("RGB", (W, H))
     mitad = H // 2
     for i, parte in enumerate((s["arriba"], s["abajo"])):
-        foto = oscurecer(abrir_foto(parte["foto"], W, mitad, parte.get("foco")), s.get("oscuro", 0.28))
+        foto = oscurecer(abrir_foto(parte["foto"], W, mitad, parte.get("foco"), parte.get("zoom", 1)), s.get("oscuro", 0.28))
         img.paste(foto, (0, i * mitad))
-        texto_centrado(img, parte.get("texto", ""), parte.get("tam", 66), (0, i * mitad, W, (i + 1) * mitad))
+        texto_centrado(img, t(parte.get("texto", "")), parte.get("tam", 66), (0, i * mitad, W, (i + 1) * mitad))
     return img
 
 
 def slide_cierre(s):
     """Una foto entera oscurecida con el mensaje final en el centro (párrafos con \\n\\n)."""
     img = oscurecer(abrir_foto(s["foto"], foco=s.get("foco")), s.get("oscuro", 0.35))
-    texto_centrado(img, s.get("texto", ""), s.get("tam", 54), (0, 0, W, H))
+    texto_centrado(img, t(s.get("texto", "")), s.get("tam", 54), (0, 0, W, H))
     return img
 
 
@@ -161,10 +179,10 @@ def slide_tarjeta(s):
     d = ImageDraw.Draw(img, "RGBA")
     y = 110
     if s.get("titulo"):
-        y = bloque(d, s["titulo"].upper(), fuente("ExtraBold", 74), W // 2, y, W - 140, NEGRO)
+        y = bloque(d, t(s["titulo"]).upper(), fuente("ExtraBold", 74), W // 2, y, W - 140, NEGRO)
     if s.get("subtitulo"):
-        y = bloque(d, s["subtitulo"], fuente("SemiBold", 44), W // 2, y + 10, W - 160, NEGRO)
-    pie = s.get("texto", "")
+        y = bloque(d, t(s["subtitulo"]), fuente("SemiBold", 44), W // 2, y + 10, W - 160, NEGRO)
+    pie = t(s.get("texto", ""))
     f_pie = fuente("ExtraBold", 62)
     alto_pie = len(partir(pie, f_pie, W - 160, d)) * int(62 * 1.18) if pie else 0
     hueco_arriba = y + 40
@@ -191,10 +209,10 @@ def slide_titular(s):
     x, y = 80, 110
     if s.get("etiqueta"):
         color = tuple(int(s.get("color", "#FF8A1F").lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
-        y = bloque(d, s["etiqueta"].upper(), fuente("ExtraBold", 70), x, y, W - 160, color,
+        y = bloque(d, t(s["etiqueta"]).upper(), fuente("ExtraBold", 70), x, y, W - 160, color,
                    ancla="la", sombra=True)
         y += 10
-    bloque(d, s.get("texto", ""), fuente("Bold", s.get("tam", 66)), x, y, W - 180, BLANCO,
+    bloque(d, t(s.get("texto", "")), fuente("Bold", s.get("tam", 66)), x, y, W - 180, BLANCO,
            ancla="la", sombra=True)
     return img
 
@@ -203,10 +221,19 @@ ESTILOS = {"doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subt
 
 
 def generar(ruta_json):
+    """Si el JSON trae "idiomas": ["es", "en"], genera una carpeta por idioma (<nombre>-es, <nombre>-en)."""
+    global IDIOMA
     cfg = json.loads(Path(ruta_json).read_text(encoding="utf-8"))
+    for idioma in cfg.get("idiomas", [None]):
+        IDIOMA = idioma
+        generar_idioma(cfg, ruta_json, idioma)
+
+
+def generar_idioma(cfg, ruta_json, idioma):
     estilo_base = cfg.get("estilo", "subtitulo")
     slides = cfg["slides"]
-    destino = RAIZ / "salida" / cfg.get("nombre", Path(ruta_json).stem)
+    nombre = cfg.get("nombre", Path(ruta_json).stem) + (f"-{idioma}" if idioma else "")
+    destino = RAIZ / "salida" / nombre
     destino.mkdir(parents=True, exist_ok=True)
     for i, s in enumerate(slides, 1):
         estilo = s.get("estilo", estilo_base)
