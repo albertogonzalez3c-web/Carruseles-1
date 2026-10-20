@@ -44,7 +44,7 @@ def fuente(peso, tam):
     return ImageFont.truetype(str(FUENTES / f"Inter-{peso}.otf"), tam)
 
 
-def abrir_foto(ruta, w=W, h=H):
+def abrir_foto(ruta, w=W, h=H, foco=None):
     p = RAIZ / ruta
     if not p.exists():
         # Marcador gris para poder maquetar antes de tener la foto.
@@ -54,7 +54,8 @@ def abrir_foto(ruta, w=W, h=H):
                fill=BLANCO, anchor="mm", align="center")
         return img
     img = ImageOps.exif_transpose(Image.open(p)).convert("RGB")
-    return ImageOps.fit(img, (w, h), Image.LANCZOS, centering=(0.5, 0.4))
+    # foco = [x, y] de 0 a 1: qué punto de la foto se queda en el centro del recorte.
+    return ImageOps.fit(img, (w, h), Image.LANCZOS, centering=tuple(foco or (0.5, 0.4)))
 
 
 def partir(texto, f, ancho_max, draw):
@@ -113,7 +114,7 @@ def contador(draw, i, n, oscuro=False):
 # ---------- estilos ----------
 
 def slide_subtitulo(s):
-    img = degradado(abrir_foto(s["foto"]), int(H * 0.55), H, 190)
+    img = degradado(abrir_foto(s["foto"], foco=s.get("foco")), int(H * 0.55), H, 190)
     d = ImageDraw.Draw(img, "RGBA")
     f = fuente("Bold", s.get("tam", 56))
     lineas = partir(s.get("texto", ""), f, W - 160, d)
@@ -142,7 +143,7 @@ def slide_doble(s):
     img = Image.new("RGB", (W, H))
     mitad = H // 2
     for i, parte in enumerate((s["arriba"], s["abajo"])):
-        foto = oscurecer(abrir_foto(parte["foto"], W, mitad), s.get("oscuro", 0.28))
+        foto = oscurecer(abrir_foto(parte["foto"], W, mitad, parte.get("foco")), s.get("oscuro", 0.28))
         img.paste(foto, (0, i * mitad))
         texto_centrado(img, parte.get("texto", ""), parte.get("tam", 66), (0, i * mitad, W, (i + 1) * mitad))
     return img
@@ -150,7 +151,7 @@ def slide_doble(s):
 
 def slide_cierre(s):
     """Una foto entera oscurecida con el mensaje final en el centro (párrafos con \\n\\n)."""
-    img = oscurecer(abrir_foto(s["foto"]), s.get("oscuro", 0.35))
+    img = oscurecer(abrir_foto(s["foto"], foco=s.get("foco")), s.get("oscuro", 0.35))
     texto_centrado(img, s.get("texto", ""), s.get("tam", 54), (0, 0, W, H))
     return img
 
