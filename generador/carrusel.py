@@ -20,6 +20,8 @@ Estilos (calcados de las referencias). Cada slide puede sobrescribir el estilo c
   doble     -> CONEXIÓN "reflejo". Dos fotos apiladas, frase centrada en cada una.
                slide: {"arriba": {"foto", "texto"}, "abajo": {"foto", "texto"}}
   cierre    -> Una foto oscurecida con el mensaje final centrado.
+  dibujo    -> CONEXIÓN humor. Dos viñetas con efecto cómic + frase gruesa con contorno negro abajo.
+  caja      -> CONEXIÓN "Te juzgan". Dos fotos + texto a la izquierda en caja oscura translúcida arriba.
   subtitulo -> CONEXIÓN. Foto a pantalla completa + una frase tipo subtítulo abajo.
   tarjeta   -> VENTA / PRUEBA. Fondo blanco, titular arriba, foto centrada, remate abajo.
   titular   -> CALENTAMIENTO / VALOR. Foto oscurecida + etiqueta de color + titular grande arriba.
@@ -215,6 +217,87 @@ def slide_cierre(s):
     return img
 
 
+def dibujo(img):
+    """Efecto ilustración tipo cómic: colores planos y saturados + contornos oscuros."""
+    try:
+        import cv2
+        import numpy as np
+    except ImportError:
+        return img
+    a = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    pequeña = cv2.resize(a, None, fx=0.5, fy=0.5)
+    for _ in range(4):
+        pequeña = cv2.bilateralFilter(pequeña, 9, 60, 60)
+    plano = cv2.resize(pequeña, (a.shape[1], a.shape[0]))
+    plano = cv2.stylization(plano, sigma_s=40, sigma_r=0.35)
+    gris = cv2.medianBlur(cv2.cvtColor(a, cv2.COLOR_BGR2GRAY), 7)
+    bordes = cv2.adaptiveThreshold(gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 6)
+    bordes = cv2.erode(bordes, np.ones((2, 2), np.uint8))
+    comic = cv2.bitwise_and(plano, plano, mask=bordes)
+    hsv = cv2.cvtColor(comic, cv2.COLOR_BGR2HSV).astype("float32")
+    hsv[..., 1] = np.clip(hsv[..., 1] * 1.35, 0, 255)
+    hsv[..., 2] = np.clip(hsv[..., 2] * 1.08, 0, 255)
+    comic = cv2.cvtColor(hsv.astype("uint8"), cv2.COLOR_HSV2RGB)
+    return Image.fromarray(comic)
+
+
+def slide_dibujo(s):
+    """Dos viñetas tipo cómic con frase gruesa y contorno negro abajo: 'Pintura de $200: supervisa.'"""
+    img = Image.new("RGB", (W, H), NEGRO)
+    mitad = H // 2
+    for i, parte in enumerate((s["arriba"], s["abajo"])):
+        foto = dibujo(abrir_foto(parte["foto"], W, mitad - 3, parte.get("foco"), parte.get("zoom", 1)))
+        img.paste(foto, (0, i * (mitad + 3)))
+        d = ImageDraw.Draw(img)
+        f = fuente("Black", parte.get("tam", 58))
+        texto = t(parte.get("texto", ""))
+        lineas = partir(texto, f, W - 100, d)
+        alto = len(lineas) * int(f.size * 1.1)
+        y0 = i * (mitad + 3)
+        y = y0 + int((mitad - 3) * parte.get("texto_pos", 0.8)) - alto // 2
+        for linea in lineas:
+            d.text((W // 2, y), linea, font=f, fill=BLANCO, anchor="ma", stroke_width=7, stroke_fill=NEGRO)
+            y += int(f.size * 1.1)
+    return img
+
+
+def slide_caja(s):
+    """Dos fotos apiladas con texto alineado a la izquierda en una caja oscura translúcida (estilo 'Te juzgan.')."""
+    img = Image.new("RGB", (W, H))
+    mitad = H // 2
+    for i, parte in enumerate((s["arriba"], s["abajo"])):
+        foto = abrir_foto(parte["foto"], W, mitad, parte.get("foco"), parte.get("zoom", 1))
+        img.paste(foto, (0, i * mitad))
+        d = ImageDraw.Draw(img, "RGBA")
+        f = fuente("DisplayBold", parte.get("tam", 64))
+        texto = t(parte.get("texto", ""))
+        ancho = int(W * 0.58)
+        lineas = partir(texto, f, ancho, d)
+        paso = int(f.size * 1.02)
+        tw = max(d.textlength(l, font=f) for l in lineas)
+        th = len(lineas) * paso
+        pad = 22
+        y0 = i * mitad + 95 if parte.get("vertical", "arriba") == "arriba" else (i + 1) * mitad - 50 - th - 2 * pad
+        # Lado: el que no tape caras (por defecto derecha, como la referencia).
+        lados = {"derecha": W - 40 - tw - 2 * pad, "izquierda": 40}
+        lado = parte.get("lado")
+        if not lado:
+            lado = "derecha"
+            for nombre, x in lados.items():
+                caja = (x, y0, x + tw + 2 * pad, y0 + th + 2 * pad)
+                if not any(c[0] < caja[2] and c[2] > caja[0] and c[1] + i * mitad < caja[3] and c[3] + i * mitad > caja[1]
+                           for c in caras(foto)):
+                    lado = nombre
+                    break
+        x = lados[lado]
+        d.rounded_rectangle((x, y0, x + tw + 2 * pad, y0 + th + 2 * pad), radius=14, fill=(20, 30, 40, 130))
+        yy = y0 + pad - 4
+        for linea in lineas:
+            d.text((x + pad, yy), linea, font=f, fill=BLANCO)
+            yy += paso
+    return img
+
+
 def slide_tarjeta(s):
     img = Image.new("RGB", (W, H), BLANCO)
     d = ImageDraw.Draw(img, "RGBA")
@@ -258,7 +341,7 @@ def slide_titular(s):
     return img
 
 
-ESTILOS = {"doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
+ESTILOS = {"dibujo": slide_dibujo, "caja": slide_caja, "doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
 
 
 def generar(ruta_json):
