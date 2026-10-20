@@ -34,6 +34,29 @@ Generador: `estilo: "subtitulo"` → ver `ejemplos/conexion.json`.
 - "Las [N] cosas que dejé de hacer para conseguir [resultado]."
 - "Me preguntan mucho por [X]. La verdad es esta."
 
+## Formato "Reflejo" (referencia: therealbrianmark, 5 slides)
+
+Dos fotos apiladas por slide, cada una con su frase centrada. Mismo patrón repetido 4 veces y un cierre.
+
+| Slide | Arriba | Abajo |
+|---|---|---|
+| 1 | Tu cuenta bancaria, | es el reflejo de tu enfoque diario |
+| 2 | Tu cuerpo, | es el reflejo de lo que comes cada día |
+| 3 | Tus amigos, | son el reflejo de tus decisiones diarias |
+| 4 | Tu vida, | es el reflejo de tus días repetidos |
+| 5 | *Cierre (1 foto):* Todo lo que tienes es el reflejo de lo que repites cada día. Si no te gusta tu vida, tienes que decidir romper ese ciclo. Rómpelo hoy. | |
+
+**Por qué funciona:** repetición (el cerebro completa el patrón y sigue deslizando), fotos aspiracionales tuyas (dinero, físico, amigos, estilo de vida) que te posicionan sin decir nada de ti, y un mensaje universal que la gente comparte. Pie de post: "Mándaselo a alguien que lo necesite" → compartidos = alcance a gente fría.
+
+**Lo que necesitas:** 9 fotos tuyas. Cada foto de arriba enseña la *categoría* (coche/casa, cuerpo, amigos, viaje); la de abajo, *el hábito* (trabajando, comiendo, en moto, sonriendo). Una foto por slide que no sea aspiracional mata el formato.
+
+Generador: `estilo: "doble"` + slide final `"estilo": "cierre"` → `ejemplos/conexion-reflejo.json`.
+
+**Otras versiones del mismo patrón:**
+- "Tu disciplina, / se nota en tu cuerpo" · "Tu paciencia, / se nota en tu cuenta" · ...
+- "Hace 3 años, / [foto antes]" → "Hoy, / [foto después]" (antes/después en cada slide)
+- "Lo que la gente ve, / [lujo]" → "Lo que no ve, / [5 a.m. entrenando]"
+
 ## Subtipos
 
 1. **Historia de origen** — de dónde vienes y por qué haces lo que haces.

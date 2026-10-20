@@ -8,7 +8,7 @@ Uso:
 Cada JSON define un carrusel:
     {
       "nombre": "conexion-origen",
-      "estilo": "subtitulo" | "tarjeta" | "titular",
+      "estilo": "doble" | "cierre" | "subtitulo" | "tarjeta" | "titular",
       "contador": true,
       "slides": [
         {"foto": "fotos/01.jpg", "texto": "Frase de la slide"},
@@ -16,7 +16,10 @@ Cada JSON define un carrusel:
       ]
     }
 
-Estilos (calcados de las referencias):
+Estilos (calcados de las referencias). Cada slide puede sobrescribir el estilo con "estilo":
+  doble     -> CONEXIÓN "reflejo". Dos fotos apiladas, frase centrada en cada una.
+               slide: {"arriba": {"foto", "texto"}, "abajo": {"foto", "texto"}}
+  cierre    -> Una foto oscurecida con el mensaje final centrado.
   subtitulo -> CONEXIÓN. Foto a pantalla completa + una frase tipo subtítulo abajo.
   tarjeta   -> VENTA / PRUEBA. Fondo blanco, titular arriba, foto centrada, remate abajo.
   titular   -> CALENTAMIENTO / VALOR. Foto oscurecida + etiqueta de color + titular grande arriba.
@@ -119,6 +122,39 @@ def slide_subtitulo(s):
     return img
 
 
+def texto_centrado(img, texto, tam, caja):
+    """Texto blanco centrado (vertical y horizontal) dentro de caja=(x0, y0, x1, y1)."""
+    d = ImageDraw.Draw(img, "RGBA")
+    f = fuente("Bold", tam)
+    x0, y0, x1, y1 = caja
+    lineas = partir(texto, f, (x1 - x0) - 160, d)
+    alto = len(lineas) * int(tam * 1.12)
+    bloque(d, texto, f, (x0 + x1) // 2, (y0 + y1 - alto) // 2, (x1 - x0) - 160, BLANCO,
+           interlineado=1.12, sombra=True)
+
+
+def oscurecer(img, opacidad):
+    return Image.blend(img, Image.new("RGB", img.size, (0, 0, 0)), opacidad)
+
+
+def slide_doble(s):
+    """Dos fotos apiladas, cada una con su frase centrada: 'Tu X,' / 'es el reflejo de...'."""
+    img = Image.new("RGB", (W, H))
+    mitad = H // 2
+    for i, parte in enumerate((s["arriba"], s["abajo"])):
+        foto = oscurecer(abrir_foto(parte["foto"], W, mitad), s.get("oscuro", 0.28))
+        img.paste(foto, (0, i * mitad))
+        texto_centrado(img, parte.get("texto", ""), parte.get("tam", 66), (0, i * mitad, W, (i + 1) * mitad))
+    return img
+
+
+def slide_cierre(s):
+    """Una foto entera oscurecida con el mensaje final en el centro (párrafos con \\n\\n)."""
+    img = oscurecer(abrir_foto(s["foto"]), s.get("oscuro", 0.35))
+    texto_centrado(img, s.get("texto", ""), s.get("tam", 54), (0, 0, W, H))
+    return img
+
+
 def slide_tarjeta(s):
     img = Image.new("RGB", (W, H), BLANCO)
     d = ImageDraw.Draw(img, "RGBA")
@@ -162,7 +198,7 @@ def slide_titular(s):
     return img
 
 
-ESTILOS = {"subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
+ESTILOS = {"doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
 
 
 def generar(ruta_json):

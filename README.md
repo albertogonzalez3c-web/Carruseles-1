@@ -43,6 +43,7 @@ python3 generador/carrusel.py ejemplos/conexion.json      # o ejemplos/*.json
 
 | Tipo | Estilo | Ejemplo |
 |---|---|---|
-| Conexión | `subtitulo` | `ejemplos/conexion.json` |
+| Conexión (reflejo) | `doble` + `cierre` | `ejemplos/conexion-reflejo.json` |
+| Conexión (historia) | `subtitulo` | `ejemplos/conexion.json` |
 | Calentamiento | `titular` | `ejemplos/calentamiento.json` |
 | Venta | `tarjeta` | `ejemplos/venta.json` |
