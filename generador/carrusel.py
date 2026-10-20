@@ -326,16 +326,32 @@ def slide_tarjeta(s):
 
 
 def slide_titular(s):
-    img = degradado(abrir_foto(s["foto"]), int(H * 0.55), 0, 200)
+    """Etiqueta de color + titular blanco alineados a la izquierda, arriba o abajo según dónde no haya caras."""
+    foto = abrir_foto(s["foto"], foco=s.get("foco"), zoom=s.get("zoom", 1))
+    d = ImageDraw.Draw(foto, "RGBA")
+    f_et = fuente("ExtraBold", s.get("tam_etiqueta", 70))
+    f_tx = fuente("Bold", s.get("tam", 62))
+    et = t(s.get("etiqueta", "")).upper()
+    tx = t(s.get("texto", ""))
+    alto = (len(partir(et, f_et, W - 160, d)) * int(f_et.size * 1.18) + 10 if et else 0) + \
+        len(partir(tx, f_tx, W - 180, d)) * int(f_tx.size * 1.18)
+    pos = s.get("texto_pos")
+    if pos not in ("arriba", "abajo"):
+        arriba = (0, 110, W, 110 + alto)
+        tapa = any(c[1] < arriba[3] and c[3] > arriba[1] for c in caras(foto))
+        pos = "abajo" if tapa else "arriba"
+    if pos == "arriba":
+        img = degradado(foto, int(H * 0.55), 0, 200)
+        y = 110
+    else:
+        img = degradado(foto, int(H * 0.40), H, 215)
+        y = H - 110 - alto
     d = ImageDraw.Draw(img, "RGBA")
-    x, y = 80, 110
-    if s.get("etiqueta"):
+    x = 80
+    if et:
         color = tuple(int(s.get("color", "#FF8A1F").lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
-        y = bloque(d, t(s["etiqueta"]).upper(), fuente("ExtraBold", 70), x, y, W - 160, color,
-                   ancla="la", sombra=True)
-        y += 10
-    bloque(d, t(s.get("texto", "")), fuente("Bold", s.get("tam", 66)), x, y, W - 180, BLANCO,
-           ancla="la", sombra=True)
+        y = bloque(d, et, f_et, x, y, W - 160, color, ancla="la", sombra=True) + 10
+    bloque(d, tx, f_tx, x, y, W - 180, BLANCO, ancla="la", sombra=True)
     return img
 
 
