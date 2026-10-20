@@ -399,7 +399,14 @@ def recorte_cara(ruta, lado):
 
 def avatar(diam, aro=8):
     """Foto de perfil circular con aro degradado tipo historia de Instagram."""
-    base = recorte_cara(PERFIL["foto"], diam) if PERFIL.get("foto") else Image.new("RGB", (diam, diam), (80, 80, 80))
+    if PERFIL.get("caja"):
+        # caja = [x0, y0, x1, y1] de 0 a 1: recorte manual de la cara.
+        src = ImageOps.exif_transpose(Image.open(RAIZ / PERFIL["foto"])).convert("RGB")
+        x0, y0, x1, y1 = PERFIL["caja"]
+        src = src.crop((int(x0 * src.width), int(y0 * src.height), int(x1 * src.width), int(y1 * src.height)))
+        base = ImageOps.fit(src, (diam, diam), Image.LANCZOS)
+    else:
+        base = recorte_cara(PERFIL["foto"], diam) if PERFIL.get("foto") else Image.new("RGB", (diam, diam), (80, 80, 80))
     total = diam + 2 * aro
     anillo = Image.new("RGB", (total, total))
     da = ImageDraw.Draw(anillo)
