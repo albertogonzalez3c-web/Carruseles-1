@@ -33,13 +33,14 @@ Ver [plan-semanal.md](carruseles/plan-semanal.md).
 ## Generador de slides con tus fotos
 
 ```bash
-pip install pillow
+pip install pillow "opencv-python-headless<5"   # OpenCV: el texto esquiva tu cara
 python3 generador/carrusel.py ejemplos/conexion.json      # o ejemplos/*.json
 ```
 
 1. Mete tus fotos en `fotos/` (ver `fotos/README.md`).
 2. Copia un JSON de `ejemplos/`, cambia textos y rutas de foto.
-3. Las slides salen en `salida/<nombre>/01.png, 02.png...` a 1080x1350, listas para subir.
+3. El texto se coloca solo donde no tape caras. Si quieres forzarlo: `"texto_pos": "arriba" | "centro" | "abajo"` o un número 0–1.
+4. Las slides salen en `salida/<nombre>/01.png, 02.png...` a 1080x1350, listas para subir.
 
 | Tipo | Estilo | Ejemplo |
 |---|---|---|

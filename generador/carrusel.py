@@ -141,15 +141,54 @@ def slide_subtitulo(s):
     return img
 
 
-def texto_centrado(img, texto, tam, caja):
-    """Texto blanco centrado (vertical y horizontal) dentro de caja=(x0, y0, x1, y1)."""
+def caras(img):
+    """Cajas (x0, y0, x1, y1) de caras detectadas (frontal y de perfil). Lista vacía si no hay OpenCV."""
+    try:
+        import cv2
+        import numpy as np
+    except ImportError:
+        return []
+    gris = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2GRAY)
+    cajas = []
+    for modelo, espejo in (("haarcascade_frontalface_default.xml", False),
+                           ("haarcascade_profileface.xml", False),
+                           ("haarcascade_profileface.xml", True)):
+        cascada = cv2.CascadeClassifier(cv2.data.haarcascades + modelo)
+        g = cv2.flip(gris, 1) if espejo else gris
+        for x, y, w, h in cascada.detectMultiScale(g, 1.1, 6, minSize=(40, 40)):
+            if espejo:
+                x = g.shape[1] - x - w
+            # Margen para no rozar frente ni barbilla.
+            cajas.append((x - w * 0.2, y - h * 0.35, x + w * 1.2, y + h * 1.3))
+    return cajas
+
+
+def texto_centrado(img, texto, tam, caja, pos=None, evitar=None):
+    """Texto blanco centrado en horizontal dentro de caja=(x0, y0, x1, y1).
+
+    pos: None = automático (centro si no tapa ninguna cara, si no, el hueco libre más cercano),
+         "arriba" | "centro" | "abajo", o un número de 0 a 1 (altura relativa del centro del texto).
+    evitar: cajas de caras en coordenadas de img.
+    """
     d = ImageDraw.Draw(img, "RGBA")
     f = fuente("Bold", tam)
     x0, y0, x1, y1 = caja
     lineas = partir(texto, f, (x1 - x0) - 160, d)
     alto = len(lineas) * int(tam * 1.12)
-    bloque(d, texto, f, (x0 + x1) // 2, (y0 + y1 - alto) // 2, (x1 - x0) - 160, BLANCO,
-           interlineado=1.12, sombra=True)
+    margen = 50 if y1 - y0 < H else 120
+    arriba, abajo = y0 + margen, y1 - margen - alto
+    centro = (y0 + y1 - alto) // 2
+    if pos in ("arriba", "centro", "abajo"):
+        y = {"arriba": arriba, "centro": centro, "abajo": abajo}[pos]
+    elif isinstance(pos, (int, float)):
+        y = int(y0 + pos * (y1 - y0) - alto / 2)
+    else:
+        def solape(yy):
+            return sum(max(0, min(yy + alto, c[3]) - max(yy, c[1])) for c in evitar or []
+                       if c[1] < y1 and c[3] > y0)
+        candidatos = sorted(range(arriba, abajo + 1, 10), key=lambda yy: (solape(yy) > 0, abs(yy - centro)))
+        y = candidatos[0] if candidatos else centro
+    bloque(d, texto, f, (x0 + x1) // 2, y, (x1 - x0) - 160, BLANCO, interlineado=1.12, sombra=True)
 
 
 def oscurecer(img, opacidad):
@@ -163,14 +202,16 @@ def slide_doble(s):
     for i, parte in enumerate((s["arriba"], s["abajo"])):
         foto = oscurecer(abrir_foto(parte["foto"], W, mitad, parte.get("foco"), parte.get("zoom", 1)), s.get("oscuro", 0.28))
         img.paste(foto, (0, i * mitad))
-        texto_centrado(img, t(parte.get("texto", "")), parte.get("tam", 66), (0, i * mitad, W, (i + 1) * mitad))
+        evitar = [(a, b + i * mitad, c, e + i * mitad) for a, b, c, e in caras(foto)]
+        texto_centrado(img, t(parte.get("texto", "")), parte.get("tam", 66), (0, i * mitad, W, (i + 1) * mitad),
+                       parte.get("texto_pos"), evitar)
     return img
 
 
 def slide_cierre(s):
     """Una foto entera oscurecida con el mensaje final en el centro (párrafos con \\n\\n)."""
     img = oscurecer(abrir_foto(s["foto"], foco=s.get("foco")), s.get("oscuro", 0.35))
-    texto_centrado(img, t(s.get("texto", "")), s.get("tam", 54), (0, 0, W, H))
+    texto_centrado(img, t(s.get("texto", "")), s.get("tam", 54), (0, 0, W, H), s.get("texto_pos"), caras(img))
     return img
 
 
