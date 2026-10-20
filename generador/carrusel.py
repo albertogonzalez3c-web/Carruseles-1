@@ -218,27 +218,25 @@ def slide_cierre(s):
 
 
 def dibujo(img):
-    """Efecto ilustración tipo cómic: colores planos y saturados + contornos oscuros."""
+    """Efecto ilustración suave: piel y superficies lisas, color vivo y contornos finos y discretos."""
     try:
         import cv2
         import numpy as np
     except ImportError:
         return img
     a = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
-    pequeña = cv2.resize(a, None, fx=0.5, fy=0.5)
-    for _ in range(4):
-        pequeña = cv2.bilateralFilter(pequeña, 9, 60, 60)
-    plano = cv2.resize(pequeña, (a.shape[1], a.shape[0]))
-    plano = cv2.stylization(plano, sigma_s=40, sigma_r=0.35)
-    gris = cv2.medianBlur(cv2.cvtColor(a, cv2.COLOR_BGR2GRAY), 7)
-    bordes = cv2.adaptiveThreshold(gris, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 6)
-    bordes = cv2.erode(bordes, np.ones((2, 2), np.uint8))
-    comic = cv2.bitwise_and(plano, plano, mask=bordes)
-    hsv = cv2.cvtColor(comic, cv2.COLOR_BGR2HSV).astype("float32")
-    hsv[..., 1] = np.clip(hsv[..., 1] * 1.35, 0, 255)
-    hsv[..., 2] = np.clip(hsv[..., 2] * 1.08, 0, 255)
-    comic = cv2.cvtColor(hsv.astype("uint8"), cv2.COLOR_HSV2RGB)
-    return Image.fromarray(comic)
+    base = a.copy()
+    for _ in range(3):
+        base = cv2.bilateralFilter(base, 9, 35, 7)
+    pintado = cv2.stylization(base, sigma_s=30, sigma_r=0.25)
+    res = pintado.astype("float32") * 0.6 + base.astype("float32") * 0.4
+    gris = cv2.GaussianBlur(cv2.cvtColor(a, cv2.COLOR_BGR2GRAY), (5, 5), 0)
+    bordes = cv2.GaussianBlur(cv2.Canny(gris, 70, 160), (3, 3), 0).astype("float32")[..., None] / 255 * 0.35
+    res = res * (1 - bordes) + 30 * bordes
+    hsv = cv2.cvtColor(np.clip(res, 0, 255).astype("uint8"), cv2.COLOR_BGR2HSV).astype("float32")
+    hsv[..., 1] = np.clip(hsv[..., 1] * 1.15, 0, 255)
+    hsv[..., 2] = np.clip(hsv[..., 2] * 1.06 + 6, 0, 255)
+    return Image.fromarray(cv2.cvtColor(hsv.astype("uint8"), cv2.COLOR_HSV2RGB))
 
 
 def slide_dibujo(s):
