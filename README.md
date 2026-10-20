@@ -13,7 +13,7 @@ Si un carrusel intenta hacer los tres trabajos a la vez, no hace ninguno.
 
 1. **Slide 1 = 80% del resultado.** Si la portada no para el scroll, el resto no existe.
 2. **Una idea por carrusel.** Una por slide. Si sobra texto, sobra slide.
-3. **7–10 slides.** Menos se queda corto para el algoritmo de tiempo de visualización; más pierde gente.
+3. **7–10 slides** en calentamiento y venta. En conexión (estilo subtítulo) se puede ir a 10–18, porque cada slide es una frase.
 4. **Slide 2 justifica el swipe.** Promete lo que viene o abre un bucle.
 5. **Último slide = una sola acción.** Nunca "comenta, guarda, comparte y sígueme" juntos.
 6. **Lenguaje del cliente, no del experto.** Escribe con las palabras que usa tu cliente en los DMs y llamadas.
@@ -29,3 +29,20 @@ Ver [plan-semanal.md](carruseles/plan-semanal.md).
 2. Elige tipo según el día del plan.
 3. Copia la plantilla del tipo y rellena slide por slide.
 4. Pasa el checklist del final de cada plantilla antes de publicar.
+
+## Generador de slides con tus fotos
+
+```bash
+pip install pillow
+python3 generador/carrusel.py ejemplos/conexion.json      # o ejemplos/*.json
+```
+
+1. Mete tus fotos en `fotos/` (ver `fotos/README.md`).
+2. Copia un JSON de `ejemplos/`, cambia textos y rutas de foto.
+3. Las slides salen en `salida/<nombre>/01.png, 02.png...` a 1080x1350, listas para subir.
+
+| Tipo | Estilo | Ejemplo |
+|---|---|---|
+| Conexión | `subtitulo` | `ejemplos/conexion.json` |
+| Calentamiento | `titular` | `ejemplos/calentamiento.json` |
+| Venta | `tarjeta` | `ejemplos/venta.json` |

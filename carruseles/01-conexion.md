@@ -5,7 +5,13 @@ No enseñas, no vendes: te muestras. Es el contenido que hace que luego te compr
 
 **Error típico:** convertirlo en un diario personal sin lección. La historia es tuya, pero el valor tiene que ser para quien lo lee.
 
-## Estructura (8 slides)
+## Formato de referencia (estilo "subtítulo")
+
+Foto tuya a pantalla completa en cada slide + **una sola frase** abajo, como si fuera el subtítulo de un vídeo.
+Se lee como una película a trozos: 10–18 slides está bien aquí porque cada una se lee en 1 segundo.
+Generador: `estilo: "subtitulo"` → ver `ejemplos/conexion.json`.
+
+## Estructura (8 bloques; cada bloque puede ocupar 1–3 slides)
 
 | # | Función | Qué poner |
 |---|---|---|

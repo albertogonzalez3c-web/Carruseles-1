@@ -5,6 +5,13 @@ Aquí se habla de la oferta sin pedir perdón. Quien ya te sigue y te ha leído 
 
 **Error típico:** venta tímida ("si alguien está interesado..."). O el contrario: listar características sin vender transformación. Se vende el resultado, no el servicio.
 
+## Formato de referencia (estilo "tarjeta")
+
+Fondo blanco, titular en mayúsculas arriba, foto del cliente centrada y remate abajo.
+Gancho tipo "[NOMBRE]... odio que haya llegado a esto, pero te voy a tener que exponer...". Es un caso de éxito que vende sin parecer anuncio.
+Variante: foto tuya + resultado del cliente con número ("9.490 seguidores. Su primer mes de 100k.").
+Generador: `estilo: "tarjeta"` → ver `ejemplos/venta.json`.
+
 ## Estructura (9 slides)
 
 | # | Función | Qué poner |

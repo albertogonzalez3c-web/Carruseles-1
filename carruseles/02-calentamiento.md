@@ -5,6 +5,12 @@ Educa sobre el *qué* y el *por qué*; deja el *cómo exacto* para tu servicio.
 
 **Error típico:** regalar el método completo paso a paso. Si lo pueden ejecutar solos con tu carrusel, no te necesitan. Da claridad, no implementación.
 
+## Formato de referencia (estilo "titular")
+
+Foto tuya en contexto aspiracional, oscurecida arriba, con **etiqueta de color** (ej. "LUNES:", "PASO 1:") y titular blanco.
+Valor dirigido a tu avatar: sistemas, pasos, plantillas. CTA de palabra clave para mandar el recurso por DM.
+Generador: `estilo: "titular"` → ver `ejemplos/calentamiento.json`.
+
 ## Estructura (9 slides)
 
 | # | Función | Qué poner |
