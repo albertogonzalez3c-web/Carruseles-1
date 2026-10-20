@@ -355,7 +355,214 @@ def slide_titular(s):
     return img
 
 
-ESTILOS = {"dibujo": slide_dibujo, "caja": slide_caja, "doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
+# ---------- estilo "oscuro" (fondo negro texturizado + cabecera de perfil + acentos amarillos) ----------
+#
+# Marcado en los textos:  [palabras] = amarillo en negrita · **palabras** = blanco en negrita
+# Párrafos separados con \n\n. Cada slide lleva "tipo": portada | punto | cta.
+
+AMARILLO = (247, 230, 50)
+PERFIL = {}  # se rellena desde el JSON: {"nombre", "usuario", "foto", "foco"}
+
+
+def fondo_oscuro():
+    import random
+    rnd = random.Random(7)
+    img = Image.new("RGB", (W, H), (8, 8, 8))
+    # Haz de luz diagonal suave.
+    luz = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(luz).polygon([(W * 0.15, -50), (W * 0.55, -50), (W * 0.95, H * 0.75), (W * 0.45, H * 0.75)], fill=70)
+    luz = luz.filter(ImageFilter.GaussianBlur(160))
+    img = Image.composite(Image.new("RGB", (W, H), (60, 60, 60)), img, luz)
+    # Viñeta.
+    vin = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(vin).ellipse((-W * 0.3, -H * 0.2, W * 1.3, H * 1.1), fill=255)
+    vin = vin.filter(ImageFilter.GaussianBlur(220))
+    img = Image.composite(img, Image.new("RGB", (W, H), (0, 0, 0)), vin)
+    # Grano fino.
+    ruido = Image.effect_noise((W, H), 18).convert("RGB")
+    return Image.blend(img, ruido, 0.06)
+
+
+def recorte_cara(ruta, lado):
+    """Recorte cuadrado centrado en la cara más grande de la foto (para la foto de perfil)."""
+    img = ImageOps.exif_transpose(Image.open(RAIZ / ruta)).convert("RGB")
+    escala = 900 / max(img.size)
+    peq = img.resize((int(img.width * escala), int(img.height * escala)))
+    cs = caras(peq)
+    if not cs:
+        return ImageOps.fit(img, (lado, lado), Image.LANCZOS, centering=(0.5, 0.3))
+    x0, y0, x1, y1 = max(cs, key=lambda c: (c[2] - c[0]) * (c[3] - c[1]))
+    cx, cy, tam = (x0 + x1) / 2 / escala, (y0 + y1) / 2 / escala, (x1 - x0) / escala * 1.5
+    caja = (max(0, cx - tam / 2), max(0, cy - tam / 2), min(img.width, cx + tam / 2), min(img.height, cy + tam / 2))
+    return ImageOps.fit(img.crop(tuple(int(v) for v in caja)), (lado, lado), Image.LANCZOS)
+
+
+def avatar(diam, aro=8):
+    """Foto de perfil circular con aro degradado tipo historia de Instagram."""
+    base = recorte_cara(PERFIL["foto"], diam) if PERFIL.get("foto") else Image.new("RGB", (diam, diam), (80, 80, 80))
+    total = diam + 2 * aro
+    anillo = Image.new("RGB", (total, total))
+    da = ImageDraw.Draw(anillo)
+    for i in range(total):
+        t_ = i / total
+        c = (int(250 - 40 * t_), int(180 - 150 * t_), int(40 + 160 * t_))
+        da.line([(0, i), (total, i)], fill=c)
+    capa = Image.new("RGBA", (total, total), (0, 0, 0, 0))
+    m = Image.new("L", (total, total), 0)
+    ImageDraw.Draw(m).ellipse((0, 0, total - 1, total - 1), fill=255)
+    capa.paste(anillo, (0, 0), m)
+    hueco = Image.new("L", (total, total), 0)
+    ImageDraw.Draw(hueco).ellipse((aro - 3, aro - 3, total - aro + 2, total - aro + 2), fill=255)
+    capa.paste(Image.new("RGB", (total, total), (10, 10, 10)), (0, 0), hueco)
+    mf = Image.new("L", (diam, diam), 0)
+    ImageDraw.Draw(mf).ellipse((3, 3, diam - 4, diam - 4), fill=255)
+    capa.paste(base, (aro, aro), mf)
+    return capa
+
+
+def cabecera(img, centrada=False, y=70):
+    d = ImageDraw.Draw(img)
+    av = avatar(120 if not centrada else 150)
+    nombre, usuario = PERFIL.get("nombre", ""), PERFIL.get("usuario", "")
+    fn, fu = fuente("SemiBold", 40 if not centrada else 44), fuente("Regular", 30 if not centrada else 32)
+    if centrada:
+        img.paste(av, ((W - av.width) // 2, y), av)
+        yy = y + av.height + 18
+        d.text((W // 2, yy), nombre, font=fn, fill=BLANCO, anchor="ma")
+        if usuario:
+            d.text((W // 2, yy + 50), usuario, font=fu, fill=(200, 200, 200), anchor="ma")
+        return yy + (100 if usuario else 55)
+    img.paste(av, (70, y), av)
+    tx = 70 + av.width + 22
+    cy = y + av.height // 2
+    if usuario:
+        d.text((tx, cy - 4), nombre, font=fn, fill=BLANCO, anchor="ls")
+        d.text((tx, cy + 6), usuario, font=fu, fill=(200, 200, 200), anchor="lt")
+    else:
+        d.text((tx, cy), nombre, font=fn, fill=BLANCO, anchor="lm")
+    return y + av.height
+
+
+def trozos(texto, peso_base="Regular"):
+    """Convierte '[amarillo] y **negrita**' en palabras con estilo: (palabra, peso, color, pegada_a_la_anterior)."""
+    import re
+    salida = []
+    for bruto in re.split(r"(\[[^\]]+\]|\*\*[^*]+\*\*)", texto):
+        if not bruto:
+            continue
+        if bruto.startswith("["):
+            peso, color, parte = "Bold", AMARILLO, bruto[1:-1]
+        elif bruto.startswith("**"):
+            peso, color, parte = "Bold", BLANCO, bruto[2:-2]
+        else:
+            peso, color, parte = peso_base, BLANCO, bruto
+        # Pegada si no hay espacio entre este trozo y el anterior (ej. "[testosterona].").
+        pegada = bool(salida) and not parte[:1].isspace() and not ultimo_espacio
+        for i, pal in enumerate(parte.split()):
+            salida.append((pal, peso, color, pegada and i == 0))
+        ultimo_espacio = parte[-1:].isspace()
+    return salida
+
+
+def parrafo(d, texto, x, y, ancho, tam, peso_base="Regular", centrado=False, interlineado=1.12):
+    """Texto con estilos mezclados, con salto de línea automático. Devuelve la y final."""
+    palabras = trozos(texto, peso_base)
+    esp = fuente(peso_base, tam).getlength(" ")
+    lineas, actual, ancho_act = [], [], 0
+    for pal, peso, color, pegado in palabras:
+        f = fuente(peso, tam)
+        w = f.getlength(pal)
+        sep = 0 if (pegado or not actual) else esp
+        if actual and ancho_act + sep + w > ancho and not pegado:
+            lineas.append((actual, ancho_act))
+            actual, ancho_act, sep = [], 0, 0
+        actual.append((pal, f, color, sep))
+        ancho_act += sep + w
+    if actual:
+        lineas.append((actual, ancho_act))
+    for linea, lw in lineas:
+        xx = x + (ancho - lw) / 2 if centrado else x
+        for pal, f, color, sep in linea:
+            xx += sep
+            d.text((xx, y), pal, font=f, fill=color)
+            xx += f.getlength(pal)
+        y += int(tam * interlineado)
+    return y
+
+
+def tarjeta_foto(img, ruta, caja, foco=None, zoom=1):
+    x0, y0, x1, y1 = caja
+    w, h = x1 - x0, y1 - y0
+    foto = abrir_foto(ruta, w, h, foco, zoom)
+    m = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, w - 1, h - 1), radius=34, fill=255)
+    borde = Image.new("RGBA", (w + 8, h + 8), (0, 0, 0, 0))
+    ImageDraw.Draw(borde).rounded_rectangle((0, 0, w + 7, h + 7), radius=38, fill=(120, 120, 120, 150))
+    img.paste(borde, (x0 - 4, y0 - 4), borde)
+    img.paste(foto, (x0, y0), m)
+
+
+def pie_desliza(d, texto):
+    d.text((W // 2, H - 120), texto, font=fuente("Regular", 34), fill=(225, 225, 225), anchor="ma")
+
+
+def slide_oscuro(s):
+    img = fondo_oscuro()
+    d = ImageDraw.Draw(img)
+    tipo = s.get("tipo", "punto")
+    if tipo == "cta":
+        y = cabecera(img, centrada=True, y=230) + 80
+        if s.get("etiqueta"):
+            y = parrafo(d, t(s["etiqueta"]), 110, y, W - 220, 64, "Bold", centrado=True) + 36
+        for p_ in t(s.get("texto", "")).split("\n\n"):
+            y = parrafo(d, p_, 110, y, W - 220, 48, centrado=True, interlineado=1.2) + 26
+        boton = t(s.get("boton", {"es": "Sígueme", "en": "Follow me"}))
+        fb = fuente("Bold", 50)
+        bw = int(fb.getlength(boton)) + 140
+        y += 40
+        d.rounded_rectangle(((W - bw) // 2, y, (W + bw) // 2, y + 110), radius=55, fill=AMARILLO)
+        d.text((W // 2, y + 55), boton, font=fb, fill=NEGRO, anchor="mm")
+        return img
+    y = cabecera(img) + 60
+    if tipo == "portada":
+        if s.get("numero"):
+            d.text((W // 2, y - 10), t(s["numero"]), font=fuente("Black", 280), fill=AMARILLO, anchor="ma")
+            y += 290
+        y = parrafo(d, t(s.get("texto", "")), 90, y, W - 180, 66, "SemiBold", centrado=True, interlineado=1.08)
+        if s.get("subtexto"):
+            y = parrafo(d, t(s["subtexto"]), 90, y + 4, W - 180, 40, centrado=True)
+        if s.get("foto"):
+            alto = H - 200 - (y + 40)
+            ancho = min(W - 180, int(alto * 1.5))
+            tarjeta_foto(img, s["foto"], ((W - ancho) // 2, y + 40, (W + ancho) // 2, y + 40 + alto), s.get("foco"), s.get("zoom", 1))
+        pie_desliza(d, t(s.get("pie", {"es": "Desliza para explicarte →", "en": "Swipe to learn more →"})))
+        return img
+    # punto: titular amarillo + foto opcional + cuerpo
+    cuerpo = t(s.get("texto", ""))
+    if s.get("foto"):
+        y = parrafo(d, t(s.get("titulo", "")), 110, y + 30, W - 220, 64, "Bold", interlineado=1.05) + 50
+        alto_foto = s.get("alto_foto", 430)
+        tarjeta_foto(img, s["foto"], (110, y, W - 110, y + alto_foto), s.get("foco"), s.get("zoom", 1))
+        y += alto_foto + 50
+        for p_ in cuerpo.split("\n\n"):
+            if p_:
+                y = parrafo(d, p_, 110, y, W - 220, 44) + 20
+    else:
+        # Centrado vertical del bloque de texto, como en la referencia.
+        prueba = Image.new("RGB", (W, H))
+        dp = ImageDraw.Draw(prueba)
+        yy = parrafo(dp, t(s.get("titulo", "")), 110, 0, W - 220, 70, "Bold", interlineado=1.05) + 50
+        for p_ in cuerpo.split("\n\n"):
+            yy = parrafo(dp, p_, 110, yy, W - 220, 50) + 30
+        y = max(y + 40, (H - yy) // 2 + 40)
+        y = parrafo(d, t(s.get("titulo", "")), 110, y, W - 220, 70, "Bold", interlineado=1.05) + 50
+        for p_ in cuerpo.split("\n\n"):
+            y = parrafo(d, p_, 110, y, W - 220, 50) + 30
+    pie_desliza(d, t(s.get("pie", {"es": "Desliza para ver más →", "en": "Swipe for more →"})))
+    return img
+
+
+ESTILOS = {"oscuro": slide_oscuro, "dibujo": slide_dibujo, "caja": slide_caja, "doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
 
 
 def generar(ruta_json):
@@ -368,6 +575,8 @@ def generar(ruta_json):
 
 
 def generar_idioma(cfg, ruta_json, idioma):
+    PERFIL.clear()
+    PERFIL.update(cfg.get("perfil", {}))
     estilo_base = cfg.get("estilo", "subtitulo")
     slides = cfg["slides"]
     nombre = cfg.get("nombre", Path(ruta_json).stem) + (f"-{idioma}" if idioma else "")
