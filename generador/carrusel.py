@@ -427,21 +427,38 @@ def avatar(diam, aro=8):
     return capa
 
 
+def verificado(d, x, y, r):
+    """Insignia azul de verificado con su check, centrada en (x, y)."""
+    pts = []
+    import math
+    for i in range(24):
+        a = math.pi * 2 * i / 24
+        rr = r if i % 2 == 0 else r * 0.86
+        pts.append((x + rr * math.cos(a), y + rr * math.sin(a)))
+    d.polygon(pts, fill=(56, 151, 240))
+    d.line([(x - r * 0.42, y + r * 0.02), (x - r * 0.1, y + r * 0.34), (x + r * 0.45, y - r * 0.3)], fill=BLANCO, width=max(3, int(r * 0.22)), joint="curve")
+
+
 def cabecera(img, centrada=False, y=70):
     d = ImageDraw.Draw(img)
     av = avatar(120 if not centrada else 150)
-    nombre, usuario = PERFIL.get("nombre", ""), PERFIL.get("usuario", "")
+    nombre, usuario = t(PERFIL.get("nombre", "")), t(PERFIL.get("usuario", ""))
     fn, fu = fuente("SemiBold", 40 if not centrada else 44), fuente("Regular", 30 if not centrada else 32)
     if centrada:
         img.paste(av, ((W - av.width) // 2, y), av)
         yy = y + av.height + 18
-        d.text((W // 2, yy), nombre, font=fn, fill=BLANCO, anchor="ma")
+        nw = fn.getlength(nombre) + (52 if PERFIL.get("verificado") else 0)
+        d.text((W // 2 - nw / 2, yy), nombre, font=fn, fill=BLANCO, anchor="la")
+        if PERFIL.get("verificado"):
+            verificado(d, W // 2 + nw / 2 - 20, yy + 26, 20)
         if usuario:
             d.text((W // 2, yy + 50), usuario, font=fu, fill=(200, 200, 200), anchor="ma")
         return yy + (100 if usuario else 55)
     img.paste(av, (70, y), av)
     tx = 70 + av.width + 22
     cy = y + av.height // 2
+    if PERFIL.get("verificado"):
+        verificado(d, tx + fn.getlength(nombre) + 30, cy - 18 if usuario else cy, 19)
     if usuario:
         d.text((tx, cy - 4), nombre, font=fn, fill=BLANCO, anchor="ls")
         d.text((tx, cy + 6), usuario, font=fu, fill=(200, 200, 200), anchor="lt")
