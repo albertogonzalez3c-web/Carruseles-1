@@ -190,6 +190,11 @@ td.us { color: var(--ink); font-weight: 600; background: var(--yellow-soft); }
 .phase p b { color: var(--ink); }
 .phase.next { border-style: dashed; background: transparent; }
 
+.why { display: grid; gap: 12px; }
+.why div { display: grid; gap: 2px; padding-left: 16px; border-left: 3px solid var(--yellow); }
+.why b { font-size: 17px; }
+.why span { color: var(--soft); font-size: 15.5px; }
+
 /* Vídeo */
 .player { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1072 / 576; background: #000; border-radius: 14px; overflow: hidden; }
 .player video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
@@ -274,7 +279,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   </header>
 
   <div class="hero">
-    <div class="label">Mentoría 1:1 · Bloques de 3 meses · Grupo reducido</div>
+    <div class="label">Mentoría 1:1 · Solo bloques de 3 meses · Grupo reducido</div>
     <h1>Tu asesoría online, gestionada como <mark>una empresa</mark>.</h1>
     <p class="lede">Mentoría individual para entrenadores que quieren construir un negocio sólido. Cada semana tienes un plan de acción, hablamos por WhatsApp a diario y controlamos tus números como lo haría cualquier empresa que crece.</p>
     <div class="actions">
@@ -376,6 +381,61 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <a href="https://www.instagram.com/reel/DPRol1AiZGg/" target="_blank" rel="noopener">Reel 2</a>
       <a href="https://www.instagram.com/reel/DPRnoOtiXV3/" target="_blank" rel="noopener">Reel 3</a>
       <a href="https://www.instagram.com/p/DOJW3KCAla6/" target="_blank" rel="noopener">Publicación</a>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Cómo funciona · Vídeo de 3:20</div>
+      <h2>Te enseño cómo funciona por dentro.</h2>
+      <p class="lede">La academia, el plan 1:1 conmigo, tu espacio de trabajo y la comunidad. Toca un capítulo para ir directo.</p>
+    </div>
+    <div class="player">
+      <video id="vid" controls playsinline preload="metadata" poster="poster.jpg">
+        <source src="mentoria.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este vídeo.
+      </video>
+    </div>
+    <div class="chapters" role="list" aria-label="Capítulos del vídeo">
+      <button type="button" role="listitem" data-t="0"><time>0:00</time><span>La academia</span></button>
+      <button type="button" role="listitem" data-t="75"><time>1:15</time><span>El plan 1:1</span></button>
+      <button type="button" role="listitem" data-t="120"><time>2:00</time><span>Tu espacio de trabajo</span></button>
+      <button type="button" role="listitem" data-t="163"><time>2:43</time><span>La formación</span></button>
+      <button type="button" role="listitem" data-t="180"><time>3:00</time><span>La comunidad</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee" id="garantia">
+  <div class="wrap">
+    <div class="seal">3<br>meses<small>GARANTÍA</small></div>
+    <div>
+      <h2>Si en 3 meses no recuperas la inversión, sigo trabajando contigo.</h2>
+      <p>No te dejo a medias. Si al terminar el bloque no has recuperado lo que invertiste, seguimos trabajando juntos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tres-meses">
+  <div class="wrap three">
+    <div class="three-copy">
+      <div class="label">Por qué voy de 3 en 3 meses</div>
+      <h2>Nunca más de 3 meses de entrada. A propósito.</h2>
+      <p>No te voy a pedir un año de compromiso el primer día. <strong>Solo ofrezco 3 meses</strong>, y lo hago por tres motivos:</p>
+      <div class="why">
+        <div><b>Para comprobar que congeniamos.</b><span>Trabajamos codo con codo y a diario. Si no hay conexión, no tiene sentido alargarlo.</span></div>
+        <div><b>Porque tu proyecto me importa igual que a ti.</b><span>Es igual de importante por las dos partes. Me comprometo cuando veo que tú también lo haces.</span></div>
+        <div><b>Porque quiero máxima cercanía.</b><span>Llevo un grupo pequeño de personas para poder estar encima de cada una.</span></div>
+      </div>
+      <p>Si todo funciona, el negocio avanza y tiene sentido, <strong>seguimos a largo plazo</strong>. Me gustan las relaciones largas, pero que se ganen.</p>
+    </div>
+    <div class="timeline">
+      <div class="phase"><div class="m">Mes 1<small>La base</small></div><p><b>Estructura.</b> Cliente ideal, oferta clara y el plan de contenido y captación en marcha.</p></div>
+      <div class="phase"><div class="m">Mes 2<small>Captación</small></div><p><b>Sistema.</b> Prospección, contenido con objetivo y tus primeras métricas reales.</p></div>
+      <div class="phase"><div class="m">Mes 3<small>Venta</small></div><p><b>Escala.</b> Vender mejor, procesos de onboarding y soporte, decisiones con datos.</p></div>
+      <div class="phase next"><div class="m">Después<small>Si encaja</small></div><p>Si los dos lo vemos claro, seguimos a largo plazo.</p></div>
     </div>
   </div>
 </section>
@@ -530,55 +590,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <a href="https://youtu.be/dFwV5VBLOco" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Cómo trabajo de cerca con mis alumnos</span></a>
       <a href="https://youtu.be/FhWKW4vhyFg" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Ver vídeo</span></a>
       <a href="https://youtu.be/3nnf2uBxCYI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Ver vídeo</span></a>
-    </div>
-  </div>
-</section>
-
-<section id="tres-meses">
-  <div class="wrap three">
-    <div class="three-copy">
-      <div class="label">Por qué solo 3 meses</div>
-      <h2>Primero comprobamos que encajamos.</h2>
-      <p>Trabajo con muy poca gente a la vez porque me gusta la <strong>máxima cercanía</strong>. Tu proyecto me importa tanto como a ti, y por eso no empiezo con compromisos largos.</p>
-      <p>Solo ofrezco <strong>3 meses de entrada</strong>. Si conectamos, el negocio avanza y tiene sentido, seguimos a largo plazo. Me gustan las relaciones largas, pero que se ganen.</p>
-    </div>
-    <div class="timeline">
-      <div class="phase"><div class="m">Mes 1<small>La base</small></div><p><b>Estructura.</b> Cliente ideal, oferta clara y el plan de contenido y captación en marcha.</p></div>
-      <div class="phase"><div class="m">Mes 2<small>Captación</small></div><p><b>Sistema.</b> Prospección, contenido con objetivo y tus primeras métricas reales.</p></div>
-      <div class="phase"><div class="m">Mes 3<small>Venta</small></div><p><b>Escala.</b> Vender mejor, procesos de onboarding y soporte, decisiones con datos.</p></div>
-      <div class="phase next"><div class="m">Después<small>Si encaja</small></div><p>Si los dos lo vemos claro, seguimos a largo plazo.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="video">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label">Vídeo · 3:20</div>
-      <h2>Te enseño cómo funciona por dentro.</h2>
-    </div>
-    <div class="player">
-      <video id="vid" controls playsinline preload="metadata" poster="poster.jpg">
-        <source src="mentoria.mp4" type="video/mp4">
-        Tu navegador no puede reproducir este vídeo.
-      </video>
-    </div>
-    <div class="chapters" role="list" aria-label="Capítulos del vídeo">
-      <button type="button" role="listitem" data-t="0"><time>0:00</time><span>La academia</span></button>
-      <button type="button" role="listitem" data-t="75"><time>1:15</time><span>El plan 1:1</span></button>
-      <button type="button" role="listitem" data-t="120"><time>2:00</time><span>Tu espacio de trabajo</span></button>
-      <button type="button" role="listitem" data-t="163"><time>2:43</time><span>La formación</span></button>
-      <button type="button" role="listitem" data-t="180"><time>3:00</time><span>La comunidad</span></button>
-    </div>
-  </div>
-</section>
-
-<section class="guarantee" id="garantia">
-  <div class="wrap">
-    <div class="seal">3<br>meses<small>GARANTÍA</small></div>
-    <div>
-      <h2>Si en 3 meses no recuperas la inversión, sigo trabajando contigo.</h2>
-      <p>No te dejo a medias. Si al terminar el bloque no has recuperado lo que invertiste, seguimos trabajando juntos.</p>
     </div>
   </div>
 </section>
