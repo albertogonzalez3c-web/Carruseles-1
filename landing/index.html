@@ -1,0 +1,469 @@
+<title>Mentoría AGLEZ Academy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mentoría 1:1 de 3 meses para lanzar y escalar tu negocio de asesorías online con Alberto González.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: una columna estrecha de lectura; el vídeo y el tablero semanal rompen a ancho completo. Look único: negro de marca + amarillo AGLEZ. */
+:root {
+  --ink: #0d0d0c;
+  --panel: #171715;
+  --line: #2c2b27;
+  --text: #f2f0e8;
+  --muted: #a6a398;
+  --yellow: #ffd21f;
+  --on-yellow: #121100;
+  --f-display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --f-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0; background: var(--ink); color: var(--text);
+  font: 400 17px/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+section { padding-block: clamp(56px, 9vw, 104px); border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 {
+  font: 400 clamp(38px, 6.4vw, 64px)/1 var(--f-display);
+  text-transform: uppercase; letter-spacing: .005em;
+}
+h3 { font: 800 19px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.eyebrow {
+  font: 500 12px/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--yellow);
+}
+.lede { color: var(--muted); max-width: 60ch; font-size: 18px; }
+.hl { color: var(--yellow); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--yellow); color: var(--on-yellow);
+  font: 800 16px/1 var(--f-body); text-decoration: none;
+  padding: 18px 26px; border-radius: 4px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 -2px rgba(255, 210, 31, .25); }
+.btn svg { width: 18px; height: 18px; }
+.btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--yellow); box-shadow: none; }
+
+/* Hero */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; }
+.brand { font: 400 22px/1 var(--f-display); letter-spacing: .04em; }
+.brand span { color: var(--yellow); }
+.top a.small { font: 500 13px/1 var(--f-mono); color: var(--muted); text-decoration: none; }
+.top a.small:hover { color: var(--yellow); }
+.hero { padding-block: clamp(32px, 6vw, 64px) clamp(40px, 6vw, 72px); display: grid; gap: 28px; }
+.hero h1 {
+  font: 400 clamp(52px, 11vw, 132px)/.9 var(--f-display);
+  text-transform: uppercase; letter-spacing: -.005em; max-width: 12ch;
+}
+.hero h1 em { font-style: normal; color: var(--ink); background: var(--yellow); padding: 0 .08em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.hero .lede { font-size: clamp(18px, 2.2vw, 21px); color: var(--text); }
+.hero .lede b { color: var(--yellow); font-weight: 700; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 28px; font: 500 13px/1.4 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.facts span::before { content: "■ "; color: var(--yellow); }
+
+/* Vídeo */
+.video-sec { border-top: 0; padding-top: 0; }
+.player {
+  position: relative; width: 100%; max-width: 100%; aspect-ratio: 1072 / 576;
+  background: #000; border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+}
+.player video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
+.chapters { margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.chapters button {
+  all: unset; cursor: pointer; display: grid; gap: 4px;
+  padding: 12px 14px; border: 1px solid var(--line); border-radius: 4px;
+  transition: border-color .15s ease, background .15s ease;
+}
+.chapters button:hover, .chapters button.on { border-color: var(--yellow); background: var(--panel); }
+.chapters button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.chapters time { font: 500 12px/1 var(--f-mono); color: var(--yellow); font-variant-numeric: tabular-nums; }
+.chapters span { font: 700 14px/1.3 var(--f-body); }
+.video-note { margin-top: 14px; color: var(--muted); font-size: 14px; }
+
+/* Qué incluye */
+.sec-head { display: grid; gap: 16px; margin-bottom: 44px; }
+.pillars { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.pillar { background: var(--ink); padding: 28px 24px 30px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.pillar.main { background: var(--panel); }
+.pillar .tag { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.pillar.main .tag { color: var(--yellow); }
+.pillar ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+.pillar li { padding-left: 20px; position: relative; color: var(--muted); font-size: 15.5px; line-height: 1.5; }
+.pillar li::before { content: ""; position: absolute; left: 0; top: .62em; width: 9px; height: 2px; background: var(--yellow); }
+.pillar li b { color: var(--text); font-weight: 700; }
+
+/* Semana real */
+.board-wrap { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.board-copy { display: grid; gap: 14px; }
+.board-copy p { color: var(--muted); }
+.board { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); overflow: hidden; min-width: 0; }
+.board-head { display: flex; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.board-head b { color: var(--text); font-weight: 500; }
+.task { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 13px 18px; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.45; }
+.task:last-child { border-bottom: 0; }
+.task .box { width: 16px; height: 16px; border: 1.5px solid var(--muted); border-radius: 3px; margin-top: 3px; }
+.task small { display: block; color: var(--muted); font-size: 13.5px; }
+.pill { font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.pill.go { border-color: var(--yellow); color: var(--yellow); }
+
+/* Prueba social */
+.proof-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.quote { border-left: 4px solid var(--yellow); padding: 4px 0 4px clamp(18px, 3vw, 32px); display: grid; gap: 18px; }
+.quote blockquote { margin: 0; font: 500 clamp(19px, 2.3vw, 23px)/1.5 var(--f-body); }
+.quote blockquote p + p { margin-top: 14px; }
+.quote blockquote strong { color: var(--yellow); font-weight: 700; }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); color: var(--on-yellow); display: grid; place-items: center; font: 400 20px/1 var(--f-display); flex: none; }
+.who b { display: block; font-weight: 800; }
+.who span { color: var(--muted); font-size: 14px; }
+.stats { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stat { background: var(--ink); padding: 22px 22px 24px; display: grid; gap: 6px; }
+.stat .n { font: 400 clamp(40px, 5vw, 54px)/1 var(--f-display); color: var(--yellow); font-variant-numeric: tabular-nums; }
+.stat p { color: var(--muted); font-size: 15px; }
+.stat p b { color: var(--text); }
+.stat a { color: var(--text); text-underline-offset: 3px; }
+.stat a:hover { color: var(--yellow); }
+
+/* Garantía */
+.guarantee { background: var(--yellow); color: var(--on-yellow); border-top: 0; }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
+.seal { width: clamp(110px, 16vw, 160px); aspect-ratio: 1; max-width: 100%; border: 3px solid var(--on-yellow); border-radius: 50%; display: grid; place-items: center; text-align: center; font: 400 clamp(26px, 3.6vw, 38px)/.95 var(--f-display); text-transform: uppercase; }
+.seal small { display: block; font: 500 11px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee h2 { font-size: clamp(34px, 5.4vw, 56px); }
+.guarantee p { margin-top: 12px; font-size: 18px; max-width: 58ch; font-weight: 500; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 32px); }
+.fit > div { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { font: 400 18px/1.3 var(--f-display); }
+.fit .yes li::before { content: "SÍ"; color: var(--yellow); font-size: 14px; }
+.fit .no li { color: var(--muted); }
+.fit .no li::before { content: "NO"; color: var(--muted); font-size: 14px; }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; counter-reset: s; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--yellow); padding-top: 18px; }
+.step .k { font: 500 12px/1 var(--f-mono); color: var(--yellow); letter-spacing: .1em; text-transform: uppercase; }
+.step p { color: var(--muted); font-size: 15.5px; }
+
+/* FAQ */
+.faq { display: grid; gap: 0; max-width: 780px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 36px 20px 0; position: relative; font: 700 17px/1.4 var(--f-body); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font: 400 26px/1 var(--f-display); color: var(--yellow); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--muted); padding-bottom: 22px; max-width: 64ch; }
+
+/* Cierre */
+.final { text-align: left; }
+.final .wrap { display: grid; gap: 24px; }
+.final h2 { font-size: clamp(44px, 8vw, 96px); max-width: 14ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--muted); font: 500 12px/1.6 var(--f-mono); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+/* Barra fija móvil */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(13, 13, 12, .92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--line); display: none;
+}
+.sticky-cta .btn { width: 100%; justify-content: center; padding: 15px 20px; }
+
+@media (max-width: 860px) {
+  .pillars { grid-template-columns: 1fr; }
+  .board-wrap, .proof-grid, .fit { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 24px; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top a.small { display: none; }
+  .task { grid-template-columns: 18px minmax(0, 1fr); }
+  .task .pill { grid-column: 2; justify-self: start; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">AGLEZ <span>ACADEMY</span></div>
+    <a class="small" href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">@albertoglezcoach ↗</a>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow">Mentoría 1:1 · 3 meses</div>
+    <h1>Monta tu negocio de <em>asesorías online</em> con un plan cada semana</h1>
+    <p class="lede">Trabajo contigo durante 3 meses. Cada domingo revisamos tu semana y sales con <b>la lista exacta de tareas</b>: contenido, captación y venta. Tú ejecutas. Yo me encargo de que sepas qué toca.</p>
+    <div class="hero-actions">
+      <a class="btn" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">
+        Agenda tu llamada 1:1
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#video">Ver cómo funciona · 3:20</a>
+    </div>
+    <div class="facts">
+      <span>Plan semanal revisado cada domingo</span>
+      <span>Soporte directo por WhatsApp</span>
+      <span>Garantía de recuperación</span>
+    </div>
+  </div>
+</div>
+
+<section class="video-sec" id="video">
+  <div class="wrap">
+    <div class="player">
+      <video id="vid" controls playsinline preload="metadata" poster="poster.jpg">
+        <source src="mentoria.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este vídeo.
+      </video>
+    </div>
+    <div class="chapters" role="list" aria-label="Capítulos del vídeo">
+      <button type="button" role="listitem" data-t="0"><time>0:00</time><span>Cómo funciona la academia</span></button>
+      <button type="button" role="listitem" data-t="75"><time>1:15</time><span>El plan 1:1 conmigo</span></button>
+      <button type="button" role="listitem" data-t="120"><time>2:00</time><span>Tu espacio en Notion</span></button>
+      <button type="button" role="listitem" data-t="163"><time>2:43</time><span>La formación</span></button>
+      <button type="button" role="listitem" data-t="180"><time>3:00</time><span>La comunidad</span></button>
+    </div>
+    <p class="video-note">Toca un capítulo para saltar directo a esa parte.</p>
+  </div>
+</section>
+
+<section id="incluye">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Qué incluye</div>
+      <h2>Tres piezas. <span class="hl">La clave es el 1:1.</span></h2>
+      <p class="lede">La formación y la comunidad te dan contexto. El plan conmigo es lo que hace que avances cada semana. Cada uno va a su ritmo, con foco en lo que le toca trabajar.</p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar main">
+        <div class="tag">01 · Mentoría 1:1</div>
+        <h3>Un plan semanal que revisamos juntos</h3>
+        <ul>
+          <li><b>Revisión semanal</b> cada domingo y llamadas de control</li>
+          <li><b>Calendario de contenido</b> detallado y estrategia de captación</li>
+          <li>Tu espacio en Notion: <b>tareas pendientes, hoja de ruta</b>, situación actual y organización de tu rutina de trabajo</li>
+          <li>Recursos de contabilidad y gestión de leads</li>
+          <li><b>Soporte personal por WhatsApp</b> directo conmigo</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <div class="tag">02 · Formación</div>
+        <h3>La academia, módulo a módulo</h3>
+        <ul>
+          <li>Diseño, oferta y entrega del servicio</li>
+          <li>Análisis de tu servicio</li>
+          <li>Sistemas de captación</li>
+          <li>Cómo vender tu servicio</li>
+          <li>Módulos en continua actualización, con estudio guiado según lo que te marque</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <div class="tag">03 · Comunidad</div>
+        <h3>Gente que va a lo mismo que tú</h3>
+        <ul>
+          <li>Llamadas grupales quincenales</li>
+          <li>Grupo de WhatsApp para dudas urgentes y consejos rápidos</li>
+          <li>Carpeta de Drive conjunta con recursos</li>
+          <li>App de la comunidad para compartir logros y aportar</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="board-wrap">
+      <div class="board-copy">
+        <div class="eyebrow">Así se ve una semana real</div>
+        <h3 style="font-size:24px">Sin "a ver qué publico hoy". Cada tarea con fecha.</h3>
+        <p>Este es el tablero de un alumno actual en Notion, tal cual sale en el vídeo. Así sabes cada semana qué tienes que accionar y en qué orden.</p>
+      </div>
+      <div class="board" aria-label="Ejemplo de tareas semanales de un alumno">
+        <div class="board-head"><b>Mentoría · Tareas pendientes</b><span>Fecha límite: 13 sep</span></div>
+        <div class="task"><span class="box"></span><div>Línea de contenido sólida</div><span class="pill">Pendiente</span></div>
+        <div class="task"><span class="box"></span><div>Revisar ads<small>Tráfico España</small></div><span class="pill">Pendiente</span></div>
+        <div class="task"><span class="box"></span><div>Implementar contratos</div><span class="pill">Pendiente</span></div>
+        <div class="task"><span class="box"></span><div>Nuevo Loom mejorado<small>Con contratos y vídeos de soporte</small></div><span class="pill">Pendiente</span></div>
+        <div class="task"><span class="box"></span><div>Prospección a full<small>Dos rondas de 50 mensajes diarios</small></div><span class="pill go">Esta semana</span></div>
+        <div class="task"><span class="box"></span><div>Lead magnet: lista de la compra + rutina de movilidad<small>En orgánico y con reels promocionados</small></div><span class="pill go">Esta semana</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prueba">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Prueba social</div>
+      <h2>Lo hice en español. <span class="hl">Lo hice en inglés.</span></h2>
+      <p class="lede">Antes de enseñarlo lo construí yo: dos cuentas, dos idiomas, tres mercados. Ahora acompaño a otros coaches a hacer lo mismo.</p>
+    </div>
+
+    <div class="proof-grid">
+      <figure class="quote" style="margin:0">
+        <blockquote>
+          <p>“Di el paso para comenzar mi negocio de asesorías online y, a pesar de que hay mucha información en redes, <strong>no sabía por dónde empezar</strong> para ofrecer un servicio de la mejor calidad posible a mis futuros clientes (ni cómo llegar a ellos).</p>
+          <p>Sigo a Alberto desde hace años y he decidido <strong>confiar en él para trazar la estrategia</strong> que necesito para despegar y poder vivir de lo que siempre he soñado.”</p>
+        </blockquote>
+        <figcaption class="who">
+          <span class="avatar" aria-hidden="true">P</span>
+          <div><b>Pablo Suero Arroyo</b><span>@pablosphysique · 19 años · alumno de la mentoría</span></div>
+        </figcaption>
+      </figure>
+
+      <div class="stats">
+        <div class="stat"><div class="n">2</div><p><b>Cuentas construidas</b>: <a href="https://instagram.com/albertoglez6" target="_blank" rel="noopener">@albertoglez6</a> en español y <a href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">@albertoglezcoach</a> en inglés.</p></div>
+        <div class="stat"><div class="n">3</div><p><b>Mercados que conozco</b>: Europa, Estados Unidos y Latinoamérica.</p></div>
+        <div class="stat"><div class="n">10</div><p><b>Alumnos en mentoría 1:1</b>, cada uno con su espacio y su plan en Notion.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee" id="garantia">
+  <div class="wrap">
+    <div class="seal">3<br>meses<small>Garantía</small></div>
+    <div>
+      <h2>Si en 3 meses no recuperas la inversión, sigo trabajando contigo.</h2>
+      <p>No te dejo a medias. Si al terminar no has recuperado lo que invertiste, seguimos trabajando juntos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Para quién es</div>
+      <h2>No es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Eres entrenador o coach y quieres vivir de tus asesorías online.</li>
+          <li>Hay mucha información y no sabes por dónde empezar ni cómo llegar a clientes.</li>
+          <li>Quieres un plan concreto cada semana, no más contenido que consumir.</li>
+          <li>Vas a ejecutar las tareas aunque algunas semanas cueste.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un curso para ver vídeos y no aplicar nada.</li>
+          <li>Esperas resultados sin publicar, prospectar ni vender.</li>
+          <li>No puedes dedicarle unas horas a la semana durante 3 meses.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Cómo empezar</div>
+      <h2>De la llamada a tu primera semana.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="k">Paso 1</div><h3>Agenda tu llamada 1:1</h3><p>Elige hueco en mi calendario. Hablamos de dónde estás y a dónde quieres llegar.</p></div>
+      <div class="step"><div class="k">Paso 2</div><h3>Vemos si encajas</h3><p>Si te puedo ayudar, te explico el plan. Si no, te lo digo claro y te digo qué haría yo en tu lugar.</p></div>
+      <div class="step"><div class="k">Paso 3</div><h3>Bloque 1: la base</h3><p>Entras a la plataforma, definimos tu cliente ideal y clarificamos tu oferta: qué incluye y en qué te diferencias.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>¿Cuánto dura la mentoría?</summary>
+        <p>3 meses de trabajo 1:1, con acceso a la academia y a la parte grupal con el resto de alumnos.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo necesito a la semana?</summary>
+        <p>Depende de tu punto de partida. Cada semana te marco las tareas concretas y las ajustamos a tu rutina de trabajo en la revisión del domingo.</p>
+      </details>
+      <details>
+        <summary>¿Y si ya tengo clientes?</summary>
+        <p>Mejor. Partimos de tu situación actual y el plan se centra en lo que te frena ahora: captación, oferta, venta u organización.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si en 3 meses no he recuperado la inversión?</summary>
+        <p>Sigo trabajando contigo. Esa es la garantía.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta?</summary>
+        <p>Te lo cuento en la llamada, cuando sepa si encajas y qué necesitas.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="eyebrow">El siguiente paso</div>
+    <h2>Deja de improvisar. <span class="hl">Empieza con un plan.</span></h2>
+    <div class="hero-actions">
+      <a class="btn" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">
+        Agenda tu llamada 1:1
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alberto González · AGLEZ Academy</span>
+    <span><a href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">Instagram ↗</a></span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a class="btn" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">Agenda tu llamada 1:1</a>
+</div>
+
+<script>
+(function () {
+  var v = document.getElementById("vid");
+  var btns = Array.prototype.slice.call(document.querySelectorAll(".chapters button"));
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      v.currentTime = Number(b.dataset.t);
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+      document.getElementById("video").scrollIntoView({ block: "start" });
+    });
+  });
+  v.addEventListener("timeupdate", function () {
+    var t = v.currentTime, cur = 0;
+    btns.forEach(function (b, i) { if (t >= Number(b.dataset.t)) cur = i; });
+    btns.forEach(function (b, i) { b.classList.toggle("on", i === cur); });
+  });
+})();
+</script>
