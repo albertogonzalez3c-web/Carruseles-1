@@ -142,6 +142,14 @@ a.case:hover { border-color: var(--ink); transform: translateY(-2px); }
 .facts { text-decoration: none; color: inherit; }
 a.facts:hover .fact b { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
 
+.star { margin-bottom: 16px; background: var(--yellow); border-radius: 14px; padding: clamp(24px, 4vw, 44px); display: grid; gap: 14px; }
+.star .label { color: var(--ink); }
+.star-num { font: 800 clamp(52px, 10vw, 120px)/.9 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; }
+.star-num span { display: block; font-size: .32em; letter-spacing: 0; margin-top: 8px; }
+.star p { font-size: 19px; font-weight: 500; max-width: 50ch; }
+.star .avatar { background: var(--ink); color: var(--yellow); }
+.star .who span { color: var(--ink); opacity: .75; }
+
 /* Hobby vs empresa */
 .versus { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--white); }
 .versus > div { padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: start; min-width: 0; }
@@ -299,7 +307,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
     <div class="label proof-label">Resultados de alumnos</div>
     <a class="facts" href="#casos" style="margin-top:0">
-      <div class="fact"><b>11.300 €</b><span>Sergio, empezando conmigo desde cero</span></div>
+      <div class="fact"><b>11.300 € en 1 mes</b><span>Sergio, empezando conmigo desde cero</span></div>
       <div class="fact"><b>2–3k → 8k €</b><span>Facturación mensual de un alumno en sus 2 primeros meses</span></div>
       <div class="fact"><b>2.524 → 293K</b><span>Seguidores de Lukas, @polacotrainer</span></div>
       <div class="fact"><b>211 → 159K</b><span>Seguidores de Car, @fitconcar</span></div>
@@ -394,6 +402,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <p class="lede">Entrenadores que dejaron de improvisar y empezaron a llevar su asesoría como una empresa. Escúchalo de ellos.</p>
     </div>
 
+    <div class="star">
+      <div class="label">Caso destacado</div>
+      <div class="star-num">11.300 € <span>en un solo mes</span></div>
+      <p>Sergio empezó conmigo desde cero. En un mes facturó 11.300 €.</p>
+      <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio</b><span>Alumno de la mentoría 1:1</span></div></div>
+    </div>
+
     <figure class="team">
       <img src="casos/grupo-alumnos.jpg" alt="Foto de grupo de Alberto con alumnos de la mentoría" width="1320" height="783">
       <figcaption>Parte de los alumnos de la mentoría, juntos en persona.</figcaption>
@@ -406,12 +421,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
 
     <div class="wall">
-      <div class="shot text">
-        <div class="big">11.300 € empezando de cero</div>
-        <p>Sergio empezó conmigo desde cero y ha llegado a facturar 11.300 €.</p>
-        <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio</b><span>Alumno de la mentoría 1:1</span></div></div>
-      </div>
-
       <figure class="shot">
         <img src="casos/ingresos-7k-8k.jpg" alt="Mensaje de un alumno: antes facturaba entre 2.000 y 3.000 euros al mes; primer mes 7.000, segundo mes 8.000" loading="lazy" width="900" height="742">
         <figcaption><b>De 2–3k a 8.000 €/mes</b>Antes de entrar facturaba entre 2.000 y 3.000 € al mes. Primer mes en la mentoría: 7.000 €. Segundo mes: 8.000 €.</figcaption>
@@ -438,7 +447,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <figcaption><b>De 211 a 159K seguidores</b>Car, @fitconcar. Y Lukas, @polacotrainer, de 2.524 a 293K. Audiencia construida con estrategia, no con suerte.</figcaption>
       </figure>
 
-      <figure hidden class="shot extra">
+      <figure class="shot">
         <img src="casos/adrian-1350.jpg" alt="Chat de WhatsApp: te vas a hacer en 24 horas como 1200 euros; respuesta: 1350 euros" loading="lazy" width="705" height="793">
         <figcaption><b>1.350 € en 24 horas</b>Así es el seguimiento por WhatsApp: números del día y revisión de sus llamadas de venta para mejorarlas.</figcaption>
       </figure>
