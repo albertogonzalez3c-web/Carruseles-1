@@ -142,6 +142,28 @@ a { color: inherit; }
 .stat a { color: var(--text); text-underline-offset: 3px; }
 .stat a:hover { color: var(--yellow); }
 
+/* Resultados en vídeo */
+.media-head { margin-top: clamp(48px, 7vw, 72px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 24px; }
+.media-head h3 { font-size: 24px; }
+.media-head p { color: var(--muted); font-size: 15px; max-width: 46ch; }
+.media { margin-top: 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.clip {
+  display: grid; gap: 14px; align-content: space-between; min-height: 150px;
+  padding: 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+  text-decoration: none; transition: border-color .15s ease, transform .15s ease;
+}
+.clip:hover { border-color: var(--yellow); transform: translateY(-2px); }
+.clip .src { display: flex; justify-content: space-between; gap: 8px; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.clip .src b { color: var(--yellow); font-weight: 500; }
+.clip .play { width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); color: var(--on-yellow); display: grid; place-items: center; }
+.clip .play svg { width: 16px; height: 16px; margin-left: 2px; }
+.clip .t { font: 700 16px/1.35 var(--f-body); }
+.clip .row { display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+.clip .go { font: 500 12px/1 var(--f-mono); color: var(--muted); }
+.clip:hover .go { color: var(--yellow); }
+@media (max-width: 860px) { .media { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .media { grid-template-columns: 1fr; } .clip { min-height: 0; } }
+
 /* Garantía */
 .guarantee { background: var(--yellow); color: var(--on-yellow); border-top: 0; }
 .guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
@@ -337,6 +359,37 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div class="stat"><div class="n">3</div><p><b>Mercados que conozco</b>: Europa, Estados Unidos y Latinoamérica.</p></div>
         <div class="stat"><div class="n">10</div><p><b>Alumnos en mentoría 1:1</b>, cada uno con su espacio y su plan en Notion.</p></div>
       </div>
+    </div>
+
+    <div class="media-head">
+      <h3>Resultados en vídeo</h3>
+      <p>Casos, procesos y resultados contados en mis redes. Se abren en Instagram o YouTube.</p>
+    </div>
+    <div class="media">
+      <a class="clip" href="https://www.instagram.com/reel/DPRoWQliTYM/" target="_blank" rel="noopener">
+        <div class="src"><b>Instagram · Reel</b><span>01</span></div>
+        <div class="row"><span class="t">Ver reel</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
+      </a>
+      <a class="clip" href="https://www.instagram.com/reel/DPRol1AiZGg/" target="_blank" rel="noopener">
+        <div class="src"><b>Instagram · Reel</b><span>02</span></div>
+        <div class="row"><span class="t">Ver reel</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
+      </a>
+      <a class="clip" href="https://www.instagram.com/reel/DPRnoOtiXV3/" target="_blank" rel="noopener">
+        <div class="src"><b>Instagram · Reel</b><span>03</span></div>
+        <div class="row"><span class="t">Ver reel</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
+      </a>
+      <a class="clip" href="https://www.instagram.com/p/DOJW3KCAla6/" target="_blank" rel="noopener">
+        <div class="src"><b>Instagram · Post</b><span>04</span></div>
+        <div class="row"><span class="t">Ver publicación</span><span class="go">Ver post ↗</span></div>
+      </a>
+      <a class="clip" href="https://youtu.be/FhWKW4vhyFg" target="_blank" rel="noopener">
+        <div class="src"><b>YouTube</b><span>05</span></div>
+        <div class="row"><span class="t">Ver vídeo completo</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
+      </a>
+      <a class="clip" href="https://youtu.be/3nnf2uBxCYI" target="_blank" rel="noopener">
+        <div class="src"><b>YouTube</b><span>06</span></div>
+        <div class="row"><span class="t">Ver vídeo completo</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
+      </a>
     </div>
   </div>
 </section>
