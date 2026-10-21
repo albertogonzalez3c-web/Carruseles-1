@@ -89,6 +89,47 @@ a.case:hover { border-color: var(--ink); transform: translateY(-2px); }
 .case .t { font-weight: 700; }
 .cases-note { margin-top: 20px; color: var(--soft); font-size: 14px; }
 
+.proof-label { margin-top: 8px; }
+.vids { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.vid { margin: 0; background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; min-width: 0; }
+.vid video { display: block; width: 100%; max-width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+.vid figcaption { padding: 12px 16px; font-size: 14px; color: var(--soft); }
+.vid figcaption b { color: var(--ink); }
+.wall { margin-top: 16px; columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.shot { background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: block; }
+.shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+.shot figcaption { padding: 16px 18px 18px; display: grid; gap: 6px; font-size: 15px; color: var(--soft); line-height: 1.5; }
+.shot figcaption b { color: var(--ink); font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
+.shot.text { padding: 22px; display: grid; gap: 14px; }
+.shot.text .big { font: 800 30px/1.05 var(--f-display); font-stretch: 78%; }
+.shot.text blockquote { margin: 0; font-size: 16px; line-height: 1.6; }
+.more { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 15px; }
+.more a { font-weight: 700; text-underline-offset: 4px; text-decoration-color: var(--yellow); text-decoration-thickness: 2px; }
+
+/* Historia */
+.story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.story-copy { display: grid; gap: 18px; }
+.story-copy p { color: var(--soft); max-width: 54ch; }
+.story-copy p strong { color: var(--ink); }
+.story-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.story-imgs figure { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+.story-imgs img { display: block; width: 100%; height: auto; }
+.story-imgs figcaption { padding: 10px 12px; font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.callout { margin-top: 16px; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
+.callout img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
+.callout blockquote { margin: 0; font: 800 clamp(30px, 4vw, 46px)/1.05 var(--f-display); font-stretch: 78%; }
+.callout p { margin-top: 14px; color: var(--soft); max-width: 50ch; }
+
+/* YouTube */
+.yt { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.yt a { display: grid; gap: 14px; padding: 22px; border-radius: 14px; background: var(--ink); color: var(--white); text-decoration: none; transition: transform .15s ease; }
+.yt a:hover { transform: translateY(-2px); }
+.yt .play { width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; }
+.yt .play svg { width: 16px; height: 16px; margin-left: 2px; }
+.yt span { font-weight: 700; }
+.yt small { color: #c9c7bf; font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; }
+
 /* Hobby vs empresa */
 .versus { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--white); }
 .versus > div { padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: start; min-width: 0; }
@@ -201,7 +242,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 @media (max-width: 960px) {
   .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .system, .three { grid-template-columns: 1fr; }
+  .system, .three, .story { grid-template-columns: 1fr; }
+  .yt { grid-template-columns: 1fr; }
   .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .chapters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -215,6 +257,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   .week { grid-template-columns: 1fr 1fr; }
   .chapters { grid-template-columns: 1fr 1fr; }
   .guarantee .wrap { grid-template-columns: 1fr; }
+  .vids { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+  .vid { scroll-snap-align: start; }
+  .callout { grid-template-columns: 1fr; }
 }
 </style>
 
@@ -235,60 +280,83 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </a>
       <a class="link" href="#casos">Ver casos de alumnos</a>
     </div>
-    <div class="facts">
-      <div class="fact"><b>1:1</b><span>Todo el plan es individual, hecho para tu negocio</span></div>
-      <div class="fact"><b>Diario</b><span>WhatsApp directo conmigo, sin intermediarios</span></div>
-      <div class="fact"><b>Domingo</b><span>Revisión semanal de tareas y métricas</span></div>
-      <div class="fact"><b>ES · EN</b><span>Lo construí en Europa, EE. UU. y Latinoamérica</span></div>
+    <div class="label proof-label">Resultados de alumnos</div>
+    <div class="facts" style="margin-top:0">
+      <div class="fact"><b>2–3k → 8k €</b><span>Facturación mensual de un alumno en sus 2 primeros meses</span></div>
+      <div class="fact"><b>9.000 €</b><span>Facturados en un solo mes por otro alumno</span></div>
+      <div class="fact"><b>2.524 → 293K</b><span>Seguidores de Lukas, @polacotrainer</span></div>
+      <div class="fact"><b>211 → 159K</b><span>Seguidores de Car, @fitconcar</span></div>
     </div>
   </div>
 </div>
 
-<!-- CASOS DE ÉXITO
-     Cada caso es un bloque .case. Formato ideal: resultado con número y plazo + vídeo o captura + nombre/@.
-     Los casos con número van primero. Usa .case.wide para el más fuerte. -->
+<!-- CASOS: vídeos arriba, luego muro de capturas y citas. Los casos con número van primero. -->
 <section id="casos">
   <div class="wrap">
     <div class="sec-head">
       <div class="label">Casos de alumnos</div>
-      <h2>Lo que pasa cuando dejas de improvisar.</h2>
-      <p class="lede">Entrenadores que decidieron tratar su asesoría como un negocio. Escúchalo de ellos.</p>
+      <h2>Resultados reales. Con números y capturas.</h2>
+      <p class="lede">Entrenadores que dejaron de improvisar y empezaron a llevar su asesoría como una empresa. Escúchalo de ellos.</p>
     </div>
 
-    <div class="cases">
-      <figure class="case wide" style="margin:0">
-        <div class="label">Testimonio · Comunidad de la mentoría</div>
-        <blockquote>
-          <p>“Di el paso para comenzar mi negocio de asesorías online y, a pesar de que hay mucha información en redes, no sabía por dónde empezar para ofrecer un servicio de la mejor calidad posible a mis futuros clientes (ni cómo llegar a ellos).</p>
-          <p>Sigo a Alberto desde hace años y he decidido confiar en él para trazar la estrategia que necesito para despegar y poder vivir de lo que siempre he soñado.”</p>
-        </blockquote>
-        <figcaption class="who"><span class="avatar" aria-hidden="true">P</span><div><b>Pablo Suero Arroyo</b><span>@pablosphysique · 19 años</span></div></figcaption>
+    <div class="vids">
+      <figure class="vid"><video controls playsinline preload="none" poster="casos/testimonio-1.jpg"><source src="casos/testimonio-1.mp4" type="video/mp4"></video><figcaption><b>Testimonio en vídeo</b> · Alumno de la mentoría</figcaption></figure>
+      <figure class="vid"><video controls playsinline preload="none" poster="casos/testimonio-2.jpg"><source src="casos/testimonio-2.mp4" type="video/mp4"></video><figcaption><b>Testimonio en vídeo</b> · Alumno de la mentoría</figcaption></figure>
+      <figure class="vid"><video controls playsinline preload="none" poster="casos/testimonio-3.jpg"><source src="casos/testimonio-3.mp4" type="video/mp4"></video><figcaption><b>Testimonio en vídeo</b> · Alumno de la mentoría</figcaption></figure>
+    </div>
+
+    <div class="wall">
+      <figure class="shot">
+        <img src="casos/ingresos-7k-8k.jpg" alt="Mensaje de un alumno: antes facturaba entre 2.000 y 3.000 euros al mes; primer mes 7.000, segundo mes 8.000" loading="lazy" width="900" height="742">
+        <figcaption><b>De 2–3k a 8.000 €/mes</b>Antes de entrar facturaba entre 2.000 y 3.000 € al mes. Primer mes en la mentoría: 7.000 €. Segundo mes: 8.000 €.</figcaption>
       </figure>
 
-      <a class="case" href="https://www.instagram.com/reel/DPRoWQliTYM/" target="_blank" rel="noopener">
-        <div class="src"><span class="label">Instagram · Reel</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-        <span class="t">Ver caso en vídeo</span>
-      </a>
-      <a class="case" href="https://www.instagram.com/reel/DPRol1AiZGg/" target="_blank" rel="noopener">
-        <div class="src"><span class="label">Instagram · Reel</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-        <span class="t">Ver caso en vídeo</span>
-      </a>
-      <a class="case" href="https://www.instagram.com/reel/DPRnoOtiXV3/" target="_blank" rel="noopener">
-        <div class="src"><span class="label">Instagram · Reel</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-        <span class="t">Ver caso en vídeo</span>
-      </a>
-      <a class="case" href="https://www.instagram.com/p/DOJW3KCAla6/" target="_blank" rel="noopener">
-        <div class="src"><span class="label">Instagram · Post</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-        <span class="t">Ver publicación</span>
-      </a>
-      <a class="case" href="https://youtu.be/FhWKW4vhyFg" target="_blank" rel="noopener">
-        <div class="src"><span class="label">YouTube</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-        <span class="t">Ver vídeo completo</span>
-      </a>
-      <a class="case" href="https://youtu.be/3nnf2uBxCYI" target="_blank" rel="noopener">
-        <div class="src"><span class="label">YouTube</span><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span></div>
-        <span class="t">Ver vídeo completo</span>
-      </a>
+      <div class="shot text">
+        <div class="big">9.000 € en un mes</div>
+        <blockquote>“Económicamente he llegado a facturar 9k € en un mes y estoy pudiendo ayudar a mi familia: le compré recientemente a mi padre un Volkswagen T-Roc de 150 caballos, y este año invito a mi familia a Roma.”</blockquote>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Alumno de la mentoría</b><span>Vive y trabaja desde Polonia</span></div></div>
+      </div>
+
+      <figure class="shot">
+        <img src="casos/adrian-4670.jpg" alt="Adrian Domínguez: el récord de 3k se ha mejorado en 24 horas, vamos a por 5k. Chat: cerrado, 500 euros más, 4670 euros" loading="lazy" width="900" height="609">
+        <figcaption><b>Récord superado en 24 h</b>Adrián Domínguez mejora su récord de 3.000 € en un día y va a por 5.000 €. Debajo, otro cierre en directo por WhatsApp: 500 € más, 4.670 €.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="casos/seguidores.jpg" alt="Perfiles de Instagram antes y después: fitconcar de 211 a 159 mil seguidores; polacotrainer de 2.524 a 293 mil" loading="lazy" width="900" height="1701">
+        <figcaption><b>De 211 a 159K seguidores</b>Car, @fitconcar. Y Lukas, @polacotrainer, de 2.524 a 293K. Audiencia construida con estrategia, no con suerte.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="casos/adrian-1350.jpg" alt="Chat de WhatsApp: te vas a hacer en 24 horas como 1200 euros; respuesta: 1350 euros" loading="lazy" width="705" height="793">
+        <figcaption><b>1.350 € en 24 horas</b>Así es el seguimiento por WhatsApp: números del día y revisión de sus llamadas de venta para mejorarlas.</figcaption>
+      </figure>
+
+      <div class="shot text">
+        <div class="big">De 1 cliente a vivir de esto</div>
+        <blockquote>“Aposté por él hace poco más de 1 año, empezando totalmente desde cero con literalmente 1 cliente que era amigo mío y no le cobraba nada. He llegado a facturar 3k, me dedico al 100% a esto y dejé mi trabajo antiguo, donde estaba amargado.”</blockquote>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Alumno de la mentoría</b><span>Hoy trabaja viajando</span></div></div>
+      </div>
+
+      <figure class="shot">
+        <img src="casos/stripe-24-meses.jpg" alt="Notificaciones de pagos de Stripe y chat: antes costaba vender anuales y ahora acabas de cerrar una venta por 24 meses" loading="lazy" width="900" height="1091">
+        <figcaption><b>Una venta de 24 meses</b>Antes le costaba vender planes anuales. Ahora cierra clientes a 2 años. “Lo que se invierte te viene de vuelta en cuestión de meses.”</figcaption>
+      </figure>
+
+      <div class="shot text">
+        <div class="big">“No sabía por dónde empezar”</div>
+        <blockquote>“A pesar de que hay mucha información en redes, no sabía por dónde empezar para ofrecer un servicio de la mejor calidad posible a mis futuros clientes (ni cómo llegar a ellos). He decidido confiar en Alberto para trazar la estrategia que necesito para despegar.”</blockquote>
+        <div class="who"><span class="avatar" aria-hidden="true">P</span><div><b>Pablo Suero Arroyo</b><span>@pablosphysique · 19 años</span></div></div>
+      </div>
+    </div>
+
+    <div class="more">
+      <span class="label">Más casos en Instagram</span>
+      <a href="https://instagram.com/albertomentor" target="_blank" rel="noopener">@albertomentor</a>
+      <a href="https://www.instagram.com/reel/DPRoWQliTYM/" target="_blank" rel="noopener">Reel 1</a>
+      <a href="https://www.instagram.com/reel/DPRol1AiZGg/" target="_blank" rel="noopener">Reel 2</a>
+      <a href="https://www.instagram.com/reel/DPRnoOtiXV3/" target="_blank" rel="noopener">Reel 3</a>
+      <a href="https://www.instagram.com/p/DOJW3KCAla6/" target="_blank" rel="noopener">Publicación</a>
     </div>
   </div>
 </section>
@@ -403,6 +471,45 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </tbody>
       </table>
     </div>
+    <div class="callout">
+      <img src="casos/esto-si-es-un-plan.jpg" alt="Chat de WhatsApp con un alumno que venía de otra mentoría: pfff nada que ver vamos, esto sí que es un plan" loading="lazy" width="900" height="1301">
+      <div>
+        <div class="label">Un alumno que venía de otra mentoría</div>
+        <blockquote style="margin-top:14px">“Nada que ver, vamos. Esto sí que es un plan.”</blockquote>
+        <p>Su respuesta cuando le pregunté si esto era mejor que las llamadas de su anterior mentoría. La diferencia es que aquí el plan se hace sobre tu negocio, con tus fotos, tu rutina y tu día a día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap story">
+    <div class="story-copy">
+      <div class="label">Quién soy</div>
+      <h2>Empecé sin plan. Por eso ahora lo doy.</h2>
+      <p>En 2020 estaba a punto de presentar mi trabajo de fin de carrera de Fisioterapia. No lo disfrutaba y el futuro que me esperaba no me gustaba nada. Empecé en el entrenamiento online solo con ilusión, <strong>sin estructura y sin saber que podía dedicarme a esto</strong>.</p>
+      <p>Hoy, más de 5 años después, he hecho <strong>+33.000 € en 23 días</strong>, he construido mi marca en español y en inglés, y lo que más me enorgullece: mi mujer y mi mejor amigo tienen un trabajo con total libertad y escalable gracias a lo que construimos.</p>
+      <p>Todo lo que me costó años aprender a base de errores es lo que te doy ordenado, semana a semana.</p>
+    </div>
+    <div class="story-imgs">
+      <figure><img src="casos/historia-inicio.jpg" alt="Alberto en una charla hace cinco años y medio: empecé sin un plan, no tenía estructura" loading="lazy" width="900" height="1199"><figcaption>Hace 5 años y medio</figcaption></figure>
+      <figure><img src="casos/historia-33k.jpg" alt="Su mujer y su mejor amigo: tienen un trabajo con total libertad; más de 33.000 euros en 23 días" loading="lazy" width="900" height="1002"><figcaption>Hoy</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="youtube">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Antes de agendar</div>
+      <h2>Mira varias horas de mi YouTube primero.</h2>
+      <p class="lede">Te lo recomiendo de verdad antes de contratarme. Así entiendes mi visión, cómo pienso y cómo trabajo. Si después de verlo conectas, hablamos. Si no, te habrás ahorrado una llamada.</p>
+    </div>
+    <div class="yt">
+      <a href="https://youtu.be/dFwV5VBLOco" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Cómo trabajo de cerca con mis alumnos</span></a>
+      <a href="https://youtu.be/FhWKW4vhyFg" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Ver vídeo</span></a>
+      <a href="https://youtu.be/3nnf2uBxCYI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Ver vídeo</span></a>
+    </div>
   </div>
 </section>
 
@@ -413,7 +520,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>Primero comprobamos que encajamos.</h2>
       <p>Trabajo con muy poca gente a la vez porque me gusta la <strong>máxima cercanía</strong>. Tu proyecto me importa tanto como a ti, y por eso no empiezo con compromisos largos.</p>
       <p>Solo ofrezco <strong>3 meses de entrada</strong>. Si conectamos, el negocio avanza y tiene sentido, seguimos a largo plazo. Me gustan las relaciones largas, pero que se ganen.</p>
-      <a class="link" href="https://youtu.be/dFwV5VBLOco" target="_blank" rel="noopener">Mira cómo trabajo con mis alumnos ↗</a>
     </div>
     <div class="timeline">
       <div class="phase"><div class="m">Mes 1<small>La base</small></div><p><b>Estructura.</b> Cliente ideal, oferta clara y el plan de contenido y captación en marcha.</p></div>
@@ -491,8 +597,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <h2>De la llamada a tu primera semana.</h2>
     </div>
     <div class="steps">
-      <div class="step"><h3>1. Agenda tu llamada</h3><p>Elige hueco en mi calendario. Hablamos de dónde está tu negocio y a dónde quieres llevarlo.</p></div>
-      <div class="step"><h3>2. Vemos si encajamos</h3><p>Si te puedo ayudar, te explico el plan. Si no, te lo digo claro y te digo qué haría yo en tu lugar.</p></div>
+      <div class="step"><h3>1. Mira mi YouTube</h3><p>Varias horas, de verdad. Es la mejor forma de saber si compartimos visión antes de hablar.</p></div>
+      <div class="step"><h3>2. Agenda tu llamada</h3><p>Hablamos de dónde está tu negocio y a dónde quieres llevarlo. Si te puedo ayudar, te explico el plan. Si no, te lo digo claro.</p></div>
       <div class="step"><h3>3. Empezamos por la base</h3><p>Definimos tu cliente ideal, tu oferta y tu primer plan de acción semanal.</p></div>
     </div>
   </div>
@@ -547,7 +653,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <footer>
   <div class="wrap">
     <span>© 2026 Alberto González · AGLEZ Academy</span>
-    <span><a href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">Instagram</a> · <a href="https://youtu.be/dFwV5VBLOco" target="_blank" rel="noopener">YouTube</a></span>
+    <span><a href="https://instagram.com/albertomentor" target="_blank" rel="noopener">@albertomentor</a> · <a href="https://instagram.com/albertoglez6" target="_blank" rel="noopener">@albertoglez6</a> · <a href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">@albertoglezcoach</a></span>
   </div>
 </footer>
 
