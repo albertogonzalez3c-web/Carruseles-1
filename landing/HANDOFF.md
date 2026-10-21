@@ -60,7 +60,7 @@ Caso con imagen:
 Caso de solo texto, para citas:
 
 ```html
-<div hidden class="shot extra">  <!-- también lleva la clase "text": class="shot extra text" -->
+<div hidden class="shot extra text">
   <div class="big">Titular con número</div>
   <blockquote>“Cita literal del alumno.”</blockquote>
   <div class="who"><span class="avatar" aria-hidden="true">X</span><div><b>Nombre</b><span>@usuario · detalle</span></div></div>
