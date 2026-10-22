@@ -135,6 +135,10 @@ tbody th { font-weight: 700; width: 22%; }
 td { color: var(--soft); }
 td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
 
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
 /* Garantía */
 .guarantee { background: var(--ink); color: var(--white); }
 .guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
@@ -214,9 +218,9 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg>
         <span class="js-contact-label">Message me on WhatsApp</span>
       </a>
-      <a class="btn btn-ghost" href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">Fill in the form</a>
+      <a class="btn btn-ghost" href="https://form.jotform.com/260062853529055?utm_source=web&utm_medium=landing&utm_content=en" target="_blank" rel="noopener">Fill in the form</a>
     </div>
-    <p class="cta-note">The form is in the link on my Instagram profile. I reply to you personally.</p>
+    <p class="cta-note">The form takes 2 minutes. I reply to you personally.</p>
     <a class="facts" href="#cases">
       <div class="fact"><b>1,800+</b><span>People transformed in almost 10 years of coaching</span></div>
       <div class="fact"><b>−20 kg in 10 months</b><span>David, a father with a very busy life</span></div>
@@ -474,7 +478,7 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
       <h2>Three steps and we're on.</h2>
     </div>
     <div class="steps">
-      <div class="step"><h3>1. Message me</h3><p>On WhatsApp, or fill in the form in the link on my Instagram profile.</p></div>
+      <div class="step"><h3>1. Message me</h3><p>On WhatsApp or by filling in the form. It takes 2 minutes.</p></div>
       <div class="step"><h3>2. We assess your case</h3><p>I ask about your health, digestion, energy and routine. If I can help, I'll explain how.</p></div>
       <div class="step"><h3>3. You get your plan</h3><p>Nutrition, training and habits built for you. From that day, WhatsApp open with me.</p></div>
     </div>
@@ -500,13 +504,27 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
   </div>
 </section>
 
+<section id="form">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Form</div>
+      <h2>Tell me about you in 2 minutes.</h2>
+      <p class="lede">Fill in the form and I'll review it personally. If we're a good fit, I'll message you to get started.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn" id="formBtn" href="https://form.jotform.com/260062853529055?utm_source=web&utm_medium=landing&utm_content=en" target="_blank" rel="noopener">Fill in the form now</a>
+    </div>
+  </div>
+</section>
+
 <section class="final">
   <div class="wrap">
     <div class="label">Next step</div>
     <h2>Wake up with energy again.</h2>
     <div class="ctas">
       <a class="btn js-contact" href="https://wa.me/34722731303?text=Hi%20Alberto%2C%20I%20found%20you%20through%20your%20website.%20I%27d%20like%20information%20about%20your%20coaching." target="_blank" rel="noopener"><span class="js-contact-label">Message me on WhatsApp</span></a>
-      <a class="btn btn-ghost" href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">Fill in the form</a>
+      <a class="btn btn-ghost" href="https://form.jotform.com/260062853529055?utm_source=web&utm_medium=landing&utm_content=en" target="_blank" rel="noopener">Fill in the form</a>
     </div>
   </div>
 </section>
@@ -531,6 +549,14 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
     var l = a.querySelector(".js-contact-label");
     if (l) l.textContent = label; else if (!a.querySelector("svg")) a.textContent = label;
   });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Fuera del visor de Claude (página alojada en tu dominio) el formulario se incrusta; dentro, queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = fb.href; f.title = fb.textContent; f.loading = "lazy";
+    f.allow = "geolocation; microphone; camera; fullscreen";
+    fe.appendChild(f); fe.hidden = false;
+  }
   var extras = document.querySelectorAll(".wall .extra");
   var b = document.getElementById("showAll");
   if (b) {
