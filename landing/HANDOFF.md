@@ -119,3 +119,21 @@ Publica `landing/index.html` en la URL de arriba. En `files` pasa cada recurso n
 ## Cómo trabajar con Alberto
 
 Directo y sin adular. Hay que señalar los riesgos (promesas, cifras sin prueba, contradicciones) y estar de su lado. No se inventan cifras, nombres ni plazos.
+
+---
+
+# Landing de asesoría de salud (`landing-salud/`)
+
+- **Archivos:**
+  - `landing-salud/index.html`: versión en español (@albertoglez6). Artifact: https://claude.ai/artifact/N7RS1e83EmYXnMNJ1vLXHq
+  - `landing-salud/en.html`: versión en inglés (@albertoglezcoach). Artifact: https://claude.ai/artifact/MVfHeanGfCnykuABiz195e
+- **Oferta:** asesoría 1:1 de salud con WhatsApp diario y revisión semanal, enfocada en la persona entera. Se trabajan digestiones, hormonas, metabolismo y energía para que el físico venga después.
+- **Garantía, bajo contrato:** devolución si no hay resultados (haciendo el cliente su parte) o si no se le atiende como se prometió.
+- **Contacto:** en el `<div id="contact">`, rellenar `data-wa` con el número sin `+`, por ejemplo 34600000000. Sin número, todos los botones llevan a los mensajes directos de Instagram. El formulario está en la bio de Instagram.
+- **Casos:** sacados de los textos de las publicaciones de @albertoglez6. Ninguno lleva foto, porque el servidor de imágenes de Instagram estaba bloqueado en la sesión en la nube. Desde la sesión local se pueden descargar los antes y después.
+- **Pendiente:**
+  - Número de WhatsApp.
+  - Fotos de Alberto y antes/después de clientes, con su permiso.
+  - Vídeo VSL para arriba del todo.
+  - Cifras concretas de más clientes.
+  - Revisar la tabla de casos con Alberto: los textos parten de sus captions, no son citas de los clientes.
