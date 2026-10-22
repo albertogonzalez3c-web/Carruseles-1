@@ -1,0 +1,434 @@
+<title>Asesoría Salud Alberto González</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Asesoría 1:1 de salud, nutrición y entrenamiento con acompañamiento diario por WhatsApp y revisión semanal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: carta de venta larga (estilo VSL) en una columna de lectura; las pruebas y la oferta rompen a ancho completo. Look claro: blanco papel, tinta, verde salud de acento. */
+:root {
+  --paper: #f8faf8;
+  --white: #ffffff;
+  --ink: #121614;
+  --soft: #5a625d;
+  --line: #e1e6e2;
+  --green: #1f8a5b;
+  --green-soft: #e3f3ea;
+  --yellow: #ffd21f;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(34px, 5vw, 56px)/1.03 var(--f-display); font-stretch: 78%; letter-spacing: -.01em; }
+h3 { font: 700 20px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.label { font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: inherit; padding: 0 .04em; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--green); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); background: #187049; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-ghost:hover { background: var(--white); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14px; }
+
+/* Cabecera */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { font: 900 17px/1 var(--f-display); font-stretch: 85%; letter-spacing: .05em; text-transform: uppercase; }
+.brand span { color: var(--green); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(28px, 5vw, 64px) clamp(48px, 7vw, 80px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(44px, 8vw, 100px)/.96 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; max-width: 14ch; }
+.hero .lede { color: var(--ink); font-size: clamp(19px, 2.2vw, 22px); max-width: 56ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { font: 500 13px/1 var(--f-mono); padding: 9px 12px; border-radius: 999px; background: var(--green-soft); color: #145c3c; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); text-decoration: none; color: inherit; }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--ink); margin-top: 3px; }
+.turn { margin-top: 28px; font: 800 clamp(28px, 4vw, 44px)/1.08 var(--f-display); font-stretch: 78%; }
+.turn em { font-style: normal; color: var(--green); }
+
+/* Mecanismo */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--green); letter-spacing: .1em; }
+.layer p { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.result-bar { margin-top: 12px; border-radius: 14px; background: var(--ink); color: var(--white); padding: 22px 24px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; justify-content: space-between; }
+.result-bar b { font: 800 26px/1.1 var(--f-display); font-stretch: 80%; }
+.result-bar span { color: #b9c2bc; font-size: 15px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 12px; }
+.case .big { font: 800 28px/1.05 var(--f-display); font-stretch: 78%; }
+.case blockquote { margin: 0; font-size: 16px; line-height: 1.6; }
+.case a.src { font: 500 12px/1 var(--f-mono); color: var(--soft); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
+.case a.src:hover { color: var(--green); }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-soft); color: #145c3c; display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.show-all { display: flex; justify-content: center; margin-top: 8px; }
+.show-all button { border: 0; cursor: pointer; font-family: inherit; }
+.jump { display: flex; justify-content: center; padding-block: 0 48px; }
+.jump a { padding: 14px 22px; border-radius: 999px; border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; background: var(--white); font-size: 16px; }
+.jump a:hover { background: var(--green-soft); }
+
+/* Oferta */
+.offer { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.offer-main { background: var(--green); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 22px; align-content: start; }
+.offer-main .label { color: #bfe8d2; }
+.offer-main h3 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--f-display); font-stretch: 78%; }
+.inc { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.inc div { display: grid; gap: 4px; border-top: 2px solid rgba(255,255,255,.55); padding-top: 12px; }
+.inc b { font-size: 17px; }
+.inc span { font-size: 15px; line-height: 1.5; color: #e2f4ea; }
+.week { display: grid; gap: 8px; align-content: start; }
+.day { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; }
+.day .d { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.day b { font-size: 15.5px; }
+.day small { display: block; color: var(--soft); font-size: 14px; }
+.day.key { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.day.key .d, .day.key small { color: #b9c2bc; }
+
+/* Comparativa */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
+th, td { text-align: left; padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
+thead th { border-top: 0; font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+thead th.us { color: #145c3c; background: var(--green-soft); }
+tbody th { font-weight: 700; width: 22%; }
+td { color: var(--soft); }
+td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; text-align: center; font: 800 clamp(22px, 2.6vw, 28px)/1 var(--f-display); font-stretch: 75%; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: #d6ddd8; font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--yellow); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9aa59e; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--green-soft); color: #145c3c; }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+.step p { color: var(--soft); font-size: 16px; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final h2 { font-size: clamp(40px, 7vw, 84px); font-stretch: 72%; max-width: 15ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(248, 250, 248, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .offer { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .signs, .layers, .inc, .fit, .steps { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+</style>
+
+<!-- CONTACTO: pon tu número en data-wa (formato internacional sin + ni espacios, ej. 34600000000).
+     Sin número, los botones llevan a tus mensajes de Instagram. -->
+<div id="contact" hidden data-wa="" data-ig="albertoglez6" data-msg="Hola Alberto, vengo de tu web. Quiero información sobre la asesoría."
+     data-label-wa="Escríbeme por WhatsApp" data-label-ig="Escríbeme por Instagram"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Alberto <span>González</span></div>
+    <a class="btn js-contact" href="https://ig.me/m/albertoglez6" target="_blank" rel="noopener">Escríbeme por Instagram</a>
+  </header>
+
+  <div class="hero">
+    <div class="label">Asesoría 1:1 · Salud, nutrición y entrenamiento</div>
+    <h1>Recupera tu energía <mark>desde dentro</mark>.</h1>
+    <p class="lede">Ordenamos tus digestiones, tus hormonas y tu metabolismo para que lo de fuera responda solo. Con un plan hecho para ti, acompañamiento diario por WhatsApp y una revisión cada semana.</p>
+    <div class="pills"><span>Digestiones</span><span>Hormonas</span><span>Metabolismo</span><span>Energía y vitalidad</span></div>
+    <div class="ctas">
+      <a class="btn js-contact" href="https://ig.me/m/albertoglez6" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg>
+        <span class="js-contact-label">Escríbeme por Instagram</span>
+      </a>
+      <a class="btn btn-ghost" href="https://instagram.com/albertoglez6" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+    <p class="cta-note">El formulario está en el enlace de mi perfil de Instagram. Te respondo yo personalmente.</p>
+    <!--FACTS-->
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack">
+      <div class="label">¿Te reconoces?</div>
+      <h2>Haces todo “bien” y aun así no te sientes bien.</h2>
+      <p class="lede">Si tienes más de 30, probablemente ya has probado dietas, apps y rutinas. Y sigues con algo de esto:</p>
+    </div>
+    <div class="signs" style="margin-top:28px">
+      <div class="sign">Te levantas cansado aunque hayas dormido.</div>
+      <div class="sign">Digestiones pesadas, hinchazón o gases casi a diario.</div>
+      <div class="sign">Entrenas y comes bien, pero la barriga no baja.</div>
+      <div class="sign">A media tarde te caes y por la noche te comerías la nevera.</div>
+      <div class="sign">Duermes mal o te despiertas de madrugada con la cabeza a mil.</div>
+      <div class="sign">Menos ganas, menos libido, menos chispa que hace unos años.</div>
+    </div>
+    <p class="turn">No estás roto. <em>Estás desajustado.</em> Y eso se ordena.</p>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="read stack">
+      <div class="label">Mi historia</div>
+      <h2>Durante años hice todo bien. Y me levantaba sin energía.</h2>
+      <p>Entrenaba casi todos los días. Comía limpio. Desde fuera parecía que lo tenía todo controlado. Pero por dentro iba con el depósito vacío.</p>
+      <p><strong>El problema no era la disciplina. Era cómo funcionaba mi cuerpo por dentro.</strong> Cuando ordené mis digestiones, mi descanso y mis hormonas, entrené menos horas y avancé más.</p>
+      <p>Me formé en Fisioterapia, y llevo más de 5 años ayudando a personas a cambiar su físico online. Lo que más me ha enseñado este tiempo es que el físico es la consecuencia. La energía, las ganas de vivir y la cabeza clara vienen de dentro.</p>
+      <p>Por eso mi asesoría no empieza por el espejo. Empieza por cómo te levantas por la mañana.</p>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:36px">
+      <div class="label">El método</div>
+      <h2>De dentro hacia fuera.</h2>
+      <p class="lede">La mayoría de planes empiezan por las calorías y los ejercicios. Yo empiezo por lo que hace que tu cuerpo responda a ellos.</p>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">01</span><h3>Digestiones</h3><p>Si no digieres bien, ni aprovechas lo que comes ni tienes energía. Es lo primero que ordenamos.</p></article>
+      <article class="layer"><span class="n">02</span><h3>Hormonas</h3><p>Sueño, estrés y alimentación marcan tu cortisol, tu insulina y tu testosterona. Ajustamos los hábitos que las mueven.</p></article>
+      <article class="layer"><span class="n">03</span><h3>Metabolismo</h3><p>Comer y entrenar para que tu cuerpo use bien la energía y deje de acumular grasa, sobre todo la abdominal.</p></article>
+      <article class="layer"><span class="n">04</span><h3>Energía y vitalidad</h3><p>Descanso, gestión del estrés y rutina realista con tu trabajo y tu familia.</p></article>
+    </div>
+    <div class="result-bar"><b>Y entonces lo de fuera responde.</b><span>Pierdes grasa, ganas músculo y te ves mejor, porque por dentro funcionas mejor.</span></div>
+  </div>
+</section>
+
+<!--CASOS-->
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:36px">
+      <div class="label">Qué incluye</div>
+      <h2>Asesoramiento pleno. Conmigo, cada día.</h2>
+      <p class="lede">No es una dieta en PDF. Es un acompañamiento completo de tu salud, ajustado cada semana a cómo respondes.</p>
+    </div>
+    <div class="offer">
+      <article class="offer-main">
+        <div class="label">Asesoría 1:1</div>
+        <h3>Todo lo que necesitas para sentirte bien, en un solo sitio.</h3>
+        <div class="inc">
+          <div><b>Plan de nutrición</b><span>Adaptado a tus digestiones, tus gustos, tu horario y tu objetivo.</span></div>
+          <div><b>Plan de entrenamiento</b><span>Realista con tu tiempo. Más resultados con menos horas.</span></div>
+          <div><b>WhatsApp diario</b><span>Dudas, comidas fuera, viajes o un mal día: me escribes y lo resolvemos.</span></div>
+          <div><b>Revisión semanal</b><span>Analizamos cómo has estado y ajustamos el plan cada semana.</span></div>
+          <div><b>Salud interna</b><span>Digestiones, descanso, estrés y energía, no solo el peso.</span></div>
+          <div><b>Enfoque completo</b><span>Trabajamos contigo como persona: hábitos, cabeza y rutina.</span></div>
+        </div>
+      </article>
+      <div class="week" aria-label="Una semana tipo en la asesoría">
+        <div class="day"><span class="d">Lun–Sáb</span><div><b>Sigues tu plan</b><small>Con WhatsApp abierto conmigo cada día</small></div></div>
+        <div class="day"><span class="d">A diario</span><div><b>Me cuentas cómo vas</b><small>Energía, digestiones, sueño, entreno</small></div></div>
+        <div class="day key"><span class="d">Semanal</span><div><b>Revisión</b><small>Analizamos datos y ajustamos el plan</small></div></div>
+        <div class="day"><span class="d">Siempre</span><div><b>Un plan vivo</b><small>Cambia contigo, no al revés</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diferencia">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Por qué esto funciona</div>
+      <h2>No es otra dieta.</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Dieta o app genérica</th><th class="us">Mi asesoría</th></tr></thead>
+        <tbody>
+          <tr><th>Enfoque</th><td>Calorías y kilos</td><td class="us">Tu salud por dentro: digestiones, hormonas, metabolismo y energía</td></tr>
+          <tr><th>Plan</th><td>El mismo para todos</td><td class="us">Hecho para ti y ajustado cada semana</td></tr>
+          <tr><th>Seguimiento</th><td>Ninguno, o un formulario al mes</td><td class="us">WhatsApp diario y revisión semanal</td></tr>
+          <tr><th>Con quién hablas</th><td>Con nadie</td><td class="us">Conmigo, directamente</td></tr>
+          <tr><th>Cuando fallas</th><td>Te sientes culpable y lo dejas</td><td class="us">Lo hablamos ese mismo día y reajustamos</td></tr>
+          <tr><th>Resultado</th><td>Pierdes peso y lo recuperas</td><td class="us">Energía, salud y un físico que se mantiene</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee" id="garantia">
+  <div class="wrap">
+    <div class="seal">Bajo<br>contrato<small>GARANTÍA</small></div>
+    <div>
+      <h2>Si no hay resultados, te devuelvo tu inversión.</h2>
+      <ul>
+        <li>Si haces tu parte y no ves resultados.</li>
+        <li>Si no te atiendo como te prometo.</li>
+      </ul>
+      <p class="fine">En cualquiera de los dos casos, te devuelvo lo que invertiste. Las condiciones quedan firmadas en contrato desde el primer día, para que los dos sepamos exactamente a qué nos comprometemos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Para quién es</div>
+      <h2>Para quien quiere sentirse bien de verdad.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Quieres recuperar tu energía y sentirte bien, no solo bajar de peso.</li>
+          <li>Tienes poco tiempo entre trabajo y familia y necesitas un plan realista.</li>
+          <li>Ya has probado dietas por tu cuenta y quieres que alguien te guíe de cerca.</li>
+          <li>Estás dispuesto a contarme cómo vas y a aplicar los cambios.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas una dieta milagro para dentro de dos semanas.</li>
+          <li>Quieres un plan en PDF y no hablar con nadie.</li>
+          <li>No estás dispuesto a cambiar ningún hábito.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos y empezamos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>1. Escríbeme</h3><p>Por WhatsApp, o rellena el formulario del enlace de mi perfil de Instagram.</p></div>
+      <div class="step"><h3>2. Valoramos tu caso</h3><p>Te pregunto por tu salud, tus digestiones, tu energía y tu rutina. Si te puedo ayudar, te explico cómo.</p></div>
+      <div class="step"><h3>3. Recibes tu plan</h3><p>Nutrición, entrenamiento y hábitos para ti. Desde ese día, WhatsApp abierto conmigo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Cuánto tiempo necesito al día?</summary><p>El plan se adapta a tu agenda. Muchas personas con las que trabajo tienen jornadas largas y familia. La clave es hacer lo que más impacto tiene, no hacer más.</p></details>
+      <details><summary>¿Tengo que comer cosas raras o pesar todo?</summary><p>No. Partimos de lo que te gusta y de cómo comes ahora, y lo vamos ajustando. Comer fuera o viajar no es un problema: me escribes y lo resolvemos.</p></details>
+      <details><summary>¿Cómo es el seguimiento?</summary><p>Tienes WhatsApp conmigo para el día a día y una revisión cada semana en la que analizamos cómo has estado y ajustamos el plan.</p></details>
+      <details><summary>¿Hablo contigo o con un equipo?</summary><p>Conmigo. El plan, el WhatsApp y las revisiones los llevo yo.</p></details>
+      <details><summary>¿Y si tengo una patología o tomo medicación?</summary><p>Cuéntamelo al principio. Esta asesoría no sustituye el diagnóstico ni el tratamiento de tu médico: trabajamos tus hábitos de forma complementaria y, si algo requiere valoración médica, te lo diré.</p></details>
+      <details><summary>¿Qué pasa si no veo resultados?</summary><p>Si haces tu parte y no hay resultados, o si no te atiendo como te prometo, te devuelvo la inversión. Está en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso. Escríbeme y te lo cuento cuando sepa qué necesitas.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Vuelve a levantarte con energía.</h2>
+    <div class="ctas">
+      <a class="btn js-contact" href="https://ig.me/m/albertoglez6" target="_blank" rel="noopener"><span class="js-contact-label">Escríbeme por Instagram</span></a>
+      <a class="btn btn-ghost" href="https://instagram.com/albertoglez6" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Alberto González</span><span><a href="https://instagram.com/albertoglez6" target="_blank" rel="noopener">@albertoglez6</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn js-contact" href="https://ig.me/m/albertoglez6" target="_blank" rel="noopener"><span class="js-contact-label">Escríbeme por Instagram</span></a></div>
+
+<script>
+(function () {
+  var c = document.getElementById("contact").dataset;
+  var wa = (c.wa || "").replace(/\D/g, "");
+  var href = wa ? "https://wa.me/" + wa + "?text=" + encodeURIComponent(c.msg) : "https://ig.me/m/" + c.ig;
+  var label = wa ? c.labelWa : c.labelIg;
+  document.querySelectorAll(".js-contact").forEach(function (a) {
+    a.href = href;
+    var l = a.querySelector(".js-contact-label");
+    if (l) l.textContent = label; else if (!a.querySelector("svg")) a.textContent = label;
+  });
+  var extras = document.querySelectorAll(".wall .extra");
+  var b = document.getElementById("showAll");
+  if (b) {
+    if (!extras.length) b.parentNode.hidden = true;
+    else {
+      b.textContent = b.dataset.label + " (+" + extras.length + ")";
+      b.addEventListener("click", function () { extras.forEach(function (el) { el.hidden = false; }); b.parentNode.hidden = true; });
+    }
+  }
+})();
+</script>
