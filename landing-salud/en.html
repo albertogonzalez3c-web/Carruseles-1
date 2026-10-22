@@ -1,0 +1,527 @@
+<title>Alberto González Health Coaching</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="1:1 health, nutrition and training coaching with daily WhatsApp support and a weekly check-in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: long-form sales letter (VSL style) in one reading column; proof and offer break out full width. Light look: paper white, ink, health-green accent. */
+:root {
+  --paper: #f8faf8;
+  --white: #ffffff;
+  --ink: #121614;
+  --soft: #5a625d;
+  --line: #e1e6e2;
+  --green: #1f8a5b;
+  --green-soft: #e3f3ea;
+  --yellow: #ffd21f;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(34px, 5vw, 56px)/1.03 var(--f-display); font-stretch: 78%; letter-spacing: -.01em; }
+h3 { font: 700 20px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.label { font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: inherit; padding: 0 .04em; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--green); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); background: #187049; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-ghost:hover { background: var(--white); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14px; }
+
+/* Cabecera */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { font: 900 17px/1 var(--f-display); font-stretch: 85%; letter-spacing: .05em; text-transform: uppercase; }
+.brand span { color: var(--green); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(28px, 5vw, 64px) clamp(48px, 7vw, 80px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(44px, 8vw, 100px)/.96 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; max-width: 14ch; }
+.hero .lede { color: var(--ink); font-size: clamp(19px, 2.2vw, 22px); max-width: 56ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { font: 500 13px/1 var(--f-mono); padding: 9px 12px; border-radius: 999px; background: var(--green-soft); color: #145c3c; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); text-decoration: none; color: inherit; }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--ink); margin-top: 3px; }
+.turn { margin-top: 28px; font: 800 clamp(28px, 4vw, 44px)/1.08 var(--f-display); font-stretch: 78%; }
+.turn em { font-style: normal; color: var(--green); }
+
+/* Mecanismo */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--green); letter-spacing: .1em; }
+.layer p { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.result-bar { margin-top: 12px; border-radius: 14px; background: var(--ink); color: var(--white); padding: 22px 24px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; justify-content: space-between; }
+.result-bar b { font: 800 26px/1.1 var(--f-display); font-stretch: 80%; }
+.result-bar span { color: #b9c2bc; font-size: 15px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 12px; }
+.case .big { font: 800 28px/1.05 var(--f-display); font-stretch: 78%; }
+.case blockquote { margin: 0; font-size: 16px; line-height: 1.6; }
+.case a.src { font: 500 12px/1 var(--f-mono); color: var(--soft); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
+.case a.src:hover { color: var(--green); }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-soft); color: #145c3c; display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.show-all { display: flex; justify-content: center; margin-top: 8px; }
+.show-all button { border: 0; cursor: pointer; font-family: inherit; }
+.jump { display: flex; justify-content: center; padding-block: 0 48px; }
+.jump a { padding: 14px 22px; border-radius: 999px; border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; background: var(--white); font-size: 16px; }
+.jump a:hover { background: var(--green-soft); }
+
+/* Oferta */
+.offer { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.offer-main { background: var(--green); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 22px; align-content: start; }
+.offer-main .label { color: #bfe8d2; }
+.offer-main h3 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--f-display); font-stretch: 78%; }
+.inc { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.inc div { display: grid; gap: 4px; border-top: 2px solid rgba(255,255,255,.55); padding-top: 12px; }
+.inc b { font-size: 17px; }
+.inc span { font-size: 15px; line-height: 1.5; color: #e2f4ea; }
+.week { display: grid; gap: 8px; align-content: start; }
+.day { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; }
+.day .d { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.day b { font-size: 15.5px; }
+.day small { display: block; color: var(--soft); font-size: 14px; }
+.day.key { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.day.key .d, .day.key small { color: #b9c2bc; }
+
+/* Comparativa */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
+th, td { text-align: left; padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
+thead th { border-top: 0; font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+thead th.us { color: #145c3c; background: var(--green-soft); }
+tbody th { font-weight: 700; width: 22%; }
+td { color: var(--soft); }
+td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; text-align: center; font: 800 clamp(22px, 2.6vw, 28px)/1 var(--f-display); font-stretch: 75%; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: #d6ddd8; font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--yellow); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9aa59e; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--green-soft); color: #145c3c; }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+.step p { color: var(--soft); font-size: 16px; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final h2 { font-size: clamp(40px, 7vw, 84px); font-stretch: 72%; max-width: 15ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(248, 250, 248, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .offer { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .signs, .layers, .inc, .fit, .steps { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+</style>
+
+<!-- CONTACT: put your number in data-wa (international format, no + or spaces, e.g. 34600000000).
+     With no number, buttons go to your Instagram DMs. -->
+<div id="contact" hidden data-wa="" data-ig="albertoglezcoach" data-msg="Hi Alberto, I found you through your website. I'd like information about your coaching."
+     data-label-wa="Message me on WhatsApp" data-label-ig="Message me on Instagram"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Alberto <span>González</span></div>
+    <a class="btn js-contact" href="https://ig.me/m/albertoglezcoach" target="_blank" rel="noopener">Message me on Instagram</a>
+  </header>
+
+  <div class="hero">
+    <div class="label">1:1 coaching · Health, nutrition and training</div>
+    <h1>Get your energy back <mark>from the inside</mark>.</h1>
+    <p class="lede">We fix your digestion, your hormones and your metabolism so the outside follows on its own. With a plan built for you, daily support on WhatsApp and a check-in every week.</p>
+    <div class="pills"><span>Digestion</span><span>Hormones</span><span>Metabolism</span><span>Energy and vitality</span></div>
+    <div class="ctas">
+      <a class="btn js-contact" href="https://ig.me/m/albertoglezcoach" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg>
+        <span class="js-contact-label">Message me on Instagram</span>
+      </a>
+      <a class="btn btn-ghost" href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">Fill in the form</a>
+    </div>
+    <p class="cta-note">The form is in the link on my Instagram profile. I reply to you personally.</p>
+    <a class="facts" href="#cases">
+      <div class="fact"><b>1,800+</b><span>People transformed in 6+ years of online coaching</span></div>
+      <div class="fact"><b>−44 lbs in 10 months</b><span>David, a father with a very busy life (20 kg)</span></div>
+      <div class="fact"><b>7 years</b><span>How long Carlos has been working with me</span></div>
+      <div class="fact"><b>216 lbs</b><span>My own starting point (98 kg)</span></div>
+    </a>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="read stack">
+      <div class="label">Sound familiar?</div>
+      <h2>You do everything “right” and still don't feel right.</h2>
+      <p class="lede">If you're over 30, you've probably tried diets, apps and workout plans already. And you still have some of this:</p>
+    </div>
+    <div class="signs" style="margin-top:28px">
+      <div class="sign">You wake up tired even after a full night's sleep.</div>
+      <div class="sign">Heavy digestion, bloating or gas almost every day.</div>
+      <div class="sign">You train and eat well, but the belly won't go.</div>
+      <div class="sign">You crash mid-afternoon and want to raid the fridge at night.</div>
+      <div class="sign">You sleep badly or wake up at 3am with your mind racing.</div>
+      <div class="sign">Less drive, less libido, less spark than a few years ago.</div>
+    </div>
+    <p class="turn">You're not broken. <em>You're out of balance.</em> And that can be fixed.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="read stack">
+      <div class="label">My story</div>
+      <h2>I used to weigh 216 lbs. I know what it's like not to feel good in your body.</h2>
+      <p>As a kid I bought my clothes in the plus-size section and suffered because I didn't feel physically capable. For years I did what most people do: more cardio, fewer calories and diets I quit after two weeks. <strong>It didn't work.</strong></p>
+      <p>I studied Physiotherapy and started Medicine. I left it to do this. And I understood what nobody had explained to me: <strong>if the engine isn't tuned on the inside, the vehicle won't perform.</strong> When I fixed my sleep, my stress and my digestion, my body started to respond.</p>
+      <p>I've been training naturally for 10 years and I've competed 11 times, placing first and second in natural categories. I've also been through food anxiety and periods of stress and change. I know what it feels like, so I won't judge you.</p>
+      <p>In 6+ years of online coaching I've worked with more than 1,800 people. What I've learned is simple: <strong>everything starts by repairing the inside.</strong> That's health. The physique comes after.</p>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:36px">
+      <div class="label">The method</div>
+      <h2>From the inside out.</h2>
+      <p class="lede">Most plans start with calories and exercises. I start with what makes your body respond to them.</p>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">01</span><h3>Digestion</h3><p>If you don't digest well, you don't absorb what you eat and you don't have energy. It's the first thing we fix.</p></article>
+      <article class="layer"><span class="n">02</span><h3>Hormones</h3><p>Sleep, stress and food drive your cortisol, insulin and testosterone. We adjust the habits that move them.</p></article>
+      <article class="layer"><span class="n">03</span><h3>Metabolism</h3><p>Eating and training so your body uses energy well and stops storing fat, especially around the belly.</p></article>
+      <article class="layer"><span class="n">04</span><h3>Energy and vitality</h3><p>Sleep, stress management and a routine that fits your work and family. You don't need a perfect life, you need a plan that fits the one you have.</p></article>
+    </div>
+    <div class="result-bar"><b>And then the outside follows.</b><span>You lose fat, build muscle and look better, because you work better on the inside.</span></div>
+  </div>
+</section>
+
+<div class="jump" style="padding-top:0"><a href="#cases">See the success stories ↓</a></div>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Success stories</div>
+      <h2>1,800+ people. Here are a few.</h2>
+      <p class="lede">People with jobs, families and little time. Just like you. Each story links to their testimonial on my Instagram (in Spanish).</p>
+    </div>
+    <div class="wall">
+      <article class="case">
+        <div class="big">−44 lbs in 10 months</div>
+        <p>A father with a very, very busy life. More than 20 kg (44 lbs) off in 10 months. Today he's a different person.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">D</span><div><b>David</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/Dc1mvYLAsVD/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article class="case">
+        <div class="big">7 years with me</div>
+        <p>Carlos has been in my coaching for 7 years. Seven years working together.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Carlos</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/Dc1iHnNgZ7d/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article class="case">
+        <div class="big">5 years of nonstop progress</div>
+        <p>He changed jobs and cities, and went through periods when he couldn't even cook. Still, 5 years of progress without stopping.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Coaching client</b><span>5 years of coaching</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/Dc3fHTRNOyw/" target="_blank" rel="noopener">Watch the testimonial ↗</a>
+      </article>
+      <article class="case">
+        <div class="big">A body that had stopped responding</div>
+        <p>On very low calories his body had stopped responding. Without cutting them further, through protocol and weekly adjustments, he changed week after week while keeping his muscle.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio</b><span>@sergio_camsfit · 10+ competitions together</span></div></div>
+        <a class="src" href="https://www.instagram.com/p/DMvKXMetoAY/" target="_blank" rel="noopener">See his story ↗</a>
+      </article>
+      <article class="case">
+        <div class="big">An epic change in 12 weeks</div>
+        <p>12 weeks of contest prep with me. An epic change.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio</b><span>@sergiopg96</span></div></div>
+        <a class="src" href="https://www.instagram.com/p/C_qzQ4qNY6d/" target="_blank" rel="noopener">See his story ↗</a>
+      </article>
+      <article class="case">
+        <div class="big">It improved the rest of his life</div>
+        <p>A spectacular change that has improved every other area of his life.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">E</span><div><b>Enrique</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/Dc3cErNNJmd/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article hidden class="case extra">
+        <div class="big">He learned how to eat</div>
+        <p>He learned how to eat, and that improved his whole life.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Coaching client</b><span>Success story</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/Dc3a3vgNIrf/" target="_blank" rel="noopener">Watch the testimonial ↗</a>
+      </article>
+      <article hidden class="case extra">
+        <div class="big">His context, his result</div>
+        <p>Gonzalo did it within his own context, no excuses. You're no different.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">G</span><div><b>Gonzalo</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/DasdAZstlSh/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article hidden class="case extra">
+        <div class="big">The small details</div>
+        <p>The clothes, the things you stop doing… The small details of a change don't show on the scale, but they're what you notice most.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">D</span><div><b>David</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/DavMZErtmnd/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article hidden class="case extra">
+        <div class="big">Mental health and discipline</div>
+        <p>An example of what happens when you take care of your mental health, your discipline and your self-respect at the same time.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/DbEDAdqtdHa/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article hidden class="case extra">
+        <div class="big">A spectacular change</div>
+        <p>A spectacular change, the result of his commitment.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio Caro</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/reel/Dc31_JkACta/" target="_blank" rel="noopener">Watch his testimonial ↗</a>
+      </article>
+      <article hidden class="case extra">
+        <div class="big">Success story</div>
+        <p>Jordi's success story. See it in his post.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jordi</b><span>Coaching client</span></div></div>
+        <a class="src" href="https://www.instagram.com/p/DcgW8WkDXOe/" target="_blank" rel="noopener">See his story ↗</a>
+      </article>
+    </div>
+    <div class="show-all"><button type="button" id="showAll" class="btn" data-label="See more success stories">See more success stories</button></div>
+    <p class="cta-note" style="text-align:center;margin-top:18px">Hundreds more transformations on <a href="https://www.instagram.com/albertoglezcoach/" target="_blank" rel="noopener">@albertoglezcoach</a> and <a href="https://www.instagram.com/albertoglez6/" target="_blank" rel="noopener">@albertoglez6</a>.</p>
+  </div>
+</section>
+
+<div class="jump"><a class="js-contact" href="https://ig.me/m/albertoglezcoach" target="_blank" rel="noopener"><span class="js-contact-label">Message me on Instagram</span></a></div>
+
+<section id="offer">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:36px">
+      <div class="label">What's included</div>
+      <h2>Complete coaching. With me, every day.</h2>
+      <p class="lede">It's not a PDF diet. It's complete support for your health, adjusted every week to how you respond.</p>
+    </div>
+    <div class="offer">
+      <article class="offer-main">
+        <div class="label">1:1 coaching</div>
+        <h3>Everything you need to feel good, in one place.</h3>
+        <div class="inc">
+          <div><b>Nutrition plan</b><span>Built around your digestion, your tastes, your schedule and your goal.</span></div>
+          <div><b>Training plan</b><span>Realistic for your time. More results in fewer hours.</span></div>
+          <div><b>Daily WhatsApp</b><span>Questions, eating out, travel or a bad day: message me and we sort it out.</span></div>
+          <div><b>Weekly check-in</b><span>We review how your week went and adjust the plan every week.</span></div>
+          <div><b>Inner health</b><span>Digestion, sleep, stress and energy, not just your weight.</span></div>
+          <div><b>The whole person</b><span>We work with you as a person: habits, mindset and routine.</span></div>
+        </div>
+      </article>
+      <div class="week" aria-label="A typical week in the coaching">
+        <div class="day"><span class="d">Mon–Sat</span><div><b>You follow your plan</b><small>With WhatsApp open with me every day</small></div></div>
+        <div class="day"><span class="d">Daily</span><div><b>You tell me how it's going</b><small>Energy, digestion, sleep, training</small></div></div>
+        <div class="day key"><span class="d">Weekly</span><div><b>Check-in</b><small>We review the data and adjust the plan</small></div></div>
+        <div class="day"><span class="d">Always</span><div><b>A living plan</b><small>It changes with you, not the other way round</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="difference">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Why this works</div>
+      <h2>It's not another diet.</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Generic diet or app</th><th class="us">My coaching</th></tr></thead>
+        <tbody>
+          <tr><th>Focus</th><td>Calories and pounds</td><td class="us">Your inner health: digestion, hormones, metabolism and energy</td></tr>
+          <tr><th>Plan</th><td>The same for everyone</td><td class="us">Built for you and adjusted every week</td></tr>
+          <tr><th>Support</th><td>None, or a monthly form</td><td class="us">Daily WhatsApp and a weekly check-in</td></tr>
+          <tr><th>Who you talk to</th><td>Nobody</td><td class="us">Me, directly</td></tr>
+          <tr><th>When you slip</th><td>You feel guilty and quit</td><td class="us">We talk it through that same day and readjust</td></tr>
+          <tr><th>Result</th><td>You lose weight and gain it back</td><td class="us">Energy, health and a physique that lasts</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee" id="guarantee">
+  <div class="wrap">
+    <div class="seal">Under<br>contract<small>GUARANTEE</small></div>
+    <div>
+      <h2>No results, your money back.</h2>
+      <ul>
+        <li>If you do your part and don't see results.</li>
+        <li>If I don't support you the way I promise.</li>
+      </ul>
+      <p class="fine">In either case, I refund what you invested. The terms are signed in a contract from day one, so we both know exactly what we're committing to.</p>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Who it's for</div>
+      <h2>For people who want to truly feel good.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>It's for you if…</h3>
+        <ul>
+          <li>You want your energy back and to feel good, not just lose weight.</li>
+          <li>You're short on time between work and family and need a realistic plan.</li>
+          <li>You've tried dieting on your own and want someone to guide you closely.</li>
+          <li>You're willing to tell me how it's going and apply the changes.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>It's not for you if…</h3>
+        <ul>
+          <li>You want a miracle diet for two weeks from now.</li>
+          <li>You want a PDF plan and don't want to talk to anyone.</li>
+          <li>You're not willing to change a single habit.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="steps">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">How to start</div>
+      <h2>Three steps and we're on.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>1. Message me</h3><p>On WhatsApp, or fill in the form in the link on my Instagram profile.</p></div>
+      <div class="step"><h3>2. We assess your case</h3><p>I ask about your health, digestion, energy and routine. If I can help, I'll explain how.</p></div>
+      <div class="step"><h3>3. You get your plan</h3><p>Nutrition, training and habits built for you. From that day, WhatsApp open with me.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">FAQ</div>
+      <h2>Quick answers</h2>
+    </div>
+    <div class="faq">
+      <details><summary>How much time do I need each day?</summary><p>The plan fits your schedule. Many of the people I work with have long workdays and families. The key is doing what has the most impact, not doing more.</p></details>
+      <details><summary>Do I have to eat weird food or weigh everything?</summary><p>No. We start from what you like and how you eat now, and adjust from there. Eating out or traveling isn't a problem: message me and we sort it out.</p></details>
+      <details><summary>What does the support look like?</summary><p>You have WhatsApp with me for day-to-day questions and a weekly check-in where we review how you've been and adjust the plan.</p></details>
+      <details><summary>Do I talk to you or to a team?</summary><p>To me. I handle the plan, the WhatsApp and the check-ins myself.</p></details>
+      <details><summary>What if I have a medical condition or take medication?</summary><p>Tell me at the start. This coaching doesn't replace your doctor's diagnosis or treatment: we work on your habits alongside it, and if something needs a medical assessment, I'll tell you.</p></details>
+      <details><summary>What if I don't see results?</summary><p>If you do your part and there are no results, or if I don't support you the way I promise, I refund your investment. It's in the contract.</p></details>
+      <details><summary>How much does it cost?</summary><p>It depends on your case. Message me and I'll tell you once I know what you need.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">Next step</div>
+    <h2>Wake up with energy again.</h2>
+    <div class="ctas">
+      <a class="btn js-contact" href="https://ig.me/m/albertoglezcoach" target="_blank" rel="noopener"><span class="js-contact-label">Message me on Instagram</span></a>
+      <a class="btn btn-ghost" href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">Fill in the form</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Alberto González</span><span><a href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">@albertoglezcoach</a></span></div>
+    <p>This coaching does not replace medical advice, diagnosis or treatment. Results vary depending on each person and their commitment.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn js-contact" href="https://ig.me/m/albertoglezcoach" target="_blank" rel="noopener"><span class="js-contact-label">Message me on Instagram</span></a></div>
+
+<script>
+(function () {
+  var c = document.getElementById("contact").dataset;
+  var wa = (c.wa || "").replace(/\D/g, "");
+  var href = wa ? "https://wa.me/" + wa + "?text=" + encodeURIComponent(c.msg) : "https://ig.me/m/" + c.ig;
+  var label = wa ? c.labelWa : c.labelIg;
+  document.querySelectorAll(".js-contact").forEach(function (a) {
+    a.href = href;
+    var l = a.querySelector(".js-contact-label");
+    if (l) l.textContent = label; else if (!a.querySelector("svg")) a.textContent = label;
+  });
+  var extras = document.querySelectorAll(".wall .extra");
+  var b = document.getElementById("showAll");
+  if (b) {
+    if (!extras.length) b.parentNode.hidden = true;
+    else {
+      b.textContent = b.dataset.label + " (+" + extras.length + ")";
+      b.addEventListener("click", function () { extras.forEach(function (el) { el.hidden = false; }); b.parentNode.hidden = true; });
+    }
+  }
+})();
+</script>
