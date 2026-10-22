@@ -124,16 +124,81 @@ Directo y sin adular. Hay que señalar los riesgos (promesas, cifras sin prueba,
 
 # Landing de asesoría de salud (`landing-salud/`)
 
-- **Archivos:**
-  - `landing-salud/index.html`: versión en español (@albertoglez6). Artifact: https://claude.ai/artifact/N7RS1e83EmYXnMNJ1vLXHq
-  - `landing-salud/en.html`: versión en inglés (@albertoglezcoach). Artifact: https://claude.ai/artifact/MVfHeanGfCnykuABiz195e
-- **Oferta:** asesoría 1:1 de salud con WhatsApp diario y revisión semanal, enfocada en la persona entera. Se trabajan digestiones, hormonas, metabolismo y energía para que el físico venga después.
-- **Garantía, bajo contrato:** devolución si no hay resultados (haciendo el cliente su parte) o si no se le atiende como se prometió.
-- **Contacto:** en el `<div id="contact">`, rellenar `data-wa` con el número sin `+`, por ejemplo 34600000000. Sin número, todos los botones llevan a los mensajes directos de Instagram. El formulario está en la bio de Instagram.
-- **Casos:** sacados de los textos de las publicaciones de @albertoglez6. Ninguno lleva foto, porque el servidor de imágenes de Instagram estaba bloqueado en la sesión en la nube. Desde la sesión local se pueden descargar los antes y después.
-- **Pendiente:**
-  - Número de WhatsApp.
-  - Fotos de Alberto y antes/después de clientes, con su permiso.
-  - Vídeo VSL para arriba del todo.
-  - Cifras concretas de más clientes.
-  - Revisar la tabla de casos con Alberto: los textos parten de sus captions, no son citas de los clientes.
+## Archivos y enlaces
+- `landing-salud/index.html`: versión en español (@albertoglez6). Artifact: https://claude.ai/artifact/N7RS1e83EmYXnMNJ1vLXHq
+- `landing-salud/en.html`: traducción literal al inglés (@albertoglezcoach). Artifact: https://claude.ai/artifact/MVfHeanGfCnykuABiz195e
+- Los dos archivos tienen la misma estructura. **Cualquier cambio se hace en los dos.**
+
+## Oferta y enfoque (decidido con Alberto)
+- Asesoría 1:1 de salud con WhatsApp diario, revisión semanal y una visión global de la persona.
+- **Lo primero, y lo que se remarca:** lo básico bien hecho. Una rutina de alimentación y entrenamiento hecha para el cliente, que desde la primera semana hace que todo mejore.
+- **Después**, la visión global:
+  - Fisioterapia y readaptación de lesiones. Alberto es fisioterapeuta y este es su gran diferencial.
+  - Digestiones.
+  - Hormonas.
+  - Metabolismo y energía.
+- **Historia de Alberto:**
+  - En la adolescencia pesaba casi 100 kg sin haber pisado un gimnasio, con sobrepeso y sin capacidades físicas básicas.
+  - De niño compraba ropa de tallas especiales.
+  - Estudió Fisioterapia, empezó Medicina y lo dejó.
+  - 12 años entrenando, casi 10 asesorando y +1.800 personas.
+  - 11 competiciones al natural, con 1º y 2º puesto.
+  - Pasó por ansiedad con la comida.
+- **Garantía, bajo contrato:** devolución si el cliente hace su parte y no hay resultados, o si no se le atiende como se prometió.
+- **Orden de la página:** hero → lo que me hace diferente → casos → historia → problema → oferta → comparativa → garantía → para quién → pasos → preguntas frecuentes → formulario → cierre.
+
+## Contacto (ya puesto)
+- **WhatsApp:** +34 722 731 303, con `data-wa="34722731303"` en `<div id="contact">`. Todos los botones `.js-contact` abren WhatsApp con un mensaje ya escrito.
+- **Jotform:** https://form.jotform.com/260062853529055, con utm por idioma.
+  - Los botones "Rellenar el formulario" lo abren directamente.
+  - La sección `#formulario` / `#form` lo incrusta en un iframe solo si la página no está dentro de otro marco, es decir, cuando está alojada en su dominio. En el visor de Claude queda el botón.
+  - **Pendiente:** versión del formulario en inglés.
+
+## Casos actuales
+Son 12 tarjetas de texto (en `.wall` dentro de `#casos` / `#cases`), sacadas de los captions de @albertoglez6. Cada una enlaza a su publicación. **No tienen ni foto ni vídeo.**
+
+| Permalink | Caso |
+|---|---|
+| `reel/Dc1mvYLAsVD` | David, −20 kg en 10 meses, padre y muy ocupado |
+| `reel/Dc1iHnNgZ7d` | Carlos, 7 años en la asesoría |
+| `reel/Dc3fHTRNOyw` | Cliente con 5 años progresando (cambios de trabajo y ciudad) |
+| `p/DMvKXMetoAY` | Sergio @sergio_camsfit, competidor; su físico no respondía con calorías bajas |
+| `p/C_qzQ4qNY6d` | @sergiopg96, 12 semanas de preparación |
+| `reel/Dc3cErNNJmd` | Enrique |
+| `reel/Dc3a3vgNIrf` | "Aprendió a comer" |
+| `reel/DasdAZstlSh` | Gonzalo |
+| `reel/DavMZErtmnd` | David, los detalles |
+| `reel/DbEDAdqtdHa` | Sergio |
+| `reel/Dc31_JkACta` | Sergio Caro |
+| `p/DcgW8WkDXOe` | Jordi |
+| `p/DTF496JDcCH` | Transformaciones de clientes |
+| Carruseles del 04-09-2025 | Caption "Comenta INFO para optar a tu plaza"; probablemente antes y después |
+
+## Cómo sacar el material de Instagram
+Herramienta MCP de Meta Ads `ads_get_ig_media`. Es de solo lectura: no crees ni promociones nada.
+- `ad_account_id`: `1057957433816789` (cuenta "AGLEZ US")
+- `ig_account_id`: `17841401214324388` (@albertoglez6)
+- `filters`: `[{"field":"product_type","operator":"in","value":["FEED","REELS"]}]`
+- Paginar con `next_cursor`. Hay unas 500 publicaciones o más.
+- Cada elemento trae `media_url` (se descarga con curl), `caption`, `permalink` y `timestamp`.
+
+Limitaciones:
+- Las **destacadas no salen por la API**. Alberto tiene que subirlas.
+- @albertomentor y @albertoglezcoach no están vinculadas a esa cuenta de anuncios.
+
+## Pendiente
+1. Descargar y meter vídeos e imágenes de los casos:
+   - Convertir las tarjetas en tarjetas con `<video controls playsinline preload="none" poster>` o `<img>`.
+   - Se ven 6; el resto lleva `hidden class="case extra"`.
+   - Los casos con cifra y plazo van primero.
+   - Hacerlo en los dos idiomas.
+   - Hay que tener permiso de cada cliente.
+2. Fotos de Alberto en `#historia` / `#story`:
+   - Antes, con casi 100 kg.
+   - Físico actual.
+   - Entrenando.
+   - Están en su carpeta local `fotos/`, que está excluida del repo por `.gitignore`.
+3. Vídeo VSL para arriba del todo.
+4. Jotform en inglés.
+5. Comprimir: vídeos a 480 px con CRF 29 (ver la sección de la mentoría) y fotos a 900 px y calidad 80, en `landing-salud/casos/`.
+6. Volver a publicar los dos artifacts, pasando los medios en `files`.
