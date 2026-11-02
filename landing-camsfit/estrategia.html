@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: una columna de lectura; el sistema, la gráfica y las fases rompen a ancho completo. Un solo look claro con los colores de la app CAMSFIT. */
+/* Layout: ficha visual del cliente ideal; la persona en el centro, su día en una barra de 24 h y los cuadrantes alrededor. Colores de la app CAMSFIT. */
 :root {
   --paper: #e8e6e1;
   --white: #fbfaf8;
@@ -15,269 +15,195 @@
   --gold: #7f6114;
   --gold-text: #7a6225;
   --chip: #edebe6;
-  --warn: #9a4b2f;
+  --rust: #9a4b2f;
   --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-section { padding-block: clamp(44px, 7vw, 80px); }
-section + section { border-top: 1px solid var(--sand); }
-h1, h2, h3 { margin: 0; text-wrap: balance; letter-spacing: -.025em; }
-h1 { font: 800 clamp(40px, 7vw, 76px)/1 var(--f-body); letter-spacing: -.035em; }
-h2 { font: 800 clamp(28px, 4vw, 42px)/1.08 var(--f-body); }
-h3 { font: 700 19px/1.3 var(--f-body); }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: clamp(32px, 6vw, 64px); display: grid; gap: 16px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(36px, 6vw, 64px)/1 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 22px/1.2 var(--f-body); }
 p { margin: 0; }
-.label { font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
-.lede { color: var(--soft); max-width: 62ch; font-size: 18.5px; }
-.head { display: grid; gap: 14px; margin-bottom: 28px; max-width: 760px; }
-.card { background: var(--white); border-radius: 16px; padding: 20px 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
-.card ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
-.card ul b { color: var(--ink); }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.card { background: var(--white); border-radius: 18px; padding: 20px 22px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+ul.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+ul.list li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 10px; font-size: 15.5px; }
+ul.list li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-top: 8px; }
+.pain li::before { background: var(--rust); }
+.top { display: grid; gap: 10px; margin-bottom: 8px; }
+.top p { color: var(--soft); max-width: 60ch; }
 
-/* Hero */
-.hero { padding-block: clamp(40px, 7vw, 84px) clamp(28px, 4vw, 44px); display: grid; gap: 18px; }
-.thesis { font-size: clamp(19px, 2.3vw, 23px); max-width: 52ch; }
-.thesis b { color: var(--gold-text); }
+/* Persona */
+.persona { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; }
+.face { width: clamp(96px, 14vw, 132px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--sand); border: 2px solid var(--sand-line); display: grid; place-items: center; }
+.face svg { width: 62%; height: 62%; color: var(--gold); }
+.persona h2 { font-size: clamp(26px, 3.6vw, 36px); }
+.persona .sub { color: var(--soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { background: var(--chip); color: var(--ink); font-size: 14px; font-weight: 600; padding: 7px 12px; border-radius: 999px; }
+.chips span b { color: var(--gold-text); font-weight: 700; }
 
-/* Sistema */
-.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; position: relative; }
-.flow .card { position: relative; }
-.flow .step { font: 500 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); }
-.flow .q { font: 800 22px/1.15 var(--f-body); letter-spacing: -.02em; }
-.flow .card:not(:last-child)::after { content: ""; position: absolute; right: -12px; top: 34px; width: 10px; height: 10px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); transform: rotate(45deg); }
+/* Día */
+.day-bar { display: flex; height: 56px; border-radius: 12px; overflow: hidden; }
+.day-bar div { display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--ink); text-align: center; line-height: 1.15; padding: 0 4px; min-width: 0; }
+.seg-sleep { background: #cfc9b8; }
+.seg-work { background: var(--rust); color: var(--white) !important; }
+.seg-commute { background: #b9ae8e; }
+.seg-home { background: var(--sand); }
+.seg-free { background: var(--gold); color: var(--white) !important; }
+.day-scale { display: flex; justify-content: space-between; font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.day-note { color: var(--soft); font-size: 15px; }
+.day-note b { color: var(--ink); }
 
-/* Gráfica */
-.chart-box { background: var(--white); border-radius: 18px; padding: clamp(14px, 2.4vw, 26px); }
-.chart-scroll { overflow-x: auto; }
-.chart-box svg { display: block; width: 100%; min-width: 620px; height: auto; }
-.legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; font-size: 14.5px; color: var(--soft); }
-.legend span { display: inline-flex; align-items: center; gap: 8px; }
-.legend i { width: 26px; height: 0; border-top: 3px solid; display: inline-block; }
-.note { margin-top: 10px; font: 500 11.5px/1.4 var(--f-mono); letter-spacing: .04em; color: var(--soft); }
+/* Cuadrantes */
+.quad { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+blockquote { margin: 0; font-weight: 700; font-size: 16px; line-height: 1.4; }
+.says { display: grid; gap: 12px; }
+.says div { display: grid; gap: 2px; padding-left: 14px; border-left: 2px solid var(--sand-line); }
+.says span { color: var(--soft); font-size: 13.5px; }
 
-/* Fases */
-.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.phase .tag { display: inline-block; width: fit-content; font: 500 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; background: var(--gold); color: var(--white); padding: 7px 10px; border-radius: 999px; }
-.phase h3 { font-size: 22px; letter-spacing: -.02em; }
-.phase dl { margin: 0; display: grid; gap: 8px; }
-.phase dt { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); }
-.phase dd { margin: 0 0 4px; color: var(--soft); font-size: 15.5px; line-height: 1.5; }
-.loop { margin-top: 14px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: center; }
-.loop svg { width: 44px; height: 44px; color: var(--gold); }
-.loop p { color: var(--soft); }
-.loop b { color: var(--ink); }
+/* Dolor → respuesta */
+.map { display: grid; gap: 8px; }
+.map .row { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--white); border-radius: 14px; padding: 14px 18px; }
+.map .row b { font-size: 15.5px; }
+.map .arrow { color: var(--gold); font-weight: 800; text-align: center; }
+.map .ans { color: var(--soft); font-size: 15px; }
+.map .ph { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; background: var(--gold); color: var(--white); padding: 6px 9px; border-radius: 999px; white-space: nowrap; }
 
-/* Enlace historia */
-.chain { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.chain .then { border-top: 1.5px solid var(--sand-line); padding-top: 10px; font-weight: 700; font-size: 15.5px; }
-.chain .then::before { content: "Demuestra → "; color: var(--gold-text); font-weight: 600; }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.check li::before { content: "?"; width: auto; height: auto; background: none; color: var(--gold-text); font-weight: 800; margin-top: 0; }
 
-/* Frases */
-.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.quotes blockquote { margin: 0; font: 700 clamp(19px, 2.2vw, 23px)/1.3 var(--f-body); letter-spacing: -.015em; }
-.quotes .card span { color: var(--soft); font-size: 14.5px; }
-
-footer { padding-block: 28px 40px; color: var(--soft); font-size: 13.5px; border-top: 1px solid var(--sand); }
-
-@media (max-width: 860px) {
-  .flow, .phases, .chain { grid-template-columns: 1fr 1fr; }
-  .flow .card:nth-child(2)::after { display: none; }
+@media (max-width: 820px) {
+  .quad, .three { grid-template-columns: 1fr; }
+  .map .row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .map .arrow { text-align: left; }
+  .day-bar div { font-size: 11px; }
 }
-@media (max-width: 560px) {
-  .flow, .phases, .chain, .quotes { grid-template-columns: 1fr; }
-  .flow .card:not(:last-child)::after { right: auto; left: 28px; top: auto; bottom: -12px; transform: rotate(135deg); display: block; }
+@media (max-width: 520px) {
+  .persona { grid-template-columns: 1fr; }
 }
 </style>
 
 <div class="wrap">
-  <header class="hero">
-    <div class="label">CAMSFIT · Sergio Cámara · Mapa del posicionamiento</div>
-    <h1>Reprogramación metabólica.</h1>
-    <p class="thesis">Para gente con poco tiempo y trabajos sedentarios que quiere perder grasa y <b>mantenerla</b>, comiendo lo de casa. Y Sergio es la prueba: pasa 8 a 10 horas al día con pantallas y está en forma.</p>
+  <header class="top">
+    <span class="label">CAMSFIT · Mapa interno</span>
+    <h1>El cliente ideal de Sergio.</h1>
+    <p>Perfil construido a partir de sus casos reales y de su posicionamiento. Las cifras de edad y peso son una hipótesis para validar con él.</p>
   </header>
+
+  <section class="card persona" aria-label="Perfil tipo">
+    <div class="face"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+    <div style="display:grid;gap:10px">
+      <span class="label">Perfil tipo</span>
+      <h2>Hombre ocupado con trabajo sedentario que ya ha rebotado.</h2>
+      <p class="sub">Sabe lo que es hacer dieta. Lo que no sabe es mantenerla con su vida real.</p>
+      <div class="chips">
+        <span><b>Edad</b> 25–40</span>
+        <span><b>Peso</b> 85–110 kg</span>
+        <span><b>Trabajo</b> oficina, ordenador o estudiando</span>
+        <span><b>Sentado</b> 8–10 h al día</span>
+        <span><b>Vida</b> pareja, familia o mucha carga</span>
+        <span><b>Come</b> en casa y fuera con su gente</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Su día en 24 horas">
+    <span class="label">Su día en 24 h</span>
+    <div class="day-bar" role="img" aria-label="Sueño 7 h, trabajo sentado 9 h, desplazamientos 1 h, casa y familia 5 h, libre 2 h">
+      <div class="seg-sleep" style="flex:7">Sueño 7 h</div>
+      <div class="seg-work" style="flex:9">Sentado trabajando 9 h</div>
+      <div class="seg-commute" style="flex:1">1 h</div>
+      <div class="seg-home" style="flex:5">Casa, familia, comidas 5 h</div>
+      <div class="seg-free" style="flex:2">Libre 2 h</div>
+    </div>
+    <div class="day-scale"><span>0 h</span><span>6 h</span><span>12 h</span><span>18 h</span><span>24 h</span></div>
+    <p class="day-note">El plan tiene que caber en <b>esas 2 horas libres</b> y en <b>las comidas que ya hace en casa</b>. Es el mismo día que vive Sergio, con 8–10 h de pantalla, y por eso le cree.</p>
+  </section>
+
+  <div class="quad">
+    <section class="card">
+      <span class="label">Lo que le duele</span>
+      <ul class="list pain">
+        <li>Ha perdido peso otras veces y lo ha recuperado.</li>
+        <li>La barriga no baja aunque “coma bien”.</li>
+        <li>Atracones el fin de semana o cuando sale.</li>
+        <li>Se ve peor que hace unos años y lo nota en la ropa.</li>
+        <li>No tiene tiempo para planes de 2 horas de gimnasio.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">Lo que quiere</span>
+      <ul class="list">
+        <li>Bajar la barriga y ver abdominales.</li>
+        <li>Verse bien sin vivir a dieta.</li>
+        <li>Comer lo de casa y salir con su gente sin culpa.</li>
+        <li>Que el cambio dure esta vez.</li>
+        <li>Alguien que le diga exactamente qué hacer.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">Lo que dice (frases reales de clientes de Sergio)</span>
+      <div class="says">
+        <div><blockquote>“Yo es que no tengo tiempo y muchas responsabilidades.”</blockquote><span>La objeción que Sergio desmonta con Nico</span></div>
+        <div><blockquote>“Comíamos bien, pero había atracones. No sabíamos qué hacer.”</blockquote><span>Pareja de clientes</span></div>
+        <div><blockquote>“Peso 100 kg y quiero bajar la barriga y tener abdominales.”</blockquote><span>Alexander, primer mensaje</span></div>
+        <div><blockquote>“Vino harto de no poder bajar de peso y de fallar.”</blockquote><span>Marc, según Sergio</span></div>
+      </div>
+    </section>
+    <section class="card">
+      <span class="label">Lo que le frena</span>
+      <ul class="list pain">
+        <li>“Ya lo he intentado y no me funciona.”</li>
+        <li>“No quiero comer distinto que mi familia.”</li>
+        <li>“No tengo tiempo.”</li>
+        <li>“Seguro que es otra dieta más.”</li>
+        <li>Desconfía de tanta información contradictoria.</li>
+      </ul>
+    </section>
+  </div>
+
+  <section aria-label="De su dolor a la respuesta de CAMSFIT" style="display:grid;gap:10px;margin-top:6px">
+    <span class="label">Cada dolor, su respuesta en el método</span>
+    <div class="map">
+      <div class="row"><b>Pierde y rebota</b><span class="arrow">→</span><span class="ans">Pérdida gradual con hábitos que puede mantener</span><span class="ph">Fase 1</span></div>
+      <div class="row"><b>Atracones y “comer distinto”</b><span class="arrow">→</span><span class="ans">Comida de casa, opciones y equivalencias en la app</span><span class="ph">Fase 1</span></div>
+      <div class="row"><b>Cuerpo sedentario que gasta poco</b><span class="arrow">→</span><span class="ans">Fuerza y músculo para quemar más en reposo</span><span class="ph">Fase 2</span></div>
+      <div class="row"><b>“Esta vez tiene que durar”</b><span class="arrow">→</span><span class="ans">El cuerpo se adapta y aprende a mantenerlo solo</span><span class="ph">Fase 3</span></div>
+      <div class="row"><b>No sabe qué hacer</b><span class="arrow">→</span><span class="ans">Revisión semanal: Sergio ajusta el plan</span><span class="ph">Cada semana</span></div>
+    </div>
+  </section>
+
+  <div class="three">
+    <section class="card sand">
+      <span class="label">Cuándo decide comprar</span>
+      <ul class="list">
+        <li>Se ve en una foto o la ropa no le entra.</li>
+        <li>Se acerca el verano o un evento.</li>
+        <li>Ve el cambio de alguien como él.</li>
+        <li>Otro rebote más tras una dieta.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">No es su cliente</span>
+      <ul class="list pain">
+        <li>Busca un cambio milagro en semanas.</li>
+        <li>Quiere un PDF y no hablar con nadie.</li>
+        <li>No está dispuesto a cambiar hábitos.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">Por validar con Sergio</span>
+      <ul class="list check">
+        <li>Rango real de edad de sus clientes.</li>
+        <li>Solo hombres, o también mujeres.</li>
+        <li>Solo pérdida de grasa, o también volumen y competición.</li>
+        <li>Precio y duración mínima.</li>
+      </ul>
+    </section>
+  </div>
 </div>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <div class="label">1 · El sistema completo</div>
-      <h2>Cuatro piezas que se sostienen entre sí.</h2>
-    </div>
-    <div class="flow">
-      <article class="card">
-        <span class="step">A quién</span>
-        <span class="q">Vidas ocupadas, cuerpos sedentarios</span>
-        <ul>
-          <li><b>Poco tiempo</b>: trabajo, familia, responsabilidades.</li>
-          <li><b>Trabajo sedentario</b>: horas de silla y pantalla.</li>
-          <li>Quiere <b>comer lo de casa</b>, sin ser el raro de la mesa.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="step">Qué le pasa</span>
-        <span class="q">Pierde de golpe y rebota</span>
-        <ul>
-          <li>Baja 20 kg rápido y <b>su cuerpo no está preparado</b>.</li>
-          <li>Dieta y entreno genéricos, iguales de principio a fin.</li>
-          <li>Mucha información y casi toda contradictoria.</li>
-        </ul>
-      </article>
-      <article class="card sand">
-        <span class="step">La solución</span>
-        <span class="q">Reprogramar, fase a fase</span>
-        <ul>
-          <li>El plan <b>cambia según el estado de su cuerpo</b>.</li>
-          <li>Perder grasa → fuerza y músculo → consolidar.</li>
-          <li>Revisión semanal en la app.</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="step">Por qué creerle</span>
-        <span class="q">Sergio lo vive cada día</span>
-        <ul>
-          <li><b>Antes</b>: horas de ordenador, sedentario.</li>
-          <li><b>Hoy</b>: 8–10 h de pantalla al día y en forma.</li>
-          <li>+15 años entrenando, +500 personas, casos reales.</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <div class="label">2 · El problema, en una gráfica</div>
-      <h2>Bajar de golpe frente a reprogramar.</h2>
-      <p class="lede">Con una dieta de golpe, la grasa cae rápido y vuelve, porque el cuerpo no se ha adaptado. Con la reprogramación baja de forma más gradual, se gana músculo en la fase 2 y el resultado se mantiene.</p>
-    </div>
-    <div class="chart-box">
-      <div class="chart-scroll">
-        <svg viewBox="0 0 820 380" role="img" aria-label="Gráfica ilustrativa: la dieta de golpe baja la grasa rápido y rebota; la reprogramación metabólica la baja de forma gradual y la mantiene, mientras la masa muscular sube en la fase 2.">
-          <!-- bandas de fase -->
-          <rect x="70" y="30" width="240" height="280" fill="#f2f0eb"/>
-          <rect x="310" y="30" width="240" height="280" fill="#ece8dd"/>
-          <rect x="550" y="30" width="240" height="280" fill="#f2f0eb"/>
-          <text x="190" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.5" fill="#7a6225">FASE 1 · PERDER GRASA</text>
-          <text x="430" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.5" fill="#7a6225">FASE 2 · FUERZA Y MÚSCULO</text>
-          <text x="670" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" letter-spacing="1.5" fill="#7a6225">FASE 3 · CONSOLIDAR</text>
-          <!-- ejes -->
-          <line x1="70" y1="310" x2="790" y2="310" stroke="#6b6862" stroke-width="1.5"/>
-          <line x1="70" y1="30" x2="70" y2="310" stroke="#6b6862" stroke-width="1.5"/>
-          <text x="790" y="334" text-anchor="end" font-family="Manrope, sans-serif" font-size="14" fill="#6b6862">Tiempo →</text>
-          <text x="58" y="170" text-anchor="middle" transform="rotate(-90 58 170)" font-family="Manrope, sans-serif" font-size="14" fill="#6b6862">Nivel</text>
-          <!-- dieta de golpe -->
-          <path d="M70,80 C130,95 170,236 230,240 S 340,120 430,100 S 660,74 790,70" fill="none" stroke="#9a4b2f" stroke-width="3" stroke-dasharray="7 6"/>
-          <circle cx="230" cy="240" r="5" fill="#9a4b2f"/>
-          <text x="238" y="262" font-family="Manrope, sans-serif" font-size="13.5" font-weight="700" fill="#9a4b2f">Baja rápido…</text>
-          <text x="436" y="90" font-family="Manrope, sans-serif" font-size="13.5" font-weight="700" fill="#9a4b2f">…y rebota</text>
-          <!-- reprogramación -->
-          <path d="M70,80 C160,110 250,170 310,186 S 460,222 550,230 S 700,236 790,236" fill="none" stroke="#7f6114" stroke-width="4"/>
-          <circle cx="790" cy="236" r="6" fill="#7f6114"/>
-          <text x="782" y="224" text-anchor="end" font-family="Manrope, sans-serif" font-size="13.5" font-weight="700" fill="#7f6114">Se mantiene</text>
-          <!-- masa muscular -->
-          <path d="M70,292 L310,290 C380,288 470,264 550,258 L790,254" fill="none" stroke="#1c1a17" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/>
-          <text x="560" y="278" font-family="Manrope, sans-serif" font-size="13" fill="#1c1a17">Masa muscular: sube en la fase 2</text>
-          <text x="430" y="362" text-anchor="middle" font-family="Manrope, sans-serif" font-size="13" fill="#6b6862">Revisión semanal en la app: el plan se ajusta en cada fase</text>
-        </svg>
-      </div>
-      <div class="legend">
-        <span><i style="border-color:#9a4b2f;border-top-style:dashed"></i>Grasa con dieta de golpe</span>
-        <span><i style="border-color:#7f6114"></i>Grasa con reprogramación metabólica</span>
-        <span><i style="border-color:#1c1a17;border-top-style:dotted"></i>Masa muscular con reprogramación</span>
-      </div>
-      <p class="note">Gráfica ilustrativa del concepto, sin datos reales de clientes.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <div class="label">3 · El servicio, por fases</div>
-      <h2>Lo que necesitas al empezar no es lo que necesitas después.</h2>
-    </div>
-    <div class="phases">
-      <article class="card phase">
-        <span class="tag">Fase 1</span>
-        <h3>Perder grasa</h3>
-        <dl>
-          <dt>Objetivo</dt><dd>Bajar grasa sin agresividad, con hábitos que se puedan mantener.</dd>
-          <dt>Cómo</dt><dd>Comida de casa con cantidades ajustadas, opciones y equivalencias en la app.</dd>
-          <dt>Qué nota</dt><dd>Menos barriga, más energía, la ropa empieza a quedar distinta.</dd>
-        </dl>
-      </article>
-      <article class="card phase sand">
-        <span class="tag">Fase 2</span>
-        <h3>Fuerza y músculo</h3>
-        <dl>
-          <dt>Objetivo</dt><dd>Ganar masa muscular, el tejido que más energía gasta.</dd>
-          <dt>Cómo</dt><dd>Entreno de fuerza progresivo, registrado en la app con peso, repeticiones y RIR.</dd>
-          <dt>Qué nota</dt><dd>Más fuerza y un cuerpo que quema más calorías en reposo.</dd>
-        </dl>
-      </article>
-      <article class="card phase">
-        <span class="tag">Fase 3</span>
-        <h3>Consolidar</h3>
-        <dl>
-          <dt>Objetivo</dt><dd>Que el cuerpo se adapte del todo a los nuevos hábitos.</dd>
-          <dt>Cómo</dt><dd>Ajustes finos y autonomía: sabe comer y entrenar sin depender de una dieta.</dd>
-          <dt>Qué nota</dt><dd>El resultado se mantiene, aunque su trabajo siga siendo sedentario.</dd>
-        </dl>
-      </article>
-    </div>
-    <div class="card loop">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9M4 4v4h4M4 13a8 8 0 0 0 14.3 4.9M20 20v-4h-4"/></svg>
-      <p><b>Cada semana, revisión en la app:</b> sueño, hambre, energía, estrés, digestión, peso y medidas. Sergio la recibe y decide si toca seguir, ajustar o pasar de fase.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <div class="label">4 · Cómo se enlaza con Sergio</div>
-      <h2>Su historia, su día a día y su servicio cuentan lo mismo.</h2>
-    </div>
-    <div class="chain">
-      <article class="card">
-        <span class="label">Su historia</span>
-        <h3>Antes, horas de ordenador y sedentarismo.</h3>
-        <p class="then">que el sedentarismo se puede revertir.</p>
-      </article>
-      <article class="card">
-        <span class="label">Su día a día</span>
-        <h3>Hoy, 8–10 horas con el móvil y el ordenador, y en forma.</h3>
-        <p class="then">que un trabajo sedentario no te condena.</p>
-      </article>
-      <article class="card sand">
-        <span class="label">Su servicio</span>
-        <h3>El mismo proceso, por fases, aplicado al cliente.</h3>
-        <p class="then">que funciona en +500 personas, no solo en él.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <div class="label">5 · Frases para el contenido y la landing</div>
-      <h2>El mensaje, en cuatro frases.</h2>
-    </div>
-    <div class="quotes">
-      <div class="card"><blockquote>“Un trabajo sedentario no tiene por qué significar un cuerpo sedentario.”</blockquote><span>Historia y ejemplo diario</span></div>
-      <div class="card"><blockquote>“Perder 20 kg de golpe no sirve si tu cuerpo no está preparado.”</blockquote><span>El problema</span></div>
-      <div class="card"><blockquote>“Lo que necesitas al empezar no es lo que necesitas después.”</blockquote><span>El método por fases</span></div>
-      <div class="card"><blockquote>“Come lo de casa, sin complicarte ni ser el raro de la mesa.”</blockquote><span>La objeción que elimina</span></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">CAMSFIT · Sergio Cámara · Mapa interno de posicionamiento. No sustituye consejo médico.</div>
-</footer>
