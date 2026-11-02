@@ -140,6 +140,12 @@ mark { background: none; color: var(--gold-text); }
 .cases-block .wall { columns: 4 230px; }
 section.cases-block + section, section + section.cases-block { border-top: 0; }
 
+.me-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: clamp(240px, 30vw, 360px); max-width: 100%; }
+.me-ba figure { margin: 0; display: grid; gap: 6px; }
+.me-ba img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; border-radius: 14px; max-width: 100%; }
+.me-ba figcaption { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); text-align: center; }
+.about .me-ba img { width: 100%; aspect-ratio: 3 / 4; border-radius: 14px; object-fit: cover; }
+
 /* Casos */
 .wall { columns: 3 280px; column-gap: 16px; }
 .wall > * { break-inside: avoid; margin: 0 0 16px; }
@@ -420,7 +426,10 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
 
 <section id="quien-soy">
   <div class="wrap about">
-    <img src="casos/sergio-perfil.jpg" alt="Sergio Cámara" width="255" height="265" loading="lazy">
+    <div class="me-ba">
+      <figure><img src="casos/sergio-antes.jpg" alt="Sergio antes: un día dije mañana empiezo" width="385" height="524" loading="lazy"><figcaption>Antes</figcaption></figure>
+      <figure><img src="casos/sergio-hoy.jpg" alt="Sergio Cámara hoy" width="173" height="180" loading="lazy"><figcaption>Hoy</figcaption></figure>
+    </div>
     <div class="read stack">
       <div class="label">Quién soy</div>
       <h2>Soy Sergio Cámara, de CAMSFIT.</h2>
