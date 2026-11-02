@@ -3,20 +3,20 @@
 <meta name="description" content="Asesoría online de Sergio Cámara (CAMSFIT) para hombres con responsabilidades: entreno, nutrición y metabolismo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: carta de venta larga en una columna; pruebas y oferta a ancho completo. Look claro con naranja CAMSFIT de acento. */
+/* Layout: carta de venta larga en una columna; pruebas, app y oferta a ancho completo. Colores de la app CAMSFIT: piedra, arena y oro oliva. */
 :root {
-  --paper: #faf9f7;
-  --white: #ffffff;
-  --ink: #141312;
-  --soft: #5a625d;
-  --line: #e1e6e2;
-  --green: #d9481c;
-  --green-soft: #fdebe3;
-  --yellow: #ffd21f;
-  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --paper: #e8e6e1;
+  --white: #faf9f7;
+  --ink: #1c1b18;
+  --soft: #6b685f;
+  --line: #d8d3c6;
+  --green: #7d5e12;
+  --green-soft: #e2ddcf;
+  --yellow: #d9cba2;
+  --f-display: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   color-scheme: light;
 }
@@ -42,7 +42,7 @@ a { color: inherit; }
 mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: inherit; padding: 0 .04em; }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--green); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; }
-.btn:hover { transform: translateY(-1px); background: #b83a14; }
+.btn:hover { transform: translateY(-1px); background: #654b0c; }
 .btn svg { width: 20px; height: 20px; flex: none; }
 .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
 .btn-ghost:hover { background: var(--white); }
@@ -60,7 +60,7 @@ mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: i
 .hero h1 { font: 800 clamp(44px, 8vw, 100px)/.96 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; max-width: 14ch; }
 .hero .lede { color: var(--ink); font-size: clamp(19px, 2.2vw, 22px); max-width: 56ch; }
 .pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.pills span { font: 500 13px/1 var(--f-mono); padding: 9px 12px; border-radius: 999px; background: var(--green-soft); color: #8a2a0c; }
+.pills span { font: 500 13px/1 var(--f-mono); padding: 9px 12px; border-radius: 999px; background: var(--green-soft); color: #6a4f0e; }
 .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); text-decoration: none; color: inherit; }
 .fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
 .fact b { font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
@@ -97,6 +97,19 @@ mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: i
 .about img { width: clamp(120px, 16vw, 180px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; object-fit: cover; }
 @media (max-width: 680px) { .hero-grid, .about { grid-template-columns: 1fr; } .hero-photo { grid-row: 1; } }
 
+h1, h2 { letter-spacing: -.025em !important; }
+.app-sec { background: var(--green-soft); }
+.phones { display: flex; gap: 16px; overflow-x: auto; padding: 4px 2px 18px; scroll-snap-type: x mandatory; }
+.phone { flex: 0 0 clamp(190px, 22vw, 230px); margin: 0; scroll-snap-align: start; display: grid; gap: 10px; }
+.phone .screen { border-radius: 30px; border: 7px solid var(--ink); overflow: hidden; background: var(--white); aspect-ratio: 9 / 17; max-width: 100%; }
+.phone img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.phone figcaption { font-weight: 700; font-size: 15px; text-align: center; }
+.feats { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.feat { background: var(--white); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; }
+.feat b { font-size: 16px; }
+.feat span { color: var(--soft); font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 860px) { .feats { grid-template-columns: 1fr; } }
+
 /* Casos */
 .wall { columns: 3 280px; column-gap: 16px; }
 .wall > * { break-inside: avoid; margin: 0 0 16px; }
@@ -106,7 +119,7 @@ mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: i
 .case a.src { font: 500 12px/1 var(--f-mono); color: var(--soft); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
 .case a.src:hover { color: var(--green); }
 .who { display: flex; gap: 12px; align-items: center; }
-.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-soft); color: #8a2a0c; display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-soft); color: #6a4f0e; display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
 .who b { display: block; font-size: 15px; }
 .who span { color: var(--soft); font-size: 13.5px; }
 .show-all { display: flex; justify-content: center; margin-top: 8px; }
@@ -118,12 +131,12 @@ mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: i
 /* Oferta */
 .offer { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
 .offer-main { background: var(--green); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 22px; align-content: start; }
-.offer-main .label { color: #ffd2bf; }
+.offer-main .label { color: #e2d3a6; }
 .offer-main h3 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--f-display); font-stretch: 78%; }
 .inc { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
 .inc div { display: grid; gap: 4px; border-top: 2px solid rgba(255,255,255,.55); padding-top: 12px; }
 .inc b { font-size: 17px; }
-.inc span { font-size: 15px; line-height: 1.5; color: #ffe6dc; }
+.inc span { font-size: 15px; line-height: 1.5; color: #efe6cc; }
 .week { display: grid; gap: 8px; align-content: start; }
 .day { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; }
 .day .d { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
@@ -137,7 +150,7 @@ mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: i
 table { width: 100%; border-collapse: collapse; min-width: 600px; }
 th, td { text-align: left; padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
 thead th { border-top: 0; font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
-thead th.us { color: #8a2a0c; background: var(--green-soft); }
+thead th.us { color: #6a4f0e; background: var(--green-soft); }
 tbody th { font-weight: 700; width: 22%; }
 td { color: var(--soft); }
 td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
@@ -162,7 +175,7 @@ td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
 .fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
 .fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
 .fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
-.fit .yes li::before { content: "✓"; background: var(--green-soft); color: #8a2a0c; }
+.fit .yes li::before { content: "✓"; background: var(--green-soft); color: #6a4f0e; }
 .fit .no li { color: var(--soft); }
 .fit .no li::before { content: "✕"; background: var(--line); }
 
@@ -215,7 +228,7 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
       <div class="stack" style="gap:22px">
         <div class="label">Entrenador online · Hombres con responsabilidades</div>
         <h1>Mejora tu físico <mark>sin dejar de cumplir</mark> con tu vida.</h1>
-        <p class="lede">Para hombres con trabajo, familia y poco tiempo. Optimizamos tu entreno, tu nutrición y tu metabolismo para que el cambio se vea y se mantenga.</p>
+        <p class="lede">Para hombres con trabajo, familia o negocio que ya no tienen tiempo para improvisar. Optimizamos tu entreno, tu nutrición y tu metabolismo con un plan que encaja en tu semana, y lo llevas todo en mi app.</p>
       </div>
       <img class="hero-photo" src="casos/sergio-perfil.jpg" alt="Sergio Cámara, entrenador de CAMSFIT" width="255" height="265">
     </div>
@@ -269,7 +282,32 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
   </div>
 </section>
 
-<div class="jump" style="padding-top:0"><a href="#casos">Ver los casos de éxito ↓</a></div>
+<section id="app" class="app-sec">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Mi app</div>
+      <h2>Todo tu plan, en tu bolsillo.</h2>
+      <p class="lede">Tienes tu propia app conmigo. Ahí ves qué entrenar y qué comer cada día, registras tu progreso y me mandas tu revisión semanal.</p>
+    </div>
+    <div class="phones">
+      <figure class="phone"><div class="screen"><img src="casos/app-hoy.jpg" alt="Pantalla de hoy: peso diario, pasos y entreno del día" loading="lazy" width="540" height="468" style="object-fit:contain;background:#e8e6e1"></div><figcaption>Tu día</figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-entreno.jpg" alt="Entreno de tirón con series, repeticiones y vídeo de técnica" loading="lazy" width="540" height="1026"></div><figcaption>Entreno</figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-nutricion.jpg" alt="Plan de nutrición con opciones por comida y gramos" loading="lazy" width="540" height="880"></div><figcaption>Nutrición</figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-revision.jpg" alt="Revisión semanal enviada al entrenador" loading="lazy" width="540" height="1026"></div><figcaption>Revisión semanal</figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-equivalencias.jpg" alt="Calculadoras de equivalencias de alimentos" loading="lazy" width="540" height="780"></div><figcaption>Equivalencias</figcaption></figure>
+    </div>
+    <div class="feats">
+      <div class="feat"><b>Entreno guiado</b><span>Cada ejercicio con su técnica. Anotas peso, repeticiones y RIR mientras entrenas.</span></div>
+      <div class="feat"><b>Nutrición flexible</b><span>Varias opciones por comida, con pesos en crudo o cocinado. Eliges la que te apetezca.</span></div>
+      <div class="feat"><b>Equivalencias</b><span>Cambia un alimento por otro sin descuadrar el plan: hidratos, proteínas, grasas y fruta.</span></div>
+      <div class="feat"><b>Revisión semanal</b><span>Sueño, hambre, energía, estrés, digestión, motivación, peso y medidas. La recibo yo y ajusto tu plan.</span></div>
+      <div class="feat"><b>Peso y pasos</b><span>Registras tu peso cada día y la app calcula tu media semanal. Objetivo de pasos incluido.</span></div>
+      <div class="feat"><b>Suplementación</b><span>Tu biblioteca de suplementos, dentro de la app.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="jump" style="padding-top:48px"><a href="#casos">Ver los casos de éxito ↓</a></div>
 
 <!-- CASOS: cada caso es un <article class="case">. Los 6 primeros visibles; el resto con hidden class="case extra". -->
 <section id="casos">
@@ -325,15 +363,15 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
           <div><b>Plan de entreno</b><span>Adaptado a tu nivel, tu horario y el material que tienes.</span></div>
           <div><b>Plan de nutrición</b><span>Con lo que te gusta comer, para que lo puedas mantener.</span></div>
           <div><b>Optimización del metabolismo</b><span>Ajustes para que tu cuerpo siga respondiendo semana a semana.</span></div>
-          <div><b>Seguimiento conmigo</b><span>Revisamos tu progreso y ajustamos el plan.</span></div>
+          <div><b>Revisión semanal</b><span>Me mandas tu revisión desde la app y ajusto tu plan cada semana.</span></div>
           <div><b>CAMSFIT FAMILY</b><span>Comunidad de 2.000 personas que van a lo mismo que tú.</span></div>
-          <div><b>Para tu vida real</b><span>Comidas fuera, viajes y semanas difíciles incluidas.</span></div>
+          <div><b>App propia</b><span>Entreno, nutrición, equivalencias y progreso, todo en el móvil.</span></div>
         </div>
       </article>
       <div class="week">
         <div class="day"><span class="d">Paso 1</span><div><b>Me cuentas tu caso</b><small>Objetivo, horarios y punto de partida</small></div></div>
-        <div class="day"><span class="d">Paso 2</span><div><b>Recibes tu plan</b><small>Entreno y nutrición hechos para ti</small></div></div>
-        <div class="day key"><span class="d">Siempre</span><div><b>Seguimiento</b><small>Revisamos y ajustamos el plan</small></div></div>
+        <div class="day"><span class="d">Paso 2</span><div><b>Recibes tu plan en la app</b><small>Entreno y nutrición hechos para ti</small></div></div>
+        <div class="day key"><span class="d">Cada semana</span><div><b>Revisión en la app</b><small>La recibo yo y ajusto tu plan</small></div></div>
         <div class="day"><span class="d">Resultado</span><div><b>Un físico que se mantiene</b><small>Porque encaja con tu vida</small></div></div>
       </div>
     </div>
