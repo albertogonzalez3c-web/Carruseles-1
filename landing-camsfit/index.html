@@ -1,0 +1,439 @@
+<title>CAMSFIT Sergio Cámara</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Asesoría online de Sergio Cámara (CAMSFIT) para hombres con responsabilidades: entreno, nutrición y metabolismo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: carta de venta larga en una columna; pruebas y oferta a ancho completo. Look claro con naranja CAMSFIT de acento. */
+:root {
+  --paper: #faf9f7;
+  --white: #ffffff;
+  --ink: #141312;
+  --soft: #5a625d;
+  --line: #e1e6e2;
+  --green: #d9481c;
+  --green-soft: #fdebe3;
+  --yellow: #ffd21f;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(34px, 5vw, 56px)/1.03 var(--f-display); font-stretch: 78%; letter-spacing: -.01em; }
+h3 { font: 700 20px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.label { font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: inherit; padding: 0 .04em; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--green); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); background: #b83a14; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-ghost:hover { background: var(--white); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14px; }
+
+/* Cabecera */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { font: 900 17px/1 var(--f-display); font-stretch: 85%; letter-spacing: .05em; text-transform: uppercase; }
+.brand span { color: var(--green); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(28px, 5vw, 64px) clamp(48px, 7vw, 80px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(44px, 8vw, 100px)/.96 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; max-width: 14ch; }
+.hero .lede { color: var(--ink); font-size: clamp(19px, 2.2vw, 22px); max-width: 56ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { font: 500 13px/1 var(--f-mono); padding: 9px 12px; border-radius: 999px; background: var(--green-soft); color: #8a2a0c; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); text-decoration: none; color: inherit; }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--ink); margin-top: 3px; }
+.turn { margin-top: 28px; font: 800 clamp(28px, 4vw, 44px)/1.08 var(--f-display); font-stretch: 78%; }
+.turn em { font-style: normal; color: var(--green); }
+
+/* Mecanismo */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--green); letter-spacing: .1em; }
+.layer p { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.result-bar { margin-top: 12px; border-radius: 14px; background: var(--ink); color: var(--white); padding: 22px 24px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; justify-content: space-between; }
+.result-bar b { font: 800 26px/1.1 var(--f-display); font-stretch: 80%; }
+.result-bar span { color: #b9c2bc; font-size: 15px; }
+
+.base { background: var(--ink); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-bottom: 24px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); }
+.base h3 { font: 800 clamp(28px, 3.6vw, 40px)/1.05 var(--f-display); font-stretch: 78%; }
+.base p { color: #c9d1cc; max-width: 62ch; font-size: 17px; }
+.layers-head { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; margin-bottom: 12px; }
+.layers-head .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+.layers-head p { color: var(--soft); font-size: 16px; }
+
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.hero-photo { width: clamp(150px, 20vw, 240px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 0 0 2px var(--green); }
+.case img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.about { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: start; }
+.about img { width: clamp(120px, 16vw, 180px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; object-fit: cover; }
+@media (max-width: 680px) { .hero-grid, .about { grid-template-columns: 1fr; } .hero-photo { grid-row: 1; } }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 12px; }
+.case .big { font: 800 28px/1.05 var(--f-display); font-stretch: 78%; }
+.case blockquote { margin: 0; font-size: 16px; line-height: 1.6; }
+.case a.src { font: 500 12px/1 var(--f-mono); color: var(--soft); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
+.case a.src:hover { color: var(--green); }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-soft); color: #8a2a0c; display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.show-all { display: flex; justify-content: center; margin-top: 8px; }
+.show-all button { border: 0; cursor: pointer; font-family: inherit; }
+.jump { display: flex; justify-content: center; padding-block: 0 48px; }
+.jump a { padding: 14px 22px; border-radius: 999px; border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; background: var(--white); font-size: 16px; }
+.jump a:hover { background: var(--green-soft); }
+
+/* Oferta */
+.offer { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.offer-main { background: var(--green); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 22px; align-content: start; }
+.offer-main .label { color: #ffd2bf; }
+.offer-main h3 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--f-display); font-stretch: 78%; }
+.inc { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.inc div { display: grid; gap: 4px; border-top: 2px solid rgba(255,255,255,.55); padding-top: 12px; }
+.inc b { font-size: 17px; }
+.inc span { font-size: 15px; line-height: 1.5; color: #ffe6dc; }
+.week { display: grid; gap: 8px; align-content: start; }
+.day { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; }
+.day .d { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.day b { font-size: 15.5px; }
+.day small { display: block; color: var(--soft); font-size: 14px; }
+.day.key { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.day.key .d, .day.key small { color: #b9c2bc; }
+
+/* Comparativa */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
+th, td { text-align: left; padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
+thead th { border-top: 0; font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+thead th.us { color: #8a2a0c; background: var(--green-soft); }
+tbody th { font-weight: 700; width: 22%; }
+td { color: var(--soft); }
+td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
+
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; text-align: center; font: 800 clamp(22px, 2.6vw, 28px)/1 var(--f-display); font-stretch: 75%; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: #d6ddd8; font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--yellow); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9aa59e; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--green-soft); color: #8a2a0c; }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+.step p { color: var(--soft); font-size: 16px; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final h2 { font-size: clamp(40px, 7vw, 84px); font-stretch: 72%; max-width: 15ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(248, 250, 248, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .offer { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .signs, .layers, .inc, .fit, .steps { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">CAMS<span>FIT</span></div>
+    <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="stack" style="gap:22px">
+        <div class="label">Entrenador online · Hombres con responsabilidades</div>
+        <h1>Mejora tu físico <mark>sin dejar de cumplir</mark> con tu vida.</h1>
+        <p class="lede">Para hombres con trabajo, familia y poco tiempo. Optimizamos tu entreno, tu nutrición y tu metabolismo para que el cambio se vea y se mantenga.</p>
+      </div>
+      <img class="hero-photo" src="casos/sergio-perfil.jpg" alt="Sergio Cámara, entrenador de CAMSFIT" width="255" height="265">
+    </div>
+    <div class="pills"><span>Entreno</span><span>Nutrición</span><span>Metabolismo</span></div>
+    <div class="ctas">
+      <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg><span>Escríbeme por WhatsApp</span></a>
+      <a class="btn btn-ghost" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+    <p class="cta-note">El formulario son 2 minutos. Te respondo yo personalmente.</p>
+    <a class="facts" href="#casos">
+      <div class="fact"><b>118 → 90 kg</b><span>Unai, de la cama de un hospital al mejor físico de su vida</span></div>
+      <div class="fact"><b>+70K</b><span>Personas siguen mi trabajo en Instagram</span></div>
+      <div class="fact"><b>+10</b><span>Competiciones de culturismo a mis espaldas</span></div>
+      <div class="fact"><b>2.000</b><span>Miembros en la comunidad CAMSFIT FAMILY</span></div>
+    </a>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack">
+      <div class="label">¿Te reconoces?</div>
+      <h2>Tienes responsabilidades. Y tu físico siempre queda para “mañana”.</h2>
+      <p class="lede">Si tienes trabajo y familia, seguramente te pasa algo de esto:</p>
+    </div>
+    <div class="signs" style="margin-top:28px">
+      <div class="sign">Has empezado mil veces. Siempre con un “mañana empiezo”.</div>
+      <div class="sign">Comes bien entre semana, pero luego llegan los atracones.</div>
+      <div class="sign">Entrenas, pero no ves progreso en el espejo.</div>
+      <div class="sign">La barriga no baja y la energía no llega a la tarde.</div>
+      <div class="sign">No tienes tiempo para planes de dos horas de gimnasio.</div>
+      <div class="sign">No sabes qué hacer para mejorar de verdad.</div>
+    </div>
+    <p class="turn">No te falta fuerza de voluntad. <em>Te falta un plan hecho para tu vida.</em></p>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:36px">
+      <div class="label">El método</div>
+      <h2>Entreno, nutrición y metabolismo. Optimizados para ti.</h2>
+      <p class="lede">No es una rutina genérica ni una dieta de revista. Es un plan que encaja con tus horarios y que se ajusta según respondes.</p>
+    </div>
+    <div class="layers" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <article class="layer"><span class="n">01</span><h3>Entreno</h3><p>Sesiones eficientes que encajan en tu semana. Más progreso con menos horas.</p></article>
+      <article class="layer"><span class="n">02</span><h3>Nutrición</h3><p>Comer bien sin vivir a dieta, y acabar con los atracones del fin de semana.</p></article>
+      <article class="layer"><span class="n">03</span><h3>Metabolismo</h3><p>Que tu cuerpo responda: perder grasa y ganar músculo sin estancarte.</p></article>
+    </div>
+    <div class="result-bar"><b>El resultado: un físico que se ve y se mantiene.</b><span>Sin dejar de cumplir con tu trabajo ni con tu familia.</span></div>
+  </div>
+</section>
+
+<div class="jump" style="padding-top:0"><a href="#casos">Ver los casos de éxito ↓</a></div>
+
+<!-- CASOS: cada caso es un <article class="case">. Los 6 primeros visibles; el resto con hidden class="case extra". -->
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Casos de éxito</div>
+      <h2>Hombres con responsabilidades que lo consiguieron.</h2>
+      <p class="lede">Con trabajo, familia y poco tiempo. Igual que tú.</p>
+    </div>
+    <div class="wall">
+      <article class="case">
+        <img src="casos/unai-118-90.jpg" alt="Unai antes y después: de 118 kg a 90 kg" loading="lazy" width="437" height="582">
+        <div class="big">De 118 a 90 kg</div>
+        <p>De la cama de un hospital al mejor físico de su vida. Lo tenía complicado, pero es un guerrero.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">U</span><div><b>Unai</b><span>Cliente de CAMSFIT</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/atracones.jpg" alt="Pareja antes y después: comíamos bien pero había atracones" loading="lazy" width="439" height="321">
+        <div class="big">Adiós a los atracones</div>
+        <p>“Comíamos bien, pero había atracones. No sabíamos qué hacer para mejorar.” Ahora lo saben, y se nota.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Clientes de CAMSFIT</b><span>Cambio en pareja</span></div></div>
+      </article>
+    </div>
+    <div class="show-all"><button type="button" id="showAll" class="btn" data-label="Ver más casos de éxito">Ver más casos de éxito</button></div>
+    <p class="cta-note" style="text-align:center;margin-top:18px">Muchos más cambios en las destacadas “Clientes” y “Cambios” de <a href="https://instagram.com/sergio_camsfit" target="_blank" rel="noopener">@sergio_camsfit</a>.</p>
+  </div>
+</section>
+
+<section id="quien-soy">
+  <div class="wrap about">
+    <img src="casos/sergio-perfil.jpg" alt="Sergio Cámara" width="255" height="265" loading="lazy">
+    <div class="read stack">
+      <div class="label">Quién soy</div>
+      <h2>Soy Sergio Cámara, de CAMSFIT.</h2>
+      <p>Entrenador online y competidor de culturismo, con más de 10 competiciones a mis espaldas. Mi trabajo lo siguen más de 70.000 personas en Instagram y tengo una comunidad de 2.000 personas: CAMSFIT FAMILY.</p>
+      <p><strong>Trabajo con hombres con responsabilidades</strong>, porque sé que no tienes todo el día para pensar en tu físico. Por eso mi trabajo es que no tengas que hacerlo: tú cumples el plan, yo me encargo de que funcione.</p>
+      <p>Mi historia completa la tienes en la destacada “Mi historia” de mi <a href="https://instagram.com/sergio_camsfit" target="_blank" rel="noopener">Instagram</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:36px">
+      <div class="label">Qué incluye</div>
+      <h2>Todo lo que necesitas para cambiar tu físico.</h2>
+    </div>
+    <div class="offer">
+      <article class="offer-main">
+        <div class="label">Asesoría online</div>
+        <h3>Un plan hecho para tu vida, no al revés.</h3>
+        <div class="inc">
+          <div><b>Plan de entreno</b><span>Adaptado a tu nivel, tu horario y el material que tienes.</span></div>
+          <div><b>Plan de nutrición</b><span>Con lo que te gusta comer, para que lo puedas mantener.</span></div>
+          <div><b>Optimización del metabolismo</b><span>Ajustes para que tu cuerpo siga respondiendo semana a semana.</span></div>
+          <div><b>Seguimiento conmigo</b><span>Revisamos tu progreso y ajustamos el plan.</span></div>
+          <div><b>CAMSFIT FAMILY</b><span>Comunidad de 2.000 personas que van a lo mismo que tú.</span></div>
+          <div><b>Para tu vida real</b><span>Comidas fuera, viajes y semanas difíciles incluidas.</span></div>
+        </div>
+      </article>
+      <div class="week">
+        <div class="day"><span class="d">Paso 1</span><div><b>Me cuentas tu caso</b><small>Objetivo, horarios y punto de partida</small></div></div>
+        <div class="day"><span class="d">Paso 2</span><div><b>Recibes tu plan</b><small>Entreno y nutrición hechos para ti</small></div></div>
+        <div class="day key"><span class="d">Siempre</span><div><b>Seguimiento</b><small>Revisamos y ajustamos el plan</small></div></div>
+        <div class="day"><span class="d">Resultado</span><div><b>Un físico que se mantiene</b><small>Porque encaja con tu vida</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Para quién es</div>
+      <h2>Para hombres que cumplen con todo. Menos con ellos mismos.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes trabajo, familia o un negocio y poco tiempo libre.</li>
+          <li>Quieres perder grasa, ganar músculo y sentirte bien otra vez.</li>
+          <li>Estás cansado de empezar y dejarlo.</li>
+          <li>Estás dispuesto a seguir un plan y dejarte guiar.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio milagro en dos semanas.</li>
+          <li>Quieres una rutina en PDF y no hablar con nadie.</li>
+          <li>No estás dispuesto a cambiar ningún hábito.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Cuánto tiempo necesito a la semana?</summary><p>El plan se adapta a tu agenda. Trabajo con hombres con jornadas largas y familia: la clave es hacer lo que más impacto tiene, no hacer más.</p></details>
+      <details><summary>¿Tengo que dejar de comer lo que me gusta?</summary><p>No. Partimos de cómo comes ahora y lo vamos ajustando para que lo puedas mantener, comidas fuera incluidas.</p></details>
+      <details><summary>¿Y si nunca he entrenado o lo he dejado muchas veces?</summary><p>Es lo más habitual. Empezamos desde tu punto de partida real.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso. Rellena el formulario o escríbeme por WhatsApp y te lo cuento.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso en 2 minutos.</h2>
+      <p class="lede">Rellena el formulario y lo reviso yo personalmente. Si encajamos, te escribo para empezar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn" id="formBtn" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Deja de decir “mañana empiezo”.</h2>
+    <div class="ctas">
+      <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+      <a class="btn btn-ghost" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Sergio Cámara · CAMSFIT</span><span><a href="https://instagram.com/sergio_camsfit" target="_blank" rel="noopener">@sergio_camsfit</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener">Escríbeme por WhatsApp</a></div>
+
+<script>
+(function () {
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Alojada en su dominio, el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = fb.href; f.title = fb.textContent; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+  var extras = document.querySelectorAll(".wall .extra");
+  var b = document.getElementById("showAll");
+  if (b) {
+    if (!extras.length) b.parentNode.hidden = true;
+    else {
+      b.textContent = b.dataset.label + " (+" + extras.length + ")";
+      b.addEventListener("click", function () { extras.forEach(function (el) { el.hidden = false; }); b.parentNode.hidden = true; });
+    }
+  }
+})();
+</script>
