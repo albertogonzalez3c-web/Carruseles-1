@@ -135,6 +135,11 @@ mark { background: none; color: var(--gold-text); }
   .collage .phone:nth-child(3) { margin-top: 0; }
 }
 
+.vsl { border-radius: 18px; overflow: hidden; background: var(--ink); aspect-ratio: 16 / 9; max-width: 100%; }
+.vsl video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cases-block .wall { columns: 4 230px; }
+section.cases-block + section, section + section.cases-block { border-top: 0; }
+
 /* Casos */
 .wall { columns: 3 280px; column-gap: 16px; }
 .wall > * { break-inside: avoid; margin: 0 0 16px; }
@@ -257,6 +262,8 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
       </div>
       <img class="hero-photo" src="casos/sergio-perfil.jpg" alt="Sergio Cámara, entrenador de CAMSFIT" width="255" height="265">
     </div>
+    <!-- VSL PENDIENTE: cuando Sergio grabe el vídeo, sustituir este comentario por
+         <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
     <div class="pills"><span>Entreno</span><span>Nutrición</span><span>Metabolismo</span></div>
     <div class="ctas">
       <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg><span>Escríbeme por WhatsApp</span></a>
@@ -272,68 +279,12 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
   </div>
 </div>
 
-<section id="problema">
+<section id="casos" class="cases-block">
   <div class="wrap">
-    <div class="read stack">
-      <div class="label">¿Te reconoces?</div>
-      <h2>Tienes responsabilidades. Y tu físico siempre queda para “mañana”.</h2>
-      <p class="lede">Si tienes trabajo y familia, seguramente te pasa algo de esto:</p>
-    </div>
-    <div class="signs" style="margin-top:28px">
-      <div class="sign">Has empezado mil veces. Siempre con un “mañana empiezo”.</div>
-      <div class="sign">Comes bien entre semana, pero luego llegan los atracones.</div>
-      <div class="sign">Entrenas, pero no ves progreso en el espejo.</div>
-      <div class="sign">La barriga no baja y la energía no llega a la tarde.</div>
-      <div class="sign">No tienes tiempo para planes de dos horas de gimnasio.</div>
-      <div class="sign">No sabes qué hacer para mejorar de verdad.</div>
-    </div>
-    <p class="turn">No te falta fuerza de voluntad. <em>Te falta un plan hecho para tu vida.</em></p>
-  </div>
-</section>
-
-<section id="metodo">
-  <div class="wrap">
-    <div class="read stack" style="margin-bottom:36px">
-      <div class="label">El método</div>
-      <h2>Entreno, nutrición y metabolismo. Optimizados para ti.</h2>
-      <p class="lede">No es una rutina genérica ni una dieta de revista. Es un plan que encaja con tus horarios y que se ajusta según respondes.</p>
-    </div>
-    <div class="layers" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-      <article class="layer"><span class="n">01</span><h3>Entreno</h3><p>Sesiones eficientes que encajan en tu semana. Más progreso con menos horas.</p></article>
-      <article class="layer"><span class="n">02</span><h3>Nutrición</h3><p>Comer bien sin vivir a dieta, y acabar con los atracones del fin de semana.</p></article>
-      <article class="layer"><span class="n">03</span><h3>Metabolismo</h3><p>Que tu cuerpo responda: perder grasa y ganar músculo sin estancarte.</p></article>
-    </div>
-    <div class="result-bar"><b>El resultado: un físico que se ve y se mantiene.</b><span>Sin dejar de cumplir con tu trabajo ni con tu familia.</span></div>
-  </div>
-</section>
-
-<section id="app" class="app-sec">
-  <div class="wrap">
-    <div class="read stack" style="margin-bottom:32px">
-      <div class="label">Mi app</div>
-      <h2>Todo tu plan, en tu bolsillo.</h2>
-      <p class="lede">Tienes tu propia app conmigo. Ahí ves qué entrenar y qué comer cada día, registras tu progreso y me mandas tu revisión semanal.</p>
-    </div>
-    <div class="collage">
-      <figure class="phone"><div class="screen"><img src="casos/app-1-inicio.jpg" alt="Pantalla de la app: Tu día" loading="lazy" width="600" height="1140"></div><figcaption><b>Tu día</b><span>Peso, pasos y el entreno que te toca hoy.</span></figcaption></figure>
-      <figure class="phone"><div class="screen"><img src="casos/app-2-entreno.jpg" alt="Pantalla de la app: Entreno guiado" loading="lazy" width="600" height="1140"></div><figcaption><b>Entreno guiado</b><span>Cada ejercicio con su técnica. Anotas peso, repeticiones y RIR.</span></figcaption></figure>
-      <figure class="phone"><div class="screen"><img src="casos/app-3-nutricion.jpg" alt="Pantalla de la app: Nutrición flexible" loading="lazy" width="600" height="1140"></div><figcaption><b>Nutrición flexible</b><span>Varias opciones por comida, con pesos en crudo o cocinado.</span></figcaption></figure>
-      <figure class="phone"><div class="screen"><img src="casos/app-4-revision.jpg" alt="Pantalla de la app: Revisión semanal" loading="lazy" width="600" height="1140"></div><figcaption><b>Revisión semanal</b><span>Me la mandas desde la app y ajusto tu plan.</span></figcaption></figure>
-      <figure class="phone"><div class="screen"><img src="casos/app-5-bienestar.jpg" alt="Pantalla de la app: Cómo te sientes" loading="lazy" width="600" height="1140"></div><figcaption><b>Cómo te sientes</b><span>Sueño, hambre, energía, estrés, digestión, motivación y fatiga.</span></figcaption></figure>
-      <figure class="phone"><div class="screen"><img src="casos/app-7-equivalencias.jpg" alt="Pantalla de la app: Equivalencias" loading="lazy" width="600" height="984"></div><figcaption><b>Equivalencias</b><span>Cambia un alimento por otro sin descuadrar el plan.</span></figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<div class="jump" style="padding-top:48px"><a href="#casos">Ver los casos de éxito ↓</a></div>
-
-<!-- CASOS: cada caso es un <article class="case">. Los 6 primeros visibles; el resto con hidden class="case extra". -->
-<section id="casos">
-  <div class="wrap">
-    <div class="read stack" style="margin-bottom:32px">
+    <div class="read stack" style="margin-bottom:28px">
       <div class="label">Casos de éxito</div>
       <h2>Ellos dijeron “mañana empiezo”. Y empezaron.</h2>
-      <p class="lede">Cada caso, con su plan. Sin excusas de tiempo ni de responsabilidades.</p>
+      <p class="lede">Cada caso, con su plan.</p>
     </div>
     <div class="wall">
       <article class="case">
@@ -360,6 +311,31 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
         <p>Estudiante de Marketing. Quería llegar a su objetivo para junio o julio. Lo cumplió en mayo.</p>
         <div class="who"><span class="avatar" aria-hidden="true">T</span><div><b>Toni</b><span>En 4 meses y medio</span></div></div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="servicio">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo trabajamos</div>
+      <h2>Un plan hecho para tu vida. Ajustado cada semana.</h2>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">01</span><h3>Entreno</h3><p>Sesiones eficientes que encajan en tu semana.</p></article>
+      <article class="layer"><span class="n">02</span><h3>Nutrición</h3><p>Comer bien sin vivir a dieta y sin atracones.</p></article>
+      <article class="layer"><span class="n">03</span><h3>Metabolismo</h3><p>Ajustes para que tu cuerpo siga respondiendo.</p></article>
+      <article class="layer"><span class="n">04</span><h3>Revisión semanal</h3><p>Me la mandas desde la app y ajusto tu plan.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cases-block">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Más resultados</div>
+    </div>
+    <div class="wall">
       <article class="case">
         <img src="casos/pablo.jpg" alt="Pablo antes y después: de 108 a 94,8 kg" loading="lazy" width="784" height="629">
         <div class="big">−13 kg</div>
@@ -372,77 +348,75 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
         <p>“Yo es que no tengo tiempo y muchas responsabilidades.” Luego está Nico, que lo consiguió en 3 meses.</p>
         <div class="who"><span class="avatar" aria-hidden="true">N</span><div><b>Nico</b><span>Hombre con responsabilidades</span></div></div>
       </article>
-      <article hidden class="case extra">
+      <article class="case">
         <img src="casos/denis.jpg" alt="Denis antes y después tras 4 meses" loading="lazy" width="800" height="800">
         <div class="big">4 meses con Denis</div>
         <p>No solo ha mejorado físicamente: ahora tiene la autoestima para ponerse tirantes. No hay mayor éxito que sentirse bien con uno mismo.</p>
         <div class="who"><span class="avatar" aria-hidden="true">D</span><div><b>Denis</b><span>4 meses de trabajo</span></div></div>
       </article>
-      <article hidden class="case extra">
-        <img src="casos/masa-muscular.jpg" alt="Cliente en fase de ganar masa muscular: de 81,8 a 87,1 kg" loading="lazy" width="800" height="1028">
-        <div class="big">+5,3 kg de músculo</div>
-        <p>Objetivo: ganar masa muscular. De 81,8 a 87,1 kg.</p>
-        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Fase de volumen</span></div></div>
-      </article>
-      <article hidden class="case extra">
+      <article class="case">
         <img src="casos/jose.jpg" alt="José antes y después de frente, perfil y espalda" loading="lazy" width="800" height="788">
         <div class="big">Otra persona en 3 meses</div>
         <p>Malos hábitos, mala alimentación y entreno casi nulo. En 3 meses logramos el objetivo y tuvo que cambiar todo el armario.</p>
         <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>José</b><span>@legitcj_</span></div></div>
       </article>
-      <article hidden class="case extra">
+    </div>
+  </div>
+</section>
+
+<section id="app" class="app-sec">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Mi app</div>
+      <h2>Todo tu plan, en tu bolsillo.</h2>
+      <p class="lede">Tienes tu propia app conmigo. Ahí ves qué entrenar y qué comer cada día, registras tu progreso y me mandas tu revisión semanal.</p>
+    </div>
+    <div class="collage">
+      <figure class="phone"><div class="screen"><img src="casos/app-1-inicio.jpg" alt="Pantalla de la app: Tu día" loading="lazy" width="600" height="1140"></div><figcaption><b>Tu día</b><span>Peso, pasos y el entreno que te toca hoy.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-2-entreno.jpg" alt="Pantalla de la app: Entreno guiado" loading="lazy" width="600" height="1140"></div><figcaption><b>Entreno guiado</b><span>Cada ejercicio con su técnica. Anotas peso, repeticiones y RIR.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-3-nutricion.jpg" alt="Pantalla de la app: Nutrición flexible" loading="lazy" width="600" height="1140"></div><figcaption><b>Nutrición flexible</b><span>Varias opciones por comida, con pesos en crudo o cocinado.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-4-revision.jpg" alt="Pantalla de la app: Revisión semanal" loading="lazy" width="600" height="1140"></div><figcaption><b>Revisión semanal</b><span>Me la mandas desde la app y ajusto tu plan.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-5-bienestar.jpg" alt="Pantalla de la app: Cómo te sientes" loading="lazy" width="600" height="1140"></div><figcaption><b>Cómo te sientes</b><span>Sueño, hambre, energía, estrés, digestión, motivación y fatiga.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-7-equivalencias.jpg" alt="Pantalla de la app: Equivalencias" loading="lazy" width="600" height="984"></div><figcaption><b>Equivalencias</b><span>Cambia un alimento por otro sin descuadrar el plan.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cases-block">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Más resultados</div>
+    </div>
+    <div class="wall">
+      <article class="case">
         <img src="casos/jean-alejandro-xavi.jpg" alt="Jean, Alejandro y Xavi antes y después tras 2 meses, 1 mes y 1 mes" loading="lazy" width="724" height="781">
         <div class="big">2 meses, 1 mes y 1 mes</div>
         <p>Los tres con un objetivo parecido y planes completamente distintos. Cada plan, hecho para cada uno.</p>
         <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jean, Alejandro y Xavi</b><span>Clientes de CAMSFIT</span></div></div>
       </article>
-      <article hidden class="case extra">
+      <article class="case">
         <img src="casos/jorge.jpg" alt="Jorge antes y después de prepararse para competir" loading="lazy" width="800" height="799">
         <div class="big">De volumen a la tarima</div>
         <p>Empezó con un simple mensaje, con el sueño de competir y verse en tarima. Y está a punto de cumplirlo.</p>
         <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jorge</b><span>@jorgedenys_fitness</span></div></div>
       </article>
-      <article hidden class="case extra">
+      <article class="case">
+        <img src="casos/masa-muscular.jpg" alt="Cliente en fase de ganar masa muscular: de 81,8 a 87,1 kg" loading="lazy" width="800" height="1028">
+        <div class="big">+5,3 kg de músculo</div>
+        <p>Objetivo: ganar masa muscular. De 81,8 a 87,1 kg.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Fase de volumen</span></div></div>
+      </article>
+      <article class="case">
         <img src="casos/angel.jpg" alt="Ángel antes y después de perfil" loading="lazy" width="800" height="781">
         <div class="big">El cambio de Ángel</div>
         <p>Poco se habla del cambio físico de Ángel. Y no solo del corte de pelo.</p>
         <div class="who"><span class="avatar" aria-hidden="true">Á</span><div><b>Ángel</b><span>Cliente de CAMSFIT</span></div></div>
       </article>
-      <article hidden class="case extra">
-        <img src="casos/eric.jpg" alt="Eric antes y después" loading="lazy" width="800" height="475">
-        <div class="big">Listo para la playa</div>
-        <p>Vaya trabajazo el de Eric. ¿Listo para la playa?</p>
-        <div class="who"><span class="avatar" aria-hidden="true">E</span><div><b>Eric</b><span>Cliente de CAMSFIT</span></div></div>
-      </article>
-      <article hidden class="case extra">
-        <img src="casos/comer-fuera.jpg" alt="Cliente antes y después tras la fase de déficit" loading="lazy" width="800" height="439">
-        <div class="big">Comer fuera sin miedo</div>
-        <p>Sale a comer con su pareja y aplica lo que ha aprendido. Terminó su déficit y ya empieza el volumen.</p>
-        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Del déficit al volumen</span></div></div>
-      </article>
-      <article hidden class="case extra">
-        <img src="casos/atracones.jpg" alt="Pareja antes y después: comíamos bien pero había atracones" loading="lazy" width="439" height="321">
-        <div class="big">Adiós a los atracones</div>
-        <p>“Comíamos bien, pero había atracones. No sabíamos qué hacer para mejorar.” Ahora lo saben, y se nota.</p>
-        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Clientes de CAMSFIT</b><span>Cambio en pareja</span></div></div>
-      </article>
-      <article hidden class="case extra">
-        <img src="casos/cambio-1.jpg" alt="Cliente antes y después" loading="lazy" width="585" height="583">
-        <div class="big">Cambio físico</div>
-        <p>Vive en una residencia con pensión completa y tenía molestias de hombro. Plan adaptado a su realidad.</p>
-        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Estudiante</span></div></div>
-      </article>
-      <article hidden class="case extra">
-        <img src="casos/cambio-2.jpg" alt="Cliente antes y después" loading="lazy" width="800" height="390">
-        <div class="big">Cambio físico</div>
-        <p>Otro cambio de la destacada “Cambios físicos”.</p>
-        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Cambio físico</span></div></div>
-      </article>
     </div>
-    <div class="show-all"><button type="button" id="showAll" class="btn" data-label="Ver más casos de éxito">Ver más casos de éxito</button></div>
-    <p class="cta-note" style="text-align:center;margin-top:18px">Muchos más cambios en las destacadas “Clientes” y “Cambios” de <a href="https://instagram.com/sergio_camsfit" target="_blank" rel="noopener">@sergio_camsfit</a>.</p>
   </div>
 </section>
+
+<div class="jump"><a href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener">Quiero ser el próximo caso · Escríbeme</a></div>
 
 <section id="quien-soy">
   <div class="wrap about">
@@ -457,74 +431,42 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
   </div>
 </section>
 
-<section id="oferta">
+<section class="cases-block">
   <div class="wrap">
-    <div class="read stack" style="margin-bottom:36px">
-      <div class="label">Qué incluye</div>
-      <h2>Todo lo que necesitas para cambiar tu físico.</h2>
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Y más cambios</div>
     </div>
-    <div class="offer">
-      <article class="offer-main">
-        <div class="label">Asesoría online</div>
-        <h3>Un plan hecho para tu vida, no al revés.</h3>
-        <div class="inc">
-          <div><b>Plan de entreno</b><span>Adaptado a tu nivel, tu horario y el material que tienes.</span></div>
-          <div><b>Plan de nutrición</b><span>Con lo que te gusta comer, para que lo puedas mantener.</span></div>
-          <div><b>Optimización del metabolismo</b><span>Ajustes para que tu cuerpo siga respondiendo semana a semana.</span></div>
-          <div><b>Revisión semanal</b><span>Me mandas tu revisión desde la app y ajusto tu plan cada semana.</span></div>
-          <div><b>CAMSFIT FAMILY</b><span>Comunidad de 2.000 personas que van a lo mismo que tú.</span></div>
-          <div><b>App propia</b><span>Entreno, nutrición, equivalencias y progreso, todo en el móvil.</span></div>
-        </div>
+    <div class="wall">
+      <article class="case">
+        <img src="casos/eric.jpg" alt="Eric antes y después" loading="lazy" width="800" height="475">
+        <div class="big">Listo para la playa</div>
+        <p>Vaya trabajazo el de Eric. ¿Listo para la playa?</p>
+        <div class="who"><span class="avatar" aria-hidden="true">E</span><div><b>Eric</b><span>Cliente de CAMSFIT</span></div></div>
       </article>
-      <div class="week">
-        <div class="day"><span class="d">Paso 1</span><div><b>Me cuentas tu caso</b><small>Objetivo, horarios y punto de partida</small></div></div>
-        <div class="day"><span class="d">Paso 2</span><div><b>Recibes tu plan en la app</b><small>Entreno y nutrición hechos para ti</small></div></div>
-        <div class="day key"><span class="d">Cada semana</span><div><b>Revisión en la app</b><small>La recibo yo y ajusto tu plan</small></div></div>
-        <div class="day"><span class="d">Resultado</span><div><b>Un físico que se mantiene</b><small>Porque encaja con tu vida</small></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="para-quien">
-  <div class="wrap">
-    <div class="read stack" style="margin-bottom:32px">
-      <div class="label">Para quién es</div>
-      <h2>Para hombres que cumplen con todo. Menos con ellos mismos.</h2>
-    </div>
-    <div class="fit">
-      <div class="yes">
-        <h3>Es para ti si…</h3>
-        <ul>
-          <li>Tienes trabajo, familia o un negocio y poco tiempo libre.</li>
-          <li>Quieres perder grasa, ganar músculo y sentirte bien otra vez.</li>
-          <li>Estás cansado de empezar y dejarlo.</li>
-          <li>Estás dispuesto a seguir un plan y dejarte guiar.</li>
-        </ul>
-      </div>
-      <div class="no">
-        <h3>No es para ti si…</h3>
-        <ul>
-          <li>Buscas un cambio milagro en dos semanas.</li>
-          <li>Quieres una rutina en PDF y no hablar con nadie.</li>
-          <li>No estás dispuesto a cambiar ningún hábito.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="read stack" style="margin-bottom:24px">
-      <div class="label">Preguntas frecuentes</div>
-      <h2>Dudas rápidas</h2>
-    </div>
-    <div class="faq">
-      <details><summary>¿Cuánto tiempo necesito a la semana?</summary><p>El plan se adapta a tu agenda. Trabajo con hombres con jornadas largas y familia: la clave es hacer lo que más impacto tiene, no hacer más.</p></details>
-      <details><summary>¿Tengo que dejar de comer lo que me gusta?</summary><p>No. Partimos de cómo comes ahora y lo vamos ajustando para que lo puedas mantener, comidas fuera incluidas.</p></details>
-      <details><summary>¿Y si nunca he entrenado o lo he dejado muchas veces?</summary><p>Es lo más habitual. Empezamos desde tu punto de partida real.</p></details>
-      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso. Rellena el formulario o escríbeme por WhatsApp y te lo cuento.</p></details>
+      <article class="case">
+        <img src="casos/comer-fuera.jpg" alt="Cliente antes y después tras la fase de déficit" loading="lazy" width="800" height="439">
+        <div class="big">Comer fuera sin miedo</div>
+        <p>Sale a comer con su pareja y aplica lo que ha aprendido. Terminó su déficit y ya empieza el volumen.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Del déficit al volumen</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/atracones.jpg" alt="Pareja antes y después: comíamos bien pero había atracones" loading="lazy" width="439" height="321">
+        <div class="big">Adiós a los atracones</div>
+        <p>“Comíamos bien, pero había atracones. No sabíamos qué hacer para mejorar.” Ahora lo saben, y se nota.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Clientes de CAMSFIT</b><span>Cambio en pareja</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/cambio-1.jpg" alt="Cliente antes y después" loading="lazy" width="585" height="583">
+        <div class="big">Cambio físico</div>
+        <p>Vive en una residencia con pensión completa y tenía molestias de hombro. Plan adaptado a su realidad.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Estudiante</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/cambio-2.jpg" alt="Cliente antes y después" loading="lazy" width="800" height="390">
+        <div class="big">Cambio físico</div>
+        <p>Otro cambio de la destacada “Cambios físicos”.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Cambio físico</span></div></div>
+      </article>
     </div>
   </div>
 </section>
@@ -539,6 +481,20 @@ footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; ga
     <div class="form-box">
       <div class="form-embed" id="formEmbed" hidden></div>
       <a class="btn" id="formBtn" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Cuánto tiempo necesito?</summary><p>El plan se adapta a tu agenda. La clave es hacer lo que más impacto tiene, no hacer más.</p></details>
+      <details><summary>¿Tengo que dejar de comer lo que me gusta?</summary><p>No. Partimos de cómo comes ahora, con opciones y equivalencias en la app.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso. Rellena el formulario o escríbeme por WhatsApp y te lo cuento.</p></details>
     </div>
   </div>
 </section>
