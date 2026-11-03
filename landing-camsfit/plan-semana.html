@@ -1,0 +1,447 @@
+<title>Plan Semana CAMSFIT</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: plan de trabajo en una columna con índice arriba; cada frente es un bloque con tareas marcables. Colores de la app CAMSFIT. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --sand: #ddd9ce;
+  --sand-line: #cbbf98;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --gold: #7f6114;
+  --gold-text: #7a6225;
+  --chip: #edebe6;
+  --rust: #9a4b2f;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 980px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 6vw, 60px)/1.02 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 clamp(24px, 3.4vw, 32px)/1.12 var(--f-body); }
+h3 { font: 700 17.5px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: var(--gold-text); }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+header { padding-block: clamp(36px, 6vw, 64px) 24px; display: grid; gap: 14px; }
+header .lede { font-size: 18.5px; color: var(--soft); max-width: 62ch; }
+.goals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.goal { background: var(--sand); border: 1.5px solid var(--sand-line); border-radius: 16px; padding: 16px 18px; display: grid; gap: 4px; }
+.goal b { font-size: 16px; }
+.goal span { color: var(--soft); font-size: 14.5px; }
+
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(232, 230, 225, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); margin-top: 22px; }
+nav.toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+nav.toc a { flex: none; text-decoration: none; color: var(--ink); background: var(--white); border-radius: 999px; padding: 8px 13px; font-size: 13.5px; font-weight: 700; }
+nav.toc a:hover { background: var(--sand); }
+
+section { padding-block: clamp(36px, 6vw, 60px); border-top: 1px solid var(--sand); scroll-margin-top: 64px; }
+.sec-head { display: grid; gap: 10px; margin-bottom: 22px; }
+.sec-head .when { display: inline-block; width: fit-content; background: var(--gold); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.stack { display: grid; gap: 12px; }
+
+/* Tareas */
+.tasks { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tasks li label { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; align-items: start; cursor: pointer; font-size: 15.5px; }
+.tasks input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--gold); }
+.tasks input:checked + span { color: var(--soft); text-decoration: line-through; text-decoration-color: var(--sand-line); }
+.tasks input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+pre.copy { margin: 0; white-space: pre-wrap; font: 500 14.5px/1.55 var(--f-body); background: var(--chip); border-radius: 12px; padding: 14px 16px; }
+.msg { display: grid; gap: 6px; }
+.msg .t { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); }
+.msg p { background: var(--chip); border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 15px; }
+
+/* Calendario */
+.cal-scroll { overflow-x: auto; }
+table.cal { width: 100%; min-width: 760px; border-collapse: separate; border-spacing: 6px; }
+.cal th { font: 500 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); text-align: left; padding: 4px 6px; }
+.cal td { background: var(--white); border-radius: 12px; padding: 11px 12px; vertical-align: top; font-size: 14px; line-height: 1.45; }
+.cal td b { display: block; font-size: 14.5px; }
+.cal td .fmt { display: inline-block; margin-bottom: 6px; font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; background: var(--chip); color: var(--gold-text); padding: 5px 7px; border-radius: 999px; }
+.cal td.yt { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.cal .row-h { font: 700 13px/1.3 var(--f-body); color: var(--ink); background: none; padding-left: 0; width: 90px; }
+
+.pillar { border-top: 3px solid var(--gold); }
+.pillar .phase { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.pillar ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+
+/* Embudo */
+.funnel { display: grid; gap: 8px; }
+.step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--white); border-radius: 14px; padding: 14px 16px; }
+.step .n { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); color: var(--white); display: grid; place-items: center; font-weight: 800; font-size: 15px; }
+.step b { display: block; }
+.step span { color: var(--soft); font-size: 15px; }
+
+/* Flujos */
+.flow { display: grid; gap: 10px; }
+.flow .when2 { font: 800 15px/1.2 var(--f-body); }
+.flow ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 15px; display: grid; gap: 4px; }
+
+/* KPIs */
+.kpi-wrap { overflow-x: auto; }
+table.kpi { width: 100%; min-width: 560px; border-collapse: collapse; background: var(--white); border-radius: 16px; overflow: hidden; }
+.kpi th, .kpi td { padding: 11px 14px; border-top: 1px solid var(--sand); text-align: left; font-size: 14.5px; vertical-align: top; }
+.kpi thead th { border-top: 0; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); background: var(--chip); }
+.kpi td.target { font-weight: 700; font-variant-numeric: tabular-nums; }
+.kpi td.fill { color: var(--soft); }
+.warn { border-left: 3px solid var(--rust); }
+footer { padding-block: 28px 44px; color: var(--soft); font-size: 13.5px; border-top: 1px solid var(--sand); }
+
+@media (max-width: 820px) {
+  .goals, .grid2, .grid4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .goals, .grid2, .grid4 { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="label">CAMSFIT · Sergio Cámara · Plan de acción</span>
+    <h1>Esta semana: posicionamiento, contenido y sistema de ventas.</h1>
+    <p class="lede">Seis frentes, en orden. Primero lo que ve quien llega a su perfil, después lo que le hace llegar y, por último, cómo convertir esos contactos en clientes.</p>
+    <div class="goals">
+      <div class="goal"><b>Domingo: perfil listo</b><span>Nombre, bio, destacadas y enlace a la landing.</span></div>
+      <div class="goal"><b>Domingo: 2 semanas de contenido</b><span>Calendario de Instagram y YouTube con los 4 pilares.</span></div>
+      <div class="goal"><b>Domingo: sistema de ventas</b><span>Oferta cerrada, embudo, guiones de seguimiento y KPIs.</span></div>
+    </div>
+  </header>
+</div>
+
+<nav class="toc" aria-label="Secciones del plan">
+  <div class="wrap">
+    <a href="#perfil">1 · Bio y nombre</a>
+    <a href="#oferta">2 · Oferta y procesos</a>
+    <a href="#contenido">3 · Contenido</a>
+    <a href="#embudo">4 · Embudo</a>
+    <a href="#llamadas">5 · Antes y después de la llamada</a>
+    <a href="#seguimiento">6 · Leads y seguimiento</a>
+    <a href="#kpis">KPIs</a>
+    <a href="#semana">Semana día a día</a>
+  </div>
+</nav>
+
+<!-- 1 -->
+<section id="perfil">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Lunes</span>
+      <span class="label">1 · Bio y nombre</span>
+      <h2>Que quien llega entienda en 3 segundos qué hace y para quién.</h2>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Nombre (máx. 30 caracteres)</h3>
+        <pre class="copy">Reprogramación Metabólica</pre>
+        <p class="soft">Es lo que sale en el buscador. Su nombre ya aparece en el @ y en la bio.</p>
+      </div>
+      <div class="card">
+        <h3>Bio (máx. 150 caracteres)</h3>
+        <pre class="copy">Pierde grasa y mantenla, con la comida de casa
+Hombres 30-50 con trabajos sedentarios
++500 cambios · 15 años entrenando
+👇 Rellena el formulario</pre>
+      </div>
+    </div>
+    <ul class="tasks" style="margin-top:16px">
+      <li><label><input type="checkbox" id="t-perfil-1"><span>Cambiar nombre y bio. Comprobar que no se corta.</span></label></li>
+      <li><label><input type="checkbox" id="t-perfil-2"><span>Categoría: de "Coach" a "Entrenador personal".</span></label></li>
+      <li><label><input type="checkbox" id="t-perfil-3"><span>Enlace de la bio a la landing, cuando esté en su dominio. Mientras tanto, el Jotform.</span></label></li>
+      <li><label><input type="checkbox" id="t-perfil-4"><span>Destacadas en este orden: Mi historia → Clientes → Qué es la reprogramación → Mi app.</span></label></li>
+      <li><label><input type="checkbox" id="t-perfil-5"><span>Fijar 3 publicaciones: un caso de 30-50 con cifra (Unai o Alexander), un vídeo de qué es la reprogramación metabólica y su historia.</span></label></li>
+      <li><label><input type="checkbox" id="t-perfil-6"><span>Decidir si se mantiene @esncom.es en la bio (solo si el patrocinio lo exige).</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="oferta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Lunes y martes</span>
+      <span class="label">2 · Oferta y procesos</span>
+      <h2>Una oferta que se explica en una frase.</h2>
+    </div>
+    <div class="card sand" style="margin-bottom:12px">
+      <span class="label">La frase (sale del ejercicio "Build your offer")</span>
+      <pre class="copy">Ayudo a hombres de 30 a 50 con vidas ocupadas a perder grasa y recuperar la energía en 90 días, sin tener que adivinar qué comer ni cómo entrenar, con un plan de reprogramación metabólica por fases.</pre>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Lo que hay que cerrar esta semana</h3>
+        <ul class="tasks">
+          <li><label><input type="checkbox" id="t-of-1"><span><b>Duración:</b> primer bloque de 90 días (resultados visibles) y continuidad hasta 1 año (hábitos sólidos).</span></label></li>
+          <li><label><input type="checkbox" id="t-of-2"><span><b>Precio y forma de pago:</b> pago único o en cuotas. Un precio por bloque, sin tablas de 5 opciones.</span></label></li>
+          <li><label><input type="checkbox" id="t-of-3"><span><b>Garantía (reversión de riesgo):</b> escribirla con condiciones medibles (cumplir el plan y las revisiones semanales).</span></label></li>
+          <li><label><input type="checkbox" id="t-of-4"><span><b>Contrato</b> con entregables y plazos claros, firmado antes de empezar. Evita disputas y devoluciones.</span></label></li>
+          <li><label><input type="checkbox" id="t-of-5"><span><b>Renovación:</b> qué se ofrece en la semana 10 a quien está contento.</span></label></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Proceso de alta del cliente</h3>
+        <ul class="tasks">
+          <li><label><input type="checkbox" id="t-of-6"><span>Pago → contrato firmado → acceso a la app el mismo día.</span></label></li>
+          <li><label><input type="checkbox" id="t-of-7"><span>Cuestionario inicial: horarios, comida de casa, molestias, analíticas si tiene.</span></label></li>
+          <li><label><input type="checkbox" id="t-of-8"><span>Fotos y medidas de inicio en la app.</span></label></li>
+          <li><label><input type="checkbox" id="t-of-9"><span>Plan de la fase 1 en 48 h y audio de bienvenida.</span></label></li>
+          <li><label><input type="checkbox" id="t-of-10"><span>Primera revisión fijada en el calendario.</span></label></li>
+        </ul>
+      </div>
+    </div>
+    <p class="soft" style="margin-top:12px">Ojo: la landing dice ahora "3–4 meses". Si la oferta queda en 90 días, hay que cambiarla para que diga lo mismo.</p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="contenido">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Martes y miércoles</span>
+      <span class="label">3 · Calendario de contenido</span>
+      <h2>Cuatro hormonas, un mismo mensaje: tu cuerpo se puede reprogramar.</h2>
+      <p class="soft">Cada pilar explica un motivo por el que el hombre de 30 a 50 con trabajo sedentario no pierde grasa o la recupera. Todo divulgativo, sin diagnósticos.</p>
+    </div>
+    <div class="grid4">
+      <article class="card pillar"><span class="phase">Fase 1 · perder grasa</span><h3>Insulina</h3><ul><li>Picos y antojos de tarde</li><li>Barriga y sedentarismo</li><li>Comer lo de casa sin picos</li></ul></article>
+      <article class="card pillar"><span class="phase">Rebote · fase 3</span><h3>Leptina</h3><ul><li>Por qué rebotas tras una dieta</li><li>Hambre que no se calma</li><li>Por qué no bajar de golpe</li></ul></article>
+      <article class="card pillar"><span class="phase">Fase 2 · fuerza y músculo</span><h3>Testosterona</h3><ul><li>Energía y libido a los 40</li><li>Músculo y gasto en reposo</li><li>Mitos y lo que sí influye</li></ul></article>
+      <article class="card pillar"><span class="phase">Toda la semana</span><h3>Cortisol</h3><ul><li>Estrés del trabajo y grasa abdominal</li><li>Sueño y recuperación</li><li>Día de 10 horas sentado</li></ul></article>
+    </div>
+
+    <h3 style="margin:26px 0 8px">Semana 1</h3>
+    <div class="cal-scroll">
+      <table class="cal">
+        <thead><tr><th></th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="row-h">Instagram</td>
+            <td><span class="fmt">Reel</span><b>Por qué rebotas después de una dieta</b>Leptina. Cierra con "comenta REPROGRAMAR".</td>
+            <td><span class="fmt">Carrusel</span><b>5 señales de que tu insulina te tiene con barriga</b>Insulina.</td>
+            <td><span class="fmt">Reel</span><b>Mi día: 10 horas de pantalla y en forma</b>Su ejemplo diario. Cortisol y sedentarismo.</td>
+            <td><span class="fmt">Carrusel</span><b>Caso: Alexander, de 100,8 a 80,4 kg</b>Prueba social con el método por fases.</td>
+            <td><span class="fmt">Reel</span><b>3 mitos de la testosterona a los 40</b>Testosterona.</td>
+            <td><span class="fmt">Historias</span><b>Comida real de casa</b>Lo que come él. Encuesta: "¿comes distinto que tu familia?".</td>
+            <td><span class="fmt">Carrusel</span><b>Qué es la reprogramación metabólica</b>Las 3 fases. Llamada al formulario.</td>
+          </tr>
+          <tr>
+            <td class="row-h">YouTube</td>
+            <td class="yt" colspan="3"><span class="fmt">Vídeo largo · 12-20 min</span><b>Por qué pierdes grasa y la recuperas (y cómo evitarlo)</b>Leptina, insulina y el método por fases. De aquí salen 3-4 reels.</td>
+            <td colspan="4"><span class="fmt">Shorts</span><b>3 cortes del vídeo largo</b>Uno por día. Enlace al vídeo completo.</td>
+          </tr>
+          <tr>
+            <td class="row-h">Historias</td>
+            <td colspan="7">A diario: 1 caso o testimonio, 1 detalle del día a día (comida, entreno, trabajo) y 1 llamada a escribir "INFO" por mensaje.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 style="margin:22px 0 8px">Semana 2 (para dejarla grabada)</h3>
+    <div class="cal-scroll">
+      <table class="cal">
+        <thead><tr><th></th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="row-h">Instagram</td>
+            <td><span class="fmt">Reel</span><b>El estrés del trabajo también engorda</b>Cortisol.</td>
+            <td><span class="fmt">Carrusel</span><b>Cómo comer lo de casa sin ser el raro de la mesa</b>Insulina, comida real.</td>
+            <td><span class="fmt">Reel</span><b>Por qué entreno fuerza y no solo cardio</b>Testosterona y músculo.</td>
+            <td><span class="fmt">Carrusel</span><b>Caso: Unai, de 118 a 90 kg</b>Prueba social.</td>
+            <td><span class="fmt">Reel</span><b>Hambre a todas horas: no es falta de voluntad</b>Leptina.</td>
+            <td><span class="fmt">Historias</span><b>Preguntas y respuestas</b>Dudas sobre hormonas.</td>
+            <td><span class="fmt">Carrusel</span><b>Mi historia: del ordenador al físico de hoy</b>Conexión.</td>
+          </tr>
+          <tr>
+            <td class="row-h">YouTube</td>
+            <td class="yt" colspan="3"><span class="fmt">Vídeo largo · 12-20 min</span><b>Hombre de 40 con trabajo de oficina: cómo recuperar la energía</b>Cortisol, testosterona y sueño.</td>
+            <td colspan="4"><span class="fmt">Shorts</span><b>3 cortes del vídeo largo</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="tasks" style="margin-top:16px">
+      <li><label><input type="checkbox" id="t-con-1"><span>Grabar el vídeo de YouTube de la semana 1 el martes. Sacar los cortes el miércoles.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-2"><span>Diseñar los 3 carruseles de la semana 1 (el repo ya tiene carruseles de insulina, estrés y testosterona como base).</span></label></li>
+      <li><label><input type="checkbox" id="t-con-3"><span>Cada pieza termina con una sola acción: comentar una palabra, escribir por mensaje o ir al formulario.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-4"><span>Revisar que ninguna pieza prometa curar nada ni dé consejo médico.</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="embudo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Miércoles</span>
+      <span class="label">4 · Embudo</span>
+      <h2>Del primer vídeo a la llamada, sin huecos.</h2>
+    </div>
+    <div class="funnel">
+      <div class="step"><span class="n">1</span><div><b>Contenido</b><span>Reels, carruseles y YouTube con los 4 pilares.</span></div></div>
+      <div class="step"><span class="n">2</span><div><b>Captación</b><span>"Comenta REPROGRAMAR" → mensaje automático con la guía Recetas Pro (ya existe) y una pregunta: "¿Cuál es tu objetivo ahora mismo?".</span></div></div>
+      <div class="step"><span class="n">3</span><div><b>Conversación</b><span>Sergio o su setter responde en menos de 5 minutos y cualifica: edad, trabajo, objetivo, intentos anteriores.</span></div></div>
+      <div class="step"><span class="n">4</span><div><b>Landing</b><span>Quien encaja recibe el enlace: ve los casos y el método antes de pedir la llamada.</span></div></div>
+      <div class="step"><span class="n">5</span><div><b>Formulario o WhatsApp</b><span>Jotform con preguntas de cualificación y agenda.</span></div></div>
+      <div class="step"><span class="n">6</span><div><b>Llamada de valoración</b><span>Con el flujo previo y posterior del bloque 5.</span></div></div>
+      <div class="step"><span class="n">7</span><div><b>Cierre y alta</b><span>Contrato, pago y acceso a la app el mismo día.</span></div></div>
+    </div>
+    <ul class="tasks" style="margin-top:16px">
+      <li><label><input type="checkbox" id="t-emb-1"><span>Montar la respuesta automática a "REPROGRAMAR" con la guía Recetas Pro.</span></label></li>
+      <li><label><input type="checkbox" id="t-emb-2"><span>Revisar el Jotform: 5-7 preguntas máximo, con edad, trabajo, objetivo y disponibilidad para invertir.</span></label></li>
+      <li><label><input type="checkbox" id="t-emb-3"><span>Publicar la landing en su dominio y ponerla en la bio.</span></label></li>
+      <li><label><input type="checkbox" id="t-emb-4"><span>Más adelante: anuncios hacia la landing, cuando el embudo orgánico funcione.</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="llamadas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Jueves</span>
+      <span class="label">5 · Antes y después de la llamada</span>
+      <h2>Que se presenten a la llamada y que decidan rápido.</h2>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <span class="label">Antes · 12 horas</span>
+        <div class="flow">
+          <div><p class="when2">Al reservar</p><ul><li>Llamada o audio de WhatsApp en menos de 10 minutos para confirmar.</li><li>Enviar enlace de la reunión, un consejo útil y un caso parecido al suyo.</li><li>Vídeo selfie corto de Sergio: "Te espero mañana, esto es lo que veremos".</li><li>Seguirle en Instagram.</li></ul></div>
+          <div><p class="when2">De 7 a 12 horas antes</p><ul><li>Un contenido de valor (el vídeo de YouTube de la semana).</li><li>Otro caso de alguien como él (edad, trabajo).</li><li>Preguntar: "¿Cuál es el objetivo nº 1 que quieres llevarte de la llamada?".</li></ul></div>
+          <div><p class="when2">De 1 a 6 horas antes</p><ul><li>Reconfirmar la hora.</li><li>Un último mensaje de valor.</li><li>Enviar el enlace y qué se va a ver en la llamada.</li></ul></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Después · 4 días</span>
+        <div class="flow">
+          <div><p class="when2">Día 1 · el de la llamada</p><ul><li>Mensaje en menos de 10 minutos con el resumen y la propuesta.</li><li>Caso parecido al suyo.</li><li>Audio o vídeo corto personal.</li></ul></div>
+          <div><p class="when2">Día 2</p><ul><li>Un contenido de valor.</li><li>Otro caso relevante para su situación.</li><li>Responder las dudas que salieron en la llamada.</li></ul></div>
+          <div><p class="when2">Día 3</p><ul><li>Reconfirmar siguientes pasos.</li><li>Un resultado reciente de un cliente como él.</li><li>Enviar la oferta por escrito con testimonios.</li></ul></div>
+          <div><p class="when2">Día 4</p><ul><li>Último seguimiento, con urgencia real (plazas o fecha de inicio), sin presionar.</li><li>Audio o vídeo final.</li></ul></div>
+        </div>
+      </div>
+    </div>
+    <p class="soft" style="margin-top:12px">Objetivo: que el ciclo de venta, de la llamada al pago, dure menos de 7 días.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="seguimiento">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Jueves y viernes</span>
+      <span class="label">6 · Leads y seguimiento</span>
+      <h2>Se pierde el 80 % de los contactos si no se responde en 5 minutos.</h2>
+    </div>
+    <div class="grid2">
+      <div class="card stack">
+        <span class="label">Mensajes para quien no responde</span>
+        <div class="msg"><span class="t">Primer contacto</span><p>"Hola [nombre], he visto que te descargaste la guía de recetas. ¿Te ha dado tiempo a mirarla?"</p></div>
+        <div class="msg"><span class="t">A los 2 días</span><p>"Hola [nombre], te lo vuelvo a subir por aquí. ¿Sigues queriendo bajar la barriga este mes?"</p></div>
+        <div class="msg"><span class="t">A los 7 días</span><p>"Hola [nombre], me he acordado de ti. Acabo de ayudar a [cliente], [edad] y trabajo de oficina como tú, a perder [X] kg con este mismo método: [enlace al caso]. Creo que te puede servir."</p></div>
+        <div class="msg"><span class="t">A los 14 días</span><p>"Hola [nombre], como no he sabido de ti, entiendo que ahora no es tu prioridad. Cierro tu ficha. Si las cosas cambian, aquí estoy."</p></div>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <h3>Reglas</h3>
+          <ul class="tasks">
+            <li><label><input type="checkbox" id="t-seg-1"><span>Responder a cada contacto nuevo en menos de 5 minutos.</span></label></li>
+            <li><label><input type="checkbox" id="t-seg-2"><span>Varios canales: mensaje, audio de WhatsApp y llamada. El audio funciona mejor.</span></label></li>
+            <li><label><input type="checkbox" id="t-seg-3"><span>Aportar algo en cada mensaje: un caso, un consejo o un resultado.</span></label></li>
+            <li><label><input type="checkbox" id="t-seg-4"><span>Insistir de 7 a 10 veces antes de dejarlo. Nunca el mismo "¿qué tal?" dos veces.</span></label></li>
+            <li><label><input type="checkbox" id="t-seg-5"><span>Personalizar con su nombre y lo que pidió.</span></label></li>
+          </ul>
+        </div>
+        <div class="card sand">
+          <h3>Pasados 14 días</h3>
+          <p class="soft">Lista de reactivación: un mensaje al mes con un caso nuevo y, cuando haya anuncios, retargeting hacia la landing.</p>
+        </div>
+        <div class="card">
+          <h3>Hoja de control (Google Sheets)</h3>
+          <p class="soft">Columnas: fecha de entrada · nombre · origen (reel, YouTube, historia) · edad · objetivo · último contacto · siguiente paso · estado (nuevo, conversación, llamada, cliente, perdido).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section id="kpis">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="when">Viernes</span>
+      <span class="label">KPIs · últimos 30 días</span>
+      <h2>Sin números no sabemos qué arreglar.</h2>
+      <p class="soft">Rellenarlo cada lunes. Atacar un solo cuello de botella cada vez.</p>
+    </div>
+    <div class="kpi-wrap">
+      <table class="kpi">
+        <thead><tr><th>Indicador</th><th>Cómo se calcula</th><th>Objetivo</th><th>Sus datos</th></tr></thead>
+        <tbody>
+          <tr><td>Contactos nuevos</td><td>Mensajes, comentarios y formularios</td><td class="target">—</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Llamadas agendadas</td><td>Reservas en el mes</td><td class="target">—</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Conversión de la landing</td><td>Llamadas ÷ visitas a la landing</td><td class="target">5–7 %</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Asistencia</td><td>Llamadas hechas ÷ agendadas</td><td class="target">—</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Cierre</td><td>Clientes ÷ llamadas hechas</td><td class="target">—</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Dinero cobrado</td><td>Cobrado en el mes</td><td class="target">—</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Coste por cliente (CAC)</td><td>Gasto en captación ÷ clientes</td><td class="target">5 veces menos que el LTV</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Valor de un cliente (LTV)</td><td>Lo que paga de media en toda su estancia</td><td class="target">5 veces el CAC</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Bajas</td><td>Clientes que se van ÷ clientes activos</td><td class="target">10 % o menos</td><td class="fill">Pendiente</td></tr>
+          <tr><td>Devoluciones</td><td>Devoluciones ÷ ventas</td><td class="target">Menos del 5 %</td><td class="fill">Pendiente</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="soft" style="margin-top:10px">Los objetivos son los de referencia del libro. Los guiones (—) se fijan cuando tengamos sus datos de partida.</p>
+  </div>
+</section>
+
+<!-- Semana -->
+<section id="semana">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">La semana, día a día</span>
+      <h2>Lo que hay que tener hecho cada día.</h2>
+    </div>
+    <div class="grid2">
+      <div class="card"><span class="label">Lunes</span><ul class="tasks"><li><label><input type="checkbox" id="d-1a"><span>Nombre, bio, categoría y destacadas.</span></label></li><li><label><input type="checkbox" id="d-1b"><span>Frase de la oferta y duración.</span></label></li></ul></div>
+      <div class="card"><span class="label">Martes</span><ul class="tasks"><li><label><input type="checkbox" id="d-2a"><span>Precio, garantía y contrato.</span></label></li><li><label><input type="checkbox" id="d-2b"><span>Grabar el YouTube de la semana 1.</span></label></li></ul></div>
+      <div class="card"><span class="label">Miércoles</span><ul class="tasks"><li><label><input type="checkbox" id="d-3a"><span>Cortes del vídeo y 3 carruseles.</span></label></li><li><label><input type="checkbox" id="d-3b"><span>Respuesta automática "REPROGRAMAR" y revisión del Jotform.</span></label></li></ul></div>
+      <div class="card"><span class="label">Jueves</span><ul class="tasks"><li><label><input type="checkbox" id="d-4a"><span>Flujos antes y después de la llamada, con plantillas guardadas.</span></label></li><li><label><input type="checkbox" id="d-4b"><span>Hoja de control de contactos.</span></label></li></ul></div>
+      <div class="card"><span class="label">Viernes</span><ul class="tasks"><li><label><input type="checkbox" id="d-5a"><span>Mensajes de seguimiento guardados como respuestas rápidas.</span></label></li><li><label><input type="checkbox" id="d-5b"><span>Primera tabla de KPIs con sus números reales.</span></label></li></ul></div>
+      <div class="card sand"><span class="label">Fin de semana</span><ul class="tasks"><li><label><input type="checkbox" id="d-6a"><span>Grabar el contenido de la semana 2.</span></label></li><li><label><input type="checkbox" id="d-6b"><span>Revisión con Alberto: qué está hecho y qué no.</span></label></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Plan de acción de CAMSFIT preparado con Alberto. Las casillas se guardan solo en este navegador.</div>
+</footer>
+
+<script>
+(function () {
+  var KEY = "camsfit-plan-semana";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { saved = {}; }
+  document.querySelectorAll('.tasks input[type="checkbox"]').forEach(function (cb) {
+    if (saved[cb.id]) cb.checked = true;
+    cb.addEventListener("change", function () {
+      saved[cb.id] = cb.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+})();
+</script>
