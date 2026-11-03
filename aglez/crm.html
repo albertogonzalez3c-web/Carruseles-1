@@ -36,6 +36,7 @@ p { margin: 0; }
 .soft { color: var(--soft); }
 button { font-family: inherit; }
 .btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+a.btn { text-decoration: none; display: inline-block; }
 .btn.ghost { background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
 .btn.yellow { background: var(--accent); color: var(--ink); }
 .btn.small { padding: 8px 12px; font-size: 13px; }
@@ -731,7 +732,7 @@ ul.l b { color: var(--ink); }
       el.className = "task" + (o.a.u ? " urgent" : "") + (o.a.fire ? " fire" : "");
       var sub = lineTag(l);
       if (o.a.fire) { var m = minsSince(l.creado); sub += '<span class="yaa">LLAMAR YA</span><span class="' + timerClass(m) + '" data-since="' + esc(l.creado) + '">' + fmtMins(m) + '</span>'; }
-      sub += '<span>' + esc(o.a.t) + '</span>';
+      sub += '<span>' + esc(o.a.fire ? "Llamada de filtro" : o.a.t) + '</span>';
       if (l.telefono) sub += '<span>· ' + esc(l.telefono) + '</span>';
       var cw = callWith(l.telefono); if (cw && (l.etapa || "nuevo") !== "cliente") sub += '<span>· Llamar con ' + cw + '</span>';
       el.innerHTML = '<span class="dot" aria-hidden="true"></span><div><b>' + esc(l.nombre) + '</b><span class="sub">' + sub + '</span></div><button type="button" class="btn small ghost">Abrir</button>';

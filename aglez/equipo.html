@@ -1010,6 +1010,202 @@ details.enmsg pre { margin-top: 8px; }
     } else refresh(kind);
   }
 
+  /* ---------- Idioma (ES / EN) ----------
+     Los datos se guardan siempre con sus claves en español; solo se traduce lo que se ve.
+     Los mensajes para copiar (setters, asesoría y resumen para Alberto) se quedan en español. */
+  var EX = {
+    "AGLEZ · Equipo": "AGLEZ · Team", "Reportes del equipo": "Team reports", "Secciones": "Sections", "Idioma": "Language",
+    "Diario setters": "Setters daily", "Asesoría semanal": "Weekly coaching", "Resumen": "Summary", "Coordinación (Yuliia)": "Coordination (Yuliia)",
+    "Conectando con la base de datos…": "Connecting to the database…",
+    "Guardado en directo · Yuliia y Alberto lo ven al momento": "Saved live · Yuliia and Alberto see it instantly",
+    "La base de datos tarda en responder…": "The database is slow to respond…", "Acceso retirado": "Access removed",
+    "No se ha podido leer la base de datos": "Couldn't read the database",
+    "Sin base de datos en esta vista: se puede rellenar y copiar el mensaje, pero no se guarda. Abre la página desde claude.ai con tu cuenta.": "No database in this view: you can fill it in and copy the message, but nothing is saved. Open the page from claude.ai with your account.",
+    "Guardando…": "Saving…", "Sin base de datos: no se guarda.": "No database: not saved.",
+    "No tienes permiso para guardar en esta página.": "You don't have permission to save on this page.", "La base de datos está llena.": "The database is full.",
+    "No se ha podido guardar. Vuelve a intentarlo.": "Couldn't save. Try again.",
+    "Copiado.": "Copied.", "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado.": "Text selected: copy it with Ctrl+C or long-press.",
+    "Copiar mensaje": "Copy message", "Mensaje para WhatsApp": "WhatsApp message", "Copiar resumen para Alberto": "Copy summary for Alberto",
+    "Ver el resumen en inglés": "See the summary in English", "Resumen para Alberto": "Summary for Alberto",
+    "Cada día · Axell y Andrés": "Every day · Axell and Andrés", "Cuánto abres, de dónde y quién responde.": "How many you open, from where and who replies.",
+    "Elige quién eres y el día. Todo se guarda solo y Yuliia y Alberto lo ven en directo. Cada respuesta que apuntes queda registrada a tu nombre.": "Pick who you are and the day. Everything saves itself and Yuliia and Alberto see it live. Every reply you log is recorded under your name.",
+    "Persona": "Person", "Día del reporte": "Report day", "Hoy": "Today", "hoy": "today",
+    "Últimos 14 días": "Last 14 days", "Últimos 7 días": "Last 7 days", "Fuentes que más responden · últimos 30 días": "Best-replying sources · last 30 days",
+    "Dónde merece la pena seguir prospectando. Se calcula con las aperturas y las respuestas apuntadas con la misma fuente.": "Where it's worth keeping on prospecting. Calculated from the openings and replies logged with the same source.",
+    "Fuente": "Source", "Línea": "Line", "Abiertas": "Opened", "Respuestas": "Replies", "% respuesta": "% reply", "% resp.": "% reply", "Día": "Day",
+    "Agendas": "Calls booked", "Llam. 🇪🇸": "Calls 🇪🇸", "Llam. 🇺🇸": "Calls 🇺🇸", "Cierres €": "Closes €", "Llamadas 🇪🇸": "Calls 🇪🇸", "Llamadas 🇺🇸": "Calls 🇺🇸",
+    "Todavía no hay días con datos.": "No days with data yet.", "Aún no hay fuentes apuntadas.": "No sources logged yet.", "(sin fuente)": "(no source)",
+    "Conversaciones abiertas": "Conversations opened", "% respuesta (sobre frío)": "% reply (on cold)", "Llamadas 🇪🇸 / 🇺🇸": "Calls 🇪🇸 / 🇺🇸", "Cierres atribuidos": "Attributed closes",
+    "Rutina de cada día": "Daily routine", "Bienvenidas de hoy hechas (al día)": "Today's welcomes done (up to date)", "Follow-up a bienvenidas antiguas hecho": "Follow-up on old welcomes done",
+    "CRM de anuncios al día y follow-ups revisados": "Ads CRM up to date and follow-ups checked", "Sí": "Yes", "No": "No",
+    "Aperturas en frío": "Cold openings", "Una fila por cada sitio de donde sacas gente: un perfil (sus seguidores), una página o un hashtag.": "One row for each place you get people from: a profile (its followers), a page or a hashtag.",
+    "+ Añadir fuente": "+ Add source", "Ej.: seguidores de @cuenta": "E.g.: followers of @account",
+    "Otras vías": "Other channels", "Conversaciones abiertas por otro camino: comentarios, respuestas a historias, grupos…": "Conversations opened another way: comments, story replies, groups…",
+    "+ Añadir vía": "+ Add channel", "Vía": "Channel", "Ej.: respuestas a historias": "E.g.: story replies",
+    "Quién ha respondido": "Who replied", "Una fila por persona que responde. Así queda registrado que esa conversación es tuya.": "One row per person who replies. That records the conversation as yours.",
+    "+ Añadir respuesta": "+ Add reply", "@ usuario": "@ user", "@usuario": "@user", "De qué fuente": "From which source", "La misma que en aperturas": "Same as in openings",
+    "Llamadas agendadas hoy": "Calls booked today", "Mentoría": "Mentorship", "Asesoría": "Coaching", "Asesoría ES": "Coaching ES", "Asesoría EN": "Coaching EN",
+    "Llamadas por teléfono": "Phone calls", "Llama a saco, también a leads antiguos. Apunta abajo a quién hay que volver a llamar.": "Call hard, old leads too. Note below who needs a call back.",
+    "Con el número español": "With the Spanish number", "Con el número americano": "With the US number", "De ellas, a leads antiguos": "Of those, to old leads", "Contestadas": "Answered",
+    "Anotaciones urgentes": "Urgent notes", "A quién hay que abordar rápido o hacer follow-up mañana.": "Who needs a quick approach or a follow-up tomorrow.", "+ Añadir anotación": "+ Add note",
+    "Quién": "Who", "@usuario o nombre": "@user or name", "Qué hay que hacer": "What needs doing", "Ej.: llamarle a las 18:00": "E.g.: call him at 18:00", "Cuándo": "When",
+    "Mañana": "Tomorrow", "Esta semana": "This week",
+    "Cierres atribuidos (comisión)": "Attributed closes (commission)", "Ventas que ha cerrado Alberto de leads tuyos.": "Sales Alberto closed from your leads.", "+ Añadir cierre": "+ Add close",
+    "Cliente": "Client", "Nombre": "Name", "Importe (€)": "Amount (€)", "Quitar": "Remove", "Sin filas todavía.": "No rows yet.",
+    "Una vez por semana · Andrés y Fran": "Once a week · Andrés and Fran", "Clientes, bajas, revisiones y back-end.": "Clients, cancellations, reviews and back-end.",
+    "Se rellena una vez a la semana. Las bajas con sus meses en el servicio dan la vida media; el back-end y los momentos dulces dicen a quién ofrecer renovar o subir al anual.": "Filled in once a week. Cancellations with their months in the service give the average lifetime; back-end and sweet spots tell you who to offer a renewal or the yearly plan.",
+    "Semana": "Week", "Semana anterior": "Previous week", "Semana siguiente": "Next week", "Últimas 8 semanas": "Last 8 weeks",
+    "Activos": "Active", "Altas": "New", "Bajas": "Cancellations", "Vida media": "Avg. lifetime", "% sin revisión": "% no review", "Back-end cerrado": "Back-end closed", "Testimonios": "Testimonials",
+    "Quién rellena": "Filled in by", "Rellenado por": "Filled in by", "Clientes": "Clients", "Clientes activos · español": "Active clients · Spanish", "Clientes activos · inglés": "Active clients · English",
+    "Altas esta semana": "New clients this week", "Bajas de la semana": "This week's cancellations",
+    "Para la vida media: cuántos meses ha estado en el servicio (decimales valen: 4,5).": "For the average lifetime: how many months they were in the service (decimals ok: 4.5).",
+    "+ Añadir baja": "+ Add cancellation", "Motivo": "Reason", "Meses en el servicio": "Months in the service",
+    "Terminó y no renueva": "Finished, not renewing", "Precio": "Price", "Falta de tiempo": "No time", "No ve resultados": "Not seeing results", "Personal": "Personal", "Otro": "Other", "Otra": "Other",
+    "Renovaciones previstas la semana que viene": "Renewals due next week", "+ Añadir renovación": "+ Add renewal", "Plan": "Plan", "Ej.: semestre": "E.g.: 6 months", "Fecha": "Date",
+    "Pagos (cuotas y pendientes)": "Payments (instalments and pending)", "Confirmar con Alberto qué significa «costeando».": "Confirm with Alberto what «costeando» means.",
+    "Clientes pagando a plazos o en cuotas": "Clients paying in instalments", "Pagos pendientes o atrasados": "Pending or late payments",
+    "Revisiones semanales": "Weekly reviews", "Revisiones esperadas": "Reviews expected", "Revisiones recibidas": "Reviews received", "Pendientes de contestar por el equipo": "Waiting for the team's reply",
+    "Back-end": "Back-end", "Ascensión al anual, renovación anticipada, continuidad o referidos. Se ofrece en el momento dulce.": "Upgrade to yearly, early renewal, continuity or referrals. Offered at the sweet spot.",
+    "+ Añadir oferta": "+ Add offer", "Tipo": "Type", "Estado": "Status", "Ascensión (a anual)": "Upgrade (to yearly)", "Renovación anticipada": "Early renewal", "Continuidad": "Continuity", "Referido": "Referral",
+    "Ofrecido": "Offered", "Cerrado": "Closed", "Rechazado": "Rejected",
+    "Clientes en momento dulce": "Clients at their sweet spot", "Para ofrecerles back-end esta semana.": "To offer them back-end this week.", "+ Añadir cliente": "+ Add client", "Señal": "Signal",
+    "Foto que impacta": "Striking photo", "Analítica mejor": "Better blood test", "Comentario espontáneo": "Spontaneous comment",
+    "Clientes en riesgo de baja": "Clients at risk of leaving", "Por qué": "Why", "Ej.: 2 semanas sin revisión": "E.g.: 2 weeks without a review",
+    "Testimonios recogidos": "Testimonials collected", "+ Añadir testimonio": "+ Add testimonial", "Foto antes/después": "Before/after photo", "Vídeo": "Video", "Captura": "Screenshot", "Audio": "Audio",
+    "Enviado a Alberto": "Sent to Alberto", "Notas para Alberto": "Notes for Alberto",
+    "Clientes activos": "Active clients", "Altas / bajas": "New / cancellations", "Vida media bajas semana": "Avg. lifetime (week's cancellations)", "Vida media histórica": "Historical avg. lifetime",
+    "Sin enviar revisión": "Not sending reviews", "Revisiones por contestar": "Reviews to answer", "Testimonios sin enviar": "Testimonials not sent", "Testimonios por enviar": "Testimonials to send",
+    "Todavía no hay semanas con datos.": "No weeks with data yet.",
+    "Para Alberto y Yuliia": "For Alberto and Yuliia", "El equipo en una pantalla.": "The team on one screen.", "Hoy, esta semana y lo que hay que mover.": "Today, this week and what needs moving.",
+    "¿Quién ha enviado el reporte de hoy?": "Who has sent today's report?", "Avisos": "Alerts", "Asesoría · última semana": "Coaching · last week", "Asesoría · sin reporte todavía": "Coaching · no report yet",
+    "Setters · esta semana": "Setters · this week", "Setter": "Setter",
+    "Andrés o Fran todavía no han rellenado ninguna semana.": "Andrés or Fran haven't filled in any week yet.", "Todo en orden.": "All in order.",
+    "✓ enviado": "✓ sent", "✗ pendiente": "✗ pending",
+    "Axell: las bienvenidas de hoy no están al día.": "Axell: today's welcomes are not up to date.", "Axell: falta el follow-up a bienvenidas antiguas.": "Axell: follow-up on old welcomes is missing.",
+    "Axell: el CRM de anuncios no está al día.": "Axell: the ads CRM is not up to date.",
+    "Coordinación · Yuliia": "Coordination · Yuliia", "Que todo se haga y Alberto reciba un solo resumen.": "Make sure everything gets done and Alberto gets one summary.",
+    "Tu rol": "Your role", "Cada día, 10 minutos a las 21:00:": "Every day, 10 minutes at 21:00:",
+    "comprobar que Axell y Andrés han enviado su reporte, que las bienvenidas y el CRM están al día, y asignar las notas urgentes.": "check that Axell and Andrés have sent their report, that welcomes and the CRM are up to date, and assign the urgent notes.",
+    "Lunes:": "Monday:", "reporte semanal de asesoría con Andrés y Fran. Repartir renovaciones, momentos dulces y clientes en riesgo.": "weekly coaching report with Andrés and Fran. Assign renewals, sweet spots and clients at risk.",
+    "Viernes o domingo:": "Friday or Sunday:", "reunión de equipo de 20 minutos y resumen a Alberto con el botón de abajo.": "20-minute team meeting and summary to Alberto with the button below.",
+    "Alberto solo recibe tu resumen y sus anuncios. Si algo necesita a Alberto, va en el resumen.": "Alberto only gets your summary and his ads. If something needs Alberto, it goes in the summary.",
+    "Cada día · 21:00": "Every day · 21:00", "Día de la revisión": "Review day", "Cada semana": "Every week",
+    "Axell y Andrés han enviado su reporte diario": "Axell and Andrés have sent their daily report", "Se lo he recordado": "I reminded them",
+    "Nota (opcional)": "Note (optional)", "Bienvenidas de Axell al día y follow-up de antiguas": "Axell's welcomes up to date and follow-up on old ones",
+    "Bienvenidas:": "Welcomes:", "· Follow-up antiguas:": "· Old follow-up:", "sin marcar": "not marked", "Revisado con Axell": "Checked with Axell",
+    "Axell todavía no ha enviado el reporte.": "Axell hasn't sent the report yet.", "CRM de anuncios al día": "Ads CRM up to date", "Según Axell:": "According to Axell:",
+    "Notas urgentes del día revisadas y asignadas": "Day's urgent notes checked and assigned", "Hecho": "Done",
+    "No hay notas urgentes en los reportes de este día.": "No urgent notes in this day's reports.", "Leads sin llamar más de 15 minutos": "Leads not called within 15 minutes",
+    "El CRM los marca en rojo. Repásalos con Axell.": "The CRM marks them in red. Go through them with Axell.",
+    "Lunes: reporte semanal de asesoría con Andrés y Fran": "Monday: weekly coaching report with Andrés and Fran", "✓ rellenado": "✓ filled in", "✗ sin rellenar": "✗ not filled in",
+    "en la pestaña Asesoría semanal": "in the Weekly coaching tab", "Hecho con Andrés y Fran": "Done with Andrés and Fran",
+    "Renovaciones de la semana asignadas": "Week's renewals assigned", "Responsable": "Owner", "Responsable…": "Owner…",
+    "No hay renovaciones apuntadas en el reporte semanal.": "No renewals in the weekly report.", "Clientes en momento dulce → back-end ofrecido": "Sweet-spot clients → back-end offered",
+    "Nadie apuntado esta semana.": "Nobody listed this week.", "Clientes en riesgo → contactados": "At-risk clients → contacted", "Contactado": "Contacted",
+    "Testimonios enviados a Alberto": "Testimonials sent to Alberto", "Sin reporte semanal todavía.": "No weekly report yet.", "Enviados a Alberto": "Sent to Alberto",
+    "Reunión de equipo de 20 minutos": "20-minute team meeting", "Reunión hecha": "Meeting held", "Resumen enviado a Alberto": "Summary sent to Alberto",
+    "Cópialo abajo y mándaselo por WhatsApp.": "Copy it below and send it on WhatsApp.", "Resumen enviado": "Summary sent"
+  };
+  var LINE_EN = { "Mentoría": "Mentorship", "Asesoría ES": "Coaching ES", "Asesoría EN": "Coaching EN" };
+  function trLines(t) { return t.replace(/Asesoría ES|Asesoría EN|Mentoría/g, function (m) { return LINE_EN[m]; }); }
+  function plEn(n, one, many) { return n + " " + (+n === 1 ? one : many); }
+  var RULES = [
+    [/^(Axell|Andrés) · hoy$/, "$1 · today"],
+    [/^Total (\d+)((?: · (?:Mentoría|Asesoría ES|Asesoría EN) \d+)*)$/, function (m, n, rest) { return "Total " + n + trLines(rest); }],
+    [/^(\d+) respuestas$/, function (m, n) { return plEn(n, "reply", "replies"); }],
+    [/^Últimos 14 días · (.+)$/, "Last 14 days · $1"],
+    [/^(?:(?:Mentoría|Asesoría ES|Asesoría EN)(?:, )?)+$/, function (m) { return trLines(m); }],
+    [/^Quitar fila (\d+)$/, "Remove row $1"],
+    [/^Back-end cerrado \((\d+)\/(\d+)\)$/, "Back-end closed ($1/$2)"],
+    [/^Vida media: (.+) meses$/, "Avg. lifetime: $1 months"],
+    [/^(\d+) (?:cerrado|cerrados) de (\d+) · (.+)$/, "$1 of $2 closed · $3"],
+    [/^(\d+) sin enviar$/, "$1 not sent"],
+    [/^Hoy es (.+)$/, "Today is $1"],
+    [/^✓ enviado · (.+)$/, "✓ sent · $1"],
+    [/^Asesoría · (.+)$/, "Coaching · $1"],
+    [/^(.+) no ha enviado el reporte de hoy\.$/, "$1 hasn't sent today's report."],
+    [/^(Axell|Andrés) · urgente hoy: (.*)$/, "$1 · urgent today: $2"],
+    [/^(Axell|Andrés) dejó para hoy: (.*)$/, "$1 left for today: $2"],
+    [/^(\d+) (?:revisión pendiente|revisiones pendientes) de contestar por el equipo\.$/, function (m, n) { return plEn(n, "review", "reviews") + " waiting for the team's reply."; }],
+    [/^En riesgo de baja: (.*)$/, "At risk of leaving: $1"],
+    [/^Renovación prevista: (.*)$/, "Renewal due: $1"],
+    [/^Momento dulce: (.*) \((.*)\) → ofrecer back-end$/, function (m, n, sg) { return "Sweet spot: " + n + " (" + (EX[sg] || sg) + ") → offer back-end"; }],
+    [/^(\d+) (?:testimonio recogido|testimonios recogidos) sin enviar a Alberto\.$/, function (m, n) { return plEn(n, "testimonial", "testimonials") + " collected, not sent to Alberto."; }],
+    [/^(\d+) notas?$/, function (m, n) { return plEn(n, "note", "notes"); }],
+    [/^\((Axell|Andrés) · (Hoy|Mañana|Esta semana)\)$/, function (m, p, c) { return "(" + p + " · " + EX[c] + ")"; }],
+    [/^\((Axell|Andrés), de ayer para hoy\)$/, "($1, from yesterday for today)"],
+    [/^por (.+)$/, "by $1"],
+    [/^(\d+) (?:testimonio pendiente|testimonios pendientes) de enviar$/, function (m, n) { return plEn(n, "testimonial", "testimonials") + " still to send"; }],
+    [/^Acuerdo (\d)$/, "Agreement $1"],
+    [/^(\d+) de (\d+)$/, "$1 of $2"],
+    [/^Guardado (.+)$/, "Saved $1"],
+    [/^· (.+)$/, function (m, r) { return EX[r] ? "· " + EX[r] : m; }]
+  ];
+  function tr(str) {
+    var core = str.trim(); if (!core) return str;
+    var out = null;
+    if (Object.prototype.hasOwnProperty.call(EX, core)) out = EX[core];
+    else for (var i = 0; i < RULES.length; i++) { if (RULES[i][0].test(core)) { out = core.replace(RULES[i][0], RULES[i][1]); break; } }
+    if (out == null || out === core) return str;
+    var lead = str.match(/^\s*/)[0], trail = str.match(/\s*$/)[0];
+    return lead + out + trail;
+  }
+  var TXT = new WeakMap(), ATTRS = ["placeholder", "aria-label", "title"];
+  function skip(node) { var e = node.nodeType === 1 ? node : node.parentElement; return !e || !!e.closest("[data-noi18n], script, style, textarea, datalist"); }
+  function trText(n) {
+    if (skip(n)) return;
+    var rec = TXT.get(n), cur = n.nodeValue;
+    if (rec && cur === rec.en) return;
+    var en = tr(cur);
+    if (en !== cur) { TXT.set(n, { es: cur, en: en }); n.nodeValue = en; }
+  }
+  function trEl(e) {
+    if (skip(e)) return;
+    if (e.tagName === "OPTION" && !e.hasAttribute("value")) e.setAttribute("value", e.textContent);
+    ATTRS.forEach(function (a) {
+      if (!e.hasAttribute(a)) return;
+      var v = e.getAttribute(a), key = "data-i18n-" + a, orig = e.getAttribute(key);
+      if (orig != null && v !== orig && v === tr(orig)) return;
+      var en = tr(v); if (en !== v) { e.setAttribute(key, v); e.setAttribute(a, en); }
+    });
+  }
+  function translateTree(root) {
+    if (LANG !== "en") return;
+    if (root.nodeType === 3) { trText(root); return; }
+    if (root.nodeType !== 1) return;
+    trEl(root);
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) { if (n.nodeType === 3) trText(n); else trEl(n); }
+  }
+  function restoreTree(root) {
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT), n;
+    while ((n = w.nextNode())) {
+      if (n.nodeType === 3) { var rec = TXT.get(n); if (rec && n.nodeValue === rec.en) n.nodeValue = rec.es; }
+      else ATTRS.forEach(function (a) { var k = "data-i18n-" + a, o = n.getAttribute(k); if (o != null) { n.setAttribute(a, o); n.removeAttribute(k); } });
+    }
+  }
+  var observer = new MutationObserver(function (muts) {
+    if (LANG !== "en") return;
+    muts.forEach(function (m) {
+      if (m.type === "characterData") trText(m.target);
+      else if (m.type === "attributes") trEl(m.target);
+      else m.addedNodes.forEach(translateTree);
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+  function applyLang(lang) {
+    LANG = lang === "en" ? "en" : "es";
+    try { localStorage.setItem("aglez-equipo-lang", LANG); } catch (e) {}
+    document.documentElement.lang = LANG;
+    document.querySelectorAll("[data-lang]").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lang === LANG ? "true" : "false"); });
+    if (LANG === "es") restoreTree(document.body);
+    if (D.set.cur) renderForm("set");
+    if (D.ase.cur) renderForm("ase");
+    renderCoord(); renderResumen();
+    if (LANG === "en") translateTree(document.body);
+  }
+  document.querySelectorAll("[data-lang]").forEach(function (b) { b.addEventListener("click", function () { if (b.dataset.lang !== LANG) applyLang(b.dataset.lang); }); });
+
   /* ---------- Controles ---------- */
   document.querySelectorAll(".tab").forEach(function (t) {
     t.addEventListener("click", function () {
@@ -1053,6 +1249,7 @@ details.enmsg pre { margin-top: 8px; }
   loadAse(isoWeek(new Date()));
   loadCod(today());
   loadCow(isoWeek(new Date()));
+  if (LANG === "en") applyLang("en");
 
   /* ---------- Conexión ---------- */
   (async function () {
