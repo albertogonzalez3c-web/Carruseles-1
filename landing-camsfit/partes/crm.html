@@ -117,6 +117,22 @@ main { padding-block: 22px 60px; }
 .phone-line code { font: 700 15px/1 var(--f-mono); background: var(--white); padding: 8px 10px; border-radius: 8px; user-select: all; }
 .alert { background: #f4e3dc; color: var(--rust); border-radius: 10px; padding: 9px 12px; font-size: 13.5px; font-weight: 700; }
 
+/* Clientes */
+.crow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center; background: var(--white); border-radius: 12px; padding: 11px 14px; font-size: 14px; width: 100%; }
+.crow:focus-visible { outline: 3px solid var(--ink); }
+.crow.head { cursor: default; background: none; padding-block: 4px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.crow .num { font-variant-numeric: tabular-nums; }
+.crow .mo { display: none; }
+.crow small { display: block; color: var(--soft); font-size: 12.5px; }
+.pill { display: inline-block; width: fit-content; font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: #e3e8dc; color: var(--green); }
+.pill.baja { background: #f4e3dc; color: var(--rust); }
+.pill.warn { background: #f3ead2; color: var(--gold-text); }
+.clist { display: grid; gap: 6px; }
+details.addc > summary { cursor: pointer; font-weight: 800; list-style: none; }
+details.addc > summary::-webkit-details-marker { display: none; }
+.addc form { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: end; margin-top: 12px; }
+.extra { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; border-bottom: 1px solid var(--sand-line); padding-block: 6px; }
+
 /* Guion */
 .guide { display: grid; gap: 14px; }
 .flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
@@ -130,6 +146,7 @@ ul.l b { color: var(--ink); }
 @media (max-width: 980px) {
   .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .add form { grid-template-columns: 1fr 1fr; }
+  .addc form { grid-template-columns: 1fr 1fr; }
   .flow { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
@@ -138,6 +155,10 @@ ul.l b { color: var(--ink); }
   .add .two { grid-column: auto; }
   .grid2, .flow { grid-template-columns: 1fr; }
   .obj { grid-template-columns: 1fr; }
+  .addc form { grid-template-columns: 1fr; }
+  .crow { grid-template-columns: minmax(0, 1fr) auto; }
+  .crow .hm { display: none; }
+  .crow .mo { display: inline; }
   .task { grid-template-columns: 10px minmax(0, 1fr); }
   .task .btn { grid-column: 2; justify-self: start; }
 }
@@ -149,6 +170,7 @@ ul.l b { color: var(--ink); }
     <nav class="tabs" role="tablist" aria-label="Vistas">
       <button class="tab" role="tab" id="tab-hoy" aria-selected="true" data-view="hoy">Hoy</button>
       <button class="tab" role="tab" id="tab-embudo" aria-selected="false" data-view="embudo">Embudo</button>
+      <button class="tab" role="tab" id="tab-clientes" aria-selected="false" data-view="clientes">Clientes</button>
       <button class="tab" role="tab" id="tab-guion" aria-selected="false" data-view="guion">Proceso y guion</button>
     </nav>
     <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
@@ -185,6 +207,26 @@ ul.l b { color: var(--ink); }
   <section class="view" id="view-embudo" hidden aria-labelledby="h-emb">
     <h2 id="h-emb" style="margin-bottom:10px">Embudo</h2>
     <div class="board" id="board"></div>
+  </section>
+
+  <section class="view" id="view-clientes" hidden aria-labelledby="h-cli">
+    <div class="kpis" id="ckpis"></div>
+    <div class="card sand" style="margin-bottom:16px">
+      <details class="addc">
+        <summary>+ Añadir un cliente que ya tenías</summary>
+        <form id="addCli" autocomplete="off">
+          <label class="f">Nombre<input id="c-nombre" required placeholder="Nombre"></label>
+          <label class="f">Teléfono<input id="c-tel" inputmode="tel" placeholder="+34 …"></label>
+          <label class="f">Plan<select id="c-plan"></select></label>
+          <label class="f">Fecha de alta<input id="c-alta" type="date" required></label>
+          <button class="btn" type="submit" id="c-btn">Añadir cliente</button>
+        </form>
+        <p class="soft" id="c-note" aria-live="polite" style="font-size:13px"></p>
+      </details>
+    </div>
+    <h2 id="h-cli" style="margin-bottom:10px">Clientes</h2>
+    <div class="clist" id="clist"></div>
+    <p class="soft" style="font-size:13px;margin-top:12px"><b>Vida media</b> = media del tiempo entre el alta y la baja de los clientes que se han ido. Se recalcula sola cada vez que das de baja a alguien. <b>Facturado por cliente</b> incluye la primera venta y todo el back-end (ascensiones, renovaciones, continuidad).</p>
   </section>
 
   <section class="view" id="view-guion" hidden aria-labelledby="h-guion">
@@ -252,9 +294,9 @@ ul.l b { color: var(--ink); }
           <div class="card">
             <h3>3 · El método, en 2 minutos</h3>
             <ul class="l">
-              <li><b>Fase 1:</b> perder grasa con la comida de casa.</li>
-              <li><b>Fase 2:</b> fuerza y músculo para quemar más en reposo.</li>
-              <li><b>Fase 3:</b> consolidar para que no vuelva.</li>
+              <li><b>Fase 1 · Reprogramar (meses 1–3):</b> perder grasa con la comida de casa y recuperar la sensibilidad a la insulina.</li>
+              <li><b>Fase 2 · Consolidar (meses 4–6):</b> subir calorías, músculo y hormonas en su sitio para que la grasa no vuelva.</li>
+              <li><b>Analítica</b> al empezar, al mes 3 y al mes 6.</li>
               <li><b>Cada semana:</b> revisión en la app y ajuste.</li>
             </ul>
             <p class="soft" style="font-size:14px">Corto y conectado con lo que ha contado. Nada de clases.</p>
@@ -262,7 +304,7 @@ ul.l b { color: var(--ink); }
           <div class="card">
             <h3>4 · Encaje, oferta y cierre</h3>
             <p class="say">"Por lo que me cuentas, necesitas justo esto. ¿Quieres que te explique cómo trabajaríamos?"</p>
-            <ul class="l"><li>Oferta: 90 días, qué incluye y la garantía.</li><li>Precio, dicho una vez y en silencio.</li><li>"¿Empezamos?"</li></ul>
+            <ul class="l"><li>Oferta: primero el año, después el semestre en dos fases, con la garantía.</li><li>Downsell solo si hace falta: semestre en 2 pagos y, por último, el trimestre.</li><li>Precio, dicho una vez y en silencio.</li><li>"¿Empezamos?"</li></ul>
           </div>
         </div>
         <div class="card sand">
@@ -320,13 +362,44 @@ ul.l b { color: var(--ink); }
     { d: 14, t: "Día 14", m: "Hola {n}, como no he sabido de ti, entiendo que ahora no es tu prioridad. Cierro tu ficha. Si las cosas cambian, aquí estoy." }
   ];
 
+  var PLANS = [
+    { id: "Año", m: 12, p: 1200 },
+    { id: "Año a plazos", m: 12, p: 1250 },
+    { id: "Semestre", m: 6, p: 750 },
+    { id: "Semestre en 2 pagos", m: 6, p: 800 },
+    { id: "Trimestre", m: 3, p: 400 },
+    { id: "Mantenimiento mensual", m: 1, p: 0 }
+  ];
+  var OLD_MONTHS = { "90 días": 3, "6 meses": 6, "1 año": 12 };
+  var EXTRA_TIPOS = ["Ascensión", "Renovación anticipada", "Continuidad", "Referido"];
+
   var db = null, leads = [], openId = null, busy = {};
   function $(id) { return document.getElementById(id); }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
   function now() { return new Date().toISOString(); }
   function days(iso) { if (!iso) return 0; return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000); }
-  function fmtDate(iso) { if (!iso) return "—"; return new Date(iso).toLocaleDateString("es-ES", { day: "numeric", month: "short" }); }
+  function fmtDate(iso) { if (!iso) return "—"; var d = new Date(iso), o = { day: "numeric", month: "short" }; if (d.getFullYear() !== new Date().getFullYear()) o.year = "numeric"; return d.toLocaleDateString("es-ES", o); }
   function fmtDT(v) { if (!v) return ""; var d = new Date(v); return d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }); }
+  function num(v) { return parseFloat(String(v == null ? "" : v).replace(",", ".")) || 0; }
+  function eur(v) { return Math.round(v).toLocaleString("es-ES") + " €"; }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function planM(p) { var f = PLANS.find(function (x) { return x.id === p; }); return f ? f.m : (OLD_MONTHS[p] || 0); }
+  function altaOf(l) { return l.altaEl || (l.cerradoEl ? l.cerradoEl.slice(0, 10) : today()); }
+  function addMonths(iso, m) { var d = new Date(iso + "T12:00:00"); d.setMonth(d.getMonth() + m); return d; }
+  function finPlan(l) { var m = planM(l.plan) + (l.extras || []).reduce(function (a, e) { return a + num(e.meses); }, 0); return m ? addMonths(altaOf(l), m) : null; }
+  function stayDays(l) { var end = l.estadoCliente === "baja" && l.bajaEl ? new Date(l.bajaEl + "T12:00:00") : new Date(); return Math.max(0, Math.round((end - new Date(altaOf(l) + "T12:00:00")) / 86400000)); }
+  function months(d) { return (d / 30.44).toLocaleString("es-ES", { maximumFractionDigits: 1 }); }
+  function billed(l) { return num(l.importe) + (l.extras || []).reduce(function (a, e) { return a + num(e.importe); }, 0); }
+  function clients() { return leads.filter(function (l) { return l.etapa === "cliente"; }); }
+  function isActive(l) { return l.estadoCliente !== "baja"; }
+  function renewTask(l) {
+    if (!isActive(l)) return null;
+    var f = finPlan(l); if (!f) return null;
+    var left = Math.ceil((f - new Date()) / 86400000);
+    if (left < 0) return { t: "Plan terminado hace " + (-left) + " d: renovar o dar de baja", u: true };
+    if (left <= 21) return { t: "Su plan acaba el " + fmtDate(f.toISOString()) + ": ofrecer renovación anticipada", u: left <= 7 };
+    return null;
+  }
   function first(n) { return (n || "").split(" ")[0] || "crack"; }
   function setStatus(t, err) { var s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
 
@@ -355,7 +428,11 @@ ul.l b { color: var(--ink); }
       for (var j = 0; j < POST.length; j++) if (dc >= POST[j].d && !cc[POST[j].k]) return { t: POST[j].t, u: true };
       return { t: "Seguimiento hecho: cerrar o pasar a Perdido", u: dc > 4 };
     }
-    if (st === "cliente") return { t: "Cliente · " + (l.importe ? l.importe + " €" : "importe sin apuntar"), u: false, done: true };
+    if (st === "cliente") {
+      if (!isActive(l)) return { t: "Baja · estuvo " + months(stayDays(l)) + " meses", u: false, done: true };
+      var r = renewTask(l); if (r) return { t: r.t, u: r.u, done: true, renew: true };
+      return { t: "Cliente activo · " + (l.plan || "plan sin apuntar") + " · " + eur(billed(l)), u: false, done: true };
+    }
     return { t: "Perdido" + (l.motivo ? " · " + l.motivo : ""), u: false, done: true };
   }
 
@@ -373,12 +450,13 @@ ul.l b { color: var(--ink); }
     var c = function (s) { return leads.filter(function (l) { return (l.etapa || "nuevo") === s; }).length; };
     var week = leads.filter(function (l) { return days(l.creado) < 7; }).length;
     var pend = leads.filter(function (l) { var a = nextAction(l); return a.u && !a.done; }).length;
-    var data = [[week, "Leads últimos 7 días"], [c("nuevo"), "Nuevos sin agendar"], [c("agendado"), "Llamadas agendadas"], [c("hecha"), "En seguimiento"], [c("cliente"), "Clientes"], [pend, "Tareas urgentes"]];
+    var act = clients().filter(isActive).length;
+    var data = [[week, "Leads últimos 7 días"], [c("nuevo"), "Nuevos sin agendar"], [c("agendado"), "Llamadas agendadas"], [c("hecha"), "En seguimiento"], [act, "Clientes activos"], [pend, "Tareas urgentes"]];
     $("kpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + d[0] + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
   }
   function renderToday() {
-    var list = leads.filter(function (l) { return ["cliente", "perdido"].indexOf(l.etapa || "nuevo") < 0; })
-      .map(function (l) { return { l: l, a: nextAction(l) }; })
+    var list = leads.filter(function (l) { return ["cliente", "perdido"].indexOf(l.etapa || "nuevo") < 0 || (l.etapa === "cliente" && renewTask(l)); })
+      .map(function (l) { return { l: l, a: l.etapa === "cliente" ? renewTask(l) : nextAction(l) }; })
       .sort(function (x, y) { return (y.a.u ? 1 : 0) - (x.a.u ? 1 : 0); });
     var box = $("todayList");
     if (!list.length) { box.innerHTML = '<p class="empty">No hay leads abiertos. Añade el primero arriba.</p>'; return; }
@@ -406,7 +484,38 @@ ul.l b { color: var(--ink); }
       b.appendChild(col);
     });
   }
-  function renderAll() { renderKpis(); renderToday(); renderBoard(); if (openId) renderDrawer(); }
+  function renderClients() {
+    var cl = clients(), act = cl.filter(isActive), gone = cl.filter(function (l) { return !isActive(l); });
+    var n = new Date(), mStart = new Date(n.getFullYear(), n.getMonth(), 1), ym = today().slice(0, 7);
+    var altasMes = cl.filter(function (l) { return altaOf(l).slice(0, 7) === ym; }).length;
+    var bajasMes = gone.filter(function (l) { return (l.bajaEl || "").slice(0, 7) === ym; }).length;
+    var inicioMes = cl.filter(function (l) { return new Date(altaOf(l) + "T12:00:00") < mStart && (isActive(l) || !l.bajaEl || new Date(l.bajaEl + "T12:00:00") >= mStart); }).length;
+    var vida = gone.length ? gone.reduce(function (a, l) { return a + stayDays(l); }, 0) / gone.length : null;
+    var total = cl.reduce(function (a, l) { return a + billed(l); }, 0);
+    var back = cl.reduce(function (a, l) { return a + (l.extras || []).reduce(function (x, e) { return x + num(e.importe); }, 0); }, 0);
+    var data = [
+      [act.length, "Clientes activos"],
+      [altasMes, "Altas este mes"],
+      [bajasMes, "Bajas este mes" + (inicioMes ? " · " + Math.round(bajasMes / inicioMes * 100) + " % abandono" : "")],
+      [vida == null ? "—" : months(vida) + " m", vida == null ? "Vida media (aún sin bajas)" : "Vida media · " + gone.length + " baja" + (gone.length > 1 ? "s" : "")],
+      [cl.length ? eur(total / cl.length) : "—", "Facturado por cliente"],
+      [eur(back), "Facturado en back-end"]
+    ];
+    $("ckpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + esc(d[0]) + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+    var box = $("clist");
+    if (!cl.length) { box.innerHTML = '<p class="empty">Todavía no hay clientes. Cuando un lead cierre, pásalo a "Cliente" o añade aquí los que ya tenías.</p>'; return; }
+    var sorted = act.slice().sort(function (a, b) { return (finPlan(a) || 0) - (finPlan(b) || 0); }).concat(gone);
+    box.innerHTML = '<div class="crow head" aria-hidden="true"><span>Cliente</span><span class="hm">Alta</span><span class="hm">Tiempo</span><span class="hm">Fin del plan</span><span class="hm">Facturado</span><span>Estado</span></div>';
+    sorted.forEach(function (l) {
+      var f = finPlan(l), r = renewTask(l), b = document.createElement("button");
+      b.type = "button"; b.className = "crow";
+      var pill = !isActive(l) ? '<span class="pill baja">Baja</span>' : (r ? '<span class="pill warn">Renovar</span>' : '<span class="pill">Activo</span>');
+      b.innerHTML = '<span><b>' + esc(l.nombre) + '</b><small>' + esc(l.plan || "Plan sin apuntar") + '<span class="mo"> · ' + months(stayDays(l)) + ' m · ' + eur(billed(l)) + '</span></small></span><span class="hm num">' + fmtDate(altaOf(l)) + '</span><span class="hm num">' + months(stayDays(l)) + ' m</span><span class="hm num">' + (isActive(l) ? (f ? fmtDate(f.toISOString()) : "—") : "Baja " + fmtDate(l.bajaEl)) + '</span><span class="hm num">' + eur(billed(l)) + '</span>' + pill;
+      b.addEventListener("click", function () { openLead(l.id); });
+      box.appendChild(b);
+    });
+  }
+  function renderAll() { renderKpis(); renderToday(); renderBoard(); renderClients(); if (openId) renderDrawer(); }
 
   /* Ficha */
   function openLead(id) { openId = id; $("drawer").hidden = false; $("drawerBg").hidden = false; renderDrawer(); }
@@ -419,7 +528,7 @@ ul.l b { color: var(--ink); }
     var d = $("drawer");
     if (!l) { closeLead(); return; }
     var st = l.etapa || "nuevo", a = nextAction(l), c = l.checks || {}, seg = l.seguimiento || {};
-    var h = '<div class="drawer-head"><div><span class="label">' + esc(l.origen || "Lead") + ' · ' + (l.entrada === "ig" ? "Desde Instagram" : "En frío") + '</span><h2>' + esc(l.nombre) + '</h2></div><button type="button" class="btn small ghost" id="dClose">Cerrar</button></div>';
+    var h = '<div class="drawer-head"><div><span class="label">' + esc(l.origen || "Lead") + (l.origen === "Cliente previo" ? "" : ' · ' + (l.entrada === "ig" ? "Desde Instagram" : "En frío")) + '</span><h2>'  + esc(l.nombre) + '</h2></div><button type="button" class="btn small ghost" id="dClose">Cerrar</button></div>';
     h += '<div class="steps" role="group" aria-label="Etapa">' + STAGES.map(function (s) { return '<button type="button" data-stage="' + s.id + '" aria-pressed="' + (s.id === st) + '">' + esc(s.name) + '</button>'; }).join("") + '</div>';
     h += '<div class="card"><span class="label">Siguiente paso</span><b>' + esc(a.t) + '</b></div>';
     if (l.telefono) h += '<div class="phone-line"><code>' + esc(l.telefono) + '</code><a class="btn small" href="https://wa.me/' + esc(String(l.telefono).replace(/\D/g, "")) + '" target="_blank" rel="noopener">WhatsApp</a></div>';
@@ -440,7 +549,7 @@ ul.l b { color: var(--ink); }
       }).join("") + '</div>';
       h += '<button type="button" class="btn" data-go="agendado">Ha agendado la llamada</button>';
     }
-    if (st === "agendado" || st === "hecha" || st === "cliente") {
+    if (st === "agendado" || st === "hecha" || (st === "cliente" && l.fechaLlamada)) {
       h += '<div class="card"><label class="f">Fecha y hora de la llamada<input type="datetime-local" data-f="fechaLlamada" value="' + esc(l.fechaLlamada || "") + '"></label>';
       if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) h += '<p class="alert">Está a más de 3 días. Intenta adelantarla: cuanto más lejos, más se cae.</p>';
       h += '</div>';
@@ -456,7 +565,22 @@ ul.l b { color: var(--ink); }
       h += '<div class="phone-line"><button type="button" class="btn" data-go="cliente">Ha cerrado</button><button type="button" class="btn ghost" data-go="perdido">No ha cerrado</button></div>';
     }
     if (st === "cliente") {
-      h += '<div class="card sand"><div class="fields"><label class="f">Importe cobrado (€)<input data-f="importe" inputmode="decimal" value="' + esc(l.importe) + '"></label><label class="f">Plan<select data-f="plan"><option></option><option>90 días</option><option>6 meses</option><option>1 año</option></select></label><label class="f">Pago<select data-f="pago"><option></option><option>Pago único</option><option>2 cuotas</option><option>3 cuotas</option></select></label><label class="f full">Qué le convenció<input data-f="comoCerro" value="' + esc(l.comoCerro) + '"></label></div></div>';
+      var act = isActive(l), fp = finPlan(l), sd = stayDays(l);
+      h += '<div class="card sand"><span class="label">Cliente · ' + (act ? 'activo' : 'baja') + '</span>' +
+        '<p><b>' + (act ? 'Lleva ' : 'Estuvo ') + months(sd) + ' meses</b> (' + sd + ' días)' + (act && fp ? ' · plan hasta el ' + fmtDate(fp.toISOString()) : '') + ' · facturado ' + eur(billed(l)) + '</p>' +
+        '<div class="fields"><label class="f">Fecha de alta<input type="date" data-f="altaEl" value="' + esc(altaOf(l)) + '"></label>' +
+        '<label class="f">Plan<select data-f="plan" id="dPlan"><option></option>' + PLANS.map(function (p) { return '<option>' + esc(p.id) + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Primer cobro (€)<input data-f="importe" inputmode="decimal" value="' + esc(l.importe) + '"></label>' +
+        '<label class="f">Pago<select data-f="pago"><option></option><option>Pago único</option><option>2 pagos</option><option>Klarna / Sequra</option><option>Mensual</option></select></label>' +
+        '<label class="f full">Qué le convenció<input data-f="comoCerro" value="' + esc(l.comoCerro) + '"></label></div></div>';
+      h += '<div class="card"><span class="label">Back-end · momento dulce</span><p class="soft" style="font-size:13.5px">Ofrécelo cuando vea un resultado claro: una foto que impacta, la analítica mejor que la anterior o un comentario espontáneo.</p>' +
+        ((l.extras || []).map(function (e, i) { return '<div class="extra"><span><b>' + esc(e.tipo) + '</b> · ' + fmtDate(e.fecha) + (num(e.meses) ? ' · +' + num(e.meses) + ' meses' : '') + '</span><span>' + eur(num(e.importe)) + ' <button type="button" class="btn small ghost" data-delx="' + i + '" aria-label="Quitar">×</button></span></div>'; }).join("") || '<p class="soft" style="font-size:13px">Sin ventas de back-end todavía.</p>') +
+        '<div class="fields"><label class="f">Tipo<select id="xTipo">' + EXTRA_TIPOS.map(function (t) { return '<option>' + t + '</option>'; }).join("") + '</select></label><label class="f">Importe (€)<input id="xImp" inputmode="decimal"></label><label class="f">Meses que añade<input id="xMes" inputmode="numeric" placeholder="0"></label><label class="f" style="align-self:end"><button type="button" class="btn small" id="xAdd">Añadir venta</button></label></div></div>';
+      if (act) {
+        h += '<button type="button" class="btn small ghost" id="bajaBtn" style="justify-self:start">Dar de baja</button><div id="bajaBox" hidden class="card sand"><div class="fields"><label class="f">Fecha de baja<input type="date" id="bajaFecha" value="' + today() + '"></label><label class="f">Motivo<select id="bajaMotivo"><option>Terminó y no renueva</option><option>Precio</option><option>Falta de tiempo</option><option>No ve resultados</option><option>Motivos personales</option><option>Otro</option></select></label></div><div class="phone-line"><button type="button" class="btn small" id="bajaOk">Confirmar baja</button><button type="button" class="btn small ghost" id="bajaNo">Cancelar</button></div></div>';
+      } else {
+        h += '<div class="card"><p><b>Baja el ' + fmtDate(l.bajaEl) + '</b>' + (l.motivoBaja ? ' · ' + esc(l.motivoBaja) : '') + '</p><button type="button" class="btn small ghost" id="reactBtn" style="justify-self:start">Reactivar cliente</button></div>';
+      }
     }
     if (st === "perdido") {
       h += '<div class="card sand"><label class="f">Motivo<select data-f="motivo"><option></option><option>No responde</option><option>Precio</option><option>No es el momento</option><option>Lo consulta con su pareja</option><option>No encaja</option><option>Otro</option></select></label><p class="soft" style="font-size:13px">Pasados 30 días, a la lista de reactivación.</p></div>';
@@ -465,6 +589,17 @@ ul.l b { color: var(--ink); }
     h += '<button type="button" class="btn small ghost" id="delBtn" style="justify-self:start">Borrar lead</button><div id="delConfirm" hidden class="phone-line"><span class="soft">¿Borrar este lead para siempre?</span><button type="button" class="btn small" id="delYes">Sí, borrar</button><button type="button" class="btn small ghost" id="delNo">Cancelar</button></div>';
     d.innerHTML = h;
 
+    if (st === "cliente") {
+      var dp = $("dPlan"); if (dp) dp.addEventListener("change", function () { var pl = PLANS.find(function (x) { return x.id === dp.value; }); if (pl && pl.p && !num(l.importe)) patch(l.id, { importe: String(pl.p) }); });
+      d.querySelectorAll("[data-delx]").forEach(function (b) { b.addEventListener("click", function () { var x = (l.extras || []).slice(); x.splice(+b.dataset.delx, 1); patch(l.id, { extras: x }); }); });
+      $("xAdd").addEventListener("click", function () { var imp = $("xImp").value.trim(); if (!imp) { $("xImp").focus(); return; } var x = (l.extras || []).slice(); x.push({ fecha: now(), tipo: $("xTipo").value, importe: imp, meses: $("xMes").value.trim() }); patch(l.id, { extras: x.slice(-60) }); });
+      if ($("bajaBtn")) {
+        $("bajaBtn").addEventListener("click", function () { $("bajaBox").hidden = false; });
+        $("bajaNo").addEventListener("click", function () { $("bajaBox").hidden = true; });
+        $("bajaOk").addEventListener("click", function () { patch(l.id, { estadoCliente: "baja", bajaEl: $("bajaFecha").value || today(), motivoBaja: $("bajaMotivo").value }); });
+      }
+      if ($("reactBtn")) $("reactBtn").addEventListener("click", function () { patch(l.id, { estadoCliente: "activo", bajaEl: "", motivoBaja: "" }); });
+    }
     ["plan", "pago", "motivo"].forEach(function (k) { var s = d.querySelector('select[data-f="' + k + '"]'); if (s) s.value = l[k] || ""; });
     $("dClose").addEventListener("click", closeLead);
     d.querySelectorAll("[data-stage]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.stage); }); });
@@ -483,6 +618,7 @@ ul.l b { color: var(--ink); }
     if (s === "agendado" && !l.agendadoEl) o.agendadoEl = now();
     if (s === "hecha" && !l.llamadaHechaEl) o.llamadaHechaEl = now();
     if (s === "cliente" || s === "perdido") o.cerradoEl = now();
+    if (s === "cliente") { if (!l.altaEl) o.altaEl = today(); if (!l.estadoCliente) o.estadoCliente = "activo"; }
     patch(l.id, o);
   }
   function copy(text, btn) {
@@ -495,8 +631,8 @@ ul.l b { color: var(--ink); }
   document.querySelectorAll(".tab").forEach(function (t) {
     t.addEventListener("click", function () {
       document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
-      ["hoy", "embudo", "guion"].forEach(function (v) { $("view-" + v).hidden = v !== t.dataset.view; });
-      $("addCard").hidden = t.dataset.view === "guion";
+      ["hoy", "embudo", "clientes", "guion"].forEach(function (v) { $("view-" + v).hidden = v !== t.dataset.view; });
+      $("addCard").hidden = t.dataset.view === "guion" || t.dataset.view === "clientes";
     });
   });
 
@@ -517,6 +653,22 @@ ul.l b { color: var(--ink); }
     $("addBtn").disabled = false;
   });
 
+  /* Alta de cliente existente */
+  $("c-plan").innerHTML = PLANS.map(function (p) { return '<option>' + esc(p.id) + '</option>'; }).join("");
+  $("c-plan").value = "Semestre";
+  $("c-alta").value = today();
+  $("addCli").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("c-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("c-nombre").value.trim(); if (!nombre) return;
+    var pl = PLANS.find(function (x) { return x.id === $("c-plan").value; });
+    var data = { nombre: nombre, telefono: $("c-tel").value.trim(), ig: "", origen: "Cliente previo", entrada: "ig", objetivo: "", edad: "", etapa: "cliente", estadoCliente: "activo", plan: pl.id, importe: pl.p ? String(pl.p) : "", altaEl: $("c-alta").value || today(), creado: now(), actualizado: now(), cerradoEl: now(), toques: [], checks: {}, seguimiento: {}, extras: [] };
+    $("c-btn").disabled = true;
+    try { await db.collection("leads").add(data); $("addCli").reset(); $("c-plan").value = "Semestre"; $("c-alta").value = today(); $("c-note").textContent = "Cliente añadido."; }
+    catch (err) { $("c-note").textContent = err && err.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez."; }
+    $("c-btn").disabled = false;
+  });
+
   /* Conexión */
   renderAll();
   (async function () {
@@ -524,7 +676,7 @@ ul.l b { color: var(--ink); }
     if (!c) {
       setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true);
       $("todayList").innerHTML = '<p class="empty">El CRM necesita abrirse desde claude.ai con una cuenta con acceso. La pestaña "Proceso y guion" funciona igualmente.</p>';
-      $("addBtn").disabled = true; return;
+      $("addBtn").disabled = true; $("c-btn").disabled = true; return;
     }
     db = c;
     var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);

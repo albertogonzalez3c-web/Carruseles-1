@@ -1,0 +1,286 @@
+<title>CAMSFIT Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: la oferta de Sergio de arriba abajo: programa en dos fases, precios en orden de presentación, garantía y contrato, hormonas y analítica, back-end. Colores de la app CAMSFIT. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --sand: #ddd9ce;
+  --sand-line: #cbbf98;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --gold: #7f6114;
+  --gold-text: #7a6225;
+  --chip: #edebe6;
+  --rust: #9a4b2f;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.4vw, 56px)/1.03 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 clamp(23px, 3vw, 30px)/1.15 var(--f-body); }
+h3 { font: 700 18px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 780px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: var(--white); }
+.card.dark .soft { color: #bdb8ae; }
+.card.dark .label { color: #d8c48f; }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b { color: var(--ink); }
+.card.dark ul.l { color: #bdb8ae; }
+.card.dark ul.l b { color: var(--white); }
+.say { background: var(--chip); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--gold-text); }
+.card.dark .badge { background: #3a352c; color: #d8c48f; }
+.price { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.price small { font-size: 15px; font-weight: 700; letter-spacing: 0; }
+.phase .n { font: 800 44px/1 var(--f-body); color: var(--gold-text); letter-spacing: -.04em; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 12px 12px 12px 0; border-top: 1px solid var(--sand-line); vertical-align: top; color: var(--soft); }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.tblwrap { overflow-x: auto; }
+.when { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.when div { background: var(--chip); border-radius: 12px; padding: 12px; display: grid; gap: 2px; }
+.when b { font-size: 17px; }
+.when span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) {
+  .g4, .when { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .g2, .g4 { grid-template-columns: 1fr; }
+  .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; }
+  .tbl thead { display: none; }
+  .tbl tr { border-top: 1px solid var(--sand-line); padding-block: 10px; }
+  .tbl td { border: 0; padding: 3px 0; }
+  .tbl td[data-h]::before { content: attr(data-h) ": "; font-weight: 700; color: var(--ink); }
+}
+</style>
+
+<main class="wrap">
+  <header class="sec">
+    <span class="label">CAMSFIT · Parte 2 · Oferta</span>
+    <h1>Reprogramación Metabólica.</h1>
+    <p class="soft" style="font-size:18px;max-width:720px">Para hombres de +30: pierde grasa y mantenla, comiendo lo de casa y con tus analíticas bajo control. Seis meses en dos fases, o el año completo.</p>
+  </header>
+
+  <!-- Programa -->
+  <section class="sec" aria-labelledby="h-prog">
+    <header><span class="label">El programa</span><h2 id="h-prog">6 meses, dos fases claras.</h2></header>
+    <div class="g2">
+      <article class="card phase">
+        <span class="n">01</span>
+        <h3>Reprogramar · meses 1 a 3</h3>
+        <p class="soft">Perder grasa y recuperar la sensibilidad a la insulina.</p>
+        <ul class="l"><li>Déficit bien hecho con la comida de casa.</li><li>Fuerza adaptada a su tiempo.</li><li>Sueño y pasos.</li><li>Primera analítica.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">02</span>
+        <h3>Consolidar · meses 4 a 6</h3>
+        <p class="soft">Que la grasa no vuelva.</p>
+        <ul class="l"><li>Subir calorías poco a poco (leptina y tiroides).</li><li>Ganar músculo.</li><li>Cortisol y testosterona en su sitio.</li><li>Segunda analítica.</li></ul>
+      </article>
+    </div>
+    <p class="say">"En 3 meses pierdes la grasa. En los otros 3 te aseguras de no recuperarla nunca más."</p>
+    <div class="card sand">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Plan por fases</b> que se ajusta cada semana según cómo responde su cuerpo.</li>
+        <li><b>Nutrición con la comida de casa:</b> opciones, pesos y equivalencias.</li>
+        <li><b>Revisión semanal en la app:</b> sueño, hambre, energía, estrés, digestión, peso y medidas.</li>
+        <li><b>Analíticas</b> controladas e interpretadas al empezar, en el mes 3 y en el mes 6.</li>
+        <li><b>Soporte directo con Sergio</b> por WhatsApp.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section class="sec" aria-labelledby="h-precios">
+    <header>
+      <span class="label">Precios · en el orden en que se presentan</span>
+      <h2 id="h-precios">Se empieza por el año. Se baja solo si hace falta.</h2>
+    </header>
+    <div class="g4">
+      <article class="card dark">
+        <span class="badge">1 · Se ofrece primero</span>
+        <h3>Año completo</h3>
+        <p class="price">1.200 € <small>pago único</small></p>
+        <p class="soft">1.250 € a plazos (Klarna o Sequra).</p>
+        <ul class="l"><li>Las dos fases y la <b>fase 3 · Autonomía</b>.</li><li>Analítica también a los 12 meses.</li><li>Solo 450 € más que el semestre por 6 meses más.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">2 · Estándar</span>
+        <h3>Semestre</h3>
+        <p class="price">750 €</p>
+        <ul class="l"><li>Fase 1 y fase 2.</li><li>El programa por defecto.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">3 · Downsell</span>
+        <h3>Semestre en 2 pagos</h3>
+        <p class="price">400 € <small>+ 400 € al mes</small></p>
+        <ul class="l"><li>Total 800 €: paga algo más por fraccionar.</li><li>Empieza con lo mismo que el trimestre, pero <b>comprometido a 6 meses</b>.</li></ul>
+      </article>
+      <article class="card sand">
+        <span class="badge">4 · Último recurso</span>
+        <h3>Trimestre</h3>
+        <p class="price">400 €</p>
+        <ul class="l"><li>Solo la fase 1.</li><li>Nunca en la landing ni como primer precio de la llamada.</li></ul>
+      </article>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cómo se dice el año</h3>
+        <p class="say">"Son 1.250 €, o 1.200 € si lo pagas de una vez."</p>
+        <p class="soft" style="font-size:14.5px">En España no se puede cobrar un recargo por el medio de pago, así que nunca se dice "con Klarna son 50 € más". Se presenta como <b>descuento por pago único</b>, que es legal, y esos 50 € cubren la comisión.</p>
+      </div>
+      <div class="card">
+        <h3>Reglas</h3>
+        <ul class="l">
+          <li><b>El precio no se publica:</b> se da en la llamada, una vez y en silencio.</li>
+          <li><b>Un downsell cada vez</b> y solo si el "no" es por dinero.</li>
+          <li><b>Todo con contrato,</b> sin excepciones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garantía y contrato -->
+  <section class="sec" aria-labelledby="h-gar">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-gar">Riesgo cero para el que cumple.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="label">Garantía</span>
+        <p style="font-size:19px;font-weight:700;line-height:1.4">"Si sigues el plan y envías tus revisiones y en la fase 1 no has perdido grasa, sigo trabajando contigo gratis hasta que lo consigas."</p>
+        <ul class="l"><li><b>Condición medible:</b> 80 % de cumplimiento o más y todas las revisiones semanales enviadas.</li><li><b>No hay devolución de dinero:</b> la garantía protege de quien no hace nada.</li></ul>
+      </article>
+      <article class="card">
+        <span class="label">Contrato · firma digital antes de empezar</span>
+        <ul class="l">
+          <li>Qué se entrega, la duración y los pagos.</li>
+          <li>Las condiciones de la garantía.</li>
+          <li>Consentimiento para tratar datos de salud (analíticas) y, si quiere, de imagen.</li>
+          <li><b>Los 14 días para echarse atrás:</b> el cliente pide empezar ya y acepta pagar la parte del servicio ya prestada si desiste. Así nadie pide la devolución el día 13 con el plan entregado.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Hormonas -->
+  <section class="sec" aria-labelledby="h-horm">
+    <header>
+      <span class="label">Lo que le diferencia</span>
+      <h2 id="h-horm">Insulina, leptina, cortisol y testosterona.</h2>
+      <p class="soft">Esto es lo que separa a Sergio de un entrenador con PDF. Se usa en la llamada, en YouTube y en la app.</p>
+    </header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Hormona</th><th>Qué le pasa al hombre de +30</th><th>Qué hace Sergio</th><th>Cómo se mide</th></tr></thead>
+        <tbody>
+          <tr><td>Insulina</td><td data-h="Qué pasa">Sedentarismo, picoteo y cenas tardías: el cuerpo guarda grasa, sobre todo en la barriga.</td><td data-h="Qué hace">Reparto de hidratos según la actividad, fuerza, pasos, orden de los alimentos.</td><td data-h="Medida">Glucosa e insulina en ayunas (HOMA-IR), HbA1c, triglicéridos/HDL.</td></tr>
+          <tr><td>Leptina</td><td data-h="Qué pasa">Tras dietas fuertes el cuerpo se defiende: hambre, bajón y efecto rebote.</td><td data-h="Qué hace">Nada de déficits extremos, pausas de dieta y subida de calorías en la fase 2.</td><td data-h="Medida">Hambre, energía y estancamiento en la revisión semanal.</td></tr>
+          <tr><td>Cortisol</td><td data-h="Qué pasa">Estrés de trabajo y poco sueño: retención, más hambre, peor descanso.</td><td data-h="Qué hace">Prioridad al sueño; no sumar estrés con entrenos o dietas excesivas.</td><td data-h="Medida">Cortisol a primera hora (orientativo); sueño y estrés semanales.</td></tr>
+          <tr><td>Testosterona</td><td data-h="Qué pasa">Baja con la grasa abdominal, el mal sueño y el sedentarismo.</td><td data-h="Qué hace">Perder grasa (lo que más la sube), fuerza, sueño, vitamina D y zinc.</td><td data-h="Medida">Total, libre, SHBG, estradiol, LH.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Analítica -->
+  <section class="sec" aria-labelledby="h-anal">
+    <header>
+      <span class="label">Protocolo de analítica</span>
+      <h2 id="h-anal">La analítica comparada es la mejor prueba de resultado.</h2>
+    </header>
+    <div class="when">
+      <div><b>Inicio</b><span>Punto de partida</span></div>
+      <div><b>Mes 3</b><span>Fin de la fase 1</span></div>
+      <div><b>Mes 6</b><span>Fin de la fase 2</span></div>
+      <div><b>Mes 12</b><span>Solo el año completo</span></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Qué pedir</h3>
+        <ul class="l">
+          <li><b>Metabolismo:</b> glucosa, insulina, HbA1c.</li>
+          <li><b>Grasas e hígado:</b> perfil lipídico, GGT, ALT.</li>
+          <li><b>Tiroides:</b> TSH, T4 libre.</li>
+          <li><b>Hormonas:</b> testosterona total y libre, SHBG.</li>
+          <li><b>Otros:</b> vitamina D, ferritina, PCR.</li>
+        </ul>
+        <p class="soft" style="font-size:14px">A través del médico de cabecera o en un laboratorio privado (unos 60–120 €).</p>
+      </div>
+      <div class="card">
+        <h3>Para que salga fiable</h3>
+        <ul class="l">
+          <li>Ayunas de 10–12 h, entre las 8 y las 10 de la mañana.</li>
+          <li>Sin entrenar fuerte 48 h antes y sin alcohol 72 h antes.</li>
+          <li>Siempre en el mismo laboratorio.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card sand">
+      <h3>El límite, para ir fuerte sin pillarse</h3>
+      <ul class="l">
+        <li><b>Sergio sí:</b> interpreta tendencias y ajusta alimentación, entrenamiento y hábitos.</li>
+        <li><b>Sergio no:</b> diagnostica ni receta medicación ni terapia hormonal.</li>
+        <li><b>Deriva al médico</b> si un valor sale muy fuera de rango.</li>
+        <li><b>En anuncios:</b> nada de "cura tu resistencia a la insulina". Sí "entiende tu metabolismo y tus analíticas".</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Back-end -->
+  <section class="sec" aria-labelledby="h-back">
+    <header>
+      <span class="label">Back-end</span>
+      <h2 id="h-back">Cada cliente vale más en su momento dulce.</h2>
+      <p class="soft">No hay una semana fija. Se ofrece cuando el cliente vea un resultado claro.</p>
+    </header>
+    <div class="card dark">
+      <span class="label">Señales del momento dulce</span>
+      <ul class="l">
+        <li><b>Una foto comparada</b> que le impacta.</li>
+        <li><b>La analítica</b> mejor que la anterior.</li>
+        <li><b>Un comentario espontáneo:</b> "me ha dicho mi mujer…", "me queda grande el pantalón".</li>
+      </ul>
+    </div>
+    <div class="g4">
+      <article class="card">
+        <span class="badge">Ascensión</span>
+        <h3>Subir de programa</h3>
+        <ul class="l"><li><b>Trimestre → semestre:</b> paga 350 € de diferencia.</li><li><b>Semestre → año:</b> paga 450 € de diferencia.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">Renovación anticipada</span>
+        <h3>Renovar antes de acabar</h3>
+        <ul class="l"><li>Nunca al final, cuando ya piensa en irse.</li><li>Con incentivo y fecha límite: precio congelado o un mes gratis.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">Continuidad</span>
+        <h3>Mantenimiento mensual</h3>
+        <ul class="l"><li>App, una revisión al mes y analítica de control.</li><li>Precio a decidir (propuesta: 49–69 €/mes).</li><li>30 clientes así ≈ 1.800 €/mes sin captar a nadie.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">Referidos</span>
+        <h3>Trae a un amigo</h3>
+        <ul class="l"><li>Se pide en el mismo momento dulce.</li><li>Si el amigo entra, un mes gratis.</li></ul>
+      </article>
+    </div>
+    <p class="say">"Mira dónde estabas hace 10 semanas y dónde estás hoy. Lo difícil ya está hecho. Si renuevas antes del viernes, te mantengo el precio y te regalo un mes."</p>
+    <p class="soft" style="font-size:14.5px">Cada venta de back-end se apunta en el CRM, en la ficha del cliente. Así se calcula lo que factura de verdad cada cliente.</p>
+  </section>
+</main>
