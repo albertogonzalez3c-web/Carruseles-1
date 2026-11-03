@@ -114,6 +114,12 @@ ul.alerts li.info::before { background: var(--accent-text); }
 ul.alerts li.good::before { background: var(--green); }
 .g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 
+/* Idioma y resumen en inglés */
+.langseg button { padding: 6px 11px; font-size: 13px; }
+.btnrow { display: flex; flex-wrap: wrap; gap: 8px; }
+details.enmsg summary { cursor: pointer; font-size: 13.5px; font-weight: 700; color: var(--soft); }
+details.enmsg pre { margin-top: 8px; }
+
 /* Coordinación */
 .role { display: grid; gap: 8px; margin-bottom: 16px; }
 .role ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: 14.5px; color: #d9d7cf; }
@@ -157,6 +163,10 @@ ul.alerts li.good::before { background: var(--green); }
 <header class="top">
   <div class="wrap">
     <div class="brand"><span class="label">AGLEZ · Equipo</span><b>Reportes del equipo</b></div>
+    <div class="seg langseg" role="group" aria-label="Idioma" data-noi18n>
+      <button type="button" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
     <nav class="tabs" role="tablist" aria-label="Secciones">
       <button class="tab" role="tab" aria-selected="true" data-tab="setters" id="tab-setters">Diario setters</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="asesoria" id="tab-asesoria">Asesoría semanal</button>
@@ -191,7 +201,7 @@ ul.alerts li.good::before { background: var(--green); }
         </div>
         <div class="card">
           <h3>Mensaje para WhatsApp</h3>
-          <pre class="copy" id="s-msg"></pre>
+          <pre class="copy" id="s-msg" data-noi18n></pre>
           <button type="button" class="btn" data-copy="s-msg" data-note="s-copynote">Copiar mensaje</button>
           <p class="copynote" id="s-copynote" aria-live="polite"></p>
           <p class="saved" id="sv-set" aria-live="polite"></p>
@@ -234,7 +244,7 @@ ul.alerts li.good::before { background: var(--green); }
         </div>
         <div class="card">
           <h3>Mensaje para WhatsApp</h3>
-          <pre class="copy" id="a-msg"></pre>
+          <pre class="copy" id="a-msg" data-noi18n></pre>
           <button type="button" class="btn" data-copy="a-msg" data-note="a-copynote">Copiar mensaje</button>
           <p class="copynote" id="a-copynote" aria-live="polite"></p>
           <p class="saved" id="sv-ase" aria-live="polite"></p>
@@ -313,8 +323,12 @@ ul.alerts li.good::before { background: var(--green); }
         <div class="clist" id="coord-wk"></div>
         <div class="citem">
           <b>Resumen para Alberto</b>
-          <pre class="copy" id="co-msg"></pre>
-          <button type="button" class="btn" data-copy="co-msg" data-note="co-copynote">Copiar resumen para Alberto</button>
+          <pre class="copy" id="co-msg" data-noi18n></pre>
+          <div class="btnrow">
+            <button type="button" class="btn" data-copy="co-msg" data-note="co-copynote">Copiar resumen para Alberto</button>
+            <button type="button" class="btn ghost" data-copy="co-msg-en" data-note="co-copynote" data-noi18n>Copy summary (EN)</button>
+          </div>
+          <details class="enmsg"><summary>Ver el resumen en inglés</summary><pre class="copy" id="co-msg-en" data-noi18n></pre></details>
           <p class="copynote" id="co-copynote" aria-live="polite"></p>
         </div>
         <p class="saved" id="sv-cow" aria-live="polite"></p>
@@ -392,15 +406,20 @@ ul.alerts li.good::before { background: var(--green); }
   /* ---------- Utilidades ---------- */
   function el(id) { return document.getElementById(id); }
   function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
-  function eur(n) { return n.toLocaleString("es-ES", { maximumFractionDigits: 0 }) + " €"; }
+  var LANG = "es", FORCE = null;
+  try { if (localStorage.getItem("aglez-equipo-lang") === "en") LANG = "en"; } catch (e) {}
+  function L() { return FORCE || LANG; }
+  function LOC() { return L() === "en" ? "en-GB" : "es-ES"; }
+  function inLang(lang, fn) { var prev = FORCE; FORCE = lang; try { return fn(); } finally { FORCE = prev; } }
+  function eur(n) { return n.toLocaleString(LOC(), { maximumFractionDigits: 0 }) + " €"; }
   function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + " %" : "—"; }
   function pl(n, one, many) { return n + " " + (n === 1 ? one : many); }
-  function dec(n) { return n.toLocaleString("es-ES", { maximumFractionDigits: 1 }); }
+  function dec(n) { return n.toLocaleString(LOC(), { maximumFractionDigits: 1 }); }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
   function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
   function today() { return iso(new Date()); }
-  function nice(f, long) { return new Date(f + "T12:00:00").toLocaleDateString("es-ES", long ? { weekday: "long", day: "numeric", month: "long" } : { weekday: "short", day: "numeric", month: "short" }); }
+  function nice(f, long) { return new Date(f + "T12:00:00").toLocaleDateString(LOC(), long ? { weekday: "long", day: "numeric", month: "long" } : { weekday: "short", day: "numeric", month: "short" }); }
   function setStatus(t, err) { var s = el("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
   function isoWeek(d) {
     var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())), day = t.getUTCDay() || 7;
@@ -415,8 +434,8 @@ ul.alerts li.good::before { background: var(--green); }
   function weekShift(id, n) { var m = weekMonday(id); m.setDate(m.getDate() + 7 * n); return isoWeek(m); }
   function weekLabel(id) {
     var m = weekMonday(id), s = new Date(m); s.setDate(m.getDate() + 6);
-    var f = function (d) { return d.toLocaleDateString("es-ES", { day: "numeric", month: "short" }); };
-    return "Semana " + (+id.split("-W")[1]) + " · " + f(m) + " – " + f(s);
+    var f = function (d) { return d.toLocaleDateString(LOC(), { day: "numeric", month: "short" }); };
+    return (L() === "en" ? "Week " : "Semana ") + (+id.split("-W")[1]) + " · " + f(m) + " – " + f(s);
   }
   function weekRange(id) { var m = weekMonday(id), s = new Date(m); s.setDate(m.getDate() + 6); return [iso(m), iso(s)]; }
   function rows(list, k) { return (list || []).filter(function (r) { return String(r[k] || "").trim(); }); }
@@ -479,7 +498,7 @@ ul.alerts li.good::before { background: var(--green); }
       chains[k] = prev.then(function () {
         dirty[k] = false;
         return db.collection(X.col).doc(id).set(data).then(function () {
-          if (!dirty[k]) el(X.sv).textContent = "Guardado " + new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+          if (!dirty[k]) el(X.sv).textContent = "Guardado " + new Date().toLocaleTimeString(LOC(), { hour: "2-digit", minute: "2-digit" });
         }, function (e) {
           dirty[k] = false;
           el(X.sv).textContent = e && e.code === "invalid_argument" ? "No tienes permiso para guardar en esta página." : (e && e.code === "quota_exceeded" ? "La base de datos está llena." : "No se ha podido guardar. Vuelve a intentarlo.");
@@ -575,7 +594,8 @@ ul.alerts li.good::before { background: var(--green); }
       antiguos: num(d.llamadasAntiguos), contestadas: num(d.llamadasContestadas), cierres: sumK(d.cierres, "importe"), nCierres: rows(d.cierres, "cliente").length };
   }
   function yn(v) { return v === true ? "Sí" : (v === false ? "No ⚠️" : "sin marcar"); }
-  function setMessage(d) {
+  function setMessage(d) { return inLang("es", function () { return setMessageEs(d); }); }
+  function setMessageEs(d) {
     var c = setCalc(d), ax = d.persona === "axell", L = [];
     L.push("📲 Reporte de " + PERSONAS[d.persona] + " · " + nice(d.fecha, true));
     L.push("");
@@ -666,7 +686,8 @@ ul.alerts li.good::before { background: var(--green); }
     Object.keys(D.ase.map).forEach(function (k) { (D.ase.map[k].bajas || []).forEach(function (b) { if (num(b.meses) > 0) all.push(num(b.meses)); }); });
     return all.length ? { v: all.reduce(function (a, b) { return a + b; }, 0) / all.length, n: all.length } : null;
   }
-  function aseMessage(a) {
+  function aseMessage(a) { return inLang("es", function () { return aseMessageEs(a); }); }
+  function aseMessageEs(a) {
     var c = aseCalc(a), vh = vidaHistorica(), L = [];
     L.push("🗂️ Asesoría · " + weekLabel(a.semana) + " · por " + (a.rellenadoPor || "—"));
     L.push("");
@@ -869,14 +890,17 @@ ul.alerts li.good::before { background: var(--green); }
     if (!D.cod.cur || !D.cow.cur) return;
     progHtml("cod-prog", codState().s);
     progHtml("cow-prog", cowState().s);
-    el("co-msg").textContent = coordMessage(D.cow.cur.semana);
+    el("co-msg").textContent = inLang("es", function () { return coordMessage(D.cow.cur.semana, false); });
+    el("co-msg-en").textContent = inLang("en", function () { return coordMessage(D.cow.cur.semana, true); });
   }
   function renderCoordSafe() { if (focusedIn("view-coord")) refreshCoord(); else renderCoord(); }
-  function coordMessage(w) {
-    var rg = weekRange(w), cw = D.cow.cur, ws = cowState(), L = [], al = [];
+  function coordMessage(w, en) {
+    function X(es, e) { return en ? e : es; }
+    function P(n, es1, esN, en1, enN) { return n + " " + (n === 1 ? X(es1, en1) : X(esN, enN)); }
+    var rg = weekRange(w), cw = D.cow.cur, ws = cowState(), Ls = [], al = [];
     var hasta = rg[1] < today() ? rg[1] : today();
-    L.push("📊 Resumen semanal del equipo · " + weekLabel(w));
-    L.push(""); L.push("SETTERS");
+    Ls.push("📊 " + X("Resumen semanal del equipo", "Weekly team summary") + " · " + weekLabel(w));
+    Ls.push(""); Ls.push("SETTERS");
     Object.keys(PERSONAS).forEach(function (p) {
       var tt = { total: 0, frio: 0, resp: 0, agendas: 0, es: 0, us: 0, cierres: 0 }, dias = 0, falta = 0, bNo = 0, cNo = 0;
       for (var d = new Date(rg[0] + "T12:00:00"); iso(d) <= hasta; d.setDate(d.getDate() + 1)) {
@@ -885,30 +909,30 @@ ul.alerts li.good::before { background: var(--green); }
         else falta++;
       }
       var ax = p === "axell";
-      L.push(PERSONAS[p] + ": " + tt.total + " abiertas · " + pl(tt.resp, "respuesta", "respuestas") + " (" + pct(tt.resp, tt.frio) + ") · " + pl(tt.agendas, "agenda", "agendas") +
-        (ax ? " · llamadas 🇪🇸 " + tt.es + " / 🇺🇸 " + tt.us + " · cierres " + eur(tt.cierres) : "") + " · " + pl(dias, "día", "días") + " con reporte");
-      if (falta) al.push(PERSONAS[p] + ": " + pl(falta, "día", "días") + " sin reporte");
-      if (bNo) al.push("Axell: bienvenidas no al día " + pl(bNo, "día", "días"));
-      if (cNo) al.push("Axell: CRM no al día " + pl(cNo, "día", "días"));
+      Ls.push(PERSONAS[p] + ": " + tt.total + X(" abiertas", " opened") + " · " + P(tt.resp, "respuesta", "respuestas", "reply", "replies") + " (" + pct(tt.resp, tt.frio) + ") · " + P(tt.agendas, "agenda", "agendas", "call booked", "calls booked") +
+        (ax ? X(" · llamadas", " · calls") + " 🇪🇸 " + tt.es + " / 🇺🇸 " + tt.us + X(" · cierres ", " · closes ") + eur(tt.cierres) : "") + " · " + P(dias, "día", "días", "day", "days") + X(" con reporte", " with a report"));
+      if (falta) al.push(PERSONAS[p] + ": " + P(falta, "día", "días", "day", "days") + X(" sin reporte", " without a report"));
+      if (bNo) al.push(X("Axell: bienvenidas no al día ", "Axell: welcomes not up to date on ") + P(bNo, "día", "días", "day", "days"));
+      if (cNo) al.push(X("Axell: CRM no al día ", "Axell: CRM not up to date on ") + P(cNo, "día", "días", "day", "days"));
     });
-    L.push(""); L.push("ASESORÍA");
+    Ls.push(""); Ls.push(X("ASESORÍA", "COACHING"));
     if (ws.has) {
       var c = aseCalc(ws.a);
-      L.push("Activos " + c.activos + " · altas " + c.altas + " · bajas " + c.bajas + (c.vida != null ? " (vida media " + dec(c.vida) + " meses)" : ""));
-      L.push("Sin enviar revisión: " + c.pctSinRev + " · back-end cerrado: " + eur(c.beEur));
-      L.push("Renovaciones próximas: " + (ws.rn.length ? ws.rn.map(function (r) { var x = (cw.renov || {})[r.nombre] || {}; return r.nombre + (x.resp ? " (" + x.resp + ")" : ""); }).join(", ") : "ninguna"));
-      if (c.pend > 0) al.push(pl(c.pend, "revisión pendiente", "revisiones pendientes") + " de contestar");
-      ws.rn.forEach(function (r) { var x = (cw.renov || {})[r.nombre] || {}; if (!x.resp) al.push("Renovación sin responsable: " + r.nombre); });
-      ws.du.forEach(function (r) { if (!(cw.dulce || {})[r.nombre]) al.push("Momento dulce sin ofrecer back-end: " + r.nombre); });
-      ws.ri.forEach(function (r) { if (!(cw.riesgo || {})[r.nombre]) al.push("En riesgo y sin contactar: " + r.nombre); });
-      if (ws.testPend > 0 && !cw.testEnviados) al.push(pl(ws.testPend, "testimonio", "testimonios") + " sin enviar a Alberto");
-    } else { L.push("Sin reporte semanal todavía."); al.push("Falta el reporte semanal de asesoría"); }
-    L.push(""); L.push("ALERTAS");
-    if (al.length) al.forEach(function (x) { L.push("· " + x); }); else L.push("Sin alertas.");
-    L.push(""); L.push("ACUERDOS DE LA REUNIÓN");
+      Ls.push(X("Activos ", "Active ") + c.activos + X(" · altas ", " · new ") + c.altas + X(" · bajas ", " · cancellations ") + c.bajas + (c.vida != null ? X(" (vida media ", " (average lifetime ") + dec(c.vida) + X(" meses)", " months)") : ""));
+      Ls.push(X("Sin enviar revisión: ", "Not sending reviews: ") + c.pctSinRev + X(" · back-end cerrado: ", " · back-end closed: ") + eur(c.beEur));
+      Ls.push(X("Renovaciones próximas: ", "Upcoming renewals: ") + (ws.rn.length ? ws.rn.map(function (r) { var x = (cw.renov || {})[r.nombre] || {}; return r.nombre + (x.resp ? " (" + x.resp + ")" : ""); }).join(", ") : X("ninguna", "none")));
+      if (c.pend > 0) al.push(P(c.pend, "revisión pendiente", "revisiones pendientes", "review", "reviews") + X(" de contestar", " pending reply"));
+      ws.rn.forEach(function (r) { var x = (cw.renov || {})[r.nombre] || {}; if (!x.resp) al.push(X("Renovación sin responsable: ", "Renewal with no owner: ") + r.nombre); });
+      ws.du.forEach(function (r) { if (!(cw.dulce || {})[r.nombre]) al.push(X("Momento dulce sin ofrecer back-end: ", "Sweet spot, back-end not offered: ") + r.nombre); });
+      ws.ri.forEach(function (r) { if (!(cw.riesgo || {})[r.nombre]) al.push(X("En riesgo y sin contactar: ", "At risk and not contacted: ") + r.nombre); });
+      if (ws.testPend > 0 && !cw.testEnviados) al.push(P(ws.testPend, "testimonio", "testimonios", "testimonial", "testimonials") + X(" sin enviar a Alberto", " not sent to Alberto"));
+    } else { Ls.push(X("Sin reporte semanal todavía.", "No weekly report yet.")); al.push(X("Falta el reporte semanal de asesoría", "The weekly coaching report is missing")); }
+    Ls.push(""); Ls.push(X("ALERTAS", "ALERTS"));
+    if (al.length) al.forEach(function (x) { Ls.push("· " + x); }); else Ls.push(X("Sin alertas.", "No alerts."));
+    Ls.push(""); Ls.push(X("ACUERDOS DE LA REUNIÓN", "MEETING AGREEMENTS"));
     var ac = (cw.acuerdos || []).filter(function (t) { return String(t || "").trim(); });
-    if (ac.length) ac.forEach(function (t) { L.push("· " + t); }); else L.push(cw.reunion ? "Reunión hecha, sin acuerdos apuntados." : "Reunión todavía sin hacer.");
-    return L.join("\n");
+    if (ac.length) ac.forEach(function (t) { Ls.push("· " + t); }); else Ls.push(cw.reunion ? X("Reunión hecha, sin acuerdos apuntados.", "Meeting held, no agreements noted.") : X("Reunión todavía sin hacer.", "Meeting not held yet."));
+    return Ls.join("\n");
   }
   function ensureCoordData() {
     if (!db) return;
