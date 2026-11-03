@@ -189,6 +189,7 @@ details.enmsg pre { margin-top: 8px; }
       <div class="seg" role="group" aria-label="Persona">
         <button type="button" data-persona="axell" aria-pressed="true">Axell</button>
         <button type="button" data-persona="andres" aria-pressed="false">Andrés</button>
+        <button type="button" data-persona="alberto" aria-pressed="false">Alberto</button>
       </div>
       <input type="date" id="s-fecha" aria-label="Día del reporte">
     </div>
@@ -340,7 +341,8 @@ details.enmsg pre { margin-top: 8px; }
 <script>
 (function () {
   var LINEAS = ["Mentoría", "Asesoría ES", "Asesoría EN"];
-  var PERSONAS = { axell: "Axell", andres: "Andrés" };
+  var PERSONAS = { axell: "Axell", andres: "Andrés", alberto: "Alberto" };
+  var OBLIGA = { axell: true, andres: true }; // Alberto reporta cuando quiere: sin avisos de "pendiente"
   var MOTIVOS = ["Terminó y no renueva", "Precio", "Falta de tiempo", "No ve resultados", "Personal", "Otro"];
   var BACKEND = ["Ascensión (a anual)", "Renovación anticipada", "Continuidad", "Referido"];
 
@@ -736,6 +738,7 @@ details.enmsg pre { margin-top: 8px; }
     el("r-sub").textContent = "Hoy es " + nice(t, true) + ". " + weekLabel(wk) + ".";
     el("r-who").innerHTML = Object.keys(PERSONAS).map(function (p) {
       var d = D.set.map[t + "_" + p], ok = setHas(d);
+      if (!OBLIGA[p] && !ok) return "";
       return "<div><span>" + PERSONAS[p] + "</span>" + (ok ? "<span class=\"ok\">✓ enviado" + (d.actualizado ? " · " + new Date(d.actualizado).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) : "") + "</span>" : "<span class=\"ko\">✗ pendiente</span>") + "</div>";
     }).join("");
     el("r-week-h").textContent = "Setters · " + weekLabel(wk);
@@ -756,7 +759,7 @@ details.enmsg pre { margin-top: 8px; }
     } else el("r-ase").innerHTML = "<p style=\"color:#b9b7af;font-size:14px\">Andrés o Fran todavía no han rellenado ninguna semana.</p>";
     // avisos
     var al = [];
-    Object.keys(PERSONAS).forEach(function (p) { if (!setHas(D.set.map[t + "_" + p])) al.push(["", PERSONAS[p] + " no ha enviado el reporte de hoy."]); });
+    Object.keys(PERSONAS).forEach(function (p) { if (OBLIGA[p] && !setHas(D.set.map[t + "_" + p])) al.push(["", PERSONAS[p] + " no ha enviado el reporte de hoy."]); });
     var ax = D.set.map[t + "_axell"];
     if (ax) {
       if (ax.bienvenidasAlDia === false) al.push(["", "Axell: las bienvenidas de hoy no están al día."]);
@@ -908,10 +911,11 @@ details.enmsg pre { margin-top: 8px; }
         if (setHas(doc)) { dias++; var c = setCalc(doc); Object.keys(tt).forEach(function (k) { tt[k] += c[k]; }); if (doc.bienvenidasAlDia === false) bNo++; if (doc.crmAlDia === false) cNo++; }
         else falta++;
       }
+      if (!OBLIGA[p] && !dias) return;
       var ax = p === "axell";
       Ls.push(PERSONAS[p] + ": " + tt.total + X(" abiertas", " opened") + " · " + P(tt.resp, "respuesta", "respuestas", "reply", "replies") + " (" + pct(tt.resp, tt.frio) + ") · " + P(tt.agendas, "agenda", "agendas", "call booked", "calls booked") +
         (ax ? X(" · llamadas", " · calls") + " 🇪🇸 " + tt.es + " / 🇺🇸 " + tt.us + X(" · cierres ", " · closes ") + eur(tt.cierres) : "") + " · " + P(dias, "día", "días", "day", "days") + X(" con reporte", " with a report"));
-      if (falta) al.push(PERSONAS[p] + ": " + P(falta, "día", "días", "day", "days") + X(" sin reporte", " without a report"));
+      if (falta && OBLIGA[p]) al.push(PERSONAS[p] + ": " + P(falta, "día", "días", "day", "days") + X(" sin reporte", " without a report"));
       if (bNo) al.push(X("Axell: bienvenidas no al día ", "Axell: welcomes not up to date on ") + P(bNo, "día", "días", "day", "days"));
       if (cNo) al.push(X("Axell: CRM no al día ", "Axell: CRM not up to date on ") + P(cNo, "día", "días", "day", "days"));
     });
@@ -1110,7 +1114,7 @@ details.enmsg pre { margin-top: 8px; }
   function trLines(t) { return t.replace(/Asesoría ES|Asesoría EN|Mentoría/g, function (m) { return LINE_EN[m]; }); }
   function plEn(n, one, many) { return n + " " + (+n === 1 ? one : many); }
   var RULES = [
-    [/^(Axell|Andrés) · hoy$/, "$1 · today"],
+    [/^(Axell|Andrés|Alberto) · hoy$/, "$1 · today"],
     [/^Total (\d+)((?: · (?:Mentoría|Asesoría ES|Asesoría EN) \d+)*)$/, function (m, n, rest) { return "Total " + n + trLines(rest); }],
     [/^(\d+) respuestas$/, function (m, n) { return plEn(n, "reply", "replies"); }],
     [/^Últimos 14 días · (.+)$/, "Last 14 days · $1"],
@@ -1124,16 +1128,16 @@ details.enmsg pre { margin-top: 8px; }
     [/^✓ enviado · (.+)$/, "✓ sent · $1"],
     [/^Asesoría · (.+)$/, "Coaching · $1"],
     [/^(.+) no ha enviado el reporte de hoy\.$/, "$1 hasn't sent today's report."],
-    [/^(Axell|Andrés) · urgente hoy: (.*)$/, "$1 · urgent today: $2"],
-    [/^(Axell|Andrés) dejó para hoy: (.*)$/, "$1 left for today: $2"],
+    [/^(Axell|Andrés|Alberto) · urgente hoy: (.*)$/, "$1 · urgent today: $2"],
+    [/^(Axell|Andrés|Alberto) dejó para hoy: (.*)$/, "$1 left for today: $2"],
     [/^(\d+) (?:revisión pendiente|revisiones pendientes) de contestar por el equipo\.$/, function (m, n) { return plEn(n, "review", "reviews") + " waiting for the team's reply."; }],
     [/^En riesgo de baja: (.*)$/, "At risk of leaving: $1"],
     [/^Renovación prevista: (.*)$/, "Renewal due: $1"],
     [/^Momento dulce: (.*) \((.*)\) → ofrecer back-end$/, function (m, n, sg) { return "Sweet spot: " + n + " (" + (EX[sg] || sg) + ") → offer back-end"; }],
     [/^(\d+) (?:testimonio recogido|testimonios recogidos) sin enviar a Alberto\.$/, function (m, n) { return plEn(n, "testimonial", "testimonials") + " collected, not sent to Alberto."; }],
     [/^(\d+) notas?$/, function (m, n) { return plEn(n, "note", "notes"); }],
-    [/^\((Axell|Andrés) · (Hoy|Mañana|Esta semana)\)$/, function (m, p, c) { return "(" + p + " · " + EX[c] + ")"; }],
-    [/^\((Axell|Andrés), de ayer para hoy\)$/, "($1, from yesterday for today)"],
+    [/^\((Axell|Andrés|Alberto) · (Hoy|Mañana|Esta semana)\)$/, function (m, p, c) { return "(" + p + " · " + EX[c] + ")"; }],
+    [/^\((Axell|Andrés|Alberto), de ayer para hoy\)$/, "($1, from yesterday for today)"],
     [/^por (.+)$/, "by $1"],
     [/^(\d+) (?:testimonio pendiente|testimonios pendientes) de enviar$/, function (m, n) { return plEn(n, "testimonial", "testimonials") + " still to send"; }],
     [/^Acuerdo (\d)$/, "Agreement $1"],
