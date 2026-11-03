@@ -80,6 +80,19 @@ table.cal { width: 100%; min-width: 760px; border-collapse: separate; border-spa
 .pillar .phase { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
 .pillar ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
 
+.mix { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.mix-item { background: var(--white); border-radius: 14px; padding: 14px 16px; display: grid; gap: 6px; }
+.mix-item b { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; color: var(--gold-text); }
+.mix-item span { font-weight: 700; font-size: 15px; line-height: 1.3; }
+.mix-item small { font-weight: 500; color: var(--soft); font-size: 13px; }
+.mix-item.total { background: var(--gold); }
+.mix-item.total b, .mix-item.total span, .mix-item.total small { color: var(--white); }
+.cal td.empty { background: transparent; }
+.cal td.tot { background: var(--chip); font-weight: 800; text-align: center; font-variant-numeric: tabular-nums; }
+.cal .sub { display: block; color: var(--soft); font-size: 12.5px; margin-top: 4px; }
+a.ref { display: inline-block; margin-top: 4px; font-size: 12.5px; font-weight: 700; }
+@media (max-width: 820px) { .mix { grid-template-columns: 1fr 1fr; } }
+
 /* Embudo */
 .funnel { display: grid; gap: 8px; }
 .step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--white); border-radius: 14px; padding: 14px 16px; }
@@ -117,7 +130,7 @@ footer { padding-block: 28px 44px; color: var(--soft); font-size: 13.5px; border
     <p class="lede">Seis frentes, en orden. Primero lo que ve quien llega a su perfil, después lo que le hace llegar y, por último, cómo convertir esos contactos en clientes.</p>
     <div class="goals">
       <div class="goal"><b>Domingo: perfil listo</b><span>Nombre, bio, destacadas y enlace a la landing.</span></div>
-      <div class="goal"><b>Domingo: 2 semanas de contenido</b><span>Calendario de Instagram y YouTube con los 4 pilares.</span></div>
+      <div class="goal"><b>Domingo: sistema de contenido en marcha</b><span>18 publicaciones a la semana, historias diarias y YouTube en aumento.</span></div>
       <div class="goal"><b>Domingo: sistema de ventas</b><span>Oferta cerrada, embudo, guiones de seguimiento y KPIs.</span></div>
     </div>
   </header>
@@ -212,72 +225,69 @@ Hombres 30-50 con trabajos sedentarios
   <div class="wrap">
     <div class="sec-head">
       <span class="when">Martes y miércoles</span>
-      <span class="label">3 · Calendario de contenido</span>
-      <h2>Cuatro hormonas, un mismo mensaje: tu cuerpo se puede reprogramar.</h2>
-      <p class="soft">Cada pilar explica un motivo por el que el hombre de 30 a 50 con trabajo sedentario no pierde grasa o la recupera. Todo divulgativo, sin diagnósticos.</p>
-    </div>
-    <div class="grid4">
-      <article class="card pillar"><span class="phase">Fase 1 · perder grasa</span><h3>Insulina</h3><ul><li>Picos y antojos de tarde</li><li>Barriga y sedentarismo</li><li>Comer lo de casa sin picos</li></ul></article>
-      <article class="card pillar"><span class="phase">Rebote · fase 3</span><h3>Leptina</h3><ul><li>Por qué rebotas tras una dieta</li><li>Hambre que no se calma</li><li>Por qué no bajar de golpe</li></ul></article>
-      <article class="card pillar"><span class="phase">Fase 2 · fuerza y músculo</span><h3>Testosterona</h3><ul><li>Energía y libido a los 40</li><li>Músculo y gasto en reposo</li><li>Mitos y lo que sí influye</li></ul></article>
-      <article class="card pillar"><span class="phase">Toda la semana</span><h3>Cortisol</h3><ul><li>Estrés del trabajo y grasa abdominal</li><li>Sueño y recuperación</li><li>Día de 10 horas sentado</li></ul></article>
+      <span class="label">3 · Sistema de contenido</span>
+      <h2>18 publicaciones a la semana en Instagram, YouTube en aumento y 3 bloques de historias al día.</h2>
+      <p class="soft">Todo dentro de su nicho: reprogramación metabólica para hombres de 30 a 50, con cinco temas (insulina, leptina, testosterona, cortisol y grasa visceral). Contenido divulgativo, sin diagnósticos.</p>
     </div>
 
-    <h3 style="margin:26px 0 8px">Semana 1</h3>
+    <div class="mix">
+      <div class="mix-item"><b>7</b><span>Yapping<br><small>1 al día · a cámara, ángulos de comunicación</small></span></div>
+      <div class="mix-item"><b>5</b><span>Voz en off<br><small>Estilo "sígueme" · ángulos y variantes</small></span></div>
+      <div class="mix-item"><b>3</b><span>Trends<br><small>Incluye formato ranking</small></span></div>
+      <div class="mix-item"><b>3</b><span>Carruseles<br><small>60 % conexión · 30 % valor · 10 % prueba social</small></span></div>
+      <div class="mix-item total"><b>18</b><span>Publicaciones a la semana<br><small>+ variantes como reels de prueba</small></span></div>
+    </div>
+
+    <div class="grid4" style="grid-template-columns:repeat(5,minmax(0,1fr));margin-top:16px">
+      <article class="card pillar"><span class="phase">Fase 1</span><h3>Insulina</h3><ul><li>Antojos y picos</li><li>Barriga y silla</li></ul></article>
+      <article class="card pillar"><span class="phase">Rebote</span><h3>Leptina</h3><ul><li>Por qué rebotas</li><li>Hambre constante</li></ul></article>
+      <article class="card pillar"><span class="phase">Fase 2</span><h3>Testosterona</h3><ul><li>Energía y libido</li><li>Músculo y gasto</li></ul></article>
+      <article class="card pillar"><span class="phase">Siempre</span><h3>Cortisol</h3><ul><li>Estrés del trabajo</li><li>Sueño</li></ul></article>
+      <article class="card pillar"><span class="phase">El riesgo real</span><h3>Grasa visceral</h3><ul><li>La que no se ve</li><li>Por qué importa a los 40</li></ul></article>
+    </div>
+
+    <h3 style="margin:26px 0 8px">Instagram · semana 1</h3>
     <div class="cal-scroll">
       <table class="cal">
         <thead><tr><th></th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead>
+        <tbody><tr><td class="row-h">Yapping</td><td class=""><span class="fmt">Yapping</span><b>Por qué rebotas después de una dieta (leptina)</b></td><td class=""><span class="fmt">Yapping</span><b>10 horas sentado: lo que le pasa a tu insulina</b></td><td class=""><span class="fmt">Yapping</span><b>La grasa que no ves: grasa visceral <a class="ref" href="https://www.instagram.com/reel/De6ciAtiT7C/" target="_blank" rel="noopener">referencia ↗</a></b></td><td class=""><span class="fmt">Yapping</span><b>Testosterona a los 40: lo que sí influye</b></td><td class=""><span class="fmt">Yapping</span><b>El estrés del trabajo también engorda (cortisol)</b></td><td class=""><span class="fmt">Yapping</span><b>La reprogramación no es lineal: por etapas <a class="ref" href="https://www.instagram.com/reel/DeDzckJOisA/" target="_blank" rel="noopener">referencia ↗</a></b></td><td class=""><span class="fmt">Yapping</span><b>Un trabajo sedentario no significa un cuerpo sedentario</b></td></tr><tr><td class="row-h">Voz en off</td><td class=""><span class="fmt">Voz en off</span><b>Un día conmigo: 10 h de pantalla y en forma</b><span class="sub">+ 2 variantes de gancho como reel de prueba</span></td><td class=""><span class="fmt">Voz en off</span><b>Lo que como en un día, comida de casa</b><span class="sub">+ 2 variantes de gancho como reel de prueba</span></td><td class=""><span class="fmt">Voz en off</span><b>Así ajusto cada semana el plan de un cliente en la app</b><span class="sub">+ 2 variantes de gancho como reel de prueba</span></td><td class="empty"></td><td class=""><span class="fmt">Voz en off</span><b>Mi entreno de fuerza en 45 minutos</b><span class="sub">+ 2 variantes de gancho como reel de prueba</span></td><td class=""><span class="fmt">Voz en off</span><b>Comer fuera sin romper el plan</b><span class="sub">+ 2 variantes de gancho como reel de prueba</span></td><td class="empty"></td></tr><tr><td class="row-h">Trend / ranking</td><td class="empty"></td><td class=""><span class="fmt">Trend</span><b>Ranking: desayunos de peor a mejor para tu insulina <a class="ref" href="https://www.instagram.com/reel/DexXEdNJdOU/" target="_blank" rel="noopener">formato ↗</a></b></td><td class="empty"></td><td class=""><span class="fmt">Trend</span><b>Ranking: hábitos que más disparan tu cortisol <a class="ref" href="https://www.instagram.com/reel/DexXEdNJdOU/" target="_blank" rel="noopener">formato ↗</a></b></td><td class="empty"></td><td class=""><span class="fmt">Trend</span><b>Réplica literal del reel de referencia <a class="ref" href="https://www.instagram.com/reel/DeYwTsahcyw/" target="_blank" rel="noopener">referencia ↗</a></b></td><td class="empty"></td></tr><tr><td class="row-h">Carrusel</td><td class=""><span class="fmt">Carrusel · Conexión</span><b>Mi historia: del ordenador al físico de hoy</b></td><td class="empty"></td><td class=""><span class="fmt">Carrusel · Valor</span><b>5 señales de que tienes grasa visceral</b></td><td class="empty"></td><td class=""><span class="fmt">Carrusel · Conexión</span><b>Lo que nadie ve de ser entrenador online</b></td><td class="empty"></td><td class="empty"></td></tr><tr><td class="row-h">Total</td><td class="tot">3</td><td class="tot">3</td><td class="tot">3</td><td class="tot">2</td><td class="tot">3</td><td class="tot">3</td><td class="tot">1</td></tr></tbody>
+      </table>
+    </div>
+    <p class="soft" style="margin-top:8px">Carruseles: en 4 semanas salen 12. Unos 7 de conexión, 4 de valor y 1 de prueba social (un caso como Alexander o Unai), que sustituye a uno de conexión cada 3-4 semanas.</p>
+
+    <h3 style="margin:26px 0 8px">Historias · 3 bloques al día</h3>
+    <div class="grid4" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <div class="card"><span class="label">Mañana · Conexión</span><h3>Su rutina</h3><p class="soft">Despertar, desayuno de casa, primer bloque de trabajo frente al ordenador. Que se vea que es como su cliente.</p></div>
+      <div class="card"><span class="label">Mediodía · Valor</span><h3>Un consejo</h3><p class="soft">Un truco concreto de los 5 temas: qué comer fuera, cómo bajar el cortisol de la tarde, una pregunta con encuesta.</p></div>
+      <div class="card sand"><span class="label">Tarde · Prueba social</span><h3>Su rol de entrenador</h3><p class="soft">Revisando clientes en la app, mensajes y resultados de la semana. Cierra con "escríbeme INFO".</p></div>
+    </div>
+
+    <h3 style="margin:26px 0 8px">YouTube · en aumento</h3>
+    <div class="grid4" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+      <div class="card"><span class="label">Semana 1</span><b style="font-size:28px">3 vídeos</b><p class="soft">Lunes, miércoles y viernes.</p></div>
+      <div class="card"><span class="label">Semana 2</span><b style="font-size:28px">5 vídeos</b><p class="soft">De lunes a viernes.</p></div>
+      <div class="card sand"><span class="label">Semana 3 en adelante</span><b style="font-size:28px">1 al día</b><p class="soft">7 a la semana.</p></div>
+    </div>
+    <div class="kpi-wrap" style="margin-top:12px">
+      <table class="kpi">
+        <thead><tr><th>Tipo</th><th>Peso</th><th>Duración</th><th>Ideas para empezar</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="row-h">Instagram</td>
-            <td><span class="fmt">Reel</span><b>Por qué rebotas después de una dieta</b>Leptina. Cierra con "comenta REPROGRAMAR".</td>
-            <td><span class="fmt">Carrusel</span><b>5 señales de que tu insulina te tiene con barriga</b>Insulina.</td>
-            <td><span class="fmt">Reel</span><b>Mi día: 10 horas de pantalla y en forma</b>Su ejemplo diario. Cortisol y sedentarismo.</td>
-            <td><span class="fmt">Carrusel</span><b>Caso: Alexander, de 100,8 a 80,4 kg</b>Prueba social con el método por fases.</td>
-            <td><span class="fmt">Reel</span><b>3 mitos de la testosterona a los 40</b>Testosterona.</td>
-            <td><span class="fmt">Historias</span><b>Comida real de casa</b>Lo que come él. Encuesta: "¿comes distinto que tu familia?".</td>
-            <td><span class="fmt">Carrusel</span><b>Qué es la reprogramación metabólica</b>Las 3 fases. Llamada al formulario.</td>
-          </tr>
-          <tr>
-            <td class="row-h">YouTube</td>
-            <td class="yt" colspan="3"><span class="fmt">Vídeo largo · 12-20 min</span><b>Por qué pierdes grasa y la recuperas (y cómo evitarlo)</b>Leptina, insulina y el método por fases. De aquí salen 3-4 reels.</td>
-            <td colspan="4"><span class="fmt">Shorts</span><b>3 cortes del vídeo largo</b>Uno por día. Enlace al vídeo completo.</td>
-          </tr>
-          <tr>
-            <td class="row-h">Historias</td>
-            <td colspan="7">A diario: 1 caso o testimonio, 1 detalle del día a día (comida, entreno, trabajo) y 1 llamada a escribir "INFO" por mensaje.</td>
-          </tr>
+          <tr><td><b>VSL encubierto</b><br><span class="soft">Temas fáciles que acaban explicando su método</span></td><td class="target">60 %</td><td>5–10 min</td><td>Por qué no bajas la barriga a los 40 · Por qué rebotas tras una dieta · Insulina y trabajo de oficina · Grasa visceral: la que no ves · Perder grasa comiendo lo de casa</td></tr>
+          <tr><td><b>Retos / "mírame"</b></td><td class="target">20 %</td><td>Libre</td><td>30 días comiendo solo lo de casa · Una semana de entrenador online, sentado 10 h al día · Reto de pasos con trabajo de oficina</td></tr>
+          <tr><td><b>Prueba social, historia y reflexiones</b></td><td class="target">10 %</td><td>Libre</td><td>Su historia · Llamada con un cliente (con permiso) · Lo que he aprendido en 15 años entrenando</td></tr>
+          <tr class="warn"><td><b>Sin asignar</b></td><td class="target">10 %</td><td>—</td><td>Los porcentajes suman 90 %. Propuesta: preguntas de seguidores o directos.</td></tr>
         </tbody>
       </table>
     </div>
-    <h3 style="margin:22px 0 8px">Semana 2 (para dejarla grabada)</h3>
-    <div class="cal-scroll">
-      <table class="cal">
-        <thead><tr><th></th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th><th>Dom</th></tr></thead>
-        <tbody>
-          <tr>
-            <td class="row-h">Instagram</td>
-            <td><span class="fmt">Reel</span><b>El estrés del trabajo también engorda</b>Cortisol.</td>
-            <td><span class="fmt">Carrusel</span><b>Cómo comer lo de casa sin ser el raro de la mesa</b>Insulina, comida real.</td>
-            <td><span class="fmt">Reel</span><b>Por qué entreno fuerza y no solo cardio</b>Testosterona y músculo.</td>
-            <td><span class="fmt">Carrusel</span><b>Caso: Unai, de 118 a 90 kg</b>Prueba social.</td>
-            <td><span class="fmt">Reel</span><b>Hambre a todas horas: no es falta de voluntad</b>Leptina.</td>
-            <td><span class="fmt">Historias</span><b>Preguntas y respuestas</b>Dudas sobre hormonas.</td>
-            <td><span class="fmt">Carrusel</span><b>Mi historia: del ordenador al físico de hoy</b>Conexión.</td>
-          </tr>
-          <tr>
-            <td class="row-h">YouTube</td>
-            <td class="yt" colspan="3"><span class="fmt">Vídeo largo · 12-20 min</span><b>Hombre de 40 con trabajo de oficina: cómo recuperar la energía</b>Cortisol, testosterona y sueño.</td>
-            <td colspan="4"><span class="fmt">Shorts</span><b>3 cortes del vídeo largo</b></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <p class="soft" style="margin-top:10px"><b style="color:var(--ink)">Cada vídeo de YouTube da 3 clips</b> para Shorts y reels de prueba. Con 3 vídeos en la semana 1 salen 9 clips extra, sin grabar más.</p>
+
     <ul class="tasks" style="margin-top:16px">
-      <li><label><input type="checkbox" id="t-con-1"><span>Grabar el vídeo de YouTube de la semana 1 el martes. Sacar los cortes el miércoles.</span></label></li>
-      <li><label><input type="checkbox" id="t-con-2"><span>Diseñar los 3 carruseles de la semana 1 (el repo ya tiene carruseles de insulina, estrés y testosterona como base).</span></label></li>
-      <li><label><input type="checkbox" id="t-con-3"><span>Cada pieza termina con una sola acción: comentar una palabra, escribir por mensaje o ir al formulario.</span></label></li>
-      <li><label><input type="checkbox" id="t-con-4"><span>Revisar que ninguna pieza prometa curar nada ni dé consejo médico.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-1"><span>Grabar los 7 yapping de la semana en una sola sesión.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-2"><span>Grabar las tomas de voz en off a lo largo de su día; la voz se graba después.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-3"><span>Grabar los 3 YouTube de la semana 1 y sacar 3 clips de cada uno.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-4"><span>Diseñar los 3 carruseles (2 de conexión y 1 de valor).</span></label></li>
+      <li><label><input type="checkbox" id="t-con-5"><span>Subir 2 variantes de gancho de cada voz en off como reels de prueba.</span></label></li>
+      <li><label><input type="checkbox" id="t-con-6"><span>Revisar que ninguna pieza prometa curar nada ni dé consejo médico.</span></label></li>
     </ul>
   </div>
 </section>
@@ -418,11 +428,11 @@ Hombres 30-50 con trabajos sedentarios
     </div>
     <div class="grid2">
       <div class="card"><span class="label">Lunes</span><ul class="tasks"><li><label><input type="checkbox" id="d-1a"><span>Nombre, bio, categoría y destacadas.</span></label></li><li><label><input type="checkbox" id="d-1b"><span>Frase de la oferta y duración.</span></label></li></ul></div>
-      <div class="card"><span class="label">Martes</span><ul class="tasks"><li><label><input type="checkbox" id="d-2a"><span>Precio, garantía y contrato.</span></label></li><li><label><input type="checkbox" id="d-2b"><span>Grabar el YouTube de la semana 1.</span></label></li></ul></div>
-      <div class="card"><span class="label">Miércoles</span><ul class="tasks"><li><label><input type="checkbox" id="d-3a"><span>Cortes del vídeo y 3 carruseles.</span></label></li><li><label><input type="checkbox" id="d-3b"><span>Respuesta automática "REPROGRAMAR" y revisión del Jotform.</span></label></li></ul></div>
+      <div class="card"><span class="label">Martes</span><ul class="tasks"><li><label><input type="checkbox" id="d-2a"><span>Precio, garantía y contrato.</span></label></li><li><label><input type="checkbox" id="d-2b"><span>Grabar los 7 yapping y los 3 YouTube de la semana 1.</span></label></li></ul></div>
+      <div class="card"><span class="label">Miércoles</span><ul class="tasks"><li><label><input type="checkbox" id="d-3a"><span>9 clips de YouTube, 3 carruseles y tomas de voz en off.</span></label></li><li><label><input type="checkbox" id="d-3b"><span>Respuesta automática "REPROGRAMAR" y revisión del Jotform.</span></label></li></ul></div>
       <div class="card"><span class="label">Jueves</span><ul class="tasks"><li><label><input type="checkbox" id="d-4a"><span>Flujos antes y después de la llamada, con plantillas guardadas.</span></label></li><li><label><input type="checkbox" id="d-4b"><span>Hoja de control de contactos.</span></label></li></ul></div>
       <div class="card"><span class="label">Viernes</span><ul class="tasks"><li><label><input type="checkbox" id="d-5a"><span>Mensajes de seguimiento guardados como respuestas rápidas.</span></label></li><li><label><input type="checkbox" id="d-5b"><span>Primera tabla de KPIs con sus números reales.</span></label></li></ul></div>
-      <div class="card sand"><span class="label">Fin de semana</span><ul class="tasks"><li><label><input type="checkbox" id="d-6a"><span>Grabar el contenido de la semana 2.</span></label></li><li><label><input type="checkbox" id="d-6b"><span>Revisión con Alberto: qué está hecho y qué no.</span></label></li></ul></div>
+      <div class="card sand"><span class="label">Fin de semana</span><ul class="tasks"><li><label><input type="checkbox" id="d-6a"><span>Grabar la semana 2: 7 yapping y 5 YouTube.</span></label></li><li><label><input type="checkbox" id="d-6b"><span>Revisión con Alberto: qué está hecho y qué no.</span></label></li></ul></div>
     </div>
   </div>
 </section>
