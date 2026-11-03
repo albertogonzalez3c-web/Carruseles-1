@@ -885,7 +885,7 @@ ul.alerts li.good::before { background: var(--green); }
         else falta++;
       }
       var ax = p === "axell";
-      L.push(PERSONAS[p] + ": " + tt.total + " abiertas · " + tt.resp + " respuestas (" + pct(tt.resp, tt.frio) + ") · " + tt.agendas + " agendas" +
+      L.push(PERSONAS[p] + ": " + tt.total + " abiertas · " + pl(tt.resp, "respuesta", "respuestas") + " (" + pct(tt.resp, tt.frio) + ") · " + pl(tt.agendas, "agenda", "agendas") +
         (ax ? " · llamadas 🇪🇸 " + tt.es + " / 🇺🇸 " + tt.us + " · cierres " + eur(tt.cierres) : "") + " · " + pl(dias, "día", "días") + " con reporte");
       if (falta) al.push(PERSONAS[p] + ": " + pl(falta, "día", "días") + " sin reporte");
       if (bNo) al.push("Axell: bienvenidas no al día " + pl(bNo, "día", "días"));
