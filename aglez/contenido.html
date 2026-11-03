@@ -62,7 +62,7 @@ ul.l b, ol.l b { color: var(--ink); }
 .tag.y { background: var(--accent); }
 
 /* Totales */
-.totals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
 .tot { background: var(--white); border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; box-shadow: inset 0 0 0 1px var(--line); }
 .tot b { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
 .tot span { font-weight: 700; font-size: 14px; }
@@ -103,7 +103,6 @@ ul.l b, ol.l b { color: var(--ink); }
 
 @media (max-width: 980px) {
   .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .g3 { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 620px) {
@@ -364,7 +363,7 @@ ul.l b, ol.l b { color: var(--ink); }
     var total = kinds.reduce(function (a, k) { return a + counts[k.id]; }, 0);
     $(prefix + "-leg").innerHTML = kinds.map(function (k) { return '<span><i class="item ' + k.cls + '" style="padding:0"></i>' + esc(k.name) + ' · ' + counts[k.id] + '</span>'; }).join("");
     $(prefix + "-tot").innerHTML = '<div class="tot main"><b>' + total + '</b><span>' + esc(extra.unit) + ' a la semana</span><small>' + esc(extra.note) + '</small></div>' +
-      kinds.slice(0, 3).map(function (k) { return '<div class="tot"><b>' + counts[k.id] + '</b><span>' + esc(k.name) + '</span><small>' + esc(k.desc) + '</small></div>'; }).join("");
+      kinds.map(function (k) { return '<div class="tot"><b>' + counts[k.id] + '</b><span>' + esc(k.name) + '</span><small>' + esc(k.desc) + '</small></div>'; }).join("");
     return { total: total, counts: counts };
   }
   function titles(id, list) {

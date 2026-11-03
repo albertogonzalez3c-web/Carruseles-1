@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: panel de equipo con 3 pestañas (diario de setters, asesoría semanal, resumen). Cada reporte es un documento de la base de datos compartida; formulario a la izquierda, cálculos y mensaje a la derecha, historial debajo. Marca AGLEZ: claro y sobrio, amarillo solo como fondo. */
+/* Layout: panel de equipo con 4 pestañas (diario de setters, asesoría semanal, resumen, coordinación de Yuliia). Cada reporte es un documento de la base de datos compartida; formulario a la izquierda, cálculos y mensaje a la derecha, historial debajo. Marca AGLEZ: claro y sobrio, amarillo solo como fondo. */
 :root {
   --paper: #f4f3ef;
   --white: #ffffff;
@@ -114,6 +114,30 @@ ul.alerts li.info::before { background: var(--accent-text); }
 ul.alerts li.good::before { background: var(--green); }
 .g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
 
+/* Coordinación */
+.role { display: grid; gap: 8px; margin-bottom: 16px; }
+.role ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: 14.5px; color: #d9d7cf; }
+.role ul b { color: var(--white); }
+.role .rule { background: var(--accent); color: var(--ink); border-radius: 10px; padding: 9px 12px; font-weight: 800; font-size: 14px; }
+.cbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.prog { font: 800 13px/1 var(--f-mono); background: var(--chip); border-radius: 999px; padding: 7px 10px; }
+.prog.full { background: var(--green); color: var(--white); }
+.clist { display: grid; gap: 8px; }
+.citem { background: var(--chip); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; }
+.chead { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; }
+.cn { width: 28px; height: 28px; border-radius: 50%; background: var(--white); display: grid; place-items: center; font-weight: 800; font-size: 13px; box-shadow: inset 0 0 0 1.5px var(--line); }
+.citem.done .cn { background: var(--green); color: var(--white); box-shadow: none; }
+.chead b { font-size: 15px; }
+.cst { font-size: 13.5px; color: var(--soft); margin-top: 2px; }
+.ck2 { display: flex; gap: 8px; align-items: center; font-size: 14px; font-weight: 700; cursor: pointer; width: fit-content; }
+.ck2 input { flex: none; }
+.subl { display: grid; gap: 6px; }
+.sr { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; background: var(--white); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
+.sr > span { min-width: 0; overflow-wrap: anywhere; }
+.sr .ctl { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sr select { width: auto; padding: 7px 8px; font-size: 14px; }
+.citem input[type=text] { font-weight: 500; font-size: 14px; }
+
 @media (max-width: 920px) {
   .layout, .g2 { grid-template-columns: 1fr; }
   .side { position: static; }
@@ -137,6 +161,7 @@ ul.alerts li.good::before { background: var(--green); }
       <button class="tab" role="tab" aria-selected="true" data-tab="setters" id="tab-setters">Diario setters</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="asesoria" id="tab-asesoria">Asesoría semanal</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="resumen" id="tab-resumen">Resumen</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="coord" id="tab-coord">Coordinación (Yuliia)</button>
     </nav>
     <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
   </div>
@@ -252,6 +277,50 @@ ul.alerts li.good::before { background: var(--green); }
       <div class="tw"><table class="t"><thead><tr><th>Setter</th><th>Abiertas</th><th>Respuestas</th><th>% respuesta</th><th>Agendas</th><th>Llamadas 🇪🇸</th><th>Llamadas 🇺🇸</th><th>Cierres atribuidos</th></tr></thead><tbody id="r-week"></tbody></table></div>
     </div>
   </section>
+
+  <!-- ============ COORDINACIÓN (YULIIA) ============ -->
+  <section id="view-coord" role="tabpanel" aria-labelledby="tab-coord" hidden>
+    <div class="intro">
+      <span class="label">Coordinación · Yuliia</span>
+      <h1>Que todo se haga y Alberto reciba un solo resumen.</h1>
+    </div>
+    <div class="card dark role">
+      <span class="label" style="color:var(--accent)">Tu rol</span>
+      <ul>
+        <li><b>Cada día, 10 minutos a las 21:00:</b> comprobar que Axell y Andrés han enviado su reporte, que las bienvenidas y el CRM están al día, y asignar las notas urgentes.</li>
+        <li><b>Lunes:</b> reporte semanal de asesoría con Andrés y Fran. Repartir renovaciones, momentos dulces y clientes en riesgo.</li>
+        <li><b>Viernes o domingo:</b> reunión de equipo de 20 minutos y resumen a Alberto con el botón de abajo.</li>
+      </ul>
+      <p class="rule">Alberto solo recibe tu resumen y sus anuncios. Si algo necesita a Alberto, va en el resumen.</p>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="cbar"><h2>Cada día · 21:00</h2><span class="prog" id="cod-prog"></span></div>
+        <div class="bar" style="margin:0"><input type="date" id="co-fecha" aria-label="Día de la revisión"></div>
+        <div class="clist" id="coord-day"></div>
+        <p class="saved" id="sv-cod" aria-live="polite"></p>
+      </div>
+      <div class="card">
+        <div class="cbar"><h2>Cada semana</h2><span class="prog" id="cow-prog"></span></div>
+        <div class="bar" style="margin:0">
+          <div class="weeknav">
+            <button type="button" class="btn ghost" id="cw-prev" aria-label="Semana anterior">←</button>
+            <b id="cw-label">Semana</b>
+            <button type="button" class="btn ghost" id="cw-next" aria-label="Semana siguiente">→</button>
+          </div>
+          <button type="button" class="btn ghost" id="cw-today">Esta semana</button>
+        </div>
+        <div class="clist" id="coord-wk"></div>
+        <div class="citem">
+          <b>Resumen para Alberto</b>
+          <pre class="copy" id="co-msg"></pre>
+          <button type="button" class="btn" data-copy="co-msg" data-note="co-copynote">Copiar resumen para Alberto</button>
+          <p class="copynote" id="co-copynote" aria-live="polite"></p>
+        </div>
+        <p class="saved" id="sv-cow" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script>
@@ -359,6 +428,10 @@ ul.alerts li.good::before { background: var(--green); }
     set: { col: "setters", map: {}, cur: null, form: "formSet", sv: "sv-set", schema: SETTER_SCHEMA,
       id: function (s) { return s.fecha + "_" + s.persona; } },
     ase: { col: "asesoria", map: {}, cur: null, form: "formAse", sv: "sv-ase", schema: ASE_SCHEMA,
+      id: function (s) { return s.semana; } },
+    cod: { col: "coordinacion", map: {}, cur: null, form: "view-coord", sv: "sv-cod",
+      id: function (s) { return s.fecha; } },
+    cow: { col: "coordinacionSemana", map: {}, cur: null, form: "view-coord", sv: "sv-cow",
       id: function (s) { return s.semana; } }
   };
   var persona = "axell";
@@ -689,7 +762,193 @@ ul.alerts li.good::before { background: var(--green); }
     el("r-alerts").innerHTML = al.length ? al.map(function (x) { return "<li class=\"" + x[0] + "\"><span>" + esc(x[1]) + "</span></li>"; }).join("") : "<li class=\"good\"><span>Todo en orden.</span></li>";
   }
 
-  function refresh(kind) { if (kind === "set") refreshSet(); else refreshAse(); renderResumen(); }
+  /* ---------- Coordinación (Yuliia) ---------- */
+  function blankCod(f) { return { fecha: f, recordado: false, notaReporte: "", bienvRevisado: false, notaBienv: "", crmRevisado: false, notaCrm: "", notasHechas: {}, leadsRevisado: false, notaLeads: "" }; }
+  function blankCow(w) { return { semana: w, semanalOk: false, notaSemanal: "", renov: {}, dulce: {}, riesgo: {}, testEnviados: false, reunion: false, acuerdos: ["", "", ""], resumenEnviado: false }; }
+  function ynHtml(v) { return v === true ? "<span class=\"ok\">Sí</span>" : (v === false ? "<span class=\"ko\">No</span>" : "<span class=\"soft\">sin marcar</span>"); }
+  function sentHtml(d) { return setHas(d) ? "<span class=\"ok\">✓ enviado</span>" : "<span class=\"ko\">✗ pendiente</span>"; }
+  function ck(kind, k, label, extra) { var o = D[kind].cur; return "<label class=\"ck2\"><input type=\"checkbox\" data-co=\"" + kind + "\" data-k=\"" + k + "\"" + (extra || "") + (o[k] ? " checked" : "") + "> " + esc(label) + "</label>"; }
+  function noteIn(kind, k) { return "<input type=\"text\" data-co=\"" + kind + "\" data-t=\"" + k + "\" value=\"" + esc(D[kind].cur[k] || "") + "\" placeholder=\"Nota (opcional)\">"; }
+  function citem(n, done, title, status, body) { return "<div class=\"citem" + (done ? " done" : "") + "\"><div class=\"chead\"><span class=\"cn\">" + (done ? "✓" : n) + "</span><div><b>" + title + "</b>" + (status ? "<div class=\"cst\">" + status + "</div>" : "") + "</div></div>" + body + "</div>"; }
+  function dayNotes(f) {
+    var out = [], y = new Date(f + "T12:00:00"); y.setDate(y.getDate() - 1); var yf = iso(y);
+    Object.keys(PERSONAS).forEach(function (p) {
+      rows((D.set.map[f + "_" + p] || {}).notas, "quien").forEach(function (n) { out.push({ key: f + "|" + p + "|" + n.quien + "|" + (n.que || ""), p: p, n: n, ayer: false }); });
+      rows((D.set.map[yf + "_" + p] || {}).notas, "quien").filter(function (n) { return n.cuando === "Mañana"; }).forEach(function (n) { out.push({ key: yf + "|" + p + "|" + n.quien + "|" + (n.que || ""), p: p, n: n, ayer: true }); });
+    });
+    return out;
+  }
+  function codState() {
+    var c = D.cod.cur, f = c.fecha, ax = D.set.map[f + "_axell"], an = D.set.map[f + "_andres"], notas = dayNotes(f), hechas = c.notasHechas || {};
+    var s = [
+      (setHas(ax) && setHas(an)) || !!c.recordado,
+      (ax && ax.bienvenidasAlDia === true && ax.followBienvenidas === true) || !!c.bienvRevisado,
+      (ax && ax.crmAlDia === true) || !!c.crmRevisado,
+      notas.every(function (x) { return hechas[x.key]; }),
+      !!c.leadsRevisado
+    ];
+    return { ax: ax, an: an, notas: notas, s: s };
+  }
+  function cowState() {
+    var c = D.cow.cur, a = D.ase.map[c.semana], has = aseHas(a);
+    var rn = has ? rows(a.renovaciones, "nombre") : [], du = has ? rows(a.dulce, "nombre") : [], ri = has ? rows(a.riesgo, "nombre") : [];
+    var testPend = has ? aseCalc(a).testPend : 0;
+    var s = [
+      has || !!c.semanalOk,
+      rn.every(function (r) { var x = (c.renov || {})[r.nombre]; return x && x.hecho; }),
+      du.every(function (r) { return (c.dulce || {})[r.nombre]; }),
+      ri.every(function (r) { return (c.riesgo || {})[r.nombre]; }),
+      testPend === 0 || !!c.testEnviados,
+      !!c.reunion,
+      !!c.resumenEnviado
+    ];
+    return { a: a, has: has, rn: rn, du: du, ri: ri, testPend: testPend, s: s };
+  }
+  function renderCoord() {
+    if (!D.cod.cur || !D.cow.cur) return;
+    var c = D.cod.cur, st = codState(), h = "";
+    h += citem(1, st.s[0], "Axell y Andrés han enviado su reporte diario", "Axell " + sentHtml(st.ax) + " · Andrés " + sentHtml(st.an),
+      ck("cod", "recordado", "Se lo he recordado") + noteIn("cod", "notaReporte"));
+    h += citem(2, st.s[1], "Bienvenidas de Axell al día y follow-up de antiguas",
+      st.ax ? "Bienvenidas: " + ynHtml(st.ax.bienvenidasAlDia) + " · Follow-up antiguas: " + ynHtml(st.ax.followBienvenidas) : "Axell todavía no ha enviado el reporte.",
+      ck("cod", "bienvRevisado", "Revisado con Axell") + noteIn("cod", "notaBienv"));
+    h += citem(3, st.s[2], "CRM de anuncios al día", st.ax ? "Según Axell: " + ynHtml(st.ax.crmAlDia) : "Axell todavía no ha enviado el reporte.",
+      ck("cod", "crmRevisado", "Revisado con Axell") + noteIn("cod", "notaCrm"));
+    var nl = st.notas.length ? "<div class=\"subl\">" + st.notas.map(function (x) {
+      return "<div class=\"sr\"><span><b>" + esc(x.n.quien) + "</b> · " + esc(x.n.que || "") + " <span class=\"soft\">(" + PERSONAS[x.p] + (x.ayer ? ", de ayer para hoy" : " · " + esc(x.n.cuando)) + ")</span></span><span class=\"ctl\"><label class=\"ck2\"><input type=\"checkbox\" data-co=\"cod\" data-map=\"notasHechas\" data-key=\"" + esc(x.key) + "\"" + ((c.notasHechas || {})[x.key] ? " checked" : "") + "> Hecho</label></span></div>";
+    }).join("") + "</div>" : "<p class=\"emptyrow\">No hay notas urgentes en los reportes de este día.</p>";
+    h += citem(4, st.s[3], "Notas urgentes del día revisadas y asignadas", st.notas.length ? pl(st.notas.length, "nota", "notas") : "", nl);
+    h += citem(5, st.s[4], "Leads sin llamar más de 15 minutos", "El CRM los marca en rojo. Repásalos con Axell.",
+      ck("cod", "leadsRevisado", "Revisado con Axell") + noteIn("cod", "notaLeads"));
+    el("coord-day").innerHTML = h;
+
+    var w = D.cow.cur, ws = cowState(), g = "";
+    el("cw-label").textContent = weekLabel(w.semana);
+    g += citem(1, ws.s[0], "Lunes: reporte semanal de asesoría con Andrés y Fran",
+      ws.has ? "<span class=\"ok\">✓ rellenado</span>" + (ws.a.rellenadoPor ? " por " + esc(ws.a.rellenadoPor) : "") : "<span class=\"ko\">✗ sin rellenar</span> en la pestaña Asesoría semanal",
+      ck("cow", "semanalOk", "Hecho con Andrés y Fran") + noteIn("cow", "notaSemanal"));
+    var rl = ws.rn.length ? "<div class=\"subl\">" + ws.rn.map(function (r) {
+      var x = (w.renov || {})[r.nombre] || {};
+      return "<div class=\"sr\"><span><b>" + esc(r.nombre) + "</b>" + (r.plan ? " · " + esc(r.plan) : "") + (r.fecha ? " · " + esc(nice(r.fecha)) : "") + "</span><span class=\"ctl\"><select data-co=\"cow\" data-renov=\"" + esc(r.nombre) + "\" data-f=\"resp\" aria-label=\"Responsable\"><option value=\"\">Responsable…</option>" + optHtml(["Andrés", "Fran", "Alberto"], x.resp || "") + "</select><label class=\"ck2\"><input type=\"checkbox\" data-co=\"cow\" data-renov=\"" + esc(r.nombre) + "\" data-f=\"hecho\"" + (x.hecho ? " checked" : "") + "> Hecho</label></span></div>";
+    }).join("") + "</div>" : "<p class=\"emptyrow\">No hay renovaciones apuntadas en el reporte semanal.</p>";
+    g += citem(2, ws.s[1], "Renovaciones de la semana asignadas", "", rl);
+    function mapList(list, mk, lbl, det) {
+      return list.length ? "<div class=\"subl\">" + list.map(function (r) {
+        return "<div class=\"sr\"><span><b>" + esc(r.nombre) + "</b>" + (r[det] ? " · " + esc(r[det]) : "") + "</span><span class=\"ctl\"><label class=\"ck2\"><input type=\"checkbox\" data-co=\"cow\" data-map=\"" + mk + "\" data-key=\"" + esc(r.nombre) + "\"" + ((w[mk] || {})[r.nombre] ? " checked" : "") + "> " + lbl + "</label></span></div>";
+      }).join("") + "</div>" : "<p class=\"emptyrow\">Nadie apuntado esta semana.</p>";
+    }
+    g += citem(3, ws.s[2], "Clientes en momento dulce → back-end ofrecido", "", mapList(ws.du, "dulce", "Ofrecido", "senal"));
+    g += citem(4, ws.s[3], "Clientes en riesgo → contactados", "", mapList(ws.ri, "riesgo", "Contactado", "motivo"));
+    g += citem(5, ws.s[4], "Testimonios enviados a Alberto", ws.has ? pl(ws.testPend, "testimonio pendiente", "testimonios pendientes") + " de enviar" : "Sin reporte semanal todavía.",
+      ck("cow", "testEnviados", "Enviados a Alberto"));
+    g += citem(6, ws.s[5], "Reunión de equipo de 20 minutos", "",
+      ck("cow", "reunion", "Reunión hecha") + (w.acuerdos || ["", "", ""]).map(function (t, i) { return "<input type=\"text\" data-co=\"cow\" data-acuerdo=\"" + i + "\" value=\"" + esc(t) + "\" placeholder=\"Acuerdo " + (i + 1) + "\">"; }).join(""));
+    g += citem(7, ws.s[6], "Resumen enviado a Alberto", "Cópialo abajo y mándaselo por WhatsApp.", ck("cow", "resumenEnviado", "Resumen enviado"));
+    el("coord-wk").innerHTML = g;
+    bindCoord();
+    refreshCoord();
+  }
+  function bindCoord() {
+    el("view-coord").querySelectorAll("[data-co]").forEach(function (inp) {
+      var kind = inp.dataset.co;
+      var ev = inp.type === "text" ? "input" : "change";
+      inp.addEventListener(ev, function () {
+        var o = D[kind].cur;
+        if (inp.dataset.k) o[inp.dataset.k] = inp.checked;
+        else if (inp.dataset.t) o[inp.dataset.t] = inp.value;
+        else if (inp.dataset.map) { o[inp.dataset.map] = Object.assign({}, o[inp.dataset.map]); o[inp.dataset.map][inp.dataset.key] = inp.checked; }
+        else if (inp.dataset.renov) { o.renov = Object.assign({}, o.renov); var x = Object.assign({}, o.renov[inp.dataset.renov]); x[inp.dataset.f] = inp.type === "checkbox" ? inp.checked : inp.value; o.renov[inp.dataset.renov] = x; }
+        else if (inp.dataset.acuerdo != null) { o.acuerdos = (o.acuerdos || ["", "", ""]).slice(); o.acuerdos[+inp.dataset.acuerdo] = inp.value; }
+        save(kind);
+        if (inp.type !== "text") renderCoord();
+      });
+    });
+  }
+  function progHtml(id, s) { var n = s.filter(Boolean).length, e = el(id); e.textContent = n + " de " + s.length; e.className = "prog" + (n === s.length ? " full" : ""); }
+  function refreshCoord() {
+    if (!D.cod.cur || !D.cow.cur) return;
+    progHtml("cod-prog", codState().s);
+    progHtml("cow-prog", cowState().s);
+    el("co-msg").textContent = coordMessage(D.cow.cur.semana);
+  }
+  function renderCoordSafe() { if (focusedIn("view-coord")) refreshCoord(); else renderCoord(); }
+  function coordMessage(w) {
+    var rg = weekRange(w), cw = D.cow.cur, ws = cowState(), L = [], al = [];
+    var hasta = rg[1] < today() ? rg[1] : today();
+    L.push("📊 Resumen semanal del equipo · " + weekLabel(w));
+    L.push(""); L.push("SETTERS");
+    Object.keys(PERSONAS).forEach(function (p) {
+      var tt = { total: 0, frio: 0, resp: 0, agendas: 0, es: 0, us: 0, cierres: 0 }, dias = 0, falta = 0, bNo = 0, cNo = 0;
+      for (var d = new Date(rg[0] + "T12:00:00"); iso(d) <= hasta; d.setDate(d.getDate() + 1)) {
+        var doc = D.set.map[iso(d) + "_" + p];
+        if (setHas(doc)) { dias++; var c = setCalc(doc); Object.keys(tt).forEach(function (k) { tt[k] += c[k]; }); if (doc.bienvenidasAlDia === false) bNo++; if (doc.crmAlDia === false) cNo++; }
+        else falta++;
+      }
+      var ax = p === "axell";
+      L.push(PERSONAS[p] + ": " + tt.total + " abiertas · " + tt.resp + " respuestas (" + pct(tt.resp, tt.frio) + ") · " + tt.agendas + " agendas" +
+        (ax ? " · llamadas 🇪🇸 " + tt.es + " / 🇺🇸 " + tt.us + " · cierres " + eur(tt.cierres) : "") + " · " + pl(dias, "día", "días") + " con reporte");
+      if (falta) al.push(PERSONAS[p] + ": " + pl(falta, "día", "días") + " sin reporte");
+      if (bNo) al.push("Axell: bienvenidas no al día " + pl(bNo, "día", "días"));
+      if (cNo) al.push("Axell: CRM no al día " + pl(cNo, "día", "días"));
+    });
+    L.push(""); L.push("ASESORÍA");
+    if (ws.has) {
+      var c = aseCalc(ws.a);
+      L.push("Activos " + c.activos + " · altas " + c.altas + " · bajas " + c.bajas + (c.vida != null ? " (vida media " + dec(c.vida) + " meses)" : ""));
+      L.push("Sin enviar revisión: " + c.pctSinRev + " · back-end cerrado: " + eur(c.beEur));
+      L.push("Renovaciones próximas: " + (ws.rn.length ? ws.rn.map(function (r) { var x = (cw.renov || {})[r.nombre] || {}; return r.nombre + (x.resp ? " (" + x.resp + ")" : ""); }).join(", ") : "ninguna"));
+      if (c.pend > 0) al.push(pl(c.pend, "revisión pendiente", "revisiones pendientes") + " de contestar");
+      ws.rn.forEach(function (r) { var x = (cw.renov || {})[r.nombre] || {}; if (!x.resp) al.push("Renovación sin responsable: " + r.nombre); });
+      ws.du.forEach(function (r) { if (!(cw.dulce || {})[r.nombre]) al.push("Momento dulce sin ofrecer back-end: " + r.nombre); });
+      ws.ri.forEach(function (r) { if (!(cw.riesgo || {})[r.nombre]) al.push("En riesgo y sin contactar: " + r.nombre); });
+      if (ws.testPend > 0 && !cw.testEnviados) al.push(pl(ws.testPend, "testimonio", "testimonios") + " sin enviar a Alberto");
+    } else { L.push("Sin reporte semanal todavía."); al.push("Falta el reporte semanal de asesoría"); }
+    L.push(""); L.push("ALERTAS");
+    if (al.length) al.forEach(function (x) { L.push("· " + x); }); else L.push("Sin alertas.");
+    L.push(""); L.push("ACUERDOS DE LA REUNIÓN");
+    var ac = (cw.acuerdos || []).filter(function (t) { return String(t || "").trim(); });
+    if (ac.length) ac.forEach(function (t) { L.push("· " + t); }); else L.push(cw.reunion ? "Reunión hecha, sin acuerdos apuntados." : "Reunión todavía sin hacer.");
+    return L.join("\n");
+  }
+  function ensureCoordData() {
+    if (!db) return;
+    var rg = weekRange(D.cow.cur.semana), hasta = rg[1] < today() ? rg[1] : today();
+    var days = [D.cod.cur.fecha]; var y = new Date(D.cod.cur.fecha + "T12:00:00"); y.setDate(y.getDate() - 1); days.push(iso(y));
+    for (var d = new Date(rg[0] + "T12:00:00"); iso(d) <= hasta; d.setDate(d.getDate() + 1)) days.push(iso(d));
+    days.forEach(function (f) {
+      Object.keys(PERSONAS).forEach(function (p) {
+        var id = f + "_" + p;
+        if (D.set.map[id] || fetched["s:" + id]) return;
+        fetched["s:" + id] = true;
+        db.collection("setters").doc(id).get().then(function (r) { if (r.exists && !D.set.map[id]) { D.set.map[id] = Object.assign(blankSet(f, p), r.data()); renderCoordSafe(); } }, function () {});
+      });
+    });
+    var w = D.cow.cur.semana;
+    if (!D.ase.map[w] && !fetched["a:" + w]) {
+      fetched["a:" + w] = true;
+      db.collection("asesoria").doc(w).get().then(function (r) { if (r.exists && !D.ase.map[w]) { D.ase.map[w] = Object.assign(blankAse(w), r.data()); renderCoordSafe(); } }, function () {});
+    }
+  }
+  function loadCod(f) {
+    D.cod.cur = D.cod.map[f] ? clone(D.cod.map[f]) : blankCod(f); D.cod.cur.fecha = f;
+    el("sv-cod").textContent = "";
+    if (db && !fetched["cd:" + f] && !D.cod.map[f]) {
+      fetched["cd:" + f] = true;
+      db.collection("coordinacion").doc(f).get().then(function (r) { if (r.exists && !D.cod.map[f]) { D.cod.map[f] = Object.assign(blankCod(f), r.data()); applyRemote("cod"); } }, function () {});
+    }
+    renderCoord(); ensureCoordData();
+  }
+  function loadCow(w) {
+    D.cow.cur = D.cow.map[w] ? clone(D.cow.map[w]) : blankCow(w); D.cow.cur.semana = w;
+    el("sv-cow").textContent = "";
+    if (db && !fetched["cw:" + w] && !D.cow.map[w]) {
+      fetched["cw:" + w] = true;
+      db.collection("coordinacionSemana").doc(w).get().then(function (r) { if (r.exists && !D.cow.map[w]) { D.cow.map[w] = Object.assign(blankCow(w), r.data()); applyRemote("cow"); } }, function () {});
+    }
+    renderCoord(); ensureCoordData();
+  }
+
+  function refresh(kind) { if (kind === "set") refreshSet(); else if (kind === "ase") refreshAse(); if (kind === "cod" || kind === "cow") refreshCoord(); else renderCoordSafe(); renderResumen(); }
 
   /* ---------- Carga de documentos ---------- */
   function focusedIn(id) { var a = document.activeElement; return !!(a && el(id).contains(a) && /INPUT|SELECT|TEXTAREA/.test(a.tagName)); }
@@ -721,9 +980,9 @@ ul.alerts li.good::before { background: var(--green); }
   function applyRemote(kind) {
     var X = D[kind], id = X.id(X.cur), k = X.col + "/" + id;
     if (X.map[id] && !dirty[k] && !timers[k] && !focusedIn(X.form) && JSON.stringify(X.map[id]) !== JSON.stringify(X.cur)) {
-      var keep = kind === "set" ? { fecha: X.cur.fecha, persona: X.cur.persona } : { semana: X.cur.semana };
+      var keep = kind === "set" ? { fecha: X.cur.fecha, persona: X.cur.persona } : (kind === "cod" ? { fecha: X.cur.fecha } : { semana: X.cur.semana });
       X.cur = Object.assign(clone(X.map[id]), keep);
-      renderForm(kind);
+      if (kind === "cod" || kind === "cow") renderCoord(); else renderForm(kind);
     } else refresh(kind);
   }
 
@@ -731,8 +990,9 @@ ul.alerts li.good::before { background: var(--green); }
   document.querySelectorAll(".tab").forEach(function (t) {
     t.addEventListener("click", function () {
       document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
-      ["setters", "asesoria", "resumen"].forEach(function (v) { el("view-" + v).hidden = v !== t.dataset.tab; });
+      ["setters", "asesoria", "resumen", "coord"].forEach(function (v) { el("view-" + v).hidden = v !== t.dataset.tab; });
       if (t.dataset.tab === "resumen") renderResumen();
+      if (t.dataset.tab === "coord") { renderCoord(); ensureCoordData(); }
       window.scrollTo(0, 0);
     });
   });
@@ -750,6 +1010,11 @@ ul.alerts li.good::before { background: var(--green); }
   el("w-prev").addEventListener("click", function () { loadAse(weekShift(D.ase.cur.semana, -1)); });
   el("w-next").addEventListener("click", function () { loadAse(weekShift(D.ase.cur.semana, 1)); });
   el("w-today").addEventListener("click", function () { loadAse(isoWeek(new Date())); });
+  el("co-fecha").value = today();
+  el("co-fecha").addEventListener("change", function () { if (el("co-fecha").value) loadCod(el("co-fecha").value); });
+  el("cw-prev").addEventListener("click", function () { loadCow(weekShift(D.cow.cur.semana, -1)); });
+  el("cw-next").addEventListener("click", function () { loadCow(weekShift(D.cow.cur.semana, 1)); });
+  el("cw-today").addEventListener("click", function () { loadCow(isoWeek(new Date())); });
   ["formSet", "formAse"].forEach(function (id) { el(id).addEventListener("submit", function (e) { e.preventDefault(); }); });
   document.querySelectorAll("[data-copy]").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -759,17 +1024,20 @@ ul.alerts li.good::before { background: var(--green); }
     });
   });
 
+  D.cod.cur = blankCod(today()); D.cow.cur = blankCow(isoWeek(new Date()));
   loadSet(today(), persona);
   loadAse(isoWeek(new Date()));
+  loadCod(today());
+  loadCow(isoWeek(new Date()));
 
   /* ---------- Conexión ---------- */
   (async function () {
     var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
     if (!c) { setStatus("Sin base de datos en esta vista: se puede rellenar y copiar el mensaje, pero no se guarda. Abre la página desde claude.ai con tu cuenta.", true); return; }
     db = c;
-    var got = { set: false, ase: false };
+    var got = { set: false, ase: false, cod: false, cow: false };
     var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
-    function ready(w) { got[w] = true; if (got.set && got.ase) { clearTimeout(timer); setStatus("Guardado en directo · Yuliia y Alberto lo ven al momento"); } }
+    function ready(w) { got[w] = true; if (got.set && got.ase && got.cod && got.cow) { clearTimeout(timer); setStatus("Guardado en directo · Yuliia y Alberto lo ven al momento"); } }
     function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); }
     db.collection("setters").orderBy("fecha", "desc").limit(60).onSnapshot(function (snap) {
       snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha && x.persona) D.set.map[x.fecha + "_" + x.persona] = Object.assign(blankSet(x.fecha, x.persona), x); });
@@ -781,6 +1049,17 @@ ul.alerts li.good::before { background: var(--green); }
       if (!snap.metadata.fromCache) ready("ase");
       applyRemote("ase");
     }, onErr);
+    db.collection("coordinacion").orderBy("fecha", "desc").limit(30).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha) D.cod.map[x.fecha] = Object.assign(blankCod(x.fecha), x); });
+      if (!snap.metadata.fromCache) ready("cod");
+      applyRemote("cod");
+    }, onErr);
+    db.collection("coordinacionSemana").orderBy("semana", "desc").limit(12).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.semana) D.cow.map[x.semana] = Object.assign(blankCow(x.semana), x); });
+      if (!snap.metadata.fromCache) ready("cow");
+      applyRemote("cow");
+    }, onErr);
+    ensureCoordData();
   })();
 })();
 </script>
