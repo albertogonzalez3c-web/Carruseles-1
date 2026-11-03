@@ -1,0 +1,286 @@
+<title>Adrián Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: la oferta de Adrián de arriba abajo: para quién, programa en dos fases, precios en orden de presentación, garantía y contrato, por qué se estancan, back-end. */
+:root {
+  --paper: #ecebe7;
+  --white: #fbfaf8;
+  --sand: #e2dfd6;
+  --sand-line: #cdc6ae;
+  --ink: #141414;
+  --soft: #66635d;
+  --gold: #8a6a00;
+  --gold-text: #7a5e00;
+  --chip: #efede8;
+  --rust: #9a4b2f;
+  --blue: #1f4fd1;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.4vw, 56px)/1.03 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 clamp(23px, 3vw, 30px)/1.15 var(--f-body); }
+h3 { font: 700 18px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 780px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: var(--white); }
+.card.dark .soft { color: #c2beb5; }
+.card.dark .label { color: #e2c46a; }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b { color: var(--ink); }
+.card.dark ul.l { color: #c2beb5; }
+.card.dark ul.l b { color: var(--white); }
+.say { background: var(--chip); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--gold-text); }
+.card.dark .badge { background: #2f2c25; color: #e2c46a; }
+.price { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.price small { font-size: 15px; font-weight: 700; letter-spacing: 0; }
+.phase .n { font: 800 44px/1 var(--f-body); color: var(--gold-text); letter-spacing: -.04em; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 12px 12px 12px 0; border-top: 1px solid var(--sand-line); vertical-align: top; color: var(--soft); }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.tblwrap { overflow-x: auto; }
+.when { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.when div { background: var(--chip); border-radius: 12px; padding: 12px; display: grid; gap: 2px; }
+.when b { font-size: 17px; }
+.when span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) {
+  .g4, .when { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .g2, .g4 { grid-template-columns: 1fr; }
+  .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; }
+  .tbl thead { display: none; }
+  .tbl tr { border-top: 1px solid var(--sand-line); padding-block: 10px; }
+  .tbl td { border: 0; padding: 3px 0; }
+  .tbl td[data-h]::before { content: attr(data-h) ": "; font-weight: 700; color: var(--ink); }
+}
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.why .card b.big { font: 800 17px/1.3 var(--f-body); }
+.why .case { color: var(--blue); font-weight: 700; font-size: 13.5px; }
+@media (max-width: 900px) { .why { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .why { grid-template-columns: 1fr; } }
+</style>
+
+<main class="wrap">
+  <header class="sec">
+    <span class="label">Adrián Domínguez · Parte 2 · Oferta</span>
+    <h1>Recomposición 1:1.</h1>
+    <p class="soft" style="font-size:18px;max-width:720px">Para hombres de 25 a 45 que entrenan y siguen igual: pierde grasa y gana músculo a la vez, con una estructura que encaja en su vida real. Seis meses en dos fases, o el año completo.</p>
+  </header>
+
+  <!-- Para quién -->
+  <section class="sec" aria-labelledby="h-quien">
+    <header><span class="label">Para quién</span><h2 id="h-quien">Hombres que ponen el esfuerzo y no ven el resultado.</h2></header>
+    <div class="g2">
+      <div class="card">
+        <h3>Su cliente</h3>
+        <ul class="l">
+          <li><b>25 a 45 años.</b> Sus clientes reales tienen 23, 25, 29, 40, 42 y 48.</li>
+          <li><b>Entrena o lo ha intentado</b> y está estancado.</li>
+          <li>"Entreno y sigo igual", "como sano y no cambio", delgado sin músculo o con barriga.</li>
+          <li>Trabajo que le absorbe, mala relación con la comida o alguna lesión.</li>
+        </ul>
+      </div>
+      <div class="card sand">
+        <h3>Para no pisarse con Sergio</h3>
+        <ul class="l">
+          <li><b>Sergio:</b> +30, ocupado, quizá no entrena. Perder grasa y que no vuelva, con metabolismo y hormonas.</li>
+          <li><b>Adrián:</b> +25 que <b>ya entrena</b> y está estancado. Perder grasa <b>y ganar músculo</b>, con estructura y los errores que él cometió.</li>
+          <li><b>Su palabra:</b> recomposición y "estancado".</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programa -->
+  <section class="sec" aria-labelledby="h-prog">
+    <header><span class="label">El programa</span><h2 id="h-prog">6 meses, dos fases claras.</h2></header>
+    <div class="g2">
+      <article class="card phase">
+        <span class="n">01</span>
+        <h3>Desestancar · meses 1 a 3</h3>
+        <p class="soft">Perder grasa sin perder fuerza.</p>
+        <ul class="l"><li>Ordenar comidas, horarios y hábitos.</li><li>Entrenamiento con progresión real, no "hacer el burro".</li><li>Adaptado a su trabajo, su tiempo y sus lesiones.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">02</span>
+        <h3>Construir · meses 4 a 6</h3>
+        <p class="soft">Ganar músculo con la mínima grasa.</p>
+        <ul class="l"><li>Subir comida poco a poco.</li><li>Mejorar el rendimiento.</li><li>Que el cambio se vea en el espejo.</li></ul>
+      </article>
+    </div>
+    <p class="say">"En 3 meses te desestancas y pierdes la grasa. En los otros 3 construyes el físico que buscabas."</p>
+    <div class="card sand">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Plan por fases</b> que se ajusta cada semana según cómo responde su cuerpo.</li>
+        <li><b>Nutrición sin restricciones absurdas,</b> comiendo de todo.</li>
+        <li><b>Entrenamiento con estructura</b> adaptado a su tiempo y a sus lesiones.</li>
+        <li><b>Revisión semanal</b> con fotos, medidas, energía y adherencia.</li>
+        <li><b>Soporte directo con Adrián</b> por WhatsApp.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section class="sec" aria-labelledby="h-precios">
+    <header>
+      <span class="label">Precios · en el orden en que se presentan</span>
+      <h2 id="h-precios">Se empieza por el año. Se baja solo si hace falta.</h2>
+    </header>
+    <div class="g4">
+      <article class="card dark">
+        <span class="badge">1 · Se ofrece primero</span>
+        <h3>Año completo</h3>
+        <p class="price">1.050 € <small>pago único</small></p>
+        <p class="soft">1.100 € a plazos (Klarna o Sequra).</p>
+        <ul class="l"><li>Las dos fases y la <b>fase 3 · Autonomía</b>: mantener y aprender a hacerlo solo.</li><li>Solo 400 € más que el semestre por 6 meses más.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">2 · Estándar</span>
+        <h3>Semestre</h3>
+        <p class="price">650 €</p>
+        <ul class="l"><li>Fase 1 y fase 2.</li><li>El programa por defecto.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">3 · Downsell</span>
+        <h3>Semestre en 2 pagos</h3>
+        <p class="price">350 € <small>+ 350 € al mes</small></p>
+        <ul class="l"><li>Total 700 €: paga algo más por fraccionar.</li><li>Empieza con lo mismo que el trimestre, pero <b>comprometido a 6 meses</b>.</li></ul>
+      </article>
+      <article class="card sand">
+        <span class="badge">4 · Último recurso</span>
+        <h3>Trimestre</h3>
+        <p class="price">350 €</p>
+        <ul class="l"><li>Solo la fase 1.</li><li>Nunca en la landing ni como primer precio de la llamada.</li></ul>
+      </article>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cómo se dice el año</h3>
+        <p class="say">"Son 1.100 €, o 1.050 € si lo pagas de una vez."</p>
+        <p class="soft" style="font-size:14.5px">En España no se puede cobrar un recargo por el medio de pago, así que nunca se dice "con Klarna son 50 € más". Se presenta como <b>descuento por pago único</b>, que es legal, y esos 50 € cubren la comisión.</p>
+      </div>
+      <div class="card">
+        <h3>Reglas</h3>
+        <ul class="l">
+          <li><b>El precio no se publica:</b> se da en la llamada, una vez y en silencio.</li>
+          <li><b>Un downsell cada vez</b> y solo si el "no" es por dinero.</li>
+          <li><b>Todo con contrato,</b> sin excepciones.</li>
+          <li><b>Recomendación:</b> al llegar a 25 clientes activos, el semestre sube a 750 €. 108 €/mes por un 1:1 con +150 transformaciones es barato.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garantía y contrato -->
+  <section class="sec" aria-labelledby="h-gar">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-gar">Riesgo cero para el que cumple.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="label">Garantía</span>
+        <p style="font-size:19px;font-weight:700;line-height:1.4">"Si sigues el plan y envías tus revisiones y en la fase 1 no ves cambios, sigo trabajando contigo gratis hasta que lo consigas."</p>
+        <ul class="l"><li><b>Condición medible:</b> 80 % de cumplimiento o más y todas las revisiones semanales enviadas.</li><li><b>No hay devolución de dinero:</b> la garantía protege de quien no hace nada.</li></ul>
+      </article>
+      <article class="card">
+        <span class="label">Contrato · firma digital antes de empezar</span>
+        <ul class="l">
+          <li>Qué se entrega, la duración y los pagos.</li>
+          <li>Las condiciones de la garantía.</li>
+          <li>Consentimiento de datos de salud y, si quiere, de imagen para usar su caso.</li>
+          <li><b>Los 14 días para echarse atrás:</b> el cliente pide empezar ya y acepta pagar la parte del servicio ya prestada si desiste. Así nadie pide la devolución el día 13 con el plan entregado.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- Por qué se estancan -->
+  <section class="sec" aria-labelledby="h-why">
+    <header>
+      <span class="label">Lo que le diferencia</span>
+      <h2 id="h-why">Por qué se estancan: los errores que él mismo cometió.</h2>
+      <p class="soft">Cada ángulo sale de sus casos reales o de su historia. Se usa en la llamada, en los carruseles y en YouTube.</p>
+    </header>
+    <div class="why">
+      <div class="card"><b class="big">Entrenas y sigues igual</b><span class="case">Samuel, Jorge</span></div>
+      <div class="card"><b class="big">Haces todo bien y no cambias</b><span class="case">Eduardo, Iban</span></div>
+      <div class="card"><b class="big">No es la edad</b><span class="case">Jorge, 42 · Ricardo, 48</span></div>
+      <div class="card"><b class="big">Delgado, sin forma</b><span class="case">Herick, Tomás</span></div>
+      <div class="card"><b class="big">Tu trabajo no es la excusa</b><span class="case">Tomás, Malcolm, Manuel</span></div>
+      <div class="card"><b class="big">La comida es tu debilidad</b><span class="case">Malcolm y el caso de los 102 kg</span></div>
+      <div class="card"><b class="big">El todo o nada</b><span class="case">Su historia</span></div>
+      <div class="card"><b class="big">Copiar a los influencers</b><span class="case">Su historia</span></div>
+      <div class="card"><b class="big">Volumen sucio</b><span class="case">Luis, su historia</span></div>
+    </div>
+    <div class="card sand">
+      <h3>Casos con cifra para la llamada</h3>
+      <ul class="l">
+        <li><b>Dani:</b> de 120 a 92 kg.</li>
+        <li><b>Luis:</b> −17 kg en 4 meses.</li>
+        <li><b>Isaac:</b> −10 kg en 3 meses, siendo profesor de educación física.</li>
+        <li><b>Jorge, 42 años:</b> de 75 a 69 kg en 5 meses, con una lesión de bíceps.</li>
+        <li><b>Albert:</b> de 90 a 79 kg.</li>
+        <li><b>Eduardo, 40 años:</b> de 70 a 64 kg.</li>
+        <li><b>Iban:</b> recomposición a los 42.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Back-end -->
+  <section class="sec" aria-labelledby="h-back">
+    <header>
+      <span class="label">Back-end</span>
+      <h2 id="h-back">Cada cliente vale más en su momento dulce.</h2>
+      <p class="soft">No hay una semana fija. Se ofrece cuando el cliente vea un resultado claro.</p>
+    </header>
+    <div class="card dark">
+      <span class="label">Señales del momento dulce</span>
+      <ul class="l">
+        <li><b>Una foto comparada</b> que le impacta.</li>
+        <li><b>Un récord de fuerza</b> o la primera vez que se ve el abdomen.</li>
+        <li><b>Un comentario espontáneo:</b> "me ha dicho mi pareja…", "me queda pequeña la camiseta".</li>
+      </ul>
+    </div>
+    <div class="g4">
+      <article class="card">
+        <span class="badge">Ascensión</span>
+        <h3>Subir de programa</h3>
+        <ul class="l"><li><b>Trimestre → semestre:</b> paga 300 € de diferencia.</li><li><b>Semestre → año:</b> paga 400 € de diferencia.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">Renovación anticipada</span>
+        <h3>Renovar antes de acabar</h3>
+        <ul class="l"><li>Nunca al final, cuando ya piensa en irse.</li><li>Con incentivo y fecha límite: precio congelado o un mes gratis.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">Continuidad</span>
+        <h3>Mantenimiento mensual</h3>
+        <ul class="l"><li>Revisión al mes y plan actualizado.</li><li>Precio a decidir (propuesta: 39–59 €/mes).</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">Referidos</span>
+        <h3>Trae a un amigo</h3>
+        <ul class="l"><li>Se pide en el mismo momento dulce.</li><li>Si el amigo entra, un mes gratis.</li></ul>
+      </article>
+    </div>
+    <p class="say">"Mira dónde estabas hace 10 semanas y dónde estás hoy. Lo difícil ya está hecho. Si renuevas antes del viernes, te mantengo el precio y te regalo un mes."</p>
+    <p class="soft" style="font-size:14.5px">Cada venta de back-end se apunta en el CRM, en la ficha del cliente. Así se calcula lo que factura de verdad cada cliente.</p>
+  </section>
+</main>

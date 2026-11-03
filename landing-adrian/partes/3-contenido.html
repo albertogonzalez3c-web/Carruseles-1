@@ -1,0 +1,434 @@
+<title>Adrián Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: resumen arriba (totales y calendario semanal), ángulos, un bloque por formato, banco de casos, historias y YouTube diario. Paleta de Adrián: neutros con dorado y azul eléctrico de sus nombres de cliente. */
+:root {
+  --paper: #ecebe7;
+  --white: #fbfaf8;
+  --sand: #e2dfd6;
+  --sand-line: #cdc6ae;
+  --ink: #141414;
+  --soft: #66635d;
+  --gold: #8a6a00;
+  --gold-text: #7a5e00;
+  --chip: #efede8;
+  --rust: #9a4b2f;
+  --blue: #1f4fd1;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.4vw, 56px)/1.03 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 clamp(24px, 3.2vw, 32px)/1.12 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.blue { color: var(--blue); }
+header { padding-block: clamp(30px, 5vw, 56px) 20px; display: grid; gap: 12px; }
+header .lede { font-size: 18px; color: var(--soft); max-width: 66ch; }
+
+/* Totales */
+.totals { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.tot { background: var(--white); border-radius: 16px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.tot b { font: 800 40px/1 var(--f-body); letter-spacing: -.04em; color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.tot span { font-weight: 800; font-size: 15px; }
+.tot small { color: var(--soft); font-size: 13px; line-height: 1.35; }
+.tot.main { background: var(--ink); }
+.tot.main b { color: #e6c34a; }
+.tot.main span, .tot.main small { color: var(--white); }
+
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(236, 235, 231, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); margin-top: 26px; }
+nav.toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+nav.toc a { flex: none; text-decoration: none; color: var(--ink); background: var(--white); border-radius: 999px; padding: 8px 13px; font-size: 13.5px; font-weight: 700; }
+nav.toc a:hover { background: var(--sand); }
+
+section { padding-block: clamp(36px, 6vw, 60px); border-top: 1px solid var(--sand); scroll-margin-top: 60px; }
+.sec-head { display: grid; gap: 10px; margin-bottom: 22px; max-width: 780px; }
+.pill { display: inline-block; width: fit-content; background: var(--ink); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: var(--white); }
+.card.dark .soft, .card.dark ul.l { color: #c4c0b8; }
+.card.dark ul.l b { color: var(--white); }
+.card.dark .label { color: #e6c34a; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 5px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-weight: 700; font-size: 14.5px; line-height: 1.4; }
+.warn { border-left: 3px solid var(--rust); }
+
+/* Calendario semanal */
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.day { background: var(--white); border-radius: 14px; padding: 12px; display: grid; gap: 6px; align-content: start; }
+.day .d { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); display: flex; justify-content: space-between; }
+.day .d b { color: var(--ink); font-family: var(--f-body); font-size: 13px; letter-spacing: 0; }
+.chipf { font-size: 12.5px; font-weight: 800; padding: 6px 8px; border-radius: 8px; }
+.f-y { background: #ece2bf; color: #5c4600; }
+.f-v { background: #dfe6f8; color: #1a3f9c; }
+.f-t { background: #e9e2da; color: #6e3a24; }
+.f-c { background: var(--ink); color: var(--white); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; font-size: 13px; }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+
+/* Tablas */
+.tbl-wrap { overflow-x: auto; }
+table.t { width: 100%; min-width: 640px; border-collapse: separate; border-spacing: 0 6px; }
+.t th { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); text-align: left; padding: 6px 12px; }
+.t td { background: var(--white); padding: 12px 14px; font-size: 14.5px; vertical-align: top; }
+.t td:first-child { border-radius: 12px 0 0 12px; font-weight: 800; }
+.t td:last-child { border-radius: 0 12px 12px 0; }
+.tag { display: inline-block; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; background: var(--chip); color: var(--gold-text); padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+.tag.b { color: var(--blue); }
+.miss { color: var(--rust); font-weight: 700; font-size: 13px; }
+
+/* Plantilla de carrusel */
+.cover { background: #1b1a18; color: var(--white); border-radius: 16px; padding: 22px 20px; display: grid; gap: 4px; align-content: start; }
+.cover .q { font: 800 26px/1.05 var(--f-body); text-transform: uppercase; letter-spacing: -.01em; }
+.cover .p { color: #e6c34a; font-size: 18px; font-weight: 600; }
+.cover .r { margin-top: 12px; font-size: 17px; }
+.cover .r u { text-decoration-color: #e6c34a; text-decoration-thickness: 3px; font-weight: 800; }
+.cover .n { margin-top: 10px; color: #7fa2ff; font: 800 15px/1.2 var(--f-body); letter-spacing: .02em; }
+.slides { counter-reset: s; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.slide { background: var(--white); border-radius: 12px; padding: 12px; display: grid; gap: 6px; align-content: start; font-size: 13.5px; color: var(--soft); }
+.slide b { color: var(--ink); font-size: 14px; }
+.slide::before { counter-increment: s; content: counter(s) "/6"; font: 500 11px/1 var(--f-mono); color: var(--gold-text); }
+
+/* YouTube */
+.bar { display: flex; height: 44px; border-radius: 12px; overflow: hidden; margin-top: 4px; }
+.bar div { display: grid; place-items: center; font-weight: 800; font-size: 13px; color: var(--white); text-align: center; padding: 0 6px; min-width: 0; }
+.big { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; }
+footer { padding-block: 28px 44px; color: var(--soft); font-size: 13.5px; border-top: 1px solid var(--sand); }
+
+@media (max-width: 900px) {
+  .totals { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .g4, .g3 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .slides { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .totals { grid-template-columns: 1fr 1fr; }
+  .g4, .g3, .g2 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .slides { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="label">Plan Adrián Domínguez · Parte 3 · Contenido</span>
+    <h1>Contenido para el que entrena y sigue igual.</h1>
+    <p class="lede">Recomposición corporal para hombres de 25 a 45 que ponen esfuerzo y no ven el resultado. Cada pieza le habla a ese hombre estancado, desde un ángulo concreto, y todas acaban igual: <b>comenta CAMBIO</b>.</p>
+    <div class="totals">
+      <div class="tot main"><b>18</b><span>Publicaciones a la semana</span><small>+ YouTube diario</small></div>
+      <div class="tot"><b>7</b><span>Yapping</span><small>1 al día, a cámara</small></div>
+      <div class="tot"><b>5</b><span>Voz en off</span><small>3 ganchos cada una</small></div>
+      <div class="tot"><b>3</b><span>Trends</span><small>Estancado frente a desestancado</small></div>
+      <div class="tot"><b>3</b><span>Carruseles de casos</span><small>Su plantilla, que ya funciona</small></div>
+    </div>
+  </header>
+</div>
+
+<nav class="toc" aria-label="Secciones">
+  <div class="wrap">
+    <a href="#semana">Semana</a>
+    <a href="#angulos">Ángulos</a>
+    <a href="#yapping">Yapping</a>
+    <a href="#vozenoff">Voz en off</a>
+    <a href="#trends">Trends</a>
+    <a href="#carruseles">Carruseles</a>
+    <a href="#casos">Banco de casos</a>
+    <a href="#historias">Historias</a>
+    <a href="#youtube">YouTube</a>
+  </div>
+</nav>
+
+<section id="semana">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">1 · La semana tipo</span>
+      <h2>18 piezas repartidas para no saturar.</h2>
+      <p class="soft">Yapping cada día, voz en off de lunes a viernes, trends martes, jueves y sábado, y carruseles de casos lunes, miércoles y viernes. Una sola palabra clave en todo: <b>CAMBIO</b>.</p>
+    </div>
+    <div class="week">
+      <div class="day"><span class="d">Lun <b>3</b></span><span class="chipf f-y">Yapping</span><span class="chipf f-v">Voz en off</span><span class="chipf f-c">Carrusel caso</span></div>
+      <div class="day"><span class="d">Mar <b>3</b></span><span class="chipf f-y">Yapping</span><span class="chipf f-v">Voz en off</span><span class="chipf f-t">Trend</span></div>
+      <div class="day"><span class="d">Mié <b>3</b></span><span class="chipf f-y">Yapping</span><span class="chipf f-v">Voz en off</span><span class="chipf f-c">Carrusel caso</span></div>
+      <div class="day"><span class="d">Jue <b>3</b></span><span class="chipf f-y">Yapping</span><span class="chipf f-v">Voz en off</span><span class="chipf f-t">Trend</span></div>
+      <div class="day"><span class="d">Vie <b>3</b></span><span class="chipf f-y">Yapping</span><span class="chipf f-v">Voz en off</span><span class="chipf f-c">Carrusel caso</span></div>
+      <div class="day"><span class="d">Sáb <b>2</b></span><span class="chipf f-y">Yapping</span><span class="chipf f-t">Trend</span></div>
+      <div class="day"><span class="d">Dom <b>1</b></span><span class="chipf f-y">Yapping</span></div>
+    </div>
+    <div class="legend soft"><span>Total: 3 + 3 + 3 + 3 + 3 + 2 + 1 = <b>18</b></span><span>· 7 yapping · 5 voz en off · 3 trends · 3 carruseles</span></div>
+  </div>
+</section>
+
+<section id="angulos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">2 · Ángulos de comunicación</span>
+      <h2>Nueve formas de hablarle al hombre estancado.</h2>
+      <p class="soft">Todos salen de sus casos reales o de su propia historia. Ninguno es inventado.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>#</th><th>Ángulo</th><th>Gancho de ejemplo</th><th>Lo prueba</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><b>Entrenas y sigues igual</b></td><td>"Llevas 2 años yendo al gym y tu cuerpo es el mismo"</td><td>Samuel, Jorge</td></tr>
+          <tr><td>2</td><td><b>Haces todo bien y no cambias</b></td><td>"Comes sano, entrenas, y el espejo no se mueve"</td><td>Eduardo, Iban</td></tr>
+          <tr><td>3</td><td><b>No es la edad</b></td><td>"Ganó músculo a los 42 con una lesión de bíceps"</td><td>Jorge (42), Ricardo (48)</td></tr>
+          <tr><td>4</td><td><b>Delgado, sin forma</b></td><td>"Delgado con barriga: el físico más frustrante"</td><td>Herick, Tomás</td></tr>
+          <tr><td>5</td><td><b>Tu trabajo no es la excusa</b></td><td>"Camarero, todo el día de pie, y aun así cambió"</td><td>Tomás, Malcolm, Manuel</td></tr>
+          <tr><td>6</td><td><b>La comida es tu debilidad</b></td><td>"Atracones, culpa y empezar el lunes"</td><td>Caso de 102 kg, Malcolm</td></tr>
+          <tr><td>7</td><td><b>El todo o nada</b></td><td>"Si no lo hago perfecto, no lo hago"</td><td>Su historia (2023–2024)</td></tr>
+          <tr><td>8</td><td><b>Mis errores, para que no los cometas</b></td><td>"Copié a los influencers durante años. Error"</td><td>Su historia (2019)</td></tr>
+          <tr><td>9</td><td><b>Volumen sucio</b></td><td>"Engordé 18 kg pensando que era músculo"</td><td>Luis, su historia (57 → 75 kg)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card sand" style="margin-top:12px">
+      <h3>Regla semanal</h3>
+      <p class="soft">Rotar los 9 ángulos: cada semana entran al menos 7 distintos en los yapping. Semanas de captar contactos: más 1, 2 y 3 con casos. Semanas de crecer en seguidores: más 7, 8 y 9 (su historia).</p>
+    </div>
+  </div>
+</section>
+
+<section id="yapping">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">7 a la semana · 1 al día</span>
+      <span class="label">3 · Yapping</span>
+      <h2>Adrián a cámara. Sus errores y un ángulo por día.</h2>
+      <p class="soft">30–60 segundos, un solo mensaje. Cierra con "sígueme si entrenas y sigues igual" o "comenta CAMBIO".</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Día</th><th>Ángulo</th><th>Idea</th></tr></thead>
+        <tbody>
+          <tr><td>Lun</td><td><span class="tag">Entrenas y sigues igual</span></td><td>3 señales de que tu entrenamiento no te está cambiando nada</td></tr>
+          <tr><td>Mar</td><td><span class="tag">Mis errores</span></td><td>Lo que hacía en 2019 copiando a los influencers y por qué no funcionaba</td></tr>
+          <tr><td>Mié</td><td><span class="tag">Haces todo bien</span></td><td>Comes sano y no cambias: el problema es la estructura, no la comida</td></tr>
+          <tr><td>Jue</td><td><span class="tag">Volumen sucio</span></td><td>Mi primer "volumen": de 57 a 75 kg comiendo sin control. Qué haría hoy</td></tr>
+          <tr><td>Vie</td><td><span class="tag">Tu trabajo</span></td><td>Trabajo de pie o sentado 10 horas: cómo encajar el plan en tu día real</td></tr>
+          <tr><td>Sáb</td><td><span class="tag">El todo o nada</span></td><td>Llegué a mi mejor físico destrozado mentalmente. Lo que aprendí</td></tr>
+          <tr><td>Dom</td><td><span class="tag">No es la edad</span></td><td>"Con 40 ya no se gana músculo": por qué es mentira (Jorge, 42)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="vozenoff">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">5 a la semana</span>
+      <span class="label">4 · Voz en off</span>
+      <h2>Su día en imágenes, su voz encima.</h2>
+      <p class="soft">Estructura: gancho (3 versiones) → mensaje → "sígueme si entrenas y sigues igual". Se publica con el mejor gancho; los otros dos van como reels de prueba. El que más seguidores traiga se convierte en anuncio "sígueme".</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Escena y mensaje</th><th>Gancho 1</th><th>Gancho 2</th><th>Gancho 3</th></tr></thead>
+        <tbody>
+          <tr><td>Entrenando<br><span class="soft" style="font-weight:500">Por qué no progresas</span></td><td>"Si llevas un año entrenando y sigues igual, mira esto"</td><td>"No es tu genética: es que no progresas las cargas"</td><td>"Lo que cambié para dejar de estar estancado"</td></tr>
+          <tr><td>Cocinando<br><span class="soft" style="font-weight:500">Recomposición sin dieta extrema</span></td><td>"Pierdo grasa y gano músculo comiendo esto"</td><td>"No necesitas comer pollo y arroz para definir"</td><td>"Así como para recomponer sin pasar hambre"</td></tr>
+          <tr><td>Revisando clientes<br><span class="soft" style="font-weight:500">La estructura que falta</span></td><td>"Así reviso cada semana a un cliente estancado"</td><td>"Lo que nadie ajusta y te deja igual meses"</td><td>"Esto es lo que cambia cuando alguien deja de improvisar"</td></tr>
+          <tr><td>Fotos antiguas<br><span class="soft" style="font-weight:500">Su historia</span></td><td>"Este era yo en 2017 y no me quitaba la camiseta"</td><td>"5 años de errores para tener este físico"</td><td>"Lo que me hubiera gustado saber con 18 años"</td></tr>
+          <tr><td>Caminando por la calle<br><span class="soft" style="font-weight:500">Los +25 que se dejan</span></td><td>"Lo que haría si tuviera 30 años y me estuviera dejando"</td><td>"Cuando te das cuenta de que ya no eres el de antes"</td><td>"3 hábitos que te estancan sin que te des cuenta"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="trends">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">3 a la semana</span>
+      <span class="label">5 · Trends</span>
+      <h2>Estancado frente a desestancado.</h2>
+      <p class="soft">Formatos que ya funcionan, con audio en tendencia, llevados a su nicho.</p>
+    </div>
+    <div class="g3">
+      <article class="card"><span class="label">Comparativa</span><h3>El estancado vs. el desestancado</h3><ul class="l"><li>Entrena sin plan vs. sabe qué toca hoy</li><li>Cambia de rutina cada mes vs. progresa cargas</li><li>Dieta de lunes vs. estructura que aguanta</li></ul></article>
+      <article class="card"><span class="label">Ranking</span><h3>De peor a mejor</h3><ul class="l"><li>Errores que te estancan en el gym</li><li>Excusas del +25 que se está dejando</li><li>Cenas para recomponer sin hambre</li></ul></article>
+      <article class="card"><span class="label">POV</span><h3>Escenas en las que se reconoce</h3><ul class="l"><li>POV: llevas 2 años en el gym y te sigue apretando la camiseta por la barriga</li><li>POV: haces "volumen" y solo crece la tripa</li><li>POV: lunes, empiezas otra vez</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="carruseles">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">3 a la semana · 12 al mes</span>
+      <span class="label">6 · Carruseles de casos</span>
+      <h2>Su plantilla, con una regla nueva.</h2>
+      <p class="soft">Ya le funciona. La única mejora: <b>la portada siempre lleva nombre, edad, cifra y tiempo</b>. Sin cifra, el caso pierde la mitad de su fuerza.</p>
+    </div>
+    <div class="g2">
+      <div class="cover" role="img" aria-label="Ejemplo de portada: Quería más músculo, pensaba que no podía, y a nada de rendirse. Jorge, 42 años, 75 a 69 kg en 5 meses">
+        <span class="q">Quería más músculo</span>
+        <span class="p">pensaba que no podía…</span>
+        <span class="r">y a nada de <u>rendirse</u> ↷</span>
+        <span class="n">JORGE · 42 AÑOS · 75 → 69 KG EN 5 MESES</span>
+      </div>
+      <div class="card">
+        <h3>Deseos para la primera línea</h3>
+        <ul class="l"><li>QUERÍA MÁS MÚSCULO · PERDER LA BARRIGA · VERSE DEFINIDO</li><li>QUERÍA RECOMPONERSE · SENTIRSE FUERTE · MEJORES HÁBITOS</li><li>Variante de dolor: "Iba al gym… pero seguía igual…"</li><li>Variante de problema: "AÑOS SIN SENTIRSE FUERTE", "LA COMIDA ES TU DEBILIDAD"</li></ul>
+      </div>
+    </div>
+    <div class="slides" style="margin-top:12px">
+      <div class="slide"><b>Portada</b>Gancho + antes y después + nombre, edad, cifra y tiempo.</div>
+      <div class="slide"><b>Problemas iniciales</b>Nombre y edad + 4 viñetas: entrenaba sin cambios, sin estructura, poca energía…</div>
+      <div class="slide"><b>Situación actual</b>Más músculo, menos grasa, energía, motivado a seguir.</div>
+      <div class="slide"><b>Antes y después en kg</b>De frente, perfil y espalda. "Antes X kg / Después Y kg".</div>
+      <div class="slide"><b>Testimonio</b>Vídeo del cliente a cámara con subtítulos, o su nota de voz.</div>
+      <div class="slide"><b>Cierre</b>"Hoy puede ser el inicio de tu mejor versión. Comenta CAMBIO."</div>
+    </div>
+    <div class="card sand" style="margin-top:12px">
+      <h3>El pie de foto, siempre igual</h3>
+      <ol class="l">
+        <li><b>Arriba:</b> "Comenta CAMBIO y hablamos."</li>
+        <li><b>Presentación:</b> "[Nombre] tiene [edad] años." + sus problemas.</li>
+        <li><b>Números:</b> "En 5 meses, de 75 a 69 kg."</li>
+        <li><b>Lo que de verdad cambió:</b> energía, seguridad, la lesión…</li>
+        <li><b>Método:</b> "Construimos una estructura que encajaba con su vida real."</li>
+        <li><b>Cierre:</b> "Quería X. Pensaba que no podía. Y a nada de rendirse. Comenta CAMBIO."</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">7 · Banco de casos</span>
+      <h2>Más de 20 casos listos para carruseles y YouTube.</h2>
+      <p class="soft">Sacados de su perfil. Donde pone <span class="miss">falta cifra</span>, Adrián tiene que dar los kilos y el tiempo antes de volver a publicarlo. No se inventa nada.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Cliente</th><th>Edad</th><th>Situación</th><th>Resultado</th><th>Ángulo</th></tr></thead>
+        <tbody>
+          <tr><td>Dani</td><td>—</td><td>Poca seguridad, problema con la comida</td><td>120 → 92 kg (−28 kg) · <span class="miss">falta tiempo</span></td><td><span class="tag">Comida</span></td></tr>
+          <tr><td>Luis</td><td>—</td><td>Volumen fallido, frustrado</td><td>−17 kg en 4 meses</td><td><span class="tag">Volumen sucio</span></td></tr>
+          <tr><td>Isaac</td><td>—</td><td>Profesor de educación física, autoexigencia</td><td>−10 kg en 3 meses</td><td><span class="tag">Haces todo bien</span></td></tr>
+          <tr><td>Jorge</td><td>42</td><td>Entrenaba sin cambios, lesión de bíceps</td><td>75 → 69 kg en 5 meses, recuperó el bíceps</td><td><span class="tag">No es la edad</span></td></tr>
+          <tr><td>Albert</td><td>—</td><td>Malos hábitos, inflamación abdominal</td><td>90 → 79 kg · <span class="miss">falta tiempo</span></td><td><span class="tag">Entrenas y sigues igual</span></td></tr>
+          <tr><td>Eduardo</td><td>40</td><td>Entrenaba sin forma, trabajo físico</td><td>70 → 64 kg · <span class="miss">falta tiempo</span></td><td><span class="tag">Haces todo bien</span></td></tr>
+          <tr><td>Iban</td><td>42</td><td>Se escondía en la playa; entrenaba y comía bien, estancado</td><td>Recomposición · <span class="miss">falta cifra</span></td><td><span class="tag">No es la edad</span></td></tr>
+          <tr><td>Ricardo</td><td>48</td><td>Celíaco, su trabajo, estancado</td><td>80 → 79 kg (recomposición) · <span class="miss">falta tiempo</span></td><td><span class="tag">No es la edad</span></td></tr>
+          <tr><td>Marcos</td><td>23</td><td>Sin rutina, hinchado, estancado</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Entrenas y sigues igual</span></td></tr>
+          <tr><td>Pablo</td><td>25</td><td>Trabajo sedentario, malos hábitos</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Tu trabajo</span></td></tr>
+          <tr><td>Miguel</td><td>29</td><td>Sin estructura de comidas</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Haces todo bien</span></td></tr>
+          <tr><td>Tomás</td><td>—</td><td>Camarero, trabajo físico, estancado</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Tu trabajo</span></td></tr>
+          <tr><td>Malcolm</td><td>—</td><td>Horarios imposibles, mala relación con la comida</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Comida</span></td></tr>
+          <tr><td>Manuel</td><td>—</td><td>Sin tiempo, poca energía, lo dejaba siempre</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Tu trabajo</span></td></tr>
+          <tr><td>Herick</td><td>—</td><td>Delgado, sin masa, inseguro</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Delgado sin forma</span></td></tr>
+          <tr><td>Samuel</td><td>—</td><td>Iba al gym sin resultados</td><td><span class="miss">falta cifra</span></td><td><span class="tag">Entrenas y sigues igual</span></td></tr>
+          <tr><td>"Mala relación con la comida"</td><td>—</td><td>Atracones, frustración</td><td>Partía de 102 kg · <span class="miss">falta resultado</span></td><td><span class="tag">Comida</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="g2" style="margin-top:12px">
+      <div class="card warn"><h3>Sin mujeres en fijados ni anuncios</h3><p class="soft">Los casos de Sonia, Laura y otras clientas son buenos, pero el nicho es de hombres. Pueden seguir en el feed; no van en los fijados, en la destacada de casos ni en los anuncios.</p></div>
+      <div class="card"><h3>Los 3 primeros para publicar</h3><ul class="l"><li><b>Dani</b> (−28 kg): el más impactante.</li><li><b>Jorge</b> (42, lesión): rompe la excusa de la edad.</li><li><b>Luis</b> (−17 kg en 4 meses): volumen sucio, muy común.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="historias">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">3 bloques al día · CTA fuerte 2 veces por semana</span>
+      <span class="label">8 · Historias</span>
+      <h2>Mañana, mediodía y tarde.</h2>
+    </div>
+    <div class="g3">
+      <article class="card"><span class="label">Mañana · Conexión</span><h3>Su día</h3><ul class="l"><li>Desayuno y entreno</li><li>"Hoy toca pierna, la que me saltaba en 2017"</li><li>Algo de su vida fuera del gym</li></ul></article>
+      <article class="card"><span class="label">Mediodía · Valor</span><h3>Un consejo para el estancado</h3><ul class="l"><li>Encuesta: "¿Llevas más de un año entrenando igual?"</li><li>Un error y cómo arreglarlo</li><li>"Esto me preguntáis mucho"</li></ul></article>
+      <article class="card sand"><span class="label">Tarde · Prueba social</span><h3>Sus clientes</h3><ul class="l"><li>Revisando el check-in de un cliente</li><li>Mensaje o audio de un cliente</li><li>Antes y después del día</li></ul></article>
+    </div>
+    <div class="g2" style="margin-top:12px">
+      <div class="card dark">
+        <span class="label">CTA fuerte · martes y viernes</span>
+        <h3>Una secuencia de 3–4 historias que acaba en venta</h3>
+        <ul class="l"><li><b>1:</b> un caso con antes y después.</li><li><b>2:</b> "Él también pensaba que no podía".</li><li><b>3:</b> "Tengo X plazas este mes".</li><li><b>4:</b> "Escríbeme CAMBIO y te cuento cómo sería en tu caso".</li></ul>
+      </div>
+      <div class="card warn">
+        <h3>Arreglar "Mi Historia"</h3>
+        <p class="soft">Termina con una encuesta en la que el <b>58 %</b> dice "sí, me he sentido identificado", y no se le pide nada. Añadir una última historia:</p>
+        <p class="hook">"Si te has visto en alguna de mis etapas, escríbeme CAMBIO y vemos cómo saltarte esos errores."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="youtube">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">Diario desde el primer día</span>
+      <span class="label">9 · YouTube</span>
+      <h2>Un vídeo al día, grabado en dos sesiones.</h2>
+      <p class="soft">12–20 minutos. Es lo único distinto respecto a Sergio: Adrián no sube poco a poco, arranca con 7 a la semana.</p>
+    </div>
+    <div class="g3">
+      <div class="card"><span class="label">Frecuencia</span><span class="big">7</span><span class="soft">vídeos a la semana</span></div>
+      <div class="card"><span class="label">Grabación</span><span class="big">2</span><span class="soft">sesiones a la semana de 3–4 vídeos</span></div>
+      <div class="card"><span class="label">Duración</span><span class="big">12–20</span><span class="soft">minutos por vídeo</span></div>
+    </div>
+    <div class="bar" style="margin-top:14px" role="img" aria-label="Reparto de YouTube: 60 % VSL encubierto, 20 % casos a fondo, 10 % experimentos, 10 % preguntas">
+      <div style="flex:6;background:var(--ink)">VSL encubierto 60 %</div>
+      <div style="flex:2;background:var(--blue)">Casos 20 %</div>
+      <div style="flex:1;background:var(--gold)">10 %</div>
+      <div style="flex:1;background:#4a4740">10 %</div>
+    </div>
+    <p class="soft" style="font-size:13.5px;margin-top:6px">Negro: VSL encubierto · Azul: casos a fondo · Dorado: experimentos · Gris: preguntas y respuestas.</p>
+
+    <h3 style="margin-top:22px">Las dos primeras semanas: 14 títulos</h3>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Día</th><th>Tipo</th><th>Título</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><span class="tag">VSL</span></td><td>Por qué entrenas y no cambias: los 5 errores que te estancan</td></tr>
+          <tr><td>2</td><td><span class="tag b">Caso</span></td><td>Cómo Dani pasó de 120 a 92 kg (y qué cambió de verdad)</td></tr>
+          <tr><td>3</td><td><span class="tag">VSL</span></td><td>Recomposición corporal: perder grasa y ganar músculo a la vez, explicado</td></tr>
+          <tr><td>4</td><td><span class="tag">VSL</span></td><td>Mis 7 años de errores en el gym para que tú no los cometas</td></tr>
+          <tr><td>5</td><td><span class="tag">Experimento</span></td><td>Entreno 30 días con 3 sesiones a la semana: ¿se puede progresar?</td></tr>
+          <tr><td>6</td><td><span class="tag">VSL</span></td><td>El volumen sucio te está arruinando el físico</td></tr>
+          <tr><td>7</td><td><span class="tag">Preguntas</span></td><td>Respondo a 10 hombres estancados: qué cambiaría en su caso</td></tr>
+          <tr><td>8</td><td><span class="tag b">Caso</span></td><td>Jorge, 42 años y lesión de bíceps: músculo nuevo en 5 meses</td></tr>
+          <tr><td>9</td><td><span class="tag">VSL</span></td><td>Comes sano y no pierdes grasa: el problema no es lo que comes</td></tr>
+          <tr><td>10</td><td><span class="tag">VSL</span></td><td>Delgado con barriga: cómo salir del "skinny fat"</td></tr>
+          <tr><td>11</td><td><span class="tag">VSL</span></td><td>El todo o nada me destrozó: cómo entrenar sin vivir obsesionado</td></tr>
+          <tr><td>12</td><td><span class="tag b">Caso</span></td><td>Luis: −17 kg en 4 meses después de un volumen que no funcionó</td></tr>
+          <tr><td>13</td><td><span class="tag">Experimento</span></td><td>Un día comiendo como mis clientes que recomponen</td></tr>
+          <tr><td>14</td><td><span class="tag">VSL</span></td><td>Tu trabajo no es la excusa: el plan para 10 horas de curro</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="soft" style="font-size:13.5px">Reparto de estas dos semanas: 8 VSL, 3 casos, 2 experimentos y 1 de preguntas (14 en total, cerca del 60/20/10/10).</p>
+
+    <div class="g3" style="margin-top:12px">
+      <div class="card"><h3>En cada vídeo</h3><ul class="l"><li><b>CTA a mitad</b> y <b>CTA al final</b>: "Si quieres que veamos tu caso, el enlace está en la descripción".</li><li><b>Web en la descripción</b> y comentario fijado.</li><li><b>Prueba social</b> siempre: un antes y después en pantalla.</li></ul></div>
+      <div class="card"><h3>Ventaja</h3><p class="soft">Con más de 20 casos tiene <b>un mes de vídeos de casos sin inventar nada</b>. Cada vídeo da además 3 clips para reels y Shorts.</p></div>
+      <div class="card warn"><h3>El cuello de botella: la edición</h3><p class="soft">7 vídeos largos a la semana necesitan <b>un editor o una plantilla fija</b> (intro, rótulos y miniatura iguales). Sin eso, en 3 semanas deja de subir.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Plan Adrián Domínguez · Parte 3 · Contenido. Una sola palabra clave en todo: CAMBIO. Contenido divulgativo: sin diagnosticar ni prometer resultados médicos.</div>
+</footer>
