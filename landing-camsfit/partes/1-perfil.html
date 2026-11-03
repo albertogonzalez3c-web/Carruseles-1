@@ -1,0 +1,220 @@
+<title>CAMSFIT Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a la izquierda la vista previa del perfil (fija en escritorio), a la derecha las opciones; al elegir una, la vista previa cambia. Colores de la app CAMSFIT. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --sand: #ddd9ce;
+  --sand-line: #cbbf98;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --gold: #7f6114;
+  --gold-text: #7a6225;
+  --chip: #edebe6;
+  --ig-blue: #3a6ea5;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5vw, 52px)/1.04 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 22px/1.2 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; margin-bottom: 26px; max-width: 720px; }
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+
+/* Vista previa */
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; }
+.ig-top { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 14px; align-items: center; }
+.ig-top img { width: 78px; height: 78px; border-radius: 50%; object-fit: cover; }
+.ig-user { font-weight: 800; font-size: 16px; display: flex; gap: 5px; align-items: center; }
+.ig-user svg { width: 15px; height: 15px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: var(--ig-blue); font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 12px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: var(--paper); }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--sand); border: 1.5px solid var(--sand-line); display: grid; place-items: center; color: var(--gold); font: 800 13px/1 var(--f-body); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: #9a4b2f; }
+
+/* Opciones */
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border: 1.5px solid transparent; border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; transition: border-color .15s ease; }
+.opt:hover { border-color: var(--sand-line); }
+.opt[aria-pressed="true"] { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.opt:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); }
+.opt .txt { white-space: pre-line; font-size: 14.5px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 13.5px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; }
+.names .opt b { font-size: 15px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.list { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+.list b { color: var(--ink); }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .preview-col { position: static; max-width: 380px; }
+  .rules { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .opts { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Plan CAMSFIT · Parte 1 de 6</span>
+    <h1>Perfil: nombre, bio y lo que se ve al entrar.</h1>
+    <p class="soft">Toca un nombre y una bio para ver cómo queda el perfil. Todas caben en el límite de Instagram (30 caracteres el nombre, 150 la bio).</p>
+  </header>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <img src="sergio-perfil.jpg" alt="Foto de perfil de Sergio" width="255" height="265">
+          <div>
+            <div class="ig-user">sergio_camsfit <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3a8ef6" d="M12 1.5l2.6 2 3.2-.4.9 3.1 2.9 1.5-1 3.1 1 3.1-2.9 1.5-.9 3.1-3.2-.4-2.6 2-2.6-2-3.2.4-.9-3.1-2.9-1.5 1-3.1-1-3.1 2.9-1.5.9-3.1 3.2.4z"/><path fill="#fff" d="M10.6 15.2l-3-3 1.2-1.2 1.8 1.8 4.6-4.6 1.2 1.2z"/></svg></div>
+            <div class="ig-stats"><span><b>1.507</b>posts</span><span><b>70,4K</b>seguidores</span><span><b>888</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name">Reprogramación Metabólica</div>
+          <div class="ig-cat">Entrenador personal</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>camsfit.com</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>1</span></i><small>Empieza aquí</small></div>
+          <div><i><span>S</span></i><small>Mi historia</small></div>
+          <div><i><span>+</span></i><small>Resultados</small></div>
+          <div><i><span>M</span></i><small>Método</small></div>
+          <div><i><span>A</span></i><small>App</small></div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/30</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">El enlace "camsfit.com" es un ejemplo: irá el dominio donde se publique la landing.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda. Mejor con la palabra clave que el cliente busca.</p>
+        <div class="names" id="names">
+          <button class="opt" type="button" data-name="Reprogramación Metabólica"><b>Reprogramación Metabólica</b><span class="n">25</span></button>
+          <button class="opt" type="button" data-name="Sergio Cámara | Metabolismo"><b>Sergio Cámara | Metabolismo</b><span class="n">27</span></button>
+          <button class="opt" type="button" data-name="Sergio | Experto Metabolismo"><b>Sergio | Experto Metabolismo</b><span class="n">28</span></button>
+          <button class="opt" type="button" data-name="CAMSFIT · Metabolismo"><b>CAMSFIT · Metabolismo</b><span class="n">21</span></button>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas siguen el mismo esquema: quién es · para quién · prueba · siguiente paso. Sin emojis de adorno, para que se lea más profesional.</p>
+        <div class="opts" id="bios">
+          <button class="opt" type="button"><span class="tag">Autoridad · recomendada</span><span class="txt">Experto en reprogramación metabólica
+Pérdida de grasa para hombres de 30 a 50
+15 años de experiencia · +500 clientes
+Solicita tu valoración ↓</span><span class="why">Clara, sobria y con credenciales. La que mejor transmite profesionalidad.</span></button>
+          <button class="opt" type="button"><span class="tag">Método</span><span class="txt">Reprogramación metabólica · Hombres 30-50
+Pierde grasa y mantenla sin cambiar tu vida
+Método por fases · App propia
++500 clientes · Valoración ↓</span><span class="why">Explica qué recibe el cliente: fases y app.</span></button>
+          <button class="opt" type="button"><span class="tag">Gancho corto</span><span class="txt">Pierdes grasa. La mantienes.
+Reprogramación metabólica para hombres 30-50
+15 años · +500 clientes
+Empieza aquí ↓</span><span class="why">La primera línea se recuerda. Muy limpia.</span></button>
+          <button class="opt" type="button"><span class="tag">Resultado con plazo</span><span class="txt">Entrenador especializado en metabolismo
+Hombres 30-50: pierde grasa en 90 días
+Plan por fases, comida de casa y app propia
++500 casos ↓</span><span class="why">Usa el plazo de la oferta. Solo si se confirman los 90 días.</span></button>
+          <button class="opt" type="button"><span class="tag">Nicho técnico</span><span class="txt">Insulina · Cortisol · Testosterona · Hábitos
+Reprogramación metabólica para hombres 30-50
+Pérdida de grasa sostenible
++500 clientes · Valoración ↓</span><span class="why">Conecta con su contenido de hormonas. Suena a especialista.</span></button>
+          <button class="opt" type="button"><span class="tag">Historia</span><span class="txt">De sedentario a experto en metabolismo
+Ayudo a hombres 30-50 a recuperar su físico
+sin dejar su trabajo ni la comida de casa
+Valoración ↓</span><span class="why">Más cercana. Funciona si su contenido cuenta su historia.</span></button>
+          <button class="opt" type="button"><span class="tag">Marca</span><span class="txt">Fundador de CAMSFIT
+Reprogramación metabólica · Hombres 30-50
+Trabajos sedentarios, resultados que duran
++500 clientes ↓</span><span class="why">Posiciona a CAMSFIT como empresa, no como entrenador suelto.</span></button>
+          <button class="opt" type="button"><span class="tag">Poco tiempo</span><span class="txt">Pérdida de grasa para hombres con poco tiempo
+Reprogramación metabólica por fases
+15 años entrenando · +500 clientes
+Plazas de valoración ↓</span><span class="why">Ataca la objeción principal: el tiempo.</span></button>
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>Lo que hace que un perfil se vea profesional</h2>
+        <div class="rules">
+          <div class="card"><span class="label">Bio</span><ul class="list"><li><b>Sin emojis de adorno.</b> Como mucho una flecha al final.</li><li><b>Cifras exactas:</b> "+500", no "cientos".</li><li><b>Una sola acción</b> al final.</li></ul></div>
+          <div class="card"><span class="label">Destacadas</span><ul class="list"><li><b>Portadas iguales</b> en los colores de su app, con una letra o icono.</li><li><b>Orden:</b> Empieza aquí · Mi historia · Resultados · Método · App.</li><li><b>Empieza aquí:</b> 4-5 historias que expliquen qué hace y cómo empezar.</li></ul></div>
+          <div class="card"><span class="label">Resto</span><ul class="list"><li><b>Categoría:</b> "Entrenador personal".</li><li><b>Enlace:</b> a la landing en su dominio, no a un formulario suelto.</li><li><b>3 fijadas:</b> un caso de 30-50 con cifra, qué es la reprogramación y su historia.</li></ul></div>
+        </div>
+        <div class="card sand">
+          <span class="label">Por decidir con Sergio</span>
+          <ul class="list"><li>Si la valoración es gratuita: entonces "Valoración gratuita ↓" convierte más.</li><li>Si se mantiene @esncom.es: resta profesionalidad si no es obligatorio por el patrocinio.</li><li>Si compra un dominio propio para la landing (por ejemplo, camsfit.com o sergiocamara.com).</li></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function len(t) { return Array.from(t).length; }
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = len(pvName.textContent); cb.textContent = len(pvBio.textContent);
+    cn.className = len(pvName.textContent) > 30 ? "over" : ""; cb.className = len(pvBio.textContent) > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = Array.from(b.querySelector(".txt").textContent).length + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>
