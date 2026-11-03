@@ -54,6 +54,24 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14.5px/1.55 var(--f-body)
 .note { font-size: 13.5px; color: var(--soft); min-height: 1.2em; }
 .confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--chip); border-radius: 12px; padding: 10px 12px; font-size: 14.5px; }
 
+.closed-q { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; flex-wrap: wrap; }
+.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; }
+.seg button { all: unset; cursor: pointer; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 14px; color: var(--soft); }
+.seg button[aria-pressed="true"] { background: var(--gold); color: var(--white); }
+.seg button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.closes { display: grid; gap: 10px; background: var(--chip); border-radius: 14px; padding: 14px; }
+.closes .row, .camps .row { display: grid; gap: 8px; background: var(--white); border-radius: 12px; padding: 12px; }
+.closes .row .top, .camps .row .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.closes .row b, .camps .row b { font-size: 14.5px; }
+.rm { all: unset; cursor: pointer; color: var(--soft); font-size: 13px; font-weight: 700; }
+.rm:focus-visible { outline: 2px solid var(--ink); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; color: var(--soft); grid-template-columns: none; }
+.fields input, .fields select { font: 600 15px/1.2 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; }
+.fields .full { grid-column: 1 / -1; }
+.camps { display: grid; gap: 8px; }
+.camps .res { font-size: 13.5px; color: var(--gold-text); font-weight: 700; }
+
 /* Historial */
 .hist-wrap { overflow-x: auto; }
 table.hist { width: 100%; min-width: 680px; border-collapse: collapse; background: var(--white); border-radius: 16px; overflow: hidden; }
@@ -88,13 +106,24 @@ table.alerts { width: 100%; border-collapse: collapse; }
         <label for="d-tel">Teléfonos conseguidos<input id="d-tel" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         <label for="d-agend">Llamadas agendadas próximos días<input id="d-agend" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         <label for="d-hechas">Llamadas realizadas hoy<input id="d-hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <label for="d-cierres">Cierres de hoy<input id="d-cierres" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <label for="d-fact">Facturado hoy (€)<input id="d-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <div class="closed-q">
+          <span>¿Se ha cerrado algo hoy?</span>
+          <div class="seg" role="group" aria-label="¿Se ha cerrado algo hoy?">
+            <button type="button" id="closedNo" aria-pressed="true">No</button>
+            <button type="button" id="closedYes" aria-pressed="false">Sí</button>
+          </div>
+        </div>
+        <div id="closesBox" class="closes" hidden>
+          <span class="label">Cierres de hoy</span>
+          <div id="closesList"></div>
+          <button type="button" class="btn ghost" id="addClose">+ Añadir otro cierre</button>
+        </div>
       </form>
       <div class="card sand">
         <div class="calc">
           <div><span>Teléfono por conversación</span><b id="o-tel">—</b></div>
           <div><span>Cierre (cierres ÷ llamadas)</span><b id="o-close">—</b></div>
+          <div><span>Facturado hoy</span><b id="o-fact">—</b></div>
         </div>
       </div>
       <div class="card">
@@ -119,17 +148,17 @@ table.alerts { width: 100%; border-collapse: collapse; }
         <span class="when">Lunes y jueves</span>
         <h2>Anuncios y facturación</h2>
         <label for="a-fact">Facturación total del mes (€)<input id="a-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
-        <span class="label" style="margin-top:6px">Anuncios "sígueme"</span>
-        <label for="a-fgasto">Gasto desde el último reporte (€)<input id="a-fgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
-        <label for="a-fseg">Seguidores nuevos<input id="a-fseg" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <span class="label" style="margin-top:6px">Anuncios de formulario</span>
-        <label for="a-lgasto">Gasto desde el último reporte (€)<input id="a-lgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
-        <label for="a-leads">Leads conseguidos<input id="a-leads" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <span class="label" style="margin-top:6px">Anuncios "sígueme" · gasto desde el último reporte</span>
+        <div class="camps" id="campsF"></div>
+        <button type="button" class="btn ghost" data-add="F">+ Añadir campaña "sígueme"</button>
+        <span class="label" style="margin-top:6px">Anuncios de formulario · gasto desde el último reporte</span>
+        <div class="camps" id="campsL"></div>
+        <button type="button" class="btn ghost" data-add="L">+ Añadir campaña de formulario</button>
       </form>
       <div class="card sand">
         <div class="calc">
-          <div><span>Coste por seguidor</span><b id="o-cps">—</b></div>
-          <div><span>Coste por lead</span><b id="o-cpl">—</b></div>
+          <div><span>Coste por seguidor (todas)</span><b id="o-cps">—</b></div>
+          <div><span>Coste por lead (todas)</span><b id="o-cpl">—</b></div>
         </div>
       </div>
       <div class="card">
@@ -174,36 +203,107 @@ table.alerts { width: 100%; border-collapse: collapse; }
 
 <script>
 (function () {
-  var DAY = ["d-conv","d-tel","d-agend","d-hechas","d-cierres","d-fact"];
-  var ADS = ["a-fact","a-fgasto","a-fseg","a-lgasto","a-leads"];
-  var KEY = "camsfit-reportes", HKEY = "camsfit-historial";
+  var DAY = ["d-conv","d-tel","d-agend","d-hechas"];
+  var KEY = "camsfit-reportes2", HKEY = "camsfit-historial";
   function load(k, d) { try { var x = JSON.parse(localStorage.getItem(k)); return x || d; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
-  var store = load(KEY, {}), hist = load(HKEY, []);
+  var st = load(KEY, { day: {}, closed: false, closes: [], fact: "", F: [{ n: "Sígueme 1" }, { n: "Sígueme 2" }], L: [{ n: "Formulario 1" }, { n: "Formulario 2" }] });
+  var hist = load(HKEY, []);
   function el(id) { return document.getElementById(id); }
-  function v(id) { var n = parseFloat(el(id).value); return isNaN(n) ? 0 : n; }
+  function num(x) { var n = parseFloat(x); return isNaN(n) ? 0 : n; }
+  function v(id) { return num(el(id).value); }
   function eur(n) { return n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true }) + " €"; }
   function pct(n) { return n.toLocaleString("es-ES", { maximumFractionDigits: 0 }) + " %"; }
   function today() { return new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" }); }
-  function isoToday() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function iso() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function persist() { save(KEY, st); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : t; return d.innerHTML; }
+
+  /* Cierres */
+  function closesCount() { return st.closed ? st.closes.length : 0; }
+  function factHoy() { return st.closed ? st.closes.reduce(function (a, c) { return a + num(c.importe); }, 0) : 0; }
+  function renderCloses() {
+    el("closedYes").setAttribute("aria-pressed", st.closed ? "true" : "false");
+    el("closedNo").setAttribute("aria-pressed", st.closed ? "false" : "true");
+    el("closesBox").hidden = !st.closed;
+    var list = el("closesList"); list.innerHTML = "";
+    st.closes.forEach(function (c, i) {
+      var row = document.createElement("div"); row.className = "row";
+      row.innerHTML = '<div class="top"><b>Cierre ' + (i + 1) + '</b>' + (st.closes.length > 1 ? '<button type="button" class="rm">Quitar</button>' : '') + '</div>' +
+        '<div class="fields">' +
+        '<label>Cliente<input data-k="cliente" value="' + esc(c.cliente) + '" placeholder="Nombre"></label>' +
+        '<label>Importe cobrado hoy (€)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
+        '<label>Plan<select data-k="plan"><option>90 días</option><option>6 meses</option><option>1 año</option><option>Renovación</option><option>Otro</option></select></label>' +
+        '<label>Pago<select data-k="pago"><option>Pago único</option><option>2 cuotas</option><option>3 cuotas</option><option>Otro</option></select></label>' +
+        '<label>De dónde vino<select data-k="origen"><option>Instagram orgánico</option><option>Anuncio sígueme</option><option>Anuncio formulario</option><option>YouTube</option><option>Recomendación</option><option>Otro</option></select></label>' +
+        '<label>Valor total del contrato (€)<input data-k="total" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.total) + '" placeholder="0"></label>' +
+        '<label class="full">Cómo fue (objeción principal, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: dudaba por el tiempo; le convenció el caso de Nico"></label>' +
+        '</div>';
+      row.querySelectorAll("select").forEach(function (sel) { if (c[sel.dataset.k]) sel.value = c[sel.dataset.k]; else c[sel.dataset.k] = sel.value; });
+      row.querySelectorAll("[data-k]").forEach(function (inp) {
+        inp.addEventListener("input", function () { c[inp.dataset.k] = inp.value; persist(); update(); });
+        inp.addEventListener("change", function () { c[inp.dataset.k] = inp.value; persist(); update(); });
+      });
+      var rm = row.querySelector(".rm");
+      if (rm) rm.addEventListener("click", function () { st.closes.splice(i, 1); persist(); renderCloses(); update(); });
+      list.appendChild(row);
+    });
+  }
+  el("closedYes").addEventListener("click", function () { st.closed = true; if (!st.closes.length) st.closes.push({}); persist(); renderCloses(); update(); });
+  el("closedNo").addEventListener("click", function () { st.closed = false; persist(); renderCloses(); update(); });
+  el("addClose").addEventListener("click", function () { st.closes.push({}); persist(); renderCloses(); update(); });
+
+  /* Campañas */
+  function renderCamps(t) {
+    var box = el("camps" + t); box.innerHTML = "";
+    var unit = t === "F" ? "Seguidores nuevos" : "Leads";
+    st[t].forEach(function (c, i) {
+      var row = document.createElement("div"); row.className = "row";
+      row.innerHTML = '<div class="top"><input data-k="n" value="' + esc(c.n) + '" aria-label="Nombre de la campaña" style="font:700 14.5px/1.2 var(--f-body);border:0;background:transparent;padding:0;color:var(--ink);min-width:0;flex:1">' +
+        (st[t].length > 1 ? '<button type="button" class="rm">Quitar</button>' : '') + '</div>' +
+        '<div class="fields"><label>Gasto (€)<input data-k="g" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.g) + '" placeholder="0"></label>' +
+        '<label>' + unit + '<input data-k="r" type="number" min="0" inputmode="numeric" value="' + esc(c.r) + '" placeholder="0"></label></div>' +
+        '<span class="res"></span>';
+      row.querySelectorAll("[data-k]").forEach(function (inp) { inp.addEventListener("input", function () { c[inp.dataset.k] = inp.value; persist(); update(); }); });
+      var rm = row.querySelector(".rm");
+      if (rm) rm.addEventListener("click", function () { st[t].splice(i, 1); persist(); renderCamps(t); update(); });
+      box.appendChild(row);
+    });
+  }
+  document.querySelectorAll("[data-add]").forEach(function (b) {
+    b.addEventListener("click", function () { var t = b.dataset.add; st[t].push({ n: (t === "F" ? "Sígueme " : "Formulario ") + (st[t].length + 1) }); persist(); renderCamps(t); update(); });
+  });
+  function campLines(t, label, per) {
+    var g = 0, r = 0, lines = [];
+    st[t].forEach(function (c, i) {
+      var cg = num(c.g), cr = num(c.r); g += cg; r += cr;
+      var cost = cr > 0 ? eur(cg / cr) : "—";
+      var res = el("camps" + t).children[i]; if (res) res.querySelector(".res").textContent = cost + " por " + per;
+      if (cg || cr) lines.push("· " + (c.n || label) + ": " + eur(cg) + " → " + cr + " " + (t === "F" ? "seguidores" : "leads") + " · " + cost);
+    });
+    return { g: g, r: r, lines: lines, cost: r > 0 ? eur(g / r) : "—" };
+  }
 
   function update() {
+    var hechas = v("d-hechas"), cierres = closesCount(), fact = factHoy();
     var tel = v("d-conv") > 0 ? pct(v("d-tel") / v("d-conv") * 100) : "—";
-    var close = v("d-hechas") > 0 ? pct(v("d-cierres") / v("d-hechas") * 100) : "—";
-    var cps = v("a-fseg") > 0 ? eur(v("a-fgasto") / v("a-fseg")) : "—";
-    var cpl = v("a-leads") > 0 ? eur(v("a-lgasto") / v("a-leads")) : "—";
-    el("o-tel").textContent = tel; el("o-close").textContent = close;
-    el("o-cps").textContent = cps; el("o-cpl").textContent = cpl;
+    var close = hechas > 0 ? pct(cierres / hechas * 100) : "—";
+    el("o-tel").textContent = tel; el("o-close").textContent = close; el("o-fact").textContent = eur(fact);
+    var det = st.closed ? st.closes.map(function (c, i) {
+      return "  " + (i + 1) + ". " + (c.cliente || "Cliente") + " · " + eur(num(c.importe)) + " hoy" + (num(c.total) ? " (contrato " + eur(num(c.total)) + ")" : "") + " · " + (c.plan || "") + " · " + (c.pago || "") + " · " + (c.origen || "") + (c.como ? "\n     " + c.como : "");
+    }).join("\n") : "";
     el("m-dia").textContent = "📈 Ventas CAMSFIT · " + today() + "\n\n" +
       "Conversaciones abiertas: " + v("d-conv") + "\n" +
       "Teléfonos conseguidos: " + v("d-tel") + "\n" +
       "Llamadas agendadas próximos días: " + v("d-agend") + "\n" +
-      "Llamadas hoy: " + v("d-hechas") + " · Cierres: " + v("d-cierres") + " (" + close + ")\n" +
-      "Facturado hoy: " + eur(v("d-fact"));
+      "Llamadas hoy: " + hechas + " · Cierres: " + cierres + " (" + close + ")\n" +
+      "Facturado hoy: " + eur(fact) + (det ? "\n" + det : "");
+    var F = campLines("F", "Sígueme", "seguidor"), L = campLines("L", "Formulario", "lead");
+    el("o-cps").textContent = F.cost; el("o-cpl").textContent = L.cost;
     el("m-ads").textContent = "📊 Anuncios y facturación CAMSFIT · " + today() + "\n\n" +
       "Facturación total del mes: " + eur(v("a-fact")) + "\n\n" +
-      "Anuncios sígueme: " + eur(v("a-fgasto")) + " → " + v("a-fseg") + " seguidores · " + cps + " por seguidor\n" +
-      "Anuncios formulario: " + eur(v("a-lgasto")) + " → " + v("a-leads") + " leads · " + cpl + " por lead";
+      "Anuncios sígueme: " + eur(F.g) + " → " + F.r + " seguidores · " + F.cost + " por seguidor" + (F.lines.length > 1 ? "\n" + F.lines.join("\n") : "") + "\n" +
+      "Anuncios formulario: " + eur(L.g) + " → " + L.r + " leads · " + L.cost + " por lead" + (L.lines.length > 1 ? "\n" + L.lines.join("\n") : "");
   }
 
   function renderHist() {
@@ -216,44 +316,38 @@ table.alerts { width: 100%; border-collapse: collapse; }
       [d, h.conv, h.tel, h.agend, h.hechas, h.cierres, eur(h.fact)].forEach(function (c) { var td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
       body.appendChild(tr);
     });
-    var last7 = hist.slice(-7), sum = function (k) { return last7.reduce(function (a, h) { return a + (h[k] || 0); }, 0); };
-    el("s-conv").textContent = sum("conv"); el("s-tel").textContent = sum("tel"); el("s-agend").textContent = sum("agend");
-    el("s-hechas").textContent = sum("hechas"); el("s-cierres").textContent = sum("cierres"); el("s-fact").textContent = eur(sum("fact"));
-    foot.hidden = false;
+    var l7 = hist.slice(-7), sum = function (k) { return l7.reduce(function (a, h) { return a + (h[k] || 0); }, 0); };
+    ["conv","tel","agend","hechas","cierres"].forEach(function (k) { el("s-" + k).textContent = sum(k); });
+    el("s-fact").textContent = eur(sum("fact")); foot.hidden = false;
   }
 
-  DAY.concat(ADS).forEach(function (id) {
-    var i = el(id);
-    if (store[id] !== undefined) i.value = store[id];
-    i.addEventListener("input", function () { store[id] = i.value; save(KEY, store); update(); });
+  DAY.forEach(function (id) {
+    var i = el(id); if (st.day[id] !== undefined) i.value = st.day[id];
+    i.addEventListener("input", function () { st.day[id] = i.value; persist(); update(); });
   });
+  var af = el("a-fact"); if (st.fact !== undefined) af.value = st.fact;
+  af.addEventListener("input", function () { st.fact = af.value; persist(); update(); });
   document.querySelectorAll("form.report").forEach(function (f) { f.addEventListener("submit", function (e) { e.preventDefault(); }); });
 
   el("saveDay").addEventListener("click", function () {
-    var entry = { date: isoToday(), conv: v("d-conv"), tel: v("d-tel"), agend: v("d-agend"), hechas: v("d-hechas"), cierres: v("d-cierres"), fact: v("d-fact") };
-    hist = hist.filter(function (h) { return h.date !== entry.date; }); hist.push(entry);
+    var e = { date: iso(), conv: v("d-conv"), tel: v("d-tel"), agend: v("d-agend"), hechas: v("d-hechas"), cierres: closesCount(), fact: factHoy() };
+    hist = hist.filter(function (h) { return h.date !== e.date; }); hist.push(e);
     hist.sort(function (a, b) { return a.date < b.date ? -1 : 1; }); hist = hist.slice(-60);
     save(HKEY, hist); renderHist(); el("n-dia").textContent = "Guardado en el historial de hoy.";
   });
   el("newDay").addEventListener("click", function () { el("confirmNew").hidden = false; });
   el("confirmNo").addEventListener("click", function () { el("confirmNew").hidden = true; });
   el("confirmYes").addEventListener("click", function () {
-    DAY.forEach(function (id) { el(id).value = ""; delete store[id]; });
-    save(KEY, store); update(); el("confirmNew").hidden = true; el("n-dia").textContent = "Ventas a cero. Día nuevo empezado.";
+    DAY.forEach(function (id) { el(id).value = ""; }); st.day = {}; st.closed = false; st.closes = [];
+    persist(); renderCloses(); update(); el("confirmNew").hidden = true; el("n-dia").textContent = "Ventas a cero. Día nuevo empezado.";
   });
-
   document.querySelectorAll("[data-copy]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var box = el(btn.dataset.copy), note = el(btn.dataset.note);
-      function fallback() {
-        var r = document.createRange(); r.selectNodeContents(box);
-        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-        note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado.";
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado."; }, fallback);
-      else fallback();
+      function fb() { var r = document.createRange(); r.selectNodeContents(box); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado."; }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado."; }, fb); else fb();
     });
   });
-  update(); renderHist();
+  renderCloses(); renderCamps("F"); renderCamps("L"); update(); renderHist();
 })();
 </script>
