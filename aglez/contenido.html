@@ -1,0 +1,516 @@
+<title>Contenido AGLEZ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: plan de contenido de noviembre de Alberto en 5 pestañas (YouTube primero, después cada cuenta de Instagram y los embudos). Calendarios semanales generados desde datos para que los totales siempre cuadren. Estilo AGLEZ: fondo claro, amarillo solo como acento. */
+:root {
+  --paper: #f4f3ef;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5f5f5a;
+  --line: #dedbd2;
+  --chip: #efede7;
+  --accent: #ffd21f;
+  --accent-text: #7a5f00;
+  --rust: #a3452a;
+  --green: #3f6b3a;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.4vw, 54px)/1.02 var(--f-body); letter-spacing: -.03em; }
+h2 { font: 800 clamp(23px, 3vw, 30px)/1.12 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: var(--accent-text); font-weight: 700; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 66ch; }
+
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(244, 243, 239, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 999px; padding: 9px 14px; font-weight: 700; font-size: 14px; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 26px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 780px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l { color: #bdbab2; }
+.card.dark ul.l b { color: var(--white); }
+.card.dark .label { color: var(--accent); }
+.card.warn { box-shadow: inset 4px 0 0 var(--rust), inset 0 0 0 1px var(--line); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-weight: 700; font-size: 14.5px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 999px; background: var(--chip); color: var(--ink); }
+.tag.y { background: var(--accent); }
+
+/* Totales */
+.totals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.tot { background: var(--white); border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+.tot b { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.tot span { font-weight: 700; font-size: 14px; }
+.tot small { color: var(--soft); font-size: 13px; line-height: 1.35; }
+.tot.main { background: var(--accent); box-shadow: none; }
+.tot.main small { color: var(--ink); }
+
+/* Calendario semanal */
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 14px; padding: 12px; display: grid; gap: 6px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font-weight: 800; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 10px; padding: 7px 9px; font-size: 13px; line-height: 1.3; background: var(--chip); }
+.item b { display: block; font-size: 12.5px; }
+.item.k1 { background: #fff3bf; }
+.item.k2 { background: #e6efe2; }
+.item.k3 { background: #f3e4dc; }
+.item.k4 { background: #e4e8f3; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+
+/* Listas de títulos */
+.titles { display: grid; gap: 8px; }
+.ti { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 10px; align-items: start; background: var(--white); border-radius: 12px; padding: 10px 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.ti .n { font: 500 11px/1.4 var(--f-mono); color: var(--soft); }
+.ti b { font-size: 15px; line-height: 1.35; }
+.ti small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+
+/* Embudo */
+.flow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-weight: 700; font-size: 14px; }
+.flow span { background: var(--white); border-radius: 999px; padding: 8px 12px; box-shadow: inset 0 0 0 1px var(--line); }
+.flow i { font-style: normal; color: var(--accent-text); }
+.cal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.cal div { background: #2a2a28; border-radius: 12px; padding: 12px; display: grid; gap: 2px; }
+.cal b { color: var(--white); }
+.cal span { color: #bdbab2; font-size: 13.5px; }
+
+@media (max-width: 980px) {
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 620px) {
+  .week { grid-template-columns: 1fr 1fr; }
+  .g2, .g3 { grid-template-columns: 1fr; }
+  .cal { grid-template-columns: 1fr 1fr; }
+  .ti { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+
+<header class="top wrap">
+  <span class="label">AGLEZ · Plan de contenido · Noviembre</span>
+  <h1>YouTube primero. Instagram reparte. Los DM venden.</h1>
+  <p class="lede">Tres frentes: asesoría (español e inglés), mentoría y vlog. Todo se graba en lotes 2 días a la semana para que el contenido no se coma el tiempo de vender.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="yt">YouTube</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="es">Asesoría ES (@albertoglez6)</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="en">Inglés (@albertoglezcoach)</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="me">Mentoría (@albertomentor)</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="emb">Embudos</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ================= YOUTUBE ================= -->
+  <section class="view" id="v-yt" aria-label="YouTube">
+    <div class="totals" id="yt-tot"></div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La semana</span><h2>7 vídeos: 3 de mentoría, 2 de asesoría, 2 vlogs.</h2></div>
+      <div class="legend" id="yt-leg"></div>
+      <div class="week" id="yt-week"></div>
+    </div>
+
+    <div class="g2">
+      <div class="card dark">
+        <span class="label">Cómo se graba</span>
+        <h3>2 días de grabación a la semana</h3>
+        <ul class="l">
+          <li><b>Lunes:</b> 3 vídeos de mentoría seguidos (misma ropa no importa; cambia de plano).</li>
+          <li><b>Jueves:</b> 2 de asesoría + material del vlog de la semana.</li>
+          <li><b>Vlog:</b> se graba con el móvil durante la semana; se monta el fin de semana.</li>
+          <li>Cada vídeo de mentoría sale con <b>3–5 clips</b> marcados para @albertomentor.</li>
+        </ul>
+      </div>
+      <div class="card warn">
+        <span class="label">Cuello de botella</span>
+        <h3>La edición</h3>
+        <p class="soft">7 vídeos largos + clips a la semana no los edita una persona que además hace otras cosas. Decide ya quién edita: <b>Andrés/Fran con plantilla fija</b> (intro, rótulos, CTA y miniatura siempre iguales) o un <b>editor externo</b>. Sin esto, en 3 semanas se cae el ritmo.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Mentoría · academia gratuita · 3/semana</span><h2>Las lecciones de tu academia, en abierto.</h2><p class="soft">Para entrenadores que arrancan de cero o están estancados al principio. Cada vídeo enseña algo real y deja claro que el 1:1 es la forma rápida.</p></div>
+      <div class="titles" id="yt-me"></div>
+      <p class="hook">CTA: "Si quieres que lo montemos juntos, escríbeme MENTORÍA por Instagram o reserva tu llamada: calendly.com/albertoglezfitness/1-1" (a mitad y al final; enlace en la descripción).</p>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Asesoría · valor y deep talks · 2/semana</span><h2>Optimización: el cuerpo, explicado sin humo.</h2><p class="soft">Formato conversación o yapping largo: tú hablando a cámara, con calma y profundidad. Un tema por vídeo.</p></div>
+      <div class="titles" id="yt-as"></div>
+      <p class="hook">CTA: "Si quieres que preparemos tu cuerpo para el cambio, tienes el formulario en la descripción." (a mitad y al final)</p>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Vlog · 2/semana</span><h2>Entrenamiento y tu vida en Los Ángeles.</h2><p class="soft">Sin guion. Humaniza y sostiene a la audiencia entre vídeo y vídeo. Siempre con una idea de valor dentro.</p></div>
+      <div class="titles" id="yt-vl"></div>
+    </div>
+  </section>
+
+  <!-- ================= ASESORÍA ES ================= -->
+  <section class="view" id="v-es" hidden aria-label="Asesoría en español">
+    <div class="totals" id="es-tot"></div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La semana · @albertoglez6</span><h2>18 publicaciones: 7 yapping, 5 voz en off, 3 trends, 3 carruseles.</h2></div>
+      <div class="legend" id="es-leg"></div>
+      <div class="week" id="es-week"></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Ángulos</span><h2>Lo que solo puede decir Alberto.</h2><p class="soft">Fisioterapeuta, 12 años entrenando, +1.800 personas, de casi 100 kg a 11 competiciones al natural, y ansiedad con la comida vivida en primera persona.</p></div>
+      <div class="g3" id="es-ang"></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voz en off · 5/semana</span><h2>5 guiones con 3 ganchos cada uno.</h2><p class="soft">Se graba una vez y se publica con el gancho que mejor funcione; los otros dos se reutilizan en anuncios.</p></div>
+      <div class="g2" id="es-vo"></div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <span class="label">Trends · 3/semana</span>
+        <ul class="l">
+          <li><b>"Lo que crees vs lo que pasa":</b> "crees que es grasa" / "es inflamación".</li>
+          <li><b>Ranking:</b> "Ranking de hábitos que más te hinchan".</li>
+          <li><b>POV de fisio:</b> "POV: te duele el hombro en press y sigues entrenando igual".</li>
+        </ul>
+      </div>
+      <div class="card warn">
+        <span class="label">Carruseles de casos · 3/semana</span>
+        <p><b>Problema: tus casos de asesoría no tienen fotos ni vídeos.</b> En tu landing son tarjetas de texto. Sin antes/después visual un carrusel de caso no convierte.</p>
+        <ul class="l">
+          <li>Andrés y Fran piden <b>foto de inicio y foto actual</b> a cada cliente activo (con permiso firmado).</li>
+          <li>Cada semana lo apuntan en <b>"Testimonios recogidos"</b> del panel del equipo y te los envían.</li>
+          <li>Mientras tanto: carruseles de <b>capturas de WhatsApp</b> con resultados (sin datos personales) y de tu propia historia.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card chip">
+      <span class="label">Historias · cada día</span>
+      <div class="g3">
+        <div><h3>Mañana</h3><p class="soft">Tu día: entreno, comida real, Los Ángeles. Cercanía.</p></div>
+        <div><h3>Mediodía</h3><p class="soft">Valor: una duda de cliente respondida, una corrección técnica de fisio.</p></div>
+        <div><h3>Tarde</h3><p class="soft">Prueba: mensaje o resultado de un cliente, encuesta.</p></div>
+      </div>
+      <p><b>CTA fuerte 2 veces por semana (martes y viernes):</b> 3 historias seguidas: problema → caso → "Rellena el formulario de la bio / escríbeme INFO".</p>
+    </div>
+  </section>
+
+  <!-- ================= INGLÉS ================= -->
+  <section class="view" id="v-en" hidden aria-label="Cuenta en inglés">
+    <div class="totals" id="en-tot"></div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La semana · @albertoglezcoach</span><h2>Sin yapping: entrenamiento, rankings y carruseles.</h2><p class="soft">No hace falta hablar a cámara. Vídeos sencillos entrenando con texto en pantalla, trends de ranking y carruseles. La captación es abrir conversaciones.</p></div>
+      <div class="legend" id="en-leg"></div>
+      <div class="week" id="en-week"></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">10 ideas listas</span><h2>Para grabar en una sesión de gimnasio.</h2></div>
+      <div class="titles" id="en-ideas"></div>
+    </div>
+
+    <div class="g2">
+      <div class="card chip">
+        <span class="label">Stories</span>
+        <p>Línea de contenido diaria (entreno, comida, día en LA) y <b>CTA fuerte 2 veces por semana</b>: "DM me COACH and I'll tell you if I can help you".</p>
+      </div>
+      <div class="card">
+        <span class="label">Captación</span>
+        <p>Bienvenida a cada nuevo seguidor y conversaciones en frío. Axell las apunta en el panel del equipo como <b>"Asesoría EN"</b>, con su fuente.</p>
+        <p class="hook">"Hey [name]! Thanks for the follow 💪 Quick question: what's your main goal right now?"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MENTORÍA ================= -->
+  <section class="view" id="v-me" hidden aria-label="Mentoría">
+    <div class="totals" id="me-tot"></div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La semana · @albertomentor</span><h2>1 clip al día + 3 yapping. Los DM hacen el resto.</h2><p class="soft">El contenido aquí solo tiene que dar autoridad. La venta sale de abrir muchísimas conversaciones.</p></div>
+      <div class="legend" id="me-leg"></div>
+      <div class="week" id="me-week"></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">10 temas de yapping</span><h2>Empresario, no "entrenadorucho".</h2></div>
+      <div class="titles" id="me-yap"></div>
+    </div>
+
+    <div class="g2">
+      <div class="card dark">
+        <span class="label">Captación principal</span>
+        <h3>Prospección en frío por DM</h3>
+        <ul class="l">
+          <li><b>Axell y Andrés</b> abren conversaciones con entrenadores cada día.</li>
+          <li>Apuntan en el panel del equipo <b>de qué perfil o página sacan a cada uno</b> y quién responde.</li>
+          <li>El ranking de fuentes del panel dice dónde seguir prospectando.</li>
+        </ul>
+        <p class="hook" style="color:var(--ink)">"Ey [nombre], he visto tu perfil. ¿Ahora mismo vives de las asesorías o lo compaginas con otra cosa?"</p>
+      </div>
+      <div class="card">
+        <span class="label">Cualificación en 4 preguntas</span>
+        <ol class="l">
+          <li>¿Cuántos clientes tienes ahora?</li>
+          <li>¿Cuánto facturas al mes?</li>
+          <li>¿Qué te está frenando?</li>
+          <li>Si encontramos la forma, ¿puedes invertir en ello ahora?</li>
+        </ol>
+        <p class="soft">Si encaja → Calendly 1-1 con Alberto. Oferta: 3 meses, 1.500 € (sube cuando haya varios cierres).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EMBUDOS ================= -->
+  <section class="view" id="v-emb" hidden aria-label="Embudos">
+    <div class="sec">
+      <div class="head"><span class="label">Asesoría · español e inglés</span><h2>Del anuncio a la llamada en menos de 5 minutos.</h2></div>
+      <div class="card">
+        <h3>Anuncios de formulario</h3>
+        <div class="flow"><span>Anuncio</span><i>→</i><span>Hoja LEADS PRE US</span><i>→</i><span>Aviso Telegram</span><i>→</i><span>Llamada &lt; 5 min (número ES o US)</span><i>→</i><span>Agenda a 2–3 días</span><i>→</i><span>Pre-llamada</span><i>→</i><span>Llamada</span><i>→</i><span>Cierre</span></div>
+        <p class="soft">El aviso dice con qué número llamar: +34 → español, +1 → americano. Todo queda en el CRM.</p>
+      </div>
+      <div class="card">
+        <h3>Anuncios "sígueme"</h3>
+        <div class="flow"><span>Anuncio</span><i>→</i><span>Nuevo seguidor</span><i>→</i><span>Bienvenida por DM</span><i>→</i><span>2–3 mensajes</span><i>→</i><span>WhatsApp</span><i>→</i><span>Agenda</span></div>
+        <p class="hook">"¡Bienvenido! He visto que me has seguido 💪 Misión cumplida si el contenido te está siendo útil. Cuéntame, ¿desde dónde me ves?"</p>
+      </div>
+      <div class="g2">
+        <div class="card"><h3>Historias</h3><p class="soft">Línea diaria + CTA fuerte martes y viernes.</p></div>
+        <div class="card"><h3>YouTube</h3><p class="soft">CTA en el vídeo y formulario/web en la descripción.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Mentoría</span><h2>Conversaciones, no anuncios.</h2></div>
+      <div class="card">
+        <div class="flow"><span>DM en frío + bienvenidas</span><i>→</i><span>Cualificación (4 preguntas)</span><i>→</i><span>Calendly 1-1</span><i>→</i><span>Llamada con Alberto</span><i>→</i><span>3 meses · 1.500 €</span></div>
+      </div>
+      <div class="card">
+        <div class="flow"><span>YouTube academia</span><i>→</i><span>Clips en @albertomentor</span><i>→</i><span>"Escríbeme MENTORÍA"</span><i>→</i><span>DM</span><i>→</i><span>Calendly</span></div>
+        <p class="soft">Calendly: <a href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">calendly.com/albertoglezfitness/1-1</a></p>
+      </div>
+    </div>
+
+    <section class="card dark" aria-labelledby="h-bf">
+      <span class="label">Opcional · Webinar de Black Friday para mentoría</span>
+      <h2 id="h-bf">Una clase en directo para entrenadores. Objetivo: que agenden en el mismo directo.</h2>
+      <ul class="l">
+        <li><b>Lo peor que puede pasar:</b> se graba y sale contenido con mucha autoridad para YouTube y clips.</li>
+        <li><b>Dentro del directo:</b> llamada de consulta con bonus y fecha límite.</li>
+        <li><b>Black Friday es el 27 de noviembre.</b> Si se hace, hay que empezar a captar inscritos ya.</li>
+      </ul>
+      <div class="cal">
+        <div><b>Esta semana</b><span>Página de registro y anuncio</span></div>
+        <div><b>Hasta el 23 nov</b><span>Captar inscritos + correos</span></div>
+        <div><b>24–25 nov</b><span>Webinar en directo</span></div>
+        <div><b>25–30 nov</b><span>Llamadas · bonus hasta el lunes 30</span></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+
+  /* Calendario semanal desde datos: los totales se calculan, no se escriben a mano */
+  function week(prefix, kinds, plan, extra) {
+    var counts = {}; kinds.forEach(function (k) { counts[k.id] = 0; });
+    $(prefix + "-week").innerHTML = plan.map(function (items, i) {
+      items.forEach(function (it) { counts[it[0]]++; });
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + items.length + '</small></div>' + items.map(function (it) {
+        var k = kinds.find(function (x) { return x.id === it[0]; });
+        return '<div class="item ' + k.cls + '"><b>' + esc(k.name) + '</b>' + esc(it[1]) + '</div>';
+      }).join("") + '</div>';
+    }).join("");
+    var total = kinds.reduce(function (a, k) { return a + counts[k.id]; }, 0);
+    $(prefix + "-leg").innerHTML = kinds.map(function (k) { return '<span><i class="item ' + k.cls + '" style="padding:0"></i>' + esc(k.name) + ' · ' + counts[k.id] + '</span>'; }).join("");
+    $(prefix + "-tot").innerHTML = '<div class="tot main"><b>' + total + '</b><span>' + esc(extra.unit) + ' a la semana</span><small>' + esc(extra.note) + '</small></div>' +
+      kinds.slice(0, 3).map(function (k) { return '<div class="tot"><b>' + counts[k.id] + '</b><span>' + esc(k.name) + '</span><small>' + esc(k.desc) + '</small></div>'; }).join("");
+    return { total: total, counts: counts };
+  }
+  function titles(id, list) {
+    $(id).innerHTML = list.map(function (t, i) { return '<div class="ti"><span class="n">' + (t[2] || ("#" + (i + 1))) + '</span><div><b>' + esc(t[0]) + '</b>' + (t[1] ? '<small>' + esc(t[1]) + '</small>' : '') + '</div></div>'; }).join("");
+  }
+
+  /* ---------- YouTube ---------- */
+  var ytK = [
+    { id: "me", name: "Mentoría", cls: "k1", desc: "Academia gratuita para entrenadores" },
+    { id: "as", name: "Asesoría", cls: "k2", desc: "Valor y deep talks" },
+    { id: "vl", name: "Vlog", cls: "k4", desc: "Entreno y Los Ángeles" }
+  ];
+  window.__totals = {};
+  window.__totals.yt = week("yt", ytK, [
+    [["me", "Lección de la academia"]],
+    [["as", "Deep talk"]],
+    [["me", "Lección de la academia"]],
+    [["vl", "Vlog"]],
+    [["me", "Lección de la academia"]],
+    [["as", "Deep talk"]],
+    [["vl", "Vlog"]]
+  ], { unit: "vídeos", note: "Grabados en 2 días. Los de mentoría salen con 3–5 clips cada uno." });
+
+  titles("yt-me", [
+    ["De entrenador a empresario: lo que cambia cuando dejas de vender tablas", "Mentalidad · semana 1", "S1 · Lun"],
+    ["Las 5 métricas que miro cada domingo (y por qué la mayoría no mira ninguna)", "Métricas · semana 1", "S1 · Mié"],
+    ["Cómo abrir 50 conversaciones al día sin parecer spam", "Captación · semana 1", "S1 · Vie"],
+    ["Tu oferta no vende porque no es una oferta: cómo montar un 1:1 de 3 meses", "Oferta · semana 2", "S2 · Lun"],
+    ["La llamada de venta paso a paso: del diagnóstico al cierre", "Ventas · semana 2", "S2 · Mié"],
+    ["El calendario de contenido que uso con mis alumnos (y cómo se graba en 2 días)", "Contenido y sistemas · semana 2", "S2 · Vie"]
+  ]);
+  titles("yt-as", [
+    ["Tu cuerpo no está preparado para el cambio (por eso no te funciona ninguna dieta)", "Optimización · fase de preparar", "S1 · Mar"],
+    ["Insulina, leptina, cortisol y testosterona explicadas sin humo", "Hormonas", "S1 · Sáb"],
+    ["Fisioterapeuta explica: por qué te duele entrenar y cómo arreglarlo", "Fisio y lesiones", "S2 · Mar"],
+    ["Pesaba casi 100 kg y acabé compitiendo 11 veces: lo que de verdad cambió", "Tu historia · ansiedad con la comida", "S2 · Sáb"]
+  ]);
+  titles("yt-vl", [
+    ["Una semana entrenando en Los Ángeles", "Vlog", "S1 · Jue"],
+    ["Qué como en un día real (sin dieta de Instagram)", "Vlog", "S1 · Dom"],
+    ["Entreno de pierna + cómo organizo mi negocio un lunes", "Vlog", "S2 · Jue"],
+    ["Un domingo de revisiones con mis clientes", "Vlog", "S2 · Dom"]
+  ]);
+
+  /* ---------- Asesoría ES ---------- */
+  var esK = [
+    { id: "y", name: "Yapping", cls: "k1", desc: "Tú a cámara, un ángulo por vídeo" },
+    { id: "v", name: "Voz en off", cls: "k2", desc: "3 ganchos por guion" },
+    { id: "t", name: "Trend", cls: "k4", desc: "Ranking, POV, crees vs pasa" },
+    { id: "c", name: "Carrusel", cls: "k3", desc: "Casos y tu historia" }
+  ];
+  window.__totals.es = week("es", esK, [
+    [["y", "Cuerpo no preparado"], ["v", "Guion 1"], ["t", "Crees vs pasa"]],
+    [["y", "Fisio y dolor"], ["v", "Guion 2"], ["c", "Caso / captura"]],
+    [["y", "Inflamación"], ["v", "Guion 3"], ["t", "Ranking"]],
+    [["y", "Ansiedad con la comida"], ["v", "Guion 4"], ["c", "Tu historia"]],
+    [["y", "Hormonas sin humo"], ["v", "Guion 5"], ["t", "POV de fisio"]],
+    [["y", "De 100 kg a 11 competiciones"], ["c", "Caso / captura"]],
+    [["y", "Básicos que nadie hace bien"]]
+  ], { unit: "publicaciones", note: "L–V 3 al día, sábado 2, domingo 1." });
+
+  var ang = [
+    ["Tu cuerpo no está preparado", "\"Si llevas años empezando dietas que no funcionan, el problema no es la dieta: tu cuerpo no está listo para cambiar.\""],
+    ["Fisio: dolor al entrenar", "\"Te duele el hombro en press y sigues igual. Como fisio te digo lo que de verdad pasa.\""],
+    ["No es grasa, es inflamación", "\"Esa barriga que aparece por la tarde no siempre es grasa.\""],
+    ["Ansiedad con la comida", "\"Yo también comía sin control. Esto es lo que me sacó.\""],
+    ["Hormonas sin humo", "\"Cortisol, insulina, testosterona: lo que importa y lo que es marketing.\""],
+    ["De 100 kg a 11 competiciones", "\"De niño compraba ropa de tallas especiales. Hoy he competido 11 veces al natural.\""],
+    ["Los básicos que nadie hace bien", "\"Antes de suplementos y hormonas: sueño, proteína, pasos. Bien hechos.\""]
+  ];
+  $("es-ang").innerHTML = ang.map(function (a) { return '<div class="card"><h3>' + esc(a[0]) + '</h3><p class="hook">' + esc(a[1]) + '</p></div>'; }).join("");
+
+  var vo = [
+    ["Preparar el cuerpo", ["Por qué ninguna dieta te ha funcionado (y no es tu culpa)", "Tu cuerpo no está preparado para perder grasa. Te explico por qué.", "Antes de empezar otra dieta, haz esto 2 semanas"]],
+    ["Inflamación", ["No es grasa: es inflamación", "Si te hinchas por la tarde, mira esto", "3 cosas que te inflaman cada día sin que lo sepas"]],
+    ["Fisio", ["Fisioterapeuta: deja de entrenar con dolor así", "El error que hace que te duela la espalda en el gym", "Si te duele el hombro en press, no hagas esto"]],
+    ["Hormonas", ["Cortisol alto: las señales que nadie te cuenta", "Lo que de verdad sube tu testosterona (sin pastillas)", "Insulina explicada en 30 segundos"]],
+    ["Ansiedad con la comida", ["Comía sin control. Esto me sacó.", "Si comes de noche aunque no tengas hambre, escucha esto", "La ansiedad con la comida no se arregla con fuerza de voluntad"]]
+  ];
+  $("es-vo").innerHTML = vo.map(function (v, i) { return '<div class="card"><span class="tag y">Guion ' + (i + 1) + ' · ' + esc(v[0]) + '</span>' + v[1].map(function (h, j) { return '<p class="hook">Gancho ' + (j + 1) + ': "' + esc(h) + '"</p>'; }).join("") + '</div>'; }).join("");
+
+  /* ---------- Inglés ---------- */
+  var enK = [
+    { id: "e", name: "Training video", cls: "k2", desc: "Sencillo, texto en pantalla" },
+    { id: "r", name: "Ranking trend", cls: "k4", desc: "Ranking de ejercicios o hábitos" },
+    { id: "c", name: "Carousel", cls: "k3", desc: "Guía o error común" }
+  ];
+  window.__totals.en = week("en", enK, [
+    [["e", "Push day"], ["r", "Ranking"]],
+    [["e", "Pull day"], ["c", "Carousel"]],
+    [["e", "Leg day"], ["r", "Ranking"]],
+    [["e", "Mobility / fisio"], ["c", "Carousel"]],
+    [["e", "Upper"], ["r", "Ranking"]],
+    [["e", "Lower"], ["c", "Carousel"]],
+    [["e", "LA walk / cardio"]]
+  ], { unit: "publicaciones", note: "Sin yapping. L–S 2 al día, domingo 1." });
+
+  titles("en-ideas", [
+    ["Ranking the best chest exercises from worst to best", "Ranking trend"],
+    ["Ranking every ab exercise (a physio's opinion)", "Ranking trend"],
+    ["Ranking habits that make you bloated", "Ranking trend"],
+    ["Stop doing lateral raises like this", "Training video"],
+    ["How a physical therapist warms up before leg day", "Training video"],
+    ["Fix your squat depth in 3 steps", "Training video"],
+    ["5 exercises I'd never skip after 30", "Carousel"],
+    ["What I eat in a day in Los Angeles (no diet)", "Carousel"],
+    ["Shoulder pain when pressing? Read this", "Carousel"],
+    ["From 100 kg to 11 natural competitions", "Carousel · story"]
+  ]);
+
+  /* ---------- Mentoría ---------- */
+  var meK = [
+    { id: "cl", name: "Clip de YouTube", cls: "k1", desc: "Del vídeo de la academia" },
+    { id: "y", name: "Yapping", cls: "k2", desc: "Tú a cámara, directo" }
+  ];
+  window.__totals.me = week("me", meK, [
+    [["cl", "Clip"], ["y", "Yapping"]],
+    [["cl", "Clip"]],
+    [["cl", "Clip"], ["y", "Yapping"]],
+    [["cl", "Clip"]],
+    [["cl", "Clip"], ["y", "Yapping"]],
+    [["cl", "Clip"]],
+    [["cl", "Clip"]]
+  ], { unit: "publicaciones", note: "1 clip al día + 3 yapping. Salen de los 3 vídeos de mentoría." });
+
+  titles("me-yap", [
+    ["No eres un entrenador que manda tablas: eres un empresario o no eres nada"],
+    ["Si no sabes tus números, no tienes un negocio"],
+    ["Por qué solo trabajo 3 meses de entrada con mis alumnos"],
+    ["El negocio se pone en el punto que te mereces. Y merecerlo cuesta."],
+    ["Abrí 50 conversaciones al día durante un mes. Esto pasó."],
+    ["La diferencia entre un hobby y una empresa de asesorías"],
+    ["Lo que hacía mal cuando empecé (y te está pasando a ti)"],
+    ["Cuántos clientes necesitas para vivir de esto (la cuenta real)"],
+    ["Por qué una mentoría grupal no te va a sacar del estancamiento"],
+    ["De fisio a +33.000 € en 23 días: lo que hice distinto"]
+  ]);
+
+  /* ---------- Pestañas ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["yt", "es", "en", "me", "emb"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>
