@@ -1,0 +1,259 @@
+<title>CAMSFIT Reportes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: dos reportes lado a lado (diario y lunes/jueves), cada uno con campos, cálculos y mensaje; debajo el historial y la guía de avisos. Colores de la app CAMSFIT. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --sand: #ddd9ce;
+  --sand-line: #cbbf98;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --gold: #7f6114;
+  --gold-text: #7a6225;
+  --chip: #edebe6;
+  --rust: #9a4b2f;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 22px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5vw, 52px)/1.04 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 22px/1.2 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 760px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.col { display: grid; gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.when { display: inline-block; width: fit-content; background: var(--gold); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+
+.report { gap: 10px; }
+.report label { display: grid; grid-template-columns: minmax(0, 1fr) 130px; gap: 12px; align-items: center; font-size: 15px; font-weight: 600; }
+.report input { font: 600 16px/1 var(--f-body); padding: 10px 12px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; font-variant-numeric: tabular-nums; }
+.report input:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
+.calc { display: grid; gap: 10px; }
+.calc div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-bottom: 1px solid var(--sand-line); padding-bottom: 8px; }
+.calc div:last-child { border-bottom: 0; padding-bottom: 0; }
+.calc span { color: var(--soft); font-size: 14.5px; }
+.calc b { font: 800 22px/1 var(--f-body); color: var(--gold-text); font-variant-numeric: tabular-nums; }
+pre.copy { margin: 0; white-space: pre-wrap; font: 500 14.5px/1.55 var(--f-body); background: var(--chip); border-radius: 12px; padding: 14px 16px; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { font: 700 15px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 13px 18px; cursor: pointer; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.note { font-size: 13.5px; color: var(--soft); min-height: 1.2em; }
+.confirm { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: var(--chip); border-radius: 12px; padding: 10px 12px; font-size: 14.5px; }
+
+/* Historial */
+.hist-wrap { overflow-x: auto; }
+table.hist { width: 100%; min-width: 680px; border-collapse: collapse; background: var(--white); border-radius: 16px; overflow: hidden; }
+.hist th, .hist td { padding: 10px 12px; border-top: 1px solid var(--sand); text-align: right; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.hist th:first-child, .hist td:first-child { text-align: left; }
+.hist thead th { border-top: 0; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); background: var(--chip); }
+.hist tfoot td { font-weight: 800; background: var(--sand); }
+.empty { color: var(--soft); text-align: center !important; padding: 22px !important; }
+
+table.alerts { width: 100%; border-collapse: collapse; }
+.alerts td, .alerts th { padding: 10px 12px; border-top: 1px solid var(--sand-line); text-align: left; font-size: 14.5px; vertical-align: top; }
+.alerts thead th { border-top: 0; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); }
+.alerts td:first-child { font-weight: 700; }
+
+@media (max-width: 860px) { .g2 { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .report label { grid-template-columns: minmax(0, 1fr) 100px; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Plan CAMSFIT · Reportes de métricas</span>
+    <h1>Ventas cada noche. Anuncios y facturación, lunes y jueves.</h1>
+    <p class="soft">Rellena los campos, copia el mensaje y envíalo por WhatsApp. Los porcentajes y costes se calculan solos. Todo se guarda solo en este navegador.</p>
+  </header>
+
+  <div class="g2">
+    <div class="col">
+      <form class="card report" id="formDia" autocomplete="off">
+        <span class="when">Cada noche</span>
+        <h2>Ventas de hoy</h2>
+        <label for="d-conv">Conversaciones abiertas<input id="d-conv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-tel">Teléfonos conseguidos<input id="d-tel" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-agend">Llamadas agendadas próximos días<input id="d-agend" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-hechas">Llamadas realizadas hoy<input id="d-hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-cierres">Cierres de hoy<input id="d-cierres" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-fact">Facturado hoy (€)<input id="d-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+      </form>
+      <div class="card sand">
+        <div class="calc">
+          <div><span>Teléfono por conversación</span><b id="o-tel">—</b></div>
+          <div><span>Cierre (cierres ÷ llamadas)</span><b id="o-close">—</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Mensaje diario</span>
+        <pre class="copy" id="m-dia"></pre>
+        <div class="btns">
+          <button type="button" class="btn" data-copy="m-dia" data-note="n-dia">Copiar mensaje</button>
+          <button type="button" class="btn ghost" id="saveDay">Guardar en historial</button>
+          <button type="button" class="btn ghost" id="newDay">Empezar día nuevo</button>
+        </div>
+        <div class="confirm" id="confirmNew" hidden>
+          <span>¿Poner a cero las ventas de hoy? Los datos de anuncios no se tocan.</span>
+          <button type="button" class="btn" id="confirmYes">Sí, empezar día nuevo</button>
+          <button type="button" class="btn ghost" id="confirmNo">Cancelar</button>
+        </div>
+        <p class="note" id="n-dia" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="col">
+      <form class="card report" id="formAds" autocomplete="off">
+        <span class="when">Lunes y jueves</span>
+        <h2>Anuncios y facturación</h2>
+        <label for="a-fact">Facturación total del mes (€)<input id="a-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <span class="label" style="margin-top:6px">Anuncios "sígueme"</span>
+        <label for="a-fgasto">Gasto desde el último reporte (€)<input id="a-fgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <label for="a-fseg">Seguidores nuevos<input id="a-fseg" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <span class="label" style="margin-top:6px">Anuncios de formulario</span>
+        <label for="a-lgasto">Gasto desde el último reporte (€)<input id="a-lgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <label for="a-leads">Leads conseguidos<input id="a-leads" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+      </form>
+      <div class="card sand">
+        <div class="calc">
+          <div><span>Coste por seguidor</span><b id="o-cps">—</b></div>
+          <div><span>Coste por lead</span><b id="o-cpl">—</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Mensaje de lunes y jueves</span>
+        <pre class="copy" id="m-ads"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-ads" data-note="n-ads">Copiar mensaje</button></div>
+        <p class="note" id="n-ads" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <section class="card" aria-labelledby="h-hist">
+    <span class="label">Historial · últimos 14 días guardados</span>
+    <h2 id="h-hist">Cómo va la semana</h2>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Día</th><th>Conversaciones</th><th>Teléfonos</th><th>Agendadas</th><th>Llamadas</th><th>Cierres</th><th>Facturado</th></tr></thead>
+        <tbody id="histBody"><tr><td class="empty" colspan="7">Todavía no hay días guardados. Pulsa "Guardar en historial" cada noche.</td></tr></tbody>
+        <tfoot id="histFoot" hidden><tr><td>Últimos 7 días</td><td id="s-conv"></td><td id="s-tel"></td><td id="s-agend"></td><td id="s-hechas"></td><td id="s-cierres"></td><td id="s-fact"></td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="card sand" aria-labelledby="h-alerts">
+    <span class="label">Cuándo hay que actuar</span>
+    <h2 id="h-alerts">Se arregla un solo cuello de botella cada vez.</h2>
+    <div style="overflow-x:auto">
+      <table class="alerts">
+        <thead><tr><th>Si pasa esto</th><th>El problema está en</th><th>Qué se revisa</th></tr></thead>
+        <tbody>
+          <tr><td>Muchas conversaciones, pocos teléfonos</td><td>La conversación</td><td>El guion de cualificación</td></tr>
+          <tr><td>Muchas agendadas, pocas realizadas</td><td>La confirmación</td><td>El flujo antes de la llamada</td></tr>
+          <tr><td>Muchas llamadas, pocos cierres</td><td>La llamada o la oferta</td><td>El guion de venta y el precio</td></tr>
+          <tr><td>Coste por seguidor que sube 3 reportes seguidos</td><td>El anuncio "sígueme"</td><td>Cambiar el gancho o el vídeo</td></tr>
+          <tr><td>Coste por lead alto y leads que no responden</td><td>El anuncio de formulario</td><td>Las preguntas del formulario o el anuncio</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="soft">Los límites concretos (por ejemplo, "si el lead pasa de X €, se apaga el anuncio") se fijan tras 2 semanas con datos reales.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var DAY = ["d-conv","d-tel","d-agend","d-hechas","d-cierres","d-fact"];
+  var ADS = ["a-fact","a-fgasto","a-fseg","a-lgasto","a-leads"];
+  var KEY = "camsfit-reportes", HKEY = "camsfit-historial";
+  function load(k, d) { try { var x = JSON.parse(localStorage.getItem(k)); return x || d; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  var store = load(KEY, {}), hist = load(HKEY, []);
+  function el(id) { return document.getElementById(id); }
+  function v(id) { var n = parseFloat(el(id).value); return isNaN(n) ? 0 : n; }
+  function eur(n) { return n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true }) + " €"; }
+  function pct(n) { return n.toLocaleString("es-ES", { maximumFractionDigits: 0 }) + " %"; }
+  function today() { return new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" }); }
+  function isoToday() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+
+  function update() {
+    var tel = v("d-conv") > 0 ? pct(v("d-tel") / v("d-conv") * 100) : "—";
+    var close = v("d-hechas") > 0 ? pct(v("d-cierres") / v("d-hechas") * 100) : "—";
+    var cps = v("a-fseg") > 0 ? eur(v("a-fgasto") / v("a-fseg")) : "—";
+    var cpl = v("a-leads") > 0 ? eur(v("a-lgasto") / v("a-leads")) : "—";
+    el("o-tel").textContent = tel; el("o-close").textContent = close;
+    el("o-cps").textContent = cps; el("o-cpl").textContent = cpl;
+    el("m-dia").textContent = "📈 Ventas CAMSFIT · " + today() + "\n\n" +
+      "Conversaciones abiertas: " + v("d-conv") + "\n" +
+      "Teléfonos conseguidos: " + v("d-tel") + "\n" +
+      "Llamadas agendadas próximos días: " + v("d-agend") + "\n" +
+      "Llamadas hoy: " + v("d-hechas") + " · Cierres: " + v("d-cierres") + " (" + close + ")\n" +
+      "Facturado hoy: " + eur(v("d-fact"));
+    el("m-ads").textContent = "📊 Anuncios y facturación CAMSFIT · " + today() + "\n\n" +
+      "Facturación total del mes: " + eur(v("a-fact")) + "\n\n" +
+      "Anuncios sígueme: " + eur(v("a-fgasto")) + " → " + v("a-fseg") + " seguidores · " + cps + " por seguidor\n" +
+      "Anuncios formulario: " + eur(v("a-lgasto")) + " → " + v("a-leads") + " leads · " + cpl + " por lead";
+  }
+
+  function renderHist() {
+    var body = el("histBody"), foot = el("histFoot");
+    if (!hist.length) { foot.hidden = true; return; }
+    body.innerHTML = "";
+    hist.slice(-14).reverse().forEach(function (h) {
+      var tr = document.createElement("tr");
+      var d = new Date(h.date + "T12:00:00").toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" });
+      [d, h.conv, h.tel, h.agend, h.hechas, h.cierres, eur(h.fact)].forEach(function (c) { var td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    var last7 = hist.slice(-7), sum = function (k) { return last7.reduce(function (a, h) { return a + (h[k] || 0); }, 0); };
+    el("s-conv").textContent = sum("conv"); el("s-tel").textContent = sum("tel"); el("s-agend").textContent = sum("agend");
+    el("s-hechas").textContent = sum("hechas"); el("s-cierres").textContent = sum("cierres"); el("s-fact").textContent = eur(sum("fact"));
+    foot.hidden = false;
+  }
+
+  DAY.concat(ADS).forEach(function (id) {
+    var i = el(id);
+    if (store[id] !== undefined) i.value = store[id];
+    i.addEventListener("input", function () { store[id] = i.value; save(KEY, store); update(); });
+  });
+  document.querySelectorAll("form.report").forEach(function (f) { f.addEventListener("submit", function (e) { e.preventDefault(); }); });
+
+  el("saveDay").addEventListener("click", function () {
+    var entry = { date: isoToday(), conv: v("d-conv"), tel: v("d-tel"), agend: v("d-agend"), hechas: v("d-hechas"), cierres: v("d-cierres"), fact: v("d-fact") };
+    hist = hist.filter(function (h) { return h.date !== entry.date; }); hist.push(entry);
+    hist.sort(function (a, b) { return a.date < b.date ? -1 : 1; }); hist = hist.slice(-60);
+    save(HKEY, hist); renderHist(); el("n-dia").textContent = "Guardado en el historial de hoy.";
+  });
+  el("newDay").addEventListener("click", function () { el("confirmNew").hidden = false; });
+  el("confirmNo").addEventListener("click", function () { el("confirmNew").hidden = true; });
+  el("confirmYes").addEventListener("click", function () {
+    DAY.forEach(function (id) { el(id).value = ""; delete store[id]; });
+    save(KEY, store); update(); el("confirmNew").hidden = true; el("n-dia").textContent = "Ventas a cero. Día nuevo empezado.";
+  });
+
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = el(btn.dataset.copy), note = el(btn.dataset.note);
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(box);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado.";
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado."; }, fallback);
+      else fallback();
+    });
+  });
+  update(); renderHist();
+})();
+</script>
