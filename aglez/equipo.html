@@ -1160,7 +1160,7 @@ details.enmsg pre { margin-top: 8px; }
     if (en !== cur) { TXT.set(n, { es: cur, en: en }); n.nodeValue = en; }
   }
   function trEl(e) {
-    if (skip(e)) return;
+    if (e.closest("[data-noi18n], script, style, datalist")) return;
     if (e.tagName === "OPTION" && !e.hasAttribute("value")) e.setAttribute("value", e.textContent);
     ATTRS.forEach(function (a) {
       if (!e.hasAttribute(a)) return;
