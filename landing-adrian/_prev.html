@@ -1,0 +1,539 @@
+<!doctype html><html lang="es"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"></head><body><title>Adrián Recomposición</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Adrián Domínguez, experto en recomposición corporal: pierde grasa y gana músculo a la vez, con un plan 1:1 adaptado a tu vida real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: carta de venta larga en una columna. Hero oscuro con casos reales; casos a ancho completo en muro; historia con 4 fotos en línea de tiempo. Marca de Adrián: negro, papel claro y amarillo solo sobre fondo oscuro. */
+:root {
+  --paper: #ecebe7;
+  --white: #fbfaf8;
+  --sand: #e2dfd6;
+  --sand-line: #cdc6ae;
+  --ink: #141414;
+  --soft: #66635d;
+  --line: #dad6cb;
+  --gold: #8a6a00;
+  --gold-text: #7a5e00;
+  --chip: #efede8;
+  --blue: #1f4fd1;
+  --yellow: #f2c230;
+  --on-dark: #c9c6bf;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; letter-spacing: -.025em; }
+h2 { font: 800 clamp(32px, 5vw, 54px)/1.04 var(--f-body); }
+h3 { font: 700 20px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+mark { background: none; color: var(--gold-text); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; text-align: center; }
+.btn:hover { transform: translateY(-1px); background: #2a2a2a; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-y { background: var(--yellow); color: var(--ink); }
+.btn-y:hover { background: #ffd04a; }
+.btn-ghost { background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn-ghost:hover { background: var(--chip); }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--yellow); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 10px; font: 800 16px/1.1 var(--f-body); letter-spacing: .02em; }
+.brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(42px, 7.4vw, 92px)/.98 var(--f-body); letter-spacing: -.035em; max-width: 15ch; }
+.hero h1 em { font-style: normal; color: var(--yellow); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.25); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 22px/1.15 var(--f-body); }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--yellow); font-weight: 500; }
+
+.vsl { border-radius: 18px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+.vsl video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--sand-line); margin-top: 3px; }
+.turn { margin-top: 28px; font: 800 clamp(28px, 4vw, 44px)/1.08 var(--f-body); letter-spacing: -.025em; }
+.turn em { font-style: normal; color: var(--gold-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--gold-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); }
+.base h3 { font: 800 clamp(26px, 3.4vw, 36px)/1.08 var(--f-body); letter-spacing: -.02em; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.case .big { font: 800 27px/1.08 var(--f-body); letter-spacing: -.02em; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--blue); display: grid; place-items: center; font: 800 17px/1 var(--f-body); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+
+/* Historia */
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; }
+.timeline img { display: block; width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; border-radius: 14px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); }
+.timeline figcaption span { font-size: 14.5px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font-size: 16px; }
+.err span { color: var(--soft); font-size: 15px; line-height: 1.5; }
+.quote { margin-top: 28px; font: 800 clamp(26px, 3.6vw, 40px)/1.12 var(--f-body); letter-spacing: -.02em; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; text-align: center; font: 800 clamp(20px, 2.4vw, 26px)/1.05 var(--f-body); padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee h2 { color: var(--white); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--yellow); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a968e; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--chip); color: var(--gold-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--gold-text); }
+.step p { color: var(--soft); font-size: 16px; }
+
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--yellow); }
+.final h2 { font-size: clamp(38px, 6.4vw, 78px); max-width: 16ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+/* WhatsApp flotante y barra fija en móvil */
+.wa-float { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 21; width: 58px; height: 58px; border-radius: 50%; background: #1f9d55; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 26px -10px rgba(0,0,0,.5); transition: transform .15s ease; }
+.wa-float:hover { transform: scale(1.05); }
+.wa-float svg { width: 30px; height: 30px; }
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(236, 235, 231, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .wa-float { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); width: 52px; height: 52px; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+</style>
+
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/adrian-avatar.jpg" alt="" width="300" height="300"><div>Adrián Domínguez<small>Recomposición corporal</small></div></div>
+      <a class="btn btn-y js-form" href="https://form.jotform.com/250124477529358" target="_blank" rel="noopener">Empezar mi cambio</a>
+    </header>
+
+    <div class="hero">
+      <!-- PASO 1 · Atención: llamar al cliente ideal -->
+      <div class="label">Para hombres de +25 que entrenan (o lo han intentado) y siguen igual</div>
+      <!-- PASO 2 · Titular: resultado + sin sacrificio -->
+      <h1>Pierde grasa y gana músculo <em>a la vez</em>. Sin vivir a dieta.</h1>
+      <!-- PASO 3 · Subtitular: el mecanismo -->
+      <p class="lede">Si pones esfuerzo y el espejo no cambia, no es tu genética: es la estructura. Trabajamos por fases, con un plan 1:1 que encaja en tu trabajo, tus horarios y tus lesiones.</p>
+      <!-- PASO 4 · VSL PENDIENTE: cuando Adrián grabe el vídeo, sustituir este comentario por
+           <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
+      <div class="ctas">
+        <a class="btn btn-y js-form" href="https://form.jotform.com/250124477529358" target="_blank" rel="noopener">Rellenar el formulario</a>
+        <a class="btn btn-dark-ghost js-wa" href="https://wa.me/34661286279" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg><span>Escríbeme por WhatsApp</span></a>
+      </div>
+      <p class="cta-note">El formulario son 2 minutos y lo reviso yo. También puedes <a href="https://www.instagram.com/adriian_domingz/" target="_blank" rel="noopener">comentar CAMBIO en Instagram</a>.</p>
+
+      <a class="proof-strip" href="#casos" aria-label="Ver casos de clientes">
+        <figure><img src="casos/luis.jpg" alt="Luis antes y después: menos 17 kilos en 4 meses" width="900" height="937"><figcaption><b>Luis</b> · −17 kg en 4 meses</figcaption></figure>
+        <figure><img src="casos/isaac.jpg" alt="Isaac antes y después: menos 10 kilos en 3 meses" width="900" height="1131"><figcaption><b>Isaac</b> · −10 kg en 3 meses</figcaption></figure>
+        <figure><img src="casos/iban.jpg" alt="Iban antes y después: recomposición a los 42 años" width="900" height="1118"><figcaption><b>Iban</b> · recomposición a los 42</figcaption></figure>
+      </a>
+
+      <div class="facts">
+        <div class="fact"><b>+150</b><span>transformaciones</span></div>
+        <div class="fact"><b>1:1</b><span>Plan hecho para ti, no una plantilla</span></div>
+        <div class="fact"><b>Cada semana</b><span>Reviso tu progreso y ajusto</span></div>
+        <div class="fact"><b>Vida real</b><span>Trabajo, horarios, comidas fuera y lesiones</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PASO 5 · El problema -->
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>Entrenas, lo intentas, y tu cuerpo sigue igual.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">Llevas meses (o años) yendo al gimnasio y el espejo no se mueve.</div>
+      <div class="sign">Comes "sano" y aun así la barriga sigue ahí.</div>
+      <div class="sign">Estás delgado pero sin forma, o hiciste un volumen y solo ganaste grasa.</div>
+      <div class="sign">Tu trabajo y tus horarios no te dejan seguir una dieta de libro.</div>
+      <div class="sign">Empiezas fuerte el lunes y lo dejas a las dos semanas.</div>
+      <div class="sign">Copias rutinas de redes y ninguna te encaja.</div>
+    </div>
+    <p class="turn">No es tu genética ni tu edad. <em>Es la estructura.</em></p>
+  </div>
+</section>
+
+<!-- PASO 6 · Cómo se consiguen los resultados -->
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Recomposición por fases</div>
+      <h2>Primero te desestanco. Después construimos.</h2>
+      <p class="lede">Perder grasa y ganar músculo a la vez es posible cuando el plan sigue un orden y se ajusta cada semana a cómo responde tu cuerpo.</p>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Meses 1–3</span><h3>Desestancar</h3><p>Pierdes grasa sin perder fuerza. Ordenamos comidas, horarios y hábitos para que tu cuerpo vuelva a responder.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 4–6</span><h3>Construir</h3><p>Ganas músculo con la mínima grasa posible y rindes más en cada entreno.</p></article>
+      <article class="layer"><span class="n">Fase 3</span><h3>Autonomía</h3><p>Mantienes el físico y aprendes a gestionarlo tú, sin depender de nadie.</p></article>
+      <article class="layer"><span class="n">Cada semana</span><h3>Revisión 1:1</h3><p>Me mandas tu revisión, vemos qué ha pasado y ajusto el plan. Hablas directamente conmigo.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Adaptado a tu vida real</span>
+      <h3>Sin restricciones absurdas, comiendo de todo.</h3>
+      <p>Trabajes de oficina o de pie diez horas, comas fuera o tengas una lesión: el plan se construye alrededor de tu día, no al revés. Así es como se mantiene.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 7 · Prueba social -->
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Casos reales</div>
+      <h2>Querían cambiar. Pensaban que no podían.</h2>
+      <p class="lede">Más de 150 transformaciones. Estas son algunas.</p>
+    </div>
+    <!-- VÍDEOS DE TESTIMONIO PENDIENTES: cuando Adrián los pase, añadir antes del muro:
+         <div class="vids"><figure><video controls playsinline preload="none" poster="casos/testimonio-1.jpg"><source src="casos/testimonio-1.mp4" type="video/mp4"></video><figcaption>Nombre · resultado</figcaption></figure></div> -->
+    <div class="wall">
+      <article class="case">
+        <img src="casos/luis.jpg" alt="Luis antes y después de perfil: menos 17 kilos en 4 meses" loading="lazy" width="900" height="937">
+        <div class="big">−17 kg en 4 meses</div>
+        <p>Venía de un volumen que no le dio lo que quería, frustrado y sin un camino claro. No le faltaban ganas: le faltaban orden y conocimiento.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">L</span><div><b>Luis</b><span>Más energía y más confianza</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/dani.jpg" alt="Dani antes y después" loading="lazy" width="900" height="423">
+        <div class="big">De 120 a 92 kg</div>
+        <p>Poca seguridad en sí mismo y la sensación de tener un problema con la comida. 28 kilos menos.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">D</span><div><b>Dani</b><span>−28 kg</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/jorge.jpg" alt="Jorge antes y después: quería más músculo" loading="lazy" width="900" height="1039">
+        <div class="big">Más músculo a los 42</div>
+        <p>Entrenaba sin ver cambios y con una lesión de bíceps. En 5 meses, de 75 a 69 kg, recuperó el bíceps al cien por cien y ganó músculo.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jorge, 42 años</b><span>5 meses</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/isaac.jpg" alt="Isaac antes y después: menos 10 kilos en 3 meses" loading="lazy" width="900" height="1131">
+        <div class="big">−10 kg en 3 meses</div>
+        <p>Profesor de educación física. Tenía los conocimientos, pero estaba atrapado en la autoexigencia y la desorganización.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">I</span><div><b>Isaac</b><span>Profesor de educación física</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/pablo.jpg" alt="Pablo antes y después: de 105 a 79 kilos" loading="lazy" width="900" height="1029">
+        <div class="big">De 105 a 79 kg</div>
+        <p>Trabajo sedentario y años de malos hábitos. Hoy está consiguiendo su mejor versión.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">P</span><div><b>Pablo, 25 años</b><span>Trabajo sedentario</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/iban.jpg" alt="Iban antes y después: recomposición a los 42 años" loading="lazy" width="900" height="1118">
+        <div class="big">Recomposición a los 42</div>
+        <p>Llevaba años entrenando y cuidando lo que comía, y seguía igual. Se escondía en la playa. Ahora luce su físico, sin restricciones absurdas.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">I</span><div><b>Iban, 42 años</b><span>Comiendo de todo</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/albert.jpg" alt="Albert antes y después: quería mejorar hábitos" loading="lazy" width="900" height="1125">
+        <div class="big">De 90 a 79 kg</div>
+        <p>Malos hábitos, inflamación abdominal, cero experiencia en el gimnasio y poca energía. Pensaba que no podía.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Albert</b><span>Menos barriga, más energía</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/eduardo.jpg" alt="Eduardo antes y después de perfil" loading="lazy" width="770" height="530">
+        <div class="big">De 70 a 64 kg</div>
+        <p>Entrenaba, comía sano y tenía un trabajo físico. Cero cambios en el espejo. Hoy: físico mucho más duro y más rendimiento.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">E</span><div><b>Eduardo, 40 años</b><span>Trabajo físico</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/malcolm.jpg" alt="Problemas iniciales de Malcolm, 24 años" loading="lazy" width="900" height="1104">
+        <div class="big">Horarios imposibles</div>
+        <p>Mala relación con la comida, poco tiempo para comer y la frustración de no ver ningún cambio.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">M</span><div><b>Malcolm, 24 años</b><span>Quería perder la barriga</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/tomas.jpg" alt="Tomás antes y después: quería más músculo" loading="lazy" width="900" height="1026">
+        <div class="big">Más músculo siendo camarero</div>
+        <p>Entrenaba sin cambios, trabajo muy físico y ninguna estructura para las comidas.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">T</span><div><b>Tomás</b><span>Camarero</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/marcos.jpg" alt="Marcos antes y después: quería definir" loading="lazy" width="900" height="1111">
+        <div class="big">Quería definir</div>
+        <p>Le faltaban rutina y estructura, estaba hinchado y se sentía estancado. Buscaba un cambio que pudiera mantener.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">M</span><div><b>Marcos, 23 años</b><span>Estancado</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/herick.jpg" alt="Herick antes y después: años sin sentirse fuerte" loading="lazy" width="900" height="968">
+        <div class="big">Años sin sentirse fuerte</div>
+        <p>Delgado, sin masa, inseguro de su físico y sin saber qué cambiar.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">H</span><div><b>Herick</b><span>Ganar masa</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/samuel.jpg" alt="Samuel antes y después: iba al gimnasio pero seguía igual" loading="lazy" width="900" height="1039">
+        <div class="big">Iba al gym y seguía igual</div>
+        <p>Creía que ir al gimnasio era suficiente. Con estructura, el cuerpo empezó a responder.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Samuel</b><span>Del gym sin plan al cambio</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 8 · Historia -->
+<section id="historia">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Mi historia</div>
+      <h2>No siempre he estado así.</h2>
+      <p class="lede">Soy Adrián Domínguez. El cuerpo que tengo hoy se ha construido a base de errores. Te los cuento para que tú no los cometas.</p>
+    </div>
+    <div class="timeline">
+      <figure><img src="casos/adrian-2017.jpg" alt="Adrián en 2017, adolescente y muy delgado" width="600" height="800" loading="lazy"><figcaption><b>2017</b><span>Complejo de brazos delgados. No me quitaba la camiseta.</span></figcaption></figure>
+      <figure><img src="casos/adrian-2022.jpg" alt="Adrián en 2022 en el gimnasio" width="600" height="800" loading="lazy"><figcaption><b>2022</b><span>Recuperado de la lesión, en 84 kg.</span></figcaption></figure>
+      <figure><img src="casos/adrian-2024.jpg" alt="Adrián compitiendo en Men's Physique en 2024" width="600" height="800" loading="lazy"><figcaption><b>2024</b><span>Sobre un escenario, pero destrozado por el todo o nada.</span></figcaption></figure>
+      <figure><img src="casos/adrian-hoy.jpg" alt="Adrián hoy" width="600" height="800" loading="lazy"><figcaption><b>Hoy</b><span>Un físico que se mantiene sin vivir obsesionado.</span></figcaption></figure>
+    </div>
+    <div class="read stack">
+      <p>Empecé en el gimnasio en 2017, después de dejar el fútbol sala. Mi primer "volumen" fue comer más sin controlar nada: <strong>de 57 a 75 kg en 8 meses</strong>, sin saber cuánto comía ni de qué.</p>
+      <p>Durante años copié lo que hacían los referentes del sector. En 2021, metido en el powerlifting, levanté 220 kg y me reventé la zona lumbar y la mano por no llevar una progresión. Pasé mucho tiempo con dolor, sin poder ni doblarme.</p>
+      <p>En 2024 cumplí el sueño de subirme a un escenario. Llegué con uno de mis mejores físicos, pero <strong>destrozado mentalmente</strong>: un plan cuadrado al milímetro en el que no me saltaba ni un gramo de arroz.</p>
+      <p>De todo eso salió mi forma de trabajar: estructura, progresión y un plan que encaje en tu vida. Ni copiar a nadie ni el todo o nada.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>Comer sin medir</b><span>Volumen "a lo loco" que acaba en grasa, no en músculo.</span></div>
+      <div class="err"><b>Entrenar sin plan</b><span>Ir a "hacer el burro", sin progresión ni descanso. Así llegan las lesiones.</span></div>
+      <div class="err"><b>El todo o nada</b><span>Si no es perfecto, no vale. Te consume y acabas dejándolo.</span></div>
+    </div>
+    <p class="quote">"El cuerpo que tengo se ha creado a base de errores que tú puedes evitar fácilmente."</p>
+  </div>
+</section>
+
+<!-- PASO 9 · Garantía -->
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label" style="color:var(--yellow)">Garantía</div>
+      <h2 style="margin-top:10px">Si cumples y no ves cambios en la fase 1, sigo contigo gratis.</h2>
+      <ul>
+        <li>Sigues el plan y me envías tus revisiones semanales.</li>
+        <li>Si aun así no hay cambios, seguimos trabajando sin coste hasta que lleguen.</li>
+        <li>Todo queda por escrito en el contrato antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 10 · Para quién -->
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes más de 25 años y entrenas (o lo has intentado) sin ver resultados.</li>
+          <li>Quieres perder grasa y ganar músculo, no solo bajar de peso.</li>
+          <li>Tienes poco tiempo y necesitas un plan que encaje en tu día.</li>
+          <li>Vienes de otro deporte y el gimnasio no es lo que más te gusta.</li>
+          <li>Estás dispuesto a seguir un plan y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio en 15 días.</li>
+          <li>Quieres una plantilla genérica para seguir por tu cuenta.</li>
+          <li>No vas a mandar tus revisiones ni contarme cómo vas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 11 · Cómo empezar -->
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Rellenas el formulario</h3><p>2 minutos. Me cuentas tu situación, tu objetivo y lo que has probado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te llamo para ver tu caso y explicarte cómo trabajaríamos.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas con tu plan</h3><p>Tu plan de la fase 1, hecho para ti, y la primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso en 2 minutos.</h2>
+      <p class="lede">Lo reviso yo personalmente. Si encajamos, te escribo para empezar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn js-form" id="formBtn" href="https://form.jotform.com/250124477529358" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 12 · Preguntas frecuentes -->
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Qué es la recomposición corporal?</summary><p>Perder grasa y ganar músculo a la vez. No se trata solo de bajar peso: tu cuerpo cambia de forma, aunque la báscula se mueva poco.</p></details>
+      <details><summary>Tengo muy poco tiempo. ¿Me sirve?</summary><p>Sí. El plan se adapta a tu trabajo y a tus horarios. Muchos de mis clientes trabajan muchas horas, a turnos o de pie todo el día.</p></details>
+      <details><summary>Tengo más de 40 años. ¿No es tarde?</summary><p>No es la edad. Iban hizo su recomposición a los 42 y Jorge ganó músculo a los 42 con una lesión de bíceps.</p></details>
+      <details><summary>Tengo una lesión o molestias. ¿Puedo empezar?</summary><p>Sí. El entrenamiento se construye alrededor de tu lesión, con una progresión que la respete. Si algo necesita valoración médica, te lo digo.</p></details>
+      <details><summary>Como fuera a menudo. ¿Tengo que dejar de hacerlo?</summary><p>No. Comes de todo y aprendes a encajar las comidas fuera sin romper el plan.</p></details>
+      <details><summary>No me gusta mucho el gimnasio, vengo de otro deporte.</summary><p>Es muy habitual. El plan es eficiente: lo justo para que tu cuerpo responda, y puedes combinarlo con tu deporte.</p></details>
+      <details><summary>¿Y si no veo resultados?</summary><p>Si cumples el plan y envías tus revisiones y en la fase 1 no ves cambios, seguimos trabajando gratis hasta que lleguen. Queda por escrito en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Rellena el formulario y te lo explico en la llamada.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 13 · Llamada a la acción -->
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Hoy puede ser el inicio de tu mejor versión.</h2>
+    <div class="ctas">
+      <a class="btn btn-y js-form" href="https://form.jotform.com/250124477529358" target="_blank" rel="noopener">Rellenar el formulario</a>
+      <a class="btn btn-dark-ghost js-wa" href="https://wa.me/34661286279" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+    </div>
+    <p class="cta-note">O comenta <b>CAMBIO</b> en mi <a href="https://www.instagram.com/adriian_domingz/" target="_blank" rel="noopener">Instagram</a> y te escribo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Adrián Domínguez · Recomposición corporal</span><span><a href="https://www.instagram.com/adriian_domingz/" target="_blank" rel="noopener">@adriian_domingz</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<a class="wa-float js-wa" href="https://wa.me/34661286279" target="_blank" rel="noopener" aria-label="Escribir a Adrián por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg></a>
+<div class="sticky-cta"><a class="btn js-form" href="https://form.jotform.com/250124477529358" target="_blank" rel="noopener">Empezar mi cambio</a></div>
+
+<script>
+(function () {
+  var FORM = "https://form.jotform.com/250124477529358?utm_source=landing&utm_medium=web";
+  var WA = "https://wa.me/34661286279?text=" + encodeURIComponent("Hola Adrián, vengo de tu web y quiero información sobre la asesoría 1:1");
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  document.querySelectorAll(".js-wa").forEach(function (a) { a.href = WA; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Alojada en su dominio, el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de Adrián Domínguez"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>
+</body></html>
