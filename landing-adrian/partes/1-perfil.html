@@ -181,16 +181,16 @@ p { margin: 0; }
 
       <section class="group" aria-labelledby="h-bios">
         <h2 id="h-bios">Bio</h2>
-        <p class="soft">Las tres dicen a quién ayuda, qué consigue y con qué prueba. Cierran con una sola acción.</p>
+        <p class="soft">Las tres dicen a quién ayuda, qué consigue y con qué prueba, y caben en los 150 caracteres de Instagram (los emojis cuentan doble). Cierran con una sola acción.</p>
         <div class="opts" id="bios">
           <button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">Experto en recomposición corporal
-Para hombres +25 que entrenan y siguen igual
+Hombres +25 que entrenan y siguen igual
 Pierde grasa y gana músculo a la vez
-+150 transformaciones · Comenta CAMBIO 👇</span><span class="why">Nicho, promesa y prueba en cuatro líneas.</span></button>
++150 transformaciones · Comenta CAMBIO</span><span class="why">Nicho, promesa y prueba en cuatro líneas.</span></button>
           <button class="opt" type="button"><span class="tag">B · El dolor primero</span><span class="txt">Si entrenas y no cambias, no es tu genética
 Recomposición corporal 1:1 para hombres +25
 +150 hombres desestancados
-Rellena el formulario y empezamos 👇</span><span class="why">Ataca la creencia que le frena.</span></button>
+Rellena el formulario 👇</span><span class="why">Ataca la creencia que le frena.</span></button>
           <button class="opt" type="button"><span class="tag">C · Temporada, hasta el 31 dic</span><span class="txt">Experto en recomposición corporal
 Pierde grasa y gana músculo antes de Navidad
 Para hombres +25 estancados
@@ -225,7 +225,7 @@ Para hombres +25 estancados
 <script>
 (function () {
   var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
-  function len(t) { return Array.from(t).length; }
+  function len(t) { return t.length; }
   function setCount() {
     var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
     cn.textContent = len(pvName.textContent); cb.textContent = len(pvBio.textContent);
@@ -247,7 +247,7 @@ Para hombres +25 estancados
   bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
   document.querySelectorAll("#bios .opt").forEach(function (b) {
     var n = document.createElement("span"); n.className = "n";
-    n.textContent = Array.from(b.querySelector(".txt").textContent).length + "/150";
+    n.textContent = b.querySelector(".txt").textContent.length + "/150";
     b.appendChild(n);
   });
 })();
