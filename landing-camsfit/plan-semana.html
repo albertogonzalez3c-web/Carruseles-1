@@ -142,7 +142,7 @@ footer { padding-block: 28px 44px; color: var(--soft); font-size: 13.5px; border
     <div class="goals">
       <div class="goal"><b>Domingo: perfil listo</b><span>Nombre, bio, destacadas y enlace a la landing.</span></div>
       <div class="goal"><b>Domingo: sistema de contenido en marcha</b><span>18 publicaciones a la semana, historias diarias y YouTube en aumento.</span></div>
-      <div class="goal"><b>Domingo: sistema de ventas</b><span>Oferta cerrada, embudo, guiones de seguimiento y KPIs.</span></div>
+      <div class="goal"><b>Domingo: sistema de ventas</b><span>Oferta cerrada, embudo, seguimiento y reportes (ventas a diario; anuncios y facturación lunes y jueves).</span></div>
     </div>
   </header>
 </div>
@@ -405,48 +405,63 @@ Hombres 30-50 con trabajos sedentarios
 <section id="reporte">
   <div class="wrap">
     <div class="sec-head">
-      <span class="when">Lunes y jueves</span>
-      <span class="label">Reporte de métricas · 2 veces por semana</span>
-      <h2>Lo apunta cada día. Lo envía lunes y jueves.</h2>
-      <p class="soft">Rellena los campos con los datos desde el último reporte. Los costes se calculan solos y abajo sale el mensaje listo para mandar por WhatsApp.</p>
+      <span class="label">Reportes de métricas</span>
+      <h2>Ventas cada día. Anuncios y facturación, lunes y jueves.</h2>
+      <p class="soft">Rellena los campos y copia el mensaje para enviarlo por WhatsApp. Los costes se calculan solos.</p>
     </div>
     <div class="grid2">
-      <form class="card report" id="reportForm" autocomplete="off">
-        <span class="label">Ventas · al día</span>
+      <div class="stack">
+        <form class="card report" id="formDia" autocomplete="off">
+          <span class="when">Cada día</span>
+          <span class="label">Ventas de hoy</span>
         <label for="r-conv">Conversaciones abiertas<input id="r-conv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         <label for="r-tel">Teléfonos conseguidos<input id="r-tel" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         <label for="r-agend">Llamadas agendadas para los próximos días<input id="r-agend" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <label for="r-hechas">Llamadas realizadas<input id="r-hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <label for="r-cierres">Cierres<input id="r-cierres" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <label for="r-fact">Facturación del mes hasta hoy (€)<input id="r-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
-        <span class="label" style="margin-top:8px">Anuncios "sígueme" (follow me ads)</span>
-        <label for="r-fgasto">Gasto (€)<input id="r-fgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
-        <label for="r-fseg">Seguidores nuevos<input id="r-fseg" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-        <span class="label" style="margin-top:8px">Anuncios de formulario (form ads)</span>
-        <label for="r-lgasto">Gasto (€)<input id="r-lgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
-        <label for="r-leads">Leads conseguidos<input id="r-leads" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-      </form>
-      <div class="stack">
+        <label for="r-hechas">Llamadas realizadas hoy<input id="r-hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="r-cierres">Cierres de hoy<input id="r-cierres" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        </form>
         <div class="card sand">
-          <span class="label">Calculado</span>
           <div class="calc">
-            <div><span>Coste por seguidor</span><b id="o-cps">—</b></div>
-            <div><span>Coste por lead</span><b id="o-cpl">—</b></div>
             <div><span>Cierre (cierres ÷ llamadas)</span><b id="o-close">—</b></div>
             <div><span>Teléfono por conversación</span><b id="o-tel">—</b></div>
           </div>
         </div>
         <div class="card">
-          <span class="label">Mensaje para enviar</span>
-          <pre class="copy" id="o-msg"></pre>
-          <button type="button" class="copy-btn" id="copyBtn">Copiar mensaje</button>
-          <p class="soft" id="copyNote" aria-live="polite" style="font-size:13.5px"></p>
+          <span class="label">Mensaje diario</span>
+          <pre class="copy" id="o-msg-dia"></pre>
+          <button type="button" class="copy-btn" data-target="o-msg-dia" data-note="n-dia">Copiar mensaje diario</button>
+          <p class="soft" id="n-dia" aria-live="polite" style="font-size:13.5px"></p>
+        </div>
+      </div>
+      <div class="stack">
+        <form class="card report" id="formAds" autocomplete="off">
+          <span class="when">Lunes y jueves</span>
+          <span class="label">Facturación</span>
+        <label for="r-fact">Facturación del mes hasta hoy (€)<input id="r-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+          <span class="label" style="margin-top:8px">Anuncios "sígueme" (follow me ads)</span>
+        <label for="r-fgasto">Gasto (€)<input id="r-fgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <label for="r-fseg">Seguidores nuevos<input id="r-fseg" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <span class="label" style="margin-top:8px">Anuncios de formulario (form ads)</span>
+        <label for="r-lgasto">Gasto (€)<input id="r-lgasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <label for="r-leads">Leads conseguidos<input id="r-leads" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        </form>
+        <div class="card sand">
+          <div class="calc">
+            <div><span>Coste por seguidor</span><b id="o-cps">—</b></div>
+            <div><span>Coste por lead</span><b id="o-cpl">—</b></div>
+          </div>
+        </div>
+        <div class="card">
+          <span class="label">Mensaje de lunes y jueves</span>
+          <pre class="copy" id="o-msg-ads"></pre>
+          <button type="button" class="copy-btn" data-target="o-msg-ads" data-note="n-ads">Copiar mensaje</button>
+          <p class="soft" id="n-ads" aria-live="polite" style="font-size:13.5px"></p>
         </div>
       </div>
     </div>
     <div class="card" style="margin-top:12px">
       <h3>Cómo se calcula</h3>
-      <p class="soft"><b style="color:var(--ink)">Coste por seguidor</b> = gasto en anuncios "sígueme" ÷ seguidores nuevos que vienen de esos anuncios. <b style="color:var(--ink)">Coste por lead</b> = gasto en anuncios de formulario ÷ formularios recibidos. Los dos datos salen del administrador de anuncios de Meta, con el mismo rango de fechas que el reporte.</p>
+      <p class="soft"><b style="color:var(--ink)">Coste por seguidor</b> = gasto en anuncios "sígueme" ÷ seguidores nuevos que vienen de esos anuncios. <b style="color:var(--ink)">Coste por lead</b> = gasto en anuncios de formulario ÷ formularios recibidos. Ambos desde el último reporte y con el mismo rango de fechas en el administrador de anuncios de Meta.</p>
     </div>
   </div>
 </section>
@@ -489,10 +504,10 @@ Hombres 30-50 con trabajos sedentarios
       <h2>Lo que hay que tener hecho cada día.</h2>
     </div>
     <div class="grid2">
-      <div class="card"><span class="label">Lunes</span><ul class="tasks"><li><label><input type="checkbox" id="d-1r"><span>Enviar el reporte de métricas.</span></label></li><li><label><input type="checkbox" id="d-1a"><span>Nombre, bio, categoría y destacadas.</span></label></li><li><label><input type="checkbox" id="d-1b"><span>Frase de la oferta y duración.</span></label></li></ul></div>
+      <div class="card"><span class="label">Lunes</span><ul class="tasks"><li><label><input type="checkbox" id="d-1r"><span>Enviar el reporte de anuncios y facturación.</span></label></li><li><label><input type="checkbox" id="d-1a"><span>Nombre, bio, categoría y destacadas.</span></label></li><li><label><input type="checkbox" id="d-1b"><span>Frase de la oferta y duración.</span></label></li></ul></div>
       <div class="card"><span class="label">Martes</span><ul class="tasks"><li><label><input type="checkbox" id="d-2a"><span>Precio, garantía y contrato.</span></label></li><li><label><input type="checkbox" id="d-2b"><span>Grabar los 7 yapping y los 3 YouTube de la semana 1.</span></label></li></ul></div>
       <div class="card"><span class="label">Miércoles</span><ul class="tasks"><li><label><input type="checkbox" id="d-3a"><span>9 clips de YouTube, 3 carruseles y tomas de voz en off.</span></label></li><li><label><input type="checkbox" id="d-3b"><span>Respuesta automática "REPROGRAMAR" y revisión del Jotform.</span></label></li></ul></div>
-      <div class="card"><span class="label">Jueves</span><ul class="tasks"><li><label><input type="checkbox" id="d-4r"><span>Enviar el reporte de métricas.</span></label></li><li><label><input type="checkbox" id="d-4a"><span>Flujos antes y después de la llamada, con plantillas guardadas.</span></label></li><li><label><input type="checkbox" id="d-4b"><span>Hoja de control de contactos.</span></label></li></ul></div>
+      <div class="card"><span class="label">Jueves</span><ul class="tasks"><li><label><input type="checkbox" id="d-4r"><span>Enviar el reporte de anuncios y facturación.</span></label></li><li><label><input type="checkbox" id="d-4a"><span>Flujos antes y después de la llamada, con plantillas guardadas.</span></label></li><li><label><input type="checkbox" id="d-4b"><span>Hoja de control de contactos.</span></label></li></ul></div>
       <div class="card"><span class="label">Viernes</span><ul class="tasks"><li><label><input type="checkbox" id="d-5a"><span>Mensajes de seguimiento guardados como respuestas rápidas.</span></label></li><li><label><input type="checkbox" id="d-5b"><span>Primera tabla de KPIs con sus números reales.</span></label></li></ul></div>
       <div class="card sand"><span class="label">Fin de semana</span><ul class="tasks"><li><label><input type="checkbox" id="d-6a"><span>Grabar la semana 2: 7 yapping y 5 YouTube.</span></label></li><li><label><input type="checkbox" id="d-6b"><span>Revisión con Alberto: qué está hecho y qué no.</span></label></li></ul></div>
     </div>
@@ -536,12 +551,14 @@ Hombres 30-50 con trabajos sedentarios
     document.getElementById("o-close").textContent = close;
     document.getElementById("o-tel").textContent = tel;
     var d = new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" });
-    document.getElementById("o-msg").textContent =
-      "📊 Reporte CAMSFIT · " + d + "\n\n" +
+    document.getElementById("o-msg-dia").textContent =
+      "📈 Ventas CAMSFIT · " + d + "\n\n" +
       "Conversaciones abiertas: " + v("r-conv") + "\n" +
       "Teléfonos conseguidos: " + v("r-tel") + "\n" +
       "Llamadas agendadas próximos días: " + v("r-agend") + "\n" +
-      "Llamadas realizadas: " + v("r-hechas") + " · Cierres: " + v("r-cierres") + " (" + close + ")\n" +
+      "Llamadas hoy: " + v("r-hechas") + " · Cierres: " + v("r-cierres") + " (" + close + ")";
+    document.getElementById("o-msg-ads").textContent =
+      "📊 Anuncios y facturación CAMSFIT · " + d + "\n\n" +
       "Facturación del mes: " + eur(v("r-fact")) + "\n\n" +
       "Anuncios sígueme: " + eur(v("r-fgasto")) + " → " + v("r-fseg") + " seguidores · " + cps + " por seguidor\n" +
       "Anuncios formulario: " + eur(v("r-lgasto")) + " → " + v("r-leads") + " leads · " + cpl + " por lead";
@@ -555,17 +572,19 @@ Hombres 30-50 con trabajos sedentarios
       update();
     });
   });
-  document.getElementById("reportForm").addEventListener("submit", function (e) { e.preventDefault(); });
-  document.getElementById("copyBtn").addEventListener("click", function () {
-    var t = document.getElementById("o-msg").textContent, note = document.getElementById("copyNote");
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById("o-msg"));
-      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
-      note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado.";
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(t).then(function () { note.textContent = "Copiado."; }, fallback);
-    } else { fallback(); }
+  document.querySelectorAll("form.report").forEach(function (f) { f.addEventListener("submit", function (e) { e.preventDefault(); }); });
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = document.getElementById(btn.dataset.target), note = document.getElementById(btn.dataset.note);
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(box);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado.";
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado."; }, fallback);
+      } else { fallback(); }
+    });
   });
   update();
 })();
