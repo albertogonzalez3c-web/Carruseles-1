@@ -81,6 +81,23 @@ ul.l b, ol.l b { color: var(--ink); }
 .item.k2 { background: #e6efe2; }
 .item.k3 { background: #f3e4dc; }
 .item.k4 { background: #e4e8f3; }
+/* Ángulos */
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 12px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; }
+.ang-tools input:focus { outline: 3px solid var(--accent-text); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 999px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.chips button:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; margin: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 10px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--soft); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend i { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
@@ -123,6 +140,7 @@ ul.l b, ol.l b { color: var(--ink); }
   <div class="wrap" role="tablist">
     <button class="tab" role="tab" aria-selected="true" data-v="yt">YouTube</button>
     <button class="tab" role="tab" aria-selected="false" data-v="es">Asesoría ES (@albertoglez6)</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos · Reconstrucción metabólica</button>
     <button class="tab" role="tab" aria-selected="false" data-v="en">Inglés (@albertoglezcoach)</button>
     <button class="tab" role="tab" aria-selected="false" data-v="me">Mentoría (@albertomentor)</button>
     <button class="tab" role="tab" aria-selected="false" data-v="emb">Embudos</button>
@@ -229,6 +247,32 @@ ul.l b, ol.l b { color: var(--ink); }
   </section>
 
   <!-- ================= INGLÉS ================= -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos de comunicación">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Base fija · asesoría</span>
+        <h2>Reconstrucción metabólica: todos los ángulos para hablarle a tu cliente.</h2>
+        <p class="soft">Tu cuerpo no está preparado para cambiar. Primero lo reconstruimos por dentro (hormonas, digestión, sueño, dolor) y después la dieta y el entreno funcionan solos. Por fases, sin vivir en el gimnasio, con energía para tu negocio y tu familia.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Cómo usar este banco</span>
+        <ul class="l">
+          <li><b>Rota las familias</b> cada semana: no repitas la misma dos semanas seguidas.</li>
+          <li><b>De 1 ángulo salen:</b> 1 YouTube + 3 reels (yapping, voz en off o trend) + 1 carrusel + historias.</li>
+          <li><b>Usa siempre el término "reconstrucción metabólica"</b> en al menos 1 pieza al día: es tu concepto propio.</li>
+          <li><b>Límite legal:</b> en hormonas y analíticas explica y ajusta hábitos; no diagnostiques ni prometas curas. En anuncios: "entiende tu metabolismo", no "arregla tu resistencia a la insulina".</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar ángulo o gancho (p. ej. cortisol, familia, tiempo…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
   <section class="view" id="v-en" hidden aria-label="Cuenta en inglés">
     <div class="totals" id="en-tot"></div>
 
@@ -502,12 +546,145 @@ ul.l b, ol.l b { color: var(--ink); }
     ["De fisio a +33.000 € en 23 días: lo que hice distinto"]
   ]);
 
+  /* ---------- Ángulos · Reconstrucción metabólica ---------- */
+  var FAMS = [
+    { n: "Reconstrucción metabólica", d: "El concepto propio: qué es y por qué funciona.", fm: ["YouTube", "Yapping", "Carrusel"] },
+    { n: "Preparar el cuerpo", d: "El mecanismo: primero optimizar, luego exigir.", fm: ["Yapping", "Voz en off", "YouTube"] },
+    { n: "Hormonas sin humo", d: "Insulina, cortisol, testosterona, leptina y sueño.", fm: ["YouTube", "Carrusel", "Voz en off"] },
+    { n: "Por fases", d: "Primero grasa, luego músculo; aprender a entrenar; el hábito.", fm: ["Carrusel", "Yapping"] },
+    { n: "Vida real", d: "Poco tiempo, comida de casa, sin vivir en el gimnasio.", fm: ["Trend", "Voz en off", "Yapping"] },
+    { n: "Rendimiento: negocio y familia", d: "Concentración, energía, vitalidad, comerse el mundo.", fm: ["Yapping", "YouTube", "Voz en off"] },
+    { n: "Fisio y dolor", d: "Lo que te diferencia: eres fisioterapeuta.", fm: ["YouTube", "Voz en off", "Carrusel"] },
+    { n: "Digestión e inflamación", d: "No es grasa, es inflamación.", fm: ["Voz en off", "Carrusel"] },
+    { n: "Mentalidad e identidad", d: "Sistema, todo o nada, ansiedad con la comida.", fm: ["Yapping", "Historias"] },
+    { n: "Mitos y enemigos", d: "Lo que les han vendido y no funciona.", fm: ["Trend", "Voz en off", "Carrusel"] },
+    { n: "Tu autoridad e historia", d: "De casi 100 kg a 11 competiciones, fisio, +1.800 personas.", fm: ["YouTube", "Yapping", "Carrusel"] },
+    { n: "El coste de no hacerlo", d: "Urgencia sin miedo barato.", fm: ["Voz en off", "Historias"] },
+    { n: "Objeciones en contenido", d: "Lo que dicen en la llamada, respondido antes.", fm: ["Yapping", "Historias"] },
+    { n: "Casos (cuando los tengas)", d: "Antes y después, analíticas, familia.", fm: ["Carrusel", "YouTube", "Historias"] }
+  ];
+  var ANG = [
+    [0, "Qué es la reconstrucción metabólica, en 60 segundos", ["No necesitas otra dieta. Necesitas reconstruir tu metabolismo.", "Te explico en un minuto por qué tu cuerpo no responde a nada."]],
+    [0, "Tu metabolismo no está roto: está desordenado", ["Tu metabolismo no está estropeado: lleva años desordenado.", "No es que tu cuerpo no pueda. Es que nadie lo ha ordenado."]],
+    [0, "Reconstruir antes de adelgazar", ["Primero se reconstruye, después se adelgaza.", "Si intentas adelgazar sin reconstruir, vuelves al punto de partida."]],
+    [0, "Las 3 fases de la reconstrucción", ["Preparar, transformar y consolidar: así se reconstruye un metabolismo.", "La fase que todo el mundo se salta es la primera."]],
+    [0, "Señales de que tu metabolismo necesita reconstrucción", ["Cansancio a media tarde, barriga que no se va y hambre a todas horas: no es casualidad.", "Si te pasan 3 de estas 5 cosas, tu metabolismo te está pidiendo ayuda."]],
+    [0, "Años de dietas dejan huella", ["Cada dieta que dejaste a medias dejó huella en tu metabolismo.", "Por qué ahora te cuesta el doble que a los 25."]],
+    [0, "Reconstrucción frente a dieta", ["Una dieta dura 8 semanas. Una reconstrucción, el resto de tu vida.", "La diferencia entre perder kilos y cambiar tu cuerpo."]],
+    [1, "No es fuerza de voluntad: tu cuerpo no está preparado", ["Si has hecho mil dietas y ninguna funciona, el problema no eres tú.", "No te falta disciplina: tu cuerpo no está listo para cambiar."]],
+    [1, "Primero optimizar, luego exigir", ["Le pides a tu cuerpo que adelgace cuando ni duerme ni digiere bien.", "Exigirle a un cuerpo agotado es la forma más rápida de estancarte."]],
+    [1, "Lo correcto en el orden equivocado", ["La dieta estaba bien. El momento, no.", "Hiciste lo correcto en el orden equivocado."]],
+    [1, "El cuerpo en modo supervivencia", ["Estrés alto, poco sueño y dieta estricta: la receta perfecta para no perder ni un gramo.", "Tu cuerpo no quema grasa cuando cree que está en peligro."]],
+    [1, "Ajustar el motor antes de acelerar", ["No le metes turbo a un coche con el motor roto.", "Antes de pisar el acelerador, revisa el motor."]],
+    [2, "Resistencia a la insulina y la barriga", ["Esta es la razón por la que la barriga es lo último que se va.", "Comes 'sano' y la barriga sigue: te explico por qué."]],
+    [2, "Cortisol: el estrés también engorda", ["Tu trabajo te está haciendo engordar. Y no es broma.", "Si vives estresado, ninguna dieta te va a funcionar del todo."]],
+    [2, "Testosterona: baja, pero se recupera", ["Si estás cansado, sin ganas y con barriga, mira esto.", "La grasa abdominal y la testosterona baja van de la mano."]],
+    [2, "Leptina y el efecto rebote", ["No es que te falte disciplina: es que tu cuerpo se defiende.", "Por qué recuperas todo después de cada dieta."]],
+    [2, "El sueño, la hormona olvidada", ["Duermes 6 horas y te preguntas por qué tienes hambre todo el día.", "Arregla esto antes de tocar la dieta."]],
+    [2, "La analítica que nadie te pide", ["Antes de empezar cualquier dieta, mira estos 5 valores.", "Tu analítica dice más de tu cuerpo que tu báscula."]],
+    [2, "Analítica antes y después", ["La báscula miente. La analítica no.", "Así cambia una analítica en 3 meses de reconstrucción."]],
+    [3, "Primero grasa, después músculo", ["Si quieres todo a la vez, no consigues nada.", "El orden que de verdad funciona para cambiar tu cuerpo."]],
+    [3, "Perder algo de grasa para que todo responda", ["Los primeros kilos no son estética: son para que tu cuerpo vuelva a funcionar.", "Por qué empezamos perdiendo grasa aunque quieras músculo."]],
+    [3, "Aprender a entrenar antes de entrenar duro", ["El 80 % entrena mucho y mal.", "Antes de levantar más, aprende a levantar bien."]],
+    [3, "El hábito antes que la intensidad", ["3 días a la semana durante un año ganan a 6 días durante un mes.", "La constancia gana a la motivación. Siempre."]],
+    [3, "Los 3 primeros meses", ["Aquí es donde se rinde casi todo el mundo.", "Si pasas de los 3 meses, ya no vuelves atrás."]],
+    [4, "Sin tiempo", ["Con 3 horas a la semana es suficiente. Te explico cómo.", "Si no tienes tiempo, necesitas un plan más inteligente, no más horas."]],
+    [4, "Comer lo que hay en casa", ["No necesitas comer distinto que tu familia.", "Tu dieta puede ser la comida de tu casa. Bien ordenada."]],
+    [4, "No quiero ser culturista", ["No quiero que vivas en el gimnasio. Quiero que vivas mejor.", "No busco que compitas: busco que funciones."]],
+    [4, "Sin obsesión", ["Si estar en forma te amarga la vida, lo estás haciendo mal.", "Pesar cada gramo no es salud, es ansiedad."]],
+    [4, "Comer fuera, viajes y cenas de empresa", ["Cómo comer fuera 3 veces por semana y seguir perdiendo grasa.", "La cena de empresa no es el problema. El lunes siguiente, sí."]],
+    [4, "Fines de semana", ["Tu lunes empieza el viernes por la noche.", "Lo que haces el fin de semana decide tu semana."]],
+    [4, "Disfrutar de la vida", ["Una cerveza no arruina tu progreso. Esto sí.", "Ponerte en forma no significa dejar de vivir."]],
+    [5, "Tu cuerpo es tu herramienta de trabajo", ["Si diriges un negocio con el cuerpo roto, el negocio lo nota.", "Tu energía es el primer activo de tu empresa."]],
+    [5, "Concentración", ["La niebla mental de las 4 de la tarde no es normal.", "Si no te concentras después de comer, mira lo que comes."]],
+    [5, "Energía para la familia", ["Llegar a casa y tener ganas de jugar con tus hijos también es un resultado.", "Tu familia se merece tu mejor versión, no lo que queda de ti."]],
+    [5, "Vitalidad en el día a día", ["No te falta café, te falta un cuerpo que funcione.", "Levantarte con energía no es suerte."]],
+    [5, "Comerse el mundo", ["Cuando tu cuerpo funciona, todo lo demás sube de nivel.", "Cuerpo fuerte, cabeza clara, negocio que crece."]],
+    [5, "Ejecutivos y emprendedores", ["Los que más rinden en su negocio cuidan su cuerpo. No es casualidad.", "El CEO más productivo que conozco entrena 3 días a la semana."]],
+    [5, "Decidir mejor", ["Con mal sueño y la glucosa en montaña rusa, decides peor.", "Tus peores decisiones las tomas con el cuerpo agotado."]],
+    [6, "Entrenar con dolor no es de valientes", ["Si te duele la espalda al entrenar, para y mira esto.", "El dolor no es parte del proceso."]],
+    [6, "Readaptación después de una lesión", ["Soy fisio: así se vuelve a entrenar después de una lesión.", "Que te hayas lesionado no significa que no puedas entrenar."]],
+    [6, "Espalda, rodilla y hombro", ["3 ejercicios que salvan tu espalda si trabajas sentado.", "Si te cruje la rodilla al bajar escaleras, empieza por aquí."]],
+    [6, "El cuerpo de oficina", ["8 horas sentado te están rompiendo por dentro.", "Tu silla te está saliendo más cara que el gimnasio."]],
+    [7, "No es grasa, es inflamación", ["Esa barriga hinchada a las 6 de la tarde tiene solución.", "Antes de perder grasa, deshínchate."]],
+    [7, "Digestiones pesadas y sueño después de comer", ["Si después de comer te mueres de sueño, tu cuerpo te está avisando.", "Comer no debería dejarte KO."]],
+    [7, "El intestino y el peso", ["Sin una buena digestión, ninguna dieta funciona del todo.", "Tu intestino decide más de lo que crees."]],
+    [8, "El sistema gana a la motivación", ["No te falta disciplina. Te falta un sistema.", "La motivación dura 2 semanas. Un sistema, años."]],
+    [8, "El todo o nada", ["Saltarte un día no arruina nada. Abandonar sí.", "O perfecto o nada: así es como nunca empiezas."]],
+    [8, "Ansiedad con la comida (tu historia)", ["Yo también comía por ansiedad. Así salí.", "Comer de más no es falta de voluntad."]],
+    [8, "Volver a reconocerte", ["No es vanidad: es volver a sentirte tú.", "El día que te vuelves a reconocer en el espejo."]],
+    [8, "Ser ejemplo para tus hijos", ["Tus hijos no hacen lo que dices, hacen lo que ven.", "Lo que tus hijos aprenden viéndote comer y moverte."]],
+    [9, "\"Es la edad\"", ["A los 40 se puede estar mejor que a los 25. Lo veo cada semana.", "La edad no es la excusa que te han vendido."]],
+    [9, "\"Es mi genética\"", ["Tu genética carga el arma; tus hábitos aprietan el gatillo.", "Culpar a la genética es lo más cómodo."]],
+    [9, "Dietas extremas", ["Cuanto más estricta es la dieta, más rápido vuelves.", "La dieta que más rápido funciona es la que más rápido abandonas."]],
+    [9, "Cardio infinito", ["Correr 1 hora diaria no te está haciendo perder la barriga.", "Más cardio no es la solución."]],
+    [9, "Suplementos milagro", ["Ningún quemagrasas arregla un cuerpo que duerme 5 horas.", "Lo que de verdad funciona no viene en un bote."]],
+    [9, "Copiar a influencers", ["Su plan es para su vida, no para la tuya.", "Copiar la rutina de un influencer es el error más caro."]],
+    [9, "Contar calorías y ya está", ["Las calorías importan. Pero no son lo único.", "Comes menos que nunca y no bajas: te explico por qué."]],
+    [10, "De casi 100 kg a 11 competiciones naturales", ["Con 15 años compraba ropa de tallas especiales.", "Así pasé de casi 100 kg a subirme a un escenario."]],
+    [10, "Fisioterapeuta, no solo entrenador", ["Cuando te duele algo, no necesitas un motivador.", "Por qué un fisio entiende tu cuerpo de otra manera."]],
+    [10, "+1.800 personas en 10 años", ["Después de 1.800 personas, estos son los 3 errores que más se repiten.", "Lo que aprendí asesorando a 1.800 personas."]],
+    [10, "Si empezara de cero hoy", ["Si tuviera que empezar de cero, haría esto.", "Lo que me habría ahorrado 5 años de errores."]],
+    [11, "Un año más igual", ["Si sigues así 12 meses, ¿dónde estás?", "Dentro de un año vas a desear haber empezado hoy."]],
+    [11, "El cuerpo pasa factura", ["Lo que no cuidas a los 35 lo pagas a los 50.", "Tu cuerpo te está mandando avisos. ¿Los escuchas?"]],
+    [11, "El dinero tirado", ["¿Cuánto llevas gastado en dietas, gimnasios y suplementos que no funcionaron?", "Lo más caro es seguir probando cosas que no funcionan."]],
+    [12, "\"No tengo tiempo\"", ["Precisamente por eso no puedes perderlo con algo que no funciona.", "Si no tienes tiempo, necesitas un plan, no más fuerza de voluntad."]],
+    [12, "\"Ya lo he intentado\"", ["Lo intentaste en el orden equivocado.", "Lo que hiciste no estaba mal: estaba desordenado."]],
+    [12, "\"Es caro\"", ["¿Caro comparado con qué? ¿Con seguir igual?", "Haz la cuenta de lo que te cuesta no cambiar."]],
+    [12, "\"Empiezo el lunes\"", ["El lunes perfecto no existe.", "Llevas 3 años empezando el lunes."]],
+    [12, "\"Lo tengo que hablar con mi pareja\"", ["Lo que dicen las parejas de mis clientes a los 3 meses.", "Cuando tú cambias, cambia tu casa."]],
+    [13, "\"Llevaba años igual\"", ["Llevaba 5 años igual. En 3 meses, esto.", "Lo que cambió no fue el esfuerzo, fue el orden."]],
+    [13, "El empresario sin tiempo", ["Dirige una empresa, tiene 2 hijos y entrena 3 días: así lo hizo.", "Sin tiempo y con resultados: su caso."]],
+    [13, "Llegó con dolor, hoy entrena sin molestias", ["Llegó sin poder agacharse. Hoy entrena 4 días.", "De la lesión al mejor físico de su vida."]],
+    [13, "La analítica antes y después", ["Mira su analítica antes y 3 meses después.", "Su médico le preguntó qué había hecho."]],
+    [13, "El testimonio de la familia", ["Lo que dice su mujer: 'ahora tiene energía'.", "El cambio que nota su familia antes que la báscula."]]
+  ];
+  var FMTS = ["YouTube", "Yapping", "Voz en off", "Trend", "Carrusel", "Historias"];
+  var fFam = -1, fFmt = "";
+  function angFmts(a) { return FAMS[a[0]].fm; }
+  function renderAng() {
+    var q = ($("ang-q").value || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    var norm = function (t) { return t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && angFmts(a).indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">"' + esc(h) + '"</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>';
+          }).join("") + '<div class="meta">' + f.fm.map(function (m) { return '<span class="tag">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  $("ang-list").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var done = function (t) { var o = "Copiar"; b.textContent = t; setTimeout(function () { b.textContent = o; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+  renderAng();
+
   /* ---------- Pestañas ---------- */
   var tabs = document.querySelectorAll(".tab");
   tabs.forEach(function (t) {
     t.addEventListener("click", function () {
       tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
-      ["yt", "es", "en", "me", "emb"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      ["yt", "es", "ang", "en", "me", "emb"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
       window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
     });
   });
