@@ -1,0 +1,272 @@
+<title>María Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #faf6f3;
+  --white: #ffffff;
+  --ink: #1a1414;
+  --soft: #6d6363;
+  --line: #ecdcd6;
+  --chip: #f6ece8;
+  --coral: #c8433f;
+  --coral-soft: #f4a7a1;
+  --coral-text: #b23a36;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.2vw, 54px)/1.04 var(--f-body); letter-spacing: -.035em; }
+h1 em, h2 em { font-style: normal; color: var(--coral-text); }
+h2 { font: 800 clamp(22px, 3vw, 30px)/1.15 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 780px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 780px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .label { color: var(--coral-soft); }
+.card.dark .soft, .card.dark ul.l { color: #cdbfbc; }
+.card.dark ul.l b { color: var(--white); }
+.card.coral { background: var(--coral); color: var(--white); box-shadow: none; }
+.card.coral .label { color: #ffe1dd; }
+.card.coral ul.l { color: #ffe9e6; }
+.card.coral ul.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.card.dark .say { background: #2c2222; color: var(--white); }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--coral-text); }
+.card.dark .badge { background: #3a2a2a; color: var(--coral-soft); }
+.card.coral .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.tbl tr.now td { background: #fff1ee; }
+.tbl td b { color: var(--ink); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: diagnóstico arriba; debajo, vista previa del perfil (fija en escritorio) y a su lado nombres, bios, foto, destacadas y fijados. */
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#f4a7a1, #c8433f, #f0a33a, #f4a7a1); }
+.avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #f4a7a1, #c8433f); display: grid; place-items: center; color: #fff; font: 800 24px/1 var(--f-body); letter-spacing: -.02em; }
+.ig-user { font-weight: 800; font-size: 16px; display: flex; gap: 5px; align-items: center; }
+.ig-user svg { width: 15px; height: 15px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--coral); display: grid; place-items: center; color: #fff; font: 800 13px/1 var(--f-body); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #f6ece8, #f4a7a1); color: var(--ink); display: grid; align-content: end; padding: 6px; font: 800 10.5px/1.15 var(--f-body); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--coral-text); display: block; font-size: 11.5px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--coral-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--coral-soft); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--coral); }
+.opt:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--coral-text); }
+.opt .txt { white-space: pre-line; font-size: 14.5px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 13.5px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#f4a7a1, #c8433f, #f0a33a, #f4a7a1); }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #fbe3dc 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #fbe3dc 0 46%, transparent 47%), #c8433f; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">María Berro · Parte 1 · Perfil</span>
+    <h1>Tu perfil, para mujeres que quieren verse <em>mejor que nunca</em>.</h1>
+    <p class="soft" style="font-size:18px">Tu perfil ya tiene una buena base. Con unos pocos cambios va a decir en 3 segundos a quién ayudas y por qué tú. Toca un nombre y una bio para ver cómo queda. Poco a poco: esto se hace en una tarde.</p>
+  </header>
+
+  <section class="card coral" aria-label="Tu nicho">
+    <span class="label">Tu nicho, en una frase</span>
+    <h2 style="color:#fff">Mujeres que quieren verse mejor que nunca a los 30 y a los 40. Y mantenerlo toda la vida.</h2>
+    <ul class="l">
+      <li><b>"Mejor que nunca"</b> es tu frase. Repítela en la bio, en los vídeos, en las historias y en la llamada.</li>
+      <li><b>Háblale de tú a tú,</b> como una amiga que sabe: "Tía, si quieres verte más buena que nunca, esto es para ti".</li>
+      <li><b>"Para toda la vida"</b> responde a su miedo más grande: perderlo y volver a empezar.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes muy bien</span>
+      <ul class="l">
+        <li><b>Eres dietista,</b> y eso da una confianza que la mayoría de entrenadoras no tiene. Que se vea.</li>
+        <li><b>Antes y después de clientas fijados</b> con tu logo MB: es lo primero que se ve y funciona.</li>
+        <li><b>Una llamada a la acción clara</b> ("Solicita info") con formulario.</li>
+        <li><b>Destacadas con tu color</b> y una marca reconocible.</li>
+        <li><b>Hablas a cámara con naturalidad:</b> es la base de todo lo que viene.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que vamos a pulir</span>
+      <ul class="l">
+        <li><b>La foto de perfil:</b> ahora es de cuerpo entero y muy pequeña; no se te ve la cara. Cuesta conectar.</li>
+        <li><b>"Pierde grasa y gana fuerza"</b> lo dicen casi todas. <b>"Mejor que nunca a los 30 y 40"</b> es tuyo.</li>
+        <li><b>Falta el "para siempre":</b> tu clienta ya ha perdido peso antes y lo ha recuperado.</li>
+        <li><b>Nombres de destacadas cortados</b> ("CORREC. T…", "TIPS ENTR…"): mejor una palabra.</li>
+        <li><b>La categoría sale en inglés</b> ("Dietician"): cámbiala a "Nutricionista" o "Dietista".</li>
+        <li><b>Falta un "Sobre mí"</b> para que te conozcan y confíen.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil: aquí va tu nueva foto"><span>MB</span></div>
+          <div>
+            <div class="ig-user">mariaberrofit <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3a8ef6" d="M12 1.5l2.6 2 3.2-.4.9 3.1 2.9 1.5-1 3.1 1 3.1-2.9 1.5-.9 3.1-3.2-.4-2.6 2-2.6-2-3.2.4-.9-3.1-2.9-1.5 1-3.1-1-3.1 2.9-1.5.9-3.1 3.2.4z"/><path fill="#fff" d="M10.6 15.2l-3-3 1.2-1.2 1.8 1.8 4.6-4.6 1.2 1.2z"/></svg></div>
+            <div class="ig-stats"><span><b>185</b>posts</span><span><b>7.288</b>seguidores</span><span><b>992</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Nutricionista</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>form.typeform.com/to/WVDO4Lmy</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>✦</span></i><small>Casos</small></div>
+          <div><i><span>1·2·3</span></i><small>Método</small></div>
+          <div><i><span>MB</span></i><small>Sobre mí</small></div>
+          <div><i><span>💬</span></i><small>Feedbacks</small></div>
+          <div><i><span>🍽</span></i><small>Recetas</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>Antes / ahora</em>Tu mejor caso</div>
+          <div><em>Antes / ahora</em>El segundo</div>
+          <div><em>Quién soy</em>Por qué hago esto</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda. Tu nombre más lo que consigues.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="María Berro | Mejor que nunca a los 30 y 40"><b>María Berro | Mejor que nunca a los 30 y 40</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="María Berro | Dietista · Mujeres 30+ y 40+"><b>María Berro | Dietista · Mujeres 30+ y 40+</b></button><button class="opt" type="button" data-name="María Berro | Dietista y entrenadora 30+"><b>María Berro | Dietista y entrenadora 30+</b></button><button class="opt" type="button" data-name="María Berro | Mejor que nunca, para siempre"><b>María Berro | Mejor que nunca, para siempre</b></button><button class="opt" type="button" data-name="María Berro | Pierde grasa a los 30 y 40"><b>María Berro | Pierde grasa a los 30 y 40</b></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué confiar en ti, y caben en los 150 caracteres. Elige la que más te suene a ti.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">Dietista y entrenadora
+Mujeres 30+ y 40+: mejor que nunca
+Pierde grasa, gana fuerza y mantenlo siempre
+Sin dietas extremas · Pide info 👇</span><span class="why">A quién ayudas, qué consigue y que dura. Con tu título delante.</span></button><button class="opt" type="button"><span class="tag">B · Cercana, de tú a tú</span><span class="txt">Tía, a los 30 y a los 40 se puede estar mejor que nunca 💗
+Nutrición + fuerza a tu medida, sin dietas extremas
+Dietista · Pide info 👇</span><span class="why">Te habla como una amiga que sabe. Muy tu estilo.</span></button><button class="opt" type="button"><span class="tag">C · Para siempre</span><span class="txt">Mejor que nunca a los 30, a los 40 y para siempre
+Pierde grasa y tonifica comiendo lo de casa
+Dietista-nutricionista
+Solicita info 👇</span><span class="why">Ataca el miedo nº 1: recuperarlo todo.</span></button><button class="opt" type="button"><span class="tag">D · Atrevida</span><span class="txt">Más buena que nunca a los 30 y a los 40 🔥
+Y que te dure toda la vida
+Dietista y entrenadora de fuerza
+Mira los cambios 👇</span><span class="why">Para destacar. Si te ves cómoda con este tono, funciona muy bien.</span></button><button class="opt" type="button"><span class="tag">E · Poco tiempo</span><span class="txt">Mujeres 30+ y 40+ con poco tiempo
+Comida de casa, fuerza y cero dietas extremas
+Mejor que nunca y para siempre 💗
+Pide info 👇</span><span class="why">Para mamás y mujeres que trabajan: tu cliente real.</span></button><button class="opt" type="button"><span class="tag">F · Autoridad</span><span class="txt">Dietista-nutricionista y entrenadora
+Ayudo a mujeres de 30 y 40 a verse mejor que nunca
+Seguimiento real, cambios que duran
+Solicita info 👇</span><span class="why">Tu título primero: confianza desde el primer segundo.</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><span></span></div>
+          <ul class="l">
+            <li><b>Más cerca:</b> cara y hombros. Que se te vea la cara en pequeño.</li>
+            <li><b>Sonriendo y mirando a cámara:</b> genera confianza al momento.</li>
+            <li><b>Luz natural de frente,</b> junto a una ventana. Nada de luz desde arriba o desde atrás.</li>
+            <li><b>Fondo limpio en tu coral</b> y mantén el aro de color: ya es tu marca.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Casos:</b> antes y después.</li><li><b>Método:</b> tus 3 fases.</li><li><b>Sobre mí:</b> quién eres y por qué.</li><li><b>Feedbacks:</b> mensajes de clientas.</li><li><b>Recetas / Tips.</b></li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>Tus 2 mejores antes y después,</b> con edad si puedes ("a los 38").</li><li><b>1 "quién soy":</b> por qué haces esto y para quién.</li></ul></div>
+          <div class="card"><span class="label">Pequeñas reglas</span><ul class="l"><li><b>Una sola acción:</b> "Pide info" con el formulario.</li><li><b>Nombres de destacadas</b> de una palabra.</li><li><b>Categoría</b> en español.</li></ul></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = pvName.textContent.length; cb.textContent = pvBio.textContent.length;
+    cn.className = pvName.textContent.length > 64 ? "over" : ""; cb.className = pvBio.textContent.length > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = b.querySelector(".txt").textContent.length + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>

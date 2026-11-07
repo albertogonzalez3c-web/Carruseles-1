@@ -1,0 +1,234 @@
+<title>María Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #faf6f3;
+  --white: #ffffff;
+  --ink: #1a1414;
+  --soft: #6d6363;
+  --line: #ecdcd6;
+  --chip: #f6ece8;
+  --coral: #c8433f;
+  --coral-soft: #f4a7a1;
+  --coral-text: #b23a36;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.2vw, 54px)/1.04 var(--f-body); letter-spacing: -.035em; }
+h1 em, h2 em { font-style: normal; color: var(--coral-text); }
+h2 { font: 800 clamp(22px, 3vw, 30px)/1.15 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 780px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 780px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .label { color: var(--coral-soft); }
+.card.dark .soft, .card.dark ul.l { color: #cdbfbc; }
+.card.dark ul.l b { color: var(--white); }
+.card.coral { background: var(--coral); color: var(--white); box-shadow: none; }
+.card.coral .label { color: #ffe1dd; }
+.card.coral ul.l { color: #ffe9e6; }
+.card.coral ul.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.card.dark .say { background: #2c2222; color: var(--white); }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--coral-text); }
+.card.dark .badge { background: #3a2a2a; color: var(--coral-soft); }
+.card.coral .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.tbl tr.now td { background: #fff1ee; }
+.tbl td b { color: var(--ink); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: el método en 3 fases, qué incluye, precios en orden de presentación, escalera de subida, garantía y contrato, back-end. */
+.phase .n { font: 800 44px/1 var(--f-body); color: var(--coral-text); letter-spacing: -.04em; }
+.price { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.price small { font-size: 15px; font-weight: 700; letter-spacing: 0; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 12px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">María Berro · Parte 2 · Oferta</span>
+    <h1>Método <em>Mejor Que Nunca</em>.</h1>
+    <p class="soft" style="font-size:18px">Para mujeres que quieren verse mejor que nunca a los 30 y a los 40, y mantenerlo toda la vida. Una oferta clara, en 3 fases, que puedes explicar en 2 minutos.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">3 fases, 6 meses. Primero activas, luego esculpes y después lo mantienes para siempre.</h2></header>
+    <div class="g3">
+      <article class="card phase">
+        <span class="n">01</span>
+        <h3>Activar · meses 1 y 2</h3>
+        <ul class="l"><li>Hábitos que encajan en su día.</li><li>Perder la primera grasa, sin pasar hambre.</li><li>Aprender la técnica de fuerza (tu corrección de técnica).</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">02</span>
+        <h3>Esculpir · meses 3 y 4</h3>
+        <ul class="l"><li>Más fuerza y más glúteo.</li><li>Recomposición: menos grasa, más forma.</li><li>Tonificar donde ella más lo quiere.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">03</span>
+        <h3>Para siempre · meses 5 y 6</h3>
+        <ul class="l"><li>Subir calorías sin recuperar.</li><li>Mantenimiento: comer bien sin contar todo.</li><li>Autonomía: que sepa hacerlo sola.</li></ul>
+      </article>
+    </div>
+    <p class="say">"En los primeros meses te ves mejor. En los últimos aprendes a quedarte así para siempre."</p>
+    <div class="g2">
+      <div class="card">
+        <span class="label">Qué incluye</span>
+        <ul class="l">
+          <li><b>Plan de nutrición a su medida,</b> con la comida de casa y de su familia.</li>
+          <li><b>Entreno de fuerza adaptado a su tiempo:</b> en casa o en el gimnasio.</li>
+          <li><b>Revisión semanal</b> y ajuste del plan.</li>
+          <li><b>Soporte por WhatsApp.</b></li>
+          <li><b>Corrección de técnica</b> con sus vídeos.</li>
+        </ul>
+      </div>
+      <div class="card chip">
+        <span class="label">Adaptado a cada etapa</span>
+        <ul class="l">
+          <li><b>A los 30:</b> trabajo, hijos pequeños, poco tiempo.</li>
+          <li><b>A los 40:</b> el cuerpo cambia y lo de antes ya no funciona igual. Por eso el plan se adapta, también a los cambios hormonales de cada etapa, como la perimenopausia.</li>
+          <li><b>Como dietista-nutricionista</b> ajustas la alimentación y los hábitos. Si algo necesita médico, se deriva.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header>
+      <span class="label">Precios · empiezas aquí</span>
+      <h2 id="h-precios">El que vendes es el <em>semestre</em>.</h2>
+      <p class="soft">Es el que mejor encaja con las 3 fases y el que más resultado le da a tu clienta.</p>
+    </header>
+    <div class="g4">
+      <article class="card dark">
+        <span class="badge">1 · El que ofreces primero</span>
+        <h3>Semestre</h3>
+        <p class="price">400 €</p>
+        <ul class="l"><li>Las 3 fases completas.</li><li>El estándar.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">2 · El que más le compensa</span>
+        <h3>Año completo</h3>
+        <p class="price">700 €</p>
+        <ul class="l"><li>Las 3 fases más 6 meses de mantenimiento.</li><li>Solo 300 € más que el semestre.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">3 · Si no llega</span>
+        <h3>Semestre en 2 pagos</h3>
+        <p class="price">210 € <small>+ 210 €</small></p>
+        <ul class="l"><li>Total 420 €: paga un poco más por fraccionar.</li><li>Sigue comprometida 6 meses.</li></ul>
+      </article>
+      <article class="card chip">
+        <span class="badge">4 · Último recurso</span>
+        <h3>Trimestre</h3>
+        <p class="price">250 €</p>
+        <ul class="l"><li>Solo la fase 1.</li><li>Nunca lo dices primero.</li></ul>
+      </article>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cómo lo dices en la llamada</h3>
+        <p class="say">"Lo que te recomiendo son los 6 meses: 400 €. Si prefieres el año completo, son 700 € y te quedas también con el mantenimiento."</p>
+        <p class="soft" style="font-size:14.5px">Lo dices una vez y te callas. El trimestre solo sale si te dice que no por dinero y tampoco le encajan los 2 pagos.</p>
+      </div>
+      <div class="card">
+        <h3>Reglas</h3>
+        <ul class="l">
+          <li><b>El precio no va en el perfil:</b> se dice en la llamada.</li>
+          <li><b>Un downsell cada vez,</b> solo si el "no" es por dinero.</li>
+          <li><b>Pago único con descuento, nunca recargo:</b> si algún día usas Klarna, el precio de base es el de plazos y el pago único lleva descuento.</li>
+          <li><b>Todo con contrato.</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-sube">
+    <header>
+      <span class="label">Cómo vas subiendo</span>
+      <h2 id="h-sube">Cada venta, un 20 % más. Hasta el año a 1.200 €.</h2>
+      <p class="soft">Empiezas con precios cómodos para coger confianza. Cada vez que cierras una venta, subes de nivel. Nunca se baja.</p>
+    </header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Cuándo</th><th>Trimestre</th><th>Semestre</th><th>Año</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>Ahora</td><td>250 €</td><td><b>400 €</b></td><td>700 €</td></tr>
+          <tr><td>Nivel 1</td><td>Tras tu próxima venta</td><td>300 €</td><td><b>480 €</b></td><td>840 €</td></tr>
+          <tr><td>Nivel 2</td><td>Tras la siguiente</td><td>360 €</td><td><b>580 €</b></td><td>1.000 €</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>Tras la siguiente</td><td>400 €</td><td><b>690 €</b></td><td>1.200 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="steps">
+      <div><b>1. Cierras una venta</b><span>A la siguiente persona ya le das el precio del nivel siguiente.</span></div>
+      <div><b>2. Nunca bajas</b><span>Aunque te digan que no un par de veces: es normal.</span></div>
+      <div><b>3. El techo</b><span>Trimestre 400 € y año 1.200 €. Ahí te quedas.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-gar">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-gar">Riesgo cero para la que cumple.</h2></header>
+    <div class="g2">
+      <article class="card coral">
+        <span class="label">Garantía</span>
+        <p style="font-size:19px;font-weight:700;line-height:1.4">"Si sigues el plan, me mandas tus revisiones y en la fase 1 no ves cambios, sigo contigo gratis hasta que los veas."</p>
+        <ul class="l"><li><b>Condición medible:</b> 80 % de cumplimiento o más y todas las revisiones enviadas.</li><li><b>No hay devolución de dinero:</b> la garantía protege a la que trabaja.</li></ul>
+      </article>
+      <article class="card">
+        <span class="label">Contrato · firma digital antes de empezar</span>
+        <ul class="l">
+          <li>Qué incluye, cuánto dura y cómo se paga.</li>
+          <li>Las condiciones de la garantía.</li>
+          <li>Consentimiento de datos de salud y, si quiere, de imagen para usar su antes y después.</li>
+          <li><b>Los 14 días para desistir:</b> ella pide empezar ya y acepta pagar la parte del servicio ya hecha si se echa atrás.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header>
+      <span class="label">Después de la venta</span>
+      <h2 id="h-back">Tu mejor clienta es la que ya está contigo.</h2>
+      <p class="soft">Se lo ofreces en su momento dulce: cuando ve un cambio claro en una foto, cuando le dice alguien "qué bien estás" o cuando te escribe contenta.</p>
+    </header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><ul class="l"><li><b>Trimestre → semestre:</b> paga la diferencia.</li><li><b>Semestre → año:</b> paga la diferencia.</li></ul></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Renovar antes de acabar</h3><ul class="l"><li>Nunca al final.</li><li>Con un detalle y fecha límite: precio congelado o un mes de regalo.</li></ul></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento mensual</h3><ul class="l"><li>Revisión al mes y ajustes.</li><li>Precio a decidir con Alberto.</li></ul></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a una amiga</h3><ul class="l"><li>Si entra, un mes gratis para las dos o un detalle.</li><li>Las amigas de tus clientas son tu cliente ideal.</li></ul></article>
+    </div>
+    <p class="say">"Mira cómo estabas hace 10 semanas y cómo estás hoy. Lo difícil ya está hecho. Si renuevas esta semana, te mantengo el precio."</p>
+  </section>
+</div>

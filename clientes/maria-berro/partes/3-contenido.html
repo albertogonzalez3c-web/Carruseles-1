@@ -1,0 +1,488 @@
+<title>María Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: cabecera + pestañas fijas (Plan, Ángulos, Guiones, Grabar bien). El plan sube poco a poco en 3 etapas con calendario semanal. Paleta coral de María. */
+:root {
+  --paper: #faf6f3;
+  --white: #ffffff;
+  --ink: #1a1414;
+  --soft: #6d6363;
+  --line: #ecdcd6;
+  --chip: #f6ece8;
+  --coral: #c8433f;
+  --coral-soft: #f4a7a1;
+  --coral-text: #b23a36;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.4vw, 54px)/1.03 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 clamp(22px, 3vw, 29px)/1.15 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 66ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(250, 246, 243, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 999px; padding: 9px 14px; font-weight: 700; font-size: 14px; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--coral); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible, .cp:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 30px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 780px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l { color: #cdbfbc; }
+.card.dark ul.l b { color: var(--white); }
+.card.dark .label { color: var(--coral-soft); }
+.card.coral { background: var(--coral); color: var(--white); box-shadow: none; }
+.card.coral .label { color: #ffe1de; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-weight: 700; font-size: 14.5px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 999px; background: var(--chip); color: var(--ink); }
+.tag.c { background: var(--coral); color: var(--white); }
+.fmt { display: grid; gap: 8px; }
+.fmt .ico { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; color: var(--white); }
+/* Etapas */
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+.stage-h .big { font: 800 30px/1 var(--f-body); color: var(--coral-text); letter-spacing: -.03em; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 14px; padding: 10px; display: grid; gap: 6px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; min-height: 84px; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font-weight: 800; font-size: 14px; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 9px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.25; color: var(--white); }
+.rest { font-size: 12.5px; color: var(--soft); }
+.k-vo { background: #c8433f; }
+.k-yap { background: #7a3e8e; }
+.k-trend { background: #1f6f6b; }
+.k-gs { background: #2c4f9e; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 10px 8px 0; }
+.tbl td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.tblwrap { overflow-x: auto; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 999px; white-space: nowrap; }
+.ti .n.first { background: var(--coral); color: var(--white); }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+/* Ángulos */
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 12px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--coral); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 999px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; min-width: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 10px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+/* Guiones */
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .line:first-of-type { border-top: 0; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--coral-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check { padding-left: 0; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 5px; box-shadow: inset 0 0 0 2px var(--coral); }
+@media (max-width: 900px) {
+  .g4 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .g2, .g4 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .script .line { grid-template-columns: 1fr; gap: 2px; }
+}
+</style>
+
+<header class="top wrap">
+  <span class="label">María Berro · Parte 3 · Contenido</span>
+  <h1>Poco a poco, pero cada semana.</h1>
+  <p class="lede">Para mujeres que quieren verse mejor que nunca a los 30 y a los 40, y mantenerlo para siempre. Empiezas con 4 reels a la semana y vas subiendo cuando te salga fácil. Lo importante no es hacer mucho: es no parar.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="El plan">
+    <div class="sec">
+      <div class="head"><span class="label">Tus 4 formatos</span><h2>Solo estos cuatro. No necesitas más.</h2><p class="soft">Cuatro formatos que puedes grabar tú sola, en casa o en el gimnasio, en una sesión.</p></div>
+      <div class="g4">
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Tú entrenando o en tu día a día, y tu voz encima contando una idea. El más fácil para empezar: no tienes que hablar a cámara.</p></article>
+        <article class="card fmt"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">Tú hablando a cámara, como si se lo contaras a una amiga. 30–60 segundos, una sola idea. Es el que más confianza genera.</p></article>
+        <article class="card fmt"><span class="ico k-trend">TR</span><h3>Tendencia viral</h3><p class="soft">Un audio o formato que se esté moviendo, adaptado a tu nicho. Sirve para llegar a gente nueva.</p></article>
+        <article class="card fmt"><span class="ico k-gs">GS</span><h3>Green screen</h3><p class="soft">Tú delante de un titular, un post, un mito o una captura, explicándolo o reaccionando. Perfecto para desmontar mitos.</p></article>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Cómo vas subiendo</span><h2>Tres etapas. Pasas a la siguiente cuando la anterior te sale sin esfuerzo.</h2></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:26px"></div>
+      <p class="soft" style="font-size:14px">Si una semana solo te salen 3, no pasa nada: la siguiente vuelves al ritmo. Lo que no vale es parar dos semanas seguidas.</p>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">YouTube</span><h2>Uno a la semana para empezar. Tres cuando ya tengas rodaje.</h2><p class="soft">Vídeos de 8 a 15 minutos, hablando a cámara como en un yapping largo. En la descripción, siempre tu formulario: <b>form.typeform.com/to/WVDO4Lmy</b>.</p></div>
+      <div class="card tblwrap">
+        <table class="tbl">
+          <thead><tr><th>Cuándo</th><th>Vídeos por semana</th><th>Truco</th></tr></thead>
+          <tbody>
+            <tr><td><b>Mes 1</b></td><td>1</td><td>Grábalo el mismo día que tus reels. De cada vídeo salen 2–3 clips para Instagram.</td></tr>
+            <tr><td><b>Mes 2</b></td><td>2</td><td>Uno de valor y uno de caso o pregunta de seguidora.</td></tr>
+            <tr><td><b>Mes 3</b></td><td>3</td><td>Graba los 3 en una sola tarde, con la misma luz y el mismo sitio.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>8 títulos para tus primeros vídeos</h3>
+        <div id="yt"></div>
+        <p class="soft" style="font-size:13.5px">En cada vídeo: a mitad y al final, "si quieres que te ayude, tienes el formulario en la descripción". Y enseña siempre algún antes y ahora de tus clientas.</p>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Historias · todos los días</span><h2>Tres bloques cortos. Diez minutos al día.</h2></div>
+      <div class="g2">
+        <div class="card">
+          <ul class="l">
+            <li><b>Mañana · Tu día a día:</b> tu desayuno, tu entreno, tu café. Que te conozcan.</li>
+            <li><b>Mediodía · Valor:</b> un consejo rápido, una corrección de técnica, una receta de 5 minutos.</li>
+            <li><b>Tarde · Prueba o llamada a la acción:</b> el mensaje de una clienta, un antes y ahora, una encuesta.</li>
+          </ul>
+        </div>
+        <div class="card coral">
+          <span class="label">Martes y viernes · CTA fuerte</span>
+          <h3>"Esta semana abro 3 plazas para mujeres que quieren verse mejor que nunca. Escríbeme MEJOR por privado y te cuento."</h3>
+          <p style="font-size:14px">Con una encuesta o caja de preguntas antes, para que te escriban más.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁNGULOS -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos de comunicación">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Tu banco de ideas</span>
+        <h2>Todo lo que puedes contarle a una mujer que quiere verse mejor que nunca.</h2>
+        <p class="soft">Cuando no sepas qué grabar, abre esto, elige un ángulo y copia el gancho. Habla como le hablarías a una amiga: cercana, directa, sin tecnicismos.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Cómo usarlo</span>
+        <ul class="l">
+          <li><b>Rota las familias:</b> cada semana toca al menos 3 distintas.</li>
+          <li><b>De 1 ángulo salen varias piezas:</b> un yapping, una voz en off con otro gancho y unas historias.</li>
+          <li><b>Repite tu frase:</b> "verte mejor que nunca a los 30 y a los 40, y para siempre". Que la gente la asocie contigo.</li>
+          <li><b>Límite:</b> explica cómo cambia el cuerpo, pero no diagnostiques ni prometas resultados médicos. Nada de "pierde X kilos en Y días".</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar (p. ej. glúteo, hijos, vino, perimenopausia…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- GUIONES -->
+  <section class="view" id="v-gui" hidden aria-label="Guiones listos">
+    <div class="sec">
+      <div class="head"><span class="label">Para grabar esta semana</span><h2>Cuatro guiones, uno de cada formato.</h2><p class="soft">Léelos un par de veces y dilos con tus palabras. No hace falta que sean exactos: que suene a ti.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- GRABAR -->
+  <section class="view" id="v-rec" hidden aria-label="Grabar bien">
+    <div class="sec">
+      <div class="head"><span class="label">Lo más importante</span><h2>La luz cambia todo. Con buena luz, el mismo vídeo parece otro.</h2><p class="soft">Con mala luz se te ve cansada y el vídeo parece de baja calidad, y la gente pasa de largo antes de escucharte. Arreglarlo es fácil y casi gratis.</p></div>
+      <div class="g2">
+        <div class="card coral">
+          <span class="label">La luz</span>
+          <ul class="l" style="color:#fff">
+            <li><b style="color:#fff">Luz natural de frente:</b> ponte mirando a la ventana, nunca de espaldas a ella.</li>
+            <li><b style="color:#fff">O un aro de luz o softbox</b> a la altura de los ojos, un poco de lado. Uno barato vale.</li>
+            <li><b style="color:#fff">Nada de luz de techo sola:</b> marca ojeras y sombras.</li>
+            <li><b style="color:#fff">Graba siempre en el mismo sitio y a la misma hora:</b> así todos tus vídeos se ven igual de bien.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">El resto</span>
+          <ul class="l">
+            <li><b>Fondo limpio:</b> sin ropa tirada ni cosas por medio. En el gimnasio, una zona ordenada.</li>
+            <li><b>Cámara trasera del móvil,</b> a la altura de los ojos, con trípode.</li>
+            <li><b>Limpia la lente</b> antes de cada sesión. Parece una tontería y cambia mucho.</li>
+            <li><b>Micrófono de solapa barato</b> (15–25 €): el sonido importa tanto como la imagen.</li>
+            <li><b>Calidad:</b> 4K o 1080p a 30 fps.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Checklist antes de darle a grabar</h3>
+          <ul class="l check">
+            <li>Luz de frente y la cara bien iluminada.</li>
+            <li>Lente limpia.</li>
+            <li>Móvil a la altura de los ojos y en vertical.</li>
+            <li>Fondo ordenado.</li>
+            <li>Micro puesto y probado.</li>
+            <li>Sé el gancho de memoria: la primera frase es la que importa.</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <span class="label">Graba en lote</span>
+          <h3>1 o 2 sesiones a la semana y tienes todo hecho.</h3>
+          <ul class="l">
+            <li><b>Una tarde:</b> 4–7 reels con la misma luz y el mismo look. Cambia de camiseta entre vídeos.</li>
+            <li><b>Ese mismo día:</b> el YouTube de la semana.</li>
+            <li><b>Los demás días</b> solo publicas y haces historias. Nada de "hoy no me apetece grabar".</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = {
+    vo: { n: "Voz en off", c: "k-vo" },
+    yap: { n: "Yapping", c: "k-yap" },
+    trend: { n: "Tendencia", c: "k-trend" },
+    gs: { n: "Green screen", c: "k-gs" }
+  };
+
+  /* ---------- Etapas ---------- */
+  var STAGES = [
+    { t: "Semanas 1 y 2", s: "Arrancar sin agobio: 1 de cada formato.", plan: [["vo"], [], ["yap"], [], ["trend"], [], ["gs"]] },
+    { t: "Semanas 3 y 4", s: "Subes a 6. Si alguna semana salen 5, perfecto.", plan: [["vo"], ["yap"], ["trend"], ["gs"], ["vo"], ["yap"], []] },
+    { t: "Desde el mes 2", s: "Uno al día. Ya lo tienes automatizado.", plan: [["vo"], ["yap"], ["trend"], ["gs"], ["vo"], ["yap"], ["trend"]] }
+  ];
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var cnt = { vo: 0, yap: 0, trend: 0, gs: 0 }, total = 0;
+    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; total++; }); });
+    var days = st.plan.map(function (d, i) {
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + d.length + '</small></div>' +
+        (d.length ? d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") : '<span class="rest">Descanso</span>') + '</div>';
+    }).join("");
+    var desglose = Object.keys(cnt).filter(function (k) { return cnt[k]; }).map(function (k) { return cnt[k] + " " + K[k].n.toLowerCase(); }).join(" · ");
+    return '<div class="stage"><div class="stage-h"><span class="big" data-total="' + total + '">' + total + ' reels</span><h3>' + esc(st.t) + '</h3><span class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desglose + ')</span></div><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- YouTube ---------- */
+  var YT = [
+    ["Por qué a los 30 tu cuerpo ya no responde igual (y qué hacer)", "El primero: presenta tu nicho y tu forma de trabajar.", true],
+    ["Cómo verte mejor que nunca a los 40: lo que nadie te cuenta", "El segundo: conecta con las de 40.", true],
+    ["Los 5 errores que te impiden perder grasa aunque comas sano", "Valor puro, muy buscado.", false],
+    ["Pesas o cardio: qué hacer si quieres un cuerpo firme", "Desmonta el miedo a las pesas.", false],
+    ["Mi método en 3 fases: activar, esculpir y para siempre", "Explica tu forma de trabajar sin vender.", false],
+    ["Qué como en un día para mantenerme sin dietas", "Cercanía: que te conozcan.", false],
+    ["Así cambió el cuerpo de [clienta] en 6 meses", "Caso real con su antes y ahora (con permiso).", false],
+    ["Cómo no recuperar lo perdido después de una dieta", "Para las que han hecho mil dietas.", false]
+  ];
+  $("yt").innerHTML = YT.map(function (y, i) {
+    return '<div class="ti"><span class="n' + (y[2] ? " first" : "") + '">' + (y[2] ? "Primero" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>';
+  }).join("");
+
+  /* ---------- Ángulos ---------- */
+  var FMTS = ["Voz en off", "Yapping", "Tendencia", "Green screen", "YouTube", "Historias"];
+  var FAMS = [
+    { n: "Mejor que nunca a los 30 y 40", d: "Tu frase. Repítela hasta que la asocien contigo." },
+    { n: "Tu cuerpo cambia a los 30 y 40", d: "Metabolismo, hormonas, perimenopausia, explicado sin diagnosticar." },
+    { n: "Fuerza y glúteo", d: "Las pesas no te ponen grande: te ponen firme." },
+    { n: "Sin dietas extremas", d: "Comer con tu familia y disfrutar." },
+    { n: "Poco tiempo", d: "Trabajo, hijos, casa… y aun así." },
+    { n: "Mamás y postparto", d: "Volver a sentirte tú después de ser madre." },
+    { n: "Autoestima: sexy y segura", d: "Verte guapa, sentirte bien en tu piel." },
+    { n: "Fines de semana, vino y cenas", d: "Vivir la vida sin perder lo conseguido." },
+    { n: "Para siempre, sin rebote", d: "Mantenerlo es la verdadera meta." },
+    { n: "Mitos", d: "Lo que te han vendido y no funciona." },
+    { n: "Tu autoridad", d: "Dietista y entrenadora: técnica y nutrición." },
+    { n: "Casos y objeciones", d: "Antes y ahora, y lo que te dicen antes de empezar." }
+  ];
+  var ANG = [
+    [0, "Mejor que nunca a los 30", ["Tía, a los 30 no se acaba nada: se puede empezar lo mejor.", "Tu mejor cuerpo no estaba a los 20. Está por llegar."], ["Yapping", "Voz en off"]],
+    [0, "Mejor que nunca a los 40", ["A los 40 se puede estar más buena que a los 25. Lo veo cada semana.", "Si tienes 40 y crees que ya es tarde, mira esto."], ["Yapping", "Tendencia"]],
+    [0, "Y para siempre", ["No quiero que te veas bien un verano. Quiero que te veas bien el resto de tu vida.", "Verte bien es fácil. Mantenerlo es lo que de verdad importa."], ["Voz en off", "Yapping"]],
+    [0, "Ponerte primero", ["Llevas años cuidando de todo el mundo. Te toca a ti.", "No es egoísmo dedicarte una hora al día: es lo mínimo."], ["Yapping", "Historias"]],
+    [0, "La versión que tienes en la cabeza", ["¿Te acuerdas de cómo te imaginabas a los 30? Se puede.", "La mujer que quieres ser existe. Solo hay que construirla."], ["Voz en off"]],
+    [0, "Estar buena también es salud", ["Quiero verme buena y no pienso pedir perdón por ello.", "Verte bien es la consecuencia de cuidarte bien."], ["Tendencia", "Yapping"]],
+    [1, "Por qué a los 30 ya no funciona lo de antes", ["A los 20 dejabas de cenar y bajabas. A los 30 ya no. Te explico por qué.", "Lo que te funcionaba antes ahora no funciona, y no es culpa tuya."], ["Yapping", "YouTube"]],
+    [1, "Músculo y metabolismo", ["A partir de los 30 pierdes músculo cada año si no haces nada.", "Tu metabolismo no está roto: le falta músculo."], ["Green screen", "Voz en off"]],
+    [1, "Hormonas y ciclo, sin dramas", ["Tu ciclo cambia tu hambre, tu energía y tu fuerza. Úsalo a tu favor.", "No eres la misma la semana 1 que la semana 3 del ciclo."], ["Yapping", "Voz en off"]],
+    [1, "Perimenopausia explicada fácil", ["Si tienes más de 40 y notas que todo va más lento, mira esto.", "Lo que pasa en tu cuerpo antes de la menopausia y cómo entrenar."], ["YouTube", "Yapping"]],
+    [1, "Retención e hinchazón", ["No es grasa, es retención. Y tiene solución.", "Por qué te levantas deshinchada y por la tarde no te entra el pantalón."], ["Voz en off", "Green screen"]],
+    [1, "El sueño y el hambre", ["Duermes 6 horas y luego te preguntas por qué picas todo el día.", "Antes de tocar la dieta, mira cómo duermes."], ["Voz en off"]],
+    [2, "Las pesas no te ponen grande", ["Las pesas no te ponen grande. Te ponen firme.", "Si te da miedo ponerte grande, tranquila: no va a pasar."], ["Green screen", "Tendencia"]],
+    [2, "El glúteo que quieres", ["3 ejercicios que de verdad trabajan el glúteo.", "Si haces sentadillas y no notas el glúteo, haces esto mal."], ["Voz en off", "Tendencia"]],
+    [2, "Técnica antes que peso", ["Así se hace un hip thrust bien hecho.", "El error de técnica que veo en el 90 % de las mujeres."], ["Voz en off", "Green screen"]],
+    [2, "Cuerpo firme, no delgado", ["No quiero que estés más delgada. Quiero que estés más firme.", "La báscula no te dice si estás más buena."], ["Yapping", "Tendencia"]],
+    [2, "Fuerza para la vida", ["Ser fuerte es poder con la compra, con tus hijos y contigo misma.", "Entreno fuerza para estar bien a los 70."], ["Yapping"]],
+    [3, "Sin dietas extremas", ["Si tu dieta te amarga la vida, no es tu dieta.", "Nunca más 1.200 calorías. Te explico por qué."], ["Yapping", "Green screen"]],
+    [3, "Comer con tu familia", ["No tienes que cocinar aparte. Come lo mismo que tu familia, bien servido.", "Tu plato y el de tus hijos pueden ser el mismo."], ["Voz en off", "Historias"]],
+    [3, "Comer más para verte mejor", ["Comer poco es la razón por la que no cambias.", "Muchas mujeres comen demasiado poco para verse bien."], ["Green screen", "Yapping"]],
+    [3, "El chocolate no es el enemigo", ["Como chocolate casi todos los días y me mantengo.", "Prohibirte cosas es la forma más rápida de acabar atracándote."], ["Tendencia", "Yapping"]],
+    [3, "Recetas rápidas", ["Cena en 10 minutos que te quita el hambre.", "Lo que como cuando no me apetece cocinar."], ["Voz en off", "Historias"]],
+    [4, "Con poco tiempo", ["Con 3 horas a la semana es suficiente.", "No necesitas 2 horas de gimnasio. Necesitas un plan."], ["Voz en off", "Yapping"]],
+    [4, "Trabajo, casa e hijos", ["Trabajas, tienes niños y llegas muerta: esto es para ti.", "Si no tienes tiempo para ti, este vídeo es para ti."], ["Yapping"]],
+    [4, "Entreno de 30 minutos", ["Solo tienes 30 minutos: haz esto.", "El entreno de 30 minutos que uso con mis clientas."], ["Voz en off", "Tendencia"]],
+    [4, "Organizar la semana", ["Así organizo mis comidas de la semana en 1 hora.", "El domingo que te salva la semana."], ["Voz en off", "Historias"]],
+    [4, "Constancia, no perfección", ["No hace falta hacerlo perfecto. Hace falta no parar.", "Tres días a la semana durante un año ganan a seis días durante un mes."], ["Yapping"]],
+    [5, "Volver a sentirte tú", ["Ser madre no significa olvidarte de ti.", "Tu cuerpo ha hecho algo increíble. Ahora toca cuidarlo."], ["Yapping", "Voz en off"]],
+    [5, "Postparto sin prisas", ["Después del parto no tienes que 'recuperar la figura' en 3 meses.", "Lo que nadie te cuenta del cuerpo después de ser madre."], ["Yapping", "YouTube"]],
+    [5, "Entrenar con niños en casa", ["Entreno en casa con los niños alrededor. Así.", "Si tus hijos son tu excusa, mira esto."], ["Voz en off", "Tendencia"]],
+    [5, "Ejemplo para tus hijas", ["Tus hijas no aprenden lo que dices: aprenden lo que ven.", "Quiero que mi hija me vea fuerte, no a dieta."], ["Yapping"]],
+    [6, "Sentirte sexy otra vez", ["Tía, si quieres verte sexy, no tiene nada de malo.", "El día que te vuelves a ver guapa en el espejo."], ["Yapping", "Tendencia"]],
+    [6, "El bikini sin complejos", ["Este verano vas a ir a la playa sin taparte.", "Llevaba años sin ponerme bikini. Hasta que…"], ["Voz en off", "Tendencia"]],
+    [6, "Fotos sin esconderte", ["¿Cuánto hace que no sales en una foto entera?", "Dejar de esconderte en las fotos también es un resultado."], ["Yapping", "Voz en off"]],
+    [6, "La ropa que te guardabas", ["El vestido que tenías guardado 'para cuando adelgace'. Ese.", "Lo que pasa cuando te vuelve a quedar bien tu ropa."], ["Voz en off", "Tendencia"]],
+    [6, "Seguridad en ti misma", ["Cuando te ves bien, hablas distinto, caminas distinto y te atreves a más.", "Cuidar tu cuerpo te cambia la cabeza."], ["Yapping"]],
+    [7, "El vino del viernes", ["Una copa de vino no arruina tu semana. Esto sí.", "Cómo salir el sábado y seguir avanzando el lunes."], ["Yapping", "Tendencia"]],
+    [7, "Cenas fuera", ["Qué pedir en un restaurante sin sentirte a dieta.", "Cena con amigas y sigues avanzando: así."], ["Voz en off", "Green screen"]],
+    [7, "El lunes después del finde", ["Tu lunes empieza el viernes por la noche.", "No compenses el finde sin comer. Haz esto."], ["Voz en off", "Yapping"]],
+    [7, "Vacaciones sin perder lo conseguido", ["Vuelves de vacaciones y no has perdido nada. Así.", "Disfruta las vacaciones y vuelve igual de bien."], ["Yapping", "Historias"]],
+    [8, "El efecto rebote", ["Si recuperas todo después de cada dieta, no es tu culpa.", "Por qué pierdes 5 kilos y vuelven 7."], ["Yapping", "YouTube"]],
+    [8, "Mantenerlo es lo difícil", ["Perder es fácil. Mantenerlo es lo que nadie te enseña.", "La fase que todas se saltan es la última."], ["Voz en off", "Yapping"]],
+    [8, "Hábitos que se quedan", ["Si no lo puedes hacer toda la vida, no lo hagas ahora.", "Los 3 hábitos que mantienen a mis clientas años después."], ["Voz en off"]],
+    [8, "Mis 3 fases", ["Activar, esculpir y para siempre: así trabajo.", "Por qué empiezo por activar y no por quitarte comida."], ["Yapping", "YouTube"]],
+    [8, "Aprender a hacerlo sola", ["Mi objetivo es que un día no me necesites.", "No quiero que dependas de mí: quiero que aprendas."], ["Yapping"]],
+    [9, "Cardio infinito", ["Una hora de cinta no te va a dar el cuerpo que quieres.", "Más cardio no es la solución."], ["Green screen", "Tendencia"]],
+    [9, "Detox y batidos", ["Los detox no desintoxican nada. Tu hígado ya lo hace.", "Reacciono a la dieta detox que se ha hecho viral."], ["Green screen"]],
+    [9, "Quemagrasas", ["Ningún quemagrasas te va a hacer lo que hacen 3 días de pesas.", "Lo que de verdad funciona no viene en un bote."], ["Green screen", "Voz en off"]],
+    [9, "Comer poco", ["Comer muy poco te hace perder músculo, no grasa.", "Si comes poco y no bajas, mira esto."], ["Green screen", "Yapping"]],
+    [9, "Abdominales para la barriga", ["Hacer abdominales no quita la barriga.", "Por qué 100 abdominales al día no te van a marcar."], ["Tendencia", "Green screen"]],
+    [9, "Las dietas de las famosas", ["Reacciono a lo que come una famosa para 'estar en forma'.", "Lo que no te cuentan de las dietas de las famosas."], ["Green screen"]],
+    [10, "Dietista y entrenadora", ["Soy dietista y entrenadora: las dos cosas, juntas.", "Por qué no funciona hacer la dieta con uno y el entreno con otro."], ["Yapping"]],
+    [10, "Corrección de técnica", ["Corrijo la técnica de una seguidora: mira la diferencia.", "Mándame tu vídeo entrenando y te lo corrijo."], ["Voz en off", "Historias"]],
+    [10, "Mi día a día", ["Lo que como en un día para mantenerme.", "Así es un día normal entrenando y trabajando."], ["Voz en off", "Historias"]],
+    [10, "Lo que he aprendido con mis clientas", ["Después de ayudar a tantas mujeres, este es el error más repetido.", "Lo que tienen en común las mujeres que lo consiguen."], ["Yapping", "YouTube"]],
+    [11, "Antes y ahora", ["Mira dónde estaba hace 6 meses.", "Lo que cambió no fue el esfuerzo: fue el orden."], ["Voz en off", "Tendencia"]],
+    [11, "El mensaje de una clienta", ["Me ha escrito esto una clienta y tengo que enseñároslo.", "Esto es lo que me dicen a los 3 meses."], ["Green screen", "Historias"]],
+    [11, "\"No tengo tiempo\"", ["Precisamente porque no tienes tiempo, no puedes perderlo con algo que no funciona.", "Mis clientas tampoco tenían tiempo."], ["Yapping"]],
+    [11, "\"Ya lo he intentado todo\"", ["Lo intentaste sin un plan hecho para ti.", "Has hecho mil dietas. Ninguna era para ti."], ["Yapping", "Voz en off"]],
+    [11, "\"Es caro\"", ["¿Cuánto llevas gastado en dietas, gimnasios y cremas que no funcionaron?", "Lo caro es seguir igual otro año."], ["Yapping"]],
+    [11, "\"Empiezo el lunes\"", ["El lunes perfecto no existe.", "Llevas 3 años empezando el lunes."], ["Tendencia", "Yapping"]]
+  ];
+  var fFam = -1, fFmt = "";
+  var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">"' + esc(h) + '"</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>';
+          }).join("") + '<div class="meta">' + a[3].map(function (m) { return '<span class="tag">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var orig = b.textContent;
+    var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = orig; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+  renderAng();
+
+  /* ---------- Guiones ---------- */
+  var SCRIPTS = [
+    { k: "vo", t: "Las pesas no te ponen grande", clip: "Tú entrenando glúteo y pierna: hip thrust, sentadilla, peso muerto rumano.", lines: [
+      ["0–3 s", "Si no coges pesas porque te da miedo ponerte grande, escucha esto.", "Texto: ¿MIEDO A PONERTE GRANDE?"],
+      ["3–15 s", "Las pesas no te ponen grande. Te ponen firme. Lo que da forma al glúteo y quita esa flacidez es el músculo, no la cinta.", ""],
+      ["15–28 s", "A partir de los 30 perdemos músculo cada año si no hacemos nada. Por eso te cuesta más que antes, aunque comas lo mismo.", ""],
+      ["28–38 s", "Sígueme: te enseño a entrenar para verte mejor que nunca a los 30 y a los 40.", "Texto: SÍGUEME 💗"]
+    ] },
+    { k: "yap", t: "A los 40 se puede estar mejor que a los 25", clip: "Tú hablando a cámara, buena luz de frente, plano medio.", lines: [
+      ["0–3 s", "Tía, si tienes 40 años y crees que ya es tarde para verte bien, te equivocas.", ""],
+      ["3–18 s", "Lo veo cada semana con mis clientas: mujeres de 40 que se ven mejor que a los 25. No porque coman menos, sino porque por fin entrenan fuerza y comen bien.", ""],
+      ["18–32 s", "Lo que no funciona a los 40 es lo de siempre: dietas de hambre y horas de cardio. Tu cuerpo ha cambiado, y tu forma de cuidarlo también tiene que cambiar.", ""],
+      ["32–42 s", "Si quieres que te ayude a verte mejor que nunca, y para siempre, escríbeme MEJOR por privado.", "Texto: ESCRÍBEME \"MEJOR\""]
+    ] },
+    { k: "trend", t: "Lo que creía antes / lo que sé ahora", clip: "Audio en tendencia de 'antes / ahora'. Dos planos: tú con cara de agobio y tú entrenando segura.", lines: [
+      ["Plano 1", "\"Lo que creía antes: que para verme bien tenía que comer poco y hacer mucho cardio.\"", "Texto en pantalla"],
+      ["Plano 2", "\"Lo que sé ahora: que necesito comer más, entrenar fuerza y dormir bien.\"", "Texto en pantalla"],
+      ["Plano 3", "\"Resultado: mejor que nunca a los 30.\" (tú posando o entrenando)", "Texto en pantalla"],
+      ["Descripción", "¿Te has sentido identificada? Sígueme y te enseño cómo hacerlo tú también.", ""]
+    ] },
+    { k: "gs", t: "Reacciono a la dieta detox", clip: "Green screen detrás: captura de un titular o post de una dieta detox de moda.", lines: [
+      ["0–3 s", "Esta dieta detox se ha hecho viral. Como dietista, te cuento la verdad.", "Detrás: el titular"],
+      ["3–18 s", "Los batidos detox no desintoxican nada: de eso ya se encargan tu hígado y tus riñones. Lo que pierdes esos días es agua, no grasa.", ""],
+      ["18–30 s", "Y cuando vuelves a comer normal, recuperas todo. Por eso nunca termina de funcionar.", ""],
+      ["30–40 s", "Si quieres verte mejor que nunca sin pasar hambre, sígueme. Cada semana desmonto un mito.", "Texto: SÍGUEME"]
+    ] }
+  ];
+  $("scripts").innerHTML = SCRIPTS.map(function (s) {
+    return '<article class="card script"><span class="tag c" style="background:var(--' + "coral" + ')">' + esc(K[s.k].n) + '</span><h3>' + esc(s.t) + '</h3><p class="soft" style="font-size:14px"><b>Qué se ve:</b> ' + esc(s.clip) + '</p>' +
+      s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+      '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(s.lines.map(function (l) { return l[1]; }).join("\n")) + '">Copiar guion</button></article>';
+  }).join("");
+
+  /* ---------- Pestañas ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "ang", "gui", "rec"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>
