@@ -1,0 +1,341 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body><title>Jony Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root {
+  --paper: #f4f2ef;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5c5853;
+  --line: #e0dbd4;
+  --chip: #ebe6df;
+  --accent: #c4232b;
+  --accent-text: #a81d24;
+  --accent-dark: #ff6a6f;
+  --purple: #5b3fd1;
+  --ok: #1f7a4d;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(28px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em, h3 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+a { color: var(--accent-text); }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.small { font-size: 14.5px; }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h3 em { color: var(--accent-dark); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac3; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffd9db; }
+.card.accent ul.l, .card.accent ol.l, .card.accent .soft { color: #ffeaea; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+.card.warn { background: #fff6e5; box-shadow: inset 0 0 0 1px #f0d9a8; }
+.card.warn .label { color: #8a5a00; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; overflow-wrap: anywhere; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.12); border-left-color: #fff; }
+.tag { display: inline-block; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.tag.red { background: var(--accent); color: #fff; }
+.tag.ok { background: #e1f2e8; color: var(--ok); }
+.tag.pur { background: #ebe6ff; color: var(--purple); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.note { font-size: 14.5px; color: var(--soft); border-top: 1px dashed var(--line); padding-top: 10px; }
+.big { font-family: var(--f-head); font-weight: 800; font-size: clamp(40px, 7vw, 64px); line-height: .95; color: var(--accent-text); }
+.card.dark .big { color: var(--accent-dark); }
+.row { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); background: var(--chip); }
+tr:last-child td { border-bottom: 0; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.step { position: relative; padding-left: 46px; }
+.step::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; font: 700 16px/32px var(--f-head); text-align: center; }
+.copy { appearance: none; border: 0; background: var(--ink); color: #fff; font: 600 13px/1 var(--f-body); padding: 9px 12px; border-radius: 4px; cursor: pointer; justify-self: start; min-height: 36px; }
+.copy:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.copy.done { background: var(--ok); }
+.topnav { display: flex; gap: 8px; flex-wrap: wrap; font: 500 12px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.topnav span { padding: 7px 9px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.topnav span.on { background: var(--ink); color: #fff; }
+.foot { font-size: 13.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
+img { max-width: 100%; display: block; }
+@media (max-width: 860px) {
+  .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .g2, .g4 { grid-template-columns: minmax(0, 1fr); }
+  .card { padding: 16px; }
+  body { font-size: 16px; }
+}
+
+.flow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.fl { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); padding: 14px 12px; display: grid; gap: 6px; align-content: start; position: relative; }
+.fl .n { font: 700 12px/1 var(--f-mono); color: var(--accent-text); }
+.fl.hi { background: var(--ink); color: #fff; box-shadow: none; }
+.fl.hi .soft { color: #cfcac3; }
+.fl.hi .n { color: var(--accent-dark); }
+.scripts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sc { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.sc .k { font: 700 13px/1 var(--f-mono); background: var(--ink); color: #fff; padding: 6px 8px; border-radius: 3px; justify-self: start; }
+.sc pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 500 15px/1.5 var(--f-body); background: var(--chip); border-radius: 4px; padding: 12px; }
+.rounds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.bar { height: 10px; background: var(--chip); border-radius: 5px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--accent); }
+.funnel { display: grid; gap: 6px; }
+.funnel div { display: flex; justify-content: space-between; gap: 10px; background: var(--ink); color: #fff; padding: 10px 14px; border-radius: 4px; font-weight: 600; }
+.funnel div b { font-family: var(--f-head); font-size: 22px; line-height: 1; }
+.funnel div:nth-child(1) { width: 100%; } .funnel div:nth-child(2) { width: 85%; background: #333; } .funnel div:nth-child(3) { width: 70%; background: #4a4a4a; } .funnel div:nth-child(4) { width: 55%; background: var(--accent); }
+@media (max-width: 860px) {
+  .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .scripts, .rounds { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .funnel div { width: 100% !important; }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="head">
+    <span class="label">Sistema Jony · Parte 4 de 8 · Embudo</span>
+    <h1>Video corto → <em>"PLAN"</em> por DM → cliente.</h1>
+    <p class="soft">Sin landing, sin formularios y sin anuncios. El embudo de Jony es su contenido y sus conversaciones. Cada video termina pidiendo una palabra por DM, y cada DM se trabaja a mano con respuestas guardadas y notas de voz. Todo queda apuntado en el CRM.</p>
+    <div class="tags"><span class="tag red">Sin anuncios</span><span class="tag">Info al DM</span><span class="tag">100 conversaciones · 2 rondas de 50</span></div>
+  </header>
+
+  <section class="sec" aria-labelledby="h-mapa">
+    <header>
+      <span class="label">01 · El mapa</span>
+      <h2 id="h-mapa">Seis pasos. <em>Ninguno</em> automático todavía.</h2>
+    </header>
+    <div class="flow">
+      <div class="fl"><span class="n">01</span><h3>Video corto</h3><p class="soft small">Historia, día a día en la obra, súper, mitos. Buscando viralidad latina.</p></div>
+      <div class="fl"><span class="n">02</span><h3>Perfil</h3><p class="soft small">Bio con una sola acción: "Escríbeme PLAN". Destacadas como landing.</p></div>
+      <div class="fl"><span class="n">03</span><h3>DM "PLAN"</h3><p class="soft small">Respuesta guardada + 3 preguntas. Apuntar en el CRM.</p></div>
+      <div class="fl"><span class="n">04</span><h3>Diagnóstico</h3><p class="soft small">Nota de voz de 1 minuto con su error principal y qué haría.</p></div>
+      <div class="fl hi"><span class="n">05</span><h3>Llamada 20 min</h3><p class="soft small">Videollamada por IG o WhatsApp. Guion de cierre (parte 6).</p></div>
+      <div class="fl"><span class="n">06</span><h3>Pago y arranque</h3><p class="soft small">Link de pago, contrato, grupo de WhatsApp y llamada inicial.</p></div>
+    </div>
+    <div class="card warn">
+      <span class="label">Sin anuncios (decisión de Alberto)</span>
+      <p class="small">Jony no invierte en publicidad. El volumen lo ponen <b>el contenido corto</b> (alcance gratis) y <b>las 100 conversaciones</b> (trabajo manual). Ni boost de reels ni campañas, hasta que Alberto diga lo contrario. Si un video se hace viral, se aprovecha con DMs, no con dinero.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-cta">
+    <header>
+      <span class="label">02 · Cómo pedir el DM en cada formato</span>
+      <h2 id="h-cta">Una palabra, siempre <em>la misma</em>: PLAN.</h2>
+      <p class="soft">Una sola palabra entrena a la audiencia. Si cada video pide algo distinto, nadie se acuerda.</p>
+    </header>
+    <div class="g3">
+      <div class="card">
+        <span class="label">Videos cortos (cierre hablado o texto)</span>
+        <ul class="l">
+          <li>"Si estás igual que yo estaba, escríbeme <b>PLAN</b> y te digo por dónde empezar."</li>
+          <li>"¿Trabajas pesado y no sabes cómo entrenar? Mándame <b>PLAN</b>."</li>
+          <li>Texto final: <b>"PLAN 📩 al DM"</b>, 2 segundos en pantalla.</li>
+        </ul>
+        <p class="note">No en todos los videos. Si el video es de humor o yapping, sin llamada a la acción: que solo enganche. En los de mitos, errores e historia, siempre.</p>
+      </div>
+      <div class="card">
+        <span class="label">Comentarios</span>
+        <ul class="l">
+          <li>Fijar un comentario: "Escríbeme PLAN por DM y te ayudo con lo tuyo 💪".</li>
+          <li>Responder a cada comentario con pregunta: "¿Tú estás tratando de bajar la panza o ganar músculo?". Si contesta, se pasa al DM.</li>
+          <li>Nada de "link en bio": no hay link.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="label">Historias</span>
+        <ul class="l">
+          <li>Encuesta: "¿Bulk o cut ahorita?" → a quien vota, DM: "Vi que votaste cut, ¿cómo vas?".</li>
+          <li>Caja de preguntas: "Pregúntame lo que sea de comida o gym".</li>
+          <li>Una vez por semana: "Me quedan X plazas fundadoras. Escríbeme PLAN".</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-scripts">
+    <header>
+      <span class="label">03 · Respuestas guardadas (Instagram)</span>
+      <h2 id="h-scripts">Escribe <em>"/plan"</em> y sale el mensaje.</h2>
+      <p class="soft">Instagram → Configuración → Herramientas para creadores → Respuestas guardadas. Se crea cada atajo con su texto. Después <b>siempre se personaliza</b> con el nombre y un detalle: el mensaje enlatado sin tocar se nota.</p>
+    </header>
+    <div class="scripts">
+      <div class="sc"><span class="k">/plan</span><pre id="s1">¡Qué onda, [nombre]! Gracias por escribir 💪
+Para decirte por dónde empezar necesito 3 cosas rápidas:
+1️⃣ ¿Qué quieres: bajar la panza, ganar músculo o las dos?
+2️⃣ ¿Ya entrenas o vas empezando? ¿Cuántos días puedes ir?
+3️⃣ ¿En qué trabajas y a qué hora sales?</pre><button class="copy" type="button" data-copy="s1">Copiar</button></div>
+      <div class="sc"><span class="k">/diag</span><pre id="s2">Va, ya vi lo tuyo. Te mando un audio con lo que yo cambiaría primero 👇
+(Nota de voz de 45–60 s: su error n.º 1 + qué haría Jony + "esto es lo que hago con mis clientes".)</pre><button class="copy" type="button" data-copy="s2">Copiar</button></div>
+      <div class="sc"><span class="k">/llamada</span><pre id="s3">Mira, por aquí te puedo dar tips, pero para armarte algo que de verdad te funcione con tu jornada necesito conocerte mejor.
+¿Te late una videollamada de 20 min esta semana? Sin compromiso: te digo qué haría yo en tu caso y, si quieres que te ayude, te explico cómo trabajo.
+¿Te queda mejor [día] o [día] después de las [hora]?</pre><button class="copy" type="button" data-copy="s3">Copiar</button></div>
+      <div class="sc"><span class="k">/precio</span><pre id="s4">Te soy directo: el precio depende de lo que necesitas y eso lo vemos en la llamada de 20 min. Ahorita tengo plazas de fundador a un precio que no voy a repetir, porque estoy armando mis primeros casos de éxito.
+¿Agendamos y te explico todo?</pre><button class="copy" type="button" data-copy="s4">Copiar</button></div>
+      <div class="sc"><span class="k">/nolisto</span><pre id="s5">Todo bien, bro, sin presión. Te dejo una tarea para esta semana: [1 acción concreta: proteína en cada comida / 8 mil pasos / 3 entrenos].
+Mándame mensaje el domingo y me cuentas cómo te fue. Si te late seguir, aquí ando 💪</pre><button class="copy" type="button" data-copy="s5">Copiar</button></div>
+      <div class="sc"><span class="k">/seg</span><pre id="s6">¡Qué onda, [nombre]! ¿Cómo te fue con [lo que hablamos]? Me acordé de ti porque hoy grabé justo de [tema].</pre><button class="copy" type="button" data-copy="s6">Copiar</button></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-100">
+    <header>
+      <span class="label">04 · 100 conversaciones en 2 rondas de 50</span>
+      <h2 id="h-100">El embudo de verdad: <em>hablar con gente</em>.</h2>
+      <p class="soft">De 5 a 7 conversaciones nuevas al día, más los seguimientos. Cada una se apunta en el CRM <b>el mismo día</b>. Regla de oro: <b>nunca empezar vendiendo</b>. Primero se pregunta y se ayuda; la llamada sale sola.</p>
+    </header>
+    <div class="rounds">
+      <div class="card dark">
+        <span class="label">Ronda 1 · semanas 1–2 · 50 conversaciones en caliente</span>
+        <div class="bar" aria-hidden="true"><i style="width:50%"></i></div>
+        <ul class="l">
+          <li><b>Gym (15):</b> los que ve a diario: Luis, Gerardo, Cristian y los que le preguntan cosas.</li>
+          <li><b>Trabajo (10):</b> compas de la obra, empezando por el que ya le pidió que lo llevara al gym.</li>
+          <li><b>Seguidores activos (15):</b> quien da like, comenta o ve todas sus historias.</li>
+          <li><b>Amigos, primos y conocidos (10):</b> de 18 a 25 que alguna vez dijeron "quiero ponerme en forma".</li>
+        </ul>
+        <p class="say">"Qué onda, bro. Oye, el otro día dijiste que querías bajar la panza. ¿Cómo vas con eso? Estoy armando mis primeros casos de coaching y me acordé de ti."</p>
+      </div>
+      <div class="card">
+        <span class="label">Ronda 2 · semanas 3–4 · 50 conversaciones con gente nueva</span>
+        <div class="bar" aria-hidden="true"><i style="width:100%"></i></div>
+        <ul class="l">
+          <li><b>Nuevos seguidores (20):</b> a cada uno, mensaje de bienvenida con pregunta ("¿qué te trajo por aquí, bajar grasa o ganar músculo?").</li>
+          <li><b>Respuestas a historias, encuestas y preguntas (15).</b></li>
+          <li><b>Comentarios de sus videos (10):</b> sobre todo de los que se hacen virales.</li>
+          <li><b>Comunidad latina fitness (5):</b> gente que comenta con dudas en cuentas latinas parecidas. Se aporta valor en público y luego se sigue por DM. Nada de spam ni copiar y pegar en masa.</li>
+        </ul>
+        <p class="say">"¡Bienvenido, bro! 🙌 Vi que me empezaste a seguir. ¿Qué te trajo por aquí: bajar la panza, ganar músculo o las dos?"</p>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <span class="label">Aperturas por situación (copia y adapta)</span>
+        <ul class="l">
+          <li><b>Compa de la obra:</b> "Oye, ¿sigues con ganas de ir al gym? Te armo algo de 3 días que aguantes saliendo de aquí."</li>
+          <li><b>Del gym:</b> "Te he visto dándole duro. ¿Estás en bulk o tratando de definir?"</li>
+          <li><b>Respondió una historia:</b> "Jaja, sí, a mí me pasaba igual. ¿Tú cuántos días entrenas ahorita?"</li>
+          <li><b>Comentó un video de mitos:</b> "Buena pregunta la que dejaste. Te explico rápido por aquí: …"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="label">Calificar (sí o no a llamada)</span>
+        <ul class="l">
+          <li><b>Verde:</b> 18–25, ya intentó solo y no le salió, tiene trabajo (puede pagar), contesta rápido y pregunta "¿cómo trabajas?".</li>
+          <li><b>Amarillo:</b> "no tengo tiempo", "luego te digo". Se le da tarea con /nolisto y seguimiento.</li>
+          <li><b>Rojo:</b> menor de 18 (no, salvo permiso de sus padres), busca resultados en 2 semanas, quiere "solo la rutina gratis" en el tercer mensaje.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-seg">
+    <header>
+      <span class="label">05 · Seguimiento y llamada</span>
+      <h2 id="h-seg">El dinero está en el <em>seguimiento</em>.</h2>
+    </header>
+    <div class="g2">
+      <div class="card">
+        <span class="label">Cadencia si no contesta o no agenda</span>
+        <div class="steps">
+          <div class="step"><b>Día 1:</b> nota de voz corta con algo útil para su caso.</div>
+          <div class="step"><b>Día 3:</b> /seg con un video tuyo que le sirva.</div>
+          <div class="step"><b>Día 7:</b> "¿Lo dejamos para más adelante o le damos esta semana?"</div>
+          <div class="step"><b>Día 14:</b> último mensaje, cálido. Pasa a "frío" en el CRM, sin insistir más.</div>
+        </div>
+      </div>
+      <div class="card dark">
+        <span class="label">Llamada de 20 min (detalle en parte 6)</span>
+        <ul class="l">
+          <li><b>2 min:</b> conexión ("¿qué tal la jornada hoy?").</li>
+          <li><b>8 min:</b> dónde está, qué ha probado, qué le frustra, qué pasa si sigue igual 1 año.</li>
+          <li><b>5 min:</b> el método OBRA aplicado a su caso.</li>
+          <li><b>5 min:</b> oferta, precio de fundador, objeciones y pago en la llamada.</li>
+        </ul>
+        <p class="say">"Si te late, te mando el link y arrancamos el lunes. ¿Lo hacemos?"</p>
+      </div>
+    </div>
+    <div class="card chip">
+      <span class="label">Después del pago: arranque en 24 h</span>
+      <ul class="l">
+        <li>Link de pago (Stripe o PayPal) → recibo → contrato de 1 página.</li>
+        <li>Cuestionario inicial (peso, medidas, fotos, horario de trabajo, comidas típicas y gym al que va).</li>
+        <li>Chat de WhatsApp individual para check-ins y dudas. Su estado de WhatsApp sirve para avances de clientes con permiso y para las plazas que quedan.</li>
+        <li>Llamada inicial de 30 min en la primera semana.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-num">
+    <header>
+      <span class="label">06 · Números a vigilar cada semana</span>
+      <h2 id="h-num">De 100 conversaciones a <em>5 fundadores</em>.</h2>
+    </header>
+    <div class="g2">
+      <div class="funnel" aria-label="Embudo objetivo">
+        <div><span>Conversaciones</span><b>100</b></div>
+        <div><span>Calificados (verde)</span><b>25</b></div>
+        <div><span>Llamadas hechas</span><b>12</b></div>
+        <div><span>Ventas</span><b>5</b></div>
+      </div>
+      <div class="card">
+        <span class="label">Si el número falla, el problema está aquí</span>
+        <ul class="l">
+          <li><b>Pocas conversaciones:</b> no está mandando de 5 a 7 al día o los videos no piden PLAN.</li>
+          <li><b>Muchas conversaciones y pocos calificados:</b> habla con gente fuera del núcleo (menores, curiosos).</li>
+          <li><b>Calificados que no agendan:</b> falta la nota de voz de diagnóstico; manda texto frío.</li>
+          <li><b>Llamadas sin venta:</b> revisar el guion de cierre y grabarse en una llamada de práctica con Alberto.</li>
+        </ul>
+        <p class="note">Todo se apunta en el CRM (parte 7) y se reporta a Alberto cada semana (parte 8).</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Sistema Jony · Escuela AGLEZ · Parte 4: Embudo por DM. Sin landing y sin anuncios por decisión de Alberto.</p>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.getAttribute('data-copy')).textContent;
+    var done = function () { var o = b.textContent; b.textContent = 'Copiado ✓'; b.classList.add('done'); setTimeout(function () { b.textContent = o; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, function () { fallback(t); done(); }); } else { fallback(t); done(); }
+  });
+});
+function fallback(t) { var a = document.createElement('textarea'); a.value = t; a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (e) {} a.remove(); }
+</script>
+</body></html>

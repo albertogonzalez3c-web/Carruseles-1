@@ -1,0 +1,304 @@
+<title>Jony Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root {
+  --paper: #f4f2ef;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5c5853;
+  --line: #e0dbd4;
+  --chip: #ebe6df;
+  --accent: #c4232b;
+  --accent-text: #a81d24;
+  --accent-dark: #ff6a6f;
+  --purple: #5b3fd1;
+  --ok: #1f7a4d;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(28px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em, h3 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+a { color: var(--accent-text); }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.small { font-size: 14.5px; }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h3 em { color: var(--accent-dark); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac3; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffd9db; }
+.card.accent ul.l, .card.accent ol.l, .card.accent .soft { color: #ffeaea; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+.card.warn { background: #fff6e5; box-shadow: inset 0 0 0 1px #f0d9a8; }
+.card.warn .label { color: #8a5a00; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; overflow-wrap: anywhere; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.12); border-left-color: #fff; }
+.tag { display: inline-block; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.tag.red { background: var(--accent); color: #fff; }
+.tag.ok { background: #e1f2e8; color: var(--ok); }
+.tag.pur { background: #ebe6ff; color: var(--purple); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.note { font-size: 14.5px; color: var(--soft); border-top: 1px dashed var(--line); padding-top: 10px; }
+.big { font-family: var(--f-head); font-weight: 800; font-size: clamp(40px, 7vw, 64px); line-height: .95; color: var(--accent-text); }
+.card.dark .big { color: var(--accent-dark); }
+.row { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); background: var(--chip); }
+tr:last-child td { border-bottom: 0; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.step { position: relative; padding-left: 46px; }
+.step::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; font: 700 16px/32px var(--f-head); text-align: center; }
+.copy { appearance: none; border: 0; background: var(--ink); color: #fff; font: 600 13px/1 var(--f-body); padding: 9px 12px; border-radius: 4px; cursor: pointer; justify-self: start; min-height: 36px; }
+.copy:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.copy.done { background: var(--ok); }
+.topnav { display: flex; gap: 8px; flex-wrap: wrap; font: 500 12px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.topnav span { padding: 7px 9px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.topnav span.on { background: var(--ink); color: #fff; }
+.foot { font-size: 13.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
+img { max-width: 100%; display: block; }
+@media (max-width: 860px) {
+  .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .g2, .g4 { grid-template-columns: minmax(0, 1fr); }
+  .card { padding: 16px; }
+  body { font-size: 16px; }
+}
+
+.ladder { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; align-items: end; }
+.rung { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); padding: 12px 10px; display: grid; gap: 4px; text-align: center; }
+.rung .p { font-family: var(--f-head); font-weight: 800; font-size: 28px; line-height: 1; }
+.rung.f { background: var(--accent); color: #fff; box-shadow: none; }
+.rung.f .soft { color: #ffe1e2; }
+.rung.top { background: var(--ink); color: #fff; box-shadow: none; }
+.rung.top .soft { color: #cfcac3; }
+.rung:nth-child(1) { min-height: 110px; } .rung:nth-child(2) { min-height: 124px; } .rung:nth-child(3) { min-height: 138px; } .rung:nth-child(4) { min-height: 152px; } .rung:nth-child(5) { min-height: 166px; } .rung:nth-child(6) { min-height: 180px; }
+.phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.ph { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); padding: 16px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--ink); }
+.ph:nth-child(4) { border-top-color: var(--accent); }
+.price-card { display: grid; gap: 6px; }
+.price-card .big small { font-size: 18px; font-weight: 700; color: var(--soft); }
+.card.dark .big small { color: #cfcac3; }
+.calc { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; font-size: 15.5px; }
+.calc b:nth-child(even) { text-align: right; font-variant-numeric: tabular-nums; }
+.calc .tot { border-top: 1px solid var(--line); padding-top: 6px; font-weight: 800; }
+@media (max-width: 860px) {
+  .ladder { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .phases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rung { min-height: 0 !important; }
+}
+@media (max-width: 420px) {
+  .ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phases { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="head">
+    <span class="label">Sistema Jony · Parte 2 de 8 · Oferta</span>
+    <h1>Programa <em>OBRA</em> · 12 semanas.</h1>
+    <p class="soft">Una sola oferta principal, honesta para alguien que <b>aún no tiene clientes</b>: plazas fundadoras baratas a cambio de testimonios, y después el precio sube con cada venta. Precios en dólares, pensados para un chavo latino de 18 a 25 que trabaja y cobra cada semana.</p>
+    <div class="tags"><span class="tag red">Propuesta · confirmar con Jony y Alberto</span><span class="tag">USD</span><span class="tag">Sin anuncios</span></div>
+  </header>
+
+  <section class="sec" aria-labelledby="h-why">
+    <header>
+      <span class="label">01 · La verdad incómoda</span>
+      <h2 id="h-why">No puede vender como un coach con <em>50 casos</em>. Todavía.</h2>
+    </header>
+    <div class="g2">
+      <div class="card dark">
+        <span class="label">Lo que sí tiene</span>
+        <ul class="l">
+          <li><b>Su propio cambio</b>: 177 → 145 lb y más fuerte (peso muerto de 465 lb).</li>
+          <li>Un compañero de la obra al que ya ayudó.</li>
+          <li>Gente cerca que le pregunta "¿cómo le hiciste?": eso ya es demanda.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="label">Lo que le falta (y lo que compra con las plazas fundadoras)</span>
+        <ul class="l">
+          <li><b>Testimonios en video</b> de chavos como él.</li>
+          <li>Antes/después de otros, no solo el suyo.</li>
+          <li>Práctica de coach: ajustar planes, responder dudas, retener.</li>
+        </ul>
+        <p class="note">Por eso las 5 primeras plazas son baratas: con ellas compra prueba social, no dinero. Si regala el servicio, el cliente no se compromete. Si cobra el precio completo sin casos, no vende.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-incl">
+    <header>
+      <span class="label">02 · Qué incluye</span>
+      <h2 id="h-incl">Lo que el cliente <em>recibe</em>.</h2>
+    </header>
+    <div class="g3">
+      <div class="card"><span class="label">Entreno</span><ul class="l"><li>Plan de 3–4 días adaptado a su jornada (si sale reventado de trabajar, no 6 días).</li><li>Progresión semana a semana (método OBRA, pirámide de Helms).</li><li>Corrección de técnica por video.</li></ul></div>
+      <div class="card"><span class="label">Comida</span><ul class="l"><li>Calorías y proteína claras, sin dieta cerrada.</li><li>Guía con comida latina real: arroz, frijoles, tortillas, carne asada… en porciones.</li><li>Cómo comprar en el súper de aquí y llevar lonche a la obra.</li></ul></div>
+      <div class="card"><span class="label">Acompañamiento</span><ul class="l"><li>Llamada inicial de 30 min y evaluación.</li><li>Check-in semanal: fotos, peso, cintura y fuerza. Ajuste del plan cada semana.</li><li>Dudas por WhatsApp/DM de lunes a sábado, respuesta en 24 h.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header>
+      <span class="label">03 · Fases (12 semanas)</span>
+      <h2 id="h-fases">Como una obra: de los <em>cimientos</em> a la entrega.</h2>
+    </header>
+    <div class="phases">
+      <div class="ph"><span class="label">Semanas 1–2</span><h3>Cimientos</h3><p class="soft small">Orden y Base: horario, calorías, proteína, sueño y pasos. Aprender la técnica de los básicos. Medidas iniciales.</p></div>
+      <div class="ph"><span class="label">Semanas 3–6</span><h3>Construcción</h3><p class="soft small">Repeticiones que progresan. Primer ajuste de calorías según resultados. El objetivo: ni un fin de semana tirado.</p></div>
+      <div class="ph"><span class="label">Semanas 7–10</span><h3>Estructura</h3><p class="soft small">Ajustar sin prohibir: fiestas, carne asada y comida fuera sin romper el plan. Más volumen si recupera bien.</p></div>
+      <div class="ph"><span class="label">Semanas 11–12</span><h3>Entrega</h3><p class="soft small">Fotos y medidas finales, testimonio, y el plan para seguir solo o en Mantenimiento.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precio">
+    <header>
+      <span class="label">04 · Precios y escalera</span>
+      <h2 id="h-precio">5 fundadores a <em>$197</em>. Luego el precio sube con cada venta.</h2>
+      <p class="soft">Lo que se vende es el <b>paquete de 12 semanas</b>. El pago mensual existe solo como alternativa: casi nadie cambia el físico en un mes, y con mensualidad abandonan antes.</p>
+    </header>
+    <div class="g2">
+      <div class="card accent price-card">
+        <span class="label">Plazas fundadoras · solo 5</span>
+        <span class="big" style="color:#fff">$197 <small style="color:#ffe1e2">/ 12 semanas</small></span>
+        <p class="small">O 2 pagos de $105. A cambio, el cliente se compromete a:</p>
+        <ul class="l">
+          <li><b>Testimonio en video</b> al terminar (30–60 s).</li>
+          <li>Fotos de antes/después y check-ins semanales (puede salir sin cara si quiere).</li>
+          <li>Reseña escrita y permiso firmado para usar los resultados.</li>
+        </ul>
+      </div>
+      <div class="card dark price-card">
+        <span class="label">Precio después de los fundadores</span>
+        <span class="big">$297 → $597 <small>/ 12 semanas</small></span>
+        <p class="soft small">Sube un 20 % con cada venta cerrada hasta el tope. El reporte lleva la cuenta (nivel y ventas desde la última subida), igual que en el resto de alumnos.</p>
+        <p class="soft small">Mensual: <b style="color:#fff">$97/mes</b> los fundadores y <b style="color:#fff">$127/mes</b> después, con un mínimo de 2 meses. Nunca se anuncia primero: es el plan B.</p>
+      </div>
+    </div>
+    <div class="ladder" aria-label="Escalera de precios del paquete de 12 semanas">
+      <div class="rung f"><span class="label" style="color:#ffe1e2">Ventas 1–5</span><span class="p">$197</span><span class="soft small">Fundadores</span></div>
+      <div class="rung"><span class="label">Venta 6</span><span class="p">$297</span><span class="soft small">Base</span></div>
+      <div class="rung"><span class="label">Venta 7</span><span class="p">$357</span><span class="soft small">+20 %</span></div>
+      <div class="rung"><span class="label">Venta 8</span><span class="p">$427</span><span class="soft small">+20 %</span></div>
+      <div class="rung"><span class="label">Venta 9</span><span class="p">$517</span><span class="soft small">+20 %</span></div>
+      <div class="rung top"><span class="label" style="color:var(--accent-dark)">Venta 10+</span><span class="p">$597</span><span class="soft small">Tope</span></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <span class="label">Reglas de la escalera</span>
+        <ul class="l">
+          <li>Se sube <b>después</b> de cerrar una venta, nunca a mitad de una conversación: quien recibió un precio lo mantiene 72 h.</li>
+          <li>Si en <b>3 semanas</b> no cierra ninguna venta, se queda en ese escalón (no baja) y se revisa el guion de cierre, no el precio.</li>
+          <li>Precios terminados en 7, sin "descuento por hoy" inventado. La urgencia real es "quedan X plazas fundadoras".</li>
+          <li>Capacidad máxima mientras trabaje en construcción a tiempo completo: <b>15 clientes activos</b> (unos 20 min por cliente a la semana).</li>
+        </ul>
+      </div>
+      <div class="card chip">
+        <span class="label">Cuentas de los 10 primeros (sin anuncios)</span>
+        <div class="calc">
+          <span>5 fundadores × $197</span><b>$985</b>
+          <span>Ventas 6 a 10 ($297 + 357 + 427 + 517 + 597)</span><b>$2,195</b>
+          <span class="tot">Total de las 10 primeras ventas</span><b class="tot">$3,180</b>
+          <span>+ si 4 de cada 10 pasan a Mantenimiento ($79 × 4)</span><b>$316/mes</b>
+        </div>
+        <p class="note">Objetivo realista: los 5 fundadores en las primeras 4–6 semanas salen de las 100 conversaciones (gym, trabajo y seguidores). Las ventas 6 a 10, en los 2–3 meses siguientes, con los testimonios ya publicados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-gar">
+    <header>
+      <span class="label">05 · Garantía y contrato</span>
+      <h2 id="h-gar">Una garantía que <em>premia la constancia</em>, no la excusa.</h2>
+    </header>
+    <div class="g2">
+      <div class="card dark">
+        <span class="label">Garantía OBRA (precio completo)</span>
+        <p class="say">"Si en 12 semanas cumples el 90 % de tus entrenos, mandas todos tus check-ins y no ves un cambio medible en tu cintura, tu peso o tu fuerza, te sigo entrenando gratis hasta que lo veas."</p>
+        <p class="soft small">No devuelve dinero; devuelve trabajo. Así encaja con su mensaje ("depende de ti") y no arriesga caja cuando está empezando.</p>
+      </div>
+      <div class="card">
+        <span class="label">Fundadores</span>
+        <ul class="l">
+          <li>Sin garantía de devolución (el precio ya es de fundador), pero con <b>7 días para arrepentirse antes de empezar</b>.</li>
+          <li>Si el cliente no cumple su parte (check-ins o testimonio), pierde el precio de fundador al renovar.</li>
+        </ul>
+        <span class="label">Contrato de 1 página</span>
+        <ul class="l">
+          <li>Solo mayores de 18 años.</li>
+          <li>No es un servicio médico: quien tenga una lesión o condición, que consulte a su doctor antes de empezar.</li>
+          <li>Qué incluye, horario de respuesta, permiso de uso de imágenes y cómo se cancela.</li>
+          <li>Pago con link de Stripe o PayPal (queda registro y recibo). Nada en efectivo sin recibo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card warn">
+      <span class="label">Dinero e impuestos (corto y sin rodeos)</span>
+      <p class="small">En EE. UU. lo que cobre como coach es ingreso de trabajo por cuenta propia. Que guarde el <b>25–30 % de cada pago</b> en una cuenta aparte para impuestos desde la primera venta, y que lo consulte con un contador o preparador de impuestos antes de acabar el año. No es para frenarle: es para que en abril no le coma la deuda lo que ganó.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header>
+      <span class="label">06 · Back-end</span>
+      <h2 id="h-back">Qué viene <em>después</em> de las 12 semanas.</h2>
+    </header>
+    <div class="g4">
+      <div class="card"><span class="label">Continuidad</span><h3>OBRA Mantenimiento</h3><p class="soft small"><b>$79/mes</b>: plan actualizado y check-in cada 2 semanas. Se ofrece en la semana 10, no el último día.</p></div>
+      <div class="card"><span class="label">Renovación</span><h3>Segunda fase · 12 semanas</h3><p class="soft small">Para quien quiere otro bloque completo (volumen limpio después de definir). Al precio de escalera vigente, menos un 15 % por renovar.</p></div>
+      <div class="card"><span class="label">Referidos</span><h3>Trae a un compa</h3><p class="soft small">Por cada amigo que entra, <b>2 semanas gratis</b>. Los latinos entrenan en grupo: la obra y el gym son su mejor canal.</p></div>
+      <div class="card chip"><span class="label">Más adelante (10+ clientes)</span><h3>Guía del súper</h3><p class="soft small">Producto barato ($19–27): lista de compras del súper de aquí y 30 comidas latinas con calorías y proteína. Sale de su contenido del súper. Ahora no: primero, clientes.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-conf">
+    <header>
+      <span class="label">07 · Confirmar</span>
+      <h2 id="h-conf">Antes de ofrecerlo a <em>nadie</em>.</h2>
+    </header>
+    <div class="card warn">
+      <ul class="l">
+        <li>Precios fundador ($197) y base ($297): ¿Alberto los ve bien para su mercado?</li>
+        <li>Método de cobro: ¿tiene cuenta para Stripe o PayPal Business a su nombre?</li>
+        <li>Horas reales a la semana que puede dar como coach sin dejar la obra.</li>
+        <li>¿Mantiene el código de afiliado de suplementos? Si sí, que nunca se presente como "lo que te hará crecer".</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="foot">Sistema Jony · Escuela AGLEZ · Parte 2: Oferta. Propuesta: confirmar precios y condiciones con Jony y Alberto antes de usarla.</p>
+</div>

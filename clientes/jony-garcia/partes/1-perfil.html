@@ -1,0 +1,400 @@
+<title>Jony Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root {
+  --paper: #f4f2ef;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5c5853;
+  --line: #e0dbd4;
+  --chip: #ebe6df;
+  --accent: #c4232b;
+  --accent-text: #a81d24;
+  --accent-dark: #ff6a6f;
+  --purple: #5b3fd1;
+  --ok: #1f7a4d;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(28px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em, h3 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+a { color: var(--accent-text); }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.small { font-size: 14.5px; }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h3 em { color: var(--accent-dark); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac3; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffd9db; }
+.card.accent ul.l, .card.accent ol.l, .card.accent .soft { color: #ffeaea; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+.card.warn { background: #fff6e5; box-shadow: inset 0 0 0 1px #f0d9a8; }
+.card.warn .label { color: #8a5a00; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; overflow-wrap: anywhere; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.12); border-left-color: #fff; }
+.tag { display: inline-block; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.tag.red { background: var(--accent); color: #fff; }
+.tag.ok { background: #e1f2e8; color: var(--ok); }
+.tag.pur { background: #ebe6ff; color: var(--purple); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.note { font-size: 14.5px; color: var(--soft); border-top: 1px dashed var(--line); padding-top: 10px; }
+.big { font-family: var(--f-head); font-weight: 800; font-size: clamp(40px, 7vw, 64px); line-height: .95; color: var(--accent-text); }
+.card.dark .big { color: var(--accent-dark); }
+.row { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); background: var(--chip); }
+tr:last-child td { border-bottom: 0; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.step { position: relative; padding-left: 46px; }
+.step::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; font: 700 16px/32px var(--f-head); text-align: center; }
+.copy { appearance: none; border: 0; background: var(--ink); color: #fff; font: 600 13px/1 var(--f-body); padding: 9px 12px; border-radius: 4px; cursor: pointer; justify-self: start; min-height: 36px; }
+.copy:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.copy.done { background: var(--ok); }
+.topnav { display: flex; gap: 8px; flex-wrap: wrap; font: 500 12px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.topnav span { padding: 7px 9px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.topnav span.on { background: var(--ink); color: #fff; }
+.foot { font-size: 13.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
+img { max-width: 100%; display: block; }
+@media (max-width: 860px) {
+  .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .g2, .g4 { grid-template-columns: minmax(0, 1fr); }
+  .card { padding: 16px; }
+  body { font-size: 16px; }
+}
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 22px; align-items: center; }
+.hero-ph { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.hero-ph figure { margin: 0; position: relative; border-radius: 6px; overflow: hidden; background: #222; }
+.hero-ph img { width: 100%; height: 300px; object-fit: cover; object-position: top; }
+.hero-ph figcaption { position: absolute; left: 8px; bottom: 8px; font: 600 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; background: rgba(0,0,0,.72); color: #fff; padding: 6px 8px; border-radius: 3px; }
+.hero-ph figure.now figcaption { background: var(--accent); }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.tl { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); padding: 14px; display: grid; gap: 6px; align-content: start; }
+.tl .lb { font-family: var(--f-head); font-weight: 800; font-size: 30px; line-height: 1; }
+.tl.hi { background: var(--ink); color: #fff; box-shadow: none; }
+.tl.hi .soft { color: #cfcac3; }
+.names { display: grid; gap: 12px; }
+.nm { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 16px; align-items: start; }
+.nm .tag { justify-self: end; }
+.ig { background: #fff; color: #111; border-radius: 14px; box-shadow: 0 1px 0 var(--line), 0 10px 30px rgba(0,0,0,.08); padding: 16px; max-width: 380px; width: 100%; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; font-size: 14px; line-height: 1.4; display: grid; gap: 10px; }
+.ig-top { display: flex; gap: 14px; align-items: center; }
+.ig-top img { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+.ig-stats { display: flex; gap: 14px; text-align: center; font-size: 13px; }
+.ig-stats b { display: block; font-size: 16px; }
+.ig-name { font-weight: 700; }
+.ig-cat { color: #737373; }
+.ig-btn { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btn span { background: #efefef; border-radius: 8px; text-align: center; padding: 7px; font-weight: 600; font-size: 13px; }
+.ig-btn span.pri { background: #0095f6; color: #fff; }
+.hl { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 2px; }
+.hl div { flex: 0 0 auto; display: grid; justify-items: center; gap: 4px; font-size: 11.5px; }
+.hl i { width: 54px; height: 54px; border-radius: 50%; box-shadow: inset 0 0 0 2px #dbdbdb; display: grid; place-items: center; font-style: normal; font-size: 20px; background: #fafafa; }
+.bio-layout { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 22px; align-items: start; }
+.method { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.mt { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); padding: 16px; display: grid; gap: 8px; align-content: start; }
+.mt .ltr { font-family: var(--f-head); font-weight: 800; font-size: 54px; line-height: .85; color: var(--accent-text); }
+.pyr { display: grid; gap: 4px; justify-items: center; }
+.pyr div { background: var(--ink); color: #fff; text-align: center; padding: 8px 10px; border-radius: 3px; font: 600 13.5px/1.25 var(--f-body); }
+.pyr div:nth-child(1) { width: 40%; background: #6a6a6a; }
+.pyr div:nth-child(2) { width: 55%; background: #4d4d4d; }
+.pyr div:nth-child(3) { width: 70%; background: #333; }
+.pyr div:nth-child(4) { width: 85%; background: #1f1f1f; }
+.pyr div:nth-child(5) { width: 100%; background: var(--accent); }
+.vs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; border-radius: 6px; overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.vs > div { padding: 12px 14px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.vs > div:nth-child(odd) { background: #fbefef; color: #6b1a1e; text-decoration: line-through; text-decoration-color: rgba(168,29,36,.5); }
+.vs > div:nth-child(even) { background: var(--white); font-weight: 600; }
+.vs .vh { text-decoration: none !important; font: 500 11px/1.2 var(--f-mono) !important; letter-spacing: .1em; text-transform: uppercase; color: var(--soft) !important; background: var(--chip) !important; }
+.chk { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.chk li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; font-size: 15.5px; }
+.chk li::before { content: "?"; width: 22px; height: 22px; border-radius: 50%; background: #f0d9a8; color: #6b4600; font: 700 13px/22px var(--f-body); text-align: center; }
+@media (max-width: 860px) {
+  .hero, .bio-layout { grid-template-columns: minmax(0, 1fr); }
+  .timeline, .method { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 420px) {
+  .hero-ph img { height: 230px; }
+  .nm { grid-template-columns: minmax(0, 1fr); }
+  .nm .tag { justify-self: start; }
+  .mt .ltr { font-size: 44px; }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="head">
+      <span class="label">Sistema Jony · Parte 1 de 8 · Perfil y posicionamiento</span>
+      <h1>El coach de <em>los latinos</em> que trabajan duro.</h1>
+      <p class="soft">Jonathan "Jony" García, 19 años, Los Ángeles. Trabaja en construcción y entrena igual. Hizo el bulk sucio, la definición extrema y los atracones del fin de semana, y salió de ahí con paciencia y estructura. No vende un nicho de laboratorio: vende <b>su vida</b> como prueba de que se puede.</p>
+      <div class="tags"><span class="tag red">Marca personal</span><span class="tag">18–25 núcleo</span><span class="tag">Latinos en EE. UU.</span><span class="tag">Sin anuncios</span><span class="tag">Sin landing · info al DM</span></div>
+    </div>
+    <div class="hero-ph">
+      <figure><img src="jony-antes.jpg" alt="Jony antes, con barriga, en su post 'My cambio físico 8 meses'" width="720" height="925"><figcaption>Antes · bulk sucio</figcaption></figure>
+      <figure class="now"><img src="jony-espalda.jpg" alt="Jony ahora, espalda marcada haciendo doble bíceps" width="720" height="575"><figcaption>Ahora</figcaption></figure>
+    </div>
+  </header>
+
+  <section class="sec" aria-labelledby="h-pos">
+    <header>
+      <span class="label">01 · Posicionamiento</span>
+      <h2 id="h-pos">Una frase. Que se entienda en <em>2 segundos</em>.</h2>
+      <p class="soft">Alberto lo dijo claro: más marca personal que nicho a muerte. La marca es él (latino, joven, trabajador, constante). El núcleo de venta son los chavos de 18 a 25 que empiezan o están estancados. Así puede hacerse viral con cualquier latino y vender a quien más se le parece.</p>
+    </header>
+    <div class="card dark">
+      <span class="label">Posicionamiento central</span>
+      <p class="say">"Ayudo a latinos de 18 a 25 que trabajan duro a perder grasa o ganar músculo sin dietas locas ni vivir en el gym, con un plan que encaja en su jornada."</p>
+      <p class="soft small">Versión corta para videos: <b>"Soy Jony, trabajo en construcción y te enseño a ponerte en forma aunque llegues reventado."</b></p>
+    </div>
+    <div class="g3">
+      <div class="card">
+        <span class="label">Marca (todo latino)</span>
+        <h3>Para quién <em>habla</em></h3>
+        <ul class="l">
+          <li>Latinos en EE. UU. que trabajan en construcción, restaurantes, almacenes, landscaping…</li>
+          <li>Ven sus videos porque se ven reflejados: jornada larga, comida de casa, súper gringo.</li>
+          <li>Aquí está la viralidad: <b>día a día, súper, historia</b>.</li>
+        </ul>
+      </div>
+      <div class="card accent">
+        <span class="label">Núcleo (a quien vende)</span>
+        <h3>Chavos de 18 a 25</h3>
+        <ul class="l">
+          <li><b>Empiezan</b> y no saben ni usar las máquinas, o</li>
+          <li><b>Están estancados</b>: perfectos de lunes a viernes, atracón el finde, abandonan a los 1–2 meses.</li>
+          <li>Quieren perder la panza o ganar músculo <b>sin taparse de grasa</b>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="label">Fuera (por ahora)</span>
+        <h3>A quién <em>no</em> le vende</h3>
+        <ul class="l">
+          <li>Hombres 30+ con familia: es el terreno de Alberto (su referente).</li>
+          <li>Competidores y gente avanzada.</li>
+          <li>Quien busca resultados en 2 semanas o no va a seguir el plan (lo que a él más le agota).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-names">
+    <header>
+      <span class="label">02 · Nombre y frase de marca</span>
+      <h2 id="h-names">Tres opciones. <em>Elige una</em> y no la cambies en un año.</h2>
+    </header>
+    <div class="names">
+      <div class="card nm">
+        <div><h3>Jony · <em>El coach de los latinos</em></h3><p class="soft small">La que pidió Alberto. Clara y ambiciosa. Funciona en bio, en el gancho ("Soy el coach de los latinos y…") y escala si crece.</p></div>
+        <span class="tag red">Recomendada</span>
+      </div>
+      <div class="card nm">
+        <div><h3>De la obra <em>al gym</em></h3><p class="soft small">Serie y frase de marca, no nombre. Perfecta para los vlogs de su día a día en construcción. Úsala como título de serie aunque elijas la 1.</p></div>
+        <span class="tag pur">Serie fija</span>
+      </div>
+      <div class="card nm">
+        <div><h3>Latino <em>Fuerte</em></h3><p class="soft small">Más de comunidad (hashtag, futuro grupo o merch). Riesgo: suena genérico y ya existe en otras cuentas. Úsala solo como hashtag propio, no como nombre.</p></div>
+        <span class="tag">Hashtag</span>
+      </div>
+    </div>
+    <p class="note">El usuario sigue siendo <b>@jnyfit._</b>: tiene verificación y 241 posts, así que no conviene cambiarlo. El "nombre" de Instagram (el campo que sale en búsquedas) pasa a ser <b>"Jony | Coach de los latinos"</b> para que lo encuentren al buscar "coach latino".</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-bio">
+    <header>
+      <span class="label">03 · Bio nueva de Instagram</span>
+      <h2 id="h-bio">Un solo objetivo: que te escriban <em>"PLAN"</em>.</h2>
+    </header>
+    <div class="bio-layout">
+      <div class="ig" aria-label="Simulación del perfil de Instagram con la nueva bio">
+        <div class="ig-top">
+          <img src="jony-avatar.jpg" alt="Foto de perfil de Jony" width="240" height="240">
+          <div class="ig-stats"><div><b>241</b>posts</div><div><b>456</b>followers</div><div><b>1.301</b>following</div></div>
+        </div>
+        <div>
+          <div class="ig-name">Jony | Coach de los latinos</div>
+          <div class="ig-cat">Coach</div>
+          <div>🏗️ Trabajo en construcción y entreno igual<br>📉 177 → 145 lb sin dietas locas<br>💪 Te ayudo a perder la panza o ganar músculo<br>📩 Escríbeme <b>"PLAN"</b> por DM<br>✝️ God first · 2 Tim 1:7</div>
+        </div>
+        <div class="ig-btn"><span>Following</span><span class="pri">Message</span></div>
+        <div class="hl"><div><i>📈</i>Mi cambio</div><div><i>🏗️</i>Obra→Gym</div><div><i>🛒</i>Súper</div><div><i>💬</i>Clientes</div><div><i>🧬</i>Gym</div></div>
+      </div>
+      <div class="card">
+        <span class="label">Por qué así</span>
+        <ul class="l">
+          <li><b>Fuera el link de afiliado de la bio.</b> Un código de suplementos deja unos centavos por venta. Un cliente deja $197 o más. Con 456 seguidores, cada visita al perfil vale más como conversación que como clic. El código se mueve a una historia destacada ("Suple") y a la descripción de los videos donde lo use.</li>
+          <li><b>Una sola llamada a la acción.</b> "Escríbeme PLAN por DM" es lo único que tiene que hacer quien llega a tu perfil. Sin landing, sin formularios: la conversación es el embudo.</li>
+          <li><b>Prueba en la línea 2.</b> 177 → 145 lb es su resultado real (mayo 2025 → mayo 2026). Confirmar las cifras con él antes de publicarlas.</li>
+          <li><b>"God first" se queda si él quiere.</b> Es suyo y conecta con mucho público latino. No es estrategia, es identidad: si lo siente, que se quede; si no, fuera.</li>
+          <li><b>Las historias destacadas hacen de landing:</b> Mi cambio (antes/después y proceso), Obra→Gym (día a día), Súper (qué compra), Clientes (cuando lleguen los primeros resultados) y Gym (la que ya tiene).</li>
+        </ul>
+        <button class="copy" type="button" data-copy="bio">Copiar bio</button>
+        <textarea id="bio" hidden>🏗️ Trabajo en construcción y entreno igual
+📉 177 → 145 lb sin dietas locas
+💪 Te ayudo a perder la panza o ganar músculo
+📩 Escríbeme "PLAN" por DM
+✝️ God first · 2 Tim 1:7</textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-story">
+    <header>
+      <span class="label">04 · Su historia es la prueba</span>
+      <h2 id="h-story">No tiene clientes todavía. Tiene <em>algo mejor</em> para empezar: su propio cambio.</h2>
+      <p class="soft">Cada etapa es una serie de videos. El chavo de 18 a 25 está justo en una de estas casillas.</p>
+    </header>
+    <div class="timeline">
+      <div class="tl"><span class="label">15–17 años</span><span class="lb">Cuarto</span><p class="soft small">Flexiones y dominadas en su cuarto. Primer gym a los 17, solo; hasta las mancuernas de 5 lb pesaban. Rutina de YouTube.</p></div>
+      <div class="tl"><span class="label">Fin 2024 → mayo 2025</span><span class="lb">144 → 177 lb</span><p class="soft small">Bulk sucio: 4.000 kcal, comida rápida, mass gainer, sin pierna ni orden. "Más grasa que músculo."</p></div>
+      <div class="tl"><span class="label">2025</span><span class="lb">El pozo</span><p class="soft small">Definición extrema, sin carbos, con hambre y atracones el finde. Estancado, cada vez levantaba menos. "Estás obsesionado."</p></div>
+      <div class="tl hi"><span class="label">Mayo 2026</span><span class="lb">145 lb</span><p class="soft small">Paciencia, estructura y comida que le gusta en porciones. Peso muerto de 465 lb. Un compañero de trabajo le pide que lo lleve al gym.</p></div>
+    </div>
+    <div class="g2">
+      <div class="card chip">
+        <span class="label">Su frase de giro (real)</span>
+        <p class="say">"Me gusta hacer esto. Voy a ser más paciente y no buscar atajos."</p>
+        <p class="soft small">Y su definición de disciplina: <b>"hacerlo tengas ganas o no"</b>.</p>
+      </div>
+      <div class="card chip">
+        <span class="label">De alumno a entrenador (real)</span>
+        <p class="say">"Oye, he notado que bajaste de peso, ¿cómo le hiciste? ¿Cómo entrenas aunque llegues cansado?"</p>
+        <p class="soft small">Ahí empezó a ayudar a un compañero de la obra. Ese video es su origen como coach.</p>
+      </div>
+    </div>
+    <figure class="card" style="margin:0">
+      <span class="label">Foto ahora (frente)</span>
+      <img src="jony-frente.jpg" alt="Jony ahora de frente, más definido" width="720" height="776" style="width:100%;max-width:360px;height:auto;border-radius:4px">
+      <figcaption class="soft small">Para el contenido: grabar <b>antes/después en el mismo sitio, con la misma luz y la misma pose</b>. Las fotos de antes de su post fijado de 8 meses son oro: guárdalas en alta calidad.</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" aria-labelledby="h-met">
+    <header>
+      <span class="label">05 · Método propio</span>
+      <h2 id="h-met">Método <em>OBRA</em>: tu físico se construye como una casa.</h2>
+      <p class="soft">Une su trabajo (construcción) con lo que va a estudiar (la pirámide de Eric Helms): primero los cimientos, luego lo demás. Se explica en 30 segundos y da para cientos de videos.</p>
+    </header>
+    <div class="method">
+      <div class="mt"><span class="ltr">O</span><h3>Orden</h3><p class="soft small">Un plan que cabe en tu jornada real: 3–4 días si sales reventado de la obra, no 6. Horario fijo, comida preparada y nada de improvisar.</p></div>
+      <div class="mt"><span class="ltr">B</span><h3>Base</h3><p class="soft small">Los cimientos: calorías, proteína, sueño y pasos. Si esto no está, la rutina "del influencer" no sirve de nada.</p></div>
+      <div class="mt"><span class="ltr">R</span><h3>Repeticiones que progresan</h3><p class="soft small">Sobrecarga progresiva con técnica y apuntando. Subir peso o repeticiones semana a semana, sin egolifting.</p></div>
+      <div class="mt"><span class="ltr">A</span><h3>Ajustar sin prohibir</h3><p class="soft small">Tacos, pan dulce y la carne asada del domingo: se ajustan las porciones, no se prohíben. Se revisa cada semana y se corrige.</p></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <span class="label">La pirámide (cómo lo explica)</span>
+        <div class="pyr" aria-label="Pirámide de prioridades de abajo arriba">
+          <div>Suplementos</div><div>Timing</div><div>Ejercicios y técnica</div><div>Volumen, intensidad y progresión</div><div>Constancia, calorías y proteína</div>
+        </div>
+        <p class="soft small">"Tú te preocupas por la creatina y el batido post-entreno, y no tienes los cimientos. Ningún albañil empieza por el techo."</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Método en 30 segundos (para un video)</span>
+        <p class="say">"Trabajo en construcción y algo aprendí: nadie empieza una casa por el techo. Tu físico igual. Primero Orden, un plan que quepa en tu jornada. Luego Base: calorías, proteína y dormir. Después Repeticiones que progresan, semana a semana. Y al final Ajustar sin prohibir: tus tacos se quedan, ajustamos la porción. Eso es OBRA. Escríbeme PLAN y te digo por dónde empezar."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-en">
+    <header>
+      <span class="label">06 · Enemigos y creencias</span>
+      <h2 id="h-en">Contra qué <em>pelea</em> (y qué dice en su lugar).</h2>
+      <p class="soft">Sacado de lo que él mismo escribió. Cada línea es un video corto.</p>
+    </header>
+    <div class="vs" role="table" aria-label="Mitos frente a lo que enseña Jony">
+      <div class="vh" role="columnheader">Lo que creen</div><div class="vh" role="columnheader">Lo que enseña Jony</div>
+      <div>"Entre más calorías, más rápido crezco."</div><div>Volumen controlado. Ya lo hice: 4.000 kcal, +33 lb y más grasa que músculo.</div>
+      <div>"Los carbos engordan, sobre todo de noche."</div><div>Lo que engorda es pasarte de calorías, no la hora ni el arroz.</div>
+      <div>"La proteína en polvo y la creatina te hacen ganar músculo."</div><div>Son comida y ayuda. El músculo lo hacen el entreno y la progresión.</div>
+      <div>"Cuanto más sudas, más grasa quemas."</div><div>El sudor es agua. Lo que cuenta es el déficit sostenido.</div>
+      <div>"Puedo quemar la grasa de la panza haciendo abdominales."</div><div>No hay quema localizada: baja tu grasa total y la panza se va al final.</div>
+      <div>"La grasa se convierte en músculo."</div><div>Son tejidos distintos. Pierdes una y construyes el otro.</div>
+      <div>"Si sigo la rutina de mi influencer, quedaré como él."</div><div>Su rutina es para su vida. La tuya tiene que caber en tu jornada.</div>
+      <div>"Entrenar 6 días es lo mínimo."</div><div>Con 3–4 días bien hechos creces más que con 6 días de puro desorden.</div>
+      <div>"Tengo que hacerlo perfecto."</div><div>Lo perfecto dura 1–2 meses. Lo constante dura años.</div>
+    </div>
+    <div class="card accent">
+      <span class="label">Su línea dura (la usa tal cual)</span>
+      <p class="say">"Si vas a trabajar conmigo, lo primero que vas a dejar son las excusas. No hay fórmula mágica: constancia, disciplina y dedicación. Yo te ayudo, pero depende de ti."</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-voz">
+    <header>
+      <span class="label">07 · Tono y voz</span>
+      <h2 id="h-voz">Habla como habla. <em>No</em> como un libro.</h2>
+    </header>
+    <div class="g3">
+      <div class="card"><span class="label">Sí</span><ul class="l"><li>Español latino natural: "chavos", "bro", "la panza", "libras".</li><li>Spanglish cuando salga solo ("bulk", "cut", "meal prep").</li><li>Rol entrenador: corrige, explica el porqué y da una tarea concreta.</li><li>Humildad: "yo también la regué".</li></ul></div>
+      <div class="card"><span class="label">No</span><ul class="l"><li>Inventar resultados de clientes que no existen.</li><li>Hablar de estatus migratorio, papeles o nada legal: ni suyo ni de nadie.</li><li>Contar los atracones con detalle: se cuenta el aprendizaje, no la conducta.</li><li>Vender suplementos como atajo (contradice su mensaje).</li></ul></div>
+      <div class="card"><span class="label">Prueba social disponible hoy</span><ul class="l"><li>Su cambio: 144 → 177 → 145 lb.</li><li>Peso muerto de 465 lb.</li><li>Cuenta verificada y constancia (241 posts).</li><li>Compañero de la obra al que ayudó (pedirle permiso y que salga en video).</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-conf">
+    <header>
+      <span class="label">08 · Confirmar con Jony antes de publicar</span>
+      <h2 id="h-conf">Lo que falta o <em>no cuadra</em>.</h2>
+    </header>
+    <div class="card warn">
+      <ul class="chk">
+        <li><span><b>De dónde es</b> (país o ciudad de su familia) y si quiere contarlo. Le da identidad al contenido ("comida mexicana vs. súper gringo"). Solo origen y cultura: nada sobre papeles ni estatus.</span></li>
+        <li><span><b>Qué quiere contar de su vida</b>: trabajo en construcción (¿se puede grabar en la obra? permiso del jefe y nada que identifique a la empresa ni a compañeros sin su permiso), familia, el tío que lo animó.</span></li>
+        <li><span><b>Fe en la marca: ¿sí o no?</b> "God first" y 2 Tim 1:7 se quedan solo si él lo siente.</span></li>
+        <li><span><b>Cifras exactas</b>: 144 → 176/177 → 145 lb y en qué fechas. El post dice "8 meses", pero según su texto de mayo 2025 a mayo 2026 son unos 12. Hay que unificarlo.</span></li>
+        <li><span><b>Link de afiliado (Rectify)</b>: ¿tiene contrato o mínimos? Si no, se mueve a una historia destacada.</span></li>
+        <li><span><b>Compañero de la obra y Cristian</b>: permiso para mencionarlos o grabarlos. Si no hay permiso, se habla de "un compa" sin nombre.</span></li>
+        <li><span><b>Edad</b>: tiene 19. Que clientes de 18 a 25 le paguen está bien, pero <b>no aceptar menores de 18</b> sin permiso de sus padres.</span></li>
+        <li><span><b>Horario real</b>: a qué hora sale de la obra y entrena, para fijar la hora de publicar y de responder DMs.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="foot">Sistema Jony · Escuela AGLEZ · Parte 1: Perfil. Siguientes partes: Oferta, Contenido, Embudo por DM, Formación (pirámides), Guion de cierre, CRM y Reporte.</p>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.getAttribute('data-copy')).value;
+    var done = function () { var o = b.textContent; b.textContent = 'Copiado ✓'; b.classList.add('done'); setTimeout(function () { b.textContent = o; b.classList.remove('done'); }, 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(done, function () { fallback(t); done(); }); } else { fallback(t); done(); }
+  });
+});
+function fallback(t) { var a = document.createElement('textarea'); a.value = t; a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch (e) {} a.remove(); }
+</script>
