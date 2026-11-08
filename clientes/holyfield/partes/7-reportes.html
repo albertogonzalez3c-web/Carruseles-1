@@ -126,9 +126,9 @@ h1 { letter-spacing: -.025em !important; }
 
 <div class="wrap">
   <header class="head">
-    <span class="label">Holyfield · Ganar músculo sin complicarte · Reporte para Alberto</span>
+    <span class="label">Holyfield · Para los que creen que es imposible · Reporte para Alberto</span>
     <h1>Tus números, cada día. Sin excusas.</h1>
-    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Chicos de 18 a 25 que llevan meses o años entrenando sin plan, no ven cambios —flacos que no ganan o con algo de barriga— y quieren ganar músculo sin complicarse. · Método HAZLO.</p>
+    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Adultos de más de 25, con poco tiempo, que siempre han sido el flaco o el gordo y creen que cambiar su cuerpo es imposible. · Método HAZLO: instalar, recomponer, consolidar.</p>
     <p class="soft">Cada noche lo del día (5 minutos), cada domingo lo de la semana. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo es lo que hay que corregir mañana. Para de pensar y hazlo: lo que no se mide no mejora.</p>
     <div class="bar">
       <label for="fecha">Día<input type="date" id="fecha"></label>
@@ -186,7 +186,7 @@ h1 { letter-spacing: -.025em !important; }
             <label>YouTube<input data-d="youtube" type="number" min="0" inputmode="numeric" placeholder="0"></label>
             <label>Historias<input data-d="historias" type="number" min="0" inputmode="numeric" placeholder="6–10"></label>
           </div>
-          <p class="soft" style="font-size:13px">Reels = voz en off + yapping + tendencia + green screen + rol entrenador. Los carruseles y YouTube se cuentan aparte. Rol entrenador = tú haciendo de entrenador: corrigiendo técnica, "si fueras mi cliente con 21 años y 60 kg", revisando la rutina de un seguidor, el plan de comidas para el que come 2 veces al día.</p>
+          <p class="soft" style="font-size:13px">Reels = voz en off + yapping + tendencia + green screen + rol entrenador. Los carruseles y YouTube se cuentan aparte. Rol entrenador = tú haciendo de entrenador: corrigiendo técnica, "si fueras mi cliente con 32 años y siempre el flaco (o el gordo)", revisando la semana de un seguidor, la comida para construir o para bajar grasa.</p>
           <div class="goal" id="reelGoal"></div>
           <div class="yn"><span>¿Secuencia con CTA en historias hoy? <small class="soft" id="ctaHint"></small></span><div class="seg" data-yn="ctaHistorias"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
         </div>
@@ -279,7 +279,7 @@ h1 { letter-spacing: -.025em !important; }
             <label>Respuestas a tus Estados de WhatsApp<input data-s="respEstados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           </div>
           <label class="fld">Mejor pieza de la semana (enlace)<input data-s="mejorLink" placeholder="https://www.instagram.com/reel/…"></label>
-          <label class="fld">¿Por qué crees que funcionó?<input data-s="mejorPorque" placeholder="Ej.: voz en off de los 52 kg y sin hombros con el gancho de &quot;otra vez&quot;"></label>
+          <label class="fld">¿Por qué crees que funcionó?<input data-s="mejorPorque" placeholder="Ej.: voz en off de los 52 kg con el gancho de &quot;creía que era imposible&quot;"></label>
         </div>
 
         <div class="grp">
@@ -465,7 +465,7 @@ h1 { letter-spacing: -.025em !important; }
         '<label>Importe cobrado hoy (€)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
         '<label>Plan<select data-k="plan">' + opt(PLANES, c.plan) + '</select></label>' +
         '<label>Pago<select data-k="pago">' + opt(PAGOS, c.pago) + '</select></label>' +
-        '<label class="full">Cómo fue (de dónde vino, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: escribió HAZLO en una historia; dudaba por sus padres"></label></div>';
+        '<label class="full">Cómo fue (de dónde vino, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: escribió HAZLO en una historia; siempre fue el gordo y dudaba por el tiempo"></label></div>';
       row.querySelectorAll("select").forEach(function (s) { if (!c[s.dataset.k]) c[s.dataset.k] = s.value; });
       row.querySelectorAll("[data-k]").forEach(function (inp) {
         var h = function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveDay(); update(); };
@@ -566,7 +566,7 @@ h1 { letter-spacing: -.025em !important; }
     sem.promos.forEach(function (p, i) {
       var row = document.createElement("div"); row.className = "prow";
       var DEC = ["Probando", "Mantener", "Cambiar gancho", "Cortar"];
-      row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Anuncio / ángulo (p. ej. Anuncio 1 · 52 kg y sin hombros)" aria-label="Anuncio y ángulo">' +
+      row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Anuncio / ángulo (p. ej. Anuncio 1 · Creía que era imposible)" aria-label="Anuncio y ángulo">' +
         '<label class="pl"><span>Días</span><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días promocionado"></label>' +
         '<label class="pl"><span>Gasto €</span><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto €" aria-label="Gasto en euros"></label>' +
         '<label class="pl"><span>Seguidores</span><input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Seguidores" aria-label="Seguidores ganados"></label>' +
