@@ -1,0 +1,522 @@
+<title>Gerard Pavón · GPC</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<meta name="description" content="Gerard Pavón · Entreno y alimentación online para hombres que trabajan a turnos: perder grasa y ponerse en forma, fuertes y con fondo, con un plan que se adapta a tu cuadrante.">
+<style>
+
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #f5c400;
+  --accent-text: #7a5c00;
+  --accent-dark: #f5c400;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2a2a2a; }
+.btn-a { background: var(--accent); color: #111111; }
+.btn-a:hover { background: #7a5c00; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 800 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 800 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 800 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 800 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 800 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 800 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 800 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c4c4c0; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 800 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 800 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: #111111; display: grid; place-items: center; text-align: center; font: 800 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a9a9a; font-size: 14px; max-width: 60ch; }
+
+
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #fbefb8; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 800 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(247, 247, 245, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+
+h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none; letter-spacing: -.025em; }
+.hero h1 { font: 800 clamp(40px, 7vw, 84px)/1 var(--f-head); text-transform: none; letter-spacing: -.035em; max-width: 15ch; }
+.brand { text-transform: none; letter-spacing: -.01em; font-size: 18px; }
+.fact b, .layer h3, .base h3, .case .big, .step h3, .err b, .turn, .me p, .quote, .seal, .final h2 { text-transform: none; letter-spacing: -.02em; }
+.fact b { font-size: 21px; } .layer h3 { font-size: 24px; } .case .big { font-size: 24px; } .step h3 { font-size: 22px; } .err b { font-size: 20px; }
+.turn { font-size: clamp(26px, 3.8vw, 42px); } .me p { font-size: clamp(22px, 3vw, 32px); } .quote { font-size: clamp(24px, 3.4vw, 38px); }
+.seal { font-size: clamp(20px, 2.4vw, 26px); }
+.final h2 { font-size: clamp(38px, 6.5vw, 78px); }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
+.duo figure { margin: 0; display: grid; gap: 8px; }
+.duo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; background: #000; }
+.duo figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); display: block; }
+.duo figcaption span { font-size: 15px; color: var(--soft); }
+.sports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.sport { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 8px; }
+.sport b { font: 800 22px/1.1 var(--f-head); letter-spacing: -.02em; }
+.sport span { color: var(--soft); font-size: 16px; }
+.empty-case { border: 2px dashed #c4c4c0; background: var(--chip); border-radius: 12px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 10px; }
+.empty-case p { color: var(--soft); max-width: 60ch; }
+@media (max-width: 680px) { .duo, .sports { grid-template-columns: 1fr; } }
+
+
+.nm { --nm-a: var(--accent, #f5c400); --nm-at: var(--accent-text, #7a5c00); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #111111; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.women { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.women figure { margin: 0; display: grid; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 10px 10px 14px; }
+.women img { display: block; width: 100%; height: auto; border-radius: 8px; background: #000; }
+.women figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); display: block; padding-inline: 4px; }
+.women figcaption span { font-size: 15px; color: var(--soft); padding-inline: 4px; display: block; }
+.women .q { align-self: stretch; }
+.trainers { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-bottom: 16px; }
+.trainers b { font: 800 clamp(30px, 4.4vw, 50px)/1 var(--f-head); letter-spacing: -.03em; }
+.trainers b em { font-style: normal; color: var(--accent-dark); }
+.trainers p { color: var(--on-dark); max-width: 62ch; }
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.cases .ph { aspect-ratio: 4 / 5; }
+@media (max-width: 860px) { .women { grid-template-columns: 1fr 1fr; } .women .q { grid-column: 1 / -1; } }
+@media (max-width: 680px) { .women, .cases { grid-template-columns: 1fr; } }
+
+/* Marca Gerard · GPC: negro + amarillo (como sus carruseles). Sobre amarillo, siempre texto negro. */
+.card.accent, .card.acc { color: #111; }
+.card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b, .card.acc ul.l b, .card.acc ol.l b, .card.acc h3, .card.acc b, .card.acc p { color: #111; }
+.card.accent .label, .card.acc .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l, .card.acc ul.l, .card.acc ol.l { color: #1a1a1a; }
+.card.accent .say { background: rgba(0,0,0,.08); border-left-color: #111; color: #111; }
+.card.accent .badge { background: rgba(0,0,0,.12); color: #111; }
+h1 { text-transform: uppercase !important; letter-spacing: -.01em !important; }
+h1 em { background: #f5c400; color: #111 !important; padding: 0 .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.mono-badge { width: 40px; height: 40px; border-radius: 8px; background: #f5c400; color: #111; display: grid; place-items: center; font: 800 14px/1 var(--f-head); letter-spacing: .02em; flex: none; }
+.proof-strip img { aspect-ratio: 3 / 4; object-position: top; }
+.dark { background: #0d0d0d; background-image: repeating-linear-gradient(135deg, rgba(245,196,0,.0) 0 22px, rgba(245,196,0,.0) 22px 44px); }
+.dark::after { content: ""; display: block; height: 10px; background: repeating-linear-gradient(135deg, #f5c400 0 14px, #111 14px 28px); }
+.me img { width: 110px; height: 110px; object-position: center 20%; }
+.sign { border-left-color: #f5c400; }
+.turn em, .err em { color: #7a5c00; }
+.empty-case b { font: 800 20px/1.1 var(--f-head); }
+.wall .q { break-inside: avoid; margin: 0 0 16px; }
+.final h2, .layer h3, .step h3, .base h3 { text-transform: uppercase; letter-spacing: -.01em; }
+.seal { color: #111; }
+</style>
+<!--
+  BOCETO · PENDIENTE (no se ve en la página):
+  - WhatsApp y formulario: sin confirmar. Pegar el número en WA (formato 34600000000) y la URL del formulario en FORM, en el script de abajo. Mientras estén vacíos, el botón principal abre el privado de Instagram con la palabra CUADRANTE.
+  - Casos: recortes de su perfil de Instagram (casos/*.jpg). Confirmar permiso por escrito de Felipe, Javi, Juanjo y del cliente del −4,8 kg para usarlos en la web y en anuncios. ¿Felipe es Pipe?
+  - Fotos de Gerard: solo los recortes "3 versiones (2015/2019/hoy)" y el retrato del carrusel "Trabajas de noche". Faltan fotos de los 90 kg y del trabajo en obra/campo.
+  - Sin precios en la landing (se dan en la llamada).
+-->
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><span class="mono-badge" aria-hidden="true">GPC</span><div>Gerard Pavón<small>Entreno para gente con turnos</small></div></div>
+      <a class="btn btn-a js-main" href="https://ig.me/m/g.pavon9" target="_blank" rel="noopener">Escríbeme CUADRANTE</a>
+    </header>
+
+    <div class="hero">
+      <div class="label">Para hombres de 20 a 40 que trabajan a turnos</div>
+      <h1>Tu turno cambia. <em>Tu plan también.</em></h1>
+      <p class="lede">Si trabajas de noche, a turnos rotativos o con un horario que cambia cada semana, te ayudo a perder grasa y ponerte en forma de verdad —<b>fuerte y con fondo</b>— con un plan que se adapta a tu cuadrante y no al revés. Me preparé para competir trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. Sé lo que es.</p>
+      <div class="ctas">
+        <a class="btn btn-a js-main" href="https://ig.me/m/g.pavon9" target="_blank" rel="noopener">Escríbeme CUADRANTE</a>
+        <a class="btn btn-dark-ghost js-wa" href="#formulario" hidden>Háblame por WhatsApp</a>
+      </div>
+      <p class="cta-note">Me escribes la palabra <b>CUADRANTE</b> por privado, me cuentas tu turno y te digo por dónde empezaría en tu caso. Lo leo yo.</p>
+
+      <a class="proof-strip" href="#casos" aria-label="Ver casos de clientes">
+        <figure><img src="casos/felipe-17kg.jpg" alt="Felipe, vigilante de seguridad: de 111,2 a 94,2 kg" width="438" height="584"><figcaption><b>−17 kg</b> · Felipe, vigilante</figcaption></figure>
+        <figure><img src="casos/javi-camarero-policia.jpg" alt="Javi, antes y después: de camarero a Policía Nacional" width="438" height="584"><figcaption><b>Policía Nacional</b> · Javi, camarero</figcaption></figure>
+        <figure><img src="casos/juanjo-95-88kg.jpg" alt="Juanjo, vigilante: de 95,4 a 88,4 kg" width="438" height="584"><figcaption><b>−7 kg</b> · Juanjo, vigilante</figcaption></figure>
+      </a>
+
+      <div class="facts">
+        <div class="fact"><b>Noche, mañana o tarde</b><span>Tu entreno tiene versión para cada turno</span></div>
+        <div class="fact"><b>3 sesiones</b><span>Mínimo, caiga el turno que caiga</span></div>
+        <div class="fact"><b>12 semanas</b><span>Encajar, apretar y sostener</span></div>
+        <div class="fact"><b>Cada semana</b><span>Me pasas tu cuadrante y te reviso</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>No te falta fuerza de voluntad. Te sobra cambio de turno.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Cuanto menos como, más peso pierdo."</div>
+      <div class="sign">"Me pongo a correr y así quemo la grasa."</div>
+      <div class="sign">"Si entreno más días, me pondré más fuerte."</div>
+      <div class="sign">"Con comer proteína ya está; lo demás da igual."</div>
+      <div class="sign">Semana de noches: ni gimnasio ni comida decente. El lunes, otra vez de cero.</div>
+      <div class="sign">"Quiero estar como ese." Y ese no trabaja de noche ni tiene tu cuerpo.</div>
+    </div>
+    <p class="turn">El problema no eres tú. <em>Es un plan pensado para alguien que trabaja de 9 a 5.</em></p>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Mi historia</div>
+      <h2>Perdía el progreso cada vez que el trabajo apretaba.</h2>
+    </div>
+    <div class="me">
+      <img src="casos/gerard-retrato.jpg" alt="Gerard Pavón, entrenador" width="308" height="265" loading="lazy">
+      <p>"La fuerza no lo es todo."</p>
+    </div>
+    <div class="duo">
+      <figure><img src="casos/gerard-3-versiones.jpg" alt="Gerard en 2015, en 2019 y hoy" width="438" height="238" loading="lazy" style="aspect-ratio:438/238"><figcaption><b>2015 · 2019 · hoy</b><span>Tres versiones de mí.</span></figcaption></figure>
+      <div class="empty-case"><b>Foto pendiente</b><p>Los 90 kg y el trabajo en la obra o en el campo. [Gerard: mándalas para cerrar esta parte.]</p></div>
+    </div>
+    <div class="read stack">
+      <p>Empecé en el gimnasio con <strong>16 años, 1,70 y 70 kg</strong>, después de dejar el fútbol por una lesión. Me encontré: levantaba pesos que la gente con experiencia no movía. Llegué a <strong>90 kg</strong>, me metí en powerlifting y competí en un campeonato del gimnasio.</p>
+      <p>Luego quise competir en culturismo. Trabajaba <strong>de albañil y en el campo</strong>, y mi preparador me mandaba arroz blanco, pollo recalentado y tubos de pavo. Con ese trabajo y esa comida, acababa los fines de semana con atracones. Y cada vez que el trabajo apretaba, <strong>perdía todo el progreso</strong>.</p>
+      <p>Tardé años en entenderlo: no me faltaba disciplina, me faltaba <strong>un plan que encajara en mi vida</strong>. Cuando lo tuve, por fin me vi cómodo: fuerte, flexible y <strong>corriendo sin ahogarme</strong>.</p>
+      <p>En 2023 decidí dedicarme a esto y me formé con gente que vivía de ello. Mi primer cliente fue Javi, camarero, que quería ser Policía Nacional. Lo consiguió. Después llegaron vigilantes de seguridad con turnos de noche. <strong>Mis mejores casos trabajan a turnos.</strong> No es casualidad.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>Dieta extrema</b><span>Arroz con pollo y poco más, trabajando de pie 8 horas. <em>Lo que funciona:</em> comer a tu hora y con variedad.</span></div>
+      <div class="err"><b>Solo pesas</b><span>90 kg y ahogarme corriendo. <em>Lo que funciona:</em> fuerza, fondo y moverte más.</span></div>
+      <div class="err"><b>Plan de 9 a 5</b><span>Un plan que se rompe con cada cambio de turno. <em>Lo que funciona:</em> versiones para cada turno.</span></div>
+    </div>
+    <p class="quote">"¿De qué me sirve ser un tío musculado de 90 kg si no me puedo atar ni los cordones?"</p>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método Cuadrante</div>
+      <h2>Encajar. Apretar. Sostener.</h2>
+      <p class="lede">Doce semanas con un orden claro. Lo primero que vas a dejar de hacer es perder el tiempo y jugar a la ruleta rusa con tu comida y tu entreno.</p>
+    </div>
+    <section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Para quién es</span><p class="nm-big">Ayudo a hombres de 20 a 40 que trabajan a turnos —de noche, rotativos o con horarios que cambian cada semana— a perder grasa y ponerse en forma de verdad, fuertes y con fondo, con un plan que se adapta a su cuadrante y no al revés.</p></div><div class="nm-meth"><span class="nm-lab">El Método Cuadrante en 30 segundos</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Tu turno manda</b><span>3–4 sesiones de 45–60 minutos con versión de mañana, de tarde y de noche. Si cambia tu cuadrante, cambia el plan; no se rompe.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer a tu hora, sin vivir de arroz con pollo</b><span>Comidas según tu turno y un tupper que aguanta la noche. Nada de dietas extremas que acaban en atracón el fin de semana.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Fuerte y con fondo</b><span>Fuerza, resistencia y pasos. La fuerza no lo es todo: de nada sirve estar fuerte si te ahogas subiendo una escalera.</span></div></div><h3 style="margin-top:14px">3 fases · un trimestre</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Encajar</b><p><em>Qué pasa:</em> Montamos el plan sobre tu cuadrante real y dejas de empezar de cero cada vez que cambias de turno.</p><p><em>Qué haces tú:</em> Me mandas tu cuadrante, haces tus 3 sesiones mínimas y llegas a tus pasos.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–9</span><b>Apretar</b><p><em>Qué pasa:</em> Baja la grasa (o sube el músculo si ese es tu objetivo), suben las cargas y aguantas más corriendo o subiendo escaleras.</p><p><em>Qué haces tú:</em> Subes cargas cada semana, metes el trabajo de fondo y ajustamos la comida en cada revisión.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Semanas 10–12</span><b>Sostener</b><p><em>Qué pasa:</em> Aprendes a ajustar tú solo entreno y comida cuando cambia el turno, encadenas noches o llegan las vacaciones.</p><p><em>Qué haces tú:</em> Te quedas con tus plantillas por tipo de turno y tu plan para los 3 meses siguientes.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Cuadrante y revisión cada semana</span><span>Mínimo 3 sesiones, caiga el turno que caiga</span><span>Pasos diarios mínimos</span></div></div><p class="nm-proof">Prueba: "Me preparé para competir trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. Hoy hago planes para gente con turnos imposibles."</p><p class="nm-line">Felipe, vigilante de seguridad: −17 kg (de 111,2 a 94,2). Javi: de camarero a Policía Nacional. Juanjo, vigilante: de 95,4 a 88,4 kg.</p></section>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Semanas 1–4</span><h3>Encajar</h3><p>El plan se monta sobre tu cuadrante real. Tú: me lo mandas, haces tus 3 sesiones mínimas y llegas a tus pasos.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Semanas 5–9</span><h3>Apretar</h3><p>Baja la grasa, suben las cargas y el fondo. Tú: subes cargas cada semana y ajustamos la comida en cada revisión.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Semanas 10–12</span><h3>Sostener</h3><p>Aprendes a ajustarlo tú solo cuando cambia el turno. Tú: te quedas con tus plantillas por tipo de turno.</p></article>
+      <article class="layer"><span class="n">Cada semana</span><h3>Revisión 1:1</h3><p>Me pasas tu cuadrante y tu revisión; te ajusto el plan. Alguien pendiente de ti, que es lo que más se echa de menos solo.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Para turnos de verdad</span>
+      <h3>Semana de noches, semana de mañanas: el plan no se rompe.</h3>
+      <p>Cada sesión tiene versión de mañana, tarde y noche, y cada comida, versión para el tupper de madrugada. No te pido que vivas en el gimnasio: te pido 3 sesiones mínimas y tus pasos, caiga el turno que caiga.</p>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Resultados</div>
+      <h2>Vigilantes, camareros y gente con turnos imposibles.</h2>
+      <p class="lede">Clientes reales, publicados en mi Instagram. Sin cuerpos de catálogo: gente que trabaja de noche y aun así cambió.</p>
+    </div>
+    <div class="wall">
+      <article class="case"><img src="casos/felipe-17kg.jpg" alt="Felipe, vigilante de seguridad: de 111,2 a 94,2 kg" width="438" height="584" loading="lazy"><p class="big">−17 kg</p><p>De 111,2 a 94,2 kg trabajando de vigilante de seguridad.</p><div class="who"><span class="avatar">F</span><div><b>Felipe</b><span>Vigilante de seguridad</span></div></div></article>
+      <article class="case"><img src="casos/javi-camarero-policia.jpg" alt="Javi, antes y después" width="438" height="584" loading="lazy"><p class="big">De camarero a Policía Nacional</p><p>No conseguía coger peso ni condición. Su objetivo era ser policía nacional, y lo logró. Fue mi primer cliente.</p><div class="who"><span class="avatar">J</span><div><b>Javi</b><span>Camarero</span></div></div></article>
+      <article class="case"><img src="casos/juanjo-95-88kg.jpg" alt="Juanjo, vigilante: de 95,4 a 88,4 kg" width="438" height="584" loading="lazy"><p class="big">95,4 → 88,4 kg</p><p>Vigilante de seguridad, con horario distinto al de Felipe y el mismo problema.</p><div class="who"><span class="avatar">J</span><div><b>Juanjo</b><span>Vigilante de seguridad</span></div></div></article>
+      <article class="case"><img src="casos/caso-menos-4-8kg.jpg" alt="Cliente: −4,8 kg, después 101,8 kg" width="438" height="584" loading="lazy"><p class="big">−4,8 kg</p><p>[Nombre, trabajo y semanas: confirmar con Gerard.]</p><div class="who"><span class="avatar">?</span><div><b>[Cliente]</b><span>[confirmar]</span></div></div></article>
+      <!-- Si Felipe y Pipe son la misma persona, fusionar esta tarjeta con la de Felipe. -->
+      <article class="case"><img src="casos/pipe-volvio.jpg" alt="Pipe consiguió su cambio y dejó la asesoría, pero volvió" width="438" height="585" loading="lazy"><p class="big">Dejó la asesoría. Y volvió.</p><p>Probó solo, con rutinas de amigos, y nada. Le faltaba lo mismo que a casi todos: alguien pendiente y una revisión cada semana.</p><div class="who"><span class="avatar">P</span><div><b>Pipe</b><span>Vigilante de seguridad</span></div></div></article>
+      <div class="q"><blockquote>La confianza era al 100 %: lo que les mandaba, lo hacían.</blockquote><span>Lo que tienen en común mis mejores casos</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes entre 20 y 40 y trabajas de noche, a turnos rotativos o con un horario que cambia.</li>
+          <li>Te sobra grasa, te falta fondo o las dos cosas, y no te sientes cómodo con lo que ves en el espejo.</li>
+          <li>Ya lo has intentado solo (rutinas de amigos, internet, correr) y se te rompe en cuanto cambias de turno.</li>
+          <li>Quieres estar fuerte y aguantar, no solo verte bien en una foto.</li>
+          <li>Vas a mandarme tu cuadrante y tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas trucos para estar marcado en un mes.</li>
+          <li>Desde el minuto uno buscas el camino fácil sin trabajar.</li>
+          <li>Lo que quieres es comparar entrenadores y saber más que el tuyo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Me escribes CUADRANTE</h3><p>Por privado en Instagram. Me cuentas tu turno, qué comes y qué quieres conseguir.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos 30 minutos</h3><p>Si encajamos, te llamo y te digo cómo montaría tu plan con tu horario real.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas a encajar</h3><p>Tu fase 1 hecha sobre tu cuadrante y la primera revisión en el calendario.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Empieza aquí</div>
+      <h2>Escríbeme CUADRANTE.</h2>
+      <p class="lede">Lo leo yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <div class="ctas">
+        <a class="btn btn-a js-main" href="https://ig.me/m/g.pavon9" target="_blank" rel="noopener">Escríbeme CUADRANTE en Instagram</a>
+        <a class="btn js-wa" href="#formulario" hidden>Háblame por WhatsApp</a>
+      </div>
+      <p class="cta-note" id="pendNote">WhatsApp y formulario: pendientes de confirmar con Gerard.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Trabajo de noche. ¿Cuándo entreno?</summary><p>Cuando te toque a ti: cada sesión tiene versión para antes del turno, después o en tu día libre. Lo que no cambia son las 3 sesiones mínimas a la semana.</p></details>
+      <details><summary>¿Y qué como a las 4 de la mañana?</summary><p>Lo que te quepa en un tupper y te siente bien en el turno. Montamos comidas por tipo de turno, sin vivir de arroz blanco con pollo.</p></details>
+      <details><summary>Si como menos, ¿no adelgazo antes?</summary><p>Comer poquísimo acaba en hambre, en atracón el fin de semana y en perder músculo. A mí me pasó. Se trata de comer bien a tu hora, no de pasar hambre.</p></details>
+      <details><summary>¿No basta con salir a correr?</summary><p>Correr ayuda, pero solo correr no te pone fuerte, y solo pesas no te da fondo. Hacemos las dos cosas y que te muevas más en tu día.</p></details>
+      <details><summary>Ya lo he intentado solo y lo dejo siempre.</summary><p>Normal: un plan de 9 a 5 se rompe con el primer cambio de turno. Aquí me pasas tu cuadrante cada semana y lo ajusto. Tienes a alguien pendiente.</p></details>
+      <details><summary>Quiero sacar unas pruebas físicas, no solo bajar peso.</summary><p>También es para ti. Javi era camarero y quería ser Policía Nacional: el objetivo era rendir, no solo verse bien.</p></details>
+      <details><summary>¿Es online?</summary><p>Sí: plan, revisiones y seguimiento online. [Confirmar con Gerard si ofrece algo presencial.]</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del tiempo que trabajemos juntos. Escríbeme CUADRANTE y te lo explico cuando hablemos.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Deja de jugar a la ruleta rusa con tu comida y tu entreno.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-main" href="https://ig.me/m/g.pavon9" target="_blank" rel="noopener">Escríbeme CUADRANTE</a>
+    </div>
+    <p class="cta-note">Por privado en <a href="https://www.instagram.com/g.pavon9/" target="_blank" rel="noopener">@g.pavon9</a>. Te contesto yo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Gerard Pavón · GPC · Entrenamiento y alimentación online</span><span><a href="https://www.instagram.com/g.pavon9/" target="_blank" rel="noopener">@g.pavon9</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-main" href="https://ig.me/m/g.pavon9" target="_blank" rel="noopener">Escríbeme CUADRANTE</a></div>
+<script>
+(function () {
+  // PENDIENTE (confirmar con Gerard): número de WhatsApp (solo cifras, con prefijo: 34600000000) y URL del formulario.
+  var WA = "";
+  var FORM = "";
+  var waMsg = encodeURIComponent("Hola Gerard, vengo de tu web. CUADRANTE. Mi turno es: ");
+  document.querySelectorAll(".js-wa").forEach(function (a) {
+    if (!WA) return;
+    a.href = "https://wa.me/" + WA + "?text=" + waMsg; a.target = "_blank"; a.rel = "noopener"; a.hidden = false;
+  });
+  if (WA || FORM) { var pn = document.getElementById("pendNote"); if (pn) pn.hidden = true; }
+  var fe = document.getElementById("formEmbed");
+  if (fe && FORM && window.self === window.top && /\/viewform/.test(FORM)) {
+    var f = document.createElement("iframe");
+    f.src = FORM + (FORM.indexOf("?") < 0 ? "?" : "&") + "embedded=true"; f.title = "Formulario de Gerard"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>
