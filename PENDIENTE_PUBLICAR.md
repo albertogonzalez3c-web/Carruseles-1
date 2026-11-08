@@ -1,10 +1,15 @@
-# Pendiente de publicar (límite diario de 200 publicaciones alcanzado el 2026-11-08; se reinicia a medianoche UTC)
+# Pendiente de publicar (límite diario de 200 publicaciones; se reinicia a medianoche UTC)
 
-Republicar (mismo enlace, misma ruta de archivo):
-- clientes/fran-segui/partes/crm.html → https://claude.ai/artifact/TMfVbQ1ENMxA3xvZzQq1iq (db)
-- clientes/fran-segui/partes/7-reportes.html → https://claude.ai/artifact/4RYs2SMvqgbtbaGNrksYDe (db)
+DECISIÓN DE ALBERTO: a partir de ahora, UNA sola página por cliente.
+Cómo: `python3 tools/hub.py clientes/<cliente> "Nombre"` → genera clientes/<cliente>/_hub/ e imprime file_path + mapa files.
+Publicar con Artifact: file_path = _hub/index.html, files = el mapa impreso, capabilities {db:{}} (para CRM y reporte), icon.
 
-Publicar nuevos (8 páginas cada uno; crm y 7-reportes con capabilities {db:{}}; landings con sus imágenes en `files`):
-- clientes/juanmi-baron/ (index con casos/juanmi-avatar.jpg, casos/juanmi-fisico.jpg)
-- clientes/carlos-santos/ (cuando terminen sus agentes)
-- clientes/gerard-pavon/, clientes/zent-jorge-gabriel/, clientes/jorge-sanchez/, clientes/xavier-garcia/ (cuando terminen)
+PRUEBA PRIMERO con Juanmi: abrir el artifact, entrar en 7 · CRM y comprobar que guarda (no sale "modo prueba").
+- Si el CRM/reporte NO acceden a la base de datos dentro del hub: publicar crm.html y 7-reportes.html como artifacts propios (con db) y que el hub enlace a esas URLs (editar las tarjetas del índice) → 3 publicaciones por cliente.
+
+Clientes nuevos a publicar como hub: juanmi-baron, carlos-santos, gerard-pavon, zent-jorge-gabriel, jorge-sanchez, xavier-garcia (cuando sus agentes terminen).
+
+Clientes antiguos (ya publicados en 8 enlaces sueltos): republicar las 2 páginas pendientes de Seguí en sus URLs:
+- clientes/fran-segui/partes/crm.html → https://claude.ai/artifact/TMfVbQ1ENMxA3xvZzQq1iq
+- clientes/fran-segui/partes/7-reportes.html → https://claude.ai/artifact/4RYs2SMvqgbtbaGNrksYDe
+(Opcional, preguntar a Alberto: pasar también los antiguos a hub; cambia sus enlaces.)
