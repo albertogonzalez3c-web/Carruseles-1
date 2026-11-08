@@ -74,7 +74,13 @@ th { font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: up
 .k-rol { background: var(--ink); color: var(--white); }
 .k-yap { background: #dbe7f1; color: #1f4c6e; }
 .k-yt { background: var(--red); color: var(--white); }
-.k-car { background: #ece9e3; color: var(--soft); border: 1px dashed var(--line); }
+.k-cc { background: #fff; color: var(--red-text); border: 1.5px solid var(--red); }
+.k-cv { background: #fff; color: var(--ink); border: 1.5px solid var(--ink); }
+.ctag { font-size: 11.5px; font-weight: 800; border-radius: 999px; padding: 3px 9px; justify-self: start; }
+.ctag.C { color: var(--red-text); border: 1.5px solid var(--red); }
+.ctag.V { color: var(--ink); border: 1.5px solid var(--ink); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.slides { margin: 0; padding-left: 20px; display: grid; gap: 3px; font-size: 14px; }
 .legend { display: flex; flex-wrap: wrap; gap: 6px; }
 .legend span { display: inline-flex; gap: 6px; align-items: center; font-size: 12.5px; font-weight: 700; background: var(--white); border-radius: 999px; padding: 5px 10px; }
 .legend i { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
@@ -134,6 +140,7 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     <div class="pills">
       <span class="pill">1–3 reels al día → 3–5</span>
       <span class="pill">1 YouTube por semana (vlog)</span>
+      <span class="pill">3 carruseles/semana (conexión + valor)</span>
       <span class="pill">Stories por bloques</span>
       <span class="pill">CTA: escríbeme PLAN</span>
     </div>
@@ -145,6 +152,7 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
     <button class="tab" role="tab" aria-selected="false" data-v="sem">Semana</button>
     <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="car">Carruseles</button>
     <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones virales</button>
     <button class="tab" role="tab" aria-selected="false" data-v="yt">YouTube</button>
     <button class="tab" role="tab" aria-selected="false" data-v="sto">Stories</button>
@@ -188,8 +196,9 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     <div class="card">
       <span class="label">Fases</span>
       <ul class="clean">
-        <li><b>Semanas 1–2:</b> 1 reel al día + stories diarias. Cogiendo soltura delante de la cámara. Vale más publicar que hacerlo perfecto.</li>
-        <li><b>Semanas 3–6:</b> 2 reels al día + 1 YouTube por semana + 1–2 carruseles opcionales.</li>
+        <li><b>Siempre:</b> 3 carruseles por semana alternando conexión y valor. No son opcionales.</li>
+        <li><b>Semanas 1–2:</b> 1 reel al día + 3 carruseles + stories diarias. Cogiendo soltura delante de la cámara. Vale más publicar que hacerlo perfecto.</li>
+        <li><b>Semanas 3–6:</b> 2 reels al día + 1 YouTube por semana + 3 carruseles.</li>
         <li><b>Mes 2–3:</b> 3 reels al día. Cuando domines las variantes de gancho en trial reels, sube a 3–5.</li>
       </ul>
     </div>
@@ -220,14 +229,14 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
 <section class="view" id="v-sem" hidden>
   <div class="card">
     <h2>Calendario semanal</h2>
-    <p class="soft">Cada casilla es una pieza. Los colores son los pilares. El YouTube va el sábado o el domingo, que es cuando no trabajas. Los carruseles son opcionales: si un día vas fundido, publica el reel y punto.</p>
+    <p class="soft">Cada casilla es una pieza. Los colores son los pilares. El YouTube va el sábado o el domingo, que es cuando no trabajas. Los 3 carruseles semanales son obligatorios y alternan: una semana conexión–valor–conexión, la siguiente valor–conexión–valor. Hazlos el domingo de una sentada.</p>
     <div class="legend" id="legend"></div>
   </div>
   <div id="stages" style="display:grid;gap:18px"></div>
   <div class="card sand">
     <span class="label">Cómo sacarlo con jornada de obra</span>
     <ul class="clean">
-      <li><b>Domingo (1 h):</b> eliges 7–14 ángulos de la pestaña Ángulos y los apuntas en notas. Grabas 3–4 hablados de una sentada.</li>
+      <li><b>Domingo (1 h 30):</b> armas los 3 carruseles de la semana en Canva con la plantilla, eliges 7–14 ángulos de la pestaña Ángulos y los apuntas en notas. Grabas 3–4 hablados de una sentada.</li>
       <li><b>En la obra:</b> 3 clips de 5 s al día (llegada, lunch box, salida). Sin parar de trabajar, en el break.</li>
       <li><b>En el gym:</b> 1 serie grabada en cada sesión + 1 corrección de técnica. Eso son 2 reels de rol entrenador.</li>
       <li><b>Por la noche (20 min):</b> editas en CapCut y programas el del día siguiente.</li>
@@ -245,6 +254,34 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     <span class="count" id="count"></span>
   </div>
   <div class="angs" id="angs"></div>
+</section>
+
+<!-- ============ CARRUSELES ============ -->
+<section class="view" id="v-car" hidden>
+  <div class="card dark">
+    <span class="label" style="color:#ff8a95">Carruseles: 3 por semana alternando conexión y valor</span>
+    <h2>Los reels te traen gente. Los carruseles hacen que se queden y te escriban.</h2>
+    <p class="soft">Semana A: conexión – valor – conexión (lunes, miércoles, viernes). Semana B: valor – conexión – valor. 6–9 slides, letra grande, tu foto real en la portada. El último slide siempre: "Escríbeme PLAN".</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><span class="ctag C">Conexión</span><p>Historia, vulnerabilidad, día a día en la obra, creencias. Hace que confíen en ti como persona. Se mide en comentarios y DMs.</p></div>
+    <div class="card"><span class="ctag V">Valor</span><p>Educativo: tu método, mitos, guías de súper y comida. Hace que te vean como coach. Se mide en guardados y compartidos.</p></div>
+  </div>
+  <div class="card sand">
+    <span class="label">Plantilla (Canva)</span>
+    <ul class="clean">
+      <li><b>Slide 1 · Portada:</b> tu foto real + una frase gancho de 6–9 palabras. Es el 80 % del carrusel.</li>
+      <li><b>Slide 2:</b> por qué importa / dónde estabas.</li>
+      <li><b>Slides 3–7:</b> una idea por slide, máximo 25 palabras.</li>
+      <li><b>Penúltimo:</b> resumen o lección en una frase (lo que guardan).</li>
+      <li><b>Último:</b> "Si quieres tu plan, escríbeme PLAN" + tu foto.</li>
+      <li>Descripción: amplía la historia en 4–6 líneas y repite el CTA.</li>
+    </ul>
+  </div>
+  <div class="card"><h2>12 ideas de conexión</h2></div>
+  <div class="angs" id="carC"></div>
+  <div class="card"><h2>12 ideas de valor</h2></div>
+  <div class="angs" id="carV"></div>
 </section>
 
 <!-- ============ GUIONES ============ -->
@@ -403,26 +440,26 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
   var K = {
     rol: { n: "Rol entrenador", c: "k-rol" }, his: { n: "Mi historia", c: "k-his" }, obra: { n: "Día en la obra", c: "k-obra" },
     super: { n: "Súper de aquí", c: "k-super" }, mito: { n: "Mito", c: "k-mito" }, yap: { n: "Yapping", c: "k-yap" },
-    yt: { n: "YouTube vlog", c: "k-yt" }, car: { n: "Carrusel (opcional)", c: "k-car" }
+    yt: { n: "YouTube vlog", c: "k-yt" }, cc: { n: "Carrusel conexión", c: "k-cc" }, cv: { n: "Carrusel valor", c: "k-cv" }
   };
   var STAGES = [
-    { t: "Semanas 1–2 · 1 reel al día", s: "Arranque. Formato clips + texto. Aún sin YouTube: primero suelta la cámara.",
-      plan: [["rol"], ["obra"], ["his"], ["super"], ["rol"], ["mito"], ["obra"]] },
-    { t: "Semanas 3–6 · 2 reels al día + YouTube", s: "Entra el vlog semanal y los carruseles opcionales.",
-      plan: [["rol", "obra"], ["his", "super", "car"], ["rol", "mito"], ["obra", "rol"], ["super", "his", "car"], ["rol", "yap", "yt"], ["obra", "mito"]] },
-    { t: "Mes 2–3 · 3 reels al día (→ 3–5 con trial reels)", s: "Cuando ya sacas 3 ganchos de cada vídeo sin pensar, súmale 1–2 trial reels diarios.",
-      plan: [["rol", "obra", "mito"], ["rol", "his", "super", "car"], ["rol", "obra", "yap"], ["rol", "super", "mito"], ["rol", "his", "obra", "car"], ["rol", "yap", "super", "yt"], ["rol", "obra", "his"]] }
+    { t: "Semanas 1–2 · 1 reel al día + 3 carruseles", s: "Arranque. Formato clips + texto. Aún sin YouTube: primero suelta la cámara.",
+      plan: [["rol", "cc"], ["obra"], ["his", "cv"], ["super"], ["rol", "cc"], ["mito"], ["obra"]] },
+    { t: "Semanas 3–6 · 2 reels al día + YouTube + 3 carruseles", s: "Entra el vlog semanal. Esta semana los carruseles van valor–conexión–valor; la siguiente, al revés.",
+      plan: [["rol", "obra", "cv"], ["his", "super"], ["rol", "mito", "cc"], ["obra", "rol"], ["super", "his", "cv"], ["rol", "yap", "yt"], ["obra", "mito"]] },
+    { t: "Mes 2–3 · 3 reels al día (→ 3–5 con trial reels) + 3 carruseles", s: "Cuando ya sacas 3 ganchos de cada vídeo sin pensar, súmale 1–2 trial reels diarios.",
+      plan: [["rol", "obra", "mito", "cc"], ["rol", "his", "super"], ["rol", "obra", "yap", "cv"], ["rol", "super", "mito"], ["rol", "his", "obra", "cc"], ["rol", "yap", "super", "yt"], ["rol", "obra", "his"]] }
   ];
   $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
   $("stages").innerHTML = STAGES.map(function (st) {
     var reels = 0, car = 0, yt = 0, rol = 0;
-    st.plan.forEach(function (d) { d.forEach(function (k) { if (k === "car") car++; else if (k === "yt") yt++; else { reels++; if (k === "rol") rol++; } }); });
+    st.plan.forEach(function (d) { d.forEach(function (k) { if (k === "cc" || k === "cv") car++; else if (k === "yt") yt++; else { reels++; if (k === "rol") rol++; } }); });
     var days = st.plan.map(function (d, i) {
-      var r = d.filter(function (k) { return k !== "car" && k !== "yt"; }).length;
+      var r = d.filter(function (k) { return k !== "cc" && k !== "cv" && k !== "yt"; }).length;
       return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + r + ' reel' + (r === 1 ? '' : 's') + '</small></div>' +
         d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") + '</div>';
     }).join("");
-    return '<div class="stage"><div class="card"><span class="label">' + reels + ' reels' + (yt ? ' + 1 YouTube' : '') + (car ? ' + ' + car + ' carruseles opcionales' : '') + ' por semana · ' + Math.round(rol / reels * 100) + ' % rol entrenador</span><h3>' + esc(st.t) + '</h3><p class="soft" style="font-size:14px">' + esc(st.s) + '</p></div><div class="week">' + days + '</div></div>';
+    return '<div class="stage"><div class="card"><span class="label">' + reels + ' reels' + (yt ? ' + 1 YouTube' : '') + (car ? ' + ' + car + ' carruseles' : '') + ' por semana · ' + Math.round(rol / reels * 100) + ' % rol entrenador</span><h3>' + esc(st.t) + '</h3><p class="soft" style="font-size:14px">' + esc(st.s) + '</p></div><div class="week">' + days + '</div></div>';
   }).join("");
 
   /* ---------- YouTube ---------- */
@@ -530,15 +567,18 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     [7, "Fiesta familiar en definición: así sobrevivo.", "Carne asada, pastel, refrescos.", "Clips + texto"],
     [7, "Cosas que me sorprendieron de la comida de aquí.", "Porciones, azúcar, todo grande (cultura, nunca temas legales).", "Yapping"]
   ];
+  var CARC = [0, 2, 4, 7, 8, 9, 10, 11, 16, 18, 60, 61, 62, 64, 66, 68, 70, 72, 73, 75];
+  var CARV = [5, 13, 17, 19, 20, 21, 22, 23, 26, 28, 30, 31, 32, 33, 34, 36, 39, 40, 41, 46, 47, 48, 49, 50, 51, 52, 53, 56, 57, 58, 59];
+  function ctype(i) { return CARC.indexOf(i) >= 0 ? "C" : (CARV.indexOf(i) >= 0 ? "V" : ""); }
   var cur = -1;
-  $("fams").innerHTML = '<button class="fbtn" aria-pressed="true" data-f="-1">Todas</button>' + FAMS.map(function (f, i) { return '<button class="fbtn" aria-pressed="false" data-f="' + i + '">' + esc(f) + '</button>'; }).join("");
+  $("fams").innerHTML = '<button class="fbtn" aria-pressed="true" data-f="-1">Todas</button><button class="fbtn" aria-pressed="false" data-f="-2">Carrusel conexión</button><button class="fbtn" aria-pressed="false" data-f="-3">Carrusel valor</button>' + FAMS.map(function (f, i) { return '<button class="fbtn" aria-pressed="false" data-f="' + i + '">' + esc(f) + '</button>'; }).join("");
   function renderA() {
     var q = $("q").value.trim().toLowerCase();
-    var list = A.filter(function (a) { return (cur < 0 || a[0] === cur) && (!q || (a[1] + " " + a[2] + " " + a[3] + " " + FAMS[a[0]]).toLowerCase().indexOf(q) >= 0); });
+    var list = A.filter(function (a) { var i = A.indexOf(a); return (cur === -1 || (cur === -2 && ctype(i) === "C") || (cur === -3 && ctype(i) === "V") || a[0] === cur) && (!q || (a[1] + " " + a[2] + " " + a[3] + " " + FAMS[a[0]]).toLowerCase().indexOf(q) >= 0); });
     $("count").textContent = list.length + " de " + A.length + " ángulos";
     $("angs").innerHTML = list.length ? list.map(function (a) {
       var i = A.indexOf(a);
-      return '<div class="ang"><div class="top"><span class="fam">' + esc(FAMS[a[0]]) + '</span><button class="copy" data-i="' + i + '">Copiar</button></div><b>' + esc(a[1]) + '</b><small>' + esc(a[2]) + '</small><span class="fmt">' + esc(a[3]) + '</span></div>';
+      return '<div class="ang"><div class="top"><span class="fam">' + esc(FAMS[a[0]]) + '</span><button class="copy" data-i="' + i + '">Copiar</button></div><b>' + esc(a[1]) + '</b><small>' + esc(a[2]) + '</small><div class="tags"><span class="fmt">' + esc(a[3]) + '</span>' + (ctype(i) ? '<span class="ctag ' + ctype(i) + '">Carrusel ' + (ctype(i) === "C" ? "conexión" : "valor") + '</span>' : '') + '</div></div>';
     }).join("") : '<div class="card"><p class="soft">Nada con ese filtro.</p></div>';
   }
   $("fams").addEventListener("click", function (e) {
@@ -559,6 +599,41 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     copyText(a[1] + "\n" + a[2] + " (" + a[3] + ")", b);
   });
   renderA();
+
+  /* ---------- Carruseles ---------- */
+  var CC = [
+    ["De 144 a 177 libras: el año que me equivoqué en todo", ["Portada: foto a 177 lb + frase", "Tenía 18 años y quería crecer rápido", "4.000 calorías de lo que fuera", "Mass gainer y comida rápida todos los días", "6 meses después: más grasa que músculo", "Lo que haría distinto hoy", "Escríbeme PLAN"]],
+    ["Un día mío: 10 horas en la obra y luego gym", ["Portada: tú con casco o botas", "5:00 am: desayuno y lonche", "La obra: lo que como en el break", "17:00: directo al gym, sin pasar por casa", "La cena y a dormir temprano", "No es motivación: es organización", "Escríbeme PLAN"]],
+    ["Un día me dijeron que estaba obsesionado. Tenían razón.", ["Portada: foto en definición extrema", "Comía casi nada y entrenaba diario", "Hambre, sin energía, atracones el finde", "Me veía más plano, no mejor", "El día que dije: voy a ser paciente", "Lo que cambió desde entonces", "Escríbeme PLAN"]],
+    ["Mi primer día en el gym (y la vergüenza que pasé)", ["Portada: foto antigua", "Fui solo, con 17 años", "Hasta las mancuernas de 5 lb pesaban", "Me daba vergüenza preguntar", "Mi rutina salió de YouTube", "Si estás ahí: todos empezamos así", "Escríbeme PLAN"]],
+    ["Lejos del físico que quiero, pero lejos del que tenía", ["Portada: antes/después 8 meses", "Mes 1–2: aprender a comer", "Mes 3–4: orden en la rutina", "Mes 5–6: progresión y técnica", "Mes 7–8: paciencia", "Lo que sigue: futuro bodybuilder", "Escríbeme PLAN"]],
+    ["Por qué ayudo a latinos que trabajan duro", ["Portada: tú en la obra", "Porque soy uno de ellos", "Nadie en el fitness habla de trabajar 10 horas", "Ni de comer la comida de casa", "Ni de entrenar cansado", "Eso es lo que te enseño", "Escríbeme PLAN"]],
+    ["Mi tío, las películas y unas flexiones en mi cuarto", ["Portada: foto de chavo", "Con 15 años: flexiones y dominadas en el cuarto", "Veía a los musculosos de las películas", "Mi tío me dijo: ¿por qué no empiezas?", "Lo dejé por la escuela y el trabajo", "Y volví. Esta vez para quedarme", "Escríbeme PLAN"]],
+    ["Cosas que mi mamá dice de mi comida", ["Portada: tú en la cocina", "\"Otra vez pollo\"", "\"Estás muy flaco, come más\"", "\"Tanto huevo te va a hacer daño\"", "Lo que aprendí: la comida de casa sí sirve", "Solo cambian las porciones", "Escríbeme PLAN"]],
+    ["Lo que nadie ve cuando entreno a las 9 de la noche", ["Portada: gym casi vacío", "Llegué cansado", "No tenía ganas", "Fui igual", "La disciplina es eso", "Nadie aplaude esto, y está bien", "Escríbeme PLAN"]],
+    ["Un compañero de la obra me pidió que lo llevara al gym", ["Portada: (con permiso) o foto tuya", "Me preguntó cómo bajé de peso", "Lo llevé y le enseñé las máquinas", "Sus primeros cambios", "Ahí supe que quería ser coach", "Ahora te puedo ayudar a ti", "Escríbeme PLAN"]],
+    ["God first: lo que me mantiene constante", ["Portada: foto tranquila", "No entreno solo por el físico", "Disciplina, propósito y paciencia", "2 Timoteo 1:7", "Cuando no hay ganas, hay razones", "Tu razón, ¿cuál es?", "Escríbeme PLAN"]],
+    ["Tengo 19 años y esto es lo que quiero", ["Portada: tú en el gym", "Trabajo en construcción", "Me formo cada semana en entrenamiento y nutrición", "Quiero competir algún día", "Y ayudar a gente como yo", "Esto apenas empieza", "Escríbeme PLAN"]]
+  ];
+  var CV = [
+    ["5 proteínas baratas del súper de aquí", ["Portada: carrito del súper", "Huevos: precio y proteína", "Pechuga de pollo", "Atún en lata", "Frijoles", "Yogur griego", "Guárdalo para tu próxima compra", "Escríbeme PLAN"]],
+    ["Compra fit de $50 para toda la semana", ["Portada: ticket del súper", "Proteínas", "Carbohidratos", "Fruta y verdura", "Lo que no compro", "Cómo lo reparto en 7 días", "Escríbeme PLAN"]],
+    ["3 errores que me tuvieron estancado un año", ["Portada: \"Mis 3 errores\"", "1. Demasiado volumen y sin orden", "2. Sin pierna y sin descanso", "3. Subir peso sin técnica", "Qué hacer en su lugar", "Resumen", "Escríbeme PLAN"]],
+    ["Los carbohidratos no engordan: esto sí", ["Portada: plato de arroz", "El mito", "Lo que de verdad cuenta: el total", "Las calorías líquidas", "Los extras: salsas, refrescos, tortillas de más", "Cómo comer arroz y bajar grasa", "Escríbeme PLAN"]],
+    ["Tu lunch box para la obra (o el trabajo)", ["Portada: hielera abierta", "Proteína", "Carbo", "Fruta", "Snack de break", "Agua y electrolitos", "Escríbeme PLAN"]],
+    ["Cómo comer en fast food sin arruinar tu progreso", ["Portada: bolsa de comida rápida", "Chipotle", "Subway", "McDonald's", "Taquería", "La regla: proteína primero, bebida sin azúcar", "Escríbeme PLAN"]],
+    ["Bulk sucio vs bulk controlado", ["Portada: antes/después de tu bulk", "Bulk sucio: lo que hice yo", "Resultado: grasa", "Bulk controlado: +200–300 kcal", "Cuánto subir al mes", "Cómo saber si vas bien", "Escríbeme PLAN"]],
+    ["4 mitos que tienes que olvidar ya", ["Portada", "Cuanto más sudas, más quemas", "Se puede quemar grasa solo de la panza", "La grasa se convierte en músculo", "La creatina sola te pone grande", "Lo que sí funciona", "Escríbeme PLAN"]],
+    ["Peso muerto: 3 errores y cómo arreglarlos", ["Portada: tus 465 lb", "Barra lejos de las piernas", "Tirar con la espalda", "No controlar la bajada", "Checklist antes de cada serie", "Guárdalo", "Escríbeme PLAN"]],
+    ["Cuántas series necesitas para crecer", ["Portada", "Lo que yo hacía: demasiadas", "Rango por músculo a la semana", "Cómo repartirlo en 4–5 días", "Progresión", "Cuándo descansar", "Escríbeme PLAN"]],
+    ["La comida latina en tu plan: cómo servirte", ["Portada: plato casero", "Mitad proteína y verdura", "Un puño de arroz", "Dos tortillas", "Frijoles: carbo y proteína", "Antojos 1–2 veces por semana", "Escríbeme PLAN"]],
+    ["Qué haría si empezara hoy desde cero", ["Portada: foto de antes", "Semanas 1–2: técnica", "Semanas 3–4: rutina de 4 días", "Calorías y proteína básicas", "Medir progreso cada semana", "Paciencia", "Escríbeme PLAN"]]
+  ];
+  function carHTML(list, t) {
+    return list.map(function (c) { return '<div class="ang"><span class="ctag ' + t + '">' + (t === "C" ? "Conexión" : "Valor") + '</span><b>' + esc(c[0]) + '</b><ol class="slides">' + c[1].map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ol></div>'; }).join("");
+  }
+  $("carC").innerHTML = carHTML(CC, "C");
+  $("carV").innerHTML = carHTML(CV, "V");
 
   /* ---------- Guiones ---------- */
   var S = [

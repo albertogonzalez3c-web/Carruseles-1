@@ -1,0 +1,350 @@
+<title>Giorgia Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f2ec;
+  --white: #ffffff;
+  --ink: #2a1f1a;
+  --soft: #6b5e55;
+  --line: #e6d9cc;
+  --chip: #efe5da;
+  --acc: #8b5e3c;
+  --acc-soft: #d6bb9f;
+  --acc-text: #7a4f30;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.2vw, 54px)/1.04 var(--f-body); letter-spacing: -.035em; }
+h1 em, h2 em { font-style: normal; color: var(--acc-text); }
+h2 { font: 800 clamp(22px, 3vw, 30px)/1.15 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--acc-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 780px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 780px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .label { color: var(--acc-soft); }
+.card.dark .soft, .card.dark ul.l { color: #d8cabd; }
+.card.dark ul.l b { color: var(--white); }
+.card.acc { background: var(--acc); color: var(--white); box-shadow: none; }
+.card.acc .label { color: #f3e6d9; }
+.card.acc ul.l { color: #f6ece2; }
+.card.acc ul.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.card.dark .say { background: #3a2c24; color: var(--white); }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--acc-text); }
+.card.dark .badge { background: #46352b; color: var(--acc-soft); }
+.card.acc .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.tbl tr.now td { background: #f6ede3; }
+.tbl td b { color: var(--ink); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* LAYOUT */
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#d6bb9f, #8b5e3c, #b88a62, #d6bb9f); }
+.avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #d6bb9f, #8b5e3c); display: grid; place-items: center; color: #fff; font: 800 24px/1 var(--f-body); letter-spacing: -.02em; }
+.ig-user { font-weight: 800; font-size: 16px; display: flex; gap: 5px; align-items: center; }
+.ig-user svg { width: 15px; height: 15px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--acc); display: grid; place-items: center; color: #fff; font: 800 13px/1 var(--f-body); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #efe5da, #d6bb9f); color: var(--ink); display: grid; align-content: end; padding: 6px; font: 800 10.5px/1.15 var(--f-body); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--acc-text); display: block; font-size: 11.5px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--acc-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--acc-soft); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--acc); }
+.opt:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc-text); }
+.opt .txt { white-space: pre-line; font-size: 14.5px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 13.5px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#d6bb9f, #8b5e3c, #b88a62, #d6bb9f); }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #f1e3d4 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #f1e3d4 0 46%, transparent 47%), #8b5e3c; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--acc, #8b5e3c); --nm-at: var(--acc-text, #7a4f30); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.avatar img, .photo .mock img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; object-fit: cover; display: block; }
+.ig-hl i span { font-size: 11px; }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Giorgia De Santis · Parte 1 · Perfil</span>
+    <h1>Tu perfil, para la mujer que <em>empieza y lo deja</em>.</h1>
+    <p class="soft" style="font-size:18px">Tu perfil ya tiene marca: beige, marrón, editorial, y dos clientas con nombre fijadas. Lo que falta es que en 3 segundos se entienda <b>a quién</b> ayudas y <b>qué problema</b> resuelves. Toca un nombre y una bio para ver cómo queda. Esto se hace en una tarde.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Mujeres de 25 a 45 con trabajo, turnos o familia que ya entrenan o lo han intentado, pero empiezan y lo dejan cuando la semana se tuerce. Estructura, técnica y comer sin planes cerrados, para que cuidarse deje de depender de la motivación y de hacerlo perfecto.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Dirección</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Entreno con estructura y técnica</b><span>Sabes qué haces, por qué y que progresas: cargas apuntadas y técnica corregida por vídeo.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comida flexible, sin planes cerrados</b><span>Comidas base que encajan en tu semana. Una cena fuera o un finde no rompen nada.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Revisión 1:1 que mira tu vida</b><span>Cada semana: entreno, comida y lo que pasa fuera del gimnasio (turnos, cansancio, cabeza).</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Ordenar</b><p><em>Qué pasa:</em> Dejas de improvisar: el plan encaja en tus horarios reales y aprendes la técnica base.</p><p><em>Qué haces tú:</em> Los entrenos que caben en tu semana, 3 comidas base y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Progresar</b><p><em>Qué pasa:</em> Suben las cargas y tu cuerpo cambia de forma. Las semanas malas ya no te sacan del plan.</p><p><em>Qué haces tú:</em> Apuntas cargas y, cuando la semana se tuerce, tiras de tu versión al 50 % en vez de dejarlo.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Sin depender de mí</b><p><em>Qué pasa:</em> Entiendes el porqué y sabes ajustar sola cenas, viajes y semanas caóticas.</p><p><em>Qué haces tú:</em> Ajustas tú con mi supervisión y dejamos listo tu plan para seguir.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Entrenar lo planificado, aunque sea al 50 %</span><span>Proteína en cada comida</span><span>Revisión semanal, también la de la semana mala</span></div><p class="nm-line"><b>Tu sello · Plan 100/50:</b> cada clienta tiene su semana al 100 % y su versión al 50 % para las semanas caóticas. Al 50 % también cuenta.</p></div><p class="nm-proof">Prueba: Irene trabaja en un hospital con turnos que cambian cada semana. En unos seis meses dejó de depender de la motivación.</p></section>
+
+  <section class="card acc" aria-label="Tu nicho">
+    <span class="label">Cómo usar tu nicho</span>
+    <ul class="l">
+      <li><b>"Dirección"</b> es tu palabra. Ya la usas en tus carruseles ("darle una dirección a todo ese esfuerzo"): ahora va en la bio, en los cierres, en las historias y en la llamada.</li>
+      <li><b>"El plan se adapta a ti, no tú al plan"</b> es tu frase contra el sector. Repítela hasta que la asocien contigo.</li>
+      <li><b>Háblale a la que ya lo ha intentado,</b> no a la que empieza de cero: "Ya entrenas, guardas rutinas, y aun así lo dejas. No es falta de ganas".</li>
+      <li><b>Tu Plan 100/50</b> es lo que nadie más tiene: una versión para la semana buena y otra para la caótica. Nómbralo siempre igual.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes muy bien</span>
+      <ul class="l">
+        <li><b>Marca editorial coherente:</b> beige, marrón y destacadas con iconos. Se ve profesional.</li>
+        <li><b>Dos clientas con nombre fijadas</b> (Irene y Valerie) y con un problema claro en la portada: "Un plan rígido no sirve si tu semana nunca es igual". Eso vende.</li>
+        <li><b>Tus vídeos de técnica son de los que más se guardan:</b> es tu contenido de autoridad.</li>
+        <li><b>Las recetas funcionan:</b> la gente las prepara y te enseña el resultado.</li>
+        <li><b>"Seguimiento real y humano 1:1"</b> y un formulario en el enlace: la acción ya está.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que vamos a pulir</span>
+      <ul class="l">
+        <li><b>"Fortalecer cuerpo y mente con hábitos sostenibles"</b> lo dicen casi todas. No dice a quién (25–45, turnos, familia) ni qué problema resuelves (empezar y dejarlo).</li>
+        <li><b>Tu historia no está en el perfil.</b> Es lo que más conecta y no hay destacada ni fijado que la cuente.</li>
+        <li><b>"Ellas"</b> como destacada es bonito pero no se entiende a la primera: mejor <b>"Casos"</b>.</li>
+        <li><b>La categoría "Online Coach"</b> en inglés: mejor "Entrenadora online" o "Entrenador personal".</li>
+        <li><b>El tercer hueco fijado</b> lo ocupa contenido normal: ahí va tu historia.</li>
+        <li><b>"Work hard, dream big"</b> como música en un post choca con tu mensaje de "no necesitas hacerlo perfecto".</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar"><img src="giorgia-avatar.jpg" alt="Foto de perfil actual de Giorgia" width="300" height="300"></div>
+          <div>
+            <div class="ig-user">giorgiadesantiss_</div>
+            <div class="ig-stats"><span><b>323</b>posts</span><span><b>4.150</b>seguidores</span><span><b>852</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Entrenadora online</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>form.jotform.com/253543283056356</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>♥</span></i><small>Casos</small></div>
+          <div><i><span>GDS</span></i><small>Mi historia</small></div>
+          <div><i><span>100/50</span></i><small>Método</small></div>
+          <div><i><span>▶</span></i><small>Técnica</small></div>
+          <div><i><span>🥣</span></i><small>Recetas</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>Mi historia</em>No empecé a entrenar porque amara mi cuerpo</div>
+          <div><em>Irene</em>Un plan rígido no sirve si tu semana nunca es igual</div>
+          <div><em>Valerie</em>Entrenaba 5 días, le faltaba dirección</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda. Tu nombre más lo que consigues.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="Giorgia | Entrena con dirección"><b>Giorgia | Entrena con dirección</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="Giorgia De Santis | Coach mujeres 25–45"><b>Giorgia De Santis | Coach mujeres 25–45</b></button><button class="opt" type="button" data-name="Giorgia | El plan se adapta a ti"><b>Giorgia | El plan se adapta a ti</b></button><button class="opt" type="button" data-name="Giorgia | Entrenadora para vidas con turnos"><b>Giorgia | Entrenadora para vidas con turnos</b></button><button class="opt" type="button" data-name="Giorgia De Santis | Entrenadora online 1:1"><b>Giorgia De Santis | Entrenadora online 1:1</b></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué confiar en ti, y caben en los 150 caracteres. Elige la que más te suene a ti.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">Mujeres 25–45 con trabajo, turnos o familia
+Entrena con estructura y deja de empezar cada lunes
+Seguimiento 1:1 real
+Empieza 👇</span><span class="why">A quién, qué problema y cómo. Sin palabras que diga todo el mundo.</span></button><button class="opt" type="button"><span class="tag">B · Tu frase</span><span class="txt">El plan se adapta a ti, no tú al plan
+Entreno + comida sin planes cerrados
+Mujeres 25–45 · 1:1
+Cuéntame tu caso 👇</span><span class="why">Tu postura contra el sector, en la primera línea.</span></button><button class="opt" type="button"><span class="tag">C · Dirección</span><span class="txt">No necesitas hacer más. Necesitas dirección 🤎
+Fuerza, técnica y comida flexible
+Para mujeres con vidas reales · 1:1 👇</span><span class="why">Usa la palabra que ya funciona en tus carruseles.</span></button><button class="opt" type="button"><span class="tag">D · Sin perfecto</span><span class="txt">No necesitas hacerlo perfecto
+Te enseño a cuidarte aunque tu semana no lo sea
+Entrenadora online 1:1 · Mujeres 25–45 👇</span><span class="why">Tu idea de un año, convertida en promesa.</span></button><button class="opt" type="button"><span class="tag">E · Turnos</span><span class="txt">¿Turnos, jornadas largas o hijos?
+Tu plan para semanas buenas y caóticas
+Fuerza + comida sin dietas · 1:1
+Empieza 👇</span><span class="why">Habla directamente a Irene, a Marta y a ti en verano. Muy concreta.</span></button><button class="opt" type="button"><span class="tag">F · Tu historia</span><span class="txt">De entrenar para cambiar mi cuerpo a entrenar para construirme
+Hoy ayudo a mujeres 25–45 a hacerlo sin obsesión
+1:1 👇</span><span class="why">Tu historia en una línea, sin cifras ni detalles.</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock"><img src="giorgia-avatar.jpg" alt="Tu foto actual" width="300" height="300"></div>
+          <ul class="l">
+            <li><b>Tu foto actual tiene marca</b> (mono marrón, cascos), pero en pequeño es de espaldas y no se te ve la cara.</li>
+            <li><b>Más cerca y de frente:</b> cara y hombros, mirando a cámara y sonriendo. Puedes mantener los cascos y el marrón: ya son tuyos.</li>
+            <li><b>Luz natural de frente</b> y fondo claro o beige liso.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Casos</b> (antes "Ellas"): Irene, Valerie, mayo → agosto y feedbacks.</li><li><b>Mi historia:</b> 10 historias (abajo, escritas).</li><li><b>Método:</b> las 3 fases y el Plan 100/50.</li><li><b>Técnica:</b> tu contenido más guardado.</li><li><b>Recetas</b> y <b>Tips</b>.</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>1 · Mi historia</b> (carrusel nuevo, abajo).</li><li><b>2 · Irene:</b> "Un plan rígido no sirve si tu semana nunca es igual". Se queda.</li><li><b>3 · Valerie:</b> "Entrenaba 5 días, pero le faltaba algo". Se queda.</li></ul></div>
+          <div class="card"><span class="label">Pequeñas reglas</span><ul class="l"><li><b>Una sola acción:</b> el formulario, o "escríbeme DIRECCIÓN".</li><li><b>Destacadas</b> de una palabra.</li><li><b>Categoría</b> en español.</li><li><b>Nunca publiques nombre ni foto</b> de una clienta sin su permiso por escrito.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Tu historia: lo que más conecta</h2>
+        <p class="soft">Tu historia es dura y es tuya. Tú decides cuánto contar. Esta versión la cuenta <b>sin cifras de peso ni detalles de conductas</b>: lo que importa es el camino de "nunca es suficiente" a entrenar para construirte. Así ayuda a quien la lee y no hace daño a quien esté pasando por algo parecido.</p>
+        <div class="card acc"><span class="label">Lo que necesito de ti</span><p>Fotos tuyas de pequeña, de la adolescencia (si te sientes cómoda), de 2020 entrenando en casa o en el gimnasio y de hoy. Y un vídeo tuyo haciendo dominadas: es tu "meta imposible" conseguida.</p></div>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Destacada "Mi historia" · 10 historias</span>
+            <ol class="l">
+              <li>"De pequeña era un culo inquieto y feliz. Con 6 años empecé a refugiarme en la comida."</li>
+              <li>"Con 13, en el vestuario de vóley, la equipación que a todas les quedaba bien a mí me quedaba estrecha y corta."</li>
+              <li>"Ahí empezó una obsesión: dietas, control y una frase en mi cabeza: nunca es suficiente."</li>
+              <li>"Durante años tuve una relación muy dura con la comida y con mi cuerpo. Pasé por un TCA." <span class="soft">(solo si quieres nombrarlo)</span></li>
+              <li>"A los 21 una amiga me dijo: 'Tía, te estás quedando en los huesos'. Y fui por primera vez de verdad al gimnasio."</li>
+              <li>"Al principio: cardio, máquinas al azar y rutinas de YouTube. Lo dejaba cada pocos meses."</li>
+              <li>"En 2020 empecé a entrenar con estructura. Por primera vez, las voces de mi cabeza empezaron a callarse."</li>
+              <li>"El entrenamiento pasó de ser una herramienta de control a una herramienta de construcción."</li>
+              <li>"Hoy he hecho dominadas que antes ni soñaba. Y sigo teniendo semanas malas: la diferencia es que ya no vuelvo al punto de partida."</li>
+              <li>"Ahora ayudo a mujeres con vidas reales a cuidarse sin hacerlo perfecto. Escríbeme DIRECCIÓN."</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="label">Carrusel fijado "Mi historia" · 9 diapositivas</span>
+            <ol class="l">
+              <li><b>Portada:</b> "No empecé a entrenar porque amara mi cuerpo." (foto de pequeña + foto de hoy)</li>
+              <li><b>La equipación:</b> "Estrecha y corta. El día que vi mi cuerpo por primera vez."</li>
+              <li><b>"Nunca es suficiente":</b> dietas, control y compararme con todas.</li>
+              <li><b>Lo que no se ve:</b> una relación muy dura con la comida (con el nivel de detalle que tú elijas).</li>
+              <li><b>21 años:</b> "Tía, te estás quedando en los huesos." El primer gimnasio.</li>
+              <li><b>Los errores:</b> cardio como castigo, cuádriceps sin glúteo, comer menos de lo que tocaba.</li>
+              <li><b>2020, el cambio:</b> estructura, técnica y constancia sin motivación.</li>
+              <li><b>Hoy:</b> más fuerte que nunca. Días al 100 %, al 50 % y días que no. "Y no he vuelto al punto de partida."</li>
+              <li><b>Cierre:</b> "Si te ves en alguna de estas fases, escríbeme DIRECCIÓN y te cuento cómo lo haríamos contigo."</li>
+            </ol>
+          </div>
+        </div>
+        <p class="soft" style="font-size:14px">En la historia sobre el TCA, añade al final: "Si estás pasando por algo así, pide ayuda a un profesional sanitario. Yo también la necesité para entenderme." <b>Confírmalo con Giorgia</b>: ella no dice si tuvo tratamiento; si no lo tuvo, deja solo la primera frase.</p>
+      </section>
+
+      <section class="group" aria-labelledby="h-check">
+        <h2 id="h-check">Antes de publicar: confirmar con Giorgia</h2>
+        <div class="card">
+          <ul class="l">
+            <li><b>Kilos perdidos de adolescente:</b> "casi 15", "de 82 a 65" (17) o "unos 20". No usar en contenido de todos modos.</li>
+            <li><b>Altura:</b> 1,74 o "1,71–1,74".</li>
+            <li><b>Parejas:</b> una relación de 9 años que termina en 2021–22 no cuadra con las rupturas de 2017 y 2018.</li>
+            <li><b>Lesión:</b> cuenta un esguince de tobillo y luego responde que no se lesionó.</li>
+            <li><b>Inicio "en serio":</b> 2018 (21 años), "a los 23" o "después del confinamiento". Fijar una versión.</li>
+            <li><b>Valerie:</b> "entrenaba 5 días" y "3 meses" salen del post fijado, no de sus documentos.</li>
+            <li><b>Caso mayo → agosto:</b> de qué clienta es y si hay permiso firmado para usarlo en la web.</li>
+            <li><b>Marta:</b> "atravesando una separación" o "con pareja".</li>
+            <li><b>Nilson:</b> ¿es un hombre? Su nicho es de mujeres.</li>
+            <li><b>Referente:</b> "Miriam Figueras" o "Mireia Figueras".</li>
+            <li><b>Origen italiano:</b> no dice si es italiana; confirmarlo antes de usarlo como ángulo.</li>
+            <li><b>Ciudad actual</b> (Granada solo aparece en el pasado) y <b>precios</b>: no los menciona.</li>
+            <li><b>Tarea 2:</b> algunas respuestas parecen corregidas por una IA; validar que es su voz.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = pvName.textContent.length; cb.textContent = pvBio.textContent.length;
+    cn.className = pvName.textContent.length > 64 ? "over" : ""; cb.className = pvBio.textContent.length > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = b.querySelector(".txt").textContent.length + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>
