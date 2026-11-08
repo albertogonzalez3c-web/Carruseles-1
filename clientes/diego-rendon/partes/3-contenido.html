@@ -157,6 +157,16 @@ ul.l b, ol.l b { color: var(--ink); }
   .nmx-f i { font-style: normal; display: block; font: 500 10.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #e8703f; margin-top: 4px; }
 }
 @media (min-width: 701px) { .nmx-f i { display: none; } }
+
+/* Claude como editor */
+.ed-g { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ed-list { display: grid; gap: 12px; }
+.ed-pr { gap: 10px; }
+.ed-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.ed-top b { flex: 1 1 180px; min-width: 0; }
+.ed-txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--soft); background: rgba(127,127,127,.08); border-radius: 10px; padding: 12px; margin: 0; max-height: 320px; overflow: auto; }
+@media (max-width: 900px) { .ed-g { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ed-g { grid-template-columns: 1fr; } }
 </style>
 
 <header class="top wrap">
@@ -171,6 +181,7 @@ ul.l b, ol.l b { color: var(--ink); }
     <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
     <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
     <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ed">Claude editor</button>
   </div>
 </nav>
 
@@ -546,6 +557,88 @@ ul.l b, ol.l b { color: var(--ink); }
       </div>
     </div>
   </section>
+
+  <!-- CLAUDE COMO EDITOR -->
+  <section class="view" id="v-ed" hidden aria-label="Claude como editor">
+    <div class="sec">
+      <div class="head"><span class="label">Tu editor de contenido</span><h2>Claude como editor: tú pones la voz, Claude te ahorra horas.</h2><p class="soft">Instala la app de Claude y úsala para escribir guiones, ganchos, carruseles y captions en minutos. Lo montas una vez y cada semana sacas tus guiones en 20 minutos.</p></div>
+      <div class="card dark">
+        <span class="label">La regla</span>
+        <ul class="l">
+          <li><b>Claude propone, tú lo dices con tus palabras.</b> Si no suena a ti, no se publica.</li>
+          <li><b>Nunca inventa cifras, resultados ni testimonios.</b> Si falta un dato, lo rellenas tú con un dato real.</li>
+          <li><b>Revisas todo antes de publicar.</b> Tú eres el filtro, no la app.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 1 · Una sola vez</span><h3>Instala Claude y crea tu Proyecto "Mi contenido"</h3></div>
+      <div class="ed-g">
+        <div class="card"><span class="tag">1</span><b>Descarga la app</b><p class="soft">Busca "Claude" en App Store (iPhone) o Google Play (Android). En el ordenador: claude.ai/download. Entra con tu cuenta.</p></div>
+        <div class="card"><span class="tag">2</span><b>Crea un Proyecto</b><p class="soft">Menú → Proyectos → Crear proyecto. Llámalo "Mi contenido".</p></div>
+        <div class="card"><span class="tag">3</span><b>Pega las instrucciones</b><p class="soft">En "Instrucciones del proyecto" pega el texto de abajo. Así Claude ya conoce tu nicho, tu método y tu tono en cada chat.</p></div>
+        <div class="card"><span class="tag">4</span><b>Un chat por tarea</b><p class="soft">Abre un chat nuevo dentro del proyecto para cada guion o carrusel y pega uno de los prompts del paso 2.</p></div>
+      </div>
+      <div class="card chip ed-pr"><div class="ed-top"><span class="tag">Instrucciones del proyecto</span><b>Pégalo tal cual (y retoca lo que quieras)</b><button type="button" class="cp" data-cp="Eres mi editor de contenido para Instagram y YouTube. Yo soy Diego Rendón, entrenador.&#10;&#10;A QUIÉN LE HABLO (mi nicho):&#10;Hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual, con curro y estrés, y quieren verse los abdominales sin pasar hambre.&#10;&#10;MI MÉTODO:&#10;Método DR. 3 pilares: entrenar mejor, no más (cada serie cuenta y queda apuntada); descanso que te deja rendir; déficit sin pasar hambre. 3 fases: Desbloquear (meses 1–2), Construir (3–4), Revelar y mantener (5–6).&#10;&#10;MI TONO:&#10;Directo, de colega que ya pasó por ahí. Exigente pero cercano. Mucho rol de entrenador: corrigiendo, revisando, dirigiendo.&#10;&#10;MI HISTORIA (resumen):&#10;Entrené 5–6 días durante años y tardé 5 o 6 años en ver mis abdominales. No me faltaba esfuerzo: me faltaba estructura. Hoy ayudo a hombres que están donde yo estaba a conseguirlo en meses, no en años.&#10;&#10;MI LLAMADA A LA ACCIÓN: &quot;Escríbeme PLAN&quot; por DM. En anuncios: &quot;Sígueme para…&quot;.&#10;&#10;REGLAS FIJAS:&#10;- Escribe en español de España, frases cortas, como hablo yo. Nada de frases de relleno ni de gurú.&#10;- NUNCA inventes cifras, resultados, testimonios ni casos. Si falta un dato, deja [DATO REAL] para que lo rellene yo.&#10;- Todo lo que escribas le tiene que hablar a mi nicho y enseñar una parte de mi método.&#10;- Normas de Meta (anuncios y publicaciones): nunca le digas a quien lo ve lo que le pasa a su cuerpo o su salud (&quot;¿tienes barriga?&quot;, &quot;¿tienes sobrepeso?&quot;). Habla en primera persona o con &quot;la mayoría&quot;. Sin promesas de resultados ni antes/después en anuncios.&#10;- Tú propones; yo lo digo con mis palabras.">Copiar</button></div><p class="ed-txt">Eres mi editor de contenido para Instagram y YouTube. Yo soy Diego Rendón, entrenador.
+
+A QUIÉN LE HABLO (mi nicho):
+Hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual, con curro y estrés, y quieren verse los abdominales sin pasar hambre.
+
+MI MÉTODO:
+Método DR. 3 pilares: entrenar mejor, no más (cada serie cuenta y queda apuntada); descanso que te deja rendir; déficit sin pasar hambre. 3 fases: Desbloquear (meses 1–2), Construir (3–4), Revelar y mantener (5–6).
+
+MI TONO:
+Directo, de colega que ya pasó por ahí. Exigente pero cercano. Mucho rol de entrenador: corrigiendo, revisando, dirigiendo.
+
+MI HISTORIA (resumen):
+Entrené 5–6 días durante años y tardé 5 o 6 años en ver mis abdominales. No me faltaba esfuerzo: me faltaba estructura. Hoy ayudo a hombres que están donde yo estaba a conseguirlo en meses, no en años.
+
+MI LLAMADA A LA ACCIÓN: &quot;Escríbeme PLAN&quot; por DM. En anuncios: &quot;Sígueme para…&quot;.
+
+REGLAS FIJAS:
+- Escribe en español de España, frases cortas, como hablo yo. Nada de frases de relleno ni de gurú.
+- NUNCA inventes cifras, resultados, testimonios ni casos. Si falta un dato, deja [DATO REAL] para que lo rellene yo.
+- Todo lo que escribas le tiene que hablar a mi nicho y enseñar una parte de mi método.
+- Normas de Meta (anuncios y publicaciones): nunca le digas a quien lo ve lo que le pasa a su cuerpo o su salud (&quot;¿tienes barriga?&quot;, &quot;¿tienes sobrepeso?&quot;). Habla en primera persona o con &quot;la mayoría&quot;. Sin promesas de resultados ni antes/después en anuncios.
+- Tú propones; yo lo digo con mis palabras.</p></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 2 · Cada semana</span><h3>10 prompts listos para copiar</h3><p class="soft">Copia, cambia lo que va entre [corchetes] y pégalo en un chat nuevo del proyecto. Lo que te devuelva, léelo en voz alta y cámbialo hasta que suene a ti.</p></div>
+      <div class="ed-list"><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 1</span><b>Guion voz en off 30–45 s</b><button type="button" class="cp" data-cp="Escríbeme un guion de reel con voz en off de 30–45 segundos sobre este ángulo: &quot;Entrenar 6 días no te está haciendo avanzar&quot;.&#10;Estructura con tiempos: gancho (0–3 s), desarrollo (3–30 s), cierre con &quot;Escríbeme PLAN&quot;.&#10;Para cada bloque dame: lo que digo, el texto en pantalla y qué clips míos poner de fondo.&#10;Máximo 110 palabras. Sin cifras inventadas.">Copiar</button></div><p class="ed-txt">Escríbeme un guion de reel con voz en off de 30–45 segundos sobre este ángulo: &quot;Entrenar 6 días no te está haciendo avanzar&quot;.
+Estructura con tiempos: gancho (0–3 s), desarrollo (3–30 s), cierre con &quot;Escríbeme PLAN&quot;.
+Para cada bloque dame: lo que digo, el texto en pantalla y qué clips míos poner de fondo.
+Máximo 110 palabras. Sin cifras inventadas.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 2</span><b>5 ganchos para trial reels</b><button type="button" class="cp" data-cp="Tengo este reel: [PEGA EL GUION O DE QUÉ VA].&#10;Dame 5 variantes del gancho de los 3 primeros segundos para probarlas como trial reels, cada una con un enfoque distinto: 1) pregunta que duele, 2) error común, 3) dato o contraste, 4) mi historia en una frase, 5) frase polémica pero cierta.&#10;Máximo 12 palabras cada una, y su texto en pantalla en MAYÚSCULAS.">Copiar</button></div><p class="ed-txt">Tengo este reel: [PEGA EL GUION O DE QUÉ VA].
+Dame 5 variantes del gancho de los 3 primeros segundos para probarlas como trial reels, cada una con un enfoque distinto: 1) pregunta que duele, 2) error común, 3) dato o contraste, 4) mi historia en una frase, 5) frase polémica pero cierta.
+Máximo 12 palabras cada una, y su texto en pantalla en MAYÚSCULAS.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 3</span><b>Carrusel de conexión</b><button type="button" class="cp" data-cp="Escríbeme un carrusel de CONEXIÓN de 7 slides sobre: [TEMA: un momento de mi historia, una creencia mía o mi día a día].&#10;Slide 1: portada-gancho (máx. 8 palabras). Slides 2–6: la historia contada en primera persona, una idea por slide (máx. 25 palabras por slide). Slide 7: cierre que conecte con mi cliente ideal + &quot;Escríbeme PLAN&quot;.&#10;Que suene a mí, no a frase motivacional.">Copiar</button></div><p class="ed-txt">Escríbeme un carrusel de CONEXIÓN de 7 slides sobre: [TEMA: un momento de mi historia, una creencia mía o mi día a día].
+Slide 1: portada-gancho (máx. 8 palabras). Slides 2–6: la historia contada en primera persona, una idea por slide (máx. 25 palabras por slide). Slide 7: cierre que conecte con mi cliente ideal + &quot;Escríbeme PLAN&quot;.
+Que suene a mí, no a frase motivacional.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 4</span><b>Carrusel de valor</b><button type="button" class="cp" data-cp="Escríbeme un carrusel de VALOR de 7 slides sobre: [TEMA: un error, un mito o una guía práctica de mi método].&#10;Slide 1: portada-gancho con promesa clara (máx. 8 palabras). Slides 2–6: un paso o idea por slide, práctico y aplicable hoy (máx. 25 palabras). Slide 7: resumen + &quot;Guárdalo y escríbeme PLAN si quieres que te lo monte a ti&quot;.&#10;Nada de tecnicismos sin explicar.">Copiar</button></div><p class="ed-txt">Escríbeme un carrusel de VALOR de 7 slides sobre: [TEMA: un error, un mito o una guía práctica de mi método].
+Slide 1: portada-gancho con promesa clara (máx. 8 palabras). Slides 2–6: un paso o idea por slide, práctico y aplicable hoy (máx. 25 palabras). Slide 7: resumen + &quot;Guárdalo y escríbeme PLAN si quieres que te lo monte a ti&quot;.
+Nada de tecnicismos sin explicar.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 5</span><b>Caption + CTA</b><button type="button" class="cp" data-cp="Escribe el caption para esta publicación: [PEGA EL GUION O EL CARRUSEL].&#10;Primera línea que pare el scroll (máx. 10 palabras), 3–5 líneas cortas con la idea clave, y cierre con &quot;Escríbeme PLAN por DM&quot;.&#10;Máximo 80 palabras y 3 hashtags de mi nicho.">Copiar</button></div><p class="ed-txt">Escribe el caption para esta publicación: [PEGA EL GUION O EL CARRUSEL].
+Primera línea que pare el scroll (máx. 10 palabras), 3–5 líneas cortas con la idea clave, y cierre con &quot;Escríbeme PLAN por DM&quot;.
+Máximo 80 palabras y 3 hashtags de mi nicho.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 6</span><b>Nota de voz → reel</b><button type="button" class="cp" data-cp="Te pego la transcripción de una nota de voz mía hablando sin guion: [PEGA LA TRANSCRIPCIÓN].&#10;Conviértela en un reel de 30–45 s: quédate con la mejor idea, respeta mis palabras y expresiones (no me cambies la forma de hablar), quita repeticiones y relleno.&#10;Dame el guion con tiempos, el gancho y el texto en pantalla.">Copiar</button></div><p class="ed-txt">Te pego la transcripción de una nota de voz mía hablando sin guion: [PEGA LA TRANSCRIPCIÓN].
+Conviértela en un reel de 30–45 s: quédate con la mejor idea, respeta mis palabras y expresiones (no me cambies la forma de hablar), quita repeticiones y relleno.
+Dame el guion con tiempos, el gancho y el texto en pantalla.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 7</span><b>Rol entrenador desde una duda real</b><button type="button" class="cp" data-cp="Un cliente me ha preguntado esto: &quot;Llevo 3 años entrenando y no se me marcan los abdominales, ¿qué hago mal?&quot; (cámbialo por la duda real).&#10;Escríbeme un reel en rol de entrenador de 30–40 s: abro leyendo la pregunta en pantalla, respondo como si le corrigiera en directo y cierro con lo que haría yo en su lugar + &quot;Escríbeme PLAN&quot;.&#10;Sin dar datos personales de nadie.">Copiar</button></div><p class="ed-txt">Un cliente me ha preguntado esto: &quot;Llevo 3 años entrenando y no se me marcan los abdominales, ¿qué hago mal?&quot; (cámbialo por la duda real).
+Escríbeme un reel en rol de entrenador de 30–40 s: abro leyendo la pregunta en pantalla, respondo como si le corrigiera en directo y cierro con lo que haría yo en su lugar + &quot;Escríbeme PLAN&quot;.
+Sin dar datos personales de nadie.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 8</span><b>Caso de éxito desde datos</b><button type="button" class="cp" data-cp="Con estos datos REALES de un cliente (tengo su permiso): [NOMBRE O INICIAL, PUNTO DE PARTIDA, QUÉ HICIMOS, TIEMPO, RESULTADO, FRASE SUYA].&#10;Escríbeme: 1) un reel de caso de 30 s (antes → qué cambió → resultado → &quot;Escríbeme PLAN&quot;) y 2) un carrusel de 6 slides.&#10;Usa SOLO estos datos. Si falta alguno, deja [DATO REAL]. No exageres nada.">Copiar</button></div><p class="ed-txt">Con estos datos REALES de un cliente (tengo su permiso): [NOMBRE O INICIAL, PUNTO DE PARTIDA, QUÉ HICIMOS, TIEMPO, RESULTADO, FRASE SUYA].
+Escríbeme: 1) un reel de caso de 30 s (antes → qué cambió → resultado → &quot;Escríbeme PLAN&quot;) y 2) un carrusel de 6 slides.
+Usa SOLO estos datos. Si falta alguno, deja [DATO REAL]. No exageres nada.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 9</span><b>Anuncio de seguidores &quot;sígueme&quot;</b><button type="button" class="cp" data-cp="Escríbeme un guion de anuncio con voz en off de 30–40 s para ganar seguidores, sobre un solo ángulo: [ÁNGULO].&#10;Estructura: gancho en 3 s, 2–3 ideas de valor, cierre &quot;Sígueme para [lo que van a aprender]&quot;.&#10;Dame 3 variantes del gancho, el texto en pantalla y los clips.&#10;Cumple las normas de Meta: primera persona o &quot;la mayoría&quot;, nunca &quot;¿tienes…?&quot; ni nada sobre el cuerpo o la salud de quien lo ve, sin promesas ni antes/después.">Copiar</button></div><p class="ed-txt">Escríbeme un guion de anuncio con voz en off de 30–40 s para ganar seguidores, sobre un solo ángulo: [ÁNGULO].
+Estructura: gancho en 3 s, 2–3 ideas de valor, cierre &quot;Sígueme para [lo que van a aprender]&quot;.
+Dame 3 variantes del gancho, el texto en pantalla y los clips.
+Cumple las normas de Meta: primera persona o &quot;la mayoría&quot;, nunca &quot;¿tienes…?&quot; ni nada sobre el cuerpo o la salud de quien lo ve, sin promesas ni antes/después.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Prompt 10</span><b>Revisa mi guion</b><button type="button" class="cp" data-cp="Revisa este guion: [PEGA TU GUION].&#10;Hazlo más corto y directo, sin frases de relleno. Mantén mis palabras y mi forma de hablar. Marca qué frase sobra y por qué, y dame la versión final de máximo 100 palabras con un gancho más fuerte.">Copiar</button></div><p class="ed-txt">Revisa este guion: [PEGA TU GUION].
+Hazlo más corto y directo, sin frases de relleno. Mantén mis palabras y mi forma de hablar. Marca qué frase sobra y por qué, y dame la versión final de máximo 100 palabras con un gancho más fuerte.</p></div></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Rutina</span><h3>Tu sesión de guiones de la semana (20–30 min)</h3></div>
+      <div class="card"><ol class="l">
+        <li><b>Elige 7 ángulos</b> de tu banco (pestaña Ángulos), incluidos los 3 carruseles: conexión y valor alternando.</li>
+        <li><b>Prompts 1 y 2</b> para los reels: guion + 5 ganchos de prueba.</li>
+        <li><b>Prompts 3 y 4</b> para los carruseles de la semana.</li>
+        <li><b>Prompt 5</b> para todos los captions.</li>
+        <li><b>Prompt 10</b> si algún guion te queda largo.</li>
+        <li><b>Grábalo con tus palabras</b> y apunta en el reporte qué gancho ganó.</li>
+      </ol></div>
+    </div>
+  </section>
 </main>
 
 <script>
@@ -805,7 +898,7 @@ ul.l b, ol.l b { color: var(--ink); }
   tabs.forEach(function (t) {
     t.addEventListener("click", function () {
       tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
-      ["plan", "ang", "gui", "rec"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      ["plan", "ang", "gui", "rec", "ed"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
       window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
     });
   });

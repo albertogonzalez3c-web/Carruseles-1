@@ -1,0 +1,1008 @@
+<title>Sebas CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: CRM de Sebastián Palacios (Autoridad Física) con 4 vistas (Hoy, Embudo, Clientes, Proceso y guion). Los leads salen del francotirador a antiguos clientes, 50 DMs en frío a EE. UU. al día, bienvenidas manuales (sin ManyChat), respuestas con la palabra MÉTODO, anuncios y la landing; cada lead guarda país y zona horaria. Precios en USD con escalera. Paleta negro, blanco, azul eléctrico y dorado. */
+:root {
+  --paper: #f3f4f6;
+  --white: #ffffff;
+  --sand: #e6e9ee;
+  --sand-line: #d1d6de;
+  --ink: #0b0b0c;
+  --soft: #556070;
+  --gold: #1d4ed8;
+  --gold-text: #1e40af;
+  --chip: #eceff3;
+  --rust: #9a3b2f;
+  --green: #3f6b3a;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 400 clamp(30px, 4vw, 44px)/1.02 var(--f-head); letter-spacing: -.01em; text-transform: uppercase; }
+h2 { font: 400 24px/1.12 var(--f-head); letter-spacing: 0; }
+h3 { font: 700 16px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+button { font-family: inherit; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn:focus-visible, .tab:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+input, select, textarea { font: 600 14.5px/1.3 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; }
+textarea { resize: vertical; min-height: 64px; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); }
+
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: rgba(243, 244, 246, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+header.top .wrap { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding-block: 12px; }
+.brand { display: grid; gap: 2px; }
+.brand b { font: 400 21px/1 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { all: unset; cursor: pointer; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--white); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--rust); }
+
+main { padding-block: 22px 60px; }
+[hidden] { display: none !important; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.kpi { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; }
+.kpi b { font: 400 30px/1 var(--f-head); color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12.5px; color: var(--soft); font-weight: 600; }
+
+/* Alta */
+.add { margin-bottom: 16px; }
+.add form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.add .full { grid-column: 1 / -1; }
+.add .two { grid-column: span 2; }
+.entrada { display: flex; gap: 6px; flex-wrap: wrap; }
+.entrada label { display: flex; gap: 8px; align-items: center; background: var(--chip); border-radius: 999px; padding: 8px 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; }
+.entrada input { width: auto; margin: 0; accent-color: var(--gold); }
+
+/* Hoy */
+.tasks { display: grid; gap: 8px; }
+.task { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--white); border-radius: 14px; padding: 12px 14px; }
+.task .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+.task.urgent .dot { background: var(--rust); }
+.task.done .dot { background: var(--green); }
+.task b { display: block; font-size: 15px; }
+.task span { color: var(--soft); font-size: 13.5px; }
+.empty { color: var(--soft); text-align: center; padding: 26px; background: var(--white); border-radius: 14px; }
+
+/* Embudo */
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 1fr); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: var(--sand); border-radius: 16px; padding: 10px; display: grid; gap: 8px; align-content: start; min-height: 120px; }
+.col-h { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; }
+.col-h b { font-size: 14px; }
+.col-h span { font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.lead { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 12px; padding: 10px 12px; display: grid; gap: 4px; }
+.lead:focus-visible { outline: 3px solid var(--ink); }
+.lead b { font-size: 14.5px; }
+.lead .meta { font-size: 12.5px; color: var(--soft); }
+.lead .next { font-size: 12.5px; font-weight: 700; color: var(--gold-text); }
+.lead.warn .next { color: var(--rust); }
+
+/* Ficha */
+.drawer-bg { position: fixed; inset: 0; background: rgba(28, 26, 23, .35); z-index: 20; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100%); background: var(--paper); z-index: 21; overflow-y: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) 18px; display: grid; gap: 12px; align-content: start; box-shadow: -10px 0 30px rgba(0, 0, 0, .15); }
+.drawer-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields .full { grid-column: 1 / -1; }
+.steps { display: flex; gap: 4px; flex-wrap: wrap; }
+.steps button { all: unset; cursor: pointer; font-size: 12.5px; font-weight: 700; padding: 7px 10px; border-radius: 999px; background: var(--white); color: var(--soft); }
+.steps button[aria-pressed="true"] { background: var(--gold); color: var(--white); }
+.steps button:focus-visible { outline: 3px solid var(--ink); }
+.check { display: grid; gap: 6px; }
+.check label { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; cursor: pointer; background: var(--white); border-radius: 10px; padding: 9px 10px; }
+.check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--gold); }
+.check small { display: block; color: var(--soft); font-size: 12.5px; }
+.msg { background: var(--chip); border-radius: 12px; padding: 10px 12px; display: grid; gap: 8px; }
+.msg p { font-size: 14px; }
+.msg .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.log { display: grid; gap: 4px; font-size: 13px; color: var(--soft); max-height: 160px; overflow-y: auto; }
+.phone-line { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.phone-line code { font: 700 15px/1 var(--f-mono); background: var(--white); padding: 8px 10px; border-radius: 8px; user-select: all; }
+.alert { background: #f3e0d8; color: var(--rust); border-radius: 10px; padding: 9px 12px; font-size: 13.5px; font-weight: 700; }
+
+/* Nivel de precios */
+.nivel { gap: 12px; }
+.nivel .nv-top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+.nivel .nv-dots { display: flex; gap: 6px; }
+.nivel .nv-dots i { width: 28px; height: 8px; border-radius: 99px; background: var(--sand); }
+.nivel .nv-dots i.on { background: var(--gold); }
+.nivel .nv-prices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.nivel .nv-prices div { background: var(--chip); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
+.nivel .nv-prices b { font: 400 24px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.nivel .nv-prices span { font-size: 12.5px; color: var(--soft); font-weight: 700; }
+.nivel .nv-prices .star { background: #dde6fd; box-shadow: inset 0 0 0 1.5px var(--gold); }
+.hint { background: #dde6fd; color: var(--gold-text); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; font-weight: 700; font-size: 14px; }
+.linkish { all: unset; cursor: pointer; font-size: 12.5px; color: var(--soft); text-decoration: underline; }
+.linkish:focus-visible { outline: 3px solid var(--ink); }
+/* Clientes */
+.crow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center; background: var(--white); border-radius: 12px; padding: 11px 14px; font-size: 14px; width: 100%; }
+.crow:focus-visible { outline: 3px solid var(--ink); }
+.crow.head { cursor: default; background: none; padding-block: 4px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.crow .num { font-variant-numeric: tabular-nums; }
+.crow .mo { display: none; }
+.crow small { display: block; color: var(--soft); font-size: 12.5px; }
+.pill { display: inline-block; width: fit-content; font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: #e3e8dc; color: var(--green); }
+.pill.baja { background: #f4e3dc; color: var(--rust); }
+.pill.warn { background: #f6ecc8; color: var(--gold-text); }
+.clist { display: grid; gap: 6px; }
+details.addc > summary { cursor: pointer; font-weight: 800; list-style: none; }
+details.addc > summary::-webkit-details-marker { display: none; }
+.addc form { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: end; margin-top: 12px; }
+.extra { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; border-bottom: 1px solid var(--sand-line); padding-block: 6px; }
+
+/* Guion de cierre */
+.cs h3.ph { font: 400 23px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--sand-line); }
+.cs h4 { margin: 4px 0 0; font: 700 15px/1.3 var(--f-body); color: var(--gold-text); }
+.tw { overflow-x: auto; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+.ctab th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 8px 10px; background: var(--chip); }
+.ctab td { padding: 9px 10px; border-top: 1px solid var(--sand-line); vertical-align: top; }
+.say { position: relative; }
+.say .cpy { all: unset; cursor: pointer; float: right; margin: -2px -4px 4px 10px; font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .04em; padding: 6px 8px; border-radius: 8px; background: var(--white); box-shadow: inset 0 0 0 1px var(--sand-line); color: var(--ink); }
+.say .cpy:focus-visible { outline: 3px solid var(--ink); }
+.say.placeholder { box-shadow: inset 0 0 0 1.5px dashed var(--gold); border: 1.5px dashed var(--gold); }
+.note { background: var(--white); border: 1.5px dashed var(--sand-line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; font-size: 14px; }
+.check-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14.5px; }
+.objs { display: grid; gap: 0; }
+.obj .say { display: block; margin: 0 0 6px; }
+.card.dark { background: var(--ink); color: #fff; }
+.card.dark .label { color: #93b4ff; }
+.card.dark ul.l, .card.dark ul.l b { color: #d6dbe4; }
+/* Guion */
+.guide { display: grid; gap: 14px; }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.flow .card .n { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: var(--white); display: grid; place-items: center; font-weight: 800; }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 5px; color: var(--soft); font-size: 14.5px; }
+ul.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 10px; padding: 9px 12px; font-size: 14px; font-weight: 600; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; font-size: 14px; }
+.obj b { font-size: 14.5px; }
+
+@media (max-width: 980px) {
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .add form { grid-template-columns: 1fr 1fr; }
+  .addc form { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .kpis, .grid2, .flow, .fields { grid-template-columns: 1fr 1fr; }
+  .add form { grid-template-columns: 1fr; }
+  .add .two { grid-column: auto; }
+  .grid2, .flow { grid-template-columns: 1fr; }
+  .obj { grid-template-columns: 1fr; }
+  .addc form { grid-template-columns: 1fr; }
+  .nivel .nv-prices { grid-template-columns: 1fr 1fr; }
+  .crow { grid-template-columns: minmax(0, 1fr) auto; }
+  .crow .hm { display: none; }
+  .crow .mo { display: inline; }
+  .task { grid-template-columns: 10px minmax(0, 1fr); }
+  .task .btn { grid-column: 2; justify-self: start; }
+}
+h1 { text-transform: none; letter-spacing: -.02em; }
+.brand b { font: 400 18px/1 var(--f-head); text-transform: none; }
+.cs h3.ph { font: 400 20px/1.2 var(--f-head); text-transform: none; }
+.kpi b { font: 400 26px/1 var(--f-head); }
+.nivel .nv-prices b { font: 400 21px/1 var(--f-head); }
+
+/* Sebas: Bebas Neue (400) en titulares */
+h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="label">Sebastián Palacios · Autoridad Física</span><b>Conversaciones y clientes</b></div>
+    <nav class="tabs" role="tablist" aria-label="Vistas">
+      <button class="tab" role="tab" id="tab-hoy" aria-selected="true" data-view="hoy">Hoy</button>
+      <button class="tab" role="tab" id="tab-embudo" aria-selected="false" data-view="embudo">Embudo</button>
+      <button class="tab" role="tab" id="tab-clientes" aria-selected="false" data-view="clientes">Clientes</button>
+      <button class="tab" role="tab" id="tab-guion" aria-selected="false" data-view="guion">Proceso y guion</button>
+    </nav>
+    <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card add" id="addCard" aria-labelledby="h-add">
+    <h2 id="h-add">Nueva conversación</h2>
+    <form id="addForm" autocomplete="off">
+      <label class="f">Instagram<input id="n-ig" placeholder="@usuario"></label>
+      <label class="f">Nombre<input id="n-nombre" required placeholder="Nombre"></label>
+      <label class="f">Origen<select id="n-origen"><option>DM frío EE. UU.</option><option>Antiguo cliente (francotirador)</option><option>Bienvenida manual nuevo seguidor</option><option>Palabra MÉTODO</option><option>Anuncio voz en off</option><option>Landing autoridadfisica.cl</option><option>Respuesta a historia</option><option>Conversación propia (alrededor de tu perfil)</option><option>Recomendación</option><option>Otro</option></select></label>
+      <label class="f">País / zona horaria<select id="n-pais"><option>EE. UU. · Este</option><option>EE. UU. · Centro</option><option>EE. UU. · Montaña</option><option>EE. UU. · Pacífico</option><option>Chile</option><option>México</option><option>Otro LatAm</option><option>Otro</option></select></label>
+      <label class="f">Teléfono (opcional)<input id="n-tel" inputmode="tel" placeholder="+1 … / +56 …"></label>
+      <div class="f full"><span class="label" style="margin-bottom:4px">¿Por dónde va la conversación?</span>
+        <div class="entrada" role="radiogroup" aria-label="Por dónde va la conversación">
+          <label><input type="radio" name="entrada" value="ig" checked> Por Instagram: cualificar e invitar a la llamada</label>
+          <label><input type="radio" name="entrada" value="frio"> Rellenó la landing: escribirle o llamarle hoy</label>
+        </div>
+      </div>
+      <label class="f two">Qué quiere o lo que contó<input id="n-obj" placeholder="Ej.: 26 años, Houston, 4 años entrenando, se tapa en cada volumen, cree que es genética"></label>
+      <label class="f">Edad<input id="n-edad" inputmode="numeric" placeholder="Ej.: 26"></label>
+      <button class="btn" type="submit" id="addBtn">Añadir conversación</button>
+    </form>
+    <p class="soft" id="addNote" aria-live="polite" style="font-size:13px"></p>
+  </section>
+
+  <section class="view" id="view-hoy" aria-labelledby="h-hoy">
+    <div class="kpis" id="kpis"></div>
+    <h2 id="h-hoy" style="margin-bottom:10px">Qué toca hoy</h2>
+    <div class="tasks" id="todayList"><p class="empty">Cargando…</p></div>
+  </section>
+
+  <section class="view" id="view-embudo" hidden aria-labelledby="h-emb">
+    <h2 id="h-emb" style="margin-bottom:10px">Embudo</h2>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section class="view" id="view-clientes" hidden aria-labelledby="h-cli">
+    <div class="card nivel" id="nivelCard" style="margin-bottom:16px"></div>
+    <div class="kpis" id="ckpis"></div>
+    <div class="card sand" style="margin-bottom:16px">
+      <details class="addc">
+        <summary>+ Añadir un cliente que ya tenías</summary>
+        <form id="addCli" autocomplete="off">
+          <label class="f">Nombre<input id="c-nombre" required placeholder="Nombre"></label>
+          <label class="f">Teléfono<input id="c-tel" inputmode="tel" placeholder="+1 … / +56 …"></label>
+          <label class="f">Plan<select id="c-plan"></select></label>
+          <label class="f">Fecha de alta<input id="c-alta" type="date" required></label>
+          <button class="btn" type="submit" id="c-btn">Añadir cliente</button>
+        </form>
+        <p class="soft" id="c-note" aria-live="polite" style="font-size:13px"></p>
+      </details>
+    </div>
+    <h2 id="h-cli" style="margin-bottom:10px">Clientes</h2>
+    <div class="clist" id="clist"></div>
+    <p class="soft" style="font-size:13px;margin-top:12px"><b>Vida media</b> = media del tiempo entre el alta y la baja de los clientes que se han ido. Se recalcula sola cada vez que das de baja a alguien. <b>Facturado por cliente</b> incluye la primera venta y todo el back-end (ascensiones, renovaciones, continuidad).</p>
+  </section>
+
+  <section class="view" id="view-guion" hidden aria-labelledby="h-guion">
+    <div class="guide">
+      <div>
+        <span class="label">Proceso completo</span>
+        <h2 id="h-guion" style="margin-top:6px">De la conversación 1 a 1 a la llamada contigo. Todo a mano.</h2>
+        <p class="soft" style="margin-top:6px">Cinco canales y un solo destino: una conversación escrita por ti (sin ManyChat) que termina en una llamada. Cada persona que responde entra aquí, con su @ y su país. Lo que no está en el CRM, no existe.</p>
+      </div>
+      <div class="flow">
+        <article class="card"><span class="n">1</span><h3>Abrir conversación</h3><ul class="l"><li><b>Francotirador:</b> antiguos clientes, primeras 2 semanas.</li><li><b>50 DMs en frío a EE. UU.</b> cada día: entrenadores, gimnasios y cuentas latinas de allí, y la gente que interactúa con ellos.</li><li><b>Tus conversaciones:</b> gente alrededor de tu perfil, además de las 50.</li><li><b>Bienvenidas manuales</b> a cada nuevo seguidor y cada "MÉTODO".</li></ul></article>
+        <article class="card"><span class="n">2</span><h3>Cualificar por DM</h3><ul class="l"><li>3–5 mensajes, cercanos.</li><li>Años entrenando, fase actual, qué ha probado, si registra, por qué ahora y dónde vive.</li><li>Si encaja → llamada (o la landing).</li></ul></article>
+        <article class="card"><span class="n">3</span><h3>Llamada agendada</h3><ul class="l"><li><b>Máximo 2–3 días vista.</b></li><li>Hora en su zona y en Chile.</li><li>Al agendar: <b>un caso parecido</b> y un <b>audio</b> tuyo dándole las gracias.</li></ul></article>
+        <article class="card"><span class="n">4</span><h3>Día de la llamada</h3><ul class="l"><li>El <b>caso más parecido</b> al suyo (con permiso).</li><li>Una <b>explicación muy breve</b> del Método EMD.</li><li>Recordatorio 1 hora antes.</li></ul></article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <span class="label">Abrir la conversación · siempre a mano</span>
+          <h3>Un mensaje por canal</h3>
+          <p class="say">"Hola [nombre], gracias por seguirme. Cuéntame, ¿hace cuánto entrenas y en qué estás ahora: volumen, definición o ninguna de las dos?"</p>
+          <p class="say">"Hola [nombre], vi que entrenas en serio (vi tu [post/comentario en X]). Pregunta rápida: ¿estás contento con cómo te ves para el tiempo que llevas?"</p>
+          <p class="say">"[Nombre], ¡tanto tiempo! Me acordé de ti porque estoy retomando con algunos antiguos alumnos. ¿Cómo has seguido con el entrenamiento?"</p>
+          <p class="soft" style="font-size:13.5px">1.º bienvenida manual · 2.º DM en frío EE. UU. · 3.º francotirador. Nunca vendas en el primer mensaje. Usa respuestas guardadas para escribir rápido, pero siempre con su nombre y una frase personal.</p>
+        </article>
+        <article class="card">
+          <span class="label">Cualificar · 3–5 mensajes</span>
+          <h3>Saber si encaja antes de invitarlo</h3>
+          <ul class="l">
+            <li><b>Situación:</b> "¿Cuántos años tienes y hace cuánto entrenas?"</li>
+            <li><b>Qué quiere cambiar:</b> "Si en 6 meses te miras sin polera, ¿qué te gustaría ver?"</li>
+            <li><b>Qué ha probado:</b> "¿Cómo te han ido los volúmenes y las definiciones? ¿Registras cargas y peso?"</li>
+            <li><b>Por qué ahora:</b> "¿Qué hizo que te lo plantees justo ahora?"</li>
+            <li><b>Acompañamiento:</b> "¿Buscas que alguien te lleve o prefieres seguir por tu cuenta?"</li>
+          </ul>
+          <p class="say">"Por lo que me cuentas, estás justo donde estaba yo: mucho esfuerzo y poca dirección. ¿Lo vemos en una llamada de 30 minutos y te digo qué haría en tu caso? ¿Te acomoda [día] o [día]?"</p>
+          <p class="soft" style="font-size:13.5px">Siempre dos opciones, dentro de 2–3 días, con la hora en su zona. Si lo prefiere, que agende desde autoridadfisica.cl.</p>
+        </article>
+      </div>
+
+      <article class="card acc">
+        <span class="label">Francotirador · antiguos clientes</span>
+        <h3>3 toques en 7 días, oferta "Vuelta Autoridad Física"</h3>
+        <ul class="l">
+          <li><b>Toque 1 (día 1):</b> mensaje personal (arriba, el 3.º). Sin oferta. Escucha cómo está.</li>
+          <li><b>Toque 2 (día 3):</b> "Estoy abriendo 10 plazas solo para antiguos alumnos: semestre a 480 USD (o su equivalente en pesos), revisión de reentrada gratis y el mes 7 de mantenimiento incluido. Válido 7 días. ¿Te interesa que lo veamos?"</li>
+          <li><b>Toque 3 (día 6):</b> "Mañana cierro las plazas de antiguos alumnos. ¿Te guardo una?"</li>
+          <li><b>Si consiguió su objetivo y no quiere volver:</b> pídele permiso, fotos y una frase para un caso de éxito. También es una victoria.</li>
+          <li>En el CRM: origen "Antiguo cliente (francotirador)" y plan "Vuelta Autoridad Física" si cierra. <b>Esta venta no sube la escalera.</b></li>
+        </ul>
+      </article>
+
+      <article class="card sand">
+        <span class="label">Mensajes que se envían</span>
+        <h3>Del agendado a la llamada</h3>
+        <ul class="l">
+          <li><b>Al agendar:</b> confirmación con la hora en su zona y en Chile + un caso parecido + audio tuyo dándole las gracias.</li>
+          <li><b>El día de la llamada:</b> el caso más parecido + explicación breve en 3 líneas.</li>
+          <li><b>1 hora antes:</b> recordatorio.</li>
+        </ul>
+        <p class="say">"[Nombre], hoy a las [hora] hablamos. Te dejo un caso parecido al tuyo. Lo que hacemos: el Método EMD (Ejecuta, Mide, Decide), una estrategia estable medida cada semana y ajustada con datos, para que tu físico por fin refleje tu esfuerzo. Nos vemos."</p>
+      </article>
+
+      <p class="soft" style="font-size:13.5px">El guion de cierre también está en una página aparte para imprimir: <b>6 · Guion de cierre</b>.</p>
+      <article class="card cs" id="cierre">
+        <span class="label">Llamada de cierre · 35–40 min</span>
+        <h2>Guion de cierre: conectas, escuchas, resumes, propones y cierras.</h2>
+        <p class="soft">Orden fijo. Adaptas el tono a cada persona, nunca el orden. Hablas tú el 30 % del tiempo como mucho. Las frases en recuadro son casi literales: dilas con tus palabras, pero no te saltes ninguna. Hay <b>dos versiones de entrada</b>: lead nuevo (frío de EE. UU. o de tu contenido) y antiguo cliente (reactivación). Desde la fase 2, el guion es el mismo.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Fase</th><th>Objetivo</th><th>Tiempo</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Conexión + Autoridad</td><td>Bajar defensas y liderar la llamada</td><td>5 min</td></tr>
+            <tr><td>2 · Descubrimiento</td><td>Dolor, intentos, riesgo y objetivo</td><td>20 min</td></tr>
+            <tr><td>2.5 · Resumen + Validación</td><td>Que sienta que lo entiendes</td><td>2 min</td></tr>
+            <tr><td>3 · Propuesta + Precio</td><td>Solo lo que le importa a esa persona</td><td>5 min</td></tr>
+            <tr><td>4 · Objeciones + Cierre</td><td>Aclarar, aislar, solucionar y cobrar</td><td>10 min</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="card sand">
+          <h3>Antes de la llamada (5 min de preparación, obligatorio)</h3>
+          <ul class="check-l">
+            <li>☐ Repasa su ficha del CRM: origen, país y lo que te contó por DM o en el formulario de autoridadfisica.cl.</li>
+            <li>☐ <b>Zona horaria:</b> si es de EE. UU., confirma la hora en su ciudad (Este, Centro, Montaña o Pacífico) y en Chile. La invitación, siempre con las dos horas.</li>
+            <li>☐ Marca su fase: <b>frío, tibio o caliente</b>, y apunta <b>una frase literal suya</b> para el resumen ("llevo años y sigo igual", "con polera bien, sin polera no", "tal vez tengo mala genética"…).</li>
+            <li>☐ Apunta <b>cuántos años lleva entrenando</b> y en cuál de tus 3 fases está: flaco/gordiflaco, mucho esfuerzo sin estructura, o sabe mucho y no se dirige.</li>
+            <li>☐ Ten preparado <b>el caso más parecido</b> al suyo (tabla de la fase 3) y tu historia en 30 segundos.</li>
+            <li>☐ Mira tu <b>nivel de precios actual</b> en la pestaña Clientes. Precios en USD.</li>
+            <li>☐ Ten abierto el <b>enlace de pago en USD</b> (y el de pesos chilenos si es de Chile).</li>
+            <li>☐ Cámara a la altura de los ojos, buena luz, celular en silencio. A la hora en punto.</li>
+          </ul>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <span class="label">Entrada A · Lead nuevo (frío de EE. UU. o de tu contenido)</span>
+            <ul class="l">
+              <li>"¿Qué tal? ¿Desde qué ciudad me hablas?"</li>
+              <li>"¿Te agarro saliendo del trabajo o ya estás en casa?"</li>
+              <li>"Vi que me escribiste MÉTODO por el reel de [tema], ¿qué fue lo que te hizo clic?"</li>
+              <li><b>Si viene del DM en frío:</b> "Te escribí porque vi que entrenas en serio. ¿Qué te hizo aceptar la llamada?"</li>
+            </ul>
+            <p class="soft" style="font-size:13.5px">Con alguien de EE. UU., una frase de cercanía funciona: "Trabajo online con gente de varios países; lo que necesito son tus datos, no que estés cerca".</p>
+          </div>
+          <div class="card">
+            <span class="label">Entrada B · Antiguo cliente (reactivación)</span>
+            <ul class="l">
+              <li>"¡Qué bueno hablar contigo otra vez! ¿Cómo has estado desde que dejamos de trabajar juntos?"</li>
+              <li>"¿Seguiste entrenando? ¿Qué pasó con lo que habíamos logrado?"</li>
+              <li>"Cuando lo dejamos, ¿qué fue lo que pasó?" (escucha sin defenderte).</li>
+            </ul>
+            <p class="soft" style="font-size:13.5px">Ya confía en ti: el descubrimiento es más corto. Lo que cambia es contarle <b>qué haces hoy distinto</b>: check-in con datos, vídeos de técnica, dieta con intercambios, 7 bonus y más cercanía. Si consiguió su objetivo, pídele además permiso, fotos y una frase para un caso.</p>
+          </div>
+        </div>
+
+        <h3 class="ph">Fase 1 · Conexión + Autoridad (5 min)</h3>
+        <p class="soft">Que se relaje y entienda que tú llevas la llamada. Dos minutos de charla como mucho y entras al marco.</p>
+        <h4>Marco de autoridad (obligatorio, casi literal)</h4>
+        <p class="say">"Te cuento cómo va a ser esto. Te voy a hacer unas preguntas para entender bien dónde estás y qué te está pasando. Si veo que te puedo ayudar de verdad, te explico cómo trabajo y vemos si tiene sentido. Y si veo que no es para ti, te lo digo igual. ¿Te parece?"</p>
+        <p class="soft">Espera el sí: es el primer compromiso de la llamada. <b>Errores a evitar:</b> hablar de ti antes de saber nada de la otra persona, alargar la charla más de 3 minutos o empezar a explicar el programa.</p>
+
+        <h3 class="ph">Fase 2 · Descubrimiento profundo (20 min)</h3>
+        <p class="soft">Aquí se gana o se pierde la venta. Preguntas, escuchas, apuntas sus palabras literales y aguantas los silencios. Todavía no das soluciones.</p>
+
+        <h4>2.1 Dolor</h4>
+        <p class="say">"Para empezar, ¿por qué decidiste tomar esta llamada ahora y no hace seis meses?"</p>
+        <ul class="l">
+          <li>¿Cuántos años llevas entrenando? ¿Cómo te ves hoy comparado con lo que esperabas?</li>
+          <li>Con ropa y sin polera, ¿cómo te ves?</li>
+          <li>Ponme un ejemplo reciente en el que lo notaste: una foto, la playa, compararte con alguien del gimnasio…</li>
+          <li>¿Cuántas veces cambiaste de rutina o de fase en el último año?</li>
+        </ul>
+        <p class="soft">Silencio de 5 a 7 segundos después de cada respuesta. Si contesta en superficie ("nada, quiero estar más grande"):</p>
+        <p class="say">"Te lo pregunto porque mientras mejor entienda lo que te pasa, mejor te voy a poder ayudar. Tómate tu tiempo."</p>
+        <p class="soft">Si sigue en superficie, usa tu historia (menos de 30 segundos):</p>
+        <p class="say">"Te cuento por qué te pregunto. Yo mido 1,80 y empecé pesando 60 kilos, flaco pero con mi rollito. Hice un volumen donde subí 20 kilos en 4 meses, casi todo grasa. Después definiciones a 1.800 calorías con atracones. Y años después, ya titulado de nutricionista, me seguía costando dirigirme a mí mismo. Lo que me cambió no fue hacer más, fue dejar de improvisar. ¿En qué parte de esto te ves tú?"</p>
+        <p class="soft">Quédate con <b>un dolor principal</b> y apúntalo en el CRM con <b>sus</b> palabras.</p>
+
+        <h4>2.2 Intentos</h4>
+        <p class="say">"Seguro que ya lo intentaste. Cuéntame uno o dos intentos serios y qué no te funcionó en cada uno."</p>
+        <ul class="l">
+          <li>¿Qué fue lo que falló ahí exactamente?</li>
+          <li>¿Cuánto te duró? ¿Registrabas tus cargas y tu peso?</li>
+          <li>¿Por qué lo dejaste?</li>
+        </ul>
+        <p class="soft">Enfócate en lo que falló (volumen sin control, definición extrema, rutina de Instagram, entrenador que solo mandaba un PDF, la fiesta del finde). Escucha en qué <b>fase de tu historia</b> está: <b>flaco o gordiflaco que no se ve como quiere</b>, <b>mucho esfuerzo sin estructura</b> o <b>sabe mucho y no se dirige</b>.</p>
+
+        <h4>2.3 Frenos y riesgo</h4>
+        <p class="say">"Imagínate que hoy entras a una asesoría como esta, no tiene que ser la mía. ¿Qué miedo o qué duda te vendría a la cabeza?"</p>
+        <ul class="l">
+          <li>¿Has tenido entrenador antes? ¿Cómo te fue?</li>
+          <li>¿Qué crees que te podría hacer dejarlo a mitad?</li>
+        </ul>
+        <p class="soft">Apunta el miedo literal ("tal vez es mi genética", "ya sé entrenar", "no tengo tiempo", "ya tuve entrenador y no funcionó"). Lo resuelves en la fase 3.</p>
+
+        <h4>2.4 Deseo y servicio ideal</h4>
+        <p class="say">"¿Qué tendría que pasar en 3 meses y en 6 meses para que digas: esto está funcionando?"</p>
+        <ul class="l">
+          <li>Y cuando lo consigas, ¿qué cambia? (sacarse la polera sin pensarlo, que su físico refleje el esfuerzo, ser referente entre sus amigos…)</li>
+          <li>¿Por qué ahora es importante para ti?</li>
+          <li>Del 1 al 10, ¿qué tan importante es solucionarlo ya?</li>
+        </ul>
+        <p class="say">"Si fueras a contratar a alguien para esto, ¿a qué una o dos cosas le darías más importancia?"</p>
+        <p class="soft">Si el 1–10 da menos de 7: "¿Qué haría falta para que fuera un 9?". Si no hay urgencia real, no fuerces el cierre.</p>
+
+        <h3 class="ph">Fase 2.5 · Resumen + Validación (2 min)</h3>
+        <p class="say">"A ver si lo entendí bien. Llevas [años] entrenando y [dolor con sus palabras]. Probaste [intento] y no te funcionó porque [motivo]. Lo que quieres de verdad es [deseo] y lo que más te preocupa es [miedo]. ¿Se me escapa algo importante?"</p>
+        <p class="say">"Te voy a ser sincero. Sí creo que te puedo ayudar, y lo que te pasa es mucho más común de lo que piensas: es exactamente donde estaba yo. No te falta esfuerzo: te sobra improvisación. No necesitas hacer más, necesitas una estrategia que podamos medir y ajustar. Te explico cómo lo haríamos en tres minutos y después me dices qué dudas te quedan, ¿te parece?"</p>
+        <p class="soft">Si ves que <b>no</b> es para ti (quiere atajos o química, impone su propio método sin escuchar, o regatea el precio de entrada), díselo aquí. Son tus dos perfiles de "no".</p>
+
+        <h3 class="ph">Fase 3 · Propuesta + Precio (5 min)</h3>
+        <p class="soft">No explicas todo el servicio. Explicas solo lo que resuelve SU dolor y SU miedo.</p>
+        <h4>Qué es (20 segundos)</h4>
+        <p class="say">"Ayudo a hombres latinos de 20 a 35 que llevan años entrenando y saben de fitness, pero viven entre volúmenes que los tapan y definiciones que los dejan flacos, a construir el físico que por fin refleje su esfuerzo. Sin química y sin improvisar. Soy nutricionista y preparador físico, y trabajo online con gente de Latinoamérica y de Estados Unidos."</p>
+        <h4>Método en 2 minutos · Método EMD: Ejecuta, Mide, Decide</h4>
+        <p class="soft">Empieza siempre por el pilar que más le importa (lo dijo en la 2.4).</p>
+        <ul class="l">
+          <li><b>Ejecuta:</b> "Rutina estable con progresión y una dieta cerrada con porciones de intercambio que encaja en tu horario. No se cambia por impulso ni porque viste un ejercicio nuevo en Instagram."</li>
+          <li><b>Mide:</b> "Cada semana miro tu tendencia de peso, tus cargas, medidas, fotos y vídeos de técnica. Lo que no se registra no existe."</li>
+          <li><b>Decide:</b> "Cada ajuste tiene un motivo y un dato detrás. Si toca volumen o definición lo deciden los números, no el espejo ni la ansiedad de tres días sin bajar."</li>
+        </ul>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Fase</th><th>Qué pasa</th><th>Qué haces tú</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Diagnóstico y base (semanas 1–4)</td><td>Auditamos tu historial, fijamos tu punto de partida y decidimos con datos si toca volumen o definición. Recibes los 7 bonus.</td><td>Registrar todo y mandar tu primera revisión completa.</td></tr>
+            <tr><td>2 · Construcción (meses 2–5)</td><td>Volumen controlado o déficit bien planteado, progresión semanal y ajustes por tendencia.</td><td>Ejecutar sin cambiar nada por tu cuenta y reportar cada semana.</td></tr>
+            <tr><td>3 · Dirección propia (mes 6)</td><td>Transición y mantenimiento; aprendes a leer tus datos y a tomar decisiones.</td><td>Decidir con criterio y saber qué mirar antes de tocar nada.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="soft"><b>3 no negociables:</b> revisión semanal completa (peso, medidas, fotos, vídeo), cargas registradas en cada sesión y peso diario en ayunas + pasos.</p>
+        <p class="say">"Lo primero que vas a dejar de hacer conmigo es improvisar. Sin tus datos no puedo ajustarte bien; con ellos, cada decisión tiene sentido."</p>
+        <p class="soft"><b>Garantía (si la confirma Alberto):</b> "Si cumples los 3 no negociables durante 12 semanas y no mejora ninguno de tus indicadores (cintura, cargas o fotos), sigo contigo gratis hasta que mejoren."</p>
+        <h4>Resuelve el miedo de la 2.3</h4>
+        <p class="say">"Antes me dijiste que te daba miedo [miedo literal]. Justo por eso lo planteamos así: [solución concreta]."</p>
+        <h4>Caso parecido</h4>
+        <p class="soft">Elige uno solo, el más parecido. Solo datos reales y con permiso.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Caso</th><th>Qué contar</th><th>Úsalo cuando el lead…</th></tr></thead>
+          <tbody>
+            <tr><td>Alonso</td><td>22 años, universitario, salía de fiesta casi cada finde y culpaba a su genética. Volumen controlado, 3–4 días de 1 hora. Hoy sale con su objetivo en mente: "una copa y ya".</td><td>Es joven, tiene vida social y cree que es su genética.</td></tr>
+            <tr><td>Martín</td><td>Llegó con muchas inseguridades por su peso. Empezó con una definición y cumplía con todo.</td><td>Se ve "gordo" aunque entrene.</td></tr>
+            <tr><td>Cliente de jornada completa</td><td>28 años, trabaja de 8:30 a 18:00, poco tiempo para él. Definición cumpliendo todo.</td><td>Dice que no tiene tiempo. (Sin nombre si no tienes su permiso.)</td></tr>
+            <tr><td>Tu primo</td><td>Gratis no avanzó; cuando se comprometió, cambios muy buenos.</td><td>Duda de si vale la pena pagar.</td></tr>
+            <tr><td>Tu propio proceso</td><td>60 kg con 1,80; volumen de 20 kg casi todo grasa; definiciones extremas; hoy, nutricionista con su volumen más largo y medido.</td><td>Sabe mucho y cree que no necesita a nadie.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h4>El precio: así se presenta</h4>
+        <p class="soft">Siempre en este orden. Mira tu nivel actual en la pestaña Clientes. Precios en dólares (USD); para Chile puedes cobrar el equivalente en pesos.</p>
+        <ol class="l">
+          <li><b>Primero el semestre</b>, como lo normal: "Lo normal es hacerlo en seis meses: el primer mes ordenamos y medimos, del segundo al quinto construimos, y el sexto aprendes a dirigirte solo para no volver a empezar de cero."</li>
+          <li><b>El año, como mejor valor:</b> "Si lo quieres para el año completo, con 6 meses de mantenimiento, te sale mucho mejor: solo 390 dólares más que el semestre."</li>
+          <li><b>Trimestre solo como último recurso</b>, si de verdad no puede: es solo la fase 1 y el arranque de la 2.</li>
+        </ol>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Semestre en 2 pagos</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>US$350</td><td>US$600</td><td>US$990</td><td>2 × US$320</td></tr>
+            <tr><td>1</td><td>US$420</td><td>US$720</td><td>US$1,190</td><td>2 × US$385</td></tr>
+            <tr><td>2</td><td>US$500</td><td>US$860</td><td>US$1,430</td><td>2 × US$460</td></tr>
+            <tr><td>3</td><td>US$600</td><td>US$1,000</td><td>US$1,650</td><td>2 × US$535</td></tr>
+          </tbody>
+        </table></div>
+        <p class="soft"><b>Antiguo cliente (tirada francotirador):</b> oferta "Vuelta Autoridad Física": semestre a <b>US$480</b> (o su equivalente en pesos), con revisión de reentrada gratis y el mes 7 de mantenimiento incluido. 10 plazas, 7 días desde el primer mensaje. <b>Esta venta no sube la escalera.</b> Todo en propuesta: confírmalo con Alberto antes de la primera llamada.</p>
+        <p class="say">"El semestre son [precio]. Si prefieres, lo puedes pagar en dos cuotas de [cuota]."</p>
+        <p class="soft"><b>Dilo una vez y calla.</b> No lo justifiques ni lo rebajes: tú mismo escribiste que no quieres que te bajen el precio. Cada venta cerrada, subes un nivel en el CRM.</p>
+        <h4>Cierre de bloque</h4>
+        <p class="say">"Hasta aquí lo importante. Ahora dime tú: ¿qué dudas te quedan, sobre cómo funciona, el pago o cuándo empezar?"</p>
+        <p class="soft">Y te callas. El primero que habla después de esta pregunta, pierde.</p>
+
+        <h3 class="ph">Fase 4 · Objeciones + Cierre (10 min)</h3>
+        <p class="soft">Nunca discutes ni te justificas. Preguntas. Cada objeción pasa por tres pasos:</p>
+        <ol class="l">
+          <li><b>Aclarar:</b> "¿A qué te refieres exactamente?"</li>
+          <li><b>Aislar:</b> "Dejando eso de lado, ¿hay algo más que te frene para empezar hoy?"</li>
+          <li><b>Solucionar:</b> validas lo que siente y le das una salida concreta.</li>
+        </ol>
+        <div class="objs">
+          <div class="obj"><b>"Tal vez es mi genética"</b><span><span class="say">"¿Qué te hace pensar que es tu genética?"</span>"La genética importa, no te voy a mentir. Pero antes revisemos tu proceso: ¿registraste cargas?, ¿mantuviste una fase el tiempo suficiente?, ¿lo sostuviste el finde? Yo creía que con mis piernas no había nada que hacer."</span></div>
+          <div class="obj"><b>"Ya sé entrenar y sé de nutrición"</b><span><span class="say">"Se nota. ¿Y por qué crees que con todo lo que sabes sigues igual?"</span>"A mí me pasó siendo nutricionista: saber no te hace objetivo contigo mismo. No te voy a enseñar qué es un déficit; te voy a dar dirección y alguien que te frene cuando quieras cambiar todo por impaciencia."</span></div>
+          <div class="obj"><b>"Está muy cara"</b><span><span class="say">"¿Es por cómo vas este mes o porque no tienes claro que valga lo que cuesta?"</span>Si es liquidez: "El precio no lo toco, pero el semestre lo puedes pagar en dos cuotas." Si es valor: "¿Cuántos años llevas entrenando sin el físico que quieres? ¿Cuánto vale otro año igual?"</span></div>
+          <div class="obj"><b>"Lo tengo que ver con mis papás" (no genera ingresos)</b><span>Muchos de tus leads jóvenes dependen de su familia. "¿Tú lo tienes claro? Si quieres, preparo un resumen de 3 líneas de lo que haríamos para que se lo muestres." Cierra un día y una hora concretos para la respuesta. Si de verdad no puede, no rebajes: déjalo en seguimiento.</span></div>
+          <div class="obj"><b>"No tengo tiempo"</b><span><span class="say">"¿Cuánto tiempo crees que te haría falta?"</span>"Con jornada completa también se puede: tengo un cliente que trabaja de 8:30 a 18:00 y entrena 3–4 días de 1 hora. No te pido más tiempo, te pido que el que tienes sirva."</span></div>
+          <div class="obj"><b>"Ya tuve entrenador y no funcionó"</b><span><span class="say">"¿Qué fue lo que no funcionó exactamente?"</span>"¿Te revisaba datos cada semana o te mandaba la rutina y listo? Conmigo hay check-in semanal con peso, cargas, medidas, fotos y vídeos, y te respondo y ajusto. Sin datos no hay ajustes; con datos, sí."</span></div>
+          <div class="obj"><b>"Déjame verlo bien y te aviso"</b><span><span class="say">"Claro, es una decisión. ¿Qué es exactamente lo que tienes que ver? Así lo vemos ahora juntos."</span>Casi siempre esconde precio o miedo. Aclara y aísla. Si sigue, cierra fecha y hora para la respuesta (tus leads "parados" son justo esto).</span></div>
+          <div class="obj"><b>Consultarlo con su pareja</b><span>1. Valida: "Tiene todo el sentido." 2. Pregunta: "¿Lo consultas para pedir permiso o para que te apoye?" 3. Excluye: "Dejando a tu pareja de lado un momento, ¿tú lo tienes claro?" 4. Si persiste: cierra día y hora concretos.</span></div>
+        </div>
+        <h4>Señales de compra</h4>
+        <p class="soft">Si dice "¿cómo se paga?", "¿cuándo empiezo?" o "¿qué pasa después?", deja de vender y pasa al cobro.</p>
+        <h4>Cobro</h4>
+        <p class="say">"Perfecto. Te mando ahora el link de pago y nos quedamos un minuto hasta que te llegue la confirmación, ¿te parece?"</p>
+        <p class="soft">No cortas hasta ver el pago confirmado. En EE. UU., link en USD (tarjeta); en Chile, el equivalente en pesos si lo prefiere.</p>
+
+        <div class="grid2">
+          <div class="card sand">
+            <h3>Si no se presenta</h3>
+            <ul class="l">
+              <li><b>A los 5 minutos:</b> "Hola [nombre], te estoy esperando en la llamada. ¿Te surgió algo?" (revisa que no sea un error de zona horaria).</li>
+              <li>Si responde, reagenda <b>una sola vez</b>, dentro de 1–2 días.</li>
+              <li>Si no responde o falla otra vez, a seguimiento por DM (día 2, 7 y 14).</li>
+            </ul>
+          </div>
+          <div class="card sand">
+            <h3>Si no cierra en la llamada</h3>
+            <ul class="l">
+              <li><b>24 h:</b> audio recordando su objetivo con sus palabras.</li>
+              <li><b>48 h:</b> el caso más parecido al suyo (con permiso): "esto es lo que te decía".</li>
+              <li><b>Día 5:</b> último mensaje con una fecha concreta para decidir.</li>
+              <li>Déjalo en el CRM como "Llamada hecha", con su dolor y su objeción literal.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Post-cierre (las primeras 24 h marcan si llega con ganas o con dudas)</h3>
+          <ul class="check-l">
+            <li>☐ Mensaje de bienvenida el mismo día (mejor en audio).</li>
+            <li>☐ Checklist de inicio: fotos, medidas, horario, lesiones, historial de fases y peso de las últimas semanas.</li>
+            <li>☐ Entregar los <b>7 bonus</b>, crear su <b>planilla de cargas</b> y agendar el <b>primer check-in</b>.</li>
+            <li>☐ Pedir <b>permiso por escrito</b> para usar fotos o mensajes (con o sin cara). Tus casos son tu mejor contenido.</li>
+            <li>☐ Pasarlo a <b>"Cliente"</b> en el CRM y <b>subir el nivel de precios</b>.</li>
+          </ul>
+        </div>
+
+        <div class="card dark">
+          <span class="label">Antes de cada llamada, recuerda</span>
+          <ul class="l">
+            <li>El silencio trabaja por ti.</li>
+            <li>El orden no se rompe.</li>
+            <li>No tienes que convencer a nadie. Si es para esa persona, lo verá sola.</li>
+            <li>Habla como le hablarías a un amigo del gimnasio, no como un vendedor.</li>
+            <li>Eres nutricionista y preparador, y tienes decenas de casos. Ya tienes la autoridad: úsala.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="label">Si deja de responder por DM</span>
+        <h3>Secuencia de seguimiento</h3>
+        <ul class="l">
+          <li><b>Día 0:</b> último mensaje de la conversación.</li>
+          <li><b>Día 2:</b> "Hola [nombre], te lo vuelvo a subir por aquí. ¿Sigues con ganas de empezar este mes?"</li>
+          <li><b>Día 7:</b> un caso parecido al suyo (con permiso): "esto es lo que te decía".</li>
+          <li><b>Día 14:</b> cierre: "Entiendo que ahora no es tu momento. Cuando quieras dejar de improvisar, aquí estoy."</li>
+          <li>Si te dio el teléfono: guárdalo en contactos para que vea tus Estados de WhatsApp.</li>
+          <li>Después, a la lista de reactivación (30 días).</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</main>
+
+<div class="drawer-bg" id="drawerBg" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Ficha del lead"></aside>
+
+<script>
+(function () {
+  var STAGES = [
+    { id: "nuevo", name: "Nuevo" },
+    { id: "agendado", name: "Llamada agendada" },
+    { id: "hecha", name: "Llamada hecha" },
+    { id: "cliente", name: "Cliente" },
+    { id: "perdido", name: "Perdido" }
+  ];
+  var PRE = [
+    { k: "pre_testimonio", t: "Caso parecido enviado al agendar (hora en su zona y en Chile)", s: "Un caso con permiso" },
+    { k: "pre_selfie", t: "Audio o vídeo tuyo dándole las gracias", s: "Corto, cercano, el mismo día" },
+    { k: "pre_dia", t: "Día de la llamada: caso parecido y explicación breve", s: "3 líneas del Método EMD" },
+    { k: "pre_recordatorio", t: "Recordatorio 1 hora antes", s: "" }
+  ];
+  var POST = [
+    { k: "post_1", d: 0, t: "Día 1: resumen con sus palabras y audio cercano", s: "En menos de 10 minutos tras la llamada" },
+    { k: "post_2", d: 1, t: "Día 2: un consejo de valor, otro caso y resolver dudas", s: "" },
+    { k: "post_3", d: 2, t: "Día 3: la propuesta por escrito", s: "" },
+    { k: "post_4", d: 3, t: "Día 4: último mensaje con fecha límite real", s: "Si no cierra, a seguimiento de 30 días" }
+  ];
+  var FOLLOW = [
+    { d: 2, t: "Día 2", m: "Hola {n}, te lo vuelvo a subir por aquí. ¿Sigues con ganas de empezar este mes?" },
+    { d: 7, t: "Día 7", m: "Hola {n}, me he acordado de ti. Te dejo un caso parecido al tuyo: [enlace]. No necesitas hacer más, necesitas dejar de improvisar. Si quieres, en una llamada de 30 minutos te digo qué haría en tu caso." },
+    { d: 14, t: "Día 14", m: "Hola {n}, como no he sabido de ti entiendo que ahora no es tu momento, sin problema. Cuando quieras dejar de improvisar, aquí estoy." }
+  ];
+
+  /* Precios por niveles: cada venta cerrada sube un nivel (~20 %) hasta el máximo */
+  /* Precios en USD (propuesta, igual que la página de Oferta) */
+  var LEVELS = { "Trimestre": [350, 420, 500, 600], "Semestre": [600, 720, 860, 1000], "Año": [990, 1190, 1430, 1650] };
+  var CUOTA2 = [320, 385, 460, 535];
+  /* Oferta francotirador para antiguos clientes: precio cerrado que no sube la escalera */
+  var VUELTA = "Vuelta Autoridad Física (semestre)", VUELTA_P = 480;
+  var MAXN = 3, nivel = 0, ventasDesdeSubida = 0;
+  function r5(x) { return Math.round(x / 5) * 5; }
+  function cuota2(n) { return CUOTA2[n == null ? nivel : n]; }
+  var PLANS = [
+    { id: "Semestre", m: 6 },
+    { id: "Año", m: 12 },
+    { id: "Semestre en 2 pagos", m: 6 },
+    { id: "Trimestre", m: 3 },
+    { id: VUELTA, m: 7 },
+    { id: "Mantenimiento mensual", m: 1 }
+  ];
+  function priceOf(id, n) {
+    n = n == null ? nivel : n;
+    if (LEVELS[id]) return LEVELS[id][n];
+    if (id === "Semestre en 2 pagos") return cuota2(n) * 2;
+    if (id === VUELTA) return VUELTA_P;
+    return 0;
+  }
+  function firstCharge(id) { return id === "Semestre en 2 pagos" ? cuota2() : priceOf(id); }
+  var OLD_MONTHS = { "90 días": 3, "6 meses": 6, "1 año": 12 };
+  var EXTRA_TIPOS = ["Ascensión", "Renovación anticipada", "Continuidad", "Referido"];
+
+  var db = null, leads = [], openId = null, busy = {};
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function now() { return new Date().toISOString(); }
+  function days(iso) { if (!iso) return 0; return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000); }
+  function fmtDate(iso) { if (!iso) return "—"; var d = new Date(iso), o = { day: "numeric", month: "short" }; if (d.getFullYear() !== new Date().getFullYear()) o.year = "numeric"; return d.toLocaleDateString("es-CL", o); }
+  function fmtDT(v) { if (!v) return ""; var d = new Date(v); return d.toLocaleDateString("es-CL", { weekday: "short", day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" }); }
+  function num(v) { return parseFloat(String(v == null ? "" : v).replace(",", ".")) || 0; }
+  function grp(n) { var r = Math.round(n); return (r < 0 ? "-" : "") + String(Math.abs(r)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  function eur(v) { var r = Math.round(v); return (r < 0 ? "-" : "") + "US$" + grp(Math.abs(r)); }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function planM(p) { var f = PLANS.find(function (x) { return x.id === p; }); return f ? f.m : (OLD_MONTHS[p] || 0); }
+  function altaOf(l) { return l.altaEl || (l.cerradoEl ? l.cerradoEl.slice(0, 10) : today()); }
+  function addMonths(iso, m) { var d = new Date(iso + "T12:00:00"); d.setMonth(d.getMonth() + m); return d; }
+  function finPlan(l) { var m = planM(l.plan) + (l.extras || []).reduce(function (a, e) { return a + num(e.meses); }, 0); return m ? addMonths(altaOf(l), m) : null; }
+  function stayDays(l) { var end = l.estadoCliente === "baja" && l.bajaEl ? new Date(l.bajaEl + "T12:00:00") : new Date(); return Math.max(0, Math.round((end - new Date(altaOf(l) + "T12:00:00")) / 86400000)); }
+  function months(d) { return (d / 30.44).toLocaleString("es-CL", { maximumFractionDigits: 1 }); }
+  function billed(l) { return num(l.importe) + (l.extras || []).reduce(function (a, e) { return a + num(e.importe); }, 0); }
+  function clients() { return leads.filter(function (l) { return l.etapa === "cliente"; }); }
+  function isActive(l) { return l.estadoCliente !== "baja"; }
+  function renewTask(l) {
+    if (!isActive(l)) return null;
+    var f = finPlan(l); if (!f) return null;
+    var left = Math.ceil((f - new Date()) / 86400000);
+    if (left < 0) return { t: "Plan terminado hace " + (-left) + " d: renovar o dar de baja", u: true };
+    if (left <= 21) return { t: "Su plan acaba el " + fmtDate(f.toISOString()) + ": ofrecer renovación anticipada", u: left <= 7 };
+    return null;
+  }
+  function first(n) { return (n || "").split(" ")[0] || "crack"; }
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+
+  /* Siguiente acción */
+  function nextAction(l) {
+    var st = l.etapa || "nuevo", toques = (l.toques || []).length;
+    if (st === "nuevo") {
+      if (!toques) return { t: l.entrada === "ig" ? "Cualificar por DM e invitar a la llamada (2–3 días vista)" : "Rellenó el formulario: escribirle o llamarle hoy", u: true };
+      var d = days(l.ultimoContacto);
+      for (var i = FOLLOW.length - 1; i >= 0; i--) {
+        if (d >= FOLLOW[i].d && !(l.seguimiento || {})["f" + FOLLOW[i].d]) return { t: "Sin respuesta · mensaje del " + FOLLOW[i].t.toLowerCase(), u: FOLLOW[i].d >= 7, f: FOLLOW[i] };
+      }
+      if ((l.seguimiento || {}).f14) return { t: "Secuencia terminada: pasar a Perdido o reactivar", u: false };
+      return { t: "Esperando respuesta (" + d + " d)", u: false };
+    }
+    if (st === "agendado") {
+      if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) return { t: "Llamada a más de 3 días: intentar adelantarla", u: true };
+      var c = l.checks || {};
+      if (!c.pre_testimonio || !c.pre_selfie) return { t: "Enviar testimonio y audio o vídeo de agradecimiento", u: true };
+      if (l.fechaLlamada && new Date(l.fechaLlamada).toDateString() === new Date().toDateString() && !c.pre_dia) return { t: "Hoy es la llamada: caso parecido y explicación breve", u: true };
+      if (l.fechaLlamada && new Date(l.fechaLlamada) < new Date()) return { t: "¿Se hizo la llamada? Pasar a Llamada hecha", u: true };
+      return { t: "Llamada " + fmtDT(l.fechaLlamada), u: false };
+    }
+    if (st === "hecha") {
+      var dc = days(l.llamadaHechaEl), cc = l.checks || {};
+      for (var j = 0; j < POST.length; j++) if (dc >= POST[j].d && !cc[POST[j].k]) return { t: POST[j].t, u: true };
+      return { t: "Seguimiento hecho: cerrar o pasar a Perdido", u: dc > 4 };
+    }
+    if (st === "cliente") {
+      if (!isActive(l)) return { t: "Baja · estuvo " + months(stayDays(l)) + " meses", u: false, done: true };
+      var r = renewTask(l); if (r) return { t: r.t, u: r.u, done: true, renew: true };
+      return { t: "Cliente activo · " + (l.plan || "plan sin apuntar") + " · " + eur(billed(l)), u: false, done: true };
+    }
+    return { t: "Perdido" + (l.motivo ? " · " + l.motivo : ""), u: false, done: true };
+  }
+
+  /* Escrituras */
+  async function patch(id, data) {
+    if (!db) return;
+    if (busy[id]) { await busy[id]; }
+    var p = db.collection("leads").doc(id).update(Object.assign({ actualizado: now() }, data));
+    busy[id] = p.catch(function () {});
+    try { await p; } catch (e) { setStatus(e && e.code === "invalid_argument" ? "No tienes permiso para editar" : "No se ha podido guardar", true); }
+  }
+
+  /* Render */
+  function renderKpis() {
+    var c = function (s) { return leads.filter(function (l) { return (l.etapa || "nuevo") === s; }).length; };
+    var week = leads.filter(function (l) { return days(l.creado) < 7; }).length;
+    var pend = leads.filter(function (l) { var a = nextAction(l); return a.u && !a.done; }).length;
+    var act = clients().filter(isActive).length;
+    var data = [[week, "Conversaciones nuevas (7 días)"], [c("nuevo"), "Conversando, sin llamada"], [c("agendado"), "Llamadas agendadas"], [c("hecha"), "En seguimiento"], [act, "Clientes activos"], [pend, "Tareas urgentes"]];
+    $("kpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + d[0] + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+  }
+  function renderToday() {
+    var list = leads.filter(function (l) { return ["cliente", "perdido"].indexOf(l.etapa || "nuevo") < 0 || (l.etapa === "cliente" && renewTask(l)); })
+      .map(function (l) { return { l: l, a: l.etapa === "cliente" ? renewTask(l) : nextAction(l) }; })
+      .sort(function (x, y) { return (y.a.u ? 1 : 0) - (x.a.u ? 1 : 0); });
+    var box = $("todayList");
+    if (!list.length) { box.innerHTML = '<p class="empty">No hay conversaciones abiertas. Cada persona que te responda, apúntala arriba.</p>'; return; }
+    box.innerHTML = "";
+    list.forEach(function (o) {
+      var el = document.createElement("div"); el.className = "task" + (o.a.u ? " urgent" : "");
+      el.innerHTML = '<span class="dot" aria-hidden="true"></span><div><b>' + esc(o.l.nombre) + '</b><span>' + esc(o.a.t) + (o.l.ig ? ' · ' + esc(o.l.ig) : (o.l.telefono ? ' · ' + esc(o.l.telefono) : '')) + '</span></div><button type="button" class="btn small ghost">Abrir</button>';
+      el.querySelector("button").addEventListener("click", function () { openLead(o.l.id); });
+      box.appendChild(el);
+    });
+  }
+  function renderBoard() {
+    var b = $("board"); b.innerHTML = "";
+    STAGES.forEach(function (s) {
+      var items = leads.filter(function (l) { return (l.etapa || "nuevo") === s.id; });
+      var col = document.createElement("div"); col.className = "col";
+      col.innerHTML = '<div class="col-h"><b>' + esc(s.name) + '</b><span>' + items.length + '</span></div>';
+      items.forEach(function (l) {
+        var a = nextAction(l), card = document.createElement("button");
+        card.type = "button"; card.className = "lead" + (a.u ? " warn" : "");
+        card.innerHTML = '<b>' + esc(l.nombre) + '</b><span class="meta">' + esc(l.origen || "") + (l.pais ? ' · ' + esc(l.pais) : '') + ' · ' + fmtDate(l.creado) + '</span><span class="next">' + esc(a.t) + '</span>';
+        card.addEventListener("click", function () { openLead(l.id); });
+        col.appendChild(card);
+      });
+      b.appendChild(col);
+    });
+  }
+  function renderClients() {
+    var cl = clients(), act = cl.filter(isActive), gone = cl.filter(function (l) { return !isActive(l); });
+    var n = new Date(), mStart = new Date(n.getFullYear(), n.getMonth(), 1), ym = today().slice(0, 7);
+    var altasMes = cl.filter(function (l) { return altaOf(l).slice(0, 7) === ym; }).length;
+    var bajasMes = gone.filter(function (l) { return (l.bajaEl || "").slice(0, 7) === ym; }).length;
+    var inicioMes = cl.filter(function (l) { return new Date(altaOf(l) + "T12:00:00") < mStart && (isActive(l) || !l.bajaEl || new Date(l.bajaEl + "T12:00:00") >= mStart); }).length;
+    var vida = gone.length ? gone.reduce(function (a, l) { return a + stayDays(l); }, 0) / gone.length : null;
+    var total = cl.reduce(function (a, l) { return a + billed(l); }, 0);
+    var back = cl.reduce(function (a, l) { return a + (l.extras || []).reduce(function (x, e) { return x + num(e.importe); }, 0); }, 0);
+    var data = [
+      [act.length, "Clientes activos"],
+      [altasMes, "Altas este mes"],
+      [bajasMes, "Bajas este mes" + (inicioMes ? " · " + Math.round(bajasMes / inicioMes * 100) + " % abandono" : "")],
+      [vida == null ? "—" : months(vida) + " m", vida == null ? "Vida media (aún sin bajas)" : "Vida media · " + gone.length + " baja" + (gone.length > 1 ? "s" : "")],
+      [cl.length ? eur(total / cl.length) : "—", "Facturado por cliente"],
+      [eur(back), "Facturado en back-end"]
+    ];
+    $("ckpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + esc(d[0]) + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+    var box = $("clist");
+    if (!cl.length) { box.innerHTML = '<p class="empty">Todavía no hay clientes. Cuando uno cierre, pásalo a "Cliente" o añade aquí los que ya tenías.</p>'; return; }
+    var sorted = act.slice().sort(function (a, b) { return (finPlan(a) || 0) - (finPlan(b) || 0); }).concat(gone);
+    box.innerHTML = '<div class="crow head" aria-hidden="true"><span>Cliente</span><span class="hm">Alta</span><span class="hm">Tiempo</span><span class="hm">Fin del plan</span><span class="hm">Facturado</span><span>Estado</span></div>';
+    sorted.forEach(function (l) {
+      var f = finPlan(l), r = renewTask(l), b = document.createElement("button");
+      b.type = "button"; b.className = "crow";
+      var pill = !isActive(l) ? '<span class="pill baja">Baja</span>' : (r ? '<span class="pill warn">Renovar</span>' : '<span class="pill">Activo</span>');
+      b.innerHTML = '<span><b>' + esc(l.nombre) + '</b><small>' + esc(l.plan || "Plan sin apuntar") + '<span class="mo"> · ' + months(stayDays(l)) + ' m · ' + eur(billed(l)) + '</span></small></span><span class="hm num">' + fmtDate(altaOf(l)) + '</span><span class="hm num">' + months(stayDays(l)) + ' m</span><span class="hm num">' + (isActive(l) ? (f ? fmtDate(f.toISOString()) : "—") : "Baja " + fmtDate(l.bajaEl)) + '</span><span class="hm num">' + eur(billed(l)) + '</span>' + pill;
+      b.addEventListener("click", function () { openLead(l.id); });
+      box.appendChild(b);
+    });
+  }
+  function renderNivel() {
+    var box = $("nivelCard");
+    var dots = ""; for (var i = 0; i <= MAXN; i++) dots += '<i class="' + (i <= nivel ? "on" : "") + '"></i>';
+    var pr = [["Semestre", "El estándar", true], ["Año", "Mejor valor"], ["Semestre en 2 pagos", "2 × US$" + cuota2()], ["Trimestre", "Último recurso"]];
+    box.innerHTML = '<div class="nv-top"><div><span class="label">Precios actuales</span><h3>Nivel de precios actual: ' + nivel + ' de ' + MAXN + '</h3></div><div class="nv-dots" aria-hidden="true">' + dots + '</div></div>' +
+      '<div class="nv-prices">' + pr.map(function (p) { return '<div class="' + (p[2] ? "star" : "") + '"><span>' + esc(p[0]) + '</span><b>' + eur(priceOf(p[0])) + '</b><span>' + esc(p[1]) + '</span></div>'; }).join("") + '</div>' +
+      '<p class="soft" style="font-size:13.5px"><b>Regla:</b> cada venta cerrada sube un nivel (~20 %) hasta el máximo (Semestre US$1,000 / Año US$1,650). El semestre es lo que se vende. La "Vuelta" de antiguos clientes no sube la escalera.' + (ventasDesdeSubida ? ' · Ventas desde la última subida: ' + ventasDesdeSubida : '') + '</p>' +
+      '<div class="phone-line"><button type="button" class="btn small" id="nvUp"' + (nivel >= MAXN ? " disabled" : "") + '>' + (nivel >= MAXN ? "Ya estás en el máximo" : "Subir a nivel " + (nivel + 1)) + '</button>' +
+      (nivel > 0 ? '<button type="button" class="linkish" id="nvDownAsk">Bajar un nivel</button><span id="nvDownBox" hidden class="phone-line"><span class="soft" style="font-size:13px">¿Seguro? Bajar precios solo si no estás cerrando nada.</span><button type="button" class="btn small ghost" id="nvDownYes">Sí, bajar</button><button type="button" class="linkish" id="nvDownNo">Cancelar</button></span>' : '') + '</div>';
+    $("nvUp").addEventListener("click", function () { setNivel(nivel + 1); });
+    if ($("nvDownAsk")) {
+      $("nvDownAsk").addEventListener("click", function () { $("nvDownBox").hidden = false; });
+      $("nvDownNo").addEventListener("click", function () { $("nvDownBox").hidden = true; });
+      $("nvDownYes").addEventListener("click", function () { setNivel(nivel - 1); });
+    }
+  }
+  var nivelBusy = Promise.resolve();
+  function saveNivel(n, ventas) {
+    if (!db) { nivel = n; ventasDesdeSubida = ventas; renderAll(); return; }
+    nivelBusy = nivelBusy.then(function () { return db.collection("config").doc("precios").set({ nivel: n, ventasDesdeSubida: ventas, actualizado: now() }); })
+      .catch(function (e) { setStatus(e && e.code === "invalid_argument" ? "No tienes permiso para cambiar precios" : "No se han podido guardar los precios", true); });
+  }
+  function setNivel(n) { n = Math.max(0, Math.min(MAXN, n)); saveNivel(n, n > nivel ? 0 : ventasDesdeSubida); }
+  function renderAll() { renderKpis(); renderToday(); renderBoard(); renderNivel(); renderClients(); if (openId) renderDrawer(); }
+
+  /* Ficha */
+  function openLead(id) { openId = id; $("drawer").hidden = false; $("drawerBg").hidden = false; renderDrawer(); }
+  function closeLead() { openId = null; $("drawer").hidden = true; $("drawerBg").hidden = true; }
+  $("drawerBg").addEventListener("click", closeLead);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeLead(); });
+
+  function renderDrawer() {
+    var l = leads.find(function (x) { return x.id === openId; });
+    var d = $("drawer");
+    if (!l) { closeLead(); return; }
+    var st = l.etapa || "nuevo", a = nextAction(l), c = l.checks || {}, seg = l.seguimiento || {};
+    var h = '<div class="drawer-head"><div><span class="label">' + esc(l.origen || "Lead") + (l.origen === "Cliente previo" ? "" : ' · ' + (l.entrada === "ig" ? "Desde Instagram" : "En frío")) + '</span><h2>'  + esc(l.nombre) + '</h2></div><button type="button" class="btn small ghost" id="dClose">Cerrar</button></div>';
+    h += '<div class="steps" role="group" aria-label="Etapa">' + STAGES.map(function (s) { return '<button type="button" data-stage="' + s.id + '" aria-pressed="' + (s.id === st) + '">' + esc(s.name) + '</button>'; }).join("") + '</div>';
+    h += '<div class="card"><span class="label">Siguiente paso</span><b>' + esc(a.t) + '</b></div>';
+    var igh = String(l.ig || "").replace(/^@/, "").trim();
+    if (igh || l.telefono) h += '<div class="phone-line">' + (igh ? '<code>@' + esc(igh) + '</code><a class="btn small" href="https://instagram.com/' + encodeURIComponent(igh) + '" target="_blank" rel="noopener">Abrir Instagram</a>' : '') + (l.telefono ? '<code>' + esc(l.telefono) + '</code><a class="btn small ghost" href="https://wa.me/' + esc(String(l.telefono).replace(/\D/g, "")) + '" target="_blank" rel="noopener">WhatsApp</a>' : '') + '</div>';
+    h += '<div class="card"><div class="fields">' +
+      '<label class="f">Teléfono<input data-f="telefono" value="' + esc(l.telefono) + '"></label>' +
+      '<label class="f">Instagram<input data-f="ig" value="' + esc(l.ig) + '"></label>' +
+      '<label class="f">Edad<input data-f="edad" value="' + esc(l.edad) + '"></label>' +
+      '<label class="f">País / zona horaria<input data-f="pais" value="' + esc(l.pais) + '" placeholder="EE. UU. · Centro, Chile…"></label>' +
+      '<label class="f">Trabajo<input data-f="trabajo" value="' + esc(l.trabajo) + '" placeholder="Trabajo, horarios, años entrenando, fase actual…"></label>' +
+      '<label class="f full">Objetivo<input data-f="objetivo" value="' + esc(l.objetivo) + '"></label>' +
+      '<label class="f full">Notas<textarea data-f="notas">' + esc(l.notas) + '</textarea></label></div></div>';
+    h += '<div class="card"><div class="phone-line" style="justify-content:space-between"><b>Contactos (' + (l.toques || []).length + ')</b><span><select id="toqueCanal" style="width:auto"><option>Instagram DM</option><option>Audio</option><option>WhatsApp</option><option>Llamada</option></select> <button type="button" class="btn small" id="addToque">Registrar contacto</button></span></div>' +
+      '<div class="log">' + ((l.toques || []).slice().reverse().map(function (t) { return '<span>' + fmtDT(t.fecha) + ' · ' + esc(t.canal) + '</span>'; }).join("") || '<span>Todavía sin contactos.</span>') + '</div></div>';
+
+    if (st === "nuevo") {
+      h += '<div class="card sand"><span class="label">Si no responde</span>' + FOLLOW.map(function (f) {
+        var m = f.m.replace("{n}", first(l.nombre));
+        return '<div class="msg"><div class="row"><b>' + f.t + '</b><label style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:700"><input type="checkbox" data-seg="f' + f.d + '"' + (seg["f" + f.d] ? " checked" : "") + ' style="width:auto"> Enviado</label></div><p>' + esc(m) + '</p><button type="button" class="btn small ghost" data-copy="' + esc(m) + '">Copiar</button></div>';
+      }).join("") + '</div>';
+      h += '<button type="button" class="btn" data-go="agendado">Ha aceptado la llamada</button>';
+    }
+    if (l.telefono || (l.toques || []).some(function (t) { return t.canal === "WhatsApp"; })) {
+      h += '<div class="card sand"><span class="label">WhatsApp</span><div class="check"><label><input type="checkbox" data-chk="wa_lista"' + (c.wa_lista ? " checked" : "") + '><span>Guardado en contactos + añadido a lista de difusión<small>Para que vea tus Estados de WhatsApp a diario</small></span></label></div></div>';
+    }
+    if (st === "agendado" || st === "hecha" || (st === "cliente" && l.fechaLlamada)) {
+      h += '<div class="card"><label class="f">Fecha y hora de la llamada<input type="datetime-local" data-f="fechaLlamada" value="' + esc(l.fechaLlamada || "") + '"></label>';
+      if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) h += '<p class="alert">Está a más de 3 días. Intenta adelantarla: cuanto más lejos, más se cae.</p>';
+      h += '</div>';
+    }
+    if (st === "agendado") {
+      h += '<div class="card sand"><span class="label">Antes de la llamada</span><div class="check">' + PRE.map(function (p) { return '<label><input type="checkbox" data-chk="' + p.k + '"' + (c[p.k] ? " checked" : "") + '><span>' + esc(p.t) + (p.s ? '<small>' + esc(p.s) + '</small>' : '') + '</span></label>'; }).join("") + '</div>';
+      var dm = "[Nombre], hoy a las [hora] hablamos. Te dejo un caso parecido al tuyo. Lo que hacemos: el Método EMD (Ejecuta, Mide, Decide), una estrategia estable medida cada semana y ajustada con datos, para que tu físico por fin refleje tu esfuerzo. Nos vemos.".replace("[Nombre]", first(l.nombre)).replace("[hora]", l.fechaLlamada ? new Date(l.fechaLlamada).toLocaleTimeString("es-CL", { hour: "2-digit", minute: "2-digit" }) : "[hora]");
+      h += '<div class="msg"><b>Mensaje del día de la llamada</b><p>' + esc(dm) + '</p><button type="button" class="btn small ghost" data-copy="' + esc(dm) + '">Copiar</button></div></div>';
+      h += '<button type="button" class="btn" data-go="hecha">Llamada hecha</button>';
+    }
+    if (st === "hecha") {
+      h += '<div class="card sand"><span class="label">Después de la llamada · día ' + (days(l.llamadaHechaEl) + 1) + '</span><div class="check">' + POST.map(function (p) { return '<label><input type="checkbox" data-chk="' + p.k + '"' + (c[p.k] ? " checked" : "") + '><span>' + esc(p.t) + (p.s ? '<small>' + esc(p.s) + '</small>' : '') + '</span></label>'; }).join("") + '</div></div>';
+      h += '<div class="phone-line"><button type="button" class="btn" data-go="cliente">Ha cerrado</button><button type="button" class="btn ghost" data-go="perdido">No ha cerrado</button></div>';
+    }
+    if (st === "cliente") {
+      var act = isActive(l), fp = finPlan(l), sd = stayDays(l);
+      if (nivel < MAXN && !l.precioSubido && days(l.cerradoEl) <= 2 && l.origen !== "Cliente previo" && l.plan !== VUELTA) h += '<div class="hint">🎉 ¡Venta cerrada! Toca subir precios al nivel ' + (nivel + 1) + '.<span class="phone-line"><button type="button" class="btn small" id="hintUp">Subir a nivel ' + (nivel + 1) + '</button><button type="button" class="linkish" id="hintNo">Ahora no</button></span></div>';
+      h += '<div class="card sand"><span class="label">Cliente · ' + (act ? 'activo' : 'baja') + '</span>' +
+        '<p><b>' + (act ? 'Lleva ' : 'Estuvo ') + months(sd) + ' meses</b> (' + sd + ' días)' + (act && fp ? ' · plan hasta el ' + fmtDate(fp.toISOString()) : '') + ' · facturado ' + eur(billed(l)) + '</p>' +
+        '<div class="fields"><label class="f">Fecha de alta<input type="date" data-f="altaEl" value="' + esc(altaOf(l)) + '"></label>' +
+        '<label class="f">Plan<select data-f="plan" id="dPlan"><option></option>' + PLANS.map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.id) + (priceOf(p.id) ? ' · ' + eur(priceOf(p.id)) : '') + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Primer cobro (USD)<input data-f="importe" inputmode="decimal" value="' + esc(l.importe) + '"></label>' +
+        '<label class="f">Pago<select data-f="pago"><option></option><option>Pago único</option><option>2 pagos</option><option>Mensual</option></select></label>' +
+        '<label class="f full">Qué le convenció<input data-f="comoCerro" value="' + esc(l.comoCerro) + '"></label></div></div>';
+      h += '<div class="card"><span class="label">Back-end · momento dulce</span><p class="soft" style="font-size:13.5px">Ofrécelo cuando vea un resultado claro: una foto que impacta, una marca nueva o un comentario espontáneo ("estoy hecho un toro").</p>' +
+        ((l.extras || []).map(function (e, i) { return '<div class="extra"><span><b>' + esc(e.tipo) + '</b> · ' + fmtDate(e.fecha) + (num(e.meses) ? ' · +' + num(e.meses) + ' meses' : '') + '</span><span>' + eur(num(e.importe)) + ' <button type="button" class="btn small ghost" data-delx="' + i + '" aria-label="Quitar">×</button></span></div>'; }).join("") || '<p class="soft" style="font-size:13px">Sin ventas de back-end todavía.</p>') +
+        '<div class="fields"><label class="f">Tipo<select id="xTipo">' + EXTRA_TIPOS.map(function (t) { return '<option>' + t + '</option>'; }).join("") + '</select></label><label class="f">Importe (USD)<input id="xImp" inputmode="decimal"></label><label class="f">Meses que añade<input id="xMes" inputmode="numeric" placeholder="0"></label><label class="f" style="align-self:end"><button type="button" class="btn small" id="xAdd">Añadir venta</button></label></div></div>';
+      if (act) {
+        h += '<button type="button" class="btn small ghost" id="bajaBtn" style="justify-self:start">Dar de baja</button><div id="bajaBox" hidden class="card sand"><div class="fields"><label class="f">Fecha de baja<input type="date" id="bajaFecha" value="' + today() + '"></label><label class="f">Motivo<select id="bajaMotivo"><option>Terminó y no renueva</option><option>Precio</option><option>Falta de tiempo</option><option>No ve resultados</option><option>Motivos personales</option><option>Otro</option></select></label></div><div class="phone-line"><button type="button" class="btn small" id="bajaOk">Confirmar baja</button><button type="button" class="btn small ghost" id="bajaNo">Cancelar</button></div></div>';
+      } else {
+        h += '<div class="card"><p><b>Baja el ' + fmtDate(l.bajaEl) + '</b>' + (l.motivoBaja ? ' · ' + esc(l.motivoBaja) : '') + '</p><button type="button" class="btn small ghost" id="reactBtn" style="justify-self:start">Reactivar cliente</button></div>';
+      }
+    }
+    if (st === "perdido") {
+      h += '<div class="card sand"><label class="f">Motivo<select data-f="motivo"><option></option><option>No responde</option><option>Precio</option><option>No es el momento</option><option>Lo consulta con su pareja</option><option>No tiene tiempo</option><option>No encaja</option><option>Otro</option></select></label><p class="soft" style="font-size:13px">Pasados 30 días, a la lista de reactivación.</p></div>';
+    }
+    h += '<p class="soft" style="font-size:12.5px">Creado ' + fmtDate(l.creado) + ' · actualizado ' + fmtDate(l.actualizado) + '</p>';
+    h += '<button type="button" class="btn small ghost" id="delBtn" style="justify-self:start">Borrar ficha</button><div id="delConfirm" hidden class="phone-line"><span class="soft">¿Borrar esta ficha para siempre?</span><button type="button" class="btn small" id="delYes">Sí, borrar</button><button type="button" class="btn small ghost" id="delNo">Cancelar</button></div>';
+    d.innerHTML = h;
+
+    if (st === "cliente") {
+      var dp = $("dPlan"); if (dp) dp.addEventListener("change", function () { var pr = firstCharge(dp.value); if (pr) patch(l.id, { importe: String(pr), pago: dp.value === "Semestre en 2 pagos" ? "2 pagos" : (l.pago || "Pago único") }); });
+      if ($("hintUp")) $("hintUp").addEventListener("click", function () { setNivel(nivel + 1); patch(l.id, { precioSubido: true }); });
+      if ($("hintNo")) $("hintNo").addEventListener("click", function () { patch(l.id, { precioSubido: true }); });
+      d.querySelectorAll("[data-delx]").forEach(function (b) { b.addEventListener("click", function () { var x = (l.extras || []).slice(); x.splice(+b.dataset.delx, 1); patch(l.id, { extras: x }); }); });
+      $("xAdd").addEventListener("click", function () { var imp = $("xImp").value.trim(); if (!imp) { $("xImp").focus(); return; } var x = (l.extras || []).slice(); x.push({ fecha: now(), tipo: $("xTipo").value, importe: imp, meses: $("xMes").value.trim() }); patch(l.id, { extras: x.slice(-60) }); });
+      if ($("bajaBtn")) {
+        $("bajaBtn").addEventListener("click", function () { $("bajaBox").hidden = false; });
+        $("bajaNo").addEventListener("click", function () { $("bajaBox").hidden = true; });
+        $("bajaOk").addEventListener("click", function () { patch(l.id, { estadoCliente: "baja", bajaEl: $("bajaFecha").value || today(), motivoBaja: $("bajaMotivo").value }); });
+      }
+      if ($("reactBtn")) $("reactBtn").addEventListener("click", function () { patch(l.id, { estadoCliente: "activo", bajaEl: "", motivoBaja: "" }); });
+    }
+    ["plan", "pago", "motivo"].forEach(function (k) { var s = d.querySelector('select[data-f="' + k + '"]'); if (s) s.value = l[k] || ""; });
+    $("dClose").addEventListener("click", closeLead);
+    d.querySelectorAll("[data-stage]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.stage); }); });
+    d.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.go); }); });
+    d.querySelectorAll("[data-f]").forEach(function (inp) { inp.addEventListener("change", function () { var o = {}; o[inp.dataset.f] = inp.value; patch(l.id, o); }); });
+    d.querySelectorAll("[data-chk]").forEach(function (inp) { inp.addEventListener("change", function () { var cc = Object.assign({}, l.checks || {}); cc[inp.dataset.chk] = inp.checked; patch(l.id, { checks: cc }); }); });
+    d.querySelectorAll("[data-seg]").forEach(function (inp) { inp.addEventListener("change", function () { var ss = Object.assign({}, l.seguimiento || {}); ss[inp.dataset.seg] = inp.checked; patch(l.id, { seguimiento: ss }); }); });
+    d.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { copy(b.dataset.copy, b); }); });
+    $("addToque").addEventListener("click", function () { var t = (l.toques || []).slice(); t.push({ fecha: now(), canal: $("toqueCanal").value }); t = t.slice(-40); patch(l.id, { toques: t, ultimoContacto: now() }); });
+    $("delBtn").addEventListener("click", function () { $("delConfirm").hidden = false; });
+    $("delNo").addEventListener("click", function () { $("delConfirm").hidden = true; });
+    $("delYes").addEventListener("click", async function () { try { await db.collection("leads").doc(l.id).delete(); closeLead(); } catch (e) { setStatus("No se ha podido borrar", true); } });
+  }
+  function goStage(l, s) {
+    var o = { etapa: s };
+    if (s === "agendado" && !l.agendadoEl) o.agendadoEl = now();
+    if (s === "hecha" && !l.llamadaHechaEl) o.llamadaHechaEl = now();
+    if (s === "cliente" || s === "perdido") o.cerradoEl = now();
+    if (s === "cliente") { if (!l.altaEl) o.altaEl = today(); if (!l.estadoCliente) o.estadoCliente = "activo"; if (l.etapa !== "cliente") saveNivel(nivel, ventasDesdeSubida + 1); }
+    patch(l.id, o);
+  }
+  function copy(text, btn) {
+    function done(t) { var o = btn.textContent; btn.textContent = t; setTimeout(function () { btn.textContent = o; }, 1500); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona y copia"); });
+    else done("Selecciona y copia");
+  }
+
+  /* Tabs */
+  document.querySelectorAll(".tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["hoy", "embudo", "clientes", "guion"].forEach(function (v) { $("view-" + v).hidden = v !== t.dataset.view; });
+      $("addCard").hidden = t.dataset.view === "guion" || t.dataset.view === "clientes";
+    });
+  });
+
+  /* Alta */
+  $("addForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("addNote").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("n-nombre").value.trim(); if (!nombre) return;
+    var entrada = document.querySelector('input[name="entrada"]:checked').value;
+    var data = { nombre: nombre, telefono: $("n-tel").value.trim(), ig: $("n-ig").value.trim(), origen: $("n-origen").value, entrada: entrada, objetivo: $("n-obj").value.trim(), edad: $("n-edad").value.trim(), pais: $("n-pais").value, etapa: "nuevo", creado: now(), actualizado: now(), toques: [], checks: {}, seguimiento: {} };
+    $("addBtn").disabled = true;
+    try {
+      await db.collection("leads").add(data);
+      $("addForm").reset(); $("addNote").textContent = "¡Apuntado! " + (entrada === "ig" ? "Siguiente paso: cualificar por DM e invitarle a la llamada." : "Siguiente paso: escribirle o llamarle hoy.");
+    } catch (err) {
+      $("addNote").textContent = err && err.code === "quota_exceeded" ? "La base de datos está llena: borra fichas antiguas." : (err && err.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez.");
+    }
+    $("addBtn").disabled = false;
+  });
+
+  /* Alta de cliente existente */
+  $("c-plan").innerHTML = PLANS.map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.id) + '</option>'; }).join("");
+  $("c-plan").value = "Semestre";
+  $("c-alta").value = today();
+  $("addCli").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("c-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("c-nombre").value.trim(); if (!nombre) return;
+    var pl = PLANS.find(function (x) { return x.id === $("c-plan").value; });
+    var data = { nombre: nombre, telefono: $("c-tel").value.trim(), ig: "", origen: "Cliente previo", entrada: "ig", objetivo: "", edad: "", etapa: "cliente", estadoCliente: "activo", plan: pl.id, importe: firstCharge(pl.id) ? String(firstCharge(pl.id)) : "", precioSubido: true, altaEl: $("c-alta").value || today(), creado: now(), actualizado: now(), cerradoEl: now(), toques: [], checks: {}, seguimiento: {}, extras: [] };
+    $("c-btn").disabled = true;
+    try { await db.collection("leads").add(data); $("addCli").reset(); $("c-plan").value = "Semestre"; $("c-alta").value = today(); $("c-note").textContent = "Cliente añadido."; }
+    catch (err) { $("c-note").textContent = err && err.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez."; }
+    $("c-btn").disabled = false;
+  });
+
+  /* Copiar frases literales del guion */
+  document.querySelectorAll("#view-guion .say").forEach(function (p) {
+    var b = document.createElement("button"); b.type = "button"; b.className = "cpy"; b.textContent = "Copiar";
+    var txt = p.textContent.trim();
+    b.addEventListener("click", function () { copy(txt, b); });
+    p.insertBefore(b, p.firstChild);
+  });
+
+  /* Conexión */
+  renderAll();
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) {
+      setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true);
+      $("todayList").innerHTML = '<p class="empty">El CRM necesita abrirse desde claude.ai con una cuenta con acceso. La pestaña "Proceso y guion" funciona igualmente.</p>';
+      $("addBtn").disabled = true; $("c-btn").disabled = true; return;
+    }
+    db = c;
+    var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
+    db.collection("leads").orderBy("creado", "desc").onSnapshot(function (snap) {
+      leads = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); });
+      if (!snap.metadata.fromCache) { clearTimeout(timer); setStatus(leads.length + " fichas · actualizado en directo"); }
+      renderAll();
+    }, function (err) {
+      clearTimeout(timer);
+      setStatus(err && err.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true);
+    });
+    db.collection("config").onSnapshot(function (snap) {
+      var d = snap.docs.find(function (x) { return x.id === "precios"; });
+      var v = d ? d.data() : null;
+      nivel = v && typeof v.nivel === "number" ? Math.max(0, Math.min(MAXN, v.nivel)) : 0;
+      ventasDesdeSubida = v && v.ventasDesdeSubida ? v.ventasDesdeSubida : 0;
+      renderAll();
+    }, function () {});
+  })();
+})();
+</script>

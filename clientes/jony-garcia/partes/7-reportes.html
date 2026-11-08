@@ -63,7 +63,7 @@ th { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: 
 </style>
 
 <header class="wrap top">
-  <span class="label">Jony · @jnyfit._ · Para Alberto</span>
+  <span class="label">Sistema Jony · Parte 8 de 8 · Para Alberto</span>
   <h1>Reporte diario</h1>
   <p class="soft">2 minutos cada noche. Lo que no se mide no mejora. Manda el mensaje de abajo a Alberto por WhatsApp cada domingo (o a diario las primeras 2 semanas).</p>
   <span class="status" id="status" role="status">Conectando…</span>
@@ -141,7 +141,7 @@ th { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: 
   function fnum(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 
   var FIELDS = ["reels", "trials", "carruseles", "youtube", "views", "seguidores", "mejorViews", "mejor", "dms", "conversaciones", "agendadas", "llamadas", "notas"];
-  var PLANS = ["12 semanas", "6 meses"];
+  var PLANS = ["Programa OBRA 12 semanas", "Mensual", "Mantenimiento"];
   var days = {}, db = null, local = false, fecha = ymd(new Date()), cerrado = false, cierres = [];
   $("fecha").value = fecha;
   function setStatus(t, err) { var s = $("status"); s.textContent = t; s.classList.toggle("err", !!err); }
@@ -226,16 +226,20 @@ th { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: 
       [fnum(a.reels + a.trials), "Reels (" + fnum(a.trials) + " trial)"], [fnum(a.carruseles) + " / " + fnum(a.youtube), "Carruseles / YouTube"],
       [fnum(a.views), "Views"], [g === null ? "—" : (g >= 0 ? "+" : "") + fnum(g), "Seguidores" + (a.segFin !== null ? " (" + fnum(a.segFin) + ")" : "")],
       [fnum(a.dms), "DMs nuevos"], [fnum(a.conversaciones), "Conversaciones abiertas"], [fnum(a.llamadas) + " / " + fnum(a.agendadas), "Llamadas hechas / agendadas"],
-      [fnum(a.ventas) + " · " + usd(a.fact), "Ventas · facturado"]
+      [fnum(a.ventas) + " · " + usd(a.fact), "Ventas · facturado"], [cierreTxt(a), "Cierre en llamada"], [fnum(sinLlamada(a)), "Ventas sin llamada"]
     ].map(function (k) { return '<div class="kpi"><b>' + esc(k[0]) + '</b><span>' + esc(k[1]) + '</span></div>'; }).join("");
   }
+  // Cierre: ventas / llamadas hechas, solo si hubo llamadas; nunca más del 100 %.
+  // Las ventas que superan las llamadas (cerradas por DM o de llamadas de otros días) se muestran aparte.
+  function sinLlamada(a) { return Math.max(0, a.ventas - a.llamadas); }
+  function cierreTxt(a) { if (!a.llamadas) return "—"; return Math.round(Math.min(a.ventas, a.llamadas) / a.llamadas * 100) + " %"; }
   function renderSummary() {
     var to = fecha, f7 = addDays(to, -6), f30 = addDays(to, -29);
     var a7 = agg(f7, to), g7 = segGain(a7, f7), a30 = agg(f30, to), g30 = segGain(a30, f30);
     $("rangeTxt").textContent = fdate(f7) + " – " + fdate(to);
     $("k7").innerHTML = kpis(a7, g7);
     $("k30").innerHTML = kpis(a30, g30);
-    var cierre = a7.llamadas ? Math.round(a7.ventas / a7.llamadas * 100) + " %" : "—";
+    var cierre = cierreTxt(a7), sl = sinLlamada(a7);
     var hoy = days[to] || {};
     $("msg").textContent =
       "Reporte Jony · " + fdate(f7) + "–" + fdate(to) + "\n" +
@@ -243,7 +247,7 @@ th { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: 
       "👀 Views: " + fnum(a7.views) + " · Seguidores: " + (g7 === null ? "—" : (g7 >= 0 ? "+" : "") + fnum(g7)) + (a7.segFin !== null ? " (total " + fnum(a7.segFin) + ")" : "") + "\n" +
       "🔥 Mejor pieza: " + (a7.mejor ? fnum(a7.mejor.v) + " views · " + (a7.mejor.t || "sin tema") : "—") + "\n" +
       "💬 DMs: " + fnum(a7.dms) + " · Conversaciones: " + fnum(a7.conversaciones) + "\n" +
-      "📞 Llamadas: " + fnum(a7.llamadas) + " hechas / " + fnum(a7.agendadas) + " agendadas · Cierre: " + cierre + "\n" +
+      "📞 Llamadas: " + fnum(a7.llamadas) + " hechas / " + fnum(a7.agendadas) + " agendadas · Cierre: " + cierre + (sl ? " · Ventas sin llamada: " + fnum(sl) : "") + "\n" +
       "💵 Ventas: " + fnum(a7.ventas) + " · " + usd(a7.fact) + "\n" +
       "🧠 Hoy: " + (hoy.notas ? hoy.notas : "—");
     // histórico
