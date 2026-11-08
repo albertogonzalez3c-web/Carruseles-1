@@ -1,0 +1,219 @@
+<title>Holyfield Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #1f4fd1;
+  --accent-text: #1a3fae;
+  --accent-dark: #6f8fff;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #dbe4ff; }
+.card.accent ul.l, .card.accent ol.l { color: #eef2ff; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #e6ecfb; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: el Método HAZLO en 3 fases, qué incluye, por qué tú, primeros casos, precios en orden de presentación, escalera de subida, garantía y contrato, back-end. */
+.phase .n { font: 800 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 800 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Marca Holyfield: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+.tbl td:not(:last-child) { white-space: nowrap; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #1f4fd1); --nm-at: var(--accent-text, #1a3fae); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Holyfield · Parte 2 · Oferta</span>
+    <h1>Método <em>HAZLO</em>: ganar músculo sin complicarte.</h1>
+    <p class="soft" style="font-size:18px">Para chicos de 18 a 25 que entrenan sin plan y no ven cambios. Un plan simple por fases, comer lo suficiente y constancia con revisión semanal. Esto lo tienes que poder explicar en 2 minutos sin titubear.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Chicos de 18 a 25 que llevan meses o años entrenando sin plan, no ven cambios —flacos que no ganan o con algo de barriga— y quieren ganar músculo sin complicarse.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método HAZLO</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Un plan simple por fases</b><span>Nada de rutinas de influencers ni cambiar de rutina cada semana. Sabes qué toca hoy y por qué.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer suficiente y bien</b><span>No necesitas 14 suplementos: necesitas comer. 3–4 comidas con proteína, no 2 y una de cereales.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Constancia por encima de motivación</b><span>Un sistema que cumples motivado o no, y una revisión cada semana para ajustar.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Base</b><p><em>Qué pasa:</em> Aprendes la técnica, empiezas a comer lo suficiente y el gimnasio deja de ser "otra vez".</p><p><em>Qué haces tú:</em> 4 sesiones con progresión, 3–4 comidas con proteína y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Construir</b><p><em>Qué pasa:</em> Ganas músculo limpio —o haces recomposición si tienes algo de barriga— y se nota en la ropa y en el espejo.</p><p><em>Qué haces tú:</em> Subes cargas cada semana y ajustas la comida a tu objetivo.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Definir y mantener</b><p><em>Qué pasa:</em> Defines lo construido y aprendes a mantenerlo sin depender de nadie.</p><p><em>Qué haces tú:</em> Ajustas comida y entreno y te quedas con tu propio sistema.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>4 sesiones con progresión</span><span>3–4 comidas con proteína</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: "Con 15 años pesaba 52 kg, medía casi 1,84 y me decían que no tenía hombros. Ahora esos mismos me preguntan cómo los entreno."</p><p class="nm-line">Y tres de mis clientes acabaron siendo entrenadores.</p></section>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">Tres fases. Seis meses para cambiar de verdad.</h2></header>
+    <div class="g3">
+      <article class="card phase"><span class="n">01</span><h3>Base · meses 1–2</h3><p class="soft">Técnica, comer lo suficiente y hábitos. Se acaba el "otra vez": 4 sesiones con progresión y 3–4 comidas con proteína, adaptadas a su horario real.</p></article>
+      <article class="card phase"><span class="n">02</span><h3>Construir · meses 3–4</h3><p class="soft">Músculo limpio para el flaco que no gana; recomposición para el que tiene algo de barriga. Cargas que suben cada semana y comida ajustada a su objetivo.</p></article>
+      <article class="card phase"><span class="n">03</span><h3>Definir y mantener · meses 5–6</h3><p class="soft">Definir lo construido y que aprenda a mantenerlo solo. Sale con su propio sistema, no con otra rutina de influencer.</p></article>
+    </div>
+    <div class="card chip">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Plan de entreno por fases</b> adaptado a los días que tiene. "No tienes que entrenar de lunes a viernes."</li>
+        <li><b>Plan de comida simple:</b> 3–4 comidas con proteína y aprender a montarlas. Sin 14 suplementos.</li>
+        <li><b>Corrección de técnica por vídeo</b> para entrar al gimnasio sabiendo qué hacer y sin sentir que todos le miran.</li>
+        <li><b>Revisión semanal</b> con ajustes y soporte por WhatsApp en horario fijo (por escrito, nada de "24 horas").</li>
+        <li><b>El porqué de todo:</b> tu cliente quiere "cambio físico y aprender". Que acabe sabiendo entrenar y comer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-labelledby="h-porque">
+    <span class="label">Por qué tú</span>
+    <h2 id="h-porque">Fuiste el chico que entrenaba sin plan y no cambiaba. Y lo arreglaste.</h2>
+    <ul class="l">
+      <li><b>Lo viviste:</b> 52 kg con casi 1,84, "no tenía hombros", sudaderas en verano, full body sin piernas y 2–3 comidas.</li>
+      <li><b>Lo arreglaste:</b> formación en Londres, comer de verdad, volumen de 75 a 81 kg y después definición.</li>
+      <li><b>Entrenas a gente desde 2017–2018</b> y tres de tus clientes acabaron siendo entrenadores.</li>
+      <li><b>Sin excusas de tiempo:</b> más de 40 horas de trabajo, estudios y entrenar a las 00:30.</li>
+      <li><b>Sé honesto con esto:</b> todavía no tienes casos de chicos con fotos y cifras. Hasta tenerlos, vende tu historia y tu método, no resultados que no puedes enseñar.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que nunca prometes y primeros casos">
+    <div class="card">
+      <span class="label">Lo que nunca prometes</span>
+      <ul class="l">
+        <li><b>"Este físico en 6 meses":</b> te lo preguntan literal. Respondes con lo que sí depende de él: plan, comida y constancia.</li>
+        <li><b>Atajos:</b> "No hay atajos, eso es perder tiempo." Nada de suplementos milagro.</li>
+        <li><b>Disponible 24 horas:</b> horario de respuesta por escrito.</li>
+        <li><b>Diagnósticos:</b> si hay lesión seria ("3/4 meses parado por lesión"), primero fisio o médico.</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <span class="label">Tus primeros casos de chicos · este mes</span>
+      <h3>Sin casos de chicos, tu Resultados sigue hablando a otro público.</h3>
+      <ul class="l">
+        <li><b>Adan y Anas (22):</b> son tu cliente ideal y "están dispuestos a invertir". Ciérralos al precio normal.</li>
+        <li><b>Desde el día 1, por escrito:</b> fotos de inicio y cada mes, y permiso para publicar su cambio.</li>
+        <li><b>Hussain:</b> pídele su antes y después y un testimonio corto.</li>
+        <li><b>El lead parado:</b> reactívalo con el seguimiento del embudo (día 2, 7 y 14).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header><span class="label">Precios · propuesta para confirmar con Alberto</span><h2 id="h-precios">El semestre es el que vendes.</h2><p class="soft">Mínimo trimestral y el semestre como el plan normal: las 3 fases completas. Nada de mensualidades sueltas. Si te escriben "¿cuánto nos cobrarías?", el precio va en la llamada, nunca por mensaje. Moneda: en euros para online; si vendes presencial en Londres, se decide con Alberto.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">1 · Se ofrece primero</span><h3>Semestre</h3><p class="price">400 €</p><p class="soft">Las 3 fases completas. El plan normal.</p></article>
+      <article class="card dark"><span class="badge">2 · El mejor valor</span><h3>Año</h3><p class="price">700 €</p><p class="soft">Las 3 fases y 6 meses más para seguir construyendo. Solo 300 € más que el semestre.</p></article>
+      <article class="card"><span class="badge">3 · Si es por liquidez</span><h3>Semestre en 2 pagos</h3><p class="price">2 × 215 €</p><p class="soft">Paga algo más por fraccionar. Nunca bajes el precio.</p></article>
+      <article class="card chip"><span class="badge">4 · Último recurso</span><h3>Trimestre</h3><p class="price">250 €</p><p class="soft">Solo la fase Base. Nunca como primera opción.</p></article>
+    </div>
+    <div class="say">"Lo normal es hacerlo en seis meses, las tres fases: son 400 €. Si lo quieres para el año entero, son 700 €. ¿Cuál encaja contigo?" Y te callas.</div>
+    <div class="card tblwrap">
+      <h3>Escalera de subida: cada venta cerrada, +20 %</h3>
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>250 €</td><td>400 €</td><td>700 €</td><td>Ahora</td></tr>
+          <tr><td>Nivel 1</td><td>300 €</td><td>480 €</td><td>840 €</td><td>Tras la siguiente venta</td></tr>
+          <tr><td>Nivel 2</td><td>360 €</td><td>580 €</td><td>1.000 €</td><td>Tras la siguiente</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>400 €</td><td>690 €</td><td>1.200 €</td><td>Y ahí te quedas</td></tr>
+        </tbody>
+      </table>
+      <p class="soft" style="font-size:14px">Los precios nunca bajan. Si una semana no cierras, no es el precio: es el número de conversaciones.</p>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Garantía y contrato">
+    <div class="card dark">
+      <span class="label">Garantía</span>
+      <h3>"Si sigues el plan, me envías tus revisiones y en la fase Base no ves cambios, sigo contigo gratis hasta que lleguen."</h3>
+      <p class="soft">Condición medible en el contrato: 80 % de cumplimiento y todas las revisiones semanales enviadas. Sin devoluciones de dinero.</p>
+    </div>
+    <div class="card">
+      <span class="label">Contrato · firma antes de empezar</span>
+      <ul class="l">
+        <li>Qué se entrega, duración, pagos y garantía.</li>
+        <li>Horario de respuesta por WhatsApp.</li>
+        <li>Consentimiento de datos de salud y, aparte, de imagen (fotos y vídeo).</li>
+        <li><b>14 días de desistimiento:</b> el cliente pide empezar ya y acepta pagar la parte prestada si se echa atrás.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header><span class="label">Back-end · en su momento dulce</span><h2 id="h-back">Cuando se vea cambiado, le ofreces seguir.</h2><p class="soft">Señales: la camiseta le aprieta en hombros y pecho, sube de peso por fin o se le va la barriga, y sus colegas le preguntan qué hace.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><p class="soft">Trimestre → semestre pagando la diferencia; semestre → año igual.</p></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Antes de acabar</h3><p class="soft">Nunca al final. Con fecha límite y precio congelado.</p></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento</h3><p class="soft">Revisión mensual y plan actualizado (precio a decidir).</p></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a tu colega del gym</h3><p class="soft">Si entra, un mes gratis. Tu cliente entrena en pareja o en grupo.</p></article>
+    </div>
+  </section>
+</div>

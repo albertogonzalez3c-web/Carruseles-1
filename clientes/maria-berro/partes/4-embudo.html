@@ -63,7 +63,7 @@ ul.l b, ol.l b { color: var(--ink); }
 @media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
 
-/* Layout: sin anuncios; el motor es abrir conversaciones: dónde encontrarlas, mensajes, camino de la conversación, rutina diaria, seguimiento y apoyo de contenido. */
+/* Layout: dos motores, anuncios de seguidores con voz en off (5 €/día) y abrir conversaciones: dónde encontrarlas, mensajes, camino de la conversación, rutina diaria, seguimiento y apoyo de contenido. */
 .n { width: 32px; height: 32px; border-radius: 50%; background: var(--coral); color: var(--white); display: grid; place-items: center; font-weight: 800; }
 .path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 800; }
 .path span { background: var(--white); border-radius: 999px; padding: 9px 14px; font-size: 14.5px; box-shadow: inset 0 0 0 1px var(--line); }
@@ -99,13 +99,29 @@ ul.l b, ol.l b { color: var(--ink); }
 .nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
 .nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
 @media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+/* Anuncios de seguidores (voz en off) */
+.ads { display: grid; gap: 14px; }
+.ads .ads-traffic { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ads .ads-traffic > div { border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; font-size: 14.5px; line-height: 1.45; }
+.ads .ads-traffic b { font-size: 15px; }
+.ads .t-g { background: #e3ecdd; color: #2f5a2a; } .ads .t-y { background: #f6ecd0; color: #6e520c; } .ads .t-r { background: #f3e0d8; color: #8a3326; }
+.ads .ads-ad { background: var(--white, #fff); border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; min-width: 0; box-shadow: inset 0 0 0 1.5px var(--ads-a); }
+.ads .ads-ad h3 { margin: 0; }
+.ads .ads-tag { font: 600 11.5px/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--ads-a); }
+.ads .ads-ad ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.ads .ads-ad p { margin: 0; }
+.ads .ads-k { font-weight: 800; }
+.ads .ads-say { border-left: 4px solid var(--ads-a); padding: 4px 0 4px 12px; }
+.ads .ads-ots { display: inline-block; background: #111; color: #fff; font-weight: 800; font-size: 13px; letter-spacing: .02em; padding: 6px 10px; border-radius: 6px; max-width: 100%; }
+.ads .ads-policy { border-radius: 10px; padding: 12px 14px; background: #f4f1ec; font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 760px) { .ads .ads-traffic { grid-template-columns: 1fr; } }
 </style>
 
 <div class="wrap">
   <header class="head">
     <span class="label">María Berro · Parte 4 · Embudo</span>
-    <h1>Sin anuncios. Con <em>conversaciones</em>.</h1>
-    <p class="soft" style="font-size:18px">Ahora mismo no necesitas pagar anuncios. Tu motor es abrir conversaciones con mujeres que encajan, cada día, con cariño y sin vender en el primer mensaje.</p>
+    <h1>Anuncios de seguidores. Y <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">Dos motores: 5 € al día en anuncios de seguidores con voz en off, para que te sigan mujeres de 30 a 45 que encajan, y abrir conversaciones con ellas cada día, con cariño y sin vender en el primer mensaje.</p>
   </header>
 <section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Mujeres de 30 a 45 que se cuidan a medias, han probado dietas que no les duran y quieren verse mejor que nunca —y mantenerlo— sin dietas extremas ni vivir en el gimnasio.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Mejor Que Nunca</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Nutrición de dietista</b><span>Con la comida de casa y de tu familia, los findes y las cenas. Nada de pollo con arroz todo el día.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Fuerza con buena técnica</b><span>Para glúteo y tono, a tu medida. Las pesas no te ponen grande: te ponen firme.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Seguimiento semanal cercano</b><span>Revisión cada semana y WhatsApp conmigo. No vas sola.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Activar</b><p><em>Qué pasa:</em> Pierdes la primera grasa, te deshinchas y el hábito se queda.</p><p><em>Qué haces tú:</em> 3 días de fuerza aprendiendo la técnica, comida real de casa y tu foto y revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Esculpir</b><p><em>Qué pasa:</em> Glúteo, cintura y tono: tu cuerpo cambia de forma, no solo de peso.</p><p><em>Qué haces tú:</em> Subes cargas con buena técnica y mantienes la comida real cada día.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><em>Qué pasa:</em> Consolidas lo conseguido y aprendes a mantenerlo comiendo con normalidad.</p><p><em>Qué haces tú:</em> Subimos calorías poco a poco y aprendes a gestionar cenas, findes y vacaciones.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>3 días de fuerza</span><span>Proteína y comida real cada día</span><span>Foto y revisión semanal</span></div></div><p class="nm-proof">Prueba: "A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca."</p></section>
 
@@ -119,6 +135,52 @@ ul.l b, ol.l b { color: var(--ink); }
       <li><b>Todas las que responden, al CRM,</b> con su seguimiento.</li>
       <li><b>La primera semana, poco a poco:</b> 2 rondas de 25 y subes a 2 de 50 la segunda semana.</li>
     </ul>
+  </section>
+
+  <section class="sec ads" aria-labelledby="h-ads" style="--ads-a:var(--coral, #c8433f)">
+    <header>
+      <span class="label">Motor 1 · Anuncios de seguidores con voz en off</span>
+      <h2 id="h-ads">5 € al día por anuncio. Si el seguidor sale por menos de 1 €, se queda.</h2>
+      <p class="soft">No es "hacer publicidad": es poner tu mejor voz en off delante de mujeres de 30 a 45 de España y medir cuánto te cuesta cada seguidor. Cada seguidor nuevo es una conversación posible: bienvenida el mismo día.</p>
+    </header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>La pieza</h3><ul class="l"><li><b>Reel de 30–45 s</b> con voz en off sobre clips tuyos: entrenando y en tu día a día.</li><li><b>Un solo ángulo</b> de tu banco por anuncio (Parte 3). Nada de mezclar tres ideas.</li><li><b>Gancho en los 3 primeros segundos</b>, con texto en pantalla.</li><li><b>Acaba con "Sígueme para…"</b>: el objetivo es que te sigan, no venderles.</li><li>La mejor voz en off orgánica de la semana es la que se promociona.</li></ul></div>
+      <div class="card"><span class="n">2</span><h3>La configuración</h3><ul class="l"><li><b>5 € al día por anuncio</b>, de 5 a 7 días de prueba.</li><li><b>3 variantes de gancho por anuncio</b>: mismo cuerpo, 3 primeros segundos distintos.</li><li><b>Objetivo:</b> visitas al perfil (o seguidores, si te lo ofrece).</li><li><b>Público:</b> España, mujeres de 30 a 45, intereses de fitness y salud. O Advantage+, y comparas.</li></ul></div>
+      <div class="card"><span class="n">3</span><h3>La medida</h3><ul class="l"><li><b>€ por seguidor</b> = gasto ÷ seguidores nuevos de esos días.</li><li>Apúntalo en tu reporte semanal, en <b>"Anuncios de seguidores (voz en off)"</b>: anuncio, ángulo, días, gasto y seguidores. El € por seguidor sale solo.</li><li><b>Bienvenida a cada seguidor nuevo</b> el mismo día: son los más calientes que vas a tener.</li></ul></div>
+    </div>
+    <div class="ads-traffic">
+      <div class="t-g"><b>Menos de 1 € por seguidor</b><span>Mantener. Haz más voces en off con ese mismo ángulo y gancho.</span></div>
+      <div class="t-y"><b>Entre 1 € y 1,5 €</b><span>Cambia el gancho de los 3 primeros segundos. Revisa bio y fijados: si entran y no siguen, falla el perfil.</span></div>
+      <div class="t-r"><b>Más de 1,5 € tras 3 días</b><span>Cortar. No esperes a que "despegue": prueba el siguiente anuncio.</span></div>
+    </div>
+    <p class="ads-policy"><b>Normas de Meta:</b> nunca preguntes ni des por hecho algo personal de quien lo ve ("¿tienes barriga?", "¿estás gorda?", "tu sobrepeso"). Habla <b>en primera persona</b> ("yo llegué a…") o en general ("la mayoría de mujeres de…"). Sin antes/después de terceros ni promesas de kilos en plazos.</p>
+    <header><span class="label">3 anuncios listos para grabar</span><h2>Graba el cuerpo una vez y prueba los 3 ganchos.</h2></header>
+    <div class="g3">
+      <article class="ads-ad"><span class="ads-tag">Anuncio 1 · Ángulo: Mejor a los 34 que a los 23 <span style="opacity:.75">(familia «Mi historia»)</span></span>
+        <h3>A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca.</li><li>Mi mejor cuerpo no llegó a los 20. Llegó a los 34.</li><li>La mayoría de mujeres cree que a partir de los 30 todo va cuesta abajo. Yo también lo creía.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Probé dietas que no me duraban y entrenaba sin saber muy bien qué hacía. Lo que cambió: comer bien con la comida de casa, fuerza con buena técnica 3 días a la semana y constancia. Sin dietas extremas y sin vivir en el gimnasio. Y lo mantengo.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para verte mejor que nunca y mantenerlo.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">23 AÑOS: ME ODIABA → 34: MEJOR QUE NUNCA</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú entrenando glúteo, tú cocinando en casa, tu día a día (trabajo, paseo, café), cierre en el espejo o mirando a cámara.</p></div>
+      </article>
+      <article class="ads-ad"><span class="ads-tag">Anuncio 2 · Ángulo: Pilar 2 · Fuerza con buena técnica <span style="opacity:.75">(familia «Método Mejor Que Nunca»)</span></span>
+        <h3>Tenía miedo a las pesas. Ahora son lo que más me ha cambiado el cuerpo.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>Tenía miedo a las pesas. Ahora son lo que más me ha cambiado el cuerpo.</li><li>Las pesas no te ponen grande. Te ponen firme.</li><li>La mayoría de mujeres de 30 hace horas de cardio. Esto funciona mejor.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Para glúteo y tono, lo que cambia el cuerpo es la fuerza con buena técnica: 3 días a la semana, cargas que suben poco a poco y cada ejercicio bien hecho. No necesitas vivir en el gimnasio ni hacer clases que no te cambian nada.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para aprender a entrenar glúteo y tono con buena técnica.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">LAS PESAS NO TE PONEN GRANDE: TE PONEN FIRME</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Hip thrust, sentadilla búlgara y peso muerto rumano con buena técnica, un plano corrigiendo la postura, cierre con tu glúteo/piernas de perfil.</p></div>
+      </article>
+      <article class="ads-ad"><span class="ads-tag">Anuncio 3 · Ángulo: Pilar 1 · Nutrición con la comida de tu casa <span style="opacity:.75">(familia «Método Mejor Que Nunca»)</span></span>
+        <h3>Soy dietista y no hago dietas.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>Soy dietista y no hago dietas.</li><li>Como lo mismo que en casa y me mantengo así.</li><li>La mayoría de dietas no duran porque te obligan a comer aparte.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Como dietista veo siempre lo mismo: dietas que no se aguantan más de un mes. Lo que sí funciona es la comida de casa bien ajustada, proteína y comida real cada día y sin prohibirte lo que te gusta. Así no vuelves a empezar cada lunes.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para comer bien con la comida de casa y mantenerlo para siempre.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">DIETISTA · SIN DIETAS · PARA SIEMPRE</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú haciendo la compra, cocinando un plato de diario, tu táper o tu plato servido, cierre comiendo tranquila.</p></div>
+      </article>
+    </div>
   </section>
 
   <section class="sec" aria-labelledby="h-donde">

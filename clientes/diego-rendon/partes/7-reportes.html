@@ -65,6 +65,8 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outl
 .calc b.bad { color: var(--rust); }
 .calc b.ok::before { content: "● "; font-size: .6em; vertical-align: middle; }
 .calc b.bad::before { content: "● "; font-size: .6em; vertical-align: middle; }
+.calc b.mid { color: #8a6a12; }
+.calc b.mid::before { content: "● "; font-size: .6em; vertical-align: middle; }
 .meter { height: 10px; background: var(--sand); border-radius: 99px; overflow: hidden; }
 .meter i { display: block; height: 100%; background: var(--gold); border-radius: 99px; }
 .closes { display: grid; gap: 10px; background: var(--chip); border-radius: 14px; padding: 14px; }
@@ -114,6 +116,10 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
 .cheer { background: var(--ink); color: #fff; border-radius: 12px; padding: 12px 14px; font-weight: 700; font-size: 14.5px; }
 @media (max-width: 900px) { .g2 { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .nums.c3 { grid-template-columns: 1fr 1fr; } .fields { grid-template-columns: 1fr; } }
+.prow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--sand-line); } .prow input[data-p=anuncio] { grid-column: 1 / -1; } .prow input, .prow select { min-width: 0; width: 100%; } .prow .pl { display: grid; gap: 3px; min-width: 0; } .prow .pl span { font-size: 12px; color: var(--soft); } .prow .rm { justify-self: start; }
+.prow .cps { font: 700 14px/1.3 var(--f-body); text-align: center; }
+.prow .cps.ok { color: var(--green); } .prow .cps.mid { color: #8a6a12; } .prow .cps.bad { color: var(--rust); }
+@media (max-width: 420px) { .prow { grid-template-columns: repeat(3, minmax(0, 1fr)); } .prow label.pl:last-of-type { grid-column: span 2; } }
 </style>
 
 <div class="wrap">
@@ -254,6 +260,13 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
         </div>
 
         <div class="grp">
+          <div class="gh">Anuncios de seguidores (voz en off) <small id="promoCount"></small></div>
+          <p class="soft" style="font-size:13px">5 € al día por anuncio, de 5 a 7 días. Por debajo de <b>1 € por seguidor</b>, se mantiene. Entre 1 y 1,5 €, cambia el gancho. Por encima de 1,5 € tras 3 días, se corta y se prueba otro ángulo.</p>
+          <div id="promoList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addPromo">+ Añadir anuncio</button>
+        </div>
+
+        <div class="grp">
           <div class="gh">Instagram</div>
           <div class="nums">
             <label>Seguidores al empezar la semana<input data-s="segIni" type="number" min="0" inputmode="numeric" placeholder="2100"></label>
@@ -311,6 +324,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
           <div><span>% rol entrenador (objetivo ≥ 40 % desde sem 3)</span><b id="w-rol">—</b></div>
           <div><span>YouTube (objetivo 2)</span><b id="w-yt">0 / 2</b></div>
           <div><span>Trial reels publicados</span><b id="w-trial">0</b></div>
+          <div><span>Anuncios de seguidores: € por seguidor (objetivo &lt; 1 €)<small id="w-promo-d" style="display:block;font-size:12.5px"></small></span><b id="w-promo">—</b></div>
         </div>
       </div>
       <div class="card">
@@ -390,7 +404,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
   function blankDay(f) { var o = { fecha: f, bienvenidas: null, seguimientos: null, ctaHistorias: null, cerrado: null, cierres: [], animo: "", nota: "" }; DNUM.forEach(function (k) { o[k] = ""; }); return o; }
   function blankSem(w) {
     var prev = semMap[shiftWeek(w, -1)];
-    return { semana: w, etapa: prev && PAUTA[prev.etapa] ? prev.etapa : "s1", segIni: prev && prev.segFin ? prev.segFin : "", segFin: "", mejor: "", respEstados: "", mejorLink: "", mejorPorque: "", activas: prev ? prev.activas || "" : "", altas: "", bajas: "", renovaciones: "", tareas: [], trials: [], victorias: "", bloqueos: "", dudas: "", notaMentoria: "", necesito: "" };
+    return { semana: w, etapa: prev && PAUTA[prev.etapa] ? prev.etapa : "s1", segIni: prev && prev.segFin ? prev.segFin : "", segFin: "", mejor: "", respEstados: "", mejorLink: "", mejorPorque: "", activas: prev ? prev.activas || "" : "", altas: "", bajas: "", renovaciones: "", tareas: [], trials: [], promos: [], victorias: "", bloqueos: "", dudas: "", notaMentoria: "", necesito: "" };
   }
 
   /* ---------- Guardado: una escritura a la vez por documento ---------- */
@@ -500,7 +514,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
     el("wkLabel").textContent = weekLabel(sem.semana);
     document.querySelectorAll("[data-s]").forEach(function (i) { if (document.activeElement !== i) i.value = sem[i.dataset.s] == null ? "" : sem[i.dataset.s]; });
     setPressed(document.querySelector('[data-ws="etapa"]'), PAUTA[sem.etapa] ? sem.etapa : "s1");
-    renderTasks(); renderTrials();
+    renderTasks(); renderTrials(); renderPromos();
   }
   function renderTasks() {
     var box = el("taskList"); box.innerHTML = "";
@@ -534,6 +548,47 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
     var win = sem.trials.filter(function (t) { return t.ganador; }).length;
     el("trialCount").textContent = sem.trials.length ? sem.trials.length + (sem.trials.length === 1 ? " guion · " : " guiones · ") + win + " con ganador" : "";
   }
+  function promoCps(p) { var g = num(p.gasto), s = num(p.seguidores); return s > 0 ? g / s : null; }
+  function promoAgg() {
+    var g = 0, s = 0; (sem.promos || []).forEach(function (p) { g += num(p.gasto); s += num(p.seguidores); });
+    return { g: g, s: s, cps: s > 0 ? g / s : null };
+  }
+  function promoCls(c) { return c == null ? "" : (c < 1 ? "ok" : (c <= 1.5 ? "mid" : "bad")); }
+  function renderPromos() {
+    var box = el("promoList"); box.innerHTML = "";
+    if (!Array.isArray(sem.promos)) sem.promos = [];
+    if (!sem.promos.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Ningún anuncio activo esta semana.</p>';
+    sem.promos.forEach(function (p, i) {
+      var row = document.createElement("div"); row.className = "prow";
+      var DEC = ["Probando", "Mantener", "Cambiar gancho", "Cortar"];
+      row.innerHTML = '<input type="text" data-p="anuncio" value="' + esc(p.anuncio) + '" placeholder="Anuncio / ángulo (ej. Entrenar mejor, no más · gancho B)" aria-label="Anuncio y ángulo">' +
+        '<label class="pl"><span>Días</span><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días activo"></label>' +
+        '<label class="pl"><span>Gasto €</span><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto €" aria-label="Gasto en euros"></label>' +
+        '<label class="pl"><span>Seguidores</span><input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Seguidores" aria-label="Seguidores ganados"></label>' +
+        '<label class="pl"><span>Decisión</span><select data-p="decision" aria-label="Decisión">' + DEC.map(function (d) { return '<option' + (p.decision === d ? ' selected' : '') + '>' + d + '</option>'; }).join("") + '</select></label>' +
+        '<button type="button" class="rm">Quitar</button>' +
+        '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
+      function paint() {
+        var c = promoCps(p), d = num(p.dias), sp = row.querySelector("[data-cps]"), t;
+        if (c == null) t = "€ por seguidor: —";
+        else if (c < 1) t = "€ por seguidor: " + eur(c) + " · por debajo de 1 €: mantener";
+        else if (c <= 1.5) t = "€ por seguidor: " + eur(c) + " · entre 1 y 1,5 €: cambia el gancho";
+        else t = "€ por seguidor: " + eur(c) + (d >= 3 ? " · más de 1,5 € tras " + d + " días: cortar" : " · más de 1,5 €: si sigue así al día 3, cortar");
+        sp.textContent = t; sp.className = "cps " + promoCls(c); promoHead();
+      }
+      if (!p.decision) p.decision = "Probando";
+      row.querySelectorAll("[data-p]").forEach(function (inp) {
+        var h = function () { if (p[inp.dataset.p] === inp.value) return; p[inp.dataset.p] = inp.value; paint(); saveSem(); update(); };
+        inp.addEventListener("input", h); inp.addEventListener("change", h);
+      });
+      row.querySelector(".rm").addEventListener("click", function () { sem.promos.splice(i, 1); saveSem(); renderPromos(); update(); });
+      paint();
+      box.appendChild(row);
+    });
+    promoHead();
+  }
+  function promoHead() { var a = promoAgg(); el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " anuncio · " : " anuncios · ") + eur(a.g) + " · " + a.s + " seguidores" : ""; }
+  el("addPromo").addEventListener("click", function () { if (!Array.isArray(sem.promos)) sem.promos = []; sem.promos.push({ anuncio: "", dias: "", gasto: "", seguidores: "", decision: "Probando" }); saveSem(); renderPromos(); var ins = el("promoList").querySelectorAll('input[data-p="anuncio"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
   el("addTrial").addEventListener("click", function () { if (!Array.isArray(sem.trials)) sem.trials = []; sem.trials.push({ guion: "", ganchos: "", ganador: "", views: "" }); saveSem(); renderTrials(); var ins = el("trialList").querySelectorAll('input[data-t="guion"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
   el("addTask").addEventListener("click", function () { sem.tareas.push({ tarea: "", hecha: false }); saveSem(); renderTasks(); var ins = el("taskList").querySelectorAll('input[type=text]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
   document.querySelectorAll("[data-s]").forEach(function (i) {
@@ -621,6 +676,9 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
     el("w-cta").textContent = a.cta + " / 2"; wm("w-cta", a.cta >= 2);
     el("w-rol").textContent = rp == null ? "—" : rp + " %"; if (rolOn && rp != null) wm("w-rol", rp >= 40); else el("w-rol").className = "";
     el("w-yt").textContent = a.youtube + " / " + YT_OBJ; wm("w-yt", a.youtube >= YT_OBJ);
+    var pa = promoAgg(), wp = el("w-promo");
+    wp.textContent = pa.cps == null ? (pa.g ? "sin seg." : "—") : eur(pa.cps); el("w-promo-d").textContent = pa.g ? eur(pa.g) + " invertidos · " + pa.s + " seguidores" : "";
+    wp.className = pa.cps == null ? (pa.g ? "bad" : "") : promoCls(pa.cps);
     el("w-trial").textContent = a.trial;
     var trs = (sem.trials || []).filter(function (t) { return t.guion || t.ganador; });
     var segD = sem.segIni !== "" && sem.segFin !== "" ? num(sem.segFin) - num(sem.segIni) : null;
@@ -634,6 +692,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       FMT.concat([["youtube", "YouTube"]]).map(function (x) { return x[1] + ": " + a[x[0]] + "/" + p[x[0]]; }).join(" · ") + "\n" +
       "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " guion probado" : " guiones probados") : "") + "\n" +
       (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
+      ((sem.promos || []).length ? "Anuncios de seguidores (voz en off): " + eur(pa.g) + " · " + pa.s + " seguidores · " + (pa.cps == null ? "—" : eur(pa.cps) + " por seguidor") + (pa.cps == null ? "" : ckw(pa.cps < 1)) + "\n" + sem.promos.map(function (x) { var c = promoCps(x); return "  · " + (x.anuncio || "(sin título)") + ": " + num(x.dias) + " días · " + eur(num(x.gasto)) + " · " + num(x.seguidores) + " seg." + (c == null ? "" : " · " + eur(c) + "/seg.") + " → " + (x.decision || "Probando"); }).join("\n") + "\n" : "") +
       "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes PLAN: " + num(sem.mejor) + "\n" +
       "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos · " + num(sem.respEstados) + " respuestas a Estados\n" +
       "Seguidores: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + "\n" +
@@ -689,6 +748,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
     sem = semMap[w] ? Object.assign(blankSem(w), clone(semMap[w])) : blankSem(w); sem.semana = w;
     if (!Array.isArray(sem.tareas)) sem.tareas = [];
     if (!Array.isArray(sem.trials)) sem.trials = [];
+    if (!Array.isArray(sem.promos)) sem.promos = [];
     el("sv-sem").textContent = "";
     fillSem(); update();
     if (db) {
@@ -701,7 +761,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
   function applyRemote() {
     var f = el("fecha").value;
     if (diaMap[f] && !dirty[k("diario", f)] && !focusedIn("formDia")) { day = Object.assign(blankDay(f), clone(diaMap[f])); day.fecha = f; fillDay(); }
-    if (semMap[curWeek] && !dirty[k("semana", curWeek)] && !focusedIn("formSem")) { sem = Object.assign(blankSem(curWeek), clone(semMap[curWeek])); sem.semana = curWeek; if (!Array.isArray(sem.tareas)) sem.tareas = []; if (!Array.isArray(sem.trials)) sem.trials = []; fillSem(); }
+    if (semMap[curWeek] && !dirty[k("semana", curWeek)] && !focusedIn("formSem")) { sem = Object.assign(blankSem(curWeek), clone(semMap[curWeek])); sem.semana = curWeek; if (!Array.isArray(sem.tareas)) sem.tareas = []; if (!Array.isArray(sem.trials)) sem.trials = []; if (!Array.isArray(sem.promos)) sem.promos = []; fillSem(); }
     update();
   }
   el("fecha").value = today();

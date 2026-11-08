@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: reporte de Zakaria para Alberto. Arriba el diario (conversaciones en 2 rondas, llamadas, cierres, reels por formato con trial reels y rol entrenador, carruseles, historias y WhatsApp) y debajo el semanal (rampa de contenido, YouTube 1/semana, trial reels, reels promocionados, % rol entrenador, clientes, tareas y feedback). Indicadores verde/rojo frente a objetivos. Todo en la base de datos compartida. Paleta negra, blanca y roja. */
+/* Layout: reporte de Zakaria para Alberto. Arriba el diario (conversaciones en 2 rondas, llamadas, cierres, reels por formato con trial reels y rol entrenador, carruseles, historias y WhatsApp) y debajo el semanal (rampa de contenido, YouTube 1/semana, trial reels, anuncios de seguidores con voz en off, % rol entrenador, clientes, tareas y feedback). Indicadores verde/rojo frente a objetivos. Todo en la base de datos compartida. Paleta negra, blanca y roja. */
 :root {
   --paper: #f3f3f1;
   --white: #ffffff;
@@ -260,10 +260,10 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
         </div>
 
         <div class="grp">
-          <div class="gh">Reels promocionados <small id="promoCount"></small></div>
-          <p class="soft" style="font-size:13px">5 € al día por reel, de 5 a 7 días. Si el coste baja de <b>1 € por seguidor</b>, se mantiene; si no, se corta y se prueba otro reel.</p>
+          <div class="gh">Anuncios de seguidores (voz en off) <small id="promoCount"></small></div>
+          <p class="soft" style="font-size:13px">Una fila por anuncio: anuncio y ángulo, días, gasto, seguidores, € por seguidor y decisión. 5 € al día, 5–7 días. <b>Menos de 1 € por seguidor:</b> se queda. <b>Entre 1 y 1,5 €:</b> cambia el gancho. <b>Más de 1,5 € tras 3 días:</b> se corta.</p>
           <div id="promoList" style="display:grid;gap:8px"></div>
-          <button type="button" class="btn ghost small" id="addPromo">+ Añadir reel promocionado</button>
+          <button type="button" class="btn ghost small" id="addPromo">+ Añadir anuncio (voz en off)</button>
         </div>
 
         <div class="grp">
@@ -296,7 +296,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
 
         <div class="grp">
           <div class="gh">Para la revisión del domingo</div>
-          <label class="fld">Victorias de la semana<textarea data-s="victorias" placeholder="Ej.: 700 conversaciones; 2 cierres; un reel promocionado a 0,60 € por seguidor"></textarea></label>
+          <label class="fld">Victorias de la semana<textarea data-s="victorias" placeholder="Ej.: 700 conversaciones; 2 cierres; un anuncio de voz en off a 0,60 € por seguidor"></textarea></label>
           <label class="fld">Bloqueos: qué ha fallado y por qué<textarea data-s="bloqueos" placeholder="Ej.: 2 días sin ronda 2 por turnos en el trabajo"></textarea></label>
           <label class="fld">Dudas para la revisión<textarea data-s="dudas" placeholder="Lo que quieres que veamos el domingo"></textarea></label>
         </div>
@@ -325,7 +325,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
           <div><span>Carruseles (objetivo 3–5)</span><b id="w-car">0</b></div>
           <div><span>YouTube (objetivo 1)</span><b id="w-yt">0 / 1</b></div>
           <div><span>Trial reels publicados</span><b id="w-trial">0</b></div>
-          <div><span>Reels promocionados: € por seguidor (objetivo &lt; 1 €)<small id="w-promo-d" style="display:block;font-size:12.5px"></small></span><b id="w-promo">—</b></div>
+          <div><span>Anuncios de seguidores (voz en off): € por seguidor (objetivo &lt; 1 €)<small id="w-promo-d" style="display:block;font-size:12.5px"></small></span><b id="w-promo">—</b></div>
         </div>
       </div>
       <div class="card">
@@ -558,11 +558,11 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
   function renderPromos() {
     var box = el("promoList"); box.innerHTML = "";
     if (!Array.isArray(sem.promos)) sem.promos = [];
-    if (!sem.promos.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Ningún reel promocionado esta semana.</p>';
+    if (!sem.promos.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Ningún anuncio de seguidores esta semana.</p>';
     sem.promos.forEach(function (p, i) {
       var row = document.createElement("div"); row.className = "prow";
-      var DEC = ["Probando", "Mantener", "Cortar"];
-      row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Reel (tema o enlace)" aria-label="Reel">' +
+      var DEC = ["Probando", "Mantener", "Cambiar gancho", "Cortar"];
+      row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Anuncio / ángulo (p. ej. Anuncio 1 · No es que no tengas tiempo)" aria-label="Anuncio y ángulo">' +
         '<label class="pl"><span>Días</span><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días promocionado"></label>' +
         '<label class="pl"><span>Gasto €</span><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto €" aria-label="Gasto en euros"></label>' +
         '<label class="pl"><span>Seguidores</span><input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Seguidores" aria-label="Seguidores ganados"></label>' +
@@ -571,7 +571,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
         '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
       function paint() {
         var c = promoCps(p), sp = row.querySelector("[data-cps]");
-        sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (c < 1 ? " · por debajo de 1 €: mantener" : (num(p.dias) >= 5 ? " · por encima de 1 € tras " + num(p.dias) + " días: cortar" : " · por encima de 1 €: sigue probando hasta 5–7 días"));
+        sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (c < 1 ? " · por debajo de 1 €: se queda" : (c <= 1.5 ? " · entre 1 y 1,5 €: cambia el gancho" : (num(p.dias) >= 3 ? " · más de 1,5 € tras " + num(p.dias) + " días: córtalo" : " · más de 1,5 €: espera al día 3 y, si sigue, córtalo")));
         sp.className = "cps" + (c == null ? "" : (c < 1 ? " ok" : " bad")); promoHead();
       }
       if (!p.decision) p.decision = "Probando";
@@ -585,7 +585,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
     });
     promoHead();
   }
-  function promoHead() { var a = promoAgg(); el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " reel · " : " reels · ") + eur(a.g) + " · " + a.s + " seguidores" : ""; }
+  function promoHead() { var a = promoAgg(); el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " anuncio · " : " anuncios · ") + eur(a.g) + " · " + a.s + " seguidores" : ""; }
   el("addPromo").addEventListener("click", function () { if (!Array.isArray(sem.promos)) sem.promos = []; sem.promos.push({ reel: "", dias: "", gasto: "", seguidores: "", decision: "Probando" }); saveSem(); renderPromos(); update(); });
   el("addTrial").addEventListener("click", function () { if (!Array.isArray(sem.trials)) sem.trials = []; sem.trials.push({ guion: "", ganchos: "", ganador: "", views: "" }); saveSem(); renderTrials(); var ins = el("trialList").querySelectorAll('input[data-t="guion"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
   el("addTask").addEventListener("click", function () { sem.tareas.push({ tarea: "", hecha: false }); saveSem(); renderTasks(); var ins = el("taskList").querySelectorAll('input[type=text]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
@@ -692,7 +692,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       FMT.concat(EXTRA).map(function (x) { return x[1] + ": " + a[x[0]] + "/" + p[x[0]]; }).join(" · ") + "\n" +
       "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " guion probado" : " guiones probados") : "") + "\n" +
       (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
-      ((sem.promos || []).length ? "Reels promocionados: " + eur(pa.g) + " · " + pa.s + " seguidores · " + (pa.cps == null ? "—" : eur(pa.cps) + " por seguidor") + (pa.cps == null ? "" : ckw(pa.cps < 1)) + "\n" + sem.promos.map(function (x) { var c = promoCps(x); return "  · " + (x.reel || "(sin título)") + ": " + num(x.dias) + " días · " + eur(num(x.gasto)) + " · " + num(x.seguidores) + " seg." + (c == null ? "" : " · " + eur(c) + "/seg.") + " → " + (x.decision || "Probando"); }).join("\n") + "\n" : "") +
+      ((sem.promos || []).length ? "Anuncios de seguidores (voz en off): " + eur(pa.g) + " · " + pa.s + " seguidores · " + (pa.cps == null ? "—" : eur(pa.cps) + " por seguidor") + (pa.cps == null ? "" : ckw(pa.cps < 1)) + "\n" + sem.promos.map(function (x) { var c = promoCps(x); return "  · " + (x.reel || "(sin título)") + ": " + num(x.dias) + " días · " + eur(num(x.gasto)) + " · " + num(x.seguidores) + " seg." + (c == null ? "" : " · " + eur(c) + "/seg.") + " → " + (x.decision || "Probando"); }).join("\n") + "\n" : "") +
       "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes 5H: " + num(sem.mejor) + "\n" +
       "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos · " + num(sem.respEstados) + " respuestas a Estados\n" +
       "Seguidores: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + "\n" +
