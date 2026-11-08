@@ -1,0 +1,351 @@
+<title>Zent Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f3f2fa;
+  --white: #ffffff;
+  --ink: #10112e;
+  --soft: #555a78;
+  --line: #d9d8ea;
+  --chip: #eae9f6;
+  --blue: #2340c8;
+  --blue-text: #1d36a8;
+  --purple: #5b2bb5;
+  --purple-text: #4a2296;
+  --sun: #f29a2e;
+  --sun-text: #9a5200;
+  --night: #12133a;
+  --night2: #1f2156;
+  --f-head: "Russo One", "Arial Black", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-size: clamp(32px, 5.4vw, 56px); line-height: 1.04; }
+h1 em, h2 em { font-style: normal; color: var(--purple-text); }
+h2 { font-size: clamp(23px, 3.1vw, 32px); line-height: 1.1; }
+h3 { font-size: 18.5px; line-height: 1.2; }
+p { margin: 0; }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--chip); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--blue-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--night); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--sun); }
+.card.dark .label { color: #a9b6ff; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c8cae6; }
+.card.dark ul.l b, .card.dark ol.l b, .card.dark .soft b { color: var(--white); }
+.card.blue { background: var(--blue); color: #fff; box-shadow: none; }
+.card.blue h2, .card.blue h3 { color: #fff; }
+.card.blue .label { color: #d3dbff; }
+.card.blue ul.l, .card.blue ol.l, .card.blue .soft { color: #e6ebff; }
+.card.blue ul.l b, .card.blue ol.l b, .card.blue .soft b { color: #fff; }
+.card.purple { background: var(--purple); color: #fff; box-shadow: none; }
+.card.purple h3, .card.purple h2 { color: #fff; }
+.card.purple .label { color: #e2d4ff; }
+.card.purple ul.l, .card.purple ol.l, .card.purple .soft { color: #efe7ff; }
+.card.purple ul.l b, .card.purple ol.l b, .card.purple .soft b { color: #fff; }
+.card.warn { background: #fff3df; box-shadow: inset 0 0 0 1px #f0cf98; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--purple); border-radius: 6px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.card.dark .say { background: var(--night2); color: var(--white); border-left-color: var(--sun); }
+.card.blue .say, .card.purple .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 4px; background: var(--chip); color: var(--purple-text); }
+.card.dark .badge { background: var(--night2); color: var(--sun); }
+.card.blue .badge, .card.purple .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #ece6ff; }
+.tbl td b { color: var(--ink); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
+.card.dark .cp { background: var(--night2); color: #fff; box-shadow: inset 0 0 0 1px #3a3d7a; }
+.n { width: 34px; height: 34px; border-radius: 8px; background: var(--night); color: var(--sun); display: grid; place-items: center; font: 400 17px/1 var(--f-head); flex: none; }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 6px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--purple-text); font-weight: 800; }
+.nicho { font: 400 clamp(21px, 2.8vw, 29px)/1.2 var(--f-head); color: var(--white); }
+.nicho em { font-style: normal; color: var(--sun); }
+.pill3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pill3 > div { background: var(--night2); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.pill3 b { color: #fff; }
+.pill3 p { color: #c8cae6; font-size: 14.5px; }
+.pill3 i { color: #aeb3e0; font-size: 14px; }
+.pill3 .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sun); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--purple); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--night); color: #fff; padding: 10px 16px; border-radius: 6px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; align-items: center; }
+.hero img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--purple); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .pill3 { grid-template-columns: 1fr; } .card { padding: 16px; } .hero { grid-template-columns: 1fr; } .hero img { width: 120px; height: 120px; order: -1; } }
+
+.styleimgs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.styleimgs figure { margin: 0; display: grid; gap: 6px; }
+.styleimgs img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; display: block; background: var(--chip); }
+.styleimgs figcaption { font-size: 13px; color: var(--soft); }
+@media (max-width: 620px) { .styleimgs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } .styleimgs figcaption { font-size: 12px; } }
+</style>
+<main class="wrap">
+<header class="head hero" style="max-width:none">
+  <div style="display:grid;gap:12px;max-width:820px">
+    <span class="label">Zent · Jorge Gabriel · @saiyatrainer · Parte 1</span>
+    <h1>Perfil: que en 5 segundos se vea que eres <em>el entrenador de los latinos en EE. UU.</em></h1>
+    <p class="soft">Tu perfil ya tiene algo que casi nadie tiene: <b>un estilo propio</b>. Tus ilustraciones de Zent se reconocen a la primera. Lo que le falta es que quien entra entienda <b>para quién eres, cómo trabajas y que detrás del dibujo hay un entrenador de carne y hueso</b>. Esta página es el plan para conseguirlo.</p>
+  </div>
+  <img src="zent-avatar.jpg" alt="Foto de perfil de Zent: ilustración anime de Jorge con barba y camiseta azul" width="180" height="180">
+</header>
+<nav class="toc" aria-label="Secciones"><a href="#nicho">Nicho</a><a href="#porque">Por qué</a><a href="#estilo">Tu estilo</a><a href="#diag">Diagnóstico</a><a href="#bios">Bios</a><a href="#grid">Grid</a><a href="#destacados">Destacados</a><a href="#plantillas">Casos</a><a href="#testimonios">Testimonios</a><a href="#usa">EE. UU.</a><a href="#confirmar">Confirmar</a></nav>
+
+<section class="card dark" id="nicho">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="nicho">Ayudo a hombres latinos de +30 en Estados Unidos que entrenaban de jóvenes a <em>retomar el entrenamiento</em> y ponerse en forma, aunque el trabajo y la familia les dejen poco tiempo. <em>Sin dietas extremas.</em></p>
+  <p class="soft">Tu frase pública: <b>"El entrenador de los latinos en Estados Unidos."</b> Tu oferta: <b>Plan KAME</b>. Tu método: <b>Método KAME</b>, entrenar dentro de la vida que tienes, no de la que tenías a los 20.</p>
+  <div class="pill3">
+    <div><span class="lbl">Pilar 1 · Tiempo real</span><b>Entrenas con el tiempo que tienes</b><p>2 a 4 sesiones de 35–45 minutos que caben en tu semana real, con versión de 20 minutos en casa para las semanas malas.</p><i>Por qué: a los 19 pasaba más de 2 horas en transporte por trayecto y trabajaba 8. Al llegar a EE. UU., 8 horas en un hotel, sin carro: flexiones y sentadillas los días libres. Aprendí a entrenar con lo que había.</i></div>
+    <div><span class="lbl">Pilar 2 · Comida real</span><b>Comes la comida de tu casa</b><p>Sin dietas extremas ni prohibir carbohidratos: porciones, proteína y la comida latina de tu familia, organizadas para tu objetivo.</p><i>Por qué: no me alcanzaba para leche de almendras ni jamón de pavo. Comía lo que cocinaba mi mamá y aun así progresé. En 2023 empecé a registrar lo que comía y por fin me ordené.</i></div>
+    <div><span class="lbl">Pilar 3 · Retomar sin culpa</span><b>Una semana mala no borra nada</b><p>Ajustamos el plan a tu semana, entiendes el porqué de cada cosa y aprendes a retomar sin castigarte ni empezar de cero.</p><i>Por qué: dejé de entrenar, me lesioné el tobillo, subí de peso y volví a subir después. Cada vez retomé. Hoy, pasados los 30, estoy construyendo la mejor versión física que he tenido, sin condiciones perfectas.</i></div>
+  </div>
+  <div class="pill3">
+    <div><span class="lbl">Fase 1 · Semanas 1–4</span><b>Arranque</b><p><b>Qué pasa:</b> test y diagnóstico, plan según tu agenda real, técnica y cuidado de rodillas y espalda, primeros hábitos de comida.<br><b>Qué haces tú:</b> cumples tu mínimo de 2 sesiones y mandas tu primer check-in.</p></div>
+    <div><span class="lbl">Fase 2 · Semanas 5–12</span><b>Progreso</b><p><b>Qué pasa:</b> subes cargas, ajustamos comida y sesiones cada semana según cómo fue tu trabajo y tu casa.<br><b>Qué haces tú:</b> entrenas, registras y avisas cuando cambia tu semana.</p></div>
+    <div><span class="lbl">Fase 3 · Mes 4 en adelante</span><b>Autonomía</b><p><b>Qué pasa:</b> aprendes a ajustar solo cuando hay turnos, viajes, fiestas o hijos enfermos. Mantenimiento y nuevos objetivos.<br><b>Qué haces tú:</b> decides con criterio y ya no "vuelves a empezar en enero".</p></div>
+  </div>
+  <p class="soft"><b>3 no negociables:</b> check-in cada domingo (sesiones, peso o cintura, cómo fue la semana) · mínimo 2 sesiones aunque la semana sea mala · avisar cuando cambia tu semana en vez de desaparecer.</p>
+  <div class="say">"El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías." — Zent</div>
+</section>
+
+
+<section class="sec" id="porque">
+  <header><span class="label">Por qué este nicho</span><h2>Tu bio ya va bien. La afinamos en <em>tres cosas</em></h2><p class="soft">"Ayudo a hombres +30 a retomar el entrenamiento aunque el trabajo y la familia te dejen poco tiempo" es un buen punto de partida. Le sumamos de dónde son, en qué momento de la vida están y por qué tú.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">1 · Latino en EE. UU.</span><h3>Le hablas a quien vive lo que viviste</h3><p class="soft">Llegaste en 2021, trabajaste 8 horas en un hotel, sin carro y sin saber manejar, y entrenabas como podías. Tu cliente tiene turnos, manda dinero, come lo que hay en casa y no tiene un gimnasio a 5 minutos. <b>"El entrenador de los latinos en Estados Unidos"</b> se entiende a la primera y nadie te lo puede copiar con tu historia.</p></div>
+    <div class="card"><span class="badge">2 · +30 que entrenaba de joven</span><h3>No es principiante: quiere volver</h3><p class="soft">Tu avatar es Edward: 36 años, jornadas largas, subió de peso y le molesta la rodilla. Ya sabe lo que es entrenar; lo que no sabe es hacerlo con hijos, pareja y cansancio. <b>Tu frase lo explica todo:</b> "el problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías".</p></div>
+    <div class="card"><span class="badge">3 · Zent: educador con humor</span><h3>El anime es tu sello, no un adorno</h3><p class="soft">Creciste admirando a Vegeta. Tu cliente de 30–45 creció viendo Dragon Ball. Zent explica mitos con humor (y su versión Ozaru, con el sarcasmo de los referentes que te gustan), y tú enseñas el porqué. Eso te separa de los coaches que solo enseñan abdominales.</p></div>
+  </div>
+  <div class="card warn"><span class="label">Lo que dejas fuera a propósito (en el mensaje, no en la puerta)</span><p class="soft">Chicos de 18–25 que buscan volumen extremo, competidores y quien quiere química. Mujeres, principiantes y adultos mayores <b>los atiendes si llegan</b> (tu clienta activa, Ingrid, es mujer y vive en Canadá), pero el contenido no les habla a ellos. Y fuera también el cliente que tú mismo describiste: <b>exige respuestas a cualquier hora, no sigue el plan y te culpa</b>.</p></div>
+</section>
+
+<section class="sec" id="estilo">
+  <header><span class="label">Tu estilo · se queda y se multiplica</span><h2>Tus ilustraciones son tu marca. <em>Úsalas en todos los carruseles</em></h2><p class="soft">Los tres fijados, la foto de perfil y tus carruseles tipo "Es que no tenemos tiempo" ya forman una identidad: azul, morado, atardecer, Zent con los brazos en jarras. Ese es el estilo de tus carruseles (en Contenido tienes el Proyecto de Claude para sacarlos en lote).</p></header>
+  <div class="card">
+    <div class="styleimgs">
+      <figure><img src="zent-azul.jpg" alt="Zent con camiseta azul en un gimnasio al atardecer" loading="lazy" width="332" height="583"><figcaption>Fijado: "Disciplina, constancia, enfoque, resultados"</figcaption></figure>
+      <figure><img src="zent-morado.jpg" alt="Zent con sudadera morada sin mangas frente al mar al atardecer" loading="lazy" width="332" height="583"><figcaption>Fijado: Zent con sudadera morada</figcaption></figure>
+      <figure><img src="zent-sin-tiempo.jpg" alt="Ilustración de una pareja en la cama mirando el celular con el texto Es que no tenemos tiempo" loading="lazy" width="380" height="256"><figcaption>Carrusel: "Es que no tenemos tiempo"</figcaption></figure>
+    </div>
+    <ul class="l">
+      <li><b>Paleta fija:</b> azul marino, azul de la camiseta, morado de la sudadera y naranja de atardecer solo para resaltar una palabra o cifra.</li>
+      <li><b>Texto:</b> blanco sobre franja azul marino o negro, letra gruesa, máximo 12–15 palabras por slide.</li>
+      <li><b>Zent en escenas de la vida de tu cliente:</b> saliendo del turno, en la cocina con la familia, en el carro, con los hijos, en un gimnasio de cadena. Es lo que hace que se vea reflejado.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="diag">
+  <header><span class="label">Diagnóstico del perfil actual</span><h2>Lo que ya está bien y <em>lo que te cuesta clientes</em></h2></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Se queda</span><ul class="l">
+      <li><b>Estética propia y reconocible:</b> nadie en tu nicho tiene un personaje así.</li>
+      <li><b>Bio con promesa clara:</b> +30, poco tiempo, sin dietas extremas. Solo hay que afinarla.</li>
+      <li><b>Test en la bio:</b> filtra y te da datos antes de hablar. Muy bien pensado.</li>
+      <li><b>Destacado "certificados":</b> autoridad (ISSA y SENA). Que se vea arriba.</li>
+      <li><b>Threads y el grupo de Facebook "Saiyatrainer club":</b> dos canales más para reciclar contenido.</li>
+    </ul></div>
+    <div class="card"><span class="badge">Cambia</span><ul class="l">
+      <li><b>No se ve tu cara.</b> Los 3 fijados son ilustraciones. La gente compra a una persona: <b>1 de cada 3 piezas, tú a cámara</b> (yapping, green screen).</li>
+      <li><b>La bio no dice latino ni EE. UU.</b> Es justo lo que te diferencia.</li>
+      <li><b>Nombre de perfil:</b> "Zent | Fitness a tu manera" no se encuentra buscando. Mejor <b>"Zent | Entrenador latinos +30 USA"</b>.</li>
+      <li><b>Dos enlaces ("and 1 more"):</b> un solo enlace, el test. Dos opciones restan clics.</li>
+      <li><b>Categoría "Reel creator":</b> cámbiala a "Entrenador personal".</li>
+      <li><b>Falta prueba:</b> ni casos ni capturas. Empieza por tu historia y por Ingrid (con permiso).</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="bios">
+  <header><span class="label">5 bios para elegir · máx. 150 caracteres</span><h2>Elige una y <em>no la toques en 60 días</em></h2><p class="soft">Mi recomendada es la 1. Todas mantienen tu test como único enlace (pendiente de confirmar cuál es). El contador es en vivo.</p></header>
+  <div class="g2" id="bioList"></div>
+</section>
+
+<section class="sec" id="grid">
+  <header><span class="label">El grid como escaparate</span><h2>Regla: <em>1 de cada 3 piezas eres tú</em>, 1 es prueba</h2><p class="soft">Quien entra hace scroll y tiene que ver tres cosas: tu estilo (ilustración), a ti (cara real) y pruebas (casos, rol entrenador). Así deberían verse tus primeras 9 publicaciones dentro de 3 semanas.</p></header>
+  <div class="card">
+    <div id="gridMock" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;max-width:520px"></div>
+    <p class="soft" style="font-size:14px">📌 = fijado. Morado = carrusel ilustrado de Zent. Azul = tú a cámara (yapping, green screen). Naranja = prueba (caso o rol entrenador).</p>
+  </div>
+  <div class="g3">
+    <div class="card dark"><span class="label">Fijado 1 · Tu historia (carrusel ilustrado)</span><h3>"De la ropa ancha a la mejor versión de mí pasados los 30"</h3><p class="soft">8 slides con Zent: el flaco que se tapaba los brazos → la barra vacía → 2 horas de bus para ir a trabajar → mancuernas de cemento en pandemia → hotel sin carro en EE. UU. → lesión y kilos de más → hoy. Cierre: "Por eso entreno a latinos +30 dentro de la vida que tienen".</p></div>
+    <div class="card dark"><span class="label">Fijado 2 · Tú a cámara</span><h3>"El problema no es que no tengas tiempo"</h3><p class="soft">Yapping de 40–60 s con tu frase de marca. Es la primera vez que la gente te ve la cara y oye tu voz: confianza inmediata.</p></div>
+    <div class="card dark"><span class="label">Fijado 3 · Cómo trabajo</span><h3>"Así es una semana en el Plan KAME"</h3><p class="soft">Carrusel o reel: test, plan de 2–4 sesiones, versión de 20 min, comida de casa, check-in del domingo. Cierre: "Haz mi test (link en bio) o escríbeme KAME".</p></div>
+  </div>
+</section>
+
+<section class="sec" id="destacados">
+  <header><span class="label">Destacados</span><h2>De 3 a 6, <em>en este orden</em></h2><p class="soft">Mantén tus portadas con Zent (dibujos tuyos, mismo fondo). Cada destacado tiene su guion historia por historia.</p></header>
+  <div class="g3" id="hlList"></div>
+</section>
+
+<section class="sec" id="plantillas">
+  <header><span class="label">Plantillas de casos de éxito</span><h2>Un caso, <em>cinco piezas</em></h2><p class="soft">Hoy tienes una clienta activa (Ingrid) y antiguos clientes sin fotos guardadas. Cada caso con permiso te da un carrusel ilustrado, un reel, una historia, un Estado de WhatsApp y un "rol entrenador". Rellena los [corchetes] con datos reales; si un dato no existe, no se pone.</p></header>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Carrusel de caso ilustrado · 7 slides</span><button class="cp" data-copy="tplCar">Copiar</button></div>
+<div class="say" id="tplCar">1 · Zent + su cliente dibujado (sin rasgos reales si no quiere) + titular: "[Nombre], [edad], [trabajo]: [logro] entrenando [X] días a la semana"
+2 · Punto de partida: "[Frase literal suya del inicio]"
+3 · Su semana real: "[horario de trabajo], [hijos/pareja], [lo que le frenaba]"
+4 · Qué hicimos: "[X] sesiones de [Y] min, comida de su casa, check-in los domingos"
+5 · El momento difícil: "[semana mala / viaje / turno] y cómo retomó sin empezar de cero"
+6 · Su frase de hoy: "[testimonio literal]"
+7 · CTA: "¿Te ves en el slide 3? Haz mi test (link en bio) o escríbeme KAME"</div></div>
+    <div class="card"><div class="row"><span class="badge">Reel de caso · 20–30 s</span><button class="cp" data-copy="tplReel">Copiar</button></div>
+<div class="say" id="tplReel">0–2 s · Texto: "Trabaja [X] horas y tiene [hijos]. Entrena [X] días."
+2–8 s · Tú a cámara: "[Nombre] pensaba que sin una hora diaria no valía la pena."
+8–18 s · 3 cosas que cambiamos (una por plano, con su captura o tu pizarra).
+18–25 s · Su frase o su resultado real (con permiso).
+25–30 s · "Si tu semana se parece a la suya, escríbeme KAME."</div></div>
+    <div class="card"><div class="row"><span class="badge">Historia de chat · destacado Resultados</span><button class="cp" data-copy="tplChat">Copiar</button></div>
+<div class="say" id="tplChat">Captura del mensaje del cliente (nombre tapado si lo pide) + sticker de texto:
+"Esto es lo que pasa cuando el plan cabe en tu semana: [resumen en 6 palabras]"
+Ejemplo de frase que ya te dijeron: "Me siento más fuerte" → "Semana [X]. Fuerza que se nota en el día a día."</div></div>
+    <div class="card"><div class="row"><span class="badge">Estado de WhatsApp de caso</span><button class="cp" data-copy="tplWa">Copiar</button></div>
+<div class="say" id="tplWa">Foto o dibujo + texto: "[Nombre] entrena [X] días entre turno y turno. Esta semana: [logro pequeño y real]."
+Segundo estado: "Si quieres saber cómo lo organizamos, respóndeme este estado con un 💪 y te cuento."</div></div>
+  </div>
+  <div class="card blue"><span class="label">Rol entrenador sin casos todavía</span><h3>Mientras llegan los casos, enseña cómo trabajas</h3><p class="soft">"Así armo la semana de un papá que trabaja 10 horas", "reviso el check-in de un cliente" (con permiso y sin nombre), "la versión de 20 minutos para cuando todo sale mal". Es prueba de que sabes y de que entiendes su vida, aunque aún no haya antes y después.</p></div>
+</section>
+
+<section class="sec" id="testimonios">
+  <header><span class="label">Sistema para recoger testimonios</span><h2>Los casos no aparecen solos: <em>se piden</em></h2><p class="soft">Ingrid, Edward, Felipe, Clary y su familia y la médica de Smart Fit ya confiaron en ti. Empieza por ellos (ver francotirador en Embudo).</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Cuándo</span><ul class="l"><li><b>Semana 4:</b> primera frase ("¿qué notas distinto en tu día?") y foto si quiere.</li><li><b>Semana 12:</b> antes/después y video corto si quiere.</li><li><b>Al renovar:</b> testimonio completo y permiso definitivo.</li><li><b>Antiguos clientes:</b> esta misma semana.</li></ul></div>
+    <div class="card"><span class="badge">5 preguntas, siempre las mismas</span><ol class="l"><li>¿Cómo estabas antes de empezar?</li><li>¿Qué habías probado y por qué lo dejaste?</li><li>¿Qué fue lo que más te sirvió?</li><li>¿Qué cambió en tu día a día, además del físico?</li><li>¿A quién se lo recomendarías?</li></ol></div>
+    <div class="card"><span class="badge">Reglas</span><ul class="l"><li>Nada inventado ni "redondeado".</li><li>Permiso por escrito (captura guardada).</li><li>Si no quiere cara: lo dibujas en tu estilo o recortas desde el cuello.</li><li>Nada de salud ni del cuerpo de nadie con nombre (rodillas, peso, comentarios íntimos).</li><li>En anuncios, nunca antes/después (normas de Meta).</li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Mensaje para pedir el testimonio</span><button class="cp" data-copy="msgTest">Copiar</button></div>
+<div class="say" id="msgTest">[Nombre]! Estoy armando la sección de resultados de mi cuenta y tu proceso es de los que más orgulloso me tiene. ¿Me dejarías contar tu caso y contestar 5 preguntas cortas? Si prefieres sin cara, te dibujo en mi estilo de Zent 😄 Y como gracias, te regalo [una revisión de tu plan actual / un mes de seguimiento].</div></div>
+    <div class="card"><div class="row"><span class="badge">Texto de permiso</span><button class="cp" data-copy="msgPerm">Copiar</button></div>
+<div class="say" id="msgPerm">Autorizo a Jorge Gabriel (Zent · SaiyaTrainer) a publicar mi testimonio y [mis fotos de progreso / un dibujo basado en mí] en sus redes y web, [con / sin] mi cara y [con / sin] mi nombre. Puedo pedir que se retiren cuando quiera. — [Nombre], [fecha]</div></div>
+  </div>
+</section>
+
+<section class="sec" id="usa">
+  <header><span class="label">Perfil para latinos en Estados Unidos</span><h2>Que un latino de 38 en Houston o Nueva Jersey <em>sienta que es para él</em></h2></header>
+  <div class="g2">
+    <div class="card"><ul class="l">
+      <li><b>Español neutro con tu toque:</b> tu acento colombiano se queda, es marca. Evita modismos muy locales en los textos escritos.</li>
+      <li><b>Ejemplos de su vida aquí:</b> turnos dobles, el carro, el súper (Walmart, Costco, la tienda latina), la comida de la casa, los fines de semana con la familia, Thanksgiving y las fiestas de diciembre.</li>
+      <li><b>Precios en USD</b> y pago a plazos con Klarna o Afterpay (se dice en la llamada, no en la bio).</li>
+      <li><b>Horarios:</b> pon tus llamadas en la noche de semana y los sábados; siempre con la hora de su zona (Este, Centro, Montaña o Pacífico).</li>
+    </ul></div>
+    <div class="card warn"><span class="label">Cuidado</span><p class="soft">Nada de estatus migratorio ni temas legales: "llegar a EE. UU." se cuenta como cambio de vida (trabajo, transporte, comida). Preséntate como <b>entrenador personal certificado</b> (no "médico" ni "nutricionista"); ante dolor de rodilla o espalda, "consúltalo con tu médico" y adaptas el ejercicio. Tu familia y tu prometida, solo lo que tú decidas contar.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="confirmar">
+  <header><span class="label">Confirmar con Zent</span><h2>Antes de <em>tocar el perfil</em></h2></header>
+  <div class="card"><ul class="l">
+    <li>¿Quieres que la marca sea <b>Zent</b> o <b>Jorge</b>? Propuesta: la persona es Jorge "Zent" y el personaje es el vehículo de carruseles.</li>
+    <li>¿Es <code>tally.so/r/Ek7eQq</code> el test vigente? ¿Qué es el segundo enlace ("and 1 more")?</li>
+    <li>Ciudad donde vives en EE. UU. y si quieres decirla (ayuda a la cercanía y a los horarios).</li>
+    <li>Certificación exacta del destacado (ISSA: nombre y año).</li>
+    <li>¿Ingrid da permiso para contar su caso (aunque viva en Canadá)? ¿Tienes fotos o capturas de algún antiguo cliente?</li>
+    <li>Elegir bio y nombre de perfil, y si quitas el segundo enlace esta semana.</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  function fallback(txt) { var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); show(ok ? "Copiado" : "Selecciona y copia a mano"); }
+  window.zCopy = function (txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function () { show("Copiado"); }, function () { fallback(txt); });
+    else fallback(txt);
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    var el = document.getElementById(b.getAttribute("data-copy")); if (!el) return;
+    window.zCopy(el.textContent.trim());
+  });
+})();
+</script>
+
+<script>
+(function () {
+  var BIOS = [
+    { t: "Recomendada", b: "Entrenador de los latinos en EE. UU. 🇺🇸\nHombres +30: retoma aunque el trabajo y la familia te dejen poco tiempo\nSin dietas extremas\n👇 Haz mi test", w: "Tu posicionamiento arriba del todo y tu promesa actual debajo. Se entiende en 3 segundos." },
+    { t: "Tu bio, afinada", b: "⚡ Ayudo a latinos +30 en EE. UU. a retomar el entrenamiento\n🏋️ Aunque el trabajo y la familia te dejen poco tiempo\n🍔 Sin dietas extremas\n👇 Test aquí", w: "La más segura: es la tuya con dos palabras más (latinos, EE. UU.)." },
+    { t: "El que entrenaba", b: "Entrenaste de joven. Hoy no tienes tiempo.\nTe ayudo a retomar con 2–4 sesiones a la semana 🇺🇸\nLatinos +30 · Plan KAME\n👇 Test de 2 min", w: "Habla directo al que antes entrenaba. Muy buena si llega tráfico de anuncios." },
+    { t: "Autoridad", b: "Entrenador certificado · latinos +30 en EE. UU.\nNo necesitas más tiempo: necesitas otro plan\nComida de casa, sin dietas extremas\n👇 Haz mi test", w: "Pon tu certificado delante. Úsala cuando el destacado de certificados esté al día." },
+    { t: "Jorge + Zent", b: "Soy Jorge y este es Zent ⚡\nEntreno a latinos +30 en EE. UU. con trabajo y familia\nSin dietas extremas · Plan KAME\n👇 Escríbeme KAME o haz el test", w: "Explica a la vez la persona y el personaje. Buena cuando empieces a salir mucho a cámara." }
+  ];
+  function len(s) { return Array.from(s).length; }
+  var bl = document.getElementById("bioList");
+  BIOS.forEach(function (o, i) {
+    var c = document.createElement("div"); c.className = "card" + (i === 0 ? " dark" : "");
+    c.innerHTML = '<div class="row"><span class="badge">' + (i + 1) + ' · ' + o.t + '</span><span class="badge">' + len(o.b) + '/150</span></div>';
+    var s = document.createElement("div"); s.className = "say"; s.id = "bio" + i; s.textContent = o.b; c.appendChild(s);
+    var p = document.createElement("p"); p.className = "soft"; p.style.fontSize = "14.5px"; p.textContent = o.w; c.appendChild(p);
+    var bt = document.createElement("button"); bt.className = "cp"; bt.textContent = "Copiar bio"; bt.setAttribute("data-copy", "bio" + i); bt.style.width = "fit-content"; c.appendChild(bt);
+    bl.appendChild(c);
+  });
+
+  var P = ["#4a2296", "#fff"], Y = ["#2340c8", "#fff"], S = ["#f29a2e", "#10112e"];
+  var G = [
+    ["📌 Mi historia: de la ropa ancha a hoy", P], ["📌 Yapping: no es falta de tiempo", Y], ["📌 Así es el Plan KAME", S],
+    ["Mito: sin carbohidratos", P], ["Green screen: el plan de 6 días", Y], ["Rol: la semana de un papá", S],
+    ["2 sesiones también cuentan", P], ["Yapping: mi lesión de tobillo", Y], ["Caso Ingrid (con permiso)", S]
+  ];
+  var gm = document.getElementById("gridMock");
+  G.forEach(function (g) {
+    var d = document.createElement("div");
+    d.style.cssText = "aspect-ratio:4/5;background:" + g[1][0] + ";color:" + g[1][1] + ";display:grid;place-items:center;text-align:center;padding:6px;font:400 clamp(10.5px,2.5vw,14px)/1.2 var(--f-head);border-radius:4px";
+    d.textContent = g[0]; gm.appendChild(d);
+  });
+
+  var HL = [
+    { n: "Mi historia (nuevo)", s: ["Zent dibujado de adolescente con ropa ancha: \"me tapaba los brazos\"", "El gimnasio del segundo piso y la barra vacía que no podía levantar", "19 años: 2 horas de bus por trayecto y 8 de trabajo", "Pandemia: mancuernas de cemento en casa", "2021: llego a EE. UU., hotel, sin carro", "2023: lesión de tobillo y kilos de más. Vuelvo a empezar", "Hoy: la mejor versión de mí pasados los 30", "Sticker: \"¿Te identificas? Escríbeme KAME\""] },
+    { n: "¿Es para ti?", s: ["\"Entrenabas de joven y hoy no encuentras el momento\"", "\"Trabajas muchas horas y llegas muerto\"", "\"Empiezas con ganas y lo dejas a las 3 semanas\"", "\"Te dijeron que sin dieta estricta no se puede\"", "\"Te molesta la rodilla o la espalda al retomar\" (con tu médico, y adaptamos)", "Si dijiste sí a 2: es para ti. Si buscas atajos o química: no es para ti"] },
+    { n: "Plan KAME", s: ["Qué es: entrenar dentro de la vida que tienes", "Paso 1: haz el test (2 min)", "Paso 2: llamada de 20–30 min conmigo", "Los 3 pilares, uno por historia", "Las 3 fases y los 3 no negociables", "Qué incluye y qué no · plazas de este mes [X]"] },
+    { n: "Resultados", s: ["Portada: \"Casos reales, con permiso\"", "1 historia por cliente: su semana real + 1 logro", "Capturas de mensajes (nombre tapado si lo pide)", "Ingrid (si da permiso)", "Se abre cuando tengas 3 casos; hasta entonces, \"rol entrenador\"", "Cierre: \"El siguiente puedes ser tú → Plan KAME\""] },
+    { n: "Certificados", s: ["Técnico en entrenamiento deportivo (SENA)", "Certificación de entrenador personal (ISSA · confirmar)", "Bodytech y Smart Fit: años en sala y como entrenador personal", "Lo que estudio ahora", "\"No es el músculo lo que te hace buen entrenador: es saber explicar\""] },
+    { n: "Zent", s: ["Quién es Zent y por qué lo creé (viaje a Florida, 2025)", "Zent vs Ozaru: el que explica y el que se enoja con los mitos", "Bocetos y proceso de una ilustración", "Pregunta: \"¿Qué personaje eras tú de niño?\"", "Encuesta: ¿qué mito destruye Ozaru esta semana?"] }
+  ];
+  var hl = document.getElementById("hlList");
+  HL.forEach(function (h, i) {
+    var c = document.createElement("div"); c.className = "card";
+    var head = document.createElement("div"); head.className = "row";
+    head.innerHTML = '<span class="badge">' + (i + 1) + '</span>';
+    var t = document.createElement("h3"); t.textContent = h.n; head.prepend(t);
+    c.appendChild(head);
+    var ol = document.createElement("ol"); ol.className = "l";
+    h.s.forEach(function (x) { var li = document.createElement("li"); li.textContent = x; ol.appendChild(li); });
+    c.appendChild(ol); hl.appendChild(c);
+  });
+})();
+</script>

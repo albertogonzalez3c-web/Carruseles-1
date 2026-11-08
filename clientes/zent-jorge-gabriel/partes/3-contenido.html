@@ -1,0 +1,907 @@
+<title>Zent Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f3f2fa;
+  --white: #ffffff;
+  --ink: #10112e;
+  --soft: #555a78;
+  --line: #d9d8ea;
+  --chip: #eae9f6;
+  --blue: #2340c8;
+  --blue-text: #1d36a8;
+  --purple: #5b2bb5;
+  --purple-text: #4a2296;
+  --sun: #f29a2e;
+  --sun-text: #9a5200;
+  --night: #12133a;
+  --night2: #1f2156;
+  --f-head: "Russo One", "Arial Black", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-size: clamp(32px, 5.4vw, 56px); line-height: 1.04; }
+h1 em, h2 em { font-style: normal; color: var(--purple-text); }
+h2 { font-size: clamp(23px, 3.1vw, 32px); line-height: 1.1; }
+h3 { font-size: 18.5px; line-height: 1.2; }
+p { margin: 0; }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--chip); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--blue-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--night); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--sun); }
+.card.dark .label { color: #a9b6ff; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c8cae6; }
+.card.dark ul.l b, .card.dark ol.l b, .card.dark .soft b { color: var(--white); }
+.card.blue { background: var(--blue); color: #fff; box-shadow: none; }
+.card.blue h2, .card.blue h3 { color: #fff; }
+.card.blue .label { color: #d3dbff; }
+.card.blue ul.l, .card.blue ol.l, .card.blue .soft { color: #e6ebff; }
+.card.blue ul.l b, .card.blue ol.l b, .card.blue .soft b { color: #fff; }
+.card.purple { background: var(--purple); color: #fff; box-shadow: none; }
+.card.purple h3, .card.purple h2 { color: #fff; }
+.card.purple .label { color: #e2d4ff; }
+.card.purple ul.l, .card.purple ol.l, .card.purple .soft { color: #efe7ff; }
+.card.purple ul.l b, .card.purple ol.l b, .card.purple .soft b { color: #fff; }
+.card.warn { background: #fff3df; box-shadow: inset 0 0 0 1px #f0cf98; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--purple); border-radius: 6px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.card.dark .say { background: var(--night2); color: var(--white); border-left-color: var(--sun); }
+.card.blue .say, .card.purple .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 4px; background: var(--chip); color: var(--purple-text); }
+.card.dark .badge { background: var(--night2); color: var(--sun); }
+.card.blue .badge, .card.purple .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #ece6ff; }
+.tbl td b { color: var(--ink); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
+.card.dark .cp { background: var(--night2); color: #fff; box-shadow: inset 0 0 0 1px #3a3d7a; }
+.n { width: 34px; height: 34px; border-radius: 8px; background: var(--night); color: var(--sun); display: grid; place-items: center; font: 400 17px/1 var(--f-head); flex: none; }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 6px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--purple-text); font-weight: 800; }
+.nicho { font: 400 clamp(21px, 2.8vw, 29px)/1.2 var(--f-head); color: var(--white); }
+.nicho em { font-style: normal; color: var(--sun); }
+.pill3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pill3 > div { background: var(--night2); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.pill3 b { color: #fff; }
+.pill3 p { color: #c8cae6; font-size: 14.5px; }
+.pill3 i { color: #aeb3e0; font-size: 14px; }
+.pill3 .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sun); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--purple); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--night); color: #fff; padding: 10px 16px; border-radius: 6px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; align-items: center; }
+.hero img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--purple); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .pill3 { grid-template-columns: 1fr; } .card { padding: 16px; } .hero { grid-template-columns: 1fr; } .hero img { width: 120px; height: 120px; order: -1; } }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap2 { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 17.5px; color: var(--soft); max-width: 70ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(243, 242, 250, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap2 { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 8px; padding: 9px 13px; font: 400 14px/1 var(--f-head); box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--night); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
+main.cont { padding-block: 26px 70px; }
+.view { display: grid; gap: 34px; }
+.sec > .head { display: grid; gap: 8px; max-width: 820px; }
+.hook { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 4px; background: var(--chip); color: var(--ink); }
+.tag.a { background: var(--purple); color: var(--white); }
+.fmt .ico { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font: 400 14px/1 var(--f-head); color: var(--white); }
+.fmt.big { box-shadow: inset 0 0 0 2px var(--purple); }
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.stage-h .big { font: 400 26px/1.1 var(--f-head); color: var(--purple-text); }
+.stage-h .pct { font: 500 11.5px/1 var(--f-mono); background: var(--night); color: var(--white); padding: 6px 8px; border-radius: 4px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 8px; padding: 10px; display: grid; gap: 5px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font: 400 15px/1 var(--f-head); }
+.day .dn small { font: 500 10.5px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 6px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.2; color: var(--white); }
+.k-yap { background: #2340c8; }
+.k-gs { background: #157a6e; }
+.k-vo { background: #3b3f8f; }
+.k-rol { background: #10112e; box-shadow: inset 3px 0 0 #f29a2e; }
+.k-oz { background: #b4441f; }
+.k-trend { background: #6a6f91; }
+.k-carc { background: #5b2bb5; }
+.k-carv { background: #ffffff; color: #4a2296 !important; box-shadow: inset 0 0 0 2px #5b2bb5; }
+.k-yt { background: #c0262d; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n2 { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 4px; white-space: nowrap; }
+.ti .n2.first { background: var(--purple); color: var(--white); }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 8px; background: var(--purple); color: var(--white); font: 400 16px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--sun); color: var(--ink); }
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 8px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--purple); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 6px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--night); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.hk { display: flex; gap: 8px; align-items: flex-start; }
+.hk .hook { flex: 1; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--purple-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.variants { display: grid; gap: 6px; background: var(--chip); border-radius: 8px; padding: 10px 12px; }
+.variants b { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--purple-text); }
+.check { padding-left: 0; }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--purple); }
+.niche { background: var(--night); color: #fff; box-shadow: inset 4px 0 0 var(--sun); }
+.niche .label { color: var(--sun); }
+.niche .nq { font: 400 clamp(20px, 2.8vw, 28px)/1.2 var(--f-head); color: #fff; }
+.pil { box-shadow: inset 0 0 0 2px var(--purple); }
+.pil .pn { width: 34px; height: 34px; border-radius: 8px; background: var(--purple); color: #fff; display: grid; place-items: center; font: 400 18px/1 var(--f-head); }
+.fase p b { color: var(--ink); }
+.cgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.cslide { background: #fff; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line); padding: 16px; display: grid; gap: 8px; align-content: start; }
+.cslide.cv { box-shadow: inset 0 0 0 1px var(--line), inset 4px 0 0 var(--blue); }
+.cslide.cc { box-shadow: inset 0 0 0 1px var(--line), inset 4px 0 0 var(--purple); }
+.cslide .big { font: 400 20px/1.2 var(--f-head); color: var(--ink); }
+.cslide .big em { font-style: normal; color: var(--purple-text); }
+.cslide ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 14px; line-height: 1.4; color: var(--soft); }
+.cslide .tp { font: 700 11px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.cslide .scn { font-size: 13px; color: var(--purple-text); background: var(--chip); border-radius: 6px; padding: 8px 10px; }
+pre.box { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); max-height: 420px; overflow: auto; background: var(--chip); padding: 12px; border-radius: 8px; margin: 0; overflow-wrap: anywhere; }
+.card.dark pre.box { background: var(--night2); color: #e8e9ff; }
+.prm { display: grid; gap: 8px; }
+.prm p.q { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-size: 14.5px; font-weight: 600; }
+@media (max-width: 900px) { .week { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .cgrid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .week { grid-template-columns: 1fr 1fr; } .script .line { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+
+<header class="top wrap2">
+  <span class="label">Zent · Jorge Gabriel · @saiyatrainer · Parte 3 · Contenido</span>
+  <h1>Hablas como nadie y dibujas como nadie. <em>Úsalo todos los días.</em></h1>
+  <p class="lede">Tu mensaje: <b>"El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías."</b> 3 piezas al día: <b>mucho yapping</b> (se te da muy bien), green screen y voz en off con 3 ganchos como trial reels, y <b>un carrusel ilustrado al día</b> alternando conexión y valor, sacados en lote con tu Proyecto de Claude. YouTube: <b>1 video a la semana con el celular</b>, natural, sin producción.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap2" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="car">Carruseles</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="pro">Proyecto de carruseles en Claude</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude Code editor</button>
+  </div>
+</nav>
+
+<main class="wrap2 cont">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="El plan">
+    <div class="sec">
+      <div class="head"><span class="label">Tu nicho y tu método</span><h2>A quién le hablas. Siempre lo mismo.</h2><p class="soft">Todo lo que publiques sale de aquí. Si una pieza no le habla a esta persona o no enseña un pilar del método, no se graba.</p></div>
+      <div class="card niche"><span class="label">Tu nicho · "El entrenador de los latinos en Estados Unidos"</span><p class="nq">Ayudo a hombres latinos de +30 en Estados Unidos que entrenaban de jóvenes a retomar el entrenamiento y ponerse en forma, aunque el trabajo y la familia les dejen poco tiempo. Sin dietas extremas.</p></div>
+      <div class="g3">
+        <article class="card pil"><span class="pn">1</span><h3>Pilar 1 · Tiempo real</h3><p class="soft">2 a 4 sesiones de 35–45 min que caben en su semana, con versión de 20 min para semanas malas.</p><p class="soft" style="font-style:italic">Tu historia: 2 horas de bus por trayecto a los 19; hotel sin carro en EE. UU.; mancuernas de cemento en pandemia.</p></article>
+        <article class="card pil"><span class="pn">2</span><h3>Pilar 2 · Comida real</h3><p class="soft">La comida de su casa, organizada. Sin prohibir carbohidratos ni dietas de revista.</p><p class="soft" style="font-style:italic">Tu historia: no te alcanzaba para leche de almendras; comías lo que cocinaba tu mamá y progresaste.</p></article>
+        <article class="card pil"><span class="pn">3</span><h3>Pilar 3 · Retomar sin culpa</h3><p class="soft">Una semana mala no borra nada: se ajusta el plan, se entiende el porqué y se retoma.</p><p class="soft" style="font-style:italic">Tu historia: lesión de tobillo, kilos de más dos veces y el 17 de enero de 2026, otra vez. Hoy, tu mejor versión.</p></article>
+      </div>
+      <div class="g3">
+        <article class="card fase"><span class="tag a">Fase 1 · semanas 1–4</span><h3>Arranque</h3><p class="soft"><b>Qué pasa:</b> test, plan según su agenda real, técnica, primeros hábitos de comida.</p></article>
+        <article class="card fase"><span class="tag a">Fase 2 · semanas 5–12</span><h3>Progreso</h3><p class="soft"><b>Qué pasa:</b> sube cargas y ajustas cada semana según su trabajo y su casa.</p></article>
+        <article class="card fase"><span class="tag a">Fase 3 · mes 4+</span><h3>Autonomía</h3><p class="soft"><b>Qué pasa:</b> aprende a ajustar solo con turnos, viajes y fiestas.</p></article>
+      </div>
+      <div class="card dark"><span class="label">3 no negociables del Método KAME</span><ul class="l"><li><b>Check-in cada domingo:</b> sesiones hechas, peso o cintura y cómo fue la semana.</li><li><b>Mínimo 2 sesiones</b> aunque la semana sea mala (la versión de 20 min cuenta).</li><li><b>Avisar cuando cambia la semana</b> en vez de desaparecer.</li></ul></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Tus formatos</span><h2>Tú a cámara y Zent en los carruseles. El resto, a su servicio.</h2><p class="soft">Alberto lo tiene claro: el yapping es lo tuyo. Hablar a cámara de una idea, con tu energía, es lo que hace que confíen en la persona detrás del dibujo. Los carruseles ilustrados son lo que te guardan y comparten.</p></div>
+      <div class="g4">
+        <article class="card fmt big"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">Tú a cámara, una idea, 30–60 s, como si le hablaras a un compañero de trabajo de 38 años en el break. Mínimo 4–5 a la semana.</p></article>
+        <article class="card fmt big"><span class="ico k-carc">CC</span><h3>Carrusel conexión</h3><p class="soft">Tu historia, tus caídas, escenas de la vida de tu cliente dibujadas con Zent. Hace que te sigan.</p></article>
+        <article class="card fmt big"><span class="ico k-carv" style="color:#4a2296">CV</span><h3>Carrusel valor</h3><p class="soft">Rutinas de 2–3 días, plato latino, mitos, errores al volver. Hace que te guarden.</p></article>
+        <article class="card fmt"><span class="ico k-gs">GS</span><h3>Green screen</h3><p class="soft">Delante de un post, un titular o un comentario ("sin carbohidratos de noche", "entrena 6 días o no sirve"), y lo desmontas.</p></article>
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Tu voz sobre clips tuyos (o recursos de video libres) o sobre tus ilustraciones. Cada guion con 3 ganchos como trial reels.</p></article>
+        <article class="card fmt"><span class="ico k-rol">RE</span><h3>Rol entrenador</h3><p class="soft">Armando la semana de un papá que trabaja 10 h, respondiendo un DM, revisando un check-in (con permiso).</p></article>
+        <article class="card fmt"><span class="ico k-oz">OZ</span><h3>Zent vs. Ozaru</h3><p class="soft">Tu personaje en modo sarcástico contra un mito (tu lado Aries Terrón), con respeto y con datos.</p></article>
+        <article class="card fmt"><span class="ico k-yt">YT</span><h3>YouTube con el celular</h3><p class="soft">1 a la semana, 6–12 min, consejo natural. Rompe el "no tengo cámara": el celular basta.</p></article>
+      </div>
+      <div class="card chip"><span class="label">Tu frase y tu palabra</span><p style="font-weight:700;font-size:17px">"El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías."</p><p class="soft" style="font-size:14px">Que salga, de una forma u otra, en todo lo que publiques. Palabra clave para DMs: <b>KAME</b>. CTA alternativo: <b>"haz mi test, link en mi perfil"</b>.</p></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Tu semana</span><h2>3 piezas al día: 13 reels, 7 carruseles y 1 YouTube.</h2><p class="soft">Alternas semana A y semana B para que nunca vayan dos carruseles del mismo tipo seguidos: A = conexión, valor, conexión…; B = valor, conexión, valor… Los trial reels de variantes de gancho no cuentan como pieza: la pieza es la ganadora. Grabas en lote y los carruseles salen en lote del Proyecto de Claude.</p></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:28px"></div>
+      <div class="card blue"><span class="label">Regla de carruseles · mínimo 3 a la semana, tú haces 7</span><p><b>Conexión</b> = tu historia, tu vulnerabilidad, la vida de tu cliente contada con Zent, una creencia. <b>Valor</b> = rutina, comida, mito, error, checklist. Tienes 24 ideas con estructura de slides en <b>Carruseles</b> y la máquina para sacar muchas más en <b>Proyecto de carruseles en Claude</b>.</p></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voz en off · Trial reels</span><h2>Un guion, tres ganchos, gana el que mejor rinde.</h2><p class="soft">Instagram te deja publicar un reel <b>como prueba</b>: solo lo ve gente que no te sigue y no aparece en tu perfil. Que decidan los datos.</p></div>
+      <div class="g2">
+        <div class="card dark"><span class="label">El sistema</span><div class="steps">
+          <div><p><b>Graba el cuerpo una vez:</b> tu voz con la idea + clips tuyos entrenando, cocinando o caminando, o tus ilustraciones con movimiento.</p></div>
+          <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C.</p></div>
+          <div><p><b>Publica las 3 como trial reel</b> el mismo día, con unas horas de diferencia.</p></div>
+          <div><p><b>A las 24–72 h compara:</b> vistas, % que lo ve entero, compartidos y guardados.</p></div>
+          <div><p><b>La ganadora la compartes en tu perfil.</b> Esa es la pieza del día.</p></div>
+          <div><p><b>Apúntalo en tu reporte:</b> qué tipo de gancho ganó (pregunta, historia, mito, cifra).</p></div>
+        </div></div>
+        <div class="card"><h3>Tu registro de pruebas</h3><div class="tblwrap"><table class="tbl" style="min-width:420px">
+          <thead><tr><th>Guion</th><th>Gancho</th><th>Vistas</th><th>% entero</th><th>Gana</th></tr></thead>
+          <tbody><tr><td>Ej.: 2 días también cuentan</td><td>A · pregunta</td><td>900</td><td>17 %</td><td></td></tr><tr><td></td><td>B · tu historia del hotel</td><td>2.300</td><td>29 %</td><td>✓</td></tr><tr><td></td><td>C · el mito de los 6 días</td><td>1.400</td><td>21 %</td><td></td></tr></tbody>
+        </table></div><p class="soft" style="font-size:13.5px">Números del ejemplo, ilustrativos. Cada prueba la apuntas en tu reporte.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Anuncios de seguidores · solo si decides ponerlos</span><h2>La mejor voz en off de la semana, a latinos de EE. UU. Poco dinero, reglas fijas.</h2><p class="soft">No es para vender: es para que te sigan latinos +30 de EE. UU. y luego les escribas tú. Tienes 3 guiones completos de anuncio en <b>Guiones listos</b>.</p></div>
+      <div class="g2">
+        <div class="card blue"><span class="label">Cómo se monta</span><ul class="l">
+          <li><b>La pieza:</b> voz en off de 30–45 s, un solo ángulo, gancho en 3 s, cierre "Sígueme para…", subtítulos siempre.</li>
+          <li><b>Dónde:</b> desde el reel → Promocionar → objetivo "Más visitas al perfil".</li>
+          <li><b>Público:</b> Estados Unidos, idioma español, hombres de 30 a 50, intereses de fitness o gimnasio (o Advantage+ con idioma español).</li>
+          <li><b>Dinero:</b> de 5 a 10 USD al día. <b>A los 2 días se valora.</b></li>
+          <li><b>Ángulos que mejor encajan:</b> "no es falta de tiempo", "2 días también cuentan", "entrenaba de joven", "sin dietas extremas".</li>
+        </ul></div>
+        <div class="card"><span class="label">Semáforo a los 2 días (apúntalo en el reporte)</span><ul class="l">
+          <li><b>Menos de 1 USD por seguidor:</b> se mantiene y se escala (hasta 10 USD/día).</li>
+          <li><b>Entre 1 y 1,5 USD:</b> cambias el gancho y vuelves a probar.</li>
+          <li><b>Más de 1,5 USD:</b> se corta y entra la siguiente ganadora.</li>
+        </ul>
+        <p class="soft" style="font-size:13.5px"><b>Normas de Meta:</b> nunca "¿tienes panza?", "¿estás gordo?", "¿te duele la rodilla?" ni nada que le atribuya a quien lo ve un rasgo de su cuerpo o su salud. Habla en primera persona ("yo dejé de entrenar 2 años") o con "la mayoría" ("la mayoría de los papás que trabajan 10 horas…"). Sin antes/después ni kilos con plazo.</p>
+        <p class="soft" style="font-size:13.5px">Cada seguidor nuevo recibe tu bienvenida a mano ese mismo día: es una conversación más para el CRM.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Rol entrenador</span><h2>Que te vean trabajando, no solo hablando de entrenar.</h2><p class="soft">Todavía no tienes casos publicados: el rol entrenador es tu prueba mientras llegan.</p></div>
+      <div class="g3">
+        <div class="card"><h3>"Le armo la semana a un papá que trabaja 10 horas"</h3><p class="soft">Pizarra o notas del celular: lunes y jueves 40 min, sábado 30 min con los niños cerca. Por qué así.</p></div>
+        <div class="card"><h3>"Respondo tu DM"</h3><p class="soft">Lees una pregunta real (sin nombre): "¿sirve entrenar 2 días?" y respondes como coach.</p></div>
+        <div class="card"><h3>"Reviso un check-in"</h3><p class="soft">Con permiso y sin nombre: semana mala, 2 sesiones de 20 min. Qué ajustas y qué no.</p></div>
+        <div class="card"><h3>"Si fueras mi cliente…"</h3><p class="soft">"…y llevaras 3 años sin entrenar, esto es lo que haríamos la primera semana."</p></div>
+        <div class="card"><h3>La versión de 20 minutos</h3><p class="soft">Grábala en tu casa: es la rutina para el día en que todo sale mal. Muy guardable.</p></div>
+        <div class="card"><h3>Corrijo una técnica</h3><p class="soft">Sentadilla o press con rodilla o espalda sensibles: ajustes simples (y "consulta a tu médico" si hay dolor).</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">YouTube</span><h2>1 video a la semana, con el celular. Natural, sin producción.</h2><p class="soft">Alberto lo quiere así para romper el "no tengo cámara": el celular, un trípode o una pila de libros, buena luz y un consejo. 6–12 minutos. No te cargamos más de momento: uno a la semana y sin fallar.</p></div>
+      <div class="g2">
+        <div class="card"><h3>8 títulos para tus primeros 2 meses</h3><div id="yt"></div></div>
+        <div class="card dark"><span class="label">En cada video</span><ul class="l">
+          <li><b>Primeros 30 s:</b> el problema ("trabajas mucho y no encuentras el momento") y qué se lleva si se queda.</li>
+          <li><b>Habla como en tus yappings:</b> una idea, ejemplos de tu vida, cero guion leído.</li>
+          <li><b>A mitad:</b> "Si quieres que te arme la semana, haz mi test en la descripción".</li>
+          <li><b>Al final:</b> "Escríbeme KAME por Instagram".</li>
+          <li><b>Siempre el mismo día</b> (por ejemplo, domingo) y de cada video salen 2–3 clips para reels.</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Historias por bloques + Estados de WhatsApp · todos los días</span><h2>6–10 historias al día en 4 bloques, y 3 Estados de WhatsApp.</h2><p class="soft">Los reels y carruseles traen gente. Las historias y los Estados hacen que confíen y te escriban. Cada respuesta se contesta a mano.</p></div>
+      <div class="g2">
+        <div class="card"><h3>Tu día en 4 bloques (Instagram)</h3><ul class="l">
+          <li><b>Mañana (2–3) · Tú:</b> tu entreno corto, tu desayuno de casa, tu camino al trabajo.</li>
+          <li><b>Mediodía (2–3) · Rol entrenador:</b> una pregunta respondida, un ajuste, Zent explicando algo.</li>
+          <li><b>Tarde (1–2) · Prueba:</b> un mensaje de cliente (con permiso), tu certificado, tu progreso.</li>
+          <li><b>Noche (1–2) · Conversación:</b> encuesta o caja de preguntas. Cada respuesta es un DM que abres.</li>
+        </ul></div>
+        <div class="card"><h3>Un tema para cada día</h3><ul class="l">
+          <li><b>Lunes:</b> encuesta "¿Cuántos días puedes entrenar esta semana? 1–2 / 3+". A los de 1–2, les escribes.</li>
+          <li><b>Martes:</b> <b>secuencia CTA</b>.</li>
+          <li><b>Miércoles:</b> Zent vs. Ozaru: mito de la semana con encuesta.</li>
+          <li><b>Jueves:</b> caja "¿Qué te frena para retomar?".</li>
+          <li><b>Viernes:</b> <b>secuencia CTA</b>.</li>
+          <li><b>Sábado:</b> el finde con la familia: entrenar 30 min y comer en la reunión sin culpa.</li>
+          <li><b>Domingo:</b> tu check-in de la semana + el YouTube.</li>
+        </ul></div>
+      </div>
+      <div class="g2">
+        <div class="card purple"><span class="label">Martes y viernes · Secuencia CTA en 5 historias</span><ol class="l">
+          <li><b>El problema:</b> "Si entrenabas de joven y hoy entre el trabajo y la casa no encuentras el momento…"</li>
+          <li><b>Por qué pasa:</b> "No es falta de tiempo: sigues intentando entrenar como cuando sí lo tenías."</li>
+          <li><b>La prueba:</b> tu historia (hotel, sin carro) o un caso con permiso.</li>
+          <li><b>La oferta:</b> "Esta semana abro plazas del Plan KAME."</li>
+          <li><b>La acción:</b> "Escríbeme <b>KAME</b> o haz mi test (link)." + caja de preguntas.</li>
+        </ol></div>
+        <div class="card"><span class="label">Estados de WhatsApp · 3 al día</span><ul class="l">
+          <li><b>Mañana:</b> Zent con la frase del día o tu entreno de 30 min.</li>
+          <li><b>Tarde:</b> un consejo corto (el carrusel del día en 2 imágenes).</li>
+          <li><b>Noche:</b> una pregunta: "Responde con un 💪 si esta semana vas a hacer tus 2 sesiones".</li>
+          <li>Los ven tus contactos: antiguos clientes, conocidos, gente de grupos. <b>No es una lista de publicidad:</b> a quien responde, le contestas como persona (ver Embudo).</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Bloque "Mi historia"</span><h2>De la ropa ancha y la barra vacía a la mejor versión pasados los 30.</h2><p class="soft">Tus etapas son las de tu cliente. Grábala en las 2 primeras semanas: un carrusel ilustrado fijado + 5 yappings.</p></div>
+      <div class="g2">
+        <div class="card"><ul class="l">
+          <li><b>Carrusel fijado:</b> "Me tapaba los brazos con ropa ancha. Hoy entreno a latinos +30 en EE. UU." (estructura en Carruseles).</li>
+          <li><b>Yapping 1 · La barra vacía:</b> "Mi primer día no podía con la barra vacía del press de banca."</li>
+          <li><b>Yapping 2 · Dos horas de bus:</b> "A los 19 pasaba 4 horas al día en transporte y aun así entrenaba."</li>
+          <li><b>Yapping 3 · Mancuernas de cemento:</b> "En la pandemia perdí el trabajo y me hice mancuernas de cemento."</li>
+          <li><b>Yapping 4 · Hotel sin carro:</b> "Llegué a Estados Unidos, 8 horas en un hotel, sin carro. Entrenar se me cayó."</li>
+          <li><b>Yapping 5 · Hoy:</b> "Pasados los 30, me lesioné, subí de peso y volví. Estoy en la mejor versión que he tenido."</li>
+        </ul></div>
+        <div class="card dark"><span class="label">Antes de grabarla</span><p>Busca fotos tuyas de adolescente, de Smart Fit y de hoy. Si no hay fotos, dibújalas con Zent: es tu ventaja.</p><p style="font-size:14px">Cuenta tus caídas sin vergüenza: es lo que hace que tu cliente se vea en ti.</p><p style="font-size:14px">Lo de tu familia, tu prometida y cualquier tema de papeles se queda fuera salvo que tú decidas lo contrario. "Llegué a EE. UU." basta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁNGULOS -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos">
+    <div class="sec">
+      <div class="head"><span class="label">Tu banco de ideas</span><h2>Todo lo que le puedes decir a un latino +30 que quiere volver a entrenar.</h2><p class="soft">Cada familia apoya un pilar del método. Los marcados con <b>Carrusel conexión</b> o <b>Carrusel valor</b> te sirven para tus carruseles: filtra por formato. Las frases entre comillas son tuyas, del documento de tu historia.</p></div>
+      <div class="card dark"><span class="label">Cómo usarlo</span><ul class="l">
+        <li><b>De 1 ángulo salen 3 piezas:</b> un yapping, un carrusel ilustrado y un Estado o historia.</li>
+        <li><b>Rota las familias:</b> cada semana, al menos una de cada pilar, y tu historia siempre.</li>
+        <li><b>Repite tu frase:</b> "no es que no tengas tiempo…".</li>
+        <li><b>Límite:</b> nada de kilos con plazo ni resultados de clientes inventados.</li>
+      </ul></div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar (p. ej. rodilla, carbohidratos, hijos, hotel, Ozaru…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- CARRUSELES -->
+  <section class="view" id="v-car" hidden aria-label="Carruseles">
+    <div class="sec">
+      <div class="head"><span class="label">Carruseles: 1 al día alternando conexión y valor</span><h2>Zent en la vida de tu cliente. Portada que pica, 6–8 slides, cierre con KAME.</h2><p class="soft">Tu estilo de siempre: ilustración anime, azul marino, azul de la camiseta, morado de la sudadera y naranja de atardecer solo para la palabra clave. Texto blanco en franja oscura, letra gruesa, máximo 12–15 palabras por slide. Cada idea trae la escena que dibujar.</p></div>
+      <div class="g2">
+        <div class="card purple"><span class="label">Conexión</span><p>Tu historia, tus caídas, la vida de tu cliente contada con Zent, creencias. <b>Objetivo:</b> que se vea en ti y te siga. Cierre: "Si te pasa esto, escríbeme KAME".</p></div>
+        <div class="card blue"><span class="label">Valor</span><p>Rutinas cortas, comida de casa, mitos, errores al volver, checklists. <b>Objetivo:</b> que lo guarde y lo comparta. Cierre: "Guárdalo y, si quieres que te arme la semana, haz mi test".</p></div>
+      </div>
+      <div class="sec"><div class="head"><span class="label">Carruseles de conexión · 12 ideas</span><h2>Tu historia y la vida de tu cliente.</h2></div><div class="cgrid" id="carC"></div></div>
+      <div class="sec"><div class="head"><span class="label">Carruseles de valor · 12 ideas</span><h2>Lo que se guarda y se comparte.</h2></div><div class="cgrid" id="carV"></div></div>
+    </div>
+  </section>
+
+  <!-- PROYECTO CLAUDE -->
+  <section class="view" id="v-pro" hidden aria-label="Proyecto de carruseles en Claude">
+    <div class="sec">
+      <div class="head"><span class="label">Proyecto de carruseles en Claude</span><h2>Un Proyecto en la app de Claude que investiga y te saca carruseles en lote, en tu estilo.</h2><p class="soft">Alberto quiere que tengas <b>muchos</b> carruseles. La forma: un Proyecto de Claude con tu historia, tu nicho, tu tono y tu estilo visual guardados una vez. Luego le pides "dame 7" y te devuelve el texto de cada slide y la descripción de cada ilustración para que tú la dibujes o la generes con tu herramienta de siempre. <b>Claude propone, tú decides.</b></p></div>
+      <div class="g2">
+        <div class="card dark"><span class="label">Créalo una vez (15 minutos)</span><div class="steps">
+          <div><p><b>Entra en claude.ai</b> (o la app de Claude en la computadora o el celular) con tu cuenta.</p></div>
+          <div><p><b>Menú lateral → Proyectos → "Crear proyecto".</b> Nombre: <b>Carruseles Zent</b>. Descripción: "Carruseles ilustrados para latinos +30 en EE. UU."</p></div>
+          <div><p><b>Instrucciones del proyecto:</b> dentro del proyecto, en "Instrucciones" (Set project instructions), pega el bloque de la derecha tal cual.</p></div>
+          <div><p><b>Conocimiento del proyecto:</b> sube como archivos (1) tu historia sin datos sensibles (la tienes abajo para copiar a un documento), (2) 4–6 imágenes de tus mejores carruseles y de Zent (camiseta azul, sudadera morada) como referencia de estilo y (3) cuando los tengas, capturas de tus carruseles con más guardados.</p></div>
+          <div><p><b>Activa la búsqueda web</b> en el chat (si tu plan la tiene) para que investigue dudas reales y tendencias. Si no la tiene, trabajará con lo que sabe y te lo dirá.</p></div>
+          <div><p><b>Abre un chat dentro del proyecto</b> y pega el prompt maestro. Cada semana, un chat nuevo dentro del mismo proyecto.</p></div>
+        </div></div>
+        <div class="card"><div class="row"><span class="label">Instrucciones del proyecto · copiar y pegar</span><button class="cp" data-copy="pInst">Copiar instrucciones</button></div>
+<pre class="box" id="pInst">Eres el director creativo y guionista de carruseles de Jorge Gabriel, "Zent" (@saiyatrainer, marca SaiyaTrainer), entrenador personal certificado, latino, que vive en Estados Unidos.
+
+QUIÉN ES (úsalo como material de historia; no inventes nada más)
+- Adolescente: baloncesto, graffiti, dibujo y diseño. Era delgado, sobre todo de brazos y hombros, y usaba ropa ancha para disimularlo. Admiraba a Arnold, John Cena y Vegeta.
+- Su primer gimnasio estaba en un segundo piso con un póster de Arnold. No podía con la barra vacía en press de banca. Aprendía con videos. Su mamá le pagó las primeras mensualidades.
+- A los 19 trabajaba en un gimnasio (Bodytech): más de 2 horas de transporte por trayecto y jornadas de 8 horas. Un mentor le dijo: "Si usted no entrena pierna, el resto del cuerpo le va a quedar mal". Él quería brazos.
+- No le alcanzaba para leche de almendras, quesos o jamón de pavo: comía lo que cocinaba su mamá y aun así progresó.
+- Estudió entrenamiento deportivo (SENA). Fue entrenador personal y responsable de sede en Smart Fit (2018–2019), su etapa de más avance físico.
+- Pandemia 2020: perdió el trabajo y entrenó en casa con mancuernas improvisadas de cemento o yeso, bandas, flexiones y sentadillas.
+- 2021: llegó a Estados Unidos. 8 horas en un hotel, sin carro y sin saber manejar, caminatas largas o Uber. Entrenar se volvió irregular: flexiones y sentadillas los días libres.
+- 2023: lesión de tobillo y aumento de peso. Se reorganizó: volvió a entrenar y a registrar lo que comía con una app. Después volvió a subir de peso al cambiar de hábitos.
+- 17 de enero de 2026: retomó con organización. Hoy, pasados los 30, construye la mejor versión física que ha tenido, sin condiciones perfectas.
+- En 2025 creó a Zent, su personaje de anime. Zent tiene una versión "Ozaru", sarcástica, que se enoja con los mitos del fitness (con respeto y con evidencia).
+- Le marcó una señora de unos 85 años que entrenaba en su gimnasio y bromeaba con sus "brazos de murciélago": ser entrenador no es contar repeticiones.
+
+NICHO (frase exacta, no la cambies)
+Ayudo a hombres latinos de +30 en Estados Unidos que entrenaban de jóvenes a retomar el entrenamiento y ponerse en forma, aunque el trabajo y la familia les dejen poco tiempo. Sin dietas extremas.
+Posicionamiento: "El entrenador de los latinos en Estados Unidos".
+Cliente ideal: hombre latino de 30 a 45 en EE. UU., entrenaba de joven, hoy trabaja muchas horas (turnos, oficina, construcción, hotel, manejo), tiene pareja o hijos, está cansado, subió de peso, quizá le molesta una rodilla o la espalda, empieza con ganas y lo deja a las 3 semanas.
+
+MÉTODO KAME (3 pilares, 3 fases, 3 no negociables)
+- Pilar 1 · Tiempo real: 2 a 4 sesiones de 35–45 min que caben en su semana, con versión de 20 min para semanas malas.
+- Pilar 2 · Comida real: la comida de su casa organizada (arroz, frijoles, arepa, tortilla…), sin prohibir carbohidratos ni dietas extremas.
+- Pilar 3 · Retomar sin culpa: una semana mala no borra nada; ajustar el plan, entender el porqué y retomar.
+- Fases: Arranque (semanas 1–4), Progreso (semanas 5–12), Autonomía (mes 4 en adelante).
+- No negociables: check-in cada domingo; mínimo 2 sesiones aunque la semana sea mala; avisar cuando cambia la semana.
+Frase de marca: "El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías."
+Mitos que combate: quitar carbohidratos para perder grasa; sudar más es quemar más grasa; entrenar más siempre es mejor; tener músculos te hace buen entrenador; los esteroides como atajo; entrenar 1–2 días no sirve.
+
+TONO
+Español latino neutro (tú, nunca vosotros), cercano, de entrenador que ya pasó por ahí. Humor ligero con referencias de anime cuando sume (Dragon Ball, Vegeta, Kamehameha, Ozaru), sin abusar. Educador: siempre explica el porqué en una línea. Nada de culpa ni de promesas mágicas.
+
+ESTRUCTURA DE CADA CARRUSEL
+- Tipo: CONEXIÓN (historia, vulnerabilidad, escena de la vida del cliente, creencia) o VALOR (rutina, comida, mito, error, checklist, rol entrenador). Se alternan.
+- 6 a 8 slides (formato 1080x1350). Slide 1 = portada con gancho de máximo 10 palabras. Slides intermedias: una idea por slide, máximo 15 palabras. Penúltima: la lección o el resumen. Última: CTA.
+- CTA conexión: "Si te pasa esto, escríbeme KAME". CTA valor: "Guárdalo. Si quieres que te arme la semana, haz mi test (link en mi perfil)".
+- Para cada slide da: (a) TEXTO exacto y (b) ESCENA: descripción de la ilustración para dibujar o generar.
+
+ESTILO VISUAL (para las escenas)
+Ilustración estilo anime, colores saturados, sombreado limpio. Personaje fijo: Zent, hombre latino de unos 30 y tantos, piel morena clara, barba negra recortada, pelo negro en punta, cejas marcadas, cuerpo atlético pero creíble; viste camiseta azul rey o sudadera morada sin mangas y pantalón negro. Escenarios de la vida del cliente: salida del turno, el carro, la cocina familiar, la sala con los hijos, gimnasio de cadena, parque al atardecer. Paleta: azul marino, azul rey, morado, y naranja de atardecer solo para resaltar una palabra o cifra. Texto blanco sobre franja azul marino o negra, letra gruesa. Ozaru aparece solo en carruseles de mitos, como versión enojada y cómica de Zent.
+
+REGLAS
+1. No inventes datos de Jorge, clientes, testimonios, cifras de resultados ni estudios. Si un dato falta, escribe [FALTA DATO]. Si citas una investigación, di de dónde sale y márcalo [VERIFICAR].
+2. Nada sensible: ni estatus migratorio ni temas legales, ni detalles de su familia, su prometida o la salud de terceros. "Llegó a EE. UU." basta.
+3. No eres médico ni él tampoco: ante dolor o lesión, "consúltalo con tu médico" y propone adaptar, no diagnosticar.
+4. Nada de "pierde X kilos en Y días", ni antes/después inventados.
+5. Ningún contenido que diga al lector lo que le pasa a su cuerpo de forma ofensiva; habla en primera persona o de "la mayoría".
+6. Entrega siempre en el formato que te pidan; por defecto, el formato de lote del prompt maestro.</pre></div>
+      </div>
+      <div class="g2">
+        <div class="card"><div class="row"><span class="label">Prompt maestro · investiga y genera un lote</span><button class="cp" data-copy="pMaster">Copiar prompt</button></div>
+<pre class="box" id="pMaster">Vamos a preparar el lote de carruseles de la semana del [fecha].
+
+PASO 1 · INVESTIGA (10 minutos de trabajo tuyo, no mío)
+Si tienes búsqueda web, busca qué preguntan y qué les frustra a hombres latinos de 30 a 45 en Estados Unidos que quieren volver a entrenar con poco tiempo: comentarios en YouTube e Instagram en español, Reddit, foros, noticias de temporada ([temporada: p. ej. Thanksgiving, fiestas de diciembre, propósitos de enero, verano]). Dame 10 dolores o dudas reales, cada uno con su fuente (enlace o tipo de sitio). Si no tienes búsqueda web, dímelo y usa solo mi historia y mi nicho.
+
+PASO 2 · PROPÓN
+Con eso y con mi historia del proyecto, propón 12 ideas de carrusel (6 de CONEXIÓN y 6 de VALOR) en una tabla: n.º, tipo, ángulo, gancho de portada, pilar del método que toca, por qué funcionaría. No repitas ideas de lotes anteriores que te pegue aquí: [pega títulos ya publicados o "ninguno"].
+
+PASO 3 · ESCRIBE
+Desarrolla las [7] que mejor alternen conexión y valor, empezando por [conexión/valor]. Para cada una:
+- Título interno y tipo.
+- Slides numeradas (6–8): TEXTO exacto + ESCENA de la ilustración (Zent, escenario, expresión, encuadre, colores).
+- Pie de publicación (caption) de 80–120 palabras, con pregunta final para comentarios.
+- 3 ganchos alternativos de portada.
+- Un Estado de WhatsApp de 1 línea que salga del carrusel.
+
+PASO 4 · REVISA
+Antes de entregar, repasa tus reglas: nada inventado, nada sensible, nada médico, frase de nicho intacta, CTA correcto. Dime en 3 líneas qué revisaste.
+
+Formato: títulos claros, sin introducciones largas.</pre></div>
+        <div class="card"><span class="label">Tu historia sin sensibles · para el archivo de conocimiento</span><p class="soft" style="font-size:14px">Copia esto a un documento (Google Docs o Word), guárdalo como "Historia Zent" y súbelo al proyecto. No incluye nada de tu familia, tu prometida, papeles ni salud de clientes.</p><button class="cp" data-copy="pHist" style="width:fit-content">Copiar historia</button>
+<pre class="box" id="pHist" style="max-height:260px">HISTORIA DE ZENT (para carruseles)
+- De adolescente: flaco de brazos y hombros, ropa ancha para disimular; baloncesto, graffiti y dibujo. Ídolos: Arnold, John Cena, Vegeta.
+- Primer gimnasio: segundo piso, póster de Arnold, no podía con la barra vacía. Videos de YouTube como maestros.
+- 19 años: 2+ horas de transporte por trayecto y 8 de trabajo en un gimnasio. Mentor: "priorice la pierna". Comida: la de casa, sin productos caros, y aun así progresó.
+- Técnico en entrenamiento deportivo (SENA). Entrenador personal y responsable de sede en Smart Fit (2018–2019).
+- Pandemia: sin trabajo, mancuernas de cemento o yeso, bandas, flexiones y sentadillas.
+- 2021: llega a Estados Unidos. Hotel, 8 horas, sin carro. Entrena cuando puede.
+- 2023: lesión de tobillo y kilos de más. Vuelve a empezar y registra lo que come.
+- Vuelve a subir de peso al cambiar de hábitos. 17-ene-2026: retoma con organización.
+- Hoy: más de 30 años, la mejor versión física que ha tenido, sin condiciones perfectas.
+- Creó a Zent en 2025. Plan KAME: entrenar dentro de la vida que tienes.
+- Frases: "El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías." / "Perder una sesión no borra el trabajo anterior." / "El objetivo no es vivir para entrenar, es aprender a entrenar dentro de la vida que realmente tenemos."
+- Lo que aprendió de una señora de 85 años que entrenaba en su gimnasio: ser entrenador no es contar repeticiones.</pre></div>
+      </div>
+      <div class="sec">
+        <div class="head"><span class="label">10 prompts de ejemplo</span><h2>Pégalos en un chat del proyecto. Cambia lo que va entre [corchetes].</h2></div>
+        <div class="g2" id="prompts"></div>
+      </div>
+      <div class="card blue"><span class="label">Rutina semanal con el proyecto (domingo, 45 minutos)</span><ol class="l">
+        <li><b>Chat nuevo</b> en el proyecto → prompt maestro → eliges 7 ideas.</li>
+        <li><b>Revisas el texto</b> y lo dices con tus palabras (Claude propone, tú decides).</li>
+        <li><b>Dibujas o generas las escenas</b> con tu herramienta habitual y montas las slides con tu plantilla.</li>
+        <li><b>Programas</b> uno al día alternando conexión y valor.</li>
+        <li><b>El domingo siguiente</b> le pegas los 3 carruseles con más guardados y compartidos: "haz más como estos" (prompt 10).</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- GUIONES -->
+  <section class="view" id="v-gui" hidden aria-label="Guiones listos">
+    <div class="sec">
+      <div class="head"><span class="label">Para grabar esta semana</span><h2>Nueve guiones: seis orgánicos y tres de anuncio "sígueme".</h2><p class="soft">Las voces en off llevan 3 ganchos para publicarlas como trial reels. Los yappings son guía: dilo con tus palabras, sin leer, pero no cambies la estructura.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- GRABAR -->
+  <section class="view" id="v-rec" hidden aria-label="Grabar bien">
+    <div class="sec">
+      <div class="head"><span class="label">Grabar bien</span><h2>Con el celular basta. Constancia antes que producción.</h2><p class="soft">Tu fuerte es hablar y dibujar. Lo técnico, lo mínimo para que se vea y se oiga bien.</p></div>
+      <div class="g2">
+        <div class="card blue"><span class="label">Yapping y green screen</span><ul class="l">
+          <li><b>Yapping:</b> celular a la altura de los ojos, plano de pecho para arriba, luz de frente (ventana delante, nunca detrás). Una idea por video.</li>
+          <li><b>Green screen:</b> en Instagram, Reels → efecto "Green screen" con la captura del post o titular detrás. También en CapCut.</li>
+          <li><b>Zent en pantalla:</b> pon tu ilustración detrás en el green screen cuando hables de Ozaru o de un mito.</li>
+          <li><b>Graba 5–6 yappings seguidos</b> cambiando de camiseta: material para la semana.</li>
+        </ul></div>
+        <div class="card"><span class="label">Voz en off y audio</span><ul class="l">
+          <li><b>Voz aparte</b>, en un cuarto con ropa o cortinas (menos eco), con el micrófono del celular a un palmo.</li>
+          <li><b>Micrófono de solapa</b> barato para yapping: es la mejor inversión.</li>
+          <li><b>Recursos:</b> clips tuyos entrenando, caminando o cocinando, tus ilustraciones con zoom suave o clips libres de derechos.</li>
+          <li><b>Subtítulos siempre:</b> mucha gente lo ve sin sonido en el trabajo.</li>
+        </ul></div>
+      </div>
+      <div class="g2">
+        <div class="card"><h3>Checklist antes de grabar</h3><ul class="l check">
+          <li>Luz de frente o de lado, nunca detrás.</li>
+          <li>Lente limpia y celular fijo (trípode o libros).</li>
+          <li>Micrófono puesto y probado.</li>
+          <li>Ropa azul, morada o negra: los colores de Zent.</li>
+          <li>Sabes el gancho de memoria.</li>
+          <li>Permisos por escrito si sale un cliente o un mensaje suyo.</li>
+        </ul></div>
+        <div class="card dark"><span class="label">Graba en lote</span><h3>2 sesiones de grabación + 1 de carruseles a la semana.</h3><ul class="l">
+          <li><b>Sesión 1 (domingo):</b> el YouTube + 2–3 clips sacados de él + voces en off.</li>
+          <li><b>Sesión 2 (miércoles):</b> 5–6 yappings, green screens y rol entrenador.</li>
+          <li><b>Carruseles:</b> los 7 de la semana con el Proyecto de Claude, de una vez.</li>
+          <li><b>Los demás días:</b> publicar, historias, Estados y tus 100 conversaciones.</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAUDE CODE -->
+  <section class="view" id="v-cla" hidden aria-label="Claude Code editor">
+    <div class="sec">
+      <div class="head"><span class="label">Claude Code como editor</span><h2>Tú grabas. Claude Code edita en tu computadora. Tú das el visto bueno.</h2><p class="soft">Para sostener 3 piezas al día sin pasarte la noche editando: Claude Code trabaja dentro de tu carpeta de contenido, corta silencios, subtitula y exporta con ffmpeg siguiendo tu manual (CLAUDE.md). <b>Claude propone, tú decides.</b> Nunca inventa cifras y nunca toca tus originales. (Los carruseles van por el Proyecto de Claude; esto es para video.)</p></div>
+      <div class="g2">
+        <div class="card dark"><span class="label">Configúralo una vez (30–45 minutos)</span><ol class="l">
+          <li><b>Instala Claude Code.</b> En Mac o Linux, abre la Terminal y pega: <code>curl -fsSL https://claude.ai/install.sh | bash</code>. En Windows, en PowerShell: <code>irm https://claude.ai/install.ps1 | iex</code>. O instala la app de escritorio de Claude y usa la pestaña <b>Code</b>.</li>
+          <li><b>Inicia sesión.</b> Escribe <code>claude</code> en la terminal (o abre la pestaña Code) y entra con tu cuenta.</li>
+          <li><b>Instala ffmpeg.</b> Mac: <code>brew install ffmpeg</code>. Windows: <code>winget install ffmpeg</code>. Linux: <code>sudo apt install ffmpeg</code>. O pídeselo a Claude: "instálame ffmpeg".</li>
+          <li><b>Crea la carpeta.</b> <b>Contenido-Zent</b> con 4 subcarpetas: <b>1-sin-editar/</b> (lo que grabas), <b>2-editados/</b> (lo que exporta Claude), <b>3-recursos/</b> (logo, ilustraciones de Zent, música, fuentes) y <b>4-referencias/</b> (videos de creadores a imitar, cada uno con un .txt: qué copiar y qué no). Abre Claude Code dentro (<code>cd Contenido-Zent</code> y <code>claude</code>) y acepta darle acceso.</li>
+          <li><b>Instala las skills de Alberto.</b> Copia las carpetas de skills que te pasó Alberto en <code>~/.claude/skills/</code> (en Windows, <code>C:\Users\tu-usuario\.claude\skills\</code>). Reinicia Claude Code y escribe <code>/skills</code> para comprobar que aparecen.</li>
+          <li><b>Pega tu CLAUDE.md</b> en la raíz de Contenido-Zent con el texto de la derecha. Claude lo lee cada vez que abres la carpeta.</li>
+        </ol></div>
+        <div class="card"><div class="row"><span class="label">CLAUDE.md · raíz de Contenido-Zent</span><button class="cp" data-copy="claudeMd">Copiar CLAUDE.md</button></div>
+<pre class="box" id="claudeMd"># Contenido-Zent · instrucciones para Claude Code
+
+Soy Jorge Gabriel, "Zent" (@saiyatrainer, marca SaiyaTrainer), entrenador personal certificado. Tú eres mi editor de video en esta carpeta.
+
+## A quién le hablo
+Ayudo a hombres latinos de +30 en Estados Unidos que entrenaban de jóvenes a retomar el entrenamiento y ponerse en forma, aunque el trabajo y la familia les dejen poco tiempo. Sin dietas extremas.
+Frase: "El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías."
+
+## Mi método: Método KAME
+- Tiempo real: 2–4 sesiones de 35–45 min, versión de 20 min para semanas malas.
+- Comida real: la comida de casa organizada, sin dietas extremas.
+- Retomar sin culpa: una semana mala no borra nada.
+
+## Tono
+Español latino neutro, cercano, con humor y referencias de anime cuando sumen. Educador: explico el porqué.
+
+## CTA
+- Orgánico: "Escríbeme KAME" o "haz mi test, link en mi perfil".
+- Anuncios: "Sígueme para…". Nunca "¿tienes…?" ni nada sobre el cuerpo o la salud de quien lo ve; sin antes/después ni kilos con plazo.
+
+## Formatos (3 piezas al día)
+Reels 9:16 1080x1920 de 20–60 s: yapping (el principal), green screen, voz en off (3 ganchos para trial reels), rol entrenador, Zent vs. Ozaru. YouTube 1 por semana (16:9, grabado con celular): de cada uno saco 2–3 clips.
+
+## Estilo de edición
+- Colores de marca: azul marino, azul rey, morado; naranja de atardecer solo para una palabra clave.
+- Gancho en los 3 primeros segundos, texto grande en pantalla desde el segundo 0.
+- Subtítulos siempre, letra gruesa, 2–4 palabras por línea, en el tercio inferior.
+- En yapping: corta silencios y muletillas, pero deja mi ritmo natural (no lo conviertas en metralleta).
+- Ilustraciones de 3-recursos/zent/ como cortinilla o fondo cuando hable de un mito (Ozaru).
+
+## Reglas
+1. Nunca inventes cifras, clientes, resultados ni testimonios. Si falta un dato, escribe [FALTA DATO].
+2. Nunca borres ni sobrescribas nada de 1-sin-editar/. Trabaja sobre copias y guarda en 2-editados/.
+3. Nombres: AAAA-MM-DD_formato_angulo (ej.: 2026-11-16_yapping_no-es-falta-de-tiempo.mp4).
+4. Antes de editar, dime en 3 líneas qué vas a hacer. Después, qué hiciste y dónde está el archivo.
+5. Si un guion rompe una regla de Meta o promete algo que no puedo demostrar, avísame.
+6. Nada de mi vida personal sensible (familia, pareja, papeles) salvo que yo lo diga.
+
+## Ejemplos que funcionaron
+(Se van añadiendo: archivo, por qué funcionó, vistas.)
+
+## Lecciones
+(Se van añadiendo: lo que corrijo de tus ediciones.)</pre></div>
+      </div>
+      <div class="card blue"><span class="label">Rutina para educar a Claude · cada semana</span><ol class="l">
+        <li><b>Grabas</b> en lote y dejas todo en 1-sin-editar/ con un nombre claro.</li>
+        <li><b>Claude edita</b> con una de las órdenes de abajo y exporta en 2-editados/.</li>
+        <li><b>Le das feedback concreto:</b> "subtítulos más grandes", "el gancho entra tarde", "deja esta pausa, es un chiste". Nunca "no me gusta".</li>
+        <li><b>Guardas lo aprendido</b> en "Ejemplos" y "Lecciones" de tu CLAUDE.md (orden 8). En 3–4 semanas edita como tú.</li>
+        <li><b>Los domingos:</b> pídele que lea tus ejemplos con más vistas y te proponga qué repetir.</li>
+      </ol></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">8 órdenes listas</span><h2>Copia, cambia lo que va entre [corchetes] y pégalo en Claude Code.</h2></div>
+      <div class="g2" id="orders"></div>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  function fallback(txt) { var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); show(ok ? "Copiado" : "Selecciona y copia a mano"); }
+  window.zCopy = function (txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function () { show("Copiado"); }, function () { fallback(txt); });
+    else fallback(txt);
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    var el = document.getElementById(b.getAttribute("data-copy")); if (!el) return;
+    window.zCopy(el.textContent.trim());
+  });
+})();
+</script>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = { yap: ["Yapping", "k-yap"], gs: ["Green screen", "k-gs"], vo: ["Voz en off", "k-vo"], rol: ["Rol entrenador", "k-rol"], oz: ["Zent vs. Ozaru", "k-oz"], trend: ["Tendencia", "k-trend"], carc: ["Carrusel conexión", "k-carc"], carv: ["Carrusel valor", "k-carv"], yt: ["YouTube", "k-yt"] };
+  var STAGES = [
+    { t: "Semana A · carruseles conexión, valor, conexión…", s: "Lunes, miércoles, viernes y domingo conexión; martes, jueves y sábado valor.", plan: [["yap", "vo", "carc"], ["gs", "rol", "carv"], ["yap", "oz", "carc"], ["vo", "yap", "carv"], ["gs", "rol", "carc"], ["yap", "trend", "carv"], ["yap", "yt", "carc"]] },
+    { t: "Semana B · carruseles valor, conexión, valor…", s: "Lunes, miércoles, viernes y domingo valor; martes, jueves y sábado conexión.", plan: [["yap", "gs", "carv"], ["vo", "rol", "carc"], ["yap", "oz", "carv"], ["gs", "yap", "carc"], ["vo", "rol", "carv"], ["yap", "trend", "carc"], ["yap", "yt", "carv"]] }
+  ];
+  var YT = [
+    ["Tenía 30+, trabajo y cero tiempo: así volví a entrenar (mi historia)", "El primero: tu historia de la ropa ancha a hoy, contada a cámara.", true],
+    ["Entrenar 2 días a la semana: ¿sirve? Cómo lo haría yo", "Pilar 1. Tu tema estrella.", true],
+    ["La rutina de 20 minutos para cuando todo sale mal", "Grabada en tu casa, de principio a fin.", false],
+    ["Qué come un entrenador latino en EE. UU. (sin dietas extremas)", "Pilar 2. Tu comida de casa y del súper.", false],
+    ["Fallé una semana entera. Qué hago ahora", "Pilar 3. Retomar sin culpa.", false],
+    ["5 mitos que te hacen perder el tiempo después de los 30", "Zent vs. Ozaru en formato largo.", false],
+    ["Volver al gym con molestias de rodilla: lo que yo haría (y cuándo ir al médico)", "Tu avatar Edward, sin nombrarlo.", false],
+    ["Thanksgiving y las fiestas sin tirar el año: mi plan", "Para noviembre–diciembre de 2026.", false]
+  ];
+  var FMTS = ["Yapping", "Green screen", "Voz en off", "Rol entrenador", "Zent vs. Ozaru", "Tendencia", "Carrusel conexión", "Carrusel valor", "YouTube", "Historias", "Estados WhatsApp"];
+  var FAMS = [
+    { n: "No es falta de tiempo", d: "Tu frase de marca. El centro de todo." },
+    { n: "Entrenabas de joven", d: "El que quiere volver, no empezar." },
+    { n: "Tiempo real", d: "Pilar 1 · 2–4 sesiones que caben en su semana." },
+    { n: "Comida real", d: "Pilar 2 · La comida de casa, sin dietas extremas." },
+    { n: "Retomar sin culpa", d: "Pilar 3 · Una semana mala no borra nada." },
+    { n: "Mitos (Zent vs. Ozaru)", d: "Tu lado crítico y con humor." },
+    { n: "Latino en EE. UU.", d: "Turnos, carro, súper, familia y fiestas." },
+    { n: "Papá y pareja +30", d: "La vida con hijos, pareja y cansancio." },
+    { n: "El cuerpo después de los 30", d: "Rodillas, espalda, energía. Sin diagnosticar." },
+    { n: "Mi historia", d: "De la ropa ancha a la mejor versión." },
+    { n: "Rol entrenador", d: "Cómo es trabajar contigo." },
+    { n: "Zent y el anime", d: "Tu sello. Referencias que tu cliente vivió." },
+    { n: "Objeciones", d: "Lo que te dirá antes de empezar." }
+  ];
+  var ANG = [
+    [0, "Entrenar como cuando tenías 20", ["El problema no es que no tengas tiempo; es que sigues intentando entrenar como cuando sí lo tenías.", "A los 20 entrenabas 6 días. A los 35, con hijos y turnos, ese plan ya no es tuyo."], ["Yapping", "Voz en off", "Carrusel conexión"]],
+    [0, "El plan de 6 días que te sabotea", ["Te bajas una rutina de 6 días, la aguantas 2 semanas y vuelves a cero. El problema es la rutina.", "Si tu plan necesita una hora diaria, tu plan está mal hecho para tu vida."], ["Green screen", "Carrusel valor"]],
+    [0, "Las horas que sí tienes", ["Cuenta las horas que sí tienes, no las que te faltan.", "Tienes 3 huecos de 40 minutos a la semana. Con eso se arma un plan."], ["Yapping", "Rol entrenador"]],
+    [0, "Es que no tenemos tiempo", ["“Es que no tenemos tiempo.” Lo dije yo también, trabajando 8 horas sin carro.", "No tener tiempo es real. No poder entrenar, no."], ["Carrusel conexión", "Estados WhatsApp"]],
+    [0, "Vivir para entrenar o entrenar para vivir", ["El objetivo no es vivir para entrenar. Es entrenar dentro de la vida que tienes.", "No te voy a pedir que reorganices tu vida alrededor del gimnasio."], ["Yapping", "YouTube"]],
+    [1, "Antes entrenabas, ¿qué pasó?", ["Entrenabas de joven. Luego llegó el trabajo, la pareja, los hijos. Y un día ya no fuiste más.", "La mayoría no deja de entrenar por flojera. Lo deja la vida."], ["Voz en off", "Carrusel conexión"]],
+    [1, "El cuerpo recuerda", ["Si entrenaste de joven, tu cuerpo lo recuerda. Volver es más rápido de lo que crees.", "No empiezas de cero: empiezas desde la experiencia."], ["Yapping", "Carrusel valor"]],
+    [1, "El error de volver a lo grande", ["El error de volver: querer entrenar como hace 10 años desde el primer día.", "Volví con ganas, entrené pesado 5 días y me lesioné. No lo hagas."], ["Voz en off", "Rol entrenador"]],
+    [1, "Tus primeras 4 semanas de vuelta", ["Tus primeras 4 semanas de vuelta: así las haría yo.", "Semana 1 de regreso: menos de lo que crees."], ["Carrusel valor", "YouTube"]],
+    [1, "La camisa que ya no cierra", ["La camisa que te quedaba bien hace 5 años. Te entiendo.", "Me pasó en 2023: la ropa ya no me quedaba y decidí volver."], ["Yapping", "Carrusel conexión"]],
+    [2, "2 días también cuentan", ["Entrenar 2 días a la semana no es fracasar. Es una base.", "Una o dos sesiones con intención valen más que cinco que nunca haces."], ["Voz en off", "Yapping", "Carrusel valor"]],
+    [2, "La versión de 20 minutos", ["Mi rutina de 20 minutos para los días en que todo sale mal.", "Cuando no hay tiempo, no se salta: se acorta."], ["Rol entrenador", "Carrusel valor"]],
+    [2, "Entrenar en casa con lo que hay", ["En la pandemia entrené con mancuernas de cemento. No necesitas un gimnasio perfecto.", "Una mochila con libros también es carga."], ["Yapping", "Carrusel conexión"]],
+    [2, "Full body 3 días", ["Si solo puedes 3 días, no hagas pecho el lunes. Haz esto.", "3 días, cuerpo completo, 40 minutos: la rutina del que trabaja."], ["Carrusel valor", "Rol entrenador"]],
+    [2, "Priorice la pierna", ["Mi mentor me decía: “Si usted no entrena pierna, el resto del cuerpo le va a quedar mal”.", "Yo solo quería brazos. Él tenía razón."], ["Yapping", "Carrusel conexión"]],
+    [2, "Caminar cuenta", ["Sin carro, caminaba horas al trabajo. Eso también es movimiento.", "Si hoy no hay gimnasio, hay pasos."], ["Voz en off", "Estados WhatsApp"]],
+    [3, "Leche de almendras", ["Las dietas de internet me pedían leche de almendras y jamón de pavo. No me alcanzaba. Comí lo de mi mamá y progresé.", "No necesitas comida “fit” cara para cambiar."], ["Yapping", "Carrusel conexión"]],
+    [3, "El plato latino", ["Arroz, frijoles, carne y aguacate: así lo organizo sin quitarte nada.", "Tu comida de casa no es el problema. La porción, a veces sí."], ["Carrusel valor", "Rol entrenador"]],
+    [3, "Los carbohidratos no son el enemigo", ["No tienes que dejar el arroz para perder grasa.", "Quitar carbohidratos no es requisito. Te explico."], ["Zent vs. Ozaru", "Carrusel valor"]],
+    [3, "El almuerzo del trabajo", ["Lo que comes en el break decide más que lo que comes en casa.", "3 almuerzos para el trabajo que no son ensalada triste."], ["Carrusel valor", "Historias"]],
+    [3, "Comer en la reunión familiar", ["La carne asada del domingo con la familia no arruina tu semana.", "Cómo como en una reunión familiar sin culpa y sin pasarme."], ["Yapping", "Carrusel valor"]],
+    [3, "Registrar sin obsesionarte", ["En 2023 empecé a registrar lo que comía. No para siempre: para aprender.", "Registrar 2 semanas te enseña más que 10 dietas."], ["Voz en off", "Carrusel valor"]],
+    [4, "Perder una sesión no borra nada", ["Perder una sesión no borra el trabajo anterior.", "Fallaste el lunes. El martes no tienes que compensar: tienes que volver."], ["Yapping", "Estados WhatsApp", "Carrusel conexión"]],
+    [4, "El “empiezo el lunes”", ["El “empiezo el lunes” te ha costado más que cualquier semana mala.", "No esperes al lunes ni a enero. Haz 20 minutos hoy."], ["Voz en off", "Tendencia"]],
+    [4, "Volví a subir de peso", ["Volví a subir de peso después de haber bajado. Me pasó. No fue el fin.", "Las recaídas no te sacan del camino, te enseñan dónde se rompe."], ["Yapping", "Carrusel conexión"]],
+    [4, "Ajustar la semana real", ["Tu semana cambió: más turnos, un hijo enfermo. El plan cambia contigo.", "Un buen plan se dobla, no se rompe."], ["Rol entrenador", "Carrusel valor"]],
+    [4, "Sin culpa", ["No quiero que entrenes desde la culpa.", "La culpa no te lleva al gimnasio. Un plan que cabe, sí."], ["Yapping", "Carrusel conexión"]],
+    [5, "Sudar no es quemar grasa", ["Sudar más no significa quemar más grasa.", "Ozaru se enoja: “¡Sudé litros!”. Zent le explica."], ["Zent vs. Ozaru", "Carrusel valor"]],
+    [5, "Entrenar más no es mejor", ["Entrenar más no siempre es mejor. Descansar también es progreso.", "Después de los 30, la recuperación también se entrena."], ["Zent vs. Ozaru", "Voz en off", "Carrusel valor"]],
+    [5, "Músculo no es saber", ["Tener un cuerpo musculoso no te hace buen entrenador.", "No me sigas por mis brazos. Sígueme porque te explico el porqué."], ["Yapping", "Green screen"]],
+    [5, "Los atajos químicos", ["El atajo de los esteroides no es atajo. No va conmigo.", "Lo que no te cuentan los que venden cuerpos en 90 días."], ["Green screen", "Zent vs. Ozaru"]],
+    [5, "90 días", ["Mi transformación no fue en 90 días. Ni siquiera fue en un año.", "Desconfía de quien te promete tu cuerpo de los 20 en 12 semanas."], ["Carrusel conexión", "Voz en off"]],
+    [5, "Dietas extremas", ["Las dietas extremas funcionan… hasta que vuelves a comer.", "No te voy a quitar las tortillas. Te voy a enseñar cuántas."], ["Green screen", "Carrusel valor"]],
+    [6, "Hotel, 8 horas y sin carro", ["Llegué a Estados Unidos, trabajé 8 horas en un hotel y no tenía carro. Entrenar se me cayó.", "Sé lo que es llegar muerto del trabajo y que el gimnasio esté lejos."], ["Yapping", "Carrusel conexión"]],
+    [6, "Turnos dobles", ["Si haces doble turno, este es tu plan de 2 días.", "Trabajas 10–12 horas: tu entreno tiene que caber ahí, no en la semana de un influencer."], ["Voz en off", "Rol entrenador"]],
+    [6, "El súper de aquí", ["Lo que compro en el súper aquí para comer bien sin gastar de más.", "Walmart, Costco o la tienda latina: mi lista básica."], ["Carrusel valor", "YouTube"]],
+    [6, "Thanksgiving y diciembre", ["Thanksgiving, posadas, Navidad, Año Nuevo: cómo no tirar el año en 6 semanas.", "No esperes a enero. Las fiestas también se entrenan."], ["Carrusel valor", "Yapping", "Tendencia"]],
+    [6, "El entrenador de los latinos aquí", ["Yo soy el entrenador de los latinos aquí en Estados Unidos. Y te explico por qué.", "Entiendo tu semana porque la viví."], ["Yapping", "Voz en off"]],
+    [7, "Llegas muerto a casa", ["Llegas muerto, los niños quieren jugar y el gym queda lejos. Te entiendo.", "Entrenar con hijos no es imposible: es otro plan."], ["Voz en off", "Carrusel conexión"]],
+    [7, "Entrenar con los niños cerca", ["El sábado entreno 30 minutos en el parque mientras los niños juegan.", "Tus hijos te ven entrenar: ese es el mejor ejemplo."], ["Rol entrenador", "Historias"]],
+    [7, "La pareja como equipo", ["Entrenar en pareja: cómo nos organizamos para que los dos podamos.", "Si los dos trabajan, el plan de entreno también es de pareja."], ["Yapping", "Carrusel valor"]],
+    [7, "Ser ejemplo", ["No entrenas solo por ti. Entrenas para seguir el ritmo de los tuyos.", "Quiero llegar a los 60 jugando con mis hijos. Por eso entreno hoy."], ["Voz en off", "Carrusel conexión"]],
+    [8, "La rodilla que molesta", ["Volver al gym con una rodilla que molesta: lo que yo haría (y cuándo ir al médico).", "Una molestia no siempre es para parar: a veces es para adaptar."], ["Rol entrenador", "Carrusel valor"]],
+    [8, "Mi lesión de tobillo", ["En 2023 me lesioné el tobillo y subí de peso. Así volví.", "Una lesión no te saca: te obliga a entrenar distinto."], ["Yapping", "Carrusel conexión"]],
+    [8, "La espalda del que trabaja sentado", ["Si pasas 10 horas sentado o manejando, empieza por aquí.", "3 ejercicios para el que maneja o trabaja sentado."], ["Carrusel valor", "Rol entrenador"]],
+    [8, "La energía después de los 30", ["A los 35 no tienes menos energía por la edad: tienes menos por cómo vives.", "Duerme, muévete, come de verdad. La energía vuelve."], ["Voz en off", "Carrusel valor"]],
+    [8, "La señora de 85", ["Una señora de 85 años entrenaba en mi gimnasio: gimnasio, yoga y zumba.", "Ella me enseñó que esto no es estética: es seguir con vida."], ["Yapping", "Carrusel conexión"]],
+    [9, "Ropa ancha", ["De adolescente me tapaba los brazos con ropa ancha.", "Era el flaco que no se quitaba la camiseta. Hoy entreno a otros."], ["Carrusel conexión", "Yapping"]],
+    [9, "La barra vacía", ["Mi primer día no podía con la barra vacía del press de banca.", "Todos empezamos con la barra vacía."], ["Yapping", "Voz en off"]],
+    [9, "4 horas de bus al día", ["A los 19 pasaba más de 2 horas en bus por trayecto. Y entrenaba.", "No digo que sea fácil. Digo que se puede ajustar."], ["Yapping", "Carrusel conexión"]],
+    [9, "Mancuernas de cemento", ["En la pandemia perdí el trabajo y me hice mancuernas de cemento.", "No necesitaba el gimnasio perfecto. Necesitaba un plan."], ["Voz en off", "Carrusel conexión"]],
+    [9, "La mejor versión pasados los 30", ["Pasados los 30, me lesioné, subí de peso, volví a subir. Hoy estoy en mi mejor versión.", "No esperé condiciones perfectas. Por eso volví."], ["Yapping", "Carrusel conexión"]],
+    [9, "Del diseño al entrenamiento", ["Quería ser diseñador gráfico. Terminé siendo entrenador. Y dibujo a Zent.", "Por qué un entrenador dibuja anime."], ["Yapping", "Zent vs. Ozaru"]],
+    [10, "Le armo la semana a un papá", ["Le armo la semana a un papá que trabaja 10 horas.", "Lunes y jueves 40 minutos, sábado 30: te explico por qué."], ["Rol entrenador", "Carrusel valor"]],
+    [10, "Respondo tu DM", ["Me escribieron: “¿Sirve entrenar solo 2 días?”. Mi respuesta.", "Respondo tu pregunta como si fueras mi cliente."], ["Rol entrenador", "Historias"]],
+    [10, "El check-in del domingo", ["Lo que miro cada domingo en el check-in de un cliente.", "3 preguntas que le hago a cada cliente el domingo."], ["Rol entrenador", "Carrusel valor"]],
+    [10, "Si fueras mi cliente", ["Si fueras mi cliente y llevaras 3 años sin entrenar, esto haríamos la primera semana.", "Tu primera semana conmigo, paso a paso."], ["Rol entrenador", "YouTube"]],
+    [10, "Educador, no niñera", ["No quiero que dependas de mí para siempre. Quiero que entiendas por qué entrenas así.", "Mi mejor cliente es el que un día ya no me necesita."], ["Yapping", "Carrusel valor"]],
+    [11, "Kamehameha de constancia", ["La constancia es como un Kamehameha: se carga poco a poco.", "Goku no entrenaba 6 horas diarias en la Tierra. Bueno, sí. Tú no hace falta."], ["Zent vs. Ozaru", "Carrusel conexión"]],
+    [11, "Vegeta y el orgullo", ["Vegeta era mi ídolo. Su orgullo también era su mayor problema.", "El orgullo de querer entrenar como antes te tiene parado."], ["Carrusel conexión", "Yapping"]],
+    [11, "Quién es Zent", ["Este es mi personaje, Zent. Y no, su transformación no fue en 90 días.", "Creé a Zent para explicar el entrenamiento de forma que se recuerde."], ["Carrusel conexión", "Voz en off"]],
+    [11, "La sala del tiempo", ["Ojalá existiera la sala del tiempo. No existe: existen 3 huecos de 40 minutos.", "No tienes la habitación del tiempo, tienes un plan."], ["Zent vs. Ozaru", "Tendencia"]],
+    [12, "No tengo tiempo", ["“No tengo tiempo.” ¿Tienes 3 huecos de 40 minutos a la semana?", "No te falta tiempo: te falta un plan que quepa."], ["Yapping", "Voz en off"]],
+    [12, "Ya lo intenté y lo dejé", ["“Ya lo intenté y lo dejé a las 3 semanas.” Porque el plan era para otra vida.", "No fallaste tú. Falló un plan que no cabía."], ["Yapping", "Carrusel conexión"]],
+    [12, "Lo hago con YouTube", ["“Lo hago con videos de YouTube.” Yo también empecé así. Y me sirvió… hasta que no.", "Un video no te ajusta la semana cuando cambia tu turno."], ["Yapping"]],
+    [12, "¿Online funciona?", ["“¿Entrenar online funciona?” Te cuento cómo es una semana.", "No necesitas que esté a tu lado. Necesitas que alguien ajuste tu plan cada domingo."], ["Rol entrenador", "Historias"]],
+    [12, "Después de las fiestas", ["“Mejor empiezo después de las fiestas.” Enero lleva 10 años esperándote.", "Empezar en noviembre es llegar a enero con ventaja."], ["Voz en off", "Tendencia"]]
+  ];
+  var CARC = [
+    ["Tu historia · fase 1", "Me tapaba los brazos con <em>ropa ancha</em>.", ["Portada: Zent adolescente con camiseta enorme frente al espejo.", "Flaco de brazos y hombros; baloncesto, graffiti, dibujo.", "Mis ídolos: Arnold, John Cena… y Vegeta.", "El gimnasio del segundo piso con el póster de Arnold.", "No podía con la barra vacía.", "Lo que aprendí: todos empezamos con la barra vacía.", "Cierre: “Si hoy te da vergüenza volver, escríbeme KAME”."], "Zent de 15 años, sudadera XXL, mirando su reflejo; póster de Arnold detrás."],
+    ["Tu historia · fase 2", "4 horas de bus al día. <em>Y entrenaba.</em>", ["Portada: Zent dormido en un bus al amanecer.", "19 años, 8 horas de trabajo y más de 2 horas por trayecto.", "Mi mentor: “priorice la pierna”. Yo quería brazos.", "Comía lo que cocinaba mi mamá.", "No era perfecto, pero progresé.", "Lección: no necesitas condiciones perfectas, necesitas un plan que quepa.", "Cierre con KAME."], "Interior de bus urbano al amanecer, Zent joven con mochila y uniforme de gimnasio."],
+    ["Tu historia · fase 3", "Perdí el trabajo y me hice <em>mancuernas de cemento</em>.", ["Portada: Zent en un patio llenando botes con cemento.", "2020: pandemia, sin trabajo, de vuelta a casa.", "Bandas, flexiones, sentadillas y mis pesas caseras.", "No era el gimnasio que quería.", "Era lo que había, y con eso seguí.", "Lección: entrena con lo que hay.", "Cierre con KAME."], "Patio con botes de pintura convertidos en pesas, Zent sudado y sonriendo."],
+    ["Tu historia · fase 4", "Llegué a EE. UU.: <em>hotel, 8 horas y sin carro</em>.", ["Portada: Zent caminando por la orilla de una avenida americana al atardecer.", "2021: trabajo de 8 horas, sin carro, sin saber manejar.", "Caminatas largas o Uber.", "Entrenar se volvió irregular.", "Flexiones y sentadillas los días libres.", "Lección: cuando la vida cambia, el plan también.", "Cierre: “Si llegaste y el entreno se te cayó, escríbeme KAME”."], "Avenida de suburbio estadounidense, parada de bus, Zent con uniforme de hotel."],
+    ["Tu historia · fase 5", "Pasados los 30 me lesioné y <em>subí de peso</em>.", ["Portada: Zent con bota ortopédica en el sofá.", "2023: lesión de tobillo y kilos de más.", "Volví a entrenar y a registrar lo que comía.", "Después volví a subir al cambiar mis hábitos.", "Enero de 2026: volví otra vez, con orden.", "Hoy: la mejor versión que he tenido.", "Cierre con KAME."], "Sala con Zent y bota ortopédica, luego misma sala con Zent entrenando con mancuernas."],
+    ["Vida de tu cliente", "Llegas muerto. Los niños quieren jugar. <em>El gym queda lejos.</em>", ["Portada: Zent llegando a casa de noche, niños corriendo hacia él.", "Trabajaste 10 horas.", "Te sientes culpable por no entrenar.", "Y culpable si entrenas y no estás con ellos.", "La salida: 3 sesiones de 40 min o 20 min en casa.", "No es elegir entre familia y salud.", "Cierre con KAME."], "Puerta de casa de noche, luz cálida, dos niños abrazando las piernas de Zent."],
+    ["Vida de tu cliente", "<em>Es que no tenemos tiempo.</em>", ["Portada: pareja en la cama mirando el celular a las 11 p. m. (tu estilo).", "Trabajo, casa, niños, cuentas.", "Al final del día, scroll.", "No es falta de tiempo: es falta de un plan.", "20 minutos antes de dormir también cuentan.", "Cierre con KAME."], "Dormitorio de noche, Zent y su pareja con el celular, reloj marcando 11:00 p. m."],
+    ["Creencia", "Mi transformación <em>no fue en 90 días</em>.", ["Portada: Zent señalando un calendario roto.", "Las cuentas venden 90 días.", "La mía tardó años, con caídas.", "Eso no es un defecto: es la realidad.", "Lo que funciona es lo que puedes repetir.", "Cierre con KAME."], "Zent con sudadera morada rompiendo una hoja de calendario de 90 días."],
+    ["Vulnerabilidad", "Volví a subir de peso. <em>Y no pasó nada.</em>", ["Portada: Zent mirando la báscula, tranquilo.", "Bajé, me ordené, y después volví a subir.", "Me pasó a mí, que soy entrenador.", "No borró lo que sabía hacer.", "Ajusté y volví.", "Lección: una recaída es información.", "Cierre con KAME."], "Baño, báscula, Zent con expresión serena y una taza de café."],
+    ["Profesión", "Una señora de 85 años me enseñó <em>para qué entreno</em>.", ["Portada: señora mayor sonriente con mancuernas rosadas (dibujada, sin rasgos reales).", "Iba al gimnasio, a yoga y a zumba.", "Bromeaba con sus “brazos de murciélago”.", "Tenía más energía que muchos de 30.", "Ahí entendí: esto no es estética.", "Cierre: “Entrena hoy para tu yo de 80”."], "Sala de gimnasio, señora mayor y Zent joven chocando las manos."],
+    ["Creencia · anime", "Vegeta era mi ídolo. <em>Su orgullo, su problema.</em>", ["Portada: Zent con pose de Vegeta (sin copiar el personaje).", "Quería un físico como el suyo.", "Pero el orgullo de entrenar como antes me frenó.", "Volver con humildad es más rápido.", "Empieza por menos y sube.", "Cierre con KAME."], "Zent con brazos cruzados y aura azul, tono cómico."],
+    ["Por qué existe Zent", "Este es Zent. <em>Y esta es su historia.</em>", ["Portada: Zent presentándose con la mano.", "Lo creé en 2025 en un viaje a Florida.", "Para explicar el entrenamiento de forma que se recuerde.", "Tiene un lado Ozaru: el que se enoja con los mitos.", "Detrás hay un entrenador real: yo.", "Cierre: “Sígueme para conocer a los dos”."], "Zent y su versión Ozaru espalda con espalda, atardecer en la playa."]
+  ];
+  var CARV = [
+    ["Pilar 1 · rutina", "La rutina de <em>3 días</em> del que trabaja.", ["Portada.", "Día A: sentadilla, press, remo + caminata.", "Día B: peso muerto rumano, press inclinado, jalón.", "Día C: zancada, fondos o flexiones, remo con mancuerna.", "40 minutos, descansos de 1–2 min.", "Cómo subir carga cada semana.", "Cierre: guárdalo + test."], "Zent en gimnasio de cadena con reloj de pared marcando 40 min."],
+    ["Pilar 1 · rutina", "Mi rutina de <em>20 minutos</em> para los días malos.", ["Portada.", "5 min: movilidad.", "Circuito x3: sentadilla, flexiones, remo con mochila, plancha.", "Hazla en casa, en el hotel o en el parque.", "Cuenta como sesión.", "Cierre: guárdalo + test."], "Sala pequeña de apartamento, Zent con mochila como peso."],
+    ["Pilar 1 · educativo", "¿Sirve entrenar <em>2 días</em> a la semana?", ["Portada.", "Sí, si son de cuerpo completo.", "Sí, si subes la carga poco a poco.", "Sí, si caminas los demás días.", "Mejor 2 que haces que 5 que no haces.", "Cuándo pasar a 3.", "Cierre: guárdalo + test."], "Zent mostrando un calendario con solo dos días marcados en naranja."],
+    ["Pilar 2 · comida", "El <em>plato latino</em> sin dietas extremas.", ["Portada.", "Media porción de proteína: pollo, carne, huevo, frijoles.", "Un cuarto de arroz, arepa o tortilla (sí, se queda).", "Un cuarto de verdura o ensalada.", "Grasa: aguacate, con medida.", "Ejemplos con tu comida de casa.", "Cierre: guárdalo + test."], "Mesa familiar latina, plato dividido con colores, Zent sirviendo."],
+    ["Pilar 2 · mito", "No tienes que dejar <em>el arroz</em>.", ["Portada: Ozaru gritando “¡cero carbohidratos!”.", "Perder grasa depende del total, no de un alimento.", "El arroz da energía para entrenar.", "Lo que cambia es la cantidad.", "Cómo medir una porción con la mano.", "Cierre: guárdalo + test."], "Ozaru enojado con un tazón de arroz, Zent calmado explicando."],
+    ["Pilar 2 · trabajo", "3 almuerzos para el trabajo que <em>no son ensalada triste</em>.", ["Portada.", "Arroz, pollo y frijoles en tupper.", "Wrap de huevo y queso.", "Bowl de carne molida con verduras.", "Cómo prepararlos el domingo en 1 hora.", "Cierre: guárdalo + test."], "Cocina de domingo, tuppers alineados, Zent con delantal."],
+    ["Pilar 3 · educativo", "Fallaste una semana. <em>Haz esto.</em>", ["Portada.", "No compenses entrenando el doble.", "Vuelve con tu versión mínima (2 sesiones).", "Come normal, sin castigarte.", "Avisa a tu coach (o a ti mismo) qué cambió.", "Lo que hiciste antes sigue contando.", "Cierre: guárdalo + test."], "Zent levantándose después de caer, fondo de atardecer."],
+    ["Mitos · Zent vs. Ozaru", "Sudar más <em>no es quemar más</em>.", ["Portada: Ozaru empapado con chaqueta.", "El sudor es agua para enfriarte.", "Lo que pierdes en la báscula vuelve al tomar agua.", "Lo que quema grasa: el total de la semana.", "Entrena con ropa cómoda.", "Cierre: guárdalo + test."], "Ozaru con chaqueta en pleno verano, Zent con camiseta y botella de agua."],
+    ["Mitos", "Entrenar más <em>no siempre es mejor</em>.", ["Portada.", "Después de los 30, recuperar importa más.", "Más días sin dormir bien = más lesiones.", "Señales de que te estás pasando.", "Descansar también es parte del plan.", "Cierre: guárdalo + test."], "Zent dormido plácidamente con pesas en el suelo."],
+    ["Volver · errores", "5 errores al volver al gym <em>después de los 30</em>.", ["Portada.", "1. Entrenar como hace 10 años.", "2. Empezar 6 días a la semana.", "3. Saltarte la pierna.", "4. Dieta extrema el primer lunes.", "5. Abandonar tras la primera semana mala.", "Cierre: guárdalo + test."], "Zent tachando una lista en una pizarra de gimnasio."],
+    ["Cuerpo +30", "Si trabajas <em>sentado o manejando</em>, empieza por aquí.", ["Portada.", "Puente de glúteo.", "Remo con banda o mancuerna.", "Estiramiento de cadera.", "Caminata después de comer.", "Si hay dolor fuerte, al médico primero.", "Cierre: guárdalo + test."], "Zent junto a una camioneta de trabajo estirando la cadera."],
+    ["Temporada", "Thanksgiving y diciembre <em>sin tirar el año</em>.", ["Portada.", "Mantén tus 2 sesiones mínimas.", "En la cena: proteína primero, y disfruta.", "Camina después de comer con la familia.", "No compenses al día siguiente con hambre.", "Enero empieza en noviembre.", "Cierre: guárdalo + test."], "Mesa de Thanksgiving latina (pavo y arroz), Zent brindando."]
+  ];
+  var PROMPTS = [
+    ["Lote de la semana", "Usa el prompt maestro para la semana del [fecha], temporada [Thanksgiving/diciembre/enero]. Empieza por conexión. Ya publicados: [títulos]."],
+    ["Mi historia en serie", "Convierte mi historia del proyecto en una serie de 5 carruseles de CONEXIÓN, uno por etapa (adolescente, Bodytech, pandemia, llegada a EE. UU., hoy). Mismo formato de slides y escenas, y que cada uno termine invitando al siguiente."],
+    ["Desde una duda real", "Investiga en la web las 10 preguntas más repetidas en español sobre “volver a entrenar después de los 30 con poco tiempo”. Dime la fuente de cada una y conviértelas en 5 carruseles de VALOR."],
+    ["Zent vs. Ozaru", "Hazme 4 carruseles de mitos donde Ozaru defiende el mito con humor y Zent lo desmonta con calma y con datos. Mitos: [carbohidratos de noche / sudar quema grasa / 6 días o nada / abdominales para la panza]. Marca [VERIFICAR] cualquier dato científico y dime de dónde sale."],
+    ["Desde un comentario", "Este comentario me llegó: “[pega el comentario o DM sin nombre]”. Hazme 1 carrusel de CONEXIÓN y 1 de VALOR que lo respondan, más una historia de Instagram para contestarlo."],
+    ["Vida de mi cliente", "Escribe 3 carruseles de CONEXIÓN que sean escenas de la semana de un latino de 38 años en EE. UU. que trabaja [turnos/manejando/en construcción/oficina] y tiene [hijos/pareja]. Que se vea reflejado sin juzgarlo."],
+    ["Del YouTube al carrusel", "Esta es la transcripción de mi video de YouTube de esta semana: [pega texto]. Sácame 2 carruseles (1 conexión, 1 valor) sin añadir nada que yo no haya dicho."],
+    ["Ganchos de portada", "Para este carrusel [pega slides], dame 10 ganchos de portada de máximo 10 palabras, en 5 estilos distintos: pregunta, historia, cifra real, mito, frase mía. Ordénalos del más fuerte al más flojo y dime por qué."],
+    ["Escenas para ilustrar", "Para este carrusel [pega texto], reescribe solo las ESCENAS como prompts de imagen para [mi herramienta de ilustración], en inglés, manteniendo a Zent consistente (rasgos, ropa, paleta) y formato vertical 4:5."],
+    ["Haz más como estos", "Estos 3 carruseles fueron los que más guardados y compartidos tuvieron este mes: [pega títulos y slides + cifras de guardados]. Analiza qué tienen en común y propón 6 nuevos en esa línea, sin repetir ángulos."]
+  ];
+  var SCRIPTS = [
+    { k: "vo", t: "No es falta de tiempo", clip: "Clips tuyos: saliendo del trabajo, en el carro, entrenando 30 min, cocinando. Al final, tu ilustración de Zent.", hooks: ["A · El problema no es que no tengas tiempo.", "B · Entrenabas de joven y hoy no encuentras ni una hora. Escucha.", "C · Trabajé 8 horas en un hotel, sin carro. Y volví a entrenar."], lines: [["3–15 s", "Es que sigues intentando entrenar como cuando sí lo tenías. Seis días, una hora y media, la rutina de cuando tenías 20.", "Texto: ENTRENAS COMO A LOS 20"], ["15–30 s", "Con trabajo, pareja e hijos, el plan tiene que caber en tu semana: dos o tres sesiones de 40 minutos y una versión de 20 para cuando todo sale mal.", "Texto: 2–3 × 40 MIN"], ["30–40 s", "Soy Zent, el entrenador de los latinos en Estados Unidos. Escríbeme KAME y te digo cómo lo haría en tu caso.", "Texto: ESCRÍBEME KAME"]] },
+    { k: "vo", t: "2 días también cuentan", clip: "Calendario con dos días marcados, tú entrenando cuerpo completo, caminando con la familia.", hooks: ["A · ¿Sirve entrenar solo 2 días a la semana?", "B · Te dijeron que si no entrenas 5 días no vale la pena. Mentira.", "C · Llevo años viendo a gente dejarlo por querer hacer 6 días."], lines: [["3–15 s", "Entrenar una o dos veces por semana no es fracasar. Es una base, si lo haces con intención: cuerpo completo y subiendo la carga poco a poco.", "Texto: 2 DÍAS = BASE"], ["15–30 s", "Mejor dos sesiones que haces que cinco que nunca empiezas. Y los demás días, caminar también cuenta.", ""], ["30–40 s", "Escríbeme KAME y te armo tus 2 días.", "Texto: ESCRÍBEME KAME"]] },
+    { k: "yap", t: "La barra vacía", clip: "Tú a cámara, plano de pecho, luz de frente. Si tienes foto de joven, aparece en el segundo 5.", lines: [["0–3 s", "Mi primer día en el gimnasio no podía con la barra vacía del press de banca.", "Texto: NI LA BARRA VACÍA"], ["3–20 s", "Era el flaco que se tapaba los brazos con ropa ancha. Un gimnasio en un segundo piso, un póster de Arnold y yo viendo videos para aprender.", ""], ["20–40 s", "Te lo cuento porque si llevas años sin entrenar y te da vergüenza volver, todos empezamos así. Volver con poco no es humillante: es inteligente.", ""], ["40–50 s", "Si quieres volver y no sabes por dónde, escríbeme KAME.", "Texto: ESCRÍBEME KAME"]] },
+    { k: "gs", t: "Desmonto: “sin carbohidratos no bajas”", clip: "Green screen con un post o titular de “elimina los carbohidratos”.", lines: [["0–3 s", "“Si quieres bajar la panza, elimina los carbohidratos.” Mira.", "Detrás: el post"], ["3–20 s", "Perder grasa depende de lo que comes en total durante la semana, no de un alimento. El arroz, la arepa o la tortilla te dan energía para entrenar.", ""], ["20–35 s", "Lo que cambia es la cantidad. Yo progresé comiendo lo que cocinaba mi mamá, sin productos caros.", ""], ["35–45 s", "Sígueme: cada semana desmonto un mito con datos.", "Texto: SÍGUEME"]] },
+    { k: "rol", t: "Le armo la semana a un papá que trabaja 10 horas", clip: "Tú con pizarra o notas del celular en pantalla.", lines: [["0–3 s", "Le armo la semana a un papá que trabaja 10 horas y tiene dos niños.", "Texto: 10 H + 2 NIÑOS"], ["3–20 s", "Lunes y jueves, 40 minutos después del trabajo, cuerpo completo. Sábado, 30 minutos en el parque mientras los niños juegan.", ""], ["20–35 s", "Si una semana se complica, versión de 20 minutos en casa. Y el domingo me cuenta cómo le fue y ajustamos.", ""], ["35–45 s", "¿Quieres que te arme la tuya? Haz mi test, link en mi perfil.", "Texto: HAZ MI TEST"]] },
+    { k: "oz", t: "Zent vs. Ozaru: “sudar quema grasa”", clip: "Tu ilustración de Ozaru y de Zent alternando, voz tuya haciendo los dos personajes.", lines: [["0–3 s", "Ozaru: “¡Hoy sudé litros, quemé un montón de grasa!”", "Ozaru en pantalla"], ["3–20 s", "Zent: “Eso es agua, Ozaru. Sudas para enfriarte. Lo que pierdes en la báscula vuelve en cuanto tomas agua.”", ""], ["20–35 s", "Zent: “Lo que quema grasa es el total de tu semana: entrenar, moverte y comer bien. No la chaqueta en pleno julio.”", ""], ["35–45 s", "Sígueme para más peleas entre Zent y Ozaru.", "Texto: SÍGUEME"]] },
+    { k: "ad", t: "Anuncio 1 · No es falta de tiempo (sígueme)", clip: "Voz en off sobre clips tuyos saliendo del trabajo y entrenando 30 min. Nada de cuerpos ajenos ni antes/después.", hooks: ["A · Durante años pensé que no tenía tiempo para entrenar.", "B · La mayoría de los latinos que trabajan 10 horas deja el gym por lo mismo.", "C · Yo trabajaba 8 horas en un hotel y no tenía carro."], lines: [["3–15 s", "Y no era el tiempo. Era que seguía intentando entrenar como cuando tenía 20: seis días y una hora y media.", ""], ["15–30 s", "Cuando armé un plan de tres sesiones de 40 minutos, con la comida de mi casa, por fin pude sostenerlo.", ""], ["30–40 s", "Soy Zent, el entrenador de los latinos en Estados Unidos. Sígueme para entrenar dentro de la vida que tienes.", "Texto: SÍGUEME"]] },
+    { k: "ad", t: "Anuncio 2 · Entrenaba de joven (sígueme)", clip: "Voz en off sobre tus ilustraciones de Zent joven y Zent hoy + clips entrenando.", hooks: ["A · Entrenaba de joven. Luego llegó la vida.", "B · La mayoría de los hombres que entrenaban a los 20 lo deja a los 30. Esto les pasa.", "C · Volví a entrenar pasados los 30 y cometí este error."], lines: [["3–15 s", "Trabajo, pareja, cuentas. Un día dejé de ir y cuando quise volver, lo hice a lo grande y me lesioné.", ""], ["15–30 s", "Lo que me funcionó fue volver con menos: dos o tres días, cuerpo completo, subiendo poco a poco.", ""], ["30–40 s", "Sígueme si tú también quieres volver sin empezar de cero.", "Texto: SÍGUEME"]] },
+    { k: "ad", t: "Anuncio 3 · Sin dietas extremas (sígueme)", clip: "Voz en off sobre clips de tu comida de casa, el súper y tu plato latino.", hooks: ["A · Yo no podía pagar la comida “fit” de internet.", "B · La mayoría de las dietas de internet no están hechas para la comida latina.", "C · Nunca dejé el arroz. Y aun así progresé."], lines: [["3–15 s", "Me pedían leche de almendras y jamón de pavo. Comía lo que cocinaba mi mamá y aun así progresé.", ""], ["15–30 s", "Hoy enseño a organizar la comida de tu casa: proteína primero, porciones claras y nada prohibido.", ""], ["30–40 s", "Sígueme para comer como latino y ponerte en forma sin dietas extremas.", "Texto: SÍGUEME"]] }
+  ];
+  var ORDERS = [
+    ["Editar un yapping", "Edita 1-sin-editar/[archivo].mp4 como reel 9:16 siguiendo mi CLAUDE.md: quita silencios largos y muletillas pero respeta mi ritmo, subtítulos con mi estilo, gancho en pantalla desde el segundo 0 y exporta en 2-editados/ con el nombre fecha_formato_angulo."],
+    ["3 ganchos para trial reels", "Del reel 2-editados/[archivo].mp4 haz 3 versiones cambiando solo los 3 primeros segundos con estos ganchos: A [gancho], B [gancho], C [gancho]. Mismo cuerpo. Exporta las 3 con sufijo -A, -B, -C."],
+    ["Voz en off sobre clips o ilustraciones", "Monta una voz en off con el audio 1-sin-editar/[voz].m4a sobre los clips 1-sin-editar/[clips] y mis ilustraciones de 3-recursos/zent/ (zoom suave). Cortes cada 2–3 s, subtítulos, la palabra clave en naranja y cierre con el texto ESCRÍBEME KAME."],
+    ["Green screen", "Con 1-sin-editar/[video].mp4 (grabado con fondo verde) pon detrás la imagen 3-recursos/[captura].png, ajusta el recorte, subtítulos y exporta en 9:16."],
+    ["Zent vs. Ozaru", "Monta un reel alternando 3-recursos/zent/zent.png y 3-recursos/zent/ozaru.png según quién habla en el audio 1-sin-editar/[voz].m4a (te marco los tiempos: [tiempos]). Subtítulos de color distinto para cada uno."],
+    ["Clips desde YouTube", "Del video largo 1-sin-editar/[youtube].mp4 sácame los 3 mejores momentos de 20–45 s para reels: dime los minutos, por qué cada uno y expórtalos en 9:16 con subtítulos."],
+    ["Revisión antes de publicar", "Revisa todo lo que hay hoy en 2-editados/: dime si algún gancho tarda más de 3 s, si hay subtítulos mal, si alguno rompe reglas de Meta o promete algo que no puedo demostrar. No cambies nada sin preguntarme."],
+    ["Guardar una lección", "Esta edición quedó mejor que las anteriores porque [motivo]. Añádelo a la sección Ejemplos de mi CLAUDE.md, y añade a Lecciones: [lo que corregí]."]
+  ];
+
+  /* Semana */
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k][1] + '"></i>' + K[k][0] + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var cnt = {}, reels = 0, car = 0, yt = 0;
+    Object.keys(K).forEach(function (k) { cnt[k] = 0; });
+    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; if (/^car/.test(k)) car++; else if (k === "yt") yt++; else reels++; }); });
+    var days = st.plan.map(function (d, i) {
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + d.length + ' piezas</small></div>' + d.map(function (k) { return '<div class="item ' + K[k][1] + '">' + K[k][0] + '</div>'; }).join("") + '</div>';
+    }).join("");
+    var desg = Object.keys(cnt).filter(function (k) { return cnt[k]; }).map(function (k) { return cnt[k] + " " + K[k][0].toLowerCase(); }).join(" · ");
+    var pct = Math.round(cnt.yap / reels * 100);
+    return '<div class="stage"><div class="stage-h"><span class="big">' + reels + ' reels + ' + car + ' carruseles + ' + yt + ' YouTube</span><h3>' + esc(st.t) + '</h3><span class="pct">' + pct + ' % yapping</span></div><p class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desg + ')</p><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  $("yt").innerHTML = YT.map(function (y, i) { return '<div class="ti"><span class="n2' + (y[2] ? " first" : "") + '">' + (y[2] ? "Primero" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>'; }).join("");
+
+  /* Ángulos */
+  var fFam = -1, fFmt = "";
+  function norm(t) { return String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n + " " + a[3].join(" ")).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) { return '<div class="hk"><p class="hook">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>'; }).join("") +
+            '<div class="meta">' + a[3].map(function (m) { return '<span class="tag' + (/^Carrusel|Yapping/.test(m) ? " a" : "") + '">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  renderAng();
+
+  /* Carruseles */
+  function car(list, cls, tipo) {
+    return list.map(function (c) {
+      return '<article class="cslide ' + cls + '"><span class="tp">' + tipo + ' · ' + esc(c[0]) + '</span><p class="big">' + c[1] + '</p><ol>' + c[2].map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ol><p class="scn"><b>Escena de portada:</b> ' + esc(c[3]) + '</p></article>';
+    }).join("");
+  }
+  $("carC").innerHTML = car(CARC, "cc", "Conexión");
+  $("carV").innerHTML = car(CARV, "cv", "Valor");
+
+  /* Prompts y órdenes */
+  function cards(list, btn) { return list.map(function (p, i) { return '<article class="card prm"><h3>' + (i + 1) + '. ' + esc(p[0]) + '</h3><p class="q">' + esc(p[1]) + '</p><button type="button" class="cp" style="justify-self:start" data-cp="' + esc(p[1]) + '">' + btn + '</button></article>'; }).join(""); }
+  $("prompts").innerHTML = cards(PROMPTS, "Copiar prompt");
+  $("orders").innerHTML = cards(ORDERS, "Copiar orden");
+
+  /* Guiones */
+  var KS = { vo: "Voz en off", yap: "Yapping", gs: "Green screen", rol: "Rol entrenador", oz: "Zent vs. Ozaru", ad: "Anuncio · voz en off" };
+  $("scripts").innerHTML = SCRIPTS.map(function (s) {
+    var hooks = s.hooks ? '<div class="variants"><b>0–3 s · 3 ganchos para trial reels</b>' + s.hooks.map(function (h) { return '<div class="hk"><p style="flex:1;font-weight:700;font-size:14.5px">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h.replace(/^[ABC] · /, "")) + '">Copiar</button></div>'; }).join("") + '</div>' : "";
+    var all = (s.hooks ? s.hooks.join("\n") + "\n" : "") + s.lines.map(function (l) { return l[1]; }).join("\n");
+    return '<article class="card script"><span class="tag a">' + esc(KS[s.k]) + '</span><h3>' + esc(s.t) + '</h3><p class="soft" style="font-size:14px"><b>Qué se ve:</b> ' + esc(s.clip) + '</p>' + hooks +
+      s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+      '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(all) + '">Copiar guion</button></article>';
+  }).join("");
+
+  document.addEventListener("click", function (e) { var b = e.target.closest("[data-cp]"); if (!b) return; window.zCopy(b.getAttribute("data-cp")); });
+
+  /* Pestañas */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "ang", "car", "pro", "gui", "rec", "cla"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>

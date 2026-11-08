@@ -1,0 +1,354 @@
+<title>Jorge Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #8a5300;
+  --accent-text: #6e4200;
+  --accent-dark: #f2b705;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #fde9b8; }
+.card.accent ul.l, .card.accent ol.l { color: #fff6e0; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fbf0d9; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: nicho, Adrián, diagnóstico y lo que hay que aclarar arriba; debajo, vista previa del perfil (fija en escritorio) y a su lado nombres, bios, foto, destacadas, fijados y escaparate de casos. */
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#f2b705, #8a5300, #141414, #f2b705); }
+.avatar img, .avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #2a2a2a, #141414); display: grid; place-items: center; color: #fff; font: 800 26px/1 var(--f-head); letter-spacing: .02em; }
+.ig-user { font-weight: 800; font-size: 16px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #fff; font: 700 12px/1 var(--f-head); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #2a2a2a, #141414); color: #fff; display: grid; align-content: end; padding: 6px; font: 700 11px/1.1 var(--f-head); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--accent-dark); display: block; font-size: 12px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--accent-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--accent-dark); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+.opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.opt .txt { white-space: pre-line; font-size: 15px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 14px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15.5px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#f2b705, #8a5300, #141414, #f2b705); }
+.photo .mock img { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; object-fit: cover; display: block; }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #7a4e33 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #7a4e33 0 46%, transparent 47%), #2a2a2a; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+/* Marca Jorge Sánchez: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #8a5300); --nm-at: var(--accent-text, #6e4200); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.avatar img { object-fit: cover; display: block; }
+.ig-hl i span { font-size: 11px; }
+
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Jorge Sánchez · Parte 1 · Perfil</span>
+    <h1>Tu perfil tiene que decir en 3 segundos: <em>el músculo es tu metabolismo</em>.</h1>
+    <p class="soft" style="font-size:18px">Tu bio ya habla a tu cliente ("hombres que llevan tiempo entrenando y esperaban más de su físico") y tienes 3 casos fijados. Lo que falta es tu idea propia —la que no tiene nadie más— y que el perfil sea un escaparate de casos y de ti trabajando de entrenador. Toca un nombre y una bio para ver cómo queda y elige.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Hombres que llevan tiempo entrenando, con jornadas largas, y esperaban más de su físico: les ayudo a perder grasa construyendo músculo —el músculo es su metabolismo— sacando más del esfuerzo que ya hacen con intensidad bien aplicada y una vida activa.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Motor</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Músculo primero</b><span>El músculo es tu metabolismo: se entrena para construirlo, no para "quemar". Sale de tu post "Llevas años comiendo para ponerte fuerte y cada vez te ves menos definido".</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Intensidad bien aplicada</b><span>Aprender a entrenar: menos series de relleno, cerca del fallo con técnica, registrar y progresar. Sale de "¿Se notan 624 entrenos?" y del ciclo "te frustras → cambias de rutina → empiezas de cero".</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Vida activa</b><span>Muchos pasos y moverte en jornadas largas, aunque la semana sea imposible. Sale de "Jornada +10 horas" y "Entrenar tras 9 horas de trabajo. Eso también cuenta".</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Aprender a entrenar</b><p><em>Qué pasa:</em> Técnica, intensidad real y registro. Por primera vez sabes si progresas o solo vas al gimnasio.</p><p><em>Qué haces tú:</em> Registras cada entreno, cumples tu mínimo de pasos y mandas tu revisión.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Encender el motor</b><p><em>Qué pasa:</em> Cargas que suben, más músculo y la grasa bajando sin vivir a dieta: el motor trabaja por ti.</p><p><em>Qué haces tú:</em> Progresión semanal, subes pasos y ajustas la comida a tu jornada.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Afinar y sostener</b><p><em>Qué pasa:</em> Defines lo construido y te quedas con un sistema que aguanta hasta la semana imposible.</p><p><em>Qué haces tú:</em> Ajustas solo, con mi revisión cada vez más espaciada.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Registrar cada entreno</span><span>Tu mínimo de pasos cada día</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: los casos de tu perfil —74 → 89 kg, "Jornada +10 horas" y "27 años"— [confirmar nombre, tiempo y permiso de cada uno].</p><p class="nm-line">Consigue más con el esfuerzo que ya haces.</p></section>
+
+  <section class="card accent" aria-label="Cómo usar tu nicho">
+    <span class="label">Cómo usar tu nicho</span>
+    <ul class="l">
+      <li><b>"El músculo es tu metabolismo."</b> Es tu frase de un año: bio, vídeos, llamadas y tu palabra clave, <b>MOTOR</b>.</li>
+      <li><b>Tu sello:</b> no vendes dieta ni cardio. Vendes construir el motor que quema por ti: músculo, intensidad bien aplicada y muchos pasos.</li>
+      <li><b>Tu cliente:</b> ya entrena, ya se esfuerza y trabaja muchas horas. No le pides más esfuerzo: "consigue más con el esfuerzo que ya haces".</li>
+      <li><b>Tu prueba hoy son tus casos</b> (74 → 89 kg, "Jornada +10 horas", "27 años"). Tu historia personal está por escribir: [confirmar] en "Para aclarar".</li>
+    </ul>
+  </section>
+
+  <section class="card dark" aria-label="Tú y Adrián">
+    <span class="label">Vives con Adrián Domínguez · cómo ayudaros sin pisaros</span>
+    <ul class="l">
+      <li><b>Adrián ya ocupa "recomposición corporal"</b> (hombres +25, "pierde grasa y gana músculo a la vez, sin vivir a dieta"). Si los dos decís lo mismo, el que llega no sabe a quién escribir.</li>
+      <li><b>Tu territorio:</b> "el músculo es tu metabolismo" + vida activa + jornadas largas. No pongas "recomposición" en tu nombre ni en tu bio: úsala dentro de los vídeos como resultado, no como etiqueta.</li>
+      <li><b>Grabaos mutuamente:</b> uno graba los clips del otro en los 2 días fuertes de grabación. Doble material en el mismo tiempo.</li>
+      <li><b>Rol entrenador cruzado:</b> tú le corriges a él en cámara y él a ti ("mi compañero de piso también es entrenador y me ha pillado esto"). Rol entrenador real, sin pedir permiso a un cliente.</li>
+      <li><b>Leads cruzados:</b> si a uno le llega alguien que encaja mejor con el otro, se lo pasa. Acordadlo antes por escrito [confirmar con Alberto].</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes bien · 186 posts · 724 seguidores · 250 seguidos</span>
+      <ul class="l">
+        <li><b>Bio que habla a tu cliente:</b> "Para hombres que llevan tiempo entrenando y esperaban más de su físico. Consigue más con el esfuerzo que ya haces." Se queda casi entera.</li>
+        <li><b>3 casos fijados</b> con antes y después: 74 → 89 kg, "Jornada +10 horas" y "27 años". Es lo que más vende.</li>
+        <li><b>Ganchos con dolor real:</b> "Llevo 3 años entrenando y me sigo viendo igual", "¿Se notan 624 entrenos?", "Entrenar tras 9 horas de trabajo. Eso también cuenta".</li>
+        <li><b>Plantilla de carrusel reconocible</b> (negro, blanco y amarillo, tu cara y "Desliza para ver más").</li>
+        <li><b>Una sola acción:</b> tu formulario de Jotform.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que cambias ya</span>
+      <ul class="l">
+        <li><b>"JORGE SÁNCHEZ | Entrenador Personal"</b> no dice qué consigues. Instagram busca por el nombre: mete tu idea.</li>
+        <li><b>Falta tu idea propia.</b> "Esperaban más de su físico" lo puede decir cualquiera (también Adrián). "El músculo es tu metabolismo" solo tú.</li>
+        <li><b>Destacadas genéricas</b> (EQUIPO, LIFESTYLE, SOBRE MÍ): faltan Casos y Cómo trabajo, que son las que venden.</li>
+        <li><b>Más rol entrenador:</b> correcciones, "si fueras mi cliente…", planes explicados. Que te vean trabajar.</li>
+        <li><b>Historias:</b> ahora las ve muy poca gente. Sigue subiéndolas, pero el crecimiento sale de YouTube, reels y conversaciones, no de ahí.</li>
+        <li><b>724 seguidores:</b> tu problema no es el contenido, son las conversaciones. Eso va en el embudo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-label="Para aclarar con Jorge">
+    <span class="label">Para aclarar con Jorge · antes de publicar nada</span>
+    <ul class="l">
+      <li><b>Los 3 casos fijados:</b> ¿quién es cada uno (74 → 89 kg, "Jornada +10 horas", "27 años")? ¿En cuánto tiempo? ¿Tienes su permiso por escrito para web y anuncios? ¿El 74 → 89 kg eres tú?</li>
+      <li><b>Tu historia:</b> edad, desde cuándo entrenas, cómo empezaste, qué te pasó a ti. ¿Los "624 entrenos" son tuyos? No hay documento: sin esto no hay serie "Mi historia".</li>
+      <li><b>Formación:</b> en "SOBRE MÍ" sales graduándote (banda UFV). ¿Qué estudiaste exactamente? "Graduado en…" solo si es literal.</li>
+      <li><b>Online o presencial:</b> ¿dónde entrenas a gente y en qué ciudad vives? Cambia anuncios y embudo.</li>
+      <li><b>Cuántos clientes has llevado</b> y cuántos tienes ahora. Ninguna cifra ("+50 clientes") hasta tenerla.</li>
+      <li><b>Tu jornada:</b> ¿trabajas además en otra cosa? Nos dice qué 2 días puedes grabar fuerte.</li>
+      <li><b>La cuenta secundaria</b> aparcada: nombre de usuario y en qué estado está.</li>
+    </ul>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil"><img src="../casos/jorge-avatar.jpg" alt=""></div>
+          <div>
+            <div class="ig-user">jorgesdiez</div>
+            <div class="ig-stats"><span><b>186</b>posts</span><span><b>724</b>seguidores</span><span><b>250</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Entrenador personal</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>form.jotform.com/243216586760057</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>✓</span></i><small>Casos</small></div>
+          <div><i><span>M</span></i><small>Método Motor</small></div>
+          <div><i><span>JS</span></i><small>Sobre mí</small></div>
+          <div><i><span>RE</span></i><small>Entrenando</small></div>
+          <div><i><span>1:1</span></i><small>Empieza</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>74 → 89 kg</em>Caso</div>
+          <div><em>Jornada +10 h</em>Caso</div>
+          <div><em>Motor</em>El músculo es tu metabolismo</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda: tu nombre y lo que consigues. "Entrenador personal" ya sale en la categoría. Nada de "recomposición": esa palabra es de Adrián.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="Jorge Sánchez | El músculo es tu metabolismo"><b>Jorge Sánchez | El músculo es tu metabolismo</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="Jorge Sánchez | Pierde grasa construyendo músculo"><b>Jorge Sánchez | Pierde grasa construyendo músculo</b></button><button class="opt" type="button" data-name="Jorge Sánchez | Transformación física · jornadas largas"><b>Jorge Sánchez | Transformación física · jornadas largas</b></button><button class="opt" type="button" data-name="Jorge Sánchez | Entrenador · Más físico, mismo esfuerzo"><b>Jorge Sánchez | Entrenador · Más físico, mismo esfuerzo</b></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué tú, y caben en 150 caracteres. La A es tu bio de hoy con tu idea dentro. Elige una y no la toques en 3 meses.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">El músculo es tu metabolismo
+Para hombres que entrenan y esperaban más de su físico
+Más con el esfuerzo que ya haces
+Escríbeme MOTOR 👇</span><span class="why">Tu frase arriba, tu bio de siempre debajo y una acción.</span></button><button class="opt" type="button"><span class="tag">B · Jornadas largas</span><span class="txt">Jornadas de 10 horas y aun así un físico que se note
+Pierde grasa construyendo músculo
+Escríbeme MOTOR 👇</span><span class="why">Tu caso "Jornada +10 horas" convertido en promesa.</span></button><button class="opt" type="button"><span class="tag">C · Años igual</span><span class="txt">¿Años entrenando y te sigues viendo igual?
+El músculo es tu metabolismo: aprende a usarlo
+Cuéntame tu caso 👇</span><span class="why">Tu gancho que mejor encaja ("Llevo 3 años entrenando y me sigo viendo igual").</span></button><button class="opt" type="button"><span class="tag">D · Método</span><span class="txt">Método Motor: músculo + intensidad + pasos
+Para hombres que llevan tiempo entrenando
+Más físico con el mismo esfuerzo 👇</span><span class="why">Te posiciona como entrenador con método, no como "el que está fuerte".</span></button><button class="opt" type="button"><span class="tag">E · Casos</span><span class="txt">74 → 89 kg · Jornada +10 h · 27 años
+Hombres que entrenan y esperaban más de su físico
+Cuéntame tu caso 👇</span><span class="why">Escaparate puro: tus casos en la primera línea (con permiso confirmado).</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><img src="../casos/jorge-avatar.jpg" alt=""></div>
+          <ul class="l">
+            <li><b>Hoy: sin camiseta en el gimnasio, sonriendo.</b> Se ve tu físico y que entrenas. Funciona.</li>
+            <li><b>Mejor aún:</b> más cerrada (pecho para arriba) y con luz de frente: en pequeño la cara se pierde.</li>
+            <li><b>Que no se confunda con la de Adrián</b> si usáis el mismo gimnasio y el mismo encuadre.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Casos:</b> cada caso con su antes/después, su jornada y su frase (con permiso). La más importante.</li><li><b>Método Motor:</b> 5 historias: músculo, intensidad, pasos, fases y revisión.</li><li><b>Sobre mí:</b> la tuya actual + tu historia cuando la tengamos.</li><li><b>Entrenando:</b> rol entrenador: correcciones, tú entrenando a Adrián y al revés.</li><li><b>Empieza:</b> para quién es y cómo empezar (formulario o MOTOR).</li><li>EQUIPO y LIFESTYLE: se quedan al final o se fusionan en "Sobre mí".</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>Caso 74 → 89 kg</b> (ya fijado).</li><li><b>Caso "Jornada +10 horas"</b> (ya fijado): tu cliente exacto.</li><li><b>Nuevo: "El músculo es tu metabolismo"</b>, tu manifiesto a cámara (guion en Contenido). Sustituye al de "27 años", que pasa a la destacada Casos.</li></ul></div>
+          <div class="card"><span class="label">Reglas</span><ul class="l"><li><b>Una sola acción:</b> el formulario o "escríbeme MOTOR".</li><li><b>Nada de nombres ni testimonios</b> sin permiso por escrito.</li><li><b>Nada personal en público:</b> ni datos de clientes, ni de leads, ni de Adrián sin su OK.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Escaparate: tus casos y tú trabajando</h2>
+        <p class="soft">Alberto lo ha pedido claro: mucho escaparate, mucho rol entrenador y muchos casos. Tu historia personal irá aquí cuando la cuentes; mientras, vendes con casos y con lo que te ven hacer.</p>
+        <div class="card accent"><span class="label">Lo que necesito de ti esta semana</span><p>Los 3 casos con: nombre (o inicial), edad, tiempo, jornada de trabajo y una frase suya, y su permiso por escrito. Y tus respuestas de "Para aclarar". Sin eso no se puede escribir tu historia ni los guiones de casos.</p></div>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Destacada "Casos" · plantilla por caso (4 historias)</span>
+            <ol class="l">
+              <li><b>Antes y después</b> con el dato que manda: "74 → 89 kg" / "Jornada +10 horas" / "27 años".</li>
+              <li><b>Cómo llegó:</b> "Llevaba [X años] entrenando y se veía igual" [confirmar con el cliente].</li>
+              <li><b>Qué cambiamos:</b> músculo primero, intensidad bien aplicada y su mínimo de pasos.</li>
+              <li><b>Su frase</b> (captura de WhatsApp con permiso) + "Escríbeme MOTOR".</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="label">Carrusel fijado nuevo · "El músculo es tu metabolismo" · 8 diapositivas</span>
+            <ol class="l">
+              <li><b>Portada:</b> "Llevas años entrenando para quemar grasa. Por eso no la pierdes."</li>
+              <li><b>El error:</b> entrenar para gastar calorías en vez de para construir músculo.</li>
+              <li><b>La idea:</b> el músculo es tu metabolismo: es el tejido que más trabaja para ti.</li>
+              <li><b>Pilar 1 · Músculo primero.</b></li>
+              <li><b>Pilar 2 · Intensidad bien aplicada:</b> ni más series ni más días; mejores series.</li>
+              <li><b>Pilar 3 · Vida activa:</b> los pasos que das fuera del gimnasio también cuentan.</li>
+              <li><b>Prueba:</b> uno de tus casos (con permiso).</li>
+              <li><b>Cierre:</b> "Consigue más con el esfuerzo que ya haces. Escríbeme MOTOR."</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = pvName.textContent.length; cb.textContent = pvBio.textContent.length;
+    cn.className = pvName.textContent.length > 64 ? "over" : ""; cb.className = pvBio.textContent.length > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = b.querySelector(".txt").textContent.length + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>

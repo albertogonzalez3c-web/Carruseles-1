@@ -1,0 +1,229 @@
+<title>Jorge Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #8a5300;
+  --accent-text: #6e4200;
+  --accent-dark: #f2b705;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #fde9b8; }
+.card.accent ul.l, .card.accent ol.l { color: #fff6e0; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fbf0d9; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: Método Motor en 3 fases, qué incluye, por qué tú, casos, precios en orden de presentación, escalera de subida, garantía y contrato, oferta B2B, back-end. */
+.phase .n { font: 800 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 800 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Marca Jorge Sánchez: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+.tbl td:not(:last-child) { white-space: nowrap; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #8a5300); --nm-at: var(--accent-text, #6e4200); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Jorge Sánchez · Parte 2 · Oferta</span>
+    <h1>Método <em>Motor</em>: pierde grasa construyendo músculo.</h1>
+    <p class="soft" style="font-size:18px">Para hombres que llevan tiempo entrenando, con jornadas largas, y esperaban más de su físico. Músculo primero, intensidad bien aplicada y vida activa. Esto lo tienes que poder explicar en 2 minutos sin titubear.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Hombres que llevan tiempo entrenando, con jornadas largas, y esperaban más de su físico: les ayudo a perder grasa construyendo músculo —el músculo es su metabolismo— sacando más del esfuerzo que ya hacen con intensidad bien aplicada y una vida activa.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Motor</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Músculo primero</b><span>El músculo es tu metabolismo: se entrena para construirlo, no para "quemar". Sale de tu post "Llevas años comiendo para ponerte fuerte y cada vez te ves menos definido".</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Intensidad bien aplicada</b><span>Aprender a entrenar: menos series de relleno, cerca del fallo con técnica, registrar y progresar. Sale de "¿Se notan 624 entrenos?" y del ciclo "te frustras → cambias de rutina → empiezas de cero".</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Vida activa</b><span>Muchos pasos y moverte en jornadas largas, aunque la semana sea imposible. Sale de "Jornada +10 horas" y "Entrenar tras 9 horas de trabajo. Eso también cuenta".</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Aprender a entrenar</b><p><em>Qué pasa:</em> Técnica, intensidad real y registro. Por primera vez sabes si progresas o solo vas al gimnasio.</p><p><em>Qué haces tú:</em> Registras cada entreno, cumples tu mínimo de pasos y mandas tu revisión.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Encender el motor</b><p><em>Qué pasa:</em> Cargas que suben, más músculo y la grasa bajando sin vivir a dieta: el motor trabaja por ti.</p><p><em>Qué haces tú:</em> Progresión semanal, subes pasos y ajustas la comida a tu jornada.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Afinar y sostener</b><p><em>Qué pasa:</em> Defines lo construido y te quedas con un sistema que aguanta hasta la semana imposible.</p><p><em>Qué haces tú:</em> Ajustas solo, con mi revisión cada vez más espaciada.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Registrar cada entreno</span><span>Tu mínimo de pasos cada día</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: los casos de tu perfil —74 → 89 kg, "Jornada +10 horas" y "27 años"— [confirmar nombre, tiempo y permiso de cada uno].</p><p class="nm-line">Consigue más con el esfuerzo que ya haces.</p></section>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">Tres fases. Seis meses para que se note de verdad.</h2></header>
+    <div class="g3">
+      <article class="card phase"><span class="n">01</span><h3>Aprender a entrenar · meses 1–2</h3><p class="soft">Técnica, intensidad real y registro de cada sesión. Se acaba el ciclo "te frustras → cambias de rutina → empiezas de cero → no mides nada". Mínimo de pasos y proteína en cada comida, adaptados a su jornada.</p></article>
+      <article class="card phase"><span class="n">02</span><h3>Encender el motor · meses 3–4</h3><p class="soft">Progresión semanal, más músculo y la grasa bajando sin vivir a dieta. Suben los pasos poco a poco. Aquí se ven los cambios que llevaba años esperando.</p></article>
+      <article class="card phase"><span class="n">03</span><h3>Afinar y sostener · meses 5–6</h3><p class="soft">Definir lo construido y que aprenda a sostenerlo solo, también en la semana imposible. Sale con su sistema, no con otra rutina.</p></article>
+    </div>
+    <div class="card chip">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Plan de entreno por fases</b> para los días y la energía que deja su jornada. "Entrenar tras 9 horas de trabajo también cuenta."</li>
+        <li><b>Intensidad bien aplicada:</b> cuántas series, qué tan cerca del fallo y cómo registrar. Menos volumen de relleno.</li>
+        <li><b>Plan de vida activa:</b> su mínimo de pasos diario y cómo meterlo en una jornada de oficina, turnos o coche.</li>
+        <li><b>Comida para el músculo:</b> proteína en cada comida y una estructura simple que aguanta comidas fuera.</li>
+        <li><b>Corrección de técnica por vídeo</b> y <b>revisión semanal</b> con ajustes; WhatsApp en horario fijo (por escrito, nada de "24 horas").</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-labelledby="h-porque">
+    <span class="label">Por qué tú</span>
+    <h2 id="h-porque">Tus clientes ya se esforzaban. Les enseñaste a que el esfuerzo se note.</h2>
+    <ul class="l">
+      <li><b>Tus casos:</b> 74 → 89 kg, "Jornada +10 horas" y "27 años" [confirmar nombres, tiempos y permisos].</li>
+      <li><b>Tu idea propia:</b> el músculo es tu metabolismo. Nadie más de tu entorno lo dice así.</li>
+      <li><b>Hablas a quien trabaja muchas horas:</b> "Entrenar tras 9 horas de trabajo. Eso también cuenta."</li>
+      <li><b>Tu formación:</b> [confirmar qué estudiaste; en "Sobre mí" sales graduándote].</li>
+      <li><b>Sé honesto con esto:</b> hasta tener tu historia y más casos con permiso, vende el método y los casos que puedes enseñar. Nada de cifras que no tengas.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que nunca prometes y casos">
+    <div class="card">
+      <span class="label">Lo que nunca prometes</span>
+      <ul class="l">
+        <li><b>Kilos en semanas:</b> "pierde 10 kg en 2 meses" no. Prometes un plan, registro y revisión.</li>
+        <li><b>"Acelerar el metabolismo" como milagro:</b> el músculo ayuda; no es magia. Lo explicas sin exagerar.</li>
+        <li><b>Disponible 24 horas:</b> horario de respuesta por escrito.</li>
+        <li><b>Diagnósticos:</b> si hay lesión o tema médico, primero su médico o fisio.</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <span class="label">Tus casos · este mes</span>
+      <h3>Tus 3 fijados, convertidos en casos completos.</h3>
+      <ul class="l">
+        <li><b>Por escrito y firmado:</b> permiso de imagen de cada uno para web y anuncios.</li>
+        <li><b>De cada uno:</b> edad, tiempo, jornada de trabajo, qué hacía antes y una frase suya.</li>
+        <li><b>Clientes nuevos, desde el día 1:</b> fotos de inicio y cada mes, y permiso para publicar.</li>
+        <li><b>Prioridad:</b> el que tenga jornada larga. Es tu cliente exacto.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header><span class="label">Precios · propuesta para confirmar con Alberto</span><h2 id="h-precios">El semestre es el que vendes.</h2><p class="soft">Desde 300 € el trimestre (ya llevas tiempo) y el semestre como plan normal: las 3 fases completas. Nada de mensualidades sueltas. El precio va en la llamada, nunca por mensaje. Ni en la landing.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">1 · Se ofrece primero</span><h3>Semestre</h3><p class="price">500 €</p><p class="soft">Las 3 fases completas. El plan normal.</p></article>
+      <article class="card dark"><span class="badge">2 · El mejor valor</span><h3>Año</h3><p class="price">850 €</p><p class="soft">Las 3 fases y 6 meses más para seguir construyendo. Solo 350 € más que el semestre.</p></article>
+      <article class="card"><span class="badge">3 · Si es por liquidez</span><h3>Semestre en 2 pagos</h3><p class="price">2 × 265 €</p><p class="soft">Paga algo más por fraccionar. Nunca bajes el precio.</p></article>
+      <article class="card chip"><span class="badge">4 · Último recurso</span><h3>Trimestre</h3><p class="price">300 €</p><p class="soft">Solo la fase 1. Nunca como primera opción.</p></article>
+    </div>
+    <div class="say">"Lo normal es hacerlo en seis meses, las tres fases: son 500 €. Si lo quieres para el año entero, son 850 €. ¿Cuál encaja contigo?" Y te callas.</div>
+    <div class="card tblwrap">
+      <h3>Escalera de subida: cada venta cerrada, +20 %</h3>
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>300 €</td><td>500 €</td><td>850 €</td><td>Ahora</td></tr>
+          <tr><td>Nivel 1</td><td>360 €</td><td>600 €</td><td>1.020 €</td><td>Tras la siguiente venta</td></tr>
+          <tr><td>Nivel 2</td><td>430 €</td><td>720 €</td><td>1.225 €</td><td>Tras la siguiente</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>520 €</td><td>865 €</td><td>1.470 €</td><td>Y ahí te quedas</td></tr>
+        </tbody>
+      </table>
+      <p class="soft" style="font-size:14px">Los precios nunca bajan. Si una semana no cierras, no es el precio: es el número de conversaciones.</p>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Garantía y contrato">
+    <div class="card dark">
+      <span class="label">Garantía · propuesta</span>
+      <h3>"Si registras tus entrenos, cumples tus pasos, me mandas las revisiones y en la fase 1 no ves cambios, sigo contigo gratis hasta que lleguen."</h3>
+      <p class="soft">Condición medible en el contrato: 80 % de cumplimiento y todas las revisiones semanales enviadas. Sin devoluciones de dinero.</p>
+    </div>
+    <div class="card">
+      <span class="label">Contrato · firma antes de empezar</span>
+      <ul class="l">
+        <li>Qué se entrega, duración, pagos y garantía.</li>
+        <li>Horario de respuesta por WhatsApp.</li>
+        <li>Consentimiento de datos de salud y, aparte, de imagen (fotos y vídeo).</li>
+        <li><b>14 días de desistimiento:</b> el cliente pide empezar ya y acepta pagar la parte prestada si se echa atrás.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-b2b">
+    <header><span class="label">Oferta B2B · bienestar para empleados · propuesta</span><h2 id="h-b2b">Lo mismo, para una empresa: equipos que trabajan muchas horas.</h2><p class="soft">Tu cliente ideal trabaja 9 o 10 horas en una empresa. Esa empresa también es cliente. Formato y precio se cierran con Alberto antes del primer email [confirmar].</p></header>
+    <div class="g3">
+      <article class="card"><span class="badge">Entrada</span><h3>Charla de 45 min</h3><p class="soft">"El músculo es tu metabolismo: cómo estar en forma con jornadas largas". Presencial u online. Abre la puerta.</p></article>
+      <article class="card"><span class="badge">Programa</span><h3>Reto de 8 semanas</h3><p class="soft">Reto de pasos por equipos + 2 sesiones de "aprender a entrenar" + guía de vida activa en la oficina.</p></article>
+      <article class="card"><span class="badge">1:1</span><h3>Plazas para empleados</h3><p class="soft">Método Motor individual para los empleados que quieran, con precio pactado con la empresa.</p></article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header><span class="label">Back-end · en su momento dulce</span><h2 id="h-back">Cuando se vea cambiado, le ofreces seguir.</h2><p class="soft">Señales: la ropa le queda distinta, sube cargas cada semana, le preguntan en el trabajo qué está haciendo o cumple sus pasos sin pensarlo.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><p class="soft">Trimestre → semestre pagando la diferencia; semestre → año igual.</p></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Antes de acabar</h3><p class="soft">Nunca al final. Con fecha límite y precio congelado.</p></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento</h3><p class="soft">Revisión mensual y plan actualizado (precio a decidir).</p></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a tu compañero</h3><p class="soft">Si entra, un mes gratis. Y si su empresa se interesa, la propuesta B2B.</p></article>
+    </div>
+  </section>
+</div>

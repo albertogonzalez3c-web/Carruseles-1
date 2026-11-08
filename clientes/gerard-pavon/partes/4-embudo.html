@@ -1,0 +1,283 @@
+<title>Gerard Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #f5c400;
+  --accent-text: #7a5c00;
+  --accent-dark: #f5c400;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: #111111; box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l { color: #1a1a1a; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fdf3c4; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: #111111; display: grid; place-items: center; font: 800 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 800 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 800 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: #cfcfcf; font-size: 14px; }
+@media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+.msgs { display: grid; gap: 10px; }
+.msgs .m { background: var(--white); border-radius: 6px; padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 0 0 0 1px var(--line); }
+.msgs .m .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msgs .m p { font-weight: 600; font-size: 15.5px; }
+
+
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+
+.nm { --nm-a: var(--accent, #f5c400); --nm-at: var(--accent-text, #7a5c00); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #111111; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.ad { display: grid; gap: 10px; }
+.ad .beat { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ad .beat small { font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.ad .beat p { font-size: 15px; }
+.ad .beat p + p { margin-top: 4px; color: var(--soft); font-size: 14px; }
+.ad .hooks { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rules div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.rules b { font: 800 24px/1.1 var(--f-head); letter-spacing: -.02em; }
+.rules span { color: var(--soft); font-size: 14px; }
+@media (max-width: 900px) { .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .rules { grid-template-columns: 1fr; } .ad .beat { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Marca Gerard · GPC: negro + amarillo (como sus carruseles). Sobre amarillo, siempre texto negro. */
+.card.accent, .card.acc { color: #111; }
+.card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b, .card.acc ul.l b, .card.acc ol.l b, .card.acc h3, .card.acc b, .card.acc p { color: #111; }
+.card.accent .label, .card.acc .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l, .card.acc ul.l, .card.acc ol.l { color: #1a1a1a; }
+.card.accent .say { background: rgba(0,0,0,.08); border-left-color: #111; color: #111; }
+.card.accent .badge { background: rgba(0,0,0,.12); color: #111; }
+h1 { text-transform: uppercase !important; letter-spacing: -.01em !important; }
+h1 em { background: #f5c400; color: #111 !important; padding: 0 .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.say-inline { font-weight: 600; color: var(--ink); }
+li .cp { margin-left: 4px; vertical-align: middle; padding: 6px 8px; }
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Gerard · GPC · Parte 4 · Embudo</span>
+    <h1>Casos ya tienes. Te faltan <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">El motor eres tú: 100 conversaciones al día, sin excepción. Los anuncios de seguidores te traen cada día gente nueva de tu nicho para escribirle. Y como tu cliente trabaja a turnos, escribe a horas raras: contesta rápido, también a las 7 de la mañana después de su noche. Esto empiezas mañana.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Ayudo a hombres de 20 a 40 que trabajan a turnos —de noche, rotativos o con horarios que cambian cada semana— a perder grasa y ponerse en forma de verdad, fuertes y con fondo, con un plan que se adapta a su cuadrante y no al revés.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Cuadrante</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Tu turno manda</b><span>3–4 sesiones de 45–60 minutos con versión de mañana, de tarde y de noche. Si cambia tu cuadrante, cambia el plan; no se rompe.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer a tu hora, sin vivir de arroz con pollo</b><span>Comidas según tu turno y un tupper que aguanta la noche. Nada de dietas extremas que acaban en atracón el fin de semana.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Fuerte y con fondo</b><span>Fuerza, resistencia y pasos. La fuerza no lo es todo: de nada sirve estar fuerte si te ahogas subiendo una escalera.</span></div></div><h3 style="margin-top:14px">3 fases · un trimestre</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Encajar</b><p><em>Qué pasa:</em> Montamos el plan sobre tu cuadrante real y dejas de empezar de cero cada vez que cambias de turno.</p><p><em>Qué haces tú:</em> Me mandas tu cuadrante, haces tus 3 sesiones mínimas y llegas a tus pasos.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–9</span><b>Apretar</b><p><em>Qué pasa:</em> Baja la grasa (o sube el músculo si ese es tu objetivo), suben las cargas y aguantas más corriendo o subiendo escaleras.</p><p><em>Qué haces tú:</em> Subes cargas cada semana, metes el trabajo de fondo y ajustamos la comida en cada revisión.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Semanas 10–12</span><b>Sostener</b><p><em>Qué pasa:</em> Aprendes a ajustar tú solo entreno y comida cuando cambia el turno, encadenas noches o llegan las vacaciones.</p><p><em>Qué haces tú:</em> Te quedas con tus plantillas por tipo de turno y tu plan para los 3 meses siguientes.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Cuadrante y revisión cada semana</span><span>Mínimo 3 sesiones, caiga el turno que caiga</span><span>Pasos diarios mínimos</span></div></div><p class="nm-proof">Prueba: "Me preparé para competir trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. Hoy hago planes para gente con turnos imposibles."</p><p class="nm-line">Felipe, vigilante de seguridad: −17 kg (de 111,2 a 94,2). Javi: de camarero a Policía Nacional. Juanjo, vigilante: de 95,4 a 88,4 kg.</p></section>
+
+  <section class="card dark" aria-label="Tu objetivo diario">
+    <span class="label">Tu objetivo, cada día</span>
+    <div class="big">100</div>
+    <h2>conversaciones al día, en 2 rondas de 50.</h2>
+    <div class="kpis">
+      <div><b>50</b><span>Ronda 1 · por la mañana (pillas a los que salen del turno de noche)</span></div>
+      <div><b>50</b><span>Ronda 2 · por la tarde-noche (pillas a los de mañana)</span></div>
+      <div><b>700</b><span>A la semana</span></div>
+      <div><b>5–10 €</b><span>Al día por anuncio de seguidores</span></div>
+    </div>
+    <p class="soft">Dos rondas fijas, no "cuando pueda". Alberto mira en tu reporte cada día conversaciones abiertas, respuestas, llamadas agendadas, cierres y coste por seguidor.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fuentes">
+    <header><span class="label">Dónde encontrarlos</span><h2 id="h-fuentes">Hombres que trabajan a turnos y quieren ponerse en forma.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Nuevos seguidores</h3><p class="soft">Los que llegan por los anuncios y los demás. Bienvenida a todos, el mismo día: son los más calientes.</p></div>
+      <div class="card"><span class="n">2</span><h3>Quien ve tus historias</h3><p class="soft">Los que repiten cada día te tienen en el radar. Escríbeles, sobre todo si votan en la encuesta "¿qué turno tienes?".</p></div>
+      <div class="card"><span class="n">3</span><h3>Cuentas de su trabajo</h3><p class="soft">Seguidores y comentarios de cuentas de vigilantes de seguridad, hostelería, sanitarios, logística, fábrica, cuerpos de seguridad.</p></div>
+      <div class="card"><span class="n">4</span><h3>Oposiciones con pruebas físicas</h3><p class="soft">Academias y cuentas de oposiciones a Policía, Guardia Civil o bomberos: tu caso de Javi habla directamente a ellos.</p></div>
+      <div class="card"><span class="n">5</span><h3>Comentarios en virales</h3><p class="soft">Vídeos de "trabajo de noche y no adelgazo", "qué comer en el turno de noche", "no tengo tiempo para el gym".</p></div>
+      <div class="card"><span class="n">6</span><h3>El círculo de tus clientes</h3><p class="soft">Compañeros de turno de Pipe, Felipe y Juanjo. Un vigilante conoce a diez vigilantes.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msgs">
+    <header><span class="label">Mensajes de apertura · cópialos y rótalos</span><h2 id="h-msgs">Corto, de tú a tú y sin vender en el primer mensaje.</h2><p class="soft">Cambia {n} por su nombre. Nunca mandes un enlace en el primer mensaje. Pregunta por su turno: es lo que te diferencia de cualquier otro entrenador.</p></header>
+    <div class="msgs"><div class="m"><div class="row"><span class="badge">Bienvenida a nuevo seguidor</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿trabajas a turnos o tienes horario fijo? Lo pregunto porque cambia todo a la hora de entrenar.">Copiar</button></div><p>"¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿trabajas a turnos o tienes horario fijo? Lo pregunto porque cambia todo a la hora de entrenar."</p></div><div class="m"><div class="row"><span class="badge">Respuesta a historia</span><button class="cp" type="button" data-cp="Te ha tocado, ¿eh? 😅 ¿Te pasa a ti también con los turnos o lo tienes controlado?">Copiar</button></div><p>"Te ha tocado, ¿eh? 😅 ¿Te pasa a ti también con los turnos o lo tienes controlado?"</p></div><div class="m"><div class="row"><span class="badge">Vigilante / turno de noche</span><button class="cp" type="button" data-cp="Ey, {n}, he visto que trabajas de noche. ¿Cómo lo haces con el gym y la comida? Entreno a varios vigilantes y casi todos me cuentan lo mismo.">Copiar</button></div><p>"Ey, {n}, he visto que trabajas de noche. ¿Cómo lo haces con el gym y la comida? Entreno a varios vigilantes y casi todos me cuentan lo mismo."</p></div><div class="m"><div class="row"><span class="badge">Hostelería</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Por curiosidad: con los horarios de hostelería, ¿te da para entrenar o se te va la semana entre servicios?">Copiar</button></div><p>"¡Buenas, {n}! Por curiosidad: con los horarios de hostelería, ¿te da para entrenar o se te va la semana entre servicios?"</p></div><div class="m"><div class="row"><span class="badge">Oposiciones con pruebas físicas</span><button class="cp" type="button" data-cp="Buenas, {n}. ¿Estás preparando las físicas? Mi primer cliente era camarero y entró en la Policía Nacional. ¿Cómo lo llevas tú?">Copiar</button></div><p>"Buenas, {n}. ¿Estás preparando las físicas? Mi primer cliente era camarero y entró en la Policía Nacional. ¿Cómo lo llevas tú?"</p></div><div class="m"><div class="row"><span class="badge">Con tu historia</span><button class="cp" type="button" data-cp="Te escribo porque yo intenté prepararme trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. ¿Tú en qué punto estás?">Copiar</button></div><p>"Te escribo porque yo intenté prepararme trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. ¿Tú en qué punto estás?"</p></div><div class="m"><div class="row"><span class="badge">Reactivar a alguien que ya habló contigo</span><button class="cp" type="button" data-cp="¡{n}! ¿Cómo va? Me dijiste que empezabas cuando cambiaras de turno… ¿ya te han dado el cuadrante nuevo? 😉">Copiar</button></div><p>"¡{n}! ¿Cómo va? Me dijiste que empezabas cuando cambiaras de turno… ¿ya te han dado el cuadrante nuevo? 😉"</p></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-path">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-path">De "hola" a llamada en 5 pasos.</h2></header>
+    <div class="path"><span>1 · Abrir</span><i>→</i><span>2 · Conectar</span><i>→</i><span>3 · Detectar el dolor</span><i>→</i><span>4 · Pasar a WhatsApp</span><i>→</i><span>5 · Llamada</span></div>
+    <div class="g2">
+      <div class="card"><h3>Preguntas de entrenador</h3><ul class="l"><li>"¿Qué turno tienes? ¿Te cambia cada semana?"</li><li>"¿A qué hora comes cuando estás de noche? ¿Qué te llevas?"</li><li>"¿Qué has probado ya: comer menos, correr, rutinas de amigos?"</li><li>"Del 1 al 10, ¿cuánto te importa cambiar esto ya?"</li><li>Si pregunta "¿cuánto cobras?": "Depende de tu caso. Te lo explico en una llamada de 30 minutos y te digo cómo lo montaría con tu turno."</li></ul></div>
+      <div class="card"><h3>La invitación</h3><div class="say">"Por lo que me cuentas, te pasa lo que a casi todos los que trabajan a turnos: el plan se te rompe cada vez que cambias de turno. Si quieres, lo vemos en una llamada de 30 minutos y te digo cómo lo montaría con tu cuadrante. ¿Te va mejor [día] o [día]? Dime a qué hora sales del turno."</div><p class="soft">Siempre dos opciones de día, como máximo a 2–3 días vista, y a una hora que no le pille durmiendo después de una noche.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-cierre">
+    <header><span class="label">Proceso de cierre paso a paso</span><h2 id="h-cierre">De la conversación al pago, sin saltarte un paso.</h2><p class="soft">Cada paso con su mensaje. El guion completo de la llamada está en la parte 6 y en el CRM.</p></header>
+    <div class="msgs">
+      <div class="m"><div class="row"><span class="badge">1 · Cualificar (3–5 mensajes)</span><button class="cp" type="button" data-cp="Para hacerme una idea: ¿qué turno tienes, cuánto tiempo llevas así y qué te gustaría cambiar primero, bajar grasa, ponerte fuerte o aguantar más?">Copiar</button></div><p>"Para hacerme una idea: ¿qué turno tienes, cuánto tiempo llevas así y qué te gustaría cambiar primero, bajar grasa, ponerte fuerte o aguantar más?"</p></div>
+      <div class="m"><div class="row"><span class="badge">2 · Pasar a WhatsApp</span><button class="cp" type="button" data-cp="Te paso mi WhatsApp y te mando un audio con lo que haría en tu caso, que por aquí se pierde todo. ¿Me dejas tu número?">Copiar</button></div><p>"Te paso mi WhatsApp y te mando un audio con lo que haría en tu caso, que por aquí se pierde todo. ¿Me dejas tu número?"</p></div>
+      <div class="m"><div class="row"><span class="badge">3 · Agendar la llamada</span><button class="cp" type="button" data-cp="Perfecto, {n}. Te apunto el [día] a las [hora] para una llamada de 30 minutos. Ten a mano tu cuadrante de este mes. Te dejo el caso de Felipe, vigilante como tú: [enlace].">Copiar</button></div><p>"Perfecto, {n}. Te apunto el [día] a las [hora] para una llamada de 30 minutos. Ten a mano tu cuadrante de este mes. Te dejo el caso de Felipe, vigilante como tú: [enlace]."</p></div>
+      <div class="m"><div class="row"><span class="badge">4 · Recordatorio 1 hora antes</span><button class="cp" type="button" data-cp="{n}, en una hora hablamos. Lo que hacemos: un plan que se adapta a tu turno, comida a tu hora y revisión cada semana. Nos vemos.">Copiar</button></div><p>"{n}, en una hora hablamos. Lo que hacemos: un plan que se adapta a tu turno, comida a tu hora y revisión cada semana. Nos vemos."</p></div>
+      <div class="m"><div class="row"><span class="badge">5 · Llamada y cobro</span><button class="cp" type="button" data-cp="Perfecto. Te paso ahora el enlace de pago y nos quedamos un minuto hasta que te llegue la confirmación, ¿vale?">Copiar</button></div><p>"Perfecto. Te paso ahora el enlace de pago y nos quedamos un minuto hasta que te llegue la confirmación, ¿vale?" (No cuelgas hasta ver el pago.)</p></div>
+      <div class="m"><div class="row"><span class="badge">6 · Bienvenida (mismo día)</span><button class="cp" type="button" data-cp="¡Bienvenido, {n}! Para montar tu plan necesito: tu cuadrante de las próximas 2 semanas, fotos de frente, perfil y espalda, tu peso en ayunas y qué comes en un día de cada turno. Tu primera revisión es el [día].">Copiar</button></div><p>"¡Bienvenido, {n}! Para montar tu plan necesito: tu cuadrante de las próximas 2 semanas, fotos de frente, perfil y espalda, tu peso en ayunas y qué comes en un día de cada turno. Tu primera revisión es el [día]."</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="WhatsApp">
+    <div class="card accent">
+      <span class="label">WhatsApp · tu segundo canal</span>
+      <h3>Quien te da el teléfono te ve cada día.</h3>
+      <ul class="l">
+        <li><b>WhatsApp Business</b> con tu foto, "Tu turno cambia. Tu plan también." y tu web o formulario [confirmar].</li>
+        <li><b>Guarda cada contacto</b> y pídele que te guarde: si no, no ve tus Estados.</li>
+        <li><b>3–5 Estados al día:</b> tu entreno, el tupper del turno de noche, un consejo de 15 segundos y, martes y viernes, "abro 2 plazas, respóndeme CUADRANTE".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Seguimiento si no responde</span>
+      <ul class="l">
+        <li><b>Día 2:</b> <span class="say-inline">"¿Cómo va la semana de turnos, {n}? Lo de empezar, ¿sigue en pie o lo dejamos para el cuadrante que viene?"</span> <button class="cp" type="button" data-cp="¿Cómo va la semana de turnos, {n}? Lo de empezar, ¿sigue en pie o lo dejamos para el cuadrante que viene?">Copiar</button></li>
+        <li><b>Día 7:</b> <span class="say-inline">"Me he acordado de ti: te dejo cómo come Felipe en su turno de noche. Si quieres, en 30 minutos te digo cómo lo haría contigo."</span> <button class="cp" type="button" data-cp="Me he acordado de ti: te dejo cómo come Felipe en su turno de noche. Si quieres, en 30 minutos te digo cómo lo haría contigo.">Copiar</button></li>
+        <li><b>Día 14:</b> <span class="say-inline">"Entiendo que ahora no es el momento. Cuando quieras un plan que no se rompa con el turno, aquí estoy."</span> <button class="cp" type="button" data-cp="Entiendo que ahora no es el momento. Cuando quieras un plan que no se rompa con el turno, aquí estoy.">Copiar</button></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Cinco bloques. Todos los días.</h2></header>
+    <div class="routine">
+      <div><small>Mañana</small><b>Ronda 1</b><span>50 conversaciones. Los del turno de noche acaban de salir.</span></div>
+      <div><small>Mediodía</small><b>Contenido</b><span>Publicar lo que toca e historias.</span></div>
+      <div><small>Tarde-noche</small><b>Ronda 2</b><span>Otras 50, empezando por los nuevos seguidores.</span></div>
+      <div><small>Noche</small><b>Seguimiento</b><span>Responder, días 2/7/14, WhatsApp.</span></div>
+      <div><small>Antes de dormir</small><b>Apuntar</b><span>CRM, coste por seguidor y reporte para Alberto.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ads">
+    <header><span class="label">Anuncios de seguidores con voz en off</span><h2 id="h-ads">Reels de 30–45 s: tu voz sobre tus clips. Un ángulo por anuncio.</h2><p class="soft">Promocionas un reel con el objetivo <b>visitas al perfil</b>. El gancho va en los 3 primeros segundos y siempre se cierra con "Sígueme para…". El objetivo es seguidores de tu nicho; las conversaciones las abres tú después con la bienvenida.</p></header>
+    <div class="rules">
+      <div><b>5–10 €/día</b><span>Por anuncio. A los 2 días valoras.</span></div>
+      <div><b>&lt; 1 €</b><span>Por seguidor: se queda y escalas hacia 10 €/día.</span></div>
+      <div><b>1–1,5 €</b><span>Cambias el gancho (usa los 3 de cada guion).</span></div>
+      <div><b>&gt; 1,5 €</b><span>A los 2 días: lo cortas.</span></div>
+      <div><b>España · +25 años</b><span>Nada más. Tu nicho es 20–40: encaja.</span></div>
+      <div><b>Normas de Meta</b><span>Nunca "¿trabajas de noche?" ni "¿tienes barriga?". Habla en primera persona ("yo trabajaba…") o de "la mayoría de vigilantes que entreno".</span></div>
+    </div>
+    <div class="msgs"><article class="card ad"><span class="badge">Anuncio 1 · "Perdía el progreso"</span><p class="soft">Tu historia: el ángulo más fuerte.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Me preparé para competir trabajando de albañil. Cada vez que el trabajo apretaba, perdía todo el progreso."</p><p>Texto en pantalla: PERDÍA TODO EL PROGRESO · Clip: manos con polvo de obra o casco, corte a ti entrenando de noche.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Comía arroz blanco, pollo recalentado y tubos de pavo, trabajando de pie todo el día. Y los fines de semana, atracón. No me faltaba disciplina: me faltaba un plan que encajara en mi trabajo. Hoy lo hago al revés: primero miro el cuadrante y luego monto el entreno y la comida. Así mis clientes vigilantes bajan grasa trabajando a turnos."</p><p>Texto: DIETA EXTREMA ✕ · PLAN DE 9 A 5 ✕ → PLAN SEGÚN TU TURNO ✓ · Clips: tupper, reloj marcando las 4:00, sesión en el gimnasio vacío, tú corriendo.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para entrenar y comer bien aunque tu horario cambie cada semana."</p><p>Texto: SÍGUEME · @g.pavon9 · Clip: tú mirando a cámara, gesto de seguir.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Yo perdía el progreso cada vez que cambiaba de trabajo. Esto es lo que aprendí."</li><li>"El problema nunca fue la disciplina. Era mi horario."</li><li>"Trabajaba de pie todo el día y comía tubos de pavo. Mal plan."</li></ol></div></article><article class="card ad"><span class="badge">Anuncio 2 · "El tupper de las 4 de la mañana"</span><p class="soft">Rol entrenador: la comida en turno de noche.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Esto es lo que les pongo de comer a mis clientes vigilantes en el turno de noche."</p><p>Texto: TURNO DE NOCHE · QUÉ COMER · Clip: abres un tupper, reloj o móvil con las 04:00.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "La mayoría hace lo mismo: no come nada en toda la noche y llega a casa arrasando con todo. O tira de máquina de vending. Lo que funciona es repartir: una comida antes de entrar, un tupper a mitad de turno con proteína, y algo ligero al salir para poder dormir. Y nada de vivir de arroz blanco con pollo: con variedad se aguanta meses, sin variedad, dos semanas."</p><p>Texto: ANTES DEL TURNO · MITAD DE TURNO · AL SALIR · Clips: preparando tuppers, comiendo en un descanso, persiana bajada y cama.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme si tu horario no es de 9 a 5: cada semana te enseño a comer a tu hora."</p><p>Texto: SÍGUEME · @g.pavon9 · Clip: tú comiendo y mirando a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Lo que come un vigilante que ha bajado 17 kg trabajando de noche."</li><li>"No comer en toda la noche y llegar a casa arrasando: el error más común."</li><li>"Arroz con pollo a las 4 de la mañana no aguanta más de dos semanas."</li></ol></div></article><article class="card ad"><span class="badge">Anuncio 3 · "La fuerza no lo es todo"</span><p class="soft">Tu creencia: fuerte y con fondo.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Llegué a pesar 90 kilos y a levantar mucho peso. Y me ahogaba corriendo."</p><p>Texto: LA FUERZA NO LO ES TODO · Clip: serie pesada de peso muerto o sentadilla, corte a ti corriendo.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Hacía powerlifting, competí, y pensaba que entrenar más días me haría más fuerte. ¿De qué sirve estar fuerte si te ahogas subiendo una escalera? Hoy entreno a mis clientes en tres cosas: fuerza, fondo y moverse más en el día. Uno de ellos era camarero y entró en la Policía Nacional: tenía que rendir, no solo verse bien."</p><p>Texto: FUERZA + FONDO + PASOS · Clips: kettlebell o trineo, escaleras, carrera, tú atándote los cordones.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para estar fuerte y con fondo aunque trabajes a turnos."</p><p>Texto: SÍGUEME · @g.pavon9 · Clip: última repetición y mirada a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"90 kilos de músculo y me ahogaba subiendo escaleras."</li><li>"Solo ir al gimnasio no es salud. Te lo dice alguien que hacía powerlifting."</li><li>"Mi primer cliente era camarero. Hoy es Policía Nacional."</li></ol></div></article></div>
+    <p class="soft" style="font-size:14px">Clips: los tuyos entrenando, con camiseta, y planos de turno (reloj, tupper, uniforme sin logos ni caras de terceros). Subtítulos siempre: la mayoría lo ve sin sonido. Nada de antes/después en anuncios.</p>
+  </section>
+
+  <section class="g2" aria-label="Avisos y contenido de apoyo">
+    <div class="card chip">
+      <span class="label">Ojo con los límites de Instagram</span>
+      <ul class="l">
+        <li>Instagram puede limitar temporalmente cuentas que mandan muchos mensajes iguales seguidos.</li>
+        <li>Rota los 7 mensajes, personaliza con su nombre o algo de su perfil y deja pausas entre envíos.</li>
+        <li>Prioriza a quien ya ha interactuado contigo. El objetivo de 100 no baja: se reparte bien.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">El contenido que lo apoya</span>
+      <ul class="l">
+        <li><b>Una sola palabra clave:</b> "CUADRANTE". En historias, reels y carruseles: "escríbeme CUADRANTE".</li>
+        <li><b>Historias:</b> secuencia de CTA fuerte martes y viernes.</li>
+        <li><b>Carruseles:</b> mínimo 3 a la semana, alternando conexión y valor.</li>
+        <li><b>Enlace</b> de la bio y de cada Estado: [WhatsApp o formulario · confirmar con Gerard].</li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script>
+(function () {
+  document.querySelectorAll("[data-cp]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-cp"), o = b.textContent;
+      var done = function (m) { b.textContent = m; setTimeout(function () { b.textContent = o; }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+      else done("Selecciona");
+    });
+  });
+})();
+</script>
