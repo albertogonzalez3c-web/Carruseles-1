@@ -371,7 +371,7 @@ h1 { text-transform: none; letter-spacing: -.02em; }
 
   function el(id) { return document.getElementById(id); }
   function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
-  function eur(n) { var r = Math.round(n * 100) / 100, s = Math.abs(Math.round(r)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), dec = Math.round(Math.abs(r) * 100) % 100; return (r < 0 ? "-" : "") + s + (dec ? "," + String(dec).padStart(2, "0") : "") + " €"; }
+  function eur(n) { var r = Math.round(n * 100) / 100, s = Math.floor(Math.abs(r)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), dec = Math.round(Math.abs(r) * 100) % 100; return (r < 0 ? "-" : "") + s + (dec ? "," + String(dec).padStart(2, "0") : "") + " €"; }
   function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + " %" : "—"; }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
   function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
