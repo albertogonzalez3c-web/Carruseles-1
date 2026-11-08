@@ -1,0 +1,259 @@
+<title>Diego Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f1f1ef;
+  --white: #ffffff;
+  --ink: #1d2027;
+  --soft: #5c6068;
+  --line: #d9d9d5;
+  --chip: #ebebe8;
+  --accent: #c2471b;
+  --accent-text: #a83c14;
+  --accent-dark: #e8703f;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c9ccd2; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffe0d2; }
+.card.accent ul.l, .card.accent ol.l { color: #ffece4; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #2a2e37; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2f333c; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fbeee8; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: el motor son 100 conversaciones al día: objetivo, lo que se te exige, dónde encontrarlos, mensajes, camino de la conversación, WhatsApp, rutina, seguimiento y apoyo de contenido. */
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: var(--white); display: grid; place-items: center; font: 800 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 800 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 800 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: #c9ccd2; font-size: 14px; }
+@media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Diego Rendón · DR TEAM · Parte 4 · Embudo</span>
+    <h1>No te falta audiencia. Te faltan <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">Con 2.100 seguidores puedes llenar tu agenda si abres conversaciones todos los días, sin excepción. El contenido te da autoridad; las conversaciones te dan clientes. Esto es lo que haces cada día a partir de mañana.</p>
+  </header>
+
+  <section class="card accent" aria-label="El objetivo diario">
+    <span class="label">Tu objetivo diario · no negociable</span>
+    <p class="big">100</p>
+    <h2>conversaciones al día, en 2 rondas de 50.</h2>
+    <ul class="l">
+      <li><b>Ronda 1, por la mañana:</b> 50 conversaciones. Tú te levantas a las 5: hazla antes de que empiece el día.</li>
+      <li><b>Ronda 2, por la tarde:</b> otras 50.</li>
+      <li><b>Bienvenida a cada seguidor nuevo,</b> el mismo día. Sin excepciones.</li>
+      <li><b>Todo el que responde va al CRM</b> con su seguimiento. Lo que no está en el CRM no existe.</li>
+    </ul>
+  </section>
+
+  <section class="card dark" aria-label="Lo que se te exige">
+    <span class="label">Lo que Alberto va a mirar cada día en tu reporte</span>
+    <div class="kpis">
+      <div><b>100</b><span>conversaciones abiertas</span></div>
+      <div><b>2–3 → 5</b><span>piezas de contenido al día</span></div>
+      <div><b>2/sem</b><span>vídeos de YouTube</span></div>
+      <div><b>1</b><span>reporte diario, antes de dormir</span></div>
+    </div>
+    <p class="soft">Sin reporte, el día cuenta como no hecho. Si un día no llegas, lo dices en el reporte y por qué: nada de desaparecer.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-donde">
+    <header><span class="label">Dónde encontrarlos</span><h2 id="h-donde">Hombres de 25 a 35 que entrenan y están estancados.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Nuevos seguidores</h3><p class="soft">Bienvenida a cada uno. Son los más calientes que vas a tener.</p></div>
+      <div class="card"><span class="n">2</span><h3>Historias</h3><p class="soft">Quien ve, reacciona o responde a tus historias y encuestas.</p></div>
+      <div class="card"><span class="n">3</span><h3>Comentarios</h3><p class="soft">Quien comenta tus reels y publicaciones, también en YouTube.</p></div>
+      <div class="card"><span class="n">4</span><h3>Cuentas de fitness masculino</h3><p class="soft">Seguidores y comentaristas de divulgadores de entreno y nutrición para hombres.</p></div>
+      <div class="card"><span class="n">5</span><h3>Gimnasios y hashtags</h3><p class="soft">Ubicaciones de gimnasios (Málaga, Marbella, Nerja y grandes cadenas), #gym, #musculacion, #definicion.</p></div>
+      <div class="card"><span class="n">6</span><h3>Reels virales del nicho</h3><p class="soft">Hombres que comentan en virales de "estancado", "definición", "no veo los abdominales".</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msg">
+    <header>
+      <span class="label">Primeros mensajes</span>
+      <h2 id="h-msg">Directos, de tú a tú y sin vender.</h2>
+      <p class="soft">Sin enlaces en el primer mensaje. Cambia siempre un detalle (su nombre, algo de su perfil) para que no sean todos iguales. Rota los 7.</p>
+    </header>
+    <div class="g2" id="msgs"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-camino">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-camino">De "qué pasa" a una llamada, en 5 pasos.</h2></header>
+    <div class="path"><span>1. Abrir</span><i>→</i><span>2. Conectar</span><i>→</i><span>3. Detectar su estancamiento</span><i>→</i><span>4. Pasar a WhatsApp</span><i>→</i><span>5. Llamada o formulario</span></div>
+    <div class="g2">
+      <div class="card">
+        <h3>Preguntas que funcionan</h3>
+        <ul class="l">
+          <li>"¿Cuánto llevas entrenando? ¿Y te ves como quieres?"</li>
+          <li>"¿Cuántos días entrenas de verdad, con tu curro?"</li>
+          <li>"¿Llevas registro de cargas o vas a sensaciones?"</li>
+          <li>"¿Has intentado definir? ¿Qué pasó: hambre, flaco, te cansaste?"</li>
+          <li>"¿Qué es lo que más te frustra ahora mismo?"</li>
+        </ul>
+        <p class="soft" style="font-size:14px">Escucha sus frases: "llevo años yendo al gimnasio y me veo igual", "entreno más que nadie y no avanzo", "ya no sé qué más hacer". Apúntalas en el CRM: las usarás en la llamada.</p>
+      </div>
+      <div class="card">
+        <h3>La invitación</h3>
+        <p class="say">"Tío, por lo que me cuentas, lo que te falta no es esfuerzo, es estructura. Me pasó exactamente lo mismo. ¿Lo vemos en una llamada de 20 minutos y te digo qué cambiaría en tu caso?"</p>
+        <p class="soft" style="font-size:14.5px">Si prefiere escribir: "Te dejo el formulario, me cuentas tu caso y te digo si te puedo ayudar": <b>form.typeform.com/to/ebYjCTcl</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-wa">
+    <header><span class="label">WhatsApp · el segundo canal</span><h2 id="h-wa">Instagram abre la conversación. WhatsApp la cierra.</h2></header>
+    <div class="path"><span>Conversación en Instagram</span><i>→</i><span>Audio por WhatsApp</span><i>→</i><span>Contacto guardado + lista</span><i>→</i><span>Estados cada día</span><i>→</i><span>Llamada</span></div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cuándo y cómo pedir el número</h3>
+        <ul class="l">
+          <li><b>Cuando te haya contado su problema,</b> no antes.</li>
+          <li class="say" style="list-style:none;margin-left:-18px">"Si quieres, te mando por WhatsApp un audio con lo que cambiaría en tu caso. ¿Me pasas tu número?"</li>
+          <li><b>Guarda el contacto</b> con su nombre y "IG" y añádelo a la lista de difusión "interesados".</li>
+          <li><b>Pídele que te guarde:</b> "guárdame y verás en mis Estados lo que hacen mis clientes cada semana".</li>
+          <li><b>Apúntalo en el CRM</b> con el número, el mismo día.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>El seguimiento por WhatsApp</h3>
+        <ul class="l">
+          <li><b>Audio de 30–60 s</b> con su caso: qué le pasa, por qué está estancado y qué cambiarías. Acaba con "¿lo vemos en una llamada de 20 minutos?".</li>
+          <li><b>Si no responde en 2 días:</b> el caso que más se le parezca (Jose si no tiene tiempo, Juanca si tiene una lesión).</li>
+          <li><b>Mientras tanto,</b> te ve cada día en los Estados: correcciones de técnica, revisiones de clientes y, 2 veces por semana, "abro 2 plazas, escríbeme PLAN".</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Siempre en el mismo orden. Siempre.</h2></header>
+    <div class="routine">
+      <div><small>Mañana</small><b>Ronda 1</b><span>50 conversaciones + bienvenidas a los nuevos.</span></div>
+      <div><small>Mediodía</small><b>Contenido</b><span>Publicas tus piezas del día y subes historias.</span></div>
+      <div><small>Tarde</small><b>Ronda 2</b><span>Otras 50 conversaciones.</span></div>
+      <div><small>Tarde</small><b>Seguimiento</b><span>Respondes a todos (Instagram y WhatsApp), audios y Estados.</span></div>
+      <div><small>Noche</small><b>Apuntar</b><span>Cada respuesta al CRM y tu reporte del día a Alberto.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-seg">
+    <header><span class="label">Si no responde o se enfría</span><h2 id="h-seg">Seguimiento en 3 toques.</h2></header>
+    <div class="week">
+      <div class="card"><span class="badge">Día 2</span><p class="say">"¡Qué pasa, [nombre]! Te lo vuelvo a subir por si se te pasó 💪"</p></div>
+      <div class="card"><span class="badge">Día 7</span><p class="say">"Me he acordado de ti: un cliente que estaba igual que tú acaba de [resultado]. ¿Sigues queriendo salir del estancamiento?"</p></div>
+      <div class="card"><span class="badge">Día 14</span><p class="say">"Entiendo que ahora no es el momento. Cuando quieras ponerte en serio, aquí estoy. ¡Fuerte, crack!"</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Cuidado y contenido">
+    <article class="card dark">
+      <span class="label">Para que Instagram no te limite</span>
+      <ul class="l">
+        <li><b>Instagram puede limitar temporalmente</b> las cuentas que mandan muchos mensajes parecidos. El objetivo de 100 no baja: lo que cambias es cómo los mandas.</li>
+        <li><b>Varía los mensajes:</b> rota los 7 y cambia algo en cada uno.</li>
+        <li><b>Primero los que ya interactuaron</b> (seguidores, historias, comentarios), después los fríos.</li>
+        <li><b>Separa las rondas</b> y deja unos segundos entre mensaje y mensaje.</li>
+        <li><b>Si te salta un aviso de Instagram,</b> para esa ronda y retómala al día siguiente; lo apuntas en el reporte.</li>
+      </ul>
+    </article>
+    <article class="card">
+      <span class="label">El contenido que ayuda a convertir</span>
+      <ul class="l">
+        <li><b>YouTube, 2 vídeos a la semana:</b> en la descripción, siempre el enlace al formulario.</li>
+        <li><b>Historias:</b> tu día a día como entrenador y, martes y viernes, la llamada fuerte: "Escríbeme PLAN y te digo qué cambiaría en tu caso".</li>
+        <li><b>En las publicaciones:</b> "Sígueme" o "Escríbeme PLAN por privado".</li>
+        <li><b>Rol de entrenador siempre visible:</b> corrigiendo técnica, revisando clientes, analizando casos. Es lo que hace que te escriban.</li>
+      </ul>
+    </article>
+  </section>
+</div>
+
+<script>
+(function () {
+  var M = [
+    ["Seguidor nuevo", "¡Qué pasa, [nombre]! Gracias por el follow, tío. ¿Qué te ha traído por aquí? ¿Estás entrenando ahora mismo?"],
+    ["Ha reaccionado a una historia", "Jajaja, ¿a ti también te pasa? ¿Cuánto llevas entrenando?"],
+    ["Ha comentado", "¡Gracias por comentar, crack! Por lo que dices, ¿llevas tiempo entrenando y te notas estancado?"],
+    ["Sigue cuentas de fitness", "¡Buenas, [nombre]! He visto que entrenas. Pregunta rápida: ¿estás contento con cómo vas o te notas estancado?"],
+    ["Te cuenta que lleva años igual", "Te entiendo, tío. Yo estuve años entrenando 5–6 días y tardé 5 o 6 años en verme los abdominales. ¿Tú cuánto llevas así?"],
+    ["Curro y poco tiempo", "Con tu curro y tus horarios, ¿cuántos días puedes entrenar de verdad a la semana? Te lo pregunto porque con 4 bien hechos sobra."],
+    ["Ha intentado definir", "¿Has intentado definir y te has quedado con hambre todo el día o flaco y sin abdominales? Me pasó lo mismo. ¿Qué te pasó a ti?"]
+  ];
+  var box = document.getElementById("msgs");
+  box.innerHTML = M.map(function (m) {
+    var t = m[1].replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+    return '<div class="card msg"><div class="row"><span class="badge">' + m[0] + '</span><button type="button" class="cp" data-cp="' + t + '">Copiar</button></div><p class="say">' + t + '</p></div>';
+  }).join("");
+  box.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var done = function (x) { b.textContent = x; setTimeout(function () { b.textContent = "Copiar"; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+})();
+</script>
