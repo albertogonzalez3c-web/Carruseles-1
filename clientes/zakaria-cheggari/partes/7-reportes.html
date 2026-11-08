@@ -101,7 +101,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
 .prow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--sand-line); } .prow input[data-p=reel] { grid-column: 1 / -1; } .prow input, .prow select { min-width: 0; width: 100%; } .prow .pl { display: grid; gap: 3px; min-width: 0; } .prow .pl span { font-size: 12px; color: var(--soft); } .prow .rm { justify-self: start; }
 .prow .cps { font: 700 14px/1.1 var(--f-body); text-align: center; }
 .prow .cps.ok { color: var(--green); } .prow .cps.bad { color: var(--rust); }
-@media (max-width: 420px) { .prow { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .prow { grid-template-columns: repeat(3, minmax(0, 1fr)); } .prow label.pl:last-of-type { grid-column: span 2; } }
 .task { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
 .task input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--gold); margin: 0; }
 .wk { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
