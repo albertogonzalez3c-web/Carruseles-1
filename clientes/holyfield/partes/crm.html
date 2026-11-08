@@ -657,7 +657,7 @@ h1 { letter-spacing: -.025em !important; }
     if (st === "agendado") {
       if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) return { t: "Llamada a más de 3 días: intentar adelantarla", u: true };
       var c = l.checks || {};
-      if (!c.pre_testimonio || !c.pre_selfie) return { t: "Enviar testimonio y audio o vídeo de agradecimiento", u: true };
+      if (!c.pre_testimonio || !c.pre_selfie) return { t: "Enviar tu historia (o un caso con permiso) y un audio de agradecimiento", u: true };
       if (l.fechaLlamada && new Date(l.fechaLlamada).toDateString() === new Date().toDateString() && !c.pre_dia) return { t: "Hoy es la llamada: caso parecido y explicación breve", u: true };
       if (l.fechaLlamada && new Date(l.fechaLlamada) < new Date()) return { t: "¿Se hizo la llamada? Pasar a Llamada hecha", u: true };
       return { t: "Llamada " + fmtDT(l.fechaLlamada), u: false };
