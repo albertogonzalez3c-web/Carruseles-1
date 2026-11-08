@@ -288,7 +288,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
 
         <div class="grp">
           <div class="gh">Anuncios de seguidores (voz en off) <small id="promoCount"></small></div>
-          <p class="soft" style="font-size:13px">Se promociona la mejor voz en off orgánica de la semana, con su "sígueme", a hombres hispanohablantes de EE. UU. De 3 a 5 USD al día, de 5 a 7 días. <b>Menos de US$1 por seguidor:</b> se mantiene. <b>Entre US$1 y US$1.50:</b> cambias el gancho. <b>Más de US$1.50 tras 3 días:</b> se corta.</p>
+          <p class="soft" style="font-size:13px">Se promociona la mejor voz en off orgánica de la semana, con su "sígueme", a hombres hispanohablantes de EE. UU. Se promociona el Reel (visitas al perfil), de 3 a 10 USD al día, y <b>a los 2 días se valora</b>: <b>menos de US$1 por seguidor</b>, se mantiene y se escala; <b>entre US$1 y US$1.50</b>, cambias el gancho; <b>más de US$1.50</b>, se corta.</p>
           <div id="promoList" style="display:grid;gap:8px"></div>
           <button type="button" class="btn ghost small" id="addPromo">+ Añadir anuncio</button>
         </div>
@@ -593,7 +593,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
     if (!sem.promos.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Ningún anuncio esta semana.</p>';
     sem.promos.forEach(function (p, i) {
       var row = document.createElement("div"); row.className = "prow";
-      var DEC = ["Probando", "Mantener", "Cambiar gancho", "Cortar"];
+      var DEC = ["Probando", "Mantener", "Escalar", "Cambiar gancho", "Cortar"];
       row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Anuncio / ángulo (voz en off)" aria-label="Anuncio o ángulo">' +
         '<label class="pl"><span>Días</span><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días promocionado"></label>' +
         '<label class="pl"><span>Gasto USD</span><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto USD" aria-label="Gasto en dólares"></label>' +
@@ -603,8 +603,8 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
         '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
       function paint() {
         var c = promoCps(p), sp = row.querySelector("[data-cps]");
-        sp.textContent = c == null ? "USD por seguidor: —" : "USD por seguidor: " + eur(c) + (c < 1 ? " · por debajo de US$1: mantener" : (c <= 1.5 ? " · entre US$1 y US$1.50: cambia el gancho" : (num(p.dias) >= 3 ? " · más de US$1.50 tras " + num(p.dias) + " días: cortar" : " · más de US$1.50: si sigue así al día 3, se corta")));
-        sp.className = "cps" + (c == null ? "" : (c < 1 ? " ok" : (c <= 1.5 ? " warn" : " bad"))); promoHead();
+        sp.textContent = c == null ? "USD por seguidor: —" : "USD por seguidor: " + eur(c) + (num(p.dias) < 2 ? " · se valora a los 2 días" : (c < 1 ? " · por debajo de US$1: mantener y escalar" : (c <= 1.5 ? " · entre US$1 y US$1.50: cambia el gancho" : " · más de US$1.50: cortar")));
+        sp.className = "cps" + (c == null || num(p.dias) < 2 ? "" : (c < 1 ? " ok" : (c <= 1.5 ? " warn" : " bad"))); promoHead();
       }
       if (!p.decision) p.decision = "Probando";
       row.querySelectorAll("[data-p]").forEach(function (inp) {
