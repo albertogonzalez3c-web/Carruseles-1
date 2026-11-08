@@ -1,0 +1,843 @@
+<title>Giorgia Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: cabecera + pestañas fijas (Plan, Ángulos, Guiones, Anuncios voz en off, Grabar bien). Ritmo de 1 pieza al día (4 reels + 3 carruseles alternando conexión y valor), segunda pieza solo con fuerza, YouTube opcional, voz en off con 3 ganchos de prueba, anuncios "sígueme" y mucho rol entrenadora. Paleta beige y marrón editorial de Giorgia. */
+:root {
+  --paper: #f5f0e9;
+  --white: #ffffff;
+  --ink: #2a211b;
+  --soft: #6b5e53;
+  --line: #dacdbd;
+  --chip: #efe6da;
+  --accent: #8a5a3c;
+  --accent-soft: #d4b08f;
+  --accent-text: #6f4529;
+  --f-head: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 800 clamp(38px, 6.4vw, 66px)/.95 var(--f-head); text-transform: uppercase; letter-spacing: -.01em; }
+h2 { font: 800 clamp(26px, 3.6vw, 36px)/1.02 var(--f-head); text-transform: uppercase; }
+h3 { font: 700 21px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 68ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(245, 240, 233, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 6px; padding: 9px 14px; font: 700 15px/1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible, .cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 32px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 800px; }
+.card { background: var(--white); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c9ccd2; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.dark .label { color: var(--accent-soft); }
+.card.acc { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.acc .label { color: #f3e6d8; }
+.card.acc ul.l, .card.acc ol.l { color: #f8efe5; }
+.card.acc ul.l b, .card.acc ol.l b { color: var(--white); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 4px; background: var(--chip); color: var(--ink); }
+.tag.a { background: var(--accent); color: var(--white); }
+.fmt { display: grid; gap: 8px; }
+.fmt .ico { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font: 800 16px/1 var(--f-head); color: var(--white); }
+.fmt.big { box-shadow: inset 0 0 0 2px var(--accent); }
+/* Etapas */
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.stage-h .big { font: 800 36px/1 var(--f-head); color: var(--accent-text); }
+.stage-h .pct { font: 500 11.5px/1 var(--f-mono); background: var(--ink); color: var(--white); padding: 6px 8px; border-radius: 4px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 8px; padding: 10px; display: grid; gap: 5px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font: 700 16px/1 var(--f-head); text-transform: uppercase; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 6px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.2; color: var(--white); }
+.k-vo { background: #b5531a; }
+.k-food { background: #55663a; }
+.k-car { background: #8a6d1f; }
+.k-yap { background: #6a4a9c; }
+.k-trend { background: #1f6f6b; }
+.k-gs { background: #2c4f9e; }
+.k-rol { background: #1b1a17; box-shadow: inset 3px 0 0 #d4b08f; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 10px 8px 0; }
+.tbl td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.tblwrap { overflow-x: auto; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 4px; white-space: nowrap; }
+.ti .n.first { background: var(--accent); color: var(--white); }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: var(--white); font: 800 18px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--accent-soft); color: var(--ink); }
+/* Ángulos */
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 8px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; min-width: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 6px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+/* Guiones */
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .line:first-of-type { border-top: 0; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--accent-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.variants { display: grid; gap: 6px; background: var(--chip); border-radius: 8px; padding: 10px 12px; }
+.variants b { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check { padding-left: 0; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
+@media (max-width: 900px) {
+  .g3 { grid-template-columns: 1fr 1fr; }
+  .g5 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .g2, .g3, .g5 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .script .line { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* Giorgia: titulares en serif editorial, el resto en Inter */
+h1 { font: 400 clamp(38px, 6vw, 62px)/1.02 var(--f-head); text-transform: none; letter-spacing: -.01em; }
+h2 { font: 400 clamp(26px, 3.4vw, 36px)/1.08 var(--f-head); text-transform: none; }
+h3 { font: 700 18px/1.25 var(--f-body); text-transform: none; letter-spacing: 0; }
+.tab { font: 700 14px/1 var(--f-body); text-transform: none; letter-spacing: 0; }
+.fmt .ico, .day .dn, .stage-h .big, .steps > div::before { font-family: var(--f-body); }
+.stage-h .big { font-weight: 800; font-size: 30px; }
+.day .dn { font-size: 14px; }
+.warn { box-shadow: inset 4px 0 0 #9a3b2f, inset 0 0 0 1px var(--line); }
+
+/* Nicho en una frase + método en 30 segundos */
+.nm { display: grid; gap: 14px; border-radius: 14px; padding: 20px; background: var(--ink); color: #fff; margin-block: 6px 4px; }
+.nm-lbl { font: 500 11.5px/1.2 var(--f-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-dark, #e2c6a8); display: block; margin-bottom: 6px; }
+.nm-big { font: 700 clamp(19px, 2.6vw, 25px)/1.3 var(--f-body, inherit); margin: 0; color: #fff; text-wrap: pretty; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nm-c { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.nm-c b { font-size: 15.5px; color: #fff; }
+.nm-c span, .nm-c p { font-size: 14px; color: #d8d6d0; margin: 0; line-height: 1.45; }
+.nm-c .nm-n { font: 500 11px/1 var(--f-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark, #e2c6a8); }
+.nm-c p b { font-size: 13.5px; color: #fff; }
+.nm-no { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.nm-no li { background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 700; }
+.nm-proof { margin: 0; font-size: 15px; color: #fff; border-left: 3px solid var(--accent-dark, #e2c6a8); padding-left: 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } .nm { padding: 16px; } }
+.k-tec { background: #6f4529; }
+.k-vo { background: #a0734f; }
+.k-rec { background: #6b7a52; }
+.k-yap { background: #7d6a8c; }
+.k-carC { background: #b56e5a; }
+.k-carV { background: #3f5a66; }
+.k-rol { background: #2a211b; box-shadow: inset 3px 0 0 #d4b08f; }
+.tag.cc { background: #b56e5a; color: #fff; }
+.tag.cv { background: #3f5a66; color: #fff; }
+</style>
+
+<header class="top wrap">
+  <span class="label">Giorgia De Santis · Parte 3 · Contenido</span>
+  <h1>Una pieza al día. Bien hecha. Y tú de entrenadora.</h1>
+  <p class="lede">Para mujeres de 25 a 45 que ya entrenan o lo han intentado y lo dejan cuando la semana se tuerce. Tu ventaja: tus vídeos de técnica son los que más se guardan, tus recetas se cocinan de verdad y tienes una historia que muchas sienten como suya. El ritmo es corto a propósito: <b>1 pieza al día</b> y una segunda solo los días que vas con fuerza. Lo que predicas, lo aplicas: constancia sin perfección.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ads">Anuncios voz en off</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="El plan">
+  <section class="nm" aria-label="Tu nicho y tu método">
+    <div><span class="nm-lbl">Tu nicho en una frase</span><p class="nm-big">Mujeres de 25 a 45 años que ya entrenan o lo han intentado, pero con trabajo, turnos o familia empiezan y lo dejan, y quieren entrenar con estructura y técnica y comer sin planes cerrados, para que cuidarse deje de depender de la motivación y de hacerlo perfecto.</p></div>
+    <div><span class="nm-lbl">Tu método en 30 segundos · Método Constante · 3 pilares</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Pilar 1</span><b>Entreno con estructura y técnica</b><span>Sabe qué hace cada día, por qué y ve que progresa. Se acabó ir al gimnasio a ver qué toca.</span></div><div class="nm-c"><span class="nm-n">Pilar 2</span><b>Comida flexible, sin planes cerrados</b><span>Come con lo que le gusta y con su vida: una cena fuera o un fin de semana no lo rompen todo.</span></div><div class="nm-c"><span class="nm-n">Pilar 3</span><b>Seguimiento 1:1 con su vida real</b><span>Revisión semanal de entreno, comida y cabeza. Si su semana cambia, el plan cambia con ella.</span></div></div></div>
+    <div><span class="nm-lbl">3 fases · semestre</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Ordenar</b><p><b>Qué pasa:</b> Plan hecho sobre su semana real, técnica de los básicos y comida sin plan cerrado. Deja de improvisar.</p><p><b>Qué hace ella:</b> Entrena lo pactado, apunta pesos y sensaciones y manda su revisión.</p></div><div class="nm-c"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Progresar</b><p><b>Qué pasa:</b> Suben las cargas y se nota el cambio. Aprende a sostenerlo en semanas malas: plan al 100 %, al 50 % y mínimo.</p><p><b>Qué hace ella:</b> Usa el plan que toque cada semana, sin volver a cero.</p></div><div class="nm-c"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Autonomía</b><p><b>Qué pasa:</b> Decide sola en viajes, vacaciones, cenas y semanas de locos.</p><p><b>Qué hace ella:</b> Aplica lo aprendido. Cuidarse ya no depende de tenerte detrás.</p></div></div></div>
+    <div><span class="nm-lbl">3 no negociables</span><ul class="nm-no"><li>La revisión semanal se manda siempre</li><li>Siempre hay un mínimo para la semana mala</li><li>Pregunta todo lo que no entienda</li></ul></div>
+    <p class="nm-proof">"El plan debería adaptarse a la persona y no la persona vivir para cumplir el plan." Esa frase es tu marca: repítela.</p>
+  </section>
+
+    <div class="sec">
+      <div class="head"><span class="label">Tus formatos</span><h2>Seis formatos. La técnica y el rol de entrenadora por delante.</h2><p class="soft">Lo que ya te funciona es la base: vídeos de técnica que se guardan, recetas que la gente cocina y carruseles de casos ("Un plan rígido no sirve si tu semana nunca es igual"). Encima pones autoridad: al menos 4 de cada 10 reels son de técnica o de rol entrenadora.</p></div>
+      <div class="g3">
+        <article class="card fmt big"><span class="ico k-tec">TE</span><h3>Técnica</h3><p class="soft">Un ejercicio bien explicado: el error típico, la corrección y la sensación que debe notar. "Step up en polea", hip thrust, sentadilla, dominadas. Es tu contenido que más se guarda.</p></article>
+        <article class="card fmt big"><span class="ico k-rol">RE</span><h3>Rol entrenadora</h3><p class="soft">Tú revisando la semana de una seguidora, adaptando un plan a unos turnos, corrigiendo un vídeo (con permiso) o "si fueras mi clienta, esto es lo primero que cambiaba".</p></article>
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Clips tuyos entrenando, cocinando o en tu día con tu voz encima. Cada guion se publica con 3 ganchos distintos como reels de prueba. Es también el formato de tus anuncios.</p></article>
+        <article class="card fmt"><span class="ico k-car">CA</span><h3>Carrusel</h3><p class="soft"><b>3 a la semana, alternando conexión y valor.</b> Conexión: tu historia, tu día, tus creencias. Valor: técnica, método, errores, guías. Diseño editorial beige, 6–8 diapositivas, una idea.</p></article>
+        <article class="card fmt"><span class="ico k-rec">RC</span><h3>Receta</h3><p class="soft">Recetas rápidas que encajan en una semana real ("Avena versión Snickers"). Siempre con el mensaje: comer bien sin plan cerrado.</p></article>
+        <article class="card fmt"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">Tú a cámara, natural y humana, contando una idea o algo que te ha pasado esta semana. Para los días en que vas con fuerza.</p></article>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">El ritmo</span><h2>1 pieza al día. La segunda, solo si vas con fuerza.</h2><p class="soft">Lo pensamos así a propósito. Tu patrón es exigirte mucho, acumular presión y explotar. Si el plan de contenido te pide 3 reels al día, lo dejas en verano como el año pasado. <b>Una pieza bien hecha cada día gana a tres hechas con prisa.</b> Y es lo mismo que vas a enseñar a tus clientas: un mínimo que se cumple siempre y un extra cuando hay energía.</p></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:28px"></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">Reglas del ritmo</span>
+          <ul class="l">
+            <li><b>Mínimo:</b> 1 pieza al día (reel o carrusel) pase lo que pase. De las 7 de la semana, <b>3 son carruseles</b> (lunes, miércoles y viernes). Si un día no puedes grabar, publicas una de las que tienes en reserva.</li>
+            <li><b>Reserva:</b> siempre 3 piezas montadas y sin publicar. Es tu "plan al 50 %".</li>
+            <li><b>Con fuerza:</b> marca esa semana en tu reporte solo cuando lleves 2 semanas seguidas cumpliendo la base sin agobio.</li>
+            <li><b>Nunca compenses:</b> si ayer no publicaste, hoy no publicas dos. Se sigue.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">YouTube · opcional</span>
+          <h3>Como mucho 1 vídeo a la semana. Y si no puedes, no pasa nada.</h3>
+          <p class="soft">YouTube no es tu prioridad este trimestre. Si te apetece, 1 vídeo de 8–12 minutos a la semana, grabado en la misma sesión que tus reels. De cada vídeo salen 2–3 clips para Instagram.</p>
+          <div id="yt"></div>
+        </div>
+      </div>
+      <p class="soft" style="font-size:14px">El % de rol entrenadora suma técnica y rol entrenadora sobre los reels (los carruseles van aparte). Tiene que estar en el 40 % o más.</p>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Carruseles · 3 a la semana</span><h2>Carruseles: 3/semana alternando conexión y valor.</h2><p class="soft">Lunes, miércoles y viernes tu pieza del día es un carrusel. Una semana empieza por <b>conexión</b> (L conexión · X valor · V conexión) y la siguiente por <b>valor</b> (L valor · X conexión · V valor). Así nunca son todo consejos ni todo historia. La conexión hace que te quieran; el valor, que te guarden y te escriban.</p></div>
+      <div class="g2">
+        <div class="card"><span class="tag k-carC" style="color:#fff">Conexión</span><h3>Historia, vulnerabilidad, día a día, creencias</h3><p class="soft">Primera diapositiva con una frase tuya o una escena. Diapositivas 2–6, la historia en frases cortas. La última, lo que aprendiste y una pregunta para que te respondan.</p></div>
+        <div class="card"><span class="tag k-carV" style="color:#fff">Valor</span><h3>Educativo, método, errores, guías</h3><p class="soft">Primera diapositiva con la promesa concreta. Diapositivas 2–6, un punto por diapositiva. La penúltima, cómo lo haces tú con tus clientas. La última: "Guárdalo" + "Escríbeme CONSTANTE si quieres que te lo adapte".</p></div>
+      </div>
+      <div class="g2">
+        <div class="card"><h3>12 ideas de conexión</h3><div id="carC"></div></div>
+        <div class="card"><h3>12 ideas de valor</h3><div id="carV"></div></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voz en off · Reels de prueba</span><h2>Un guion, tres ganchos, gana el que mejor rinde.</h2><p class="soft">Instagram te deja publicar un reel <b>como prueba</b>: solo lo ve gente que no te sigue y no aparece en tu perfil. Úsalo para que los datos decidan el gancho, no tu intuición. Y no cuenta como pieza extra: la ganadora es tu pieza del día.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">El sistema</span>
+          <div class="steps">
+            <div><p><b>Graba el cuerpo del vídeo una vez:</b> clips entrenando, cocinando o en tu día + tu voz con la idea principal.</p></div>
+            <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C (texto en pantalla y frase de voz).</p></div>
+            <div><p><b>Publica las 3 como reel de prueba</b> el mismo día, con unas horas de diferencia.</p></div>
+            <div><p><b>A las 24–72 h compara:</b> visualizaciones, % que lo ve entero, compartidos y guardados.</p></div>
+            <div><p><b>La ganadora la compartes en tu perfil</b> y es tu pieza de ese día.</p></div>
+            <div><p><b>Apúntalo en tu reporte:</b> qué tipo de gancho ganó (frase tuya, dato, error típico, "la mayoría"). En un mes sabrás qué le funciona a tu público.</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tu registro de pruebas</h3>
+          <div class="tblwrap">
+            <table class="tbl">
+              <thead><tr><th>Guion</th><th>Gancho</th><th>Vistas</th><th>% entero</th><th>Guard.</th><th>Gana</th></tr></thead>
+              <tbody>
+                <tr><td>Ej.: plan al 50 %</td><td>A · frase tuya</td><td>900</td><td>18 %</td><td>6</td><td></td></tr>
+                <tr><td></td><td>B · la mayoría</td><td>2.600</td><td>27 %</td><td>31</td><td>✓</td></tr>
+                <tr><td></td><td>C · error típico</td><td>1.700</td><td>21 %</td><td>14</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="soft" style="font-size:13.5px">Los números del ejemplo son ilustrativos. Cada prueba la apuntas en tu reporte semanal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Anuncios de seguidores · voz en off · 5 € al día</span><h2>Tu mejor voz en off es la que se promociona.</h2><p class="soft">Tus anuncios son siempre reels de voz en off que tocan <b>un solo ángulo</b> y acaban en "Sígueme para…". Cada semana, la voz en off que mejor haya funcionado sola es la que lleva los 5 € al día. Si los seguidores salen caros, se para. Tienes 6 guiones de anuncio listos en la pestaña <b>Anuncios voz en off</b>.</p></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Rol entrenadora · tu formato estrella</span><h2>Que te vean trabajando de entrenadora, no hablando de ello.</h2></div>
+      <div class="g3">
+        <div class="card"><h3>Corrijo tu técnica</h3><p class="soft">Una seguidora te manda su vídeo (con permiso): lo paras, señalas el error y enseñas cómo se hace. Hip thrust, sentadilla, peso muerto rumano, remo.</p></div>
+        <div class="card"><h3>Te adapto la semana a tus turnos</h3><p class="soft">Pizarra o tablet: "esta enfermera tiene mañanas, tardes y noches esta semana. Así le monto los entrenos." El reel que mejor explica tu método.</p></div>
+        <div class="card"><h3>Plan al 100 %, al 50 % y mínimo</h3><p class="soft">Enseñas los tres planes de una misma clienta: la semana buena, la normal y la de locos. "Una semana mala ya no es volver a empezar."</p></div>
+        <div class="card"><h3>"Si fueras mi clienta…"</h3><p class="soft">"Si entrenas 5 días y no ves cambios, esto es lo primero que te cambiaba." Directo, con criterio.</p></div>
+        <div class="card"><h3>Reviso tu rutina guardada</h3><p class="soft">Coges una rutina típica de Internet que te mandan y dices qué sobra, qué falta y por qué no progresa.</p></div>
+        <div class="card"><h3>Una comida fuera, resuelta</h3><p class="soft">La carta de un restaurante en pantalla y qué pedirías tú sin culpa y sin plan cerrado.</p></div>
+        <div class="card"><h3>Entrenando a una clienta</h3><p class="soft">Tú dirigiendo una serie ("baja controlando", "aprieta glúteo arriba", "última"). Que se vea que estás encima.</p></div>
+        <div class="card"><h3>Revisión semanal en pantalla</h3><p class="soft">Cómo revisas a una clienta: pesos, sensaciones, comida, sueño y cómo está de cabeza. Siempre anonimizado.</p></div>
+        <div class="card acc"><span class="label">Regla</span><p><b>Pide permiso siempre</b> y anonimiza: sin caras ni nombres si no te lo autorizan por escrito. A algunas de tus clientas les cuesta mandarte una foto: respétalo. Un "con permiso de mi clienta" en pantalla te da más autoridad.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Historias por bloques · todos los días</span><h2>Entre 4 y 8 historias al día, en 3 bloques.</h2><p class="soft">Los reels te traen gente nueva. Las historias hacen que confíen en ti y te escriban. Natural y humana: no una enciclopedia de fitness.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Tu día en 3 bloques</h3>
+          <ul class="l">
+            <li><b>Mañana (1–3) · Tú:</b> tu entreno, tu desayuno, cómo vas hoy. Si hoy es un día al 50 %, enséñalo: es tu mensaje.</li>
+            <li><b>Mediodía (2–3) · Entrenadora:</b> una corrección de técnica, la revisión de una clienta, un consejo para comer fuera.</li>
+            <li><b>Noche (1–2) · Conversación:</b> encuesta o caja de preguntas. Cada respuesta es una conversación que abres.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Un tema para cada día</h3>
+          <ul class="l">
+            <li><b>Lunes:</b> cómo organizas tu semana (y cómo la organizarías con turnos).</li>
+            <li><b>Martes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Miércoles:</b> técnica en 3 historias: error, corrección, sensación.</li>
+            <li><b>Jueves:</b> caja de preguntas: "pregúntame lo que quieras de entrenar con poco tiempo".</li>
+            <li><b>Viernes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Sábado:</b> comer fuera o de fin de semana sin romperlo todo.</li>
+            <li><b>Domingo:</b> una receta para la semana y tu reflexión de la semana.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Martes y viernes · Secuencia CTA en 5 historias</span>
+        <ol class="l">
+          <li><b>El problema:</b> "La mayoría de las chicas que me escriben no empiezan de cero: entrenan, guardan rutinas… y lo dejan cuando la semana se tuerce."</li>
+          <li><b>Por qué pasa:</b> "No es falta de ganas. Es un plan que pide una semana perfecta."</li>
+          <li><b>La prueba:</b> el caso de Irene o de Valerie (con permiso) o un mensaje de clienta.</li>
+          <li><b>La oferta:</b> "Esta semana tengo 2 plazas para empezar conmigo."</li>
+          <li><b>La acción:</b> "Escríbeme <b>CONSTANTE</b> por privado y te digo si encajas." + caja de preguntas o sticker de enlace a tu formulario.</li>
+        </ol>
+        <p style="font-size:14px">Cada "CONSTANTE" entra al CRM y se contesta ese mismo día.</p>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Stickers que más conversaciones abren</h3>
+          <ul class="l">
+            <li><b>Encuesta:</b> "¿Cuántas veces has empezado este año? 1–2 / Ya he perdido la cuenta". A quien vote, le escribes.</li>
+            <li><b>Caja de preguntas:</b> "Pregúntame por qué lo dejas siempre a las 3 semanas".</li>
+            <li><b>Deslizador:</b> "¿Cuánto sabes si lo que haces en el gimnasio funciona?". Quien lo deja abajo, está caliente.</li>
+            <li><b>Quiz:</b> "¿Qué te hace progresar más? A) entrenar más días B) apuntar los pesos C) más cardio".</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Reglas</h3>
+          <ul class="l">
+            <li><b>Habla a cámara</b> en al menos 1 historia al día.</li>
+            <li><b>Subtítulos siempre.</b></li>
+            <li><b>Responde en menos de 1 hora</b> todo lo que te llegue de historias.</li>
+            <li><b>Enseña lo real:</b> un día cansada o al 50 % también es contenido. Es lo que te diferencia de la "vida fitness perfecta".</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Serie "Mi historia" · opcional</span><h2>De querer cambiar tu cuerpo a construirte con él.</h2><p class="soft">Tu historia conecta con muchas mujeres. Tú decides qué cuentas y cuándo. Funciona mejor como carrusel fijado y 3–4 reels repartidos en un mes, no todo de golpe.</p></div>
+      <div class="g2">
+        <div class="card">
+          <ul class="l">
+            <li><b>Carrusel fijado:</b> "No empecé a entrenar porque amara mi cuerpo, sino porque durante muchos años intenté cambiarlo."</li>
+            <li><b>Reel 1 · La equipación de vóley:</b> "A mis compañeras les quedaba bien. A mí, estrecha y corta. Ese día empecé a mirarme de otra forma."</li>
+            <li><b>Reel 2 · Nunca era suficiente:</b> "Me apuntaba al gimnasio y lo dejaba antes de verano. Cardio, máquinas al azar y comer menos de lo que tocaba."</li>
+            <li><b>Reel 3 · Las voces se callaron:</b> "Después del confinamiento empecé a entrenar con estructura. No vi grandes cambios físicos. Pero por primera vez las voces de mi cabeza se callaron."</li>
+            <li><b>Reel 4 · De alumna a entrenadora:</b> "Mis primeras clientas fueron mi mejor amiga y dos amigas que sí me pagaron. Hoy quiero ayudar a que cuidarte forme parte de tu vida."</li>
+          </ul>
+        </div>
+        <div class="card warn">
+          <span class="label">Antes de grabarla · tema delicado</span>
+          <p>Si decides hablar de tu trastorno de la conducta alimentaria: <b>sin cifras de peso, sin detallar conductas</b> (saltarse comidas, compensar, pesarse) y sin fotos de tu etapa más delgada como "antes". El mensaje es recuperación, estructura y salud, nunca delgadez.</p>
+          <p class="soft" style="font-size:14px">Añade siempre: "Si te ves reflejada, pide ayuda a una profesional sanitaria." Tú eres entrenadora: acompañas, no tratas un TCA.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Estados de WhatsApp · todos los días</span><h2>Quien te da su número te ve cada día sin que le escribas.</h2><p class="soft">Cada persona que pasa a tu WhatsApp ve tus Estados. Es la forma más barata de calentar a quien todavía no se decide. 2–3 al día bastan.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Prepáralo una vez</h3>
+          <ul class="l">
+            <li><b>WhatsApp Business</b> con tu foto de perfil de Instagram.</li>
+            <li><b>Descripción:</b> "Online coach · Entrenar con estructura y comer sin planes cerrados, con tu vida real".</li>
+            <li><b>Catálogo:</b> tu acompañamiento 1:1 con una foto y 3 líneas.</li>
+            <li><b>Mensaje de bienvenida</b> y <b>respuestas rápidas</b> (cómo funciona, cuándo empezar, horarios).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Que te vean: guárdalas y que te guarden</h3>
+          <ul class="l">
+            <li><b>Los Estados solo los ve quien tiene tu número guardado.</b> Al pasar a WhatsApp: "guárdame, que subo consejos cada día".</li>
+            <li><b>Listas de difusión:</b> clientas · interesadas · frías.</li>
+            <li><b>Etiquetas:</b> nueva, interesada, llamada agendada, clienta.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Rutina diaria · 2 a 3 Estados</span>
+        <ul class="l">
+          <li><b>Recicla 1–2 historias de Instagram</b> (la de técnica y la de tu día).</li>
+          <li><b>1 exclusivo:</b> una receta, un mensaje de clienta (con permiso) o una encuesta "responde 1 o 2" ("¿qué te cuesta más? 1 entrenar, 2 comer").</li>
+          <li><b>Martes y viernes, CTA:</b> "Esta semana tengo 2 plazas. Respóndeme CONSTANTE."</li>
+          <li><b>Mide:</b> apunta cada día cuántas te responden. Cada respuesta va al CRM.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁNGULOS -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos de comunicación">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Tu banco de ideas</span>
+        <h2>Todo lo que le puedes decir a la mujer que empieza y lo deja.</h2>
+        <p class="soft">Cuando no sepas qué grabar, abre esto, elige y copia. Las frases entre comillas son tuyas o de tus clientas, tal cual.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Cómo usarlo</span>
+        <ul class="l">
+          <li><b>Rota las familias:</b> cada semana, al menos 4 distintas, y técnica o rol entrenadora siempre.</li>
+          <li><b>De 1 ángulo salen 2 piezas:</b> una voz en off con 3 ganchos de prueba y un carrusel o una historia.</li>
+          <li><b>Repite tus frases:</b> "no necesitas hacerlo perfecto" y "el plan se adapta a ti, no tú al plan".</li>
+          <li><b>Límites:</b> nada de "pierde X kilos en Y días", nada de antes/después que premien estar más delgada y, si tocas el TCA, sin cifras ni conductas.</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar (p. ej. turnos, glúteo, cena, perfecto, Irene…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- GUIONES -->
+  <section class="view" id="v-gui" hidden aria-label="Guiones listos">
+    <div class="sec">
+      <div class="head"><span class="label">Para grabar esta semana</span><h2>Cinco guiones. Cinco días de tu semana resueltos.</h2><p class="soft">Las dos voces en off llevan 3 ganchos cada una para publicarlas como reels de prueba. Dilo con tus palabras, pero no cambies la estructura.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- ANUNCIOS -->
+  <section class="view" id="v-ads" hidden aria-label="Anuncios de voz en off">
+    <div class="sec">
+      <div class="head"><span class="label">Anuncios de seguidores · voz en off</span><h2>Un ángulo, tu voz y "sígueme". Así se anuncia.</h2><p class="soft">El anuncio no vende tu acompañamiento: te presenta. Toca un solo ángulo, da algo útil en 20–30 segundos y pide que te sigan. La venta llega después, por conversación y por historias.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">Cómo se hace</span>
+          <div class="steps">
+            <div><p><b>Elige la voz en off ganadora</b> de las pruebas, o graba uno de los guiones de abajo con 3 ganchos y promociona el que mejor rinda en orgánico.</p></div>
+            <div><p><b>Promociónalo desde Instagram:</b> objetivo "visitas al perfil" o "más seguidores", España, mujeres 25–45 o Advantage+.</p></div>
+            <div><p><b>5 € al día durante 5–7 días.</b> No lo toques antes del día 3: el algoritmo necesita aprender.</p></div>
+            <div><p><b>Mide:</b> gasto total ÷ seguidores nuevos = € por seguidor. Apúntalo en tu reporte.</p></div>
+            <div><p><b>Decide:</b> menos de 1 € por seguidor → sigue o sube a 7–10 €/día. Entre 1 y 1,5 € → cambia el gancho. Más de 1,5 € tras 3 días → se para.</p></div>
+          </div>
+        </div>
+        <div class="card warn">
+          <span class="label">Normas de Meta · obligatorio</span>
+          <h3>Habla de ti o de "la mayoría". Nunca de ella.</h3>
+          <ul class="l">
+            <li><b>Prohibido:</b> "¿Tienes…?", "¿Sufres…?", "Si estás gorda…", "Si tienes ansiedad con la comida…". Meta rechaza los anuncios que dan por hecho algo del cuerpo, la salud o la vida de quien lo ve.</li>
+            <li><b>Sí:</b> "Yo me apuntaba al gimnasio y lo dejaba…", "La mayoría de mujeres que entrenan a turnos…", "Mis clientas me dicen…".</li>
+            <li><b>Nada de antes/después</b> ni promesas de kilos o tiempo.</li>
+            <li><b>Nada del TCA</b> en anuncios: tu historia más delicada se queda para el orgánico, si quieres contarla.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g2" id="ads"></div>
+    </div>
+  </section>
+
+  <!-- GRABAR -->
+  <section class="view" id="v-rec" hidden aria-label="Grabar bien">
+    <div class="sec">
+      <div class="head"><span class="label">Gimnasio, cocina y móvil</span><h2>La técnica se tiene que ver y tu voz se tiene que oír.</h2><p class="soft">Tus vídeos de técnica son tu fuerte. Un ejercicio bien grabado vende más que diez frases.</p></div>
+      <div class="g2">
+        <div class="card acc">
+          <span class="label">Planos de técnica</span>
+          <ul class="l">
+            <li><b>Lateral completo:</b> para sentadilla, hip thrust, peso muerto. Que se vea todo el cuerpo y la barra.</li>
+            <li><b>45 grados:</b> para step up, zancadas y polea.</li>
+            <li><b>Detalle:</b> pies, cadera, agarre. 2 segundos bastan.</li>
+            <li><b>Error y corrección:</b> grábalo mal a propósito y luego bien, mismo plano.</li>
+            <li><b>Graba 10–15 clips por sesión</b> y tendrás la semana resuelta.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Luz y audio</span>
+          <ul class="l">
+            <li><b>Gimnasio:</b> la zona más iluminada, luz de frente o de lado, nunca de espaldas a un ventanal.</li>
+            <li><b>Cocina:</b> luz de ventana lateral, encimera limpia, tonos neutros (tu estética beige).</li>
+            <li><b>Micro de solapa</b> para yapping y rol entrenadora.</li>
+            <li><b>La voz en off se graba aparte,</b> en un cuarto sin eco.</li>
+            <li><b>Pide permiso</b> en tu gimnasio y a cualquier persona que salga en el plano.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Checklist antes de grabar</h3>
+          <ul class="l check">
+            <li>Luz de frente o de lado, nunca detrás.</li>
+            <li>Móvil fijo (trípode o pinza) y lente limpia.</li>
+            <li>Ropa que deje ver la técnica.</li>
+            <li>Micro puesto y probado.</li>
+            <li>Lista de planos y guiones del día en el móvil.</li>
+            <li>Sabes el gancho de memoria.</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <span class="label">Graba en lote</span>
+          <h3>1 sesión larga a la semana. El resto, publicar y conversar.</h3>
+          <ul class="l">
+            <li><b>Sesión de grabación (90 min):</b> técnica de 2 ejercicios + clips para 2–3 voces en off + rol entrenadora + receta de la semana.</li>
+            <li><b>Montaje:</b> las 3 versiones de cada voz en off el mismo día.</li>
+            <li><b>Carruseles:</b> 2 a la semana, se diseñan en una tarde con tu plantilla.</li>
+            <li><b>Días de hostelería:</b> no grabas. Publicas de tu reserva.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = {
+    tec: { n: "Técnica", c: "k-tec" },
+    rol: { n: "Rol entrenadora", c: "k-rol" },
+    vo: { n: "Voz en off", c: "k-vo" },
+    rec: { n: "Receta", c: "k-rec" },
+    yap: { n: "Yapping", c: "k-yap" },
+    carC: { n: "Carrusel conexión", c: "k-carC" },
+    carV: { n: "Carrusel valor", c: "k-carV" }
+  };
+  function isCar(k) { return k === "carC" || k === "carV"; }
+
+  /* ---------- Ritmo semanal ---------- */
+  var STAGES = [
+    { t: "Base · semana A (empieza por conexión)", s: "1 pieza al día: 4 reels + 3 carruseles. Lunes conexión, miércoles valor, viernes conexión.", plan: [["carC"], ["vo"], ["carV"], ["tec"], ["carC"], ["rol"], ["rec"]] },
+    { t: "Base · semana B (empieza por valor)", s: "Igual, pero los carruseles se invierten: lunes valor, miércoles conexión, viernes valor. Las semanas se alternan A, B, A, B…", plan: [["carV"], ["vo"], ["carC"], ["tec"], ["carV"], ["rol"], ["rec"]] },
+    { t: "Con fuerza · cuando lleves 2 semanas cumpliendo la base", s: "La segunda pieza solo los días que vas con energía: 7 reels + 3 carruseles. Si una semana no puedes, vuelves a la base sin culpa.", plan: [["carC", "tec"], ["vo"], ["carV", "rol"], ["tec"], ["carC", "vo"], ["rec"], ["vo"]] }
+  ];
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var reels = 0, car = 0, rol = 0;
+    st.plan.forEach(function (d) { d.forEach(function (k) { if (isCar(k)) car++; else { reels++; if (k === "rol" || k === "tec") rol++; } }); });
+    var days = st.plan.map(function (d, i) {
+      var n = d.length;
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + n + ' pieza' + (n === 1 ? '' : 's') + '</small></div>' +
+        d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") + '</div>';
+    }).join("");
+    var pct = Math.round(rol / reels * 100);
+    return '<div class="stage"><div class="stage-h"><span class="big" data-piezas="' + (reels + car) + '" data-car="' + car + '">' + (reels + car) + ' piezas/semana</span><h3>' + esc(st.t) + '</h3><span class="pct">' + reels + ' reels + ' + car + ' carruseles · ' + pct + ' % rol entrenadora</span></div><p class="soft">' + esc(st.s) + '</p><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- YouTube (opcional) ---------- */
+  var YT = [
+    ["Cómo organizo mi semana de entreno con 2 trabajos (y cómo lo haría con turnos)", "Si haces uno, que sea este: presenta tu método."],
+    ["5 cosas que hacía en el gimnasio y hoy no haría", "Ya funciona en carrusel: amplíalo."],
+    ["Glúteo sin piernas enormes: el error que cometí durante años", "Técnica pura, de aquí salen 3 reels."],
+    ["Qué como en una semana normal sin plan cerrado", "Recetas + mensaje de flexibilidad."]
+  ];
+  $("yt").innerHTML = YT.map(function (y, i) {
+    return '<div class="ti"><span class="n' + (i === 0 ? " first" : "") + '">' + (i === 0 ? "Primero" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>';
+  }).join("");
+
+  /* ---------- Carruseles: 12 de conexión, 12 de valor ---------- */
+  var CAR_C = [
+    ["No empecé a entrenar porque amara mi cuerpo", "1 · La frase · 2–4 · Cómo era tu relación con el gimnasio (lo dejabas antes de verano) · 5 · Qué cambió · 6 · Hoy entrenas para construirte · 7 · \"¿Y tú, por qué empezaste?\""],
+    ["La equipación de vóley", "1 · \"A mis compañeras les quedaba bien. A mí, estrecha y corta.\" · 2–4 · La escena · 5 · Lo que me dije durante años · 6 · Lo que me digo hoy · 7 · Pregunta"],
+    ["Mi verano al 50 %", "1 · \"Este verano no lo hice perfecto\" · 2 · Online por la mañana, hostelería por la noche · 3 · Entrenos al 100 %, al 50 % y días que no podía · 4 · Y no volví al punto de partida · 5–6 · Lo que aprendí · 7 · \"¿Cómo llevas tú las semanas malas?\""],
+    ["Un día real en mi vida", "1 · Foto tuya de la mañana · 2–6 · Revisiones, entreno, comida, turno, perro · 7 · \"Cuidarse cabe en una vida normal\""],
+    ["Lo que creía del gimnasio", "1 · \"Pensaba que era un sitio de gente superficial\" · 2–4 · Lo que creías · 5 · Lo que encontraste: paz en la fuerza · 6 · Hoy · 7 · Pregunta"],
+    ["\"Si ellos pueden, yo también\"… y luego \"¿por qué no puedo?\"", "1 · La frase · 2–4 · Compararte · 5 · Lo que te sacó: pedir ayuda y recuperar estructura · 6 · No necesitas exigirte más · 7 · Pregunta"],
+    ["Mis primeras clientas", "1 · \"Mi mejor amiga y dos amigas que sí me pagaron\" · 2–4 · Cómo empezaste · 5 · El error: centrarte solo en el físico · 6 · Lo que haces hoy · 7 · Gracias"],
+    ["El día que hice mi primera dominada", "1 · Vídeo o foto de la dominada · 2–4 · Antes no podía · 5 · Qué cambió (constancia, no motivación) · 6 · Tu meta imposible · 7 · \"¿Cuál es la tuya?\""],
+    ["\"Me vas a ver muy grande\"", "1 · El comentario del gimnasio · 2–3 · Cómo te afectó · 4–5 · Qué entendiste: era músculo · 6 · Fuerte y femenina · 7 · Pregunta"],
+    ["Lo que me pasó por intentar hacerlo todo perfecto", "1 · \"Si no lo hago perfecto, no sirve\" · 2–5 · Cómo te frenaba · 6 · Lo que haces hoy · 7 · \"¿Te suena?\""],
+    ["Por qué no enseño una vida fitness perfecta", "1 · \"Mi perfil no es una enciclopedia\" · 2–5 · Lo que no se ve · 6 · Por qué enseñarlo da más confianza · 7 · Pregunta"],
+    ["Lo que me dicen mis clientas (con permiso)", "1 · \"Le estoy agradecida a mi cuerpo porque tira más de lo que esperaba\" · 2–5 · Capturas anonimizadas · 6 · Qué cambió de verdad · 7 · CTA suave"]
+  ];
+  var CAR_V = [
+    ["Plan al 100 %, al 50 % y mínimo", "1 · \"Tu semana no siempre es igual. Tu plan tampoco.\" · 2 · Plan 100 % · 3 · Plan 50 % · 4 · Mínimo · 5 · Cuándo usar cada uno · 6 · Cómo lo hago con mis clientas · 7 · Guárdalo + CONSTANTE"],
+    ["5 cosas que hacía en el gimnasio y hoy no haría", "1 · Título · 2–6 · Una por diapositiva (cardio de castigo, máquinas al azar, no apuntar pesos, comer menos de lo que tocaba, compararme) · 7 · Guárdalo"],
+    ["Cómo entrenar con turnos rotativos", "1 · Promesa · 2 · Semana de mañanas · 3 · De tardes · 4 · De noches · 5 · Lo que no se negocia · 6 · Caso de Irene (con permiso) · 7 · CONSTANTE"],
+    ["30 minutos para entrenar: ¿son suficientes?", "1 · Pregunta · 2–5 · Cómo montar una sesión de 30 min · 6 · Cuándo sí y cuándo no · 7 · Guárdalo"],
+    ["Glúteo sin piernas enormes", "1 · El error que cometí · 2–5 · 4 ejercicios y la clave técnica de cada uno · 6 · Cuántas series · 7 · Guárdalo"],
+    ["Cómo saber si estás progresando en el gimnasio", "1 · \"¿Vas al gimnasio sin saber si avanzas?\" · 2–5 · Apunta pesos, repeticiones, sensaciones, fotos cuando quieras · 6 · Cómo lo reviso yo · 7 · CONSTANTE"],
+    ["Comer fuera sin romperlo todo", "1 · Promesa · 2–5 · Qué pedir, qué no hacer al día siguiente, el fin de semana · 6 · No se compensa · 7 · Guárdalo"],
+    ["Por qué lo dejas a las 3 semanas", "1 · Título · 2–5 · Plan que pide una semana perfecta, depender de la motivación, sin mínimo, sin seguimiento · 6 · Qué cambiar · 7 · CONSTANTE"],
+    ["Tienes 300 rutinas guardadas y no aplicas ninguna", "1 · Título · 2–5 · Cómo elegir 1 rutina y quedarte con ella 8 semanas · 6 · Cuándo cambiarla · 7 · Guárdalo"],
+    ["Mitos que me creí", "1 · Título · 2 · \"Te vas a poner como un hombre\" · 3 · \"Los carbohidratos engordan\" · 4 · \"El cardio lo soluciona todo\" · 5 · \"Ayunar siempre adelgaza más\" · 6 · La verdad corta · 7 · Guárdalo"],
+    ["Técnica de hip thrust en 6 pasos", "1 · Foto del ejercicio · 2–6 · Banco, pies, barbilla, empuje, pausa, bajada · 7 · \"Mándame tu vídeo y te lo corrijo\""],
+    ["Cómo organizo la semana de una clienta", "1 · \"Así trabajo\" · 2 · Su cuadrante · 3 · Sus entrenos · 4 · Su comida sin plan cerrado · 5 · La revisión · 6 · Qué cambiamos · 7 · CONSTANTE"]
+  ];
+  function carList(arr) { return arr.map(function (c, i) { return '<div class="ti"><span class="n">' + (i + 1) + '</span><div><b>' + esc(c[0]) + '</b><small>' + esc(c[1]) + '</small></div></div>'; }).join(""); }
+  $("carC").innerHTML = carList(CAR_C);
+  $("carV").innerHTML = carList(CAR_V);
+
+  /* ---------- Ángulos ---------- */
+  var FMTS = ["Técnica", "Rol entrenador", "Voz en off", "Carrusel conexión", "Carrusel valor", "Receta", "Yapping", "Historias", "YouTube"];
+  var FAMS = [
+    { n: "Constancia sin perfección", d: "Empezar y dejarlo, el mínimo, las semanas malas." },
+    { n: "Turnos y vida real", d: "Hospital, hostelería, hijos, viajes: el plan se adapta a ti." },
+    { n: "Técnica y progresión", d: "Saber qué haces y ver que avanzas." },
+    { n: "Comer sin planes cerrados", d: "Flexibilidad, comidas fuera, recetas, sin culpa." },
+    { n: "Mitos que creía", d: "Lo que tu clienta todavía cree y la frena." },
+    { n: "Rol entrenadora", d: "Revisando, corrigiendo, adaptando, dirigiendo." },
+    { n: "Casos", d: "Irene, Valerie y Marta, siempre con permiso." },
+    { n: "Mi historia", d: "Sin cifras de peso y solo lo que quieras contar." },
+    { n: "Cabeza y autoexigencia", d: "Compararse, \"nunca es suficiente\", la culpa." },
+    { n: "Anti \"vida fitness perfecta\"", d: "Contra el plan único y la realidad de escaparate." },
+    { n: "Objeciones", d: "Lo que te dirán antes de empezar, respondido antes." },
+    { n: "Método Constante", d: "Tus 3 pilares, tus 3 fases y tus no negociables." }
+  ];
+  var ANG = [
+    [0, "Empiezas cada lunes", ["La mayoría de las chicas que me escriben no empiezan de cero. Empiezan cada lunes.", "Si llevas 4 \"empiezo el lunes\" este año, no te falta motivación. Te falta esto."], ["Voz en off", "Carrusel valor", "Yapping"]],
+    [0, "El plan al 50 %", ["Ha habido entrenos al 100 %, al 50 % y días en los que no podía. Y no he vuelto al punto de partida.", "Una semana mala no es volver a empezar. Es usar el plan al 50 %."], ["Voz en off", "Carrusel valor", "Rol entrenador"]],
+    [0, "La disciplina no es hacerlo perfecto", ["La disciplina también es continuar aunque no salga todo perfecto.", "Dejé de esperar a estar motivada para entrenar."], ["Yapping", "Carrusel conexión"]],
+    [0, "Tu mínimo", ["¿Cuál es lo mínimo que haces en tu peor semana? Si la respuesta es nada, ahí está el problema.", "Mis clientas tienen siempre un mínimo: 2 sesiones de 30 minutos."], ["Voz en off", "Carrusel valor"]],
+    [0, "Las 3 semanas", ["Lo dejas siempre a las 3 semanas. Te explico por qué.", "La semana 3 es donde se acaba la motivación y empieza el plan."], ["Voz en off", "Carrusel valor", "Yapping"]],
+    [0, "No compenses", ["Si ayer no entrenaste, hoy no hagas el doble. Se sigue.", "Compensar es lo que hace que lo dejes."], ["Voz en off", "Historias"]],
+    [1, "Turnos de hospital", ["Un plan rígido no sirve si tu semana nunca es igual.", "Así le monto los entrenos a una clienta que trabaja en un hospital con turnos."], ["Rol entrenador", "Carrusel valor", "Voz en off"]],
+    [1, "Hostelería", ["Trabajo en hostelería en verano y entreno igual. Así lo organizo.", "Si sales de trabajar a la 1 de la mañana, tu plan no puede ser el de una influencer."], ["Voz en off", "Carrusel conexión", "Historias"]],
+    [1, "Madres", ["Mi clienta Marta es madre y lo que aprendía de comida se lo trasladaba a su hijo.", "No necesitas 6 días de gimnasio para cuidarte con hijos."], ["Voz en off", "Carrusel valor"]],
+    [1, "Viajes y vacaciones", ["Una clienta se fue a Bali y entrenó porque su cuerpo se lo pedía, no por miedo a perder lo conseguido.", "Qué hacer cuando te vas de viaje: el plan de viaje que les doy a mis clientas."], ["Carrusel valor", "Voz en off"]],
+    [1, "30 minutos", ["30 minutos para entrenar: ¿son suficientes? Depende de esto.", "Mi sesión de 30 minutos para los días de locos."], ["Técnica", "Carrusel valor", "Voz en off"]],
+    [1, "Priorizarte de verdad", ["Siempre te dejas para lo último. Y luego te preguntas por qué no avanzas.", "Cuidarte no es egoísmo. Es lo que te permite cuidar de todo lo demás."], ["Yapping", "Carrusel conexión"]],
+    [2, "Glúteo sin piernas enormes", ["Entrenaba mucho cuádriceps y nada de glúteo. Mis piernas se veían anchísimas.", "Si quieres glúteo y no piernas enormes, deja de hacer esto."], ["Técnica", "Carrusel valor", "Voz en off"]],
+    [2, "Step up en polea", ["El step up que hago para que trabaje el glúteo y no la rodilla.", "3 errores en el step up que casi todas cometemos."], ["Técnica"]],
+    [2, "Apunta tus pesos", ["Durante años no apunté los pesos. Iba por sensaciones. No progresaba.", "Si no apuntas lo que levantas, no sabes si avanzas."], ["Técnica", "Carrusel valor", "Voz en off"]],
+    [2, "Hacer más no es hacerlo mejor", ["Hacer más no significa necesariamente hacerlo mejor.", "Entrenaba 5 días y no cambiaba. Le faltaba dirección."], ["Voz en off", "Carrusel valor", "Yapping"]],
+    [2, "Hip thrust bien hecho", ["Hip thrust: la clave está en la barbilla, no en el peso.", "Si notas el hip thrust en la espalda, mira esto."], ["Técnica"]],
+    [2, "Mi primera dominada", ["Hace unos años no podía hacer una dominada. Hoy sí. Así llegué.", "Cómo empezar a entrenar para tu primera dominada."], ["Técnica", "Carrusel conexión", "Voz en off"]],
+    [2, "Descansos entre series", ["Descansaba 30 segundos entre series porque creía que quemaba más. Error.", "Cuánto descansar entre series si quieres ponerte fuerte."], ["Técnica", "Carrusel valor"]],
+    [3, "Una cena fuera no lo rompe todo", ["Una comida fuera o un fin de semana no rompen lo que estás haciendo. Lo rompe lo que haces el lunes.", "Qué pido yo cuando ceno fuera."], ["Voz en off", "Carrusel valor", "Historias"]],
+    [3, "Planes cerrados", ["Mis clientas venían de planes semanales muy cerrados: perdían peso, pero no aprendían a comer.", "Un plan cerrado funciona hasta que tu vida se mueve."], ["Voz en off", "Carrusel valor", "Yapping"]],
+    [3, "Avena versión Snickers", ["La avena que preparo cuando tengo antojo de dulce.", "Desayuno en 5 minutos para días de turno."], ["Receta"]],
+    [3, "Lo \"light\" y lo \"zero\"", ["Mi primer carrito era todo light y zero. Esto es lo que compro hoy.", "Lo light no es el problema. El problema es por qué lo compras."], ["Receta", "Carrusel valor", "Voz en off"]],
+    [3, "Recetas de batch cooking", ["Cocino una vez y como bien toda la semana de turnos.", "3 recetas que cocino el domingo."], ["Receta", "Carrusel valor"]],
+    [3, "Comer con intención, no con culpa", ["Aprendí a comer con intención y no por culpa.", "Comer bien no es comer perfecto."], ["Yapping", "Carrusel conexión"]],
+    [4, "\"Te vas a poner como un hombre\"", ["Me dijeron que con pesas me iba a poner como un hombre. Esto es lo que pasó.", "Las pesas no te ponen grande. Te ponen fuerte."], ["Voz en off", "Carrusel valor"]],
+    [4, "Los carbohidratos", ["Durante años los carbohidratos fueron mi enemigo.", "Si quieres entrenar con fuerza, necesitas esto en tu plato."], ["Voz en off", "Carrusel valor", "Receta"]],
+    [4, "El cardio como castigo", ["Usaba el cardio como castigo. Ahora lo uso para estar bien.", "El cardio no es la solución a todo."], ["Voz en off", "Carrusel conexión"]],
+    [4, "Ayunar siempre adelgaza más", ["Ayunar no es magia. Te cuento por qué lo dejé.", "Saltarte comidas no es un plan."], ["Yapping", "Carrusel valor"]],
+    [4, "Necesito estar motivada", ["La motivación viene después de empezar, no antes.", "Si esperas a estar motivada, vas a esperar siempre."], ["Voz en off", "Yapping"]],
+    [5, "Corrijo tu técnica", ["Una seguidora me ha mandado su sentadilla. Vamos a corregirla.", "Esto es lo primero que corrijo a todas mis clientas nuevas."], ["Rol entrenador", "Técnica"]],
+    [5, "Te monto la semana", ["Me dicen sus turnos y le monto la semana. En directo.", "Así organizo los entrenos de una clienta que trabaja de noche."], ["Rol entrenador", "Carrusel valor"]],
+    [5, "Si fueras mi clienta", ["Si fueras mi clienta y entrenaras 5 días sin ver cambios, esto es lo primero que te cambiaba.", "Si fueras mi clienta, no te daría un plan cerrado. Te daría esto."], ["Rol entrenador", "Voz en off"]],
+    [5, "Reviso tu rutina de Internet", ["Me habéis mandado esta rutina de Internet. Os digo qué sobra.", "Por qué la rutina que guardaste no te funciona."], ["Rol entrenador", "Carrusel valor"]],
+    [5, "La revisión semanal", ["Así es una revisión semanal conmigo: no solo pesos, también cómo estás.", "Lo que pregunto en cada revisión."], ["Rol entrenador", "Carrusel valor", "Historias"]],
+    [5, "Entrenando a una clienta", ["\"Baja controlando, aprieta arriba\". Así entreno a mis clientas.", "Una serie con una clienta, sin cortes."], ["Rol entrenador"]],
+    [6, "Irene", ["Irene trabaja en un hospital con turnos que cambian cada semana. Su mayor cambio fue mental.", "Irene ya no depende de la motivación ni de mis revisiones."], ["Carrusel conexión", "Voz en off"]],
+    [6, "Valerie", ["Valerie entrenaba 5 días a la semana. Le faltaba algo: dirección.", "A veces el cambio no está en hacer más, sino en darle una dirección a todo ese esfuerzo."], ["Carrusel valor", "Voz en off"]],
+    [6, "Marta", ["Marta, cuarenta y tantos y madre, quería entender el porqué de todo.", "Lo que aprendía conmigo se lo enseñaba a su hijo."], ["Carrusel conexión", "Voz en off"]],
+    [6, "Frases de clientas", ["\"Le estoy agradecida a mi cuerpo porque tira más de lo que esperaba.\"", "\"Me noto menos pesada tras las comidas, más ligera y con más energía.\""], ["Carrusel conexión", "Historias"]],
+    [6, "Mayo → agosto", ["Su evolución de mayo a agosto. No hizo más: hizo mejor.", "Lo que cambió en estos meses (y no fue entrenar más días)."], ["Carrusel valor"]],
+    [7, "No empecé porque amara mi cuerpo", ["No empecé a entrenar porque amara mi cuerpo, sino porque durante muchos años intenté cambiarlo.", "El entrenamiento pasó de ser una herramienta de control a una de construcción."], ["Carrusel conexión", "Yapping"]],
+    [7, "La equipación de vóley", ["A mis compañeras la equipación les quedaba bien. A mí, estrecha y corta.", "El día que empecé a mirarme de otra forma."], ["Carrusel conexión", "Yapping"]],
+    [7, "Las voces se callaron", ["Por primera vez en mi vida, las voces de mi cabeza empezaron a callarse.", "No vi grandes cambios físicos. Vi algo más importante."], ["Carrusel conexión", "Voz en off"]],
+    [7, "Mis primeras clientas", ["Mi mejor amiga y dos amigas que sí me pagaron.", "Así empecé a entrenar a otras mujeres."], ["Carrusel conexión", "Yapping"]],
+    [7, "Mi error como entrenadora", ["Mi error al empezar: centrarme solo en el físico de mis clientas.", "Hoy entiendo primero qué está pasando antes de pensar que falta constancia."], ["Yapping", "Carrusel conexión"]],
+    [7, "La promesa de Navidad", ["Con 13 años le prometí a mi primo que seríamos modelos. Lo que me costó entender que no iba de eso.", "Delgada no era igual a belleza. Tardé años en saberlo."], ["Carrusel conexión"]],
+    [8, "Nunca es suficiente", ["Durante años nada era suficiente.", "Si siempre sientes que no haces suficiente, esto es para ti."], ["Yapping", "Carrusel conexión"]],
+    [8, "Compararte", ["Me comparaba con las chicas de mi gimnasio. Y con mis compañeros de trabajo.", "Todo el mundo avanza menos yo. Eso pensaba."], ["Voz en off", "Carrusel conexión"]],
+    [8, "Ya debería saber hacerlo sola", ["No pides ayuda porque crees que ya deberías saber hacerlo sola.", "Yo también necesité a alguien externo para ordenar mis ideas."], ["Voz en off", "Yapping"]],
+    [8, "Culpa después de comer", ["Comer por estrés y sentirte culpable después: lo que hacemos con mis clientas.", "La culpa no te ayuda a comer mejor."], ["Yapping", "Carrusel valor"]],
+    [8, "\"Deja ya el móvil\"", ["Lo que no se ve de cuidarte y trabajar cuando tu entorno no lo entiende.", "Cuidarte también es poner límites."], ["Yapping", "Historias"]],
+    [9, "El plan se adapta a ti", ["El plan debería adaptarse a la persona y no la persona vivir para cumplir el plan.", "No existe una única forma correcta de cuidarse."], ["Voz en off", "Carrusel valor", "Yapping"]],
+    [9, "Realidad de escaparate", ["No te voy a enseñar una vida fitness perfecta. Te enseño la mía.", "Enseñar los días malos no resta autoridad."], ["Yapping", "Carrusel conexión", "Historias"]],
+    [9, "No es solo un físico", ["Reducir todo a un físico es el error del sector.", "Quiero que cambies tu forma de cuidarte. El físico viene después."], ["Yapping", "Carrusel conexión"]],
+    [9, "Influencers que no viven tu vida", ["Copiar la rutina de una influencer cuando trabajas 10 horas no funciona.", "Ella no tiene tus turnos."], ["Voz en off", "Carrusel valor"]],
+    [10, "No tengo tiempo", ["No tienes tiempo para 6 días. ¿Y para 3 de 40 minutos?", "Mis clientas con turnos entrenan menos que tú y avanzan más."], ["Voz en off", "Carrusel valor"]],
+    [10, "Lo puedo hacer sola", ["No te falta información. Te sobra.", "Tienes 300 rutinas guardadas y no aplicas ninguna."], ["Voz en off", "Carrusel valor"]],
+    [10, "Me da vergüenza el gimnasio", ["Mi primer día en el gimnasio fui con una amiga, muerta de vergüenza.", "Si te da vergüenza la zona de pesas, empieza por aquí."], ["Voz en off", "Carrusel conexión", "Técnica"]],
+    [10, "Me da vergüenza mandar fotos", ["A muchas clientas les cuesta mandarme una foto. No pasa nada.", "Las fotos, cuando estés cómoda. Empezamos por otra cosa."], ["Yapping", "Historias"]],
+    [10, "Ya lo he probado todo", ["Has probado dietas y rutinas. ¿Has probado un plan hecho para tu semana?", "Lo que no has probado es que alguien te acompañe fuera del gimnasio."], ["Voz en off", "Carrusel valor"]],
+    [11, "Método Constante en 3 pilares", ["Entreno con estructura, comida sin planes cerrados y seguimiento con tu vida real.", "Así trabajo con mis clientas, en 3 pilares."], ["Carrusel valor", "Voz en off", "YouTube"]],
+    [11, "Las 3 fases", ["Ordenar, progresar y autonomía: las 3 fases de mis clientas.", "En el mes 5 ya decides tú. Ese es el objetivo."], ["Carrusel valor", "Voz en off"]],
+    [11, "Que no me necesites", ["Mi objetivo es que un día no me necesites.", "Cuidarte no debería depender de tenerme detrás."], ["Voz en off", "Yapping"]],
+    [11, "Lo primero que vas a dejar de hacer", ["Si trabajas conmigo, lo primero que vas a dejar de hacer es intentarlo todo perfecto sin entender lo que haces.", "Lo primero que cambio a una clienta nueva."], ["Voz en off", "Rol entrenador"]],
+    [11, "Sé cómo cuidarme aunque mi vida no sea perfecta", ["De \"tengo que hacerlo todo bien\" a \"sé cómo cuidarme incluso cuando mi vida no es perfecta\".", "Eso es lo que te llevas en 6 meses."], ["Carrusel conexión", "Voz en off"]]
+  ];
+
+  /* ---------- Guiones ---------- */
+  var SCRIPTS = [
+    { k: "vo", t: "El plan al 100 %, al 50 % y mínimo", clip: "Tú entrenando un día bien (pesado, con energía), otro más corto en casa y otro solo paseando con tu perro. Tu libreta de pesos.", hooks: [
+      "A · Ha habido entrenos al 100 %, al 50 % y días que no podía. Y no he vuelto al punto de partida.",
+      "B · La mayoría lo deja porque su plan solo sirve para semanas perfectas.",
+      "C · Una semana mala no es volver a empezar."
+    ], lines: [
+      ["3–15 s", "Mis clientas tienen tres planes: el de la semana buena, el de la semana normal y el mínimo, para la semana de locos.", "Texto: 100 % · 50 % · MÍNIMO"],
+      ["15–28 s", "El mínimo pueden ser dos sesiones de 30 minutos. Parece poco, pero es lo que hace que no vuelvas a empezar cada lunes.", ""],
+      ["28–38 s", "Sígueme si quieres aprender a cuidarte sin hacerlo perfecto.", "Texto: SÍGUEME"]
+    ] },
+    { k: "vo", t: "Entrenaba mucho y no cambiaba", clip: "Clips tuyos entrenando con estructura: libreta, barra cargada, descanso con cronómetro. Detalle del glúteo trabajando en hip thrust.", hooks: [
+      "A · Hacer más no significa hacerlo mejor.",
+      "B · Entrenaba 5 días y no cambiaba. Me faltaba esto.",
+      "C · Si vas al gimnasio sin saber si avanzas, mira esto."
+    ], lines: [
+      ["3–15 s", "Durante años entrené mucho cuádriceps, nada de glúteo, sin apuntar pesos y descansando 30 segundos. Mucho esfuerzo, poca dirección.", "Texto: MUCHO ESFUERZO, CERO DIRECCIÓN"],
+      ["15–28 s", "Lo que cambió fue la estructura: ejercicios pensados para mi objetivo, apuntar lo que levanto y subir poco a poco.", ""],
+      ["28–38 s", "Sígueme: te enseño a entrenar con cabeza.", "Texto: SÍGUEME"]
+    ] },
+    { k: "tec", t: "3 errores en el step up", clip: "Plano a 45 grados en la polea o con mancuernas. Primero mal, luego bien. Detalle del pie y la cadera.", lines: [
+      ["0–3 s", "Si el step up te carga la rodilla en vez del glúteo, mira esto.", "Texto: STEP UP · 3 ERRORES"],
+      ["3–12 s", "Error 1: empujar con la pierna de atrás. Error 2: el pie demasiado cerca. Error 3: subir recto como una vela.", ""],
+      ["12–25 s", "Así: el pie entero en el cajón, el tronco un poco adelante y subes empujando con el talón. Baja lento.", "Rótulo en cada corrección"],
+      ["25–32 s", "Guárdalo para tu próximo día de pierna. Y si quieres que te corrija el tuyo, mándamelo.", "Texto: GUÁRDALO"]
+    ] },
+    { k: "rol", t: "Le monto la semana a una clienta con turnos", clip: "Pizarra, tablet o folio con el cuadrante de una clienta (anonimizado). Tú escribiendo los entrenos encima.", lines: [
+      ["0–3 s", "Esta clienta trabaja en un hospital. Esta semana tiene mañanas, tardes y dos noches. Así le monto los entrenos.", "Texto: TU PLAN, SOBRE TUS TURNOS"],
+      ["3–15 s", "Las mañanas entrena después del turno: sesión completa. Las tardes, antes: 40 minutos. Las noches no se toca el gimnasio: se camina y se descansa.", "Rótulo: CON PERMISO DE MI CLIENTA"],
+      ["15–28 s", "Tres sesiones, ninguna perfecta, todas posibles. Esto es lo que hace que no lo deje.", ""],
+      ["28–38 s", "¿Quieres que monte la tuya? Escríbeme CONSTANTE.", "Texto: ESCRÍBEME \"CONSTANTE\""]
+    ] },
+    { k: "yap", t: "No necesitas hacerlo perfecto", clip: "Tú a cámara con buena luz, en casa o en el gimnasio. Natural, sin guion leído.", lines: [
+      ["0–3 s", "Si sientes que si no lo haces perfecto no sirve, esto es para ti.", "Texto: NO TIENE QUE SER PERFECTO"],
+      ["3–15 s", "Yo pensaba igual. Si no entrenaba los 5 días, el resto no contaba. Si comía fuera, la semana estaba perdida.", ""],
+      ["15–30 s", "Lo que aprendí: cuidarte no es hacerlo todo bien. Es saber cómo cuidarte incluso cuando tu vida no es perfecta.", ""],
+      ["30–40 s", "Escríbeme CONSTANTE y te cuento cómo lo trabajo con mis clientas.", "Texto: ESCRÍBEME \"CONSTANTE\""]
+    ] }
+  ];
+  function renderScripts(list, box) {
+    $(box).innerHTML = list.map(function (s) {
+      var hooks = s.hooks ? '<div class="variants"><b>0–3 s · 3 ganchos para reels de prueba</b>' + s.hooks.map(function (h) { return '<div class="hk" style="display:flex;gap:8px;align-items:flex-start"><p style="flex:1;font-weight:700;font-size:14.5px">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h.replace(/^[ABC] · /, "")) + '">Copiar</button></div>'; }).join("") + '</div>' : "";
+      var copyAll = (s.hooks ? s.hooks.join("\n") + "\n" : "") + s.lines.map(function (l) { return l[1]; }).join("\n");
+      return '<article class="card script"><span class="tag a">' + esc(s.tag || K[s.k].n) + '</span><h3>' + esc(s.t) + '</h3>' + (s.ang ? '<p class="soft" style="font-size:14px"><b>Ángulo:</b> ' + esc(s.ang) + '</p>' : '') + '<p class="soft" style="font-size:14px"><b>Qué se ve:</b> ' + esc(s.clip) + '</p>' + hooks +
+        s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+        '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(copyAll) + '">Copiar guion</button></article>';
+    }).join("");
+  }
+  renderScripts(SCRIPTS, "scripts");
+
+  /* ---------- Anuncios voz en off (sígueme) ---------- */
+  var ADS = [
+    { tag: "Anuncio 1 · voz en off", ang: "Constancia sin perfección (el plan al 50 %)", t: "Empezar cada lunes", clip: "Clips tuyos: un lunes en el gimnasio, un miércoles cansada entrenando corto, un domingo cocinando. Texto grande en pantalla.", hooks: [
+      "A · Yo empezaba cada lunes. Y lo dejaba cada jueves.",
+      "B · La mayoría de mujeres no lo deja por falta de ganas.",
+      "C · Lo que me hizo dejar de empezar de cero."
+    ], lines: [
+      ["3–18 s", "Mi plan solo servía para semanas perfectas. En cuanto llegaba una mala, lo dejaba. Ahora tengo un plan al 100 %, uno al 50 % y un mínimo. Y una semana mala ya no es volver a empezar.", "Texto: 100 % · 50 % · MÍNIMO"],
+      ["18–28 s", "Sígueme: cada día te enseño a cuidarte sin hacerlo perfecto.", "Texto: SÍGUEME"]
+    ] },
+    { tag: "Anuncio 2 · voz en off", ang: "Turnos y vida real (el plan se adapta a ti)", t: "Un plan que se adapta a tu semana", clip: "Cuadrante de turnos en pantalla (anonimizado), tú entrenando a distintas horas, la luz cambiando: mañana, tarde, noche.", hooks: [
+      "A · La mayoría de mujeres que trabajan a turnos no necesitan más fuerza de voluntad.",
+      "B · Un plan rígido no sirve si tu semana nunca es igual.",
+      "C · Así entrena una de mis clientas con turnos de hospital."
+    ], lines: [
+      ["3–18 s", "Si la semana cambia, el plan tiene que cambiar con ella. Mañanas: sesión completa. Tardes: 40 minutos. Noches: descanso y paseo. Ninguna perfecta, todas posibles.", "Texto: EL PLAN SE ADAPTA A TI"],
+      ["18–28 s", "Sígueme si tu semana nunca es igual: te enseño a entrenar con la vida que tienes.", "Texto: SÍGUEME"]
+    ] },
+    { tag: "Anuncio 3 · voz en off", ang: "Técnica y progresión (hacer más no es mejor)", t: "Entrenaba mucho y no cambiaba", clip: "Tú entrenando hip thrust y step up con buena técnica, tu libreta de pesos, la barra cargándose poco a poco.", hooks: [
+      "A · Yo entrenaba 5 días a la semana y no cambiaba nada.",
+      "B · Hacer más no significa hacerlo mejor.",
+      "C · El error que cometí durante años en el gimnasio."
+    ], lines: [
+      ["3–18 s", "Mucho cardio, máquinas al azar y sin apuntar un solo peso. Cuando empecé a entrenar con estructura, con ejercicios pensados para mi objetivo y apuntando lo que levanto, todo cambió.", "Texto: ESTRUCTURA > ESFUERZO"],
+      ["18–28 s", "Sígueme: te enseño técnica y a entrenar con cabeza.", "Texto: SÍGUEME"]
+    ] },
+    { tag: "Anuncio 4 · voz en off", ang: "Comer sin planes cerrados", t: "Una cena fuera no lo rompe todo", clip: "Tú en una cena con amigas, al día siguiente desayunando tu avena y entrenando normal. Sin báscula, sin culpa.", hooks: [
+      "A · Antes una cena fuera me rompía la semana. Ahora no.",
+      "B · La mayoría no falla por lo que come el sábado, sino por lo que hace el lunes.",
+      "C · Lo que dejé de hacer después de comer fuera."
+    ], lines: [
+      ["3–18 s", "Antes, después de una cena fuera, el lunes me castigaba: menos comida, más cardio. Así no se aprende a comer. Ahora disfruto la cena y el lunes sigo con lo de siempre. Sin compensar.", "Texto: SIN COMPENSAR"],
+      ["18–28 s", "Sígueme: te enseño a comer bien sin planes cerrados.", "Texto: SÍGUEME"]
+    ] },
+    { tag: "Anuncio 5 · voz en off", ang: "Mitos que creía", t: "\"Te vas a poner como un hombre\"", clip: "Tú levantando peso, haciendo una dominada y luego arreglada para salir. Fuerte y femenina.", hooks: [
+      "A · Me dijeron que con pesas me iba a poner como un hombre.",
+      "B · Los 3 mitos que me creí durante años en el gimnasio.",
+      "C · La mayoría de mujeres sigue creyéndose esto."
+    ], lines: [
+      ["3–18 s", "Me creí que las pesas me pondrían enorme, que los carbohidratos engordaban y que el cardio lo arreglaba todo. Dejé de creérmelo y hoy hago dominadas, como de todo y me veo fuerte.", "Texto: 3 MITOS"],
+      ["18–28 s", "Sígueme: cada semana desmonto un mito que te está frenando.", "Texto: SÍGUEME"]
+    ] },
+    { tag: "Anuncio 6 · voz en off", ang: "Rol entrenadora (te corrijo la técnica)", t: "Lo primero que corrijo a mis clientas", clip: "Vídeo de una clienta o tuyo haciendo sentadilla mal, pausa, flechas en pantalla, y la versión corregida.", hooks: [
+      "A · Esto es lo primero que corrijo a todas mis clientas nuevas.",
+      "B · La mayoría hace la sentadilla así. Y se le carga la espalda.",
+      "C · Un cambio en la sentadilla y empiezas a notar el glúteo."
+    ], lines: [
+      ["3–18 s", "Pies un poco abiertos, el peso en todo el pie, bajas como si te sentaras atrás y el pecho mira al frente. No es bajar más: es bajar bien.", "Rótulos en cada corrección"],
+      ["18–28 s", "Sígueme: te enseño técnica para que sepas que lo que haces funciona.", "Texto: SÍGUEME"]
+    ] }
+  ];
+  renderScripts(ADS, "ads");
+
+  /* ---------- Banco de ángulos ---------- */
+  var fFam = -1, fFmt = "";
+  var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  function tagCls(m) { return m === "Rol entrenador" || m === "Técnica" ? " a" : (m === "Carrusel conexión" ? " cc" : (m === "Carrusel valor" ? " cv" : "")); }
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n + " " + a[3].join(" ")).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>';
+          }).join("") + '<div class="meta">' + a[3].map(function (m) { return '<span class="tag' + tagCls(m) + '">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var orig = b.textContent;
+    var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = orig; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+  renderAng();
+
+  /* ---------- Pestañas ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "ang", "gui", "ads", "rec"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>
