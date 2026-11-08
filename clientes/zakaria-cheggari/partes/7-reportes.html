@@ -98,10 +98,10 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
 .ctab td:not(:first-child), .ctab th:not(:first-child) { text-align: right; }
 .trow { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1.4fr) 90px auto; gap: 8px; align-items: center; }
 @media (max-width: 640px) { .trow { grid-template-columns: 1fr 1fr; } .trow input:first-child { grid-column: 1 / -1; } }
-.prow { display: grid; grid-template-columns: minmax(0, 2fr) 70px 90px 90px minmax(0, 1.3fr) auto; gap: 8px; align-items: center; }
+.prow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--sand-line); } .prow input[data-p=reel] { grid-column: 1 / -1; } .prow input, .prow select { min-width: 0; width: 100%; } .prow .pl { display: grid; gap: 3px; min-width: 0; } .prow .pl span { font-size: 12px; color: var(--soft); } .prow .rm { justify-self: start; }
 .prow .cps { font: 700 14px/1.1 var(--f-body); text-align: center; }
 .prow .cps.ok { color: var(--green); } .prow .cps.bad { color: var(--rust); }
-@media (max-width: 640px) { .prow { grid-template-columns: 1fr 1fr 1fr; } .prow input:first-child { grid-column: 1 / -1; } }
+@media (max-width: 420px) { .prow { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .task { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
 .task input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--gold); margin: 0; }
 .wk { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
@@ -324,7 +324,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
           <div><span>Carruseles (objetivo 3–5)</span><b id="w-car">0</b></div>
           <div><span>YouTube (objetivo 1)</span><b id="w-yt">0 / 1</b></div>
           <div><span>Trial reels publicados</span><b id="w-trial">0</b></div>
-          <div><span>Reels promocionados: € por seguidor (objetivo &lt; 1 €)</span><b id="w-promo">—</b></div>
+          <div><span>Reels promocionados: € por seguidor (objetivo &lt; 1 €)<small id="w-promo-d" style="display:block;font-size:12.5px"></small></span><b id="w-promo">—</b></div>
         </div>
       </div>
       <div class="card">
@@ -381,7 +381,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
 
   function el(id) { return document.getElementById(id); }
   function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
-  function eur(n) { var r = Math.round(n * 100) / 100, s = Math.abs(Math.round(r)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), dec = Math.round(Math.abs(r) * 100) % 100; return (r < 0 ? "-" : "") + s + (dec ? "," + String(dec).padStart(2, "0") : "") + " €"; }
+  function eur(n) { var r = Math.round(n * 100) / 100, s = Math.floor(Math.abs(r)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), dec = Math.round(Math.abs(r) * 100) % 100; return (r < 0 ? "-" : "") + s + (dec ? "," + String(dec).padStart(2, "0") : "") + " €"; }
   function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + " %" : "—"; }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
   function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
@@ -562,16 +562,16 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       var row = document.createElement("div"); row.className = "prow";
       var DEC = ["Probando", "Mantener", "Cortar"];
       row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Reel (tema o enlace)" aria-label="Reel">' +
-        '<input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días promocionado">' +
-        '<input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto €" aria-label="Gasto en euros">' +
-        '<input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Seguidores" aria-label="Seguidores ganados">' +
-        '<select data-p="decision" aria-label="Decisión">' + DEC.map(function (d) { return '<option' + (p.decision === d ? ' selected' : '') + '>' + d + '</option>'; }).join("") + '</select>' +
+        '<label class="pl"><span>Días</span><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días promocionado"></label>' +
+        '<label class="pl"><span>Gasto €</span><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto €" aria-label="Gasto en euros"></label>' +
+        '<label class="pl"><span>Seguidores</span><input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Seguidores" aria-label="Seguidores ganados"></label>' +
+        '<label class="pl"><span>Decisión</span><select data-p="decision" aria-label="Decisión">' + DEC.map(function (d) { return '<option' + (p.decision === d ? ' selected' : '') + '>' + d + '</option>'; }).join("") + '</select></label>' +
         '<button type="button" class="rm">Quitar</button>' +
         '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
       function paint() {
         var c = promoCps(p), sp = row.querySelector("[data-cps]");
         sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (c < 1 ? " · por debajo de 1 €: mantener" : (num(p.dias) >= 5 ? " · por encima de 1 € tras " + num(p.dias) + " días: cortar" : " · por encima de 1 €: sigue probando hasta 5–7 días"));
-        sp.className = "cps" + (c == null ? "" : (c < 1 ? " ok" : " bad"));
+        sp.className = "cps" + (c == null ? "" : (c < 1 ? " ok" : " bad")); promoHead();
       }
       if (!p.decision) p.decision = "Probando";
       row.querySelectorAll("[data-p]").forEach(function (inp) {
@@ -582,9 +582,9 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       paint();
       box.appendChild(row);
     });
-    var a = promoAgg();
-    el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " reel · " : " reels · ") + eur(a.g) + " · " + a.s + " seguidores" : "";
+    promoHead();
   }
+  function promoHead() { var a = promoAgg(); el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " reel · " : " reels · ") + eur(a.g) + " · " + a.s + " seguidores" : ""; }
   el("addPromo").addEventListener("click", function () { if (!Array.isArray(sem.promos)) sem.promos = []; sem.promos.push({ reel: "", dias: "", gasto: "", seguidores: "", decision: "Probando" }); saveSem(); renderPromos(); update(); });
   el("addTrial").addEventListener("click", function () { if (!Array.isArray(sem.trials)) sem.trials = []; sem.trials.push({ guion: "", ganchos: "", ganador: "", views: "" }); saveSem(); renderTrials(); var ins = el("trialList").querySelectorAll('input[data-t="guion"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
   el("addTask").addEventListener("click", function () { sem.tareas.push({ tarea: "", hecha: false }); saveSem(); renderTasks(); var ins = el("taskList").querySelectorAll('input[type=text]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
@@ -676,7 +676,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
     el("w-yt").textContent = a.youtube + " / " + YT_OBJ; wm("w-yt", a.youtube >= YT_OBJ);
     el("w-car").textContent = a.carrusel + " / " + p.carrusel; wm("w-car", a.carrusel >= p.carrusel);
     var pa = promoAgg(), wp = el("w-promo");
-    wp.textContent = pa.cps == null ? (pa.g ? eur(pa.g) + " sin seguidores" : "—") : eur(pa.cps) + " (" + eur(pa.g) + " · " + pa.s + " seg.)";
+    wp.textContent = pa.cps == null ? (pa.g ? "sin seg." : "—") : eur(pa.cps); el("w-promo-d").textContent = pa.g ? eur(pa.g) + " invertidos · " + pa.s + " seguidores" : "";
     wp.className = pa.cps == null ? (pa.g ? "bad" : "") : (pa.cps < 1 ? "ok" : "bad");
     el("w-trial").textContent = a.trial;
     var trs = (sem.trials || []).filter(function (t) { return t.guion || t.ganador; });

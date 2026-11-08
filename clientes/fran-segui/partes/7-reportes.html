@@ -1,0 +1,794 @@
+<title>Fran Seguí Reporte</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: reporte de Fran Seguí para Alberto. Arriba el diario (conversaciones en 2 rondas, llamadas, cierres, reels por formato con comida real, trial reels y rol entrenador, carruseles, historias y WhatsApp) y debajo el semanal (rampa de reels + carruseles, YouTube 1/semana, trial reels, reels promocionados, clientes, tareas y feedback). Paleta cálida de Fran. */
+:root {
+  --paper: #f6f3ee;
+  --white: #ffffff;
+  --sand: #ece6dc;
+  --sand-line: #d9d0c2;
+  --ink: #1b1a17;
+  --soft: #615d55;
+  --gold: #b5531a;
+  --gold-text: #9a4514;
+  --chip: #efe9df;
+  --rust: #9a3b2f;
+  --green: #55663a;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(28px, 5vw, 52px); display: grid; gap: 22px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.5vw, 54px)/1 var(--f-head); letter-spacing: 0; text-transform: uppercase; }
+h2 { font: 700 26px/1.1 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+h3 { font: 700 16.5px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 10px; max-width: 780px; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.bar label { display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; }
+input, select, textarea { font: 600 15.5px/1.25 var(--f-body); padding: 10px 12px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; font-variant-numeric: tabular-nums; }
+textarea { min-height: 64px; resize: vertical; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
+.bar input[type=date] { width: auto; }
+.status { font: 500 12.5px/1.4 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--rust); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.col { display: grid; gap: 14px; min-width: 0; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.when { display: inline-block; width: fit-content; background: var(--gold); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+.grp { display: grid; gap: 8px; }
+.grp > .gh { font-weight: 800; font-size: 14.5px; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.grp > .gh small { font: 500 11.5px/1 var(--f-mono); color: var(--soft); font-weight: 500; }
+.nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.nums.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.nums label, .fld { display: grid; gap: 4px; font-size: 13px; font-weight: 700; color: var(--soft); }
+.yn { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 600; flex-wrap: wrap; }
+.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; flex-wrap: wrap; }
+.seg button { all: unset; cursor: pointer; padding: 7px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; color: var(--soft); }
+.seg button[aria-pressed="true"] { background: var(--gold); color: var(--white); }
+.seg button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.goal { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-size: 14px; font-weight: 700; }
+.goal.ok { background: #e3ecdd; color: var(--green); }
+.goal.bad { background: #f3e0d8; color: var(--rust); }
+.calc b.ok { color: var(--green); }
+.calc b.bad { color: var(--rust); }
+.calc b.ok::before { content: "● "; font-size: .6em; vertical-align: middle; }
+.calc b.bad::before { content: "● "; font-size: .6em; vertical-align: middle; }
+.meter { height: 10px; background: var(--sand); border-radius: 99px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--gold); border-radius: 99px; }
+.closes { display: grid; gap: 10px; background: var(--chip); border-radius: 14px; padding: 14px; }
+.row { display: grid; gap: 8px; background: var(--white); border-radius: 12px; padding: 12px; }
+.row .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.rm { all: unset; cursor: pointer; color: var(--soft); font-size: 13px; font-weight: 700; }
+.rm:focus-visible { outline: 2px solid var(--ink); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; color: var(--soft); }
+.fields .full { grid-column: 1 / -1; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { font: 700 14.5px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 12px 16px; cursor: pointer; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.saved { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.note { font-size: 13.5px; color: var(--soft); min-height: 1.2em; }
+.calc { display: grid; gap: 10px; }
+.calc div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-bottom: 1px solid var(--sand-line); padding-bottom: 8px; }
+.calc div:last-child { border-bottom: 0; padding-bottom: 0; }
+.calc span { color: var(--soft); font-size: 14.5px; }
+.calc b { font: 800 25px/1 var(--f-head); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); background: var(--chip); border-radius: 12px; padding: 14px 16px; }
+.mood { display: flex; gap: 6px; flex-wrap: wrap; }
+.mood button { all: unset; cursor: pointer; font-size: 22px; line-height: 1; padding: 8px 10px; border-radius: 12px; background: var(--chip); }
+.mood button[aria-pressed="true"] { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+.mood button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ctab th { text-align: left; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 6px 8px; }
+.ctab td { padding: 7px 8px; border-top: 1px solid var(--sand-line); font-variant-numeric: tabular-nums; }
+.ctab td:not(:first-child), .ctab th:not(:first-child) { text-align: right; }
+.trow { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1.4fr) 90px auto; gap: 8px; align-items: center; }
+@media (max-width: 640px) { .trow { grid-template-columns: 1fr 1fr; } .trow input:first-child { grid-column: 1 / -1; } }
+.task { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.task input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--gold); margin: 0; }
+.wk { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.wk b { font-size: 15px; }
+.hist-wrap { overflow-x: auto; }
+.hist { width: 100%; border-collapse: collapse; min-width: 640px; }
+.hist th, .hist td { padding: 9px 10px; border-top: 1px solid var(--sand); text-align: right; font-size: 14px; font-variant-numeric: tabular-nums; }
+.hist th:first-child, .hist td:first-child { text-align: left; }
+.hist thead th { border-top: 0; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--gold-text); background: var(--chip); }
+.hist tfoot td { font-weight: 800; background: var(--sand); }
+.hist tr.sel td { background: #f7e7de; }
+.empty { color: var(--soft); text-align: center !important; padding: 20px !important; }
+.cheer.ok { background: #e3ecdd; color: var(--green); }
+.cheer { background: var(--ink); color: #fff; border-radius: 12px; padding: 12px 14px; font-weight: 700; font-size: 14.5px; }
+@media (max-width: 900px) { .g2 { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .nums.c3 { grid-template-columns: 1fr 1fr; } .fields { grid-template-columns: 1fr; } }
+/* Fran: titulares en serif sin mayúsculas, cifras en Inter */
+h1, h2 { font-family: var(--f-head) !important; font-weight: 400 !important; text-transform: none !important; letter-spacing: -.01em !important; }
+.calc b { font-family: var(--f-body) !important; }
+.calc-d { display: block; font-size: 12.5px; margin-top: 3px; }
+.prow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--sand-line); }
+.prow input[data-p="reel"] { grid-column: 1 / -1; }
+.prow .rm { justify-self: end; }
+.prow .pl { display: grid; gap: 3px; min-width: 0; }
+.prow .pl small { font-size: 12px; color: var(--soft); }
+.prow .eps { font: 700 13px/1.2 var(--f-body); white-space: nowrap; }
+.prow .eps.ok { color: var(--green); }
+.prow .eps.bad { color: var(--rust); }
+.warnbox { background: #f6e3dc; color: #7a2f22; border-radius: 10px; padding: 9px 12px; font-size: 13px; }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Fran Seguí · Reporte para Alberto</span>
+    <h1>Tus números, cada día. Sin excusas.</h1>
+    <p class="soft">Cada noche lo del día, cada domingo lo de la semana. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo es lo que hay que corregir mañana. Lo que no se mide no mejora.</p>
+    <div class="bar">
+      <label for="fecha">Día<input type="date" id="fecha"></label>
+      <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
+    </div>
+  </header>
+
+  <!-- ===================== DIARIO ===================== -->
+  <div class="g2">
+    <div class="col">
+      <form class="card" id="formDia" autocomplete="off">
+        <span class="when">Cada noche</span>
+        <h2 id="h-dia">Hoy</h2>
+
+        <div class="grp">
+          <div class="gh">Conversaciones abiertas <small>objetivo 100 al día</small></div>
+          <div class="nums">
+            <label>Ronda 1 (mañana)<input data-d="ronda1" type="number" min="0" inputmode="numeric" placeholder="50"></label>
+            <label>Ronda 2 (tarde)<input data-d="ronda2" type="number" min="0" inputmode="numeric" placeholder="50"></label>
+          </div>
+          <div class="meter" aria-hidden="true"><i id="convBar" style="width:0"></i></div>
+          <div class="goal" id="convGoal"></div>
+          <div class="nums">
+            <label>Han respondido<input data-d="respuestas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Conversaciones calientes<input data-d="calientes" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <div class="yn"><span>¿Bienvenidas a nuevos seguidores al día?</span><div class="seg" data-yn="bienvenidas"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+          <div class="yn"><span>¿Seguimientos del CRM hechos?</span><div class="seg" data-yn="seguimientos"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Llamadas</div>
+          <div class="nums">
+            <label>Llamadas agendadas hoy<input data-d="agendadas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Llamadas hechas hoy<input data-d="hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <div class="yn"><span>¿Se ha cerrado algo hoy?</span><div class="seg" id="closedSeg"><button type="button" id="closedYes" aria-pressed="false">Sí</button><button type="button" id="closedNo" aria-pressed="false">No</button></div></div>
+          <div id="closesBox" class="closes" hidden>
+            <span class="label">Cierres de hoy</span>
+            <div id="closesList" style="display:grid;gap:10px"></div>
+            <button type="button" class="btn ghost small" id="addClose">+ Añadir otro cierre</button>
+          </div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Contenido publicado hoy <small id="dayTarget"></small></div>
+          <div class="nums c3">
+            <label>Comida real<input data-d="comida" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Voz en off<input data-d="voz" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>…de ellas, trial reels<input data-d="trial" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Yapping<input data-d="yapping" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Tendencia<input data-d="trend" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Green screen<input data-d="green" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Rol entrenador<input data-d="rol" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Carruseles<input data-d="carrusel" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>YouTube<input data-d="youtube" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Historias<input data-d="historias" type="number" min="0" inputmode="numeric" placeholder="6–10"></label>
+          </div>
+          <p class="soft" style="font-size:13px">Rol entrenador = tú haciendo de entrenador y dietista: revisando la cesta o el plato de un seguidor, explicando una analítica sin diagnosticar, corrigiendo técnica, "esto haría si fueras mi cliente". Los carruseles cuentan aparte de los reels.</p>
+          <div class="goal" id="reelGoal"></div>
+          <div class="yn"><span>¿Secuencia con CTA en historias hoy? <small class="soft" id="ctaHint"></small></span><div class="seg" data-yn="ctaHistorias"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">WhatsApp <small>objetivo 3–5 Estados al día</small></div>
+          <div class="nums">
+            <label>Estados de WhatsApp publicados hoy<input data-d="estados" type="number" min="0" inputmode="numeric" placeholder="3–5"></label>
+            <label>Contactos nuevos guardados<input data-d="contactos" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Ánimo <small>opcional</small></div>
+          <div class="mood" id="mood" role="group" aria-label="Cómo te has sentido hoy">
+            <button type="button" data-v="1" aria-label="1 de 5" aria-pressed="false">😞</button>
+            <button type="button" data-v="2" aria-label="2 de 5" aria-pressed="false">😕</button>
+            <button type="button" data-v="3" aria-label="3 de 5" aria-pressed="false">😐</button>
+            <button type="button" data-v="4" aria-label="4 de 5" aria-pressed="false">🙂</button>
+            <button type="button" data-v="5" aria-label="5 de 5" aria-pressed="false">🤩</button>
+          </div>
+          <label class="fld">Una frase sobre el día (lo que salió y lo que no)<textarea data-d="nota" placeholder="Ej.: 2 llamadas agendadas; la ronda 2 la hice tarde"></textarea></label>
+        </div>
+        <span class="saved" id="sv-dia"></span>
+      </form>
+    </div>
+
+    <div class="col">
+      <div class="cheer" id="cheerDia" hidden></div>
+      <div class="card sand">
+        <span class="label">Cálculos del día</span>
+        <div class="calc">
+          <div><span>Conversaciones abiertas</span><b id="o-conv">0 / 100</b></div>
+          <div><span>% de respuesta</span><b id="o-resp">—</b></div>
+          <div><span>% de cierre (cierres / llamadas hechas)</span><b id="o-close">—</b></div>
+          <div><span>Facturado hoy</span><b id="o-fact">0 €</b></div>
+          <div><span>Reels publicados hoy (mínimo)</span><b id="o-reels">0</b></div>
+          <div><span>Carruseles hoy</span><b id="o-car">0</b></div>
+          <div><span>Historias (objetivo 6–10)</span><b id="o-hist">0</b></div>
+          <div><span>Estados de WhatsApp (objetivo 3–5)</span><b id="o-est">0</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Mensaje diario para Alberto</span>
+        <pre class="copy" id="m-dia"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-dia" data-note="n-dia">Copiar mensaje</button></div>
+        <p class="note" id="n-dia" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SEMANAL ===================== -->
+  <div class="g2">
+    <div class="col">
+      <form class="card" id="formSem" autocomplete="off">
+        <span class="when">Cada domingo</span>
+        <div class="wk"><button type="button" class="btn ghost small" id="wkPrev" aria-label="Semana anterior">←</button><b id="wkLabel"></b><button type="button" class="btn ghost small" id="wkNext" aria-label="Semana siguiente">→</button></div>
+
+        <div class="grp">
+          <div class="gh">Contenido: pautado frente a publicado</div>
+          <div class="yn"><span>Etapa de contenido</span><div class="seg" data-ws="etapa"><button type="button" data-v="s1" aria-pressed="false">Sem 1–2 · 10 + 3</button><button type="button" data-v="s2" aria-pressed="false">Sem 3–4 · 17 + 4</button><button type="button" data-v="s3" aria-pressed="false">Mes 2+ · 28 + 5</button></div></div>
+          <p class="soft" style="font-size:13px">Reels a la semana (1–2, 2–3 y 3–5 al día) + carruseles (3, 4 y 5 a la semana). YouTube: 1 a la semana, ni uno más.</p>
+          <table class="ctab" aria-describedby="contNote">
+            <thead><tr><th>Formato</th><th>Pautado</th><th>Publicado</th></tr></thead>
+            <tbody id="contBody"></tbody>
+          </table>
+          <p class="soft" id="contNote" style="font-size:13px">"Publicado" se suma solo con tus reportes diarios de esa semana.</p>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Trial reels: variantes probadas <small id="trialCount"></small></div>
+          <p class="soft" style="font-size:13px">Cada voz en off, con 2–3 ganchos distintos como trial reels. Apunta cuál ganó y lo publicas en el perfil.</p>
+          <div id="trialList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addTrial">+ Añadir guion probado</button>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Reels promocionados <small id="promoCount"></small></div>
+          <p class="soft" style="font-size:13px">5 € al día durante 5–7 días por reel. Se queda solo si los seguidores salen a <b>menos de 1 €</b>. El € por seguidor se calcula solo.</p>
+          <p class="warnbox">Antes del primer euro: confirma que tu otro trabajo te permite anunciar tus servicios.</p>
+          <div id="promoList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addPromo">+ Añadir reel promocionado</button>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Instagram</div>
+          <div class="nums">
+            <label>Seguidores al empezar la semana<input data-s="segIni" type="number" min="0" inputmode="numeric" placeholder="1404"></label>
+            <label>Seguidores al acabar<input data-s="segFin" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Mensajes con la palabra DESINFLAMA<input data-s="mejor" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Respuestas a tus Estados de WhatsApp<input data-s="respEstados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <label class="fld">Mejor pieza de la semana (enlace)<input data-s="mejorLink" placeholder="https://www.instagram.com/reel/…"></label>
+          <label class="fld">¿Por qué crees que funcionó?<input data-s="mejorPorque" placeholder="Ej.: reviso la cesta de un seguidor; gancho de comida"></label>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Clientes</div>
+          <div class="nums">
+            <label>Clientes activos<input data-s="activas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Altas esta semana<input data-s="altas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Bajas esta semana<input data-s="bajas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Renovaciones<input data-s="renovaciones" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Tareas del plan semanal de Alberto <small id="taskCount"></small></div>
+          <div id="taskList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addTask">+ Añadir tarea</button>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Para la revisión del domingo</div>
+          <label class="fld">Victorias de la semana<textarea data-s="victorias" placeholder="Ej.: 700 conversaciones; 2 cierres; un reel de comida con 10k"></textarea></label>
+          <label class="fld">Bloqueos: qué ha fallado y por qué<textarea data-s="bloqueos" placeholder="Ej.: 2 días sin ronda 2 por el trabajo"></textarea></label>
+          <label class="fld">Dudas para la revisión<textarea data-s="dudas" placeholder="Lo que quieres que veamos el domingo"></textarea></label>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Feedback para Alberto</div>
+          <label class="fld">Nota de la mentoría esta semana (1–10)<select data-s="notaMentoria"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></label>
+          <label class="fld">¿Qué necesitas de mí la semana que viene?<textarea data-s="necesito" placeholder="Ej.: que revisemos el reel que voy a promocionar"></textarea></label>
+        </div>
+        <span class="saved" id="sv-sem"></span>
+      </form>
+    </div>
+
+    <div class="col">
+      <div class="card sand">
+        <span class="label">Cálculos de la semana</span>
+        <div class="calc">
+          <div><span>Conversaciones abiertas (objetivo 700)</span><b id="w-conv">0</b></div>
+          <div><span>% de respuesta</span><b id="w-resp">—</b></div>
+          <div><span>% de agenda (agendadas / respuestas)</span><b id="w-agenda">—</b></div>
+          <div><span>% de cierre (cierres / llamadas hechas)</span><b id="w-close">—</b></div>
+          <div><span>Facturación de la semana</span><b id="w-fact">0 €</b></div>
+          <div><span>Cumplimiento de contenido</span><b id="w-cont">—</b></div>
+          <div><span>Días con CTA en historias (objetivo 2)</span><b id="w-cta">0</b></div>
+          <div><span>% rol entrenador (objetivo ≥ 40 % desde sem 3)</span><b id="w-rol">—</b></div>
+          <div><span>YouTube (objetivo 1)</span><b id="w-yt">0 / 1</b></div>
+          <div><span>Trial reels publicados</span><b id="w-trial">0</b></div>
+          <div><span>Reels promocionados: € por seguidor (objetivo &lt; 1 €)<small id="w-promo-d" class="calc-d"></small></span><b id="w-promo">—</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Mensaje semanal para Alberto</span>
+        <pre class="copy" id="m-sem"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-sem" data-note="n-sem">Copiar mensaje</button></div>
+        <p class="note" id="n-sem" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HISTORIAL ===================== -->
+  <div class="card">
+    <span class="label">Últimos 14 días</span>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Día</th><th>Conversaciones</th><th>Respuestas</th><th>Agendadas</th><th>Hechas</th><th>Cierres</th><th>Facturado</th><th>Reels</th><th>Historias</th></tr></thead>
+        <tbody id="histBody"></tbody>
+        <tfoot id="histFoot" hidden><tr><td>Últimos 7 días</td><td id="s-conv"></td><td id="s-resp"></td><td id="s-ag"></td><td id="s-he"></td><td id="s-ci"></td><td id="s-fa"></td><td id="s-re"></td><td id="s-hi"></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <span class="label">Últimas 8 semanas</span>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Semana</th><th>Conversaciones</th><th>% respuesta</th><th>Agendadas</th><th>Cierres</th><th>Facturado</th><th>Contenido</th><th>Seguidores</th><th>Nota</th></tr></thead>
+        <tbody id="wkBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var PLANES = ["Semestre", "Año", "Semestre en 2 pagos", "Trimestre", "Mantenimiento", "Renovación", "Otro"];
+  var PAGOS = ["Pago único", "2 pagos", "Mensual", "Otro"];
+  var FMT = [["comida", "Comida real"], ["voz", "Voz en off"], ["yapping", "Yapping"], ["trend", "Tendencia"], ["green", "Green screen"], ["rol", "Rol entrenador"]];
+  var EXTRA = [["carrusel", "Carruseles"], ["youtube", "YouTube"]];
+  var PAUTA = {
+    s1: { comida: 2, voz: 2, yapping: 2, trend: 1, green: 1, rol: 2, carrusel: 3 },
+    s2: { comida: 3, voz: 3, yapping: 2, trend: 1, green: 1, rol: 7, carrusel: 4 },
+    s3: { comida: 5, voz: 6, yapping: 3, trend: 1, green: 1, rol: 12, carrusel: 5 }
+  };
+  var DIA_OBJ = { s1: 1, s2: 2, s3: 3 };
+  var STAGE_TXT = { s1: "semanas 1–2 · 10 reels + 3 carruseles", s2: "semanas 3–4 · 17 reels + 4 carruseles", s3: "mes 2+ · 28 reels + 5 carruseles" };
+  var YT_OBJ = 1;
+  var DNUM = ["ronda1", "ronda2", "respuestas", "calientes", "agendadas", "hechas", "comida", "voz", "trial", "yapping", "trend", "green", "rol", "carrusel", "youtube", "historias", "estados", "contactos"];
+
+  var db = null, diaMap = {}, semMap = {}, fetched = {};
+  var day = null, sem = null, curWeek = null;
+  var timers = {}, chains = {}, dirty = {};
+
+  function el(id) { return document.getElementById(id); }
+  function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
+  function eur(n) { var r = Math.round(n * 100) / 100, s = Math.floor(Math.abs(r) + 1e-9).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), dec = Math.round(Math.abs(r) * 100) % 100; return (r < 0 ? "-" : "") + s + (dec ? "," + String(dec).padStart(2, "0") : "") + " €"; }
+  function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + " %" : "—"; }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function today() { return iso(new Date()); }
+  function nice(f, long) { return new Date(f + "T12:00:00").toLocaleDateString("es-ES", long ? { weekday: "long", day: "numeric", month: "long" } : { weekday: "short", day: "numeric", month: "short" }); }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function setStatus(t, err) { var s = el("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+  function isoWeek(f) {
+    var d = new Date(f + "T12:00:00"), day = (d.getDay() + 6) % 7; d.setDate(d.getDate() - day + 3);
+    var y = d.getFullYear(), jan4 = new Date(y, 0, 4, 12), w = 1 + Math.round(((d - jan4) / 86400000 - 3 + ((jan4.getDay() + 6) % 7)) / 7);
+    return y + "-W" + String(w).padStart(2, "0");
+  }
+  function weekStart(w) {
+    var y = +w.slice(0, 4), n = +w.slice(6), jan4 = new Date(y, 0, 4, 12), mon = new Date(jan4); mon.setDate(jan4.getDate() - ((jan4.getDay() + 6) % 7) + (n - 1) * 7);
+    return mon;
+  }
+  function weekDays(w) { var m = weekStart(w), out = []; for (var i = 0; i < 7; i++) { var d = new Date(m); d.setDate(m.getDate() + i); out.push(iso(d)); } return out; }
+  function shiftWeek(w, k) { var m = weekStart(w); m.setDate(m.getDate() + 7 * k); return isoWeek(iso(m)); }
+  function weekLabel(w) { var d = weekDays(w); return "Semana del " + new Date(d[0] + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "short" }) + " al " + new Date(d[6] + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "short" }); }
+
+  function blankDay(f) { var o = { fecha: f, bienvenidas: null, seguimientos: null, ctaHistorias: null, cerrado: null, cierres: [], animo: "", nota: "" }; DNUM.forEach(function (k) { o[k] = ""; }); return o; }
+  function blankSem(w) {
+    var prev = semMap[shiftWeek(w, -1)];
+    return { semana: w, etapa: prev && PAUTA[prev.etapa] ? prev.etapa : "s1", segIni: prev && prev.segFin ? prev.segFin : "", segFin: "", mejor: "", respEstados: "", mejorLink: "", mejorPorque: "", activas: prev ? prev.activas || "" : "", altas: "", bajas: "", renovaciones: "", tareas: [], trials: [], promos: [], victorias: "", bloqueos: "", dudas: "", notaMentoria: "", necesito: "" };
+  }
+
+  /* ---------- Guardado: una escritura a la vez por documento ---------- */
+  function k(col, id) { return col + "/" + id; }
+  function schedule(col, id, getData, sv) {
+    var kk = k(col, id); dirty[kk] = true;
+    el(sv).textContent = db ? "Guardando…" : "Sin base de datos: no se guarda.";
+    clearTimeout(timers[kk]);
+    timers[kk] = setTimeout(function () { timers[kk] = null; flush(col, id, getData, sv); }, 600);
+  }
+  function flush(col, id, getData, sv) {
+    if (!db) return;
+    var kk = k(col, id), data = Object.assign(clone(getData()), { actualizado: new Date().toISOString() });
+    chains[kk] = (chains[kk] || Promise.resolve()).then(function () {
+      dirty[kk] = false;
+      return db.collection(col).doc(id).set(data).then(function () {
+        if (!dirty[kk]) el(sv).textContent = "Guardado " + new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+      }, function (e) {
+        dirty[kk] = false;
+        el(sv).textContent = e && e.code === "invalid_argument" ? "No tienes permiso para guardar en esta página." : (e && e.code === "quota_exceeded" ? "La base de datos está llena." : "No se ha podido guardar. Vuelve a intentarlo.");
+      });
+    });
+  }
+  function saveDay() { var f = day.fecha; diaMap[f] = clone(day); schedule("diario", f, function () { return day.fecha === f ? day : diaMap[f]; }, "sv-dia"); }
+  function saveSem() { var w = sem.semana; semMap[w] = clone(sem); schedule("semana", w, function () { return sem.semana === w ? sem : semMap[w]; }, "sv-sem"); }
+
+  /* ---------- Diario ---------- */
+  function stageOf(f) { var s = semMap[isoWeek(f)]; return s && PAUTA[s.etapa] ? s.etapa : "s1"; }
+  function reelsOf(d) { return d ? FMT.reduce(function (a, x) { return a + num(d[x[0]]); }, 0) : 0; }
+  function convOf(d) { return d ? num(d.ronda1) + num(d.ronda2) : 0; }
+  function cierresOf(d) { return d && d.cerrado === true ? (d.cierres || []).length : 0; }
+  function factOf(d) { return d && d.cerrado === true ? (d.cierres || []).reduce(function (a, c) { return a + num(c.importe); }, 0) : 0; }
+  function setPressed(box, v) { box.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.v === v ? "true" : "false"); }); }
+  function ynVal(v) { return v === true ? "si" : (v === false ? "no" : ""); }
+
+  function fillDay() {
+    document.querySelectorAll("[data-d]").forEach(function (i) { if (document.activeElement !== i) i.value = day[i.dataset.d] == null ? "" : day[i.dataset.d]; });
+    document.querySelectorAll("[data-yn]").forEach(function (b) { setPressed(b, ynVal(day[b.dataset.yn])); });
+    setPressed(el("mood"), String(day.animo || ""));
+    renderCloses();
+  }
+  function renderCloses() {
+    el("closedYes").setAttribute("aria-pressed", day.cerrado === true ? "true" : "false");
+    el("closedNo").setAttribute("aria-pressed", day.cerrado === false ? "true" : "false");
+    el("closesBox").hidden = day.cerrado !== true;
+    var list = el("closesList"); list.innerHTML = "";
+    (day.cierres || []).forEach(function (c, i) {
+      var row = document.createElement("div"); row.className = "row";
+      var opt = function (arr, v) { return arr.map(function (o) { return "<option" + (o === v ? " selected" : "") + ">" + esc(o) + "</option>"; }).join(""); };
+      row.innerHTML = '<div class="top"><b>Cierre ' + (i + 1) + ' 🎉</b>' + (day.cierres.length > 1 ? '<button type="button" class="rm">Quitar</button>' : '') + '</div>' +
+        '<div class="fields"><label>Cliente<input data-k="clienta" value="' + esc(c.clienta) + '" placeholder="Nombre"></label>' +
+        '<label>Importe cobrado hoy (€)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
+        '<label>Plan<select data-k="plan">' + opt(PLANES, c.plan) + '</select></label>' +
+        '<label>Pago<select data-k="pago">' + opt(PAGOS, c.pago) + '</select></label>' +
+        '<label class="full">Cómo fue (de dónde vino, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: escribió DESINFLAMA en una historia; dudaba por el tiempo"></label></div>';
+      row.querySelectorAll("select").forEach(function (s) { if (!c[s.dataset.k]) c[s.dataset.k] = s.value; });
+      row.querySelectorAll("[data-k]").forEach(function (inp) {
+        var h = function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveDay(); update(); };
+        inp.addEventListener("input", h); inp.addEventListener("change", h);
+      });
+      var rm = row.querySelector(".rm");
+      if (rm) rm.addEventListener("click", function () { day.cierres.splice(i, 1); saveDay(); renderCloses(); update(); });
+      list.appendChild(row);
+    });
+  }
+  el("closedYes").addEventListener("click", function () { if (day.cerrado === true) return; day.cerrado = true; if (!day.cierres.length) day.cierres.push({}); saveDay(); renderCloses(); update(); });
+  el("closedNo").addEventListener("click", function () { if (day.cerrado === false) return; day.cerrado = false; saveDay(); renderCloses(); update(); });
+  el("addClose").addEventListener("click", function () { day.cierres.push({}); saveDay(); renderCloses(); update(); });
+  document.querySelectorAll("[data-d]").forEach(function (i) {
+    i.addEventListener("input", function () { if (day[i.dataset.d] === i.value) return; day[i.dataset.d] = i.value; saveDay(); update(); });
+  });
+  document.querySelectorAll("[data-yn]").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var v = b.dataset.v === "si"; if (day[box.dataset.yn] === v) return;
+      day[box.dataset.yn] = v; setPressed(box, b.dataset.v); saveDay(); update();
+    });
+  });
+  el("mood").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (String(day.animo) === b.dataset.v) return;
+    day.animo = b.dataset.v; setPressed(el("mood"), b.dataset.v); saveDay(); update();
+  });
+
+  /* ---------- Semanal ---------- */
+  function weekAgg(w) {
+    var a = { conv: 0, resp: 0, ag: 0, he: 0, ci: 0, fa: 0, comida: 0, carrusel: 0, voz: 0, trial: 0, yapping: 0, trend: 0, green: 0, rol: 0, youtube: 0, historias: 0, estados: 0, contactos: 0, cta: 0, dias: 0 };
+    weekDays(w).forEach(function (f) {
+      var d = diaMap[f]; if (!d) return;
+      if (hasData(d)) a.dias++;
+      a.conv += convOf(d); a.resp += num(d.respuestas); a.ag += num(d.agendadas); a.he += num(d.hechas);
+      a.ci += cierresOf(d); a.fa += factOf(d);
+      ["comida", "carrusel", "voz", "trial", "yapping", "trend", "green", "rol", "youtube", "historias", "estados", "contactos"].forEach(function (x) { a[x] += num(d[x]); });
+      if (d.ctaHistorias === true) a.cta++;
+    });
+    return a;
+  }
+  function pautaOf(s) { var p = clone(PAUTA[PAUTA[s.etapa] ? s.etapa : "s1"]); p.youtube = YT_OBJ; return p; }
+  function rolPct(a) { var t = reelsOfAgg(a); return t ? Math.round(a.rol / t * 100) : null; }
+  function reelsOfAgg(a) { return FMT.reduce(function (s, x) { return s + a[x[0]]; }, 0); }
+  function contCompliance(s, a) {
+    var p = pautaOf(s), tot = 0, done = 0;
+    FMT.concat(EXTRA).forEach(function (x) { tot += p[x[0]]; done += Math.min(a[x[0]], p[x[0]]); });
+    return tot ? Math.round(done / tot * 100) : 0;
+  }
+  function fillSem() {
+    el("wkLabel").textContent = weekLabel(sem.semana);
+    document.querySelectorAll("[data-s]").forEach(function (i) { if (document.activeElement !== i) i.value = sem[i.dataset.s] == null ? "" : sem[i.dataset.s]; });
+    setPressed(document.querySelector('[data-ws="etapa"]'), PAUTA[sem.etapa] ? sem.etapa : "s1");
+    renderTasks(); renderTrials(); renderPromos();
+  }
+  function renderTasks() {
+    var box = el("taskList"); box.innerHTML = "";
+    if (!sem.tareas.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Apunta aquí las tareas que te dejó Alberto en la revisión y márcalas cuando las hagas.</p>';
+    sem.tareas.forEach(function (t, i) {
+      var r = document.createElement("div"); r.className = "task";
+      r.innerHTML = '<input type="checkbox" aria-label="Hecha"' + (t.hecha ? " checked" : "") + '><input type="text" value="' + esc(t.tarea) + '" placeholder="Tarea" aria-label="Tarea"><button type="button" class="rm">Quitar</button>';
+      r.querySelector('input[type=checkbox]').addEventListener("change", function (e) { t.hecha = e.target.checked; saveSem(); update(); });
+      r.querySelector('input[type=text]').addEventListener("input", function (e) { if (t.tarea === e.target.value) return; t.tarea = e.target.value; saveSem(); update(); });
+      r.querySelector(".rm").addEventListener("click", function () { sem.tareas.splice(i, 1); saveSem(); renderTasks(); update(); });
+      box.appendChild(r);
+    });
+    var done = sem.tareas.filter(function (t) { return t.hecha; }).length;
+    el("taskCount").textContent = sem.tareas.length ? done + " de " + sem.tareas.length + " hechas" : "";
+  }
+  function renderTrials() {
+    var box = el("trialList"); box.innerHTML = "";
+    if (!Array.isArray(sem.trials)) sem.trials = [];
+    if (!sem.trials.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Ningún guion probado todavía esta semana.</p>';
+    sem.trials.forEach(function (t, i) {
+      var r = document.createElement("div"); r.className = "trow";
+      r.innerHTML = '<input type="text" data-t="guion" value="' + esc(t.guion) + '" placeholder="Guion (tema)" aria-label="Guion">' +
+        '<input type="text" data-t="ganchos" value="' + esc(t.ganchos) + '" placeholder="Ganchos probados (A / B / C)" aria-label="Ganchos probados">' +
+        '<input type="text" data-t="ganador" value="' + esc(t.ganador) + '" placeholder="Gancho ganador" aria-label="Gancho ganador">' +
+        '<input type="number" min="0" inputmode="numeric" data-t="views" value="' + esc(t.views) + '" placeholder="Views" aria-label="Visualizaciones del ganador">' +
+        '<button type="button" class="rm">Quitar</button>';
+      r.querySelectorAll("[data-t]").forEach(function (inp) { inp.addEventListener("input", function () { if (t[inp.dataset.t] === inp.value) return; t[inp.dataset.t] = inp.value; saveSem(); update(); }); });
+      r.querySelector(".rm").addEventListener("click", function () { sem.trials.splice(i, 1); saveSem(); renderTrials(); update(); });
+      box.appendChild(r);
+    });
+    var win = sem.trials.filter(function (t) { return t.ganador; }).length;
+    el("trialCount").textContent = sem.trials.length ? sem.trials.length + (sem.trials.length === 1 ? " guion · " : " guiones · ") + win + " con ganador" : "";
+  }
+  function promoEps(p) { var g = num(p.gasto), f = num(p.seguidores); return f > 0 ? g / f : null; }
+  function renderPromos() {
+    var box = el("promoList"); box.innerHTML = "";
+    if (!Array.isArray(sem.promos)) sem.promos = [];
+    if (!sem.promos.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Ningún reel promocionado esta semana.</p>';
+    sem.promos.forEach(function (p, i) {
+      var r = document.createElement("div"); r.className = "prow";
+      var opt = ["", "Seguir", "Subir presupuesto", "Parar"].map(function (o) { return "<option" + (o === p.decision ? " selected" : "") + " value=\"" + o + "\">" + (o || "Decisión…") + "</option>"; }).join("");
+      r.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Reel (tema o enlace)" aria-label="Reel">' +
+        '<label class="pl"><small>Días</small><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Días" aria-label="Días"></label>' +
+        '<label class="pl"><small>Gasto €</small><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Gasto €" aria-label="Gasto en euros"></label>' +
+        '<label class="pl"><small>Seguidores</small><input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Seguidores" aria-label="Seguidores nuevos"></label>' +
+        '<span class="eps"></span><select data-p="decision" aria-label="Decisión">' + opt + '</select><button type="button" class="rm">Quitar</button>';
+      var paint = function () { var e = promoEps(p), sp = r.querySelector(".eps"); sp.textContent = e == null ? "— €/seg." : eur(e) + "/seg."; sp.className = "eps" + (e == null ? "" : (e < 1 ? " ok" : " bad")); };
+      r.querySelectorAll("[data-p]").forEach(function (inp) { var h = function () { if (p[inp.dataset.p] === inp.value) return; p[inp.dataset.p] = inp.value; paint(); promoCnt(); saveSem(); update(); }; inp.addEventListener("input", h); inp.addEventListener("change", h); });
+      r.querySelector(".rm").addEventListener("click", function () { sem.promos.splice(i, 1); saveSem(); renderPromos(); update(); });
+      paint(); box.appendChild(r);
+    });
+    promoCnt();
+  }
+  function promoCnt() {
+    var t = promoTot(); el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " reel" : " reels") + " · " + eur(t.g) + " · " + t.f + " seguidores" : "";
+  }
+  function promoTot() { var g = 0, f = 0; (sem.promos || []).forEach(function (p) { g += num(p.gasto); f += num(p.seguidores); }); return { g: g, f: f, e: f > 0 ? g / f : null }; }
+  el("addPromo").addEventListener("click", function () { if (!Array.isArray(sem.promos)) sem.promos = []; sem.promos.push({ reel: "", dias: "", gasto: "", seguidores: "", decision: "" }); saveSem(); renderPromos(); var ins = el("promoList").querySelectorAll('input[data-p="reel"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
+  el("addTrial").addEventListener("click", function () { if (!Array.isArray(sem.trials)) sem.trials = []; sem.trials.push({ guion: "", ganchos: "", ganador: "", views: "" }); saveSem(); renderTrials(); var ins = el("trialList").querySelectorAll('input[data-t="guion"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
+  el("addTask").addEventListener("click", function () { sem.tareas.push({ tarea: "", hecha: false }); saveSem(); renderTasks(); var ins = el("taskList").querySelectorAll('input[type=text]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
+  document.querySelectorAll("[data-s]").forEach(function (i) {
+    var h = function () { if (sem[i.dataset.s] === i.value) return; sem[i.dataset.s] = i.value; saveSem(); update(); };
+    i.addEventListener("input", h); i.addEventListener("change", h);
+  });
+  document.querySelectorAll("[data-ws]").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      if (String(sem[box.dataset.ws]) === b.dataset.v) return;
+      sem[box.dataset.ws] = b.dataset.v; setPressed(box, b.dataset.v); saveSem(); update();
+    });
+  });
+  el("wkPrev").addEventListener("click", function () { loadWeek(shiftWeek(curWeek, -1)); });
+  el("wkNext").addEventListener("click", function () { loadWeek(shiftWeek(curWeek, 1)); });
+
+  /* ---------- Cálculos y mensajes ---------- */
+  function update() {
+    var f = day.fecha, conv = convOf(day), resp = num(day.respuestas), he = num(day.hechas), ci = cierresOf(day), fa = factOf(day), reels = reelsOf(day);
+    var st = stageOf(f), isToday = f === today();
+    el("h-dia").textContent = isToday ? "Hoy · " + nice(f, true) : nice(f, true);
+    el("convBar").style.width = Math.min(100, conv) + "%";
+    var obj = DIA_OBJ[st], hist = num(day.historias), est = num(day.estados), entered = hasData(day), past = f < today();
+    var judge = entered || past;
+    el("dayTarget").textContent = "mínimo hoy: " + obj + (obj === 1 ? " reel" : " reels") + " · historias 6–10 · " + STAGE_TXT[st];
+    var rg = el("reelGoal");
+    rg.textContent = reels >= obj ? "✓ " + reels + " reels hoy (mínimo " + obj + "). Cumplido." : reels + " de " + obj + " reels mínimos hoy. Faltan " + (obj - reels) + ".";
+    rg.className = "goal" + (reels >= obj ? " ok" : (judge ? " bad" : ""));
+    var dow = new Date(f + "T12:00:00").getDay();
+    el("ctaHint").textContent = (dow === 2 || dow === 5) ? "(hoy toca: martes y viernes)" : "(toca martes y viernes)";
+    function mark(id, ok) { var b = el(id); b.className = ok ? "ok" : (judge ? "bad" : ""); }
+    el("o-conv").textContent = conv + " / 100"; mark("o-conv", conv >= 100);
+    el("o-resp").textContent = pct(resp, conv);
+    el("o-close").textContent = pct(ci, he);
+    el("o-fact").textContent = eur(fa);
+    el("o-reels").textContent = reels + " / " + obj; mark("o-reels", reels >= obj);
+    el("o-car").textContent = num(day.carrusel);
+    el("o-hist").textContent = hist; mark("o-hist", hist >= 6);
+    el("o-est").textContent = est; mark("o-est", est >= 3);
+    var cg2 = el("convGoal");
+    cg2.className = "goal" + (conv >= 100 ? " ok" : (judge ? " bad" : ""));
+    cg2.textContent = conv >= 100 ? "✓ Objetivo cumplido: " + conv + " conversaciones abiertas." : (conv ? conv + " de 100. Faltan " + (100 - conv) + ". Sin excusas." : "Objetivo: 2 rondas de 50.");
+    var cheer = el("cheerDia"), fails = [];
+    if (judge) {
+      if (conv < 100) fails.push("conversaciones " + conv + "/100");
+      if (reels < obj) fails.push("reels " + reels + "/" + obj);
+      if (hist < 6) fails.push("historias " + hist + "/6");
+      if (est < 3) fails.push("Estados " + est + "/3");
+      if (day.bienvenidas === false) fails.push("bienvenidas");
+      if (day.seguimientos === false) fails.push("seguimientos");
+    }
+    if (ci) { cheer.className = "cheer ok"; cheer.textContent = "Cierre hecho (" + ci + "). Sube el nivel de precios en el CRM." + (fails.length ? " Pendiente: " + fails.join(", ") + "." : ""); cheer.hidden = false; }
+    else if (judge && !fails.length) { cheer.className = "cheer ok"; cheer.textContent = "Día completo: todos los objetivos en verde."; cheer.hidden = false; }
+    else if (fails.length) { cheer.className = "cheer"; cheer.textContent = "En rojo: " + fails.join(", ") + ". Mañana se corrige."; cheer.hidden = false; }
+    else cheer.hidden = true;
+    var yn = function (v) { return v === true ? "Sí" : (v === false ? "No ❌" : "—"); };
+    var ck = function (ok) { return ok ? " ✅" : " ❌"; };
+    var det = day.cerrado === true ? (day.cierres || []).map(function (c, i) { return "  " + (i + 1) + ". " + (c.clienta || "Cliente") + " · " + eur(num(c.importe)) + " · " + (c.plan || "") + " · " + (c.pago || "") + (c.como ? "\n     " + c.como : ""); }).join("\n") : "";
+    var moods = { "1": "😞", "2": "😕", "3": "😐", "4": "🙂", "5": "🤩" };
+    el("m-dia").textContent = "📲 Reporte de Fran · " + nice(f, true) + "\n\n" +
+      "Conversaciones: " + conv + "/100" + ck(conv >= 100) + " (R1 " + num(day.ronda1) + " · R2 " + num(day.ronda2) + ")\n" +
+      "Respuestas: " + resp + " (" + pct(resp, conv) + ") · Calientes: " + num(day.calientes) + "\n" +
+      "Bienvenidas: " + yn(day.bienvenidas) + " · Seguimientos: " + yn(day.seguimientos) + "\n" +
+      "Llamadas: " + num(day.agendadas) + " agendadas · " + he + " hechas · " + ci + (ci === 1 ? " cierre (" : " cierres (") + pct(ci, he) + ")\n" +
+      "Facturado: " + eur(fa) + (det ? "\n" + det : "") + "\n" +
+      "Reels: " + reels + "/" + obj + ck(reels >= obj) + " (comida " + num(day.comida) + " · voz " + num(day.voz) + " [trial " + num(day.trial) + "] · yapping " + num(day.yapping) + " · tendencia " + num(day.trend) + " · green " + num(day.green) + " · rol entrenador " + num(day.rol) + ")" + (num(day.carrusel) ? " · Carruseles " + num(day.carrusel) : "") + (num(day.youtube) ? " · YouTube " + num(day.youtube) : "") + "\n" +
+      "Historias: " + hist + ck(hist >= 6) + " · CTA: " + yn(day.ctaHistorias) + "\n" +
+      "WhatsApp: " + est + " Estados" + ck(est >= 3) + " · " + num(day.contactos) + " contactos guardados" +
+      (day.animo ? "\nÁnimo: " + moods[day.animo] + " " + day.animo + "/5" : "") + (day.nota ? "\n" + day.nota : "");
+
+    var w = sem.semana, a = weekAgg(w), p = pautaOf(sem), comp = contCompliance(sem, a);
+    el("contBody").innerHTML = FMT.concat(EXTRA).map(function (x) {
+      var ok = a[x[0]] >= p[x[0]];
+      return "<tr><td>" + x[1] + "</td><td>" + p[x[0]] + "</td><td style=\"color:" + (ok ? "var(--green)" : "inherit") + ";font-weight:700\">" + a[x[0]] + (ok ? " ✓" : "") + "</td></tr>";
+    }).join("") + "<tr><td><b>Total reels</b></td><td><b>" + FMT.reduce(function (s, x) { return s + p[x[0]]; }, 0) + "</b></td><td><b>" + FMT.reduce(function (s, x) { return s + a[x[0]]; }, 0) + "</b></td></tr>";
+    function wmark(id, ok) { el(id).className = ok ? "ok" : "bad"; }
+    var wHas = a.dias > 0 || w < isoWeek(today());
+    function wm(id, ok) { if (wHas) wmark(id, ok); else el(id).className = ""; }
+    var rp = rolPct(a), rolOn = sem.etapa && sem.etapa !== "s1";
+    el("w-conv").textContent = a.conv + " / 700"; wm("w-conv", a.conv >= 700);
+    el("w-resp").textContent = pct(a.resp, a.conv);
+    el("w-agenda").textContent = pct(a.ag, a.resp);
+    el("w-close").textContent = pct(a.ci, a.he);
+    el("w-fact").textContent = eur(a.fa);
+    el("w-cont").textContent = comp + " %"; wm("w-cont", comp >= 90);
+    el("w-cta").textContent = a.cta + " / 2"; wm("w-cta", a.cta >= 2);
+    el("w-rol").textContent = rp == null ? "—" : rp + " %"; if (rolOn && rp != null) wm("w-rol", rp >= 40); else el("w-rol").className = "";
+    el("w-yt").textContent = a.youtube + " / " + YT_OBJ; wm("w-yt", a.youtube >= YT_OBJ);
+    el("w-trial").textContent = a.trial;
+    var pt = promoTot(); el("w-promo").textContent = pt.e == null ? (pt.g ? "sin seg." : "—") : eur(pt.e); el("w-promo-d").textContent = pt.g || pt.f ? eur(pt.g) + " gastados · " + pt.f + " seguidores" : ""; if (pt.e != null) wm("w-promo", pt.e < 1); else el("w-promo").className = (pt.g && wHas) ? "bad" : "";
+    var trs = (sem.trials || []).filter(function (t) { return t.guion || t.ganador; });
+    var segD = sem.segIni !== "" && sem.segFin !== "" ? num(sem.segFin) - num(sem.segIni) : null;
+    var tdone = sem.tareas.filter(function (t) { return t.hecha; }).length;
+    var ckw = function (ok) { return ok ? " ✅" : " ❌"; };
+    el("m-sem").textContent = "📊 Semana de Fran · " + weekLabel(w) + "\n\n" +
+      "VENTAS\nConversaciones: " + a.conv + "/700" + ckw(a.conv >= 700) + " · Respuestas: " + a.resp + " (" + pct(a.resp, a.conv) + ")\n" +
+      "Agendadas: " + a.ag + " (" + pct(a.ag, a.resp) + ") · Hechas: " + a.he + " · Cierres: " + a.ci + " (" + pct(a.ci, a.he) + ")\n" +
+      "Facturación: " + eur(a.fa) + " · Días reportados: " + a.dias + "/7\n\n" +
+      "CONTENIDO (" + STAGE_TXT[PAUTA[sem.etapa] ? sem.etapa : "s1"] + ") · cumplimiento " + comp + " %" + ckw(comp >= 90) + "\n" +
+      FMT.concat(EXTRA).map(function (x) { return x[1] + ": " + a[x[0]] + "/" + p[x[0]]; }).join(" · ") + "\n" +
+      "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " guion probado" : " guiones probados") : "") + "\n" +
+      (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
+      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes DESINFLAMA: " + num(sem.mejor) + "\n" +
+      (sem.promos && sem.promos.length ? "REELS PROMOCIONADOS: " + eur(pt.g) + " · " + pt.f + " seguidores · " + (pt.e == null ? "—" : eur(pt.e) + "/seguidor" + ckw(pt.e < 1)) + "\n" + sem.promos.map(function (q) { var e = promoEps(q); return "  · " + (q.reel || "(sin título)") + ": " + num(q.dias) + " días · " + eur(num(q.gasto)) + " · " + num(q.seguidores) + " seg." + (e == null ? "" : " → " + eur(e) + "/seg.") + (q.decision ? " · " + q.decision : ""); }).join("\n") + "\n" : "") +
+      "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos · " + num(sem.respEstados) + " respuestas a Estados\n" +
+      "Seguidores: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + "\n" +
+      (sem.mejorLink ? "Mejor pieza: " + sem.mejorLink + (sem.mejorPorque ? " · " + sem.mejorPorque : "") + "\n" : "") + "\n" +
+      "CLIENTES\nActivos: " + num(sem.activas) + " · Altas: " + num(sem.altas) + " · Bajas: " + num(sem.bajas) + " · Renovaciones: " + num(sem.renovaciones) + "\n\n" +
+      "PLAN SEMANAL: " + tdone + "/" + sem.tareas.length + " tareas hechas" + (sem.tareas.length ? "\n" + sem.tareas.map(function (t) { return (t.hecha ? "✅ " : "⬜ ") + (t.tarea || "(sin nombre)"); }).join("\n") : "") + "\n\n" +
+      (sem.victorias ? "Victorias: " + sem.victorias + "\n" : "") +
+      (sem.bloqueos ? "Bloqueos: " + sem.bloqueos + "\n" : "") +
+      (sem.dudas ? "Dudas para el domingo: " + sem.dudas + "\n" : "") +
+      "Nota de la mentoría: " + (sem.notaMentoria || "—") + "/10" + (sem.necesito ? "\nLo que necesito de ti: " + sem.necesito : "");
+    renderHist(); renderWkHist();
+  }
+
+  /* ---------- Historial ---------- */
+  function hasData(d) { return !!(d && (convOf(d) || num(d.respuestas) || num(d.agendadas) || num(d.hechas) || d.cerrado === true || reelsOf(d) || num(d.carrusel) || num(d.historias) || num(d.estados) || num(d.youtube))); }
+  function renderHist() {
+    var rows = Object.keys(diaMap).sort().reverse().map(function (x) { return diaMap[x]; }).filter(hasData);
+    var body = el("histBody");
+    if (!rows.length) { body.innerHTML = '<tr><td class="empty" colspan="9">Todavía no hay días con datos. Empieza hoy.</td></tr>'; el("histFoot").hidden = true; return; }
+    body.innerHTML = rows.slice(0, 14).map(function (d) {
+      return '<tr' + (d.fecha === day.fecha ? ' class="sel"' : '') + '><td>' + nice(d.fecha) + '</td><td>' + convOf(d) + '</td><td>' + num(d.respuestas) + '</td><td>' + num(d.agendadas) + '</td><td>' + num(d.hechas) + '</td><td>' + cierresOf(d) + '</td><td>' + eur(factOf(d)) + '</td><td>' + reelsOf(d) + '</td><td>' + num(d.historias) + '</td></tr>';
+    }).join("");
+    var l7 = rows.slice(0, 7), s = function (fn) { return l7.reduce(function (a, d) { return a + fn(d); }, 0); };
+    el("s-conv").textContent = s(convOf); el("s-resp").textContent = s(function (d) { return num(d.respuestas); });
+    el("s-ag").textContent = s(function (d) { return num(d.agendadas); }); el("s-he").textContent = s(function (d) { return num(d.hechas); });
+    el("s-ci").textContent = s(cierresOf); el("s-fa").textContent = eur(s(factOf)); el("s-re").textContent = s(reelsOf); el("s-hi").textContent = s(function (d) { return num(d.historias); });
+    el("histFoot").hidden = false;
+  }
+  function renderWkHist() {
+    var ws = {}; Object.keys(semMap).forEach(function (w) { ws[w] = 1; }); Object.keys(diaMap).forEach(function (f) { if (hasData(diaMap[f])) ws[isoWeek(f)] = 1; });
+    var list = Object.keys(ws).sort().reverse().slice(0, 8), body = el("wkBody");
+    if (!list.length) { body.innerHTML = '<tr><td class="empty" colspan="9">Todavía no hay semanas con datos.</td></tr>'; return; }
+    body.innerHTML = list.map(function (w) {
+      var s = semMap[w] || blankSem(w), a = weekAgg(w), segD = s.segIni !== "" && s.segFin !== "" && s.segIni != null && s.segFin != null ? num(s.segFin) - num(s.segIni) : null;
+      return '<tr' + (w === curWeek ? ' class="sel"' : '') + '><td>' + weekLabel(w).replace("Semana del ", "") + '</td><td>' + a.conv + '</td><td>' + pct(a.resp, a.conv) + '</td><td>' + a.ag + '</td><td>' + a.ci + '</td><td>' + eur(a.fa) + '</td><td>' + contCompliance(s, a) + ' %</td><td>' + (segD == null ? "—" : (segD >= 0 ? "+" : "") + segD) + '</td><td>' + (s.notaMentoria || "—") + '</td></tr>';
+    }).join("");
+  }
+
+  /* ---------- Carga de fecha y semana ---------- */
+  function focusedIn(id) { var a = document.activeElement; return !!(a && el(id).contains(a) && (a.tagName === "INPUT" || a.tagName === "SELECT" || a.tagName === "TEXTAREA")); }
+  function loadDate(f) {
+    day = diaMap[f] ? Object.assign(blankDay(f), clone(diaMap[f])) : blankDay(f); day.fecha = f;
+    el("sv-dia").textContent = "";
+    fillDay();
+    if (isoWeek(f) !== curWeek) loadWeek(isoWeek(f), true); else update();
+    if (db && !fetched["d" + f] && !diaMap[f]) {
+      fetched["d" + f] = true;
+      db.collection("diario").doc(f).get().then(function (r) { if (r.exists && !diaMap[f]) { diaMap[f] = Object.assign(blankDay(f), r.data()); applyRemote(); } }, function () {});
+    }
+  }
+  function loadWeek(w, fromDate) {
+    curWeek = w;
+    sem = semMap[w] ? Object.assign(blankSem(w), clone(semMap[w])) : blankSem(w); sem.semana = w;
+    if (!Array.isArray(sem.tareas)) sem.tareas = [];
+    if (!Array.isArray(sem.trials)) sem.trials = [];
+    if (!Array.isArray(sem.promos)) sem.promos = [];
+    el("sv-sem").textContent = "";
+    fillSem(); update();
+    if (db) {
+      var need = [];
+      if (!fetched["s" + w] && !semMap[w]) { fetched["s" + w] = true; need.push(db.collection("semana").doc(w).get().then(function (r) { if (r.exists && !semMap[w]) semMap[w] = r.data(); })); }
+      weekDays(w).forEach(function (f) { if (!fetched["d" + f] && !diaMap[f]) { fetched["d" + f] = true; need.push(db.collection("diario").doc(f).get().then(function (r) { if (r.exists && !diaMap[f]) diaMap[f] = Object.assign(blankDay(f), r.data()); })); } });
+      if (need.length) Promise.all(need).then(applyRemote, function () {});
+    }
+  }
+  function applyRemote() {
+    var f = el("fecha").value;
+    if (diaMap[f] && !dirty[k("diario", f)] && !focusedIn("formDia")) { day = Object.assign(blankDay(f), clone(diaMap[f])); day.fecha = f; fillDay(); }
+    if (semMap[curWeek] && !dirty[k("semana", curWeek)] && !focusedIn("formSem")) { sem = Object.assign(blankSem(curWeek), clone(semMap[curWeek])); sem.semana = curWeek; if (!Array.isArray(sem.tareas)) sem.tareas = []; if (!Array.isArray(sem.trials)) sem.trials = []; if (!Array.isArray(sem.promos)) sem.promos = []; fillSem(); }
+    update();
+  }
+  el("fecha").value = today();
+  el("fecha").addEventListener("change", function () { if (el("fecha").value) loadDate(el("fecha").value); });
+  document.querySelectorAll("form").forEach(function (f) { f.addEventListener("submit", function (e) { e.preventDefault(); }); });
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = el(btn.dataset.copy), note = el(btn.dataset.note);
+      function fb() { var r = document.createRange(); r.selectNodeContents(box); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado."; }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado. Pégalo en el WhatsApp de Alberto."; }, fb); else fb();
+    });
+  });
+
+  loadDate(today());
+
+  /* ---------- Conexión ---------- */
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) { setStatus("Sin base de datos en esta vista: puedes rellenar y copiar el mensaje, pero no se guarda. Abre la página desde claude.ai con tu cuenta.", true); return; }
+    db = c;
+    var got = { d: false, s: false };
+    var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
+    function ready(x) { got[x] = true; if (got.d && got.s) { clearTimeout(timer); setStatus("Guardado en directo · Alberto lo ve al momento"); } }
+    function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); }
+    db.collection("diario").orderBy("fecha", "desc").limit(60).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha) diaMap[x.fecha] = Object.assign(blankDay(x.fecha), x); });
+      if (!snap.metadata.fromCache) ready("d");
+      applyRemote();
+    }, onErr);
+    db.collection("semana").orderBy("semana", "desc").limit(12).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.semana) semMap[x.semana] = x; });
+      if (!snap.metadata.fromCache) ready("s");
+      applyRemote();
+    }, onErr);
+  })();
+})();
+</script>
