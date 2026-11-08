@@ -1,0 +1,477 @@
+<title>Zakaria Cheggari Coach</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Zakaria Cheggari, licenciado en Ciencias del Deporte. Para personas de +30 sin tiempo: transforma tu físico entrenando menos de 5 horas a la semana con el Método 5H.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<!--
+  PENDIENTE / PROVISIONAL (no se ve en la página):
+  - Casos: sin fotos ni cifras todavía. Miriam autoriza fotos con la cara tapada (pedirlo por escrito). Ángela NO autoriza: no publicar nunca.
+    Pedir a cada cliente tiempo, cambio y permiso. No inventar cifras.
+  - Historia: faltan fotos de Zakaria (56 kg a los 20, primer año, volumen de 90 kg, hoy). Huecos marcados "Foto · pendiente".
+  - Vídeo de ventas (VSL), vídeo "mi semana real" y testimonios: huecos comentados.
+  - WhatsApp: número desconocido. Añadir botón cuando lo tenga.
+  - Formulario: tally.so incrustado solo cuando la página esté en su dominio; en el visor de Claude queda el botón.
+-->
+<style>
+/* Layout: carta de venta larga en una columna. Hero oscuro con la promesa de menos de 5 h; problema con sus frases; método; casos con huecos de foto; historia con línea de tiempo. Marca: negro, blanco y rojo. */
+:root {
+  --paper: #f3f3f1;
+  --white: #ffffff;
+  --ink: #121212;
+  --soft: #5e5e5e;
+  --line: #dadada;
+  --chip: #ececea;
+  --accent: #c8102e;
+  --accent-text: #a50d26;
+  --accent-dark: #ff4d5e;
+  --on-dark: #cfcfcf;
+  --f-head: "Oswald", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 700 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2b2f38; }
+.btn-a { background: var(--accent); color: var(--white); }
+.btn-a:hover { background: #a93d16; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 700 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 700 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 700 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 700 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 700 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 700 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 700 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 700 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 700 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* Historia */
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 700 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c4c4c4; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 700 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 700 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; text-align: center; font: 700 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 700; }
+.guarantee .fine { margin-top: 16px; color: #9a9da3; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #f6e2d9; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 700 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(241, 241, 239, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+.case .ph { aspect-ratio: 16 / 10; }
+.pend { font: 500 11px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); padding-inline: 6px; }
+
+</style>
+
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/zakaria-avatar.jpg" alt="" width="320" height="320"><div>Zakaria Cheggari<small>Coach · Lic. Ciencias del Deporte</small></div></div>
+      <a class="btn btn-a js-form" href="https://tally.so/r/44b46k" target="_blank" rel="noopener">Aplica aquí</a>
+    </header>
+
+    <div class="hero">
+      <div class="label">Para personas de +30 con trabajo, hijos y cero tiempo</div>
+      <h1>Transforma tu físico entrenando <em>menos de 5 horas a la semana</em>.</h1>
+      <p class="lede">No te falta tiempo: te falta un plan que quepa en tu semana. 3–4 sesiones cortas, comida flexible sin dietas de Instagram y revisión 1:1 cada semana. Para que vuelvas a gustarte cuando te miras al espejo.</p>
+      <!-- VSL PENDIENTE: cuando Zakaria grabe el vídeo, sustituir este comentario por
+           <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
+      <div class="ctas">
+        <a class="btn btn-a js-form" href="https://tally.so/r/44b46k" target="_blank" rel="noopener">Aplica a mi programa</a>
+        <a class="btn btn-dark-ghost" href="https://www.instagram.com/cheggarifit/" target="_blank" rel="noopener">Escríbeme 5H en Instagram</a>
+        <!-- WHATSAPP PENDIENTE: añadir botón "Escríbeme por WhatsApp" cuando tengamos su número -->
+      </div>
+      <p class="cta-note">El formulario son 2 minutos. Lo reviso yo y te digo cómo lo haría en tu caso.</p>
+
+      <div class="facts">
+        <div class="fact"><b>&lt;5 h</b><span>A la semana, en 3–4 sesiones cortas</span></div>
+        <div class="fact"><b>1:1</b><span>Plan hecho para tu horario, no una plantilla</span></div>
+        <div class="fact"><b>Cada semana</b><span>Reviso tu progreso y ajusto</span></div>
+        <div class="fact"><b>11 años</b><span>Entrenando · licenciado en Ciencias del Deporte</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>Mucho trabajo. Cero tiempo. Y el espejo, cada día peor.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"No tengo tiempo para entrenar."</div>
+      <div class="sign">"No me gusta lo que veo en el espejo."</div>
+      <div class="sign">"Apenas siento confianza con mi cuerpo."</div>
+      <div class="sign">"Ya lo he intentado y no me funcionó."</div>
+      <div class="sign">"Empiezo dietas de Instagram y no me duran ni un mes."</div>
+      <div class="sign">"Será mi genética."</div>
+    </div>
+    <p class="turn">No es tu genética ni tu falta de tiempo. <em>Es que nadie te ha dado un plan que quepa en tu vida.</em></p>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método 5H</div>
+      <h2>Base. Transformación. Para siempre.</h2>
+      <p class="lede">Tres fases en 6 meses, con menos de 5 horas de entreno a la semana. Cada semana miro cómo respondes y ajusto.</p>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Base</h3><p>3–4 sesiones cortas y 3 hábitos mínimos: proteína, pasos y sueño. Pierdes la primera grasa y aprendes la técnica de los básicos.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Transformación</h3><p>Ciclos de 12 semanas con progresión. Menos grasa y más músculo, sin cambiar de rutina cada mes buscando milagros.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Para siempre</h3><p>Aprendes a mantenerlo en las semanas imposibles: viajes, turnos, vacaciones. Sin depender de mí.</p></article>
+      <article class="layer"><span class="n">Cada semana</span><h3>Revisión 1:1</h3><p>Me mandas tu revisión, te corrijo la técnica por vídeo y ajusto el plan. Hablas directamente conmigo.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Predico con el ejemplo</span>
+      <h3>Yo tampoco tengo tiempo.</h3>
+      <p>Trabajo a jornada completa y casi no tengo tiempo libre. Aun así entreno 4 días a la semana en menos de 5 horas. Tu plan se construye igual: alrededor de tu trabajo, tu familia y tu semana real.</p>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Resultados</div>
+      <h2>Personas con poco tiempo. Y un plan.</h2>
+      <p class="lede">Algunos de mis clientes. Pronto, con sus fotos y sus datos.</p>
+    </div>
+    <!-- CASOS PENDIENTES: sustituir cada .ph por la foto con permiso firmado (Miriam: cara tapada). Ángela NO: no publicar. -->
+    <div class="wall">
+      <article class="case">
+        <div class="ph">Foto · pendiente (cara tapada)</div>
+        <div class="big">Miriam</div>
+        <p>Llegó por recomendación de un compañero del gimnasio. Con un plan hecho para ella y seguimiento constante, un cambio que se nota.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">M</span><div><b>Miriam</b><span>Sevilla</span></div></div>
+      </article>
+      <article class="case">
+        <div class="ph">Foto · pendiente</div>
+        <div class="big">De muy delgado a ganar peso</div>
+        <p>Partía de estar muy delgado, como yo. Con una rutina enfocada en ganar masa, cogió peso y mejoró notablemente, a distancia desde Francia.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Anas</b><span>Asesoría online</span></div></div>
+      </article>
+      <article class="case">
+        <div class="ph">Foto · pendiente</div>
+        <div class="big">Recomposición</div>
+        <p>Perder grasa y ganar forma, a distancia desde Suiza. Un buen cambio que demuestra lo que da el seguimiento.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">M</span><div><b>Mark</b><span>Asesoría online</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/zakaria-avatar.jpg" alt="Zakaria Cheggari hoy" loading="lazy" width="320" height="320" style="border-radius:50%;max-width:220px;margin:6px auto 0">
+        <div class="big">Caso 0 · Yo</div>
+        <p>De 56 kg a los 20 años a mi mejor físico 11 años después. Hoy, con jornada completa y menos de 5 horas de entreno a la semana.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">Z</span><div><b>Zakaria</b><span>Tu entrenador</span></div></div>
+      </article>
+    </div>
+    <!-- TESTIMONIOS PENDIENTES: añadir capturas de feedback o vídeos cuando los tenga. -->
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Mi historia</div>
+      <h2>Del chaval delgado que copiaba a los mayores, a licenciado.</h2>
+    </div>
+    <div class="me">
+      <img src="casos/zakaria-avatar.jpg" alt="Zakaria Cheggari" width="320" height="320" loading="lazy">
+      <p>No necesitas más horas. Necesitas un plan que quepa en tu semana.</p>
+    </div>
+    <div class="timeline">
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>20 años</b><span>Siempre muy delgado. Llegué a pesar 56 kg en un momento muy duro.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>Año 1</b><span>"Come de todo y entrena": +13–14 kg en 6–7 meses, mucha de ella grasa.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>Volumen</b><span>Hasta 90 kg y una definición de 6–7 meses hasta unos 75 kg.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>Hoy</b><span>Jornada completa y 4 entrenos a la semana en menos de 5 horas.</span></figcaption></figure>
+    </div>
+    <div class="read stack">
+      <p>Desde pequeño fui muy delgado. A los 16 hacía boxeo y miraba la sala de pesas de los mayores intentando copiarles. Con casi 20 años, en un momento muy duro, empecé a entrenar en serio: el gimnasio fue mi forma de despejar la cabeza, y acabó siendo <strong>mi paz</strong>.</p>
+      <p>Cometí todos los errores: comer de todo sin control para coger peso, copiar rutinas y <strong>cambiar de rutina cada mes</strong>. Cuando empecé a formarme y a hacer ciclos de 12 semanas, por fin vi mejoría real.</p>
+      <p>Me formé en TAFAD y me licencié en <strong>Ciencias del Deporte</strong> en Sevilla. Llevo 11 años entrenando. Y hoy, trabajando a jornada completa, sé lo que es no tener tiempo: por eso mi método está pensado para gente como tú.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>"Come de todo y entrena"</b><span>Subir peso sin control es ganar grasa. <em>Lo que funciona:</em> un plan de comida con criterio.</span></div>
+      <div class="err"><b>Cambiar de rutina cada mes</b><span>Sin adaptación no hay progreso. <em>Lo que funciona:</em> ciclos de 12 semanas.</span></div>
+      <div class="err"><b>Parar cada vez que hay lío</b><span>Cada verano de trabajo perdía 2–3 meses. <em>Lo que funciona:</em> un plan también para las semanas imposibles.</span></div>
+    </div>
+    <p class="quote">"Si yo puedo sin tiempo, tú también."</p>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label">Garantía</div>
+      <h2 style="margin-top:10px">Si cumples y no ves cambios en la fase 1, sigo contigo gratis.</h2>
+      <ul>
+        <li>Sigues el plan y me envías tus revisiones semanales.</li>
+        <li>Si aun así no hay cambios, seguimos trabajando sin coste hasta que lleguen.</li>
+        <li>Todo queda por escrito en el contrato antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes más de 30 años y trabajo, hijos o turnos que te dejan poco tiempo.</li>
+          <li>Hace tiempo que no te gusta lo que ves en el espejo.</li>
+          <li>Has probado dietas o rutinas por tu cuenta y no te han durado.</li>
+          <li>Puedes sacar 3–4 ratos a la semana para entrenar.</li>
+          <li>Vas a seguir el plan y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio en 15 días o una pastilla mágica.</li>
+          <li>Crees que con pagar ya cambias, sin poner nada de tu parte.</li>
+          <li>No vas a mandar tus revisiones ni contarme cómo vas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Aplica</h3><p>2 minutos en el formulario: tu horario, cómo comes y qué has probado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te llamo y te digo cómo lo haría con las horas que tienes.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas tu plan</h3><p>Tu fase 1 hecha para ti y tu primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Aplica a mi programa.</h2>
+      <p class="lede">Lo reviso yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn btn-a js-form" id="formBtn" href="https://tally.so/r/44b46k" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿De verdad bastan menos de 5 horas a la semana?</summary><p>Sí, si están bien planificadas. Es lo que hago yo con un trabajo a jornada completa: 3–4 sesiones cortas con progresión, en vez de muchas horas sin rumbo.</p></details>
+      <details><summary>Tengo hijos y turnos. ¿Me sirve?</summary><p>El plan se construye alrededor de tu semana real, no al revés. Si una semana es imposible, tienes una versión corta para no perder lo conseguido.</p></details>
+      <details><summary>¿Puedo entrenar en casa?</summary><p>Sí. Se adapta al material que tengas, en casa o en el gimnasio.</p></details>
+      <details><summary>Ya lo he intentado muchas veces y siempre lo dejo.</summary><p>Casi siempre es por lo mismo: dietas y rutinas que no encajan con tu vida y cambiar de plan cada pocas semanas. Por eso aquí hay fases, revisión semanal y alguien que te sigue.</p></details>
+      <details><summary>Soy muy delgado y no consigo ganar peso.</summary><p>Fue mi caso y el de Anas. Ganar peso comiendo "de todo" solo te da grasa: se hace con un plan de comida y de entreno con criterio.</p></details>
+      <details><summary>¿Es para hombres o para mujeres?</summary><p>Para los dos. Trabajo con hombres y mujeres de más de 30 que quieren recuperar su físico y su confianza.</p></details>
+      <details><summary>¿Y si no veo resultados?</summary><p>Si cumples el plan y envías tus revisiones y en la fase 1 no ves cambios, seguimos trabajando gratis hasta que lleguen. Queda por escrito en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Aplica en el formulario y te lo explico cuando hablemos.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Deja de esperar a tener tiempo.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-form" href="https://tally.so/r/44b46k" target="_blank" rel="noopener">Aplica a mi programa</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/cheggarifit/" target="_blank" rel="noopener">Escríbeme 5H en Instagram</a>
+    </div>
+    <p class="cta-note">O escríbeme <b>5H</b> por privado en <a href="https://www.instagram.com/cheggarifit/" target="_blank" rel="noopener">@cheggarifit</a> y te contesto yo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Zakaria Cheggari</span><span><a href="https://www.instagram.com/cheggarifit/" target="_blank" rel="noopener">@cheggarifit</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-form" href="https://tally.so/r/44b46k" target="_blank" rel="noopener">Aplica a mi programa</a></div>
+
+<script>
+(function () {
+  var FORM = "https://tally.so/r/44b46k?utm_source=landing&utm_medium=web";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // En su dominio el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de Zakaria Cheggari"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

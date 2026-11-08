@@ -1,0 +1,300 @@
+<title>Fran Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f6f3ee;
+  --white: #ffffff;
+  --ink: #1b1a17;
+  --soft: #615d55;
+  --line: #e1dbd0;
+  --chip: #efe9df;
+  --accent: #b5531a;
+  --accent-text: #9a4514;
+  --accent-dark: #f08a4b;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfc8bc; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffe3cf; }
+.card.accent ul.l, .card.accent ol.l { color: #fff0e4; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #2a2823; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2c2a25; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #f8ece2; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+
+.phase .n { font: 800 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 800 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Marca Fran Seguí: editorial y culta. Titulares en DM Serif Display (sin mayúsculas), texto en Inter, naranja tostado y oliva. */
+:root { --olive: #55663a; --f-head: "DM Serif Display", Georgia, "Times New Roman", serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; }
+h1, h2, h3 { text-transform: none !important; font-weight: 400 !important; letter-spacing: -.01em !important; font-family: var(--f-head) !important; }
+h1 { line-height: 1.04 !important; } h2 { line-height: 1.08 !important; }
+h3 { font-size: 21px !important; line-height: 1.2 !important; }
+h1 em, h2 em { font-style: italic; }
+.olive { color: var(--olive); }
+
+.phase .n, .price { font-weight: 400 !important; font-family: var(--f-head) !important; }
+.split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.split .card ul.l li { list-style: none; margin-left: -18px; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; } }
+
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Fran Seguí · Parte 2 · Oferta</span>
+    <h1>Método <em>Desinflama</em>: metabolismo +40 con comida de verdad.</h1>
+    <p class="soft" style="font-size:18px">Para hombres y mujeres de más de 40 que ya no pierden grasa como antes. Primero desinflamamos y ponemos el metabolismo a favor; después, músculo y grasa; al final, que se mantenga. Tienes que poder explicarlo en 2 minutos, con tus palabras y sin tecnicismos.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">3 fases, 6 meses. Desinflamar, recomponer y mantener.</h2></header>
+    <div class="g3">
+      <article class="card phase">
+        <span class="n">01</span>
+        <h3>Desinflamar · meses 1 y 2</h3>
+        <ul class="l"><li><b>Comida real antiinflamatoria:</b> la de siempre, ordenada. Fuera ultraprocesados y bollería.</li><li><b>Sueño y estrés:</b> el 50 % de tu método empieza aquí.</li><li><b>Sensibilidad a la insulina:</b> reparto de hidratos, proteína en cada comida, caminar después de comer.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">02</span>
+        <h3>Recomponer · meses 3 y 4</h3>
+        <ul class="l"><li><b>Fuerza 3 horas a la semana:</b> músculo, que a partir de los 40 es salud.</li><li><b>Perder grasa sin pasar hambre</b> y sin cardio infinito.</li><li><b>Leptina y cortisol a raya:</b> nada de déficits brutales.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">03</span>
+        <h3>Mantener · meses 5 y 6</h3>
+        <ul class="l"><li><b>Subir comida poco a poco</b> sin recuperar lo perdido.</li><li><b>Comer fuera y en familia</b> sin culpa.</li><li><b>Autonomía:</b> que sepa hacerlo solo para siempre.</li></ul>
+      </article>
+    </div>
+    <p class="say">"Primero desinflamamos y ponemos tu metabolismo a favor. Luego construimos músculo y bajamos grasa. Y al final te enseño a mantenerlo comiendo como antes, pero bien."</p>
+    <div class="g2">
+      <div class="card">
+        <span class="label">Qué incluye</span>
+        <ul class="l">
+          <li><b>Plan de alimentación con comida real,</b> la de tu casa y la de tu familia. Sin batidos milagro ni "polvitos".</li>
+          <li><b>Entreno de fuerza de 3 horas a la semana,</b> en gimnasio o en casa.</li>
+          <li><b>Revisión semanal:</b> peso, medidas, sueño, hambre, digestión y energía.</li>
+          <li><b>Analíticas explicadas:</b> te ayudo a entender tus resultados y a mejorar tus hábitos; si algo necesita valoración médica, te lo digo.</li>
+          <li><b>Soporte por WhatsApp</b> en un horario fijo de respuesta.</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <span class="label">Lo que nunca prometes</span>
+        <ul class="l">
+          <li><b>"Normalizar analíticas" o "curar la resistencia a la insulina":</b> eres dietista y entrenador, no médico. Dices "entender tus analíticas" y "mejorar tus hábitos".</li>
+          <li><b>Kilos en un plazo:</b> tú mismo lo dices: "el cuerpo no te va a cambiar en 3 meses".</li>
+          <li><b>Disponibilidad total:</b> un horario de respuesta por escrito, y lo cumples.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-yo">
+    <header><span class="label">Por qué tú</span><h2 id="h-yo">Sabes de metabolismo y comes como la gente normal.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="label">Tu historia en 6 líneas · para la llamada y la landing</span>
+        <ul class="l">
+          <li>De los 9 a los 14 años estaba más gordo de la cuenta. El kárate (cinturón marrón) y el fútbol me cambiaron.</li>
+          <li>Crecí con la comida de olla de mis abuelos… y con galletas, Colacao y bocatas gigantes.</li>
+          <li>Con 15 años pisé mi primer gimnasio: 1,70 m, 65 kg y ganas de no pasar desapercibido.</li>
+          <li>Hoy soy dietista y entrenador, y padre: como con mi familia y entreno unas 3 horas a la semana.</li>
+          <li>He aprendido que esto es un <b>50 % descanso y vida sin estrés, 30 % comida y 20 % entreno</b>.</li>
+          <li><b>Más no es mejor: mejor es mejor.</b></li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="label">Por qué el método va por fases</span>
+        <p class="soft">Lo que veo en tus clientas es lo que les pasa a casi todos los +40:</p>
+        <ul class="l">
+          <li><b>"Como poco y no bajo"</b> → <b>Desinflamar:</b> primero ordenar comida, sueño y estrés, para que el cuerpo responda.</li>
+          <li><b>"He probado mil entrenadores y ninguno me hacía caso"</b> → <b>Recomponer:</b> fuerza bien hecha y alguien encima cada semana.</li>
+          <li><b>"Lo pierdo y lo recupero"</b> → <b>Mantener:</b> salir de la dieta sin rebote.</li>
+        </ul>
+        <p class="say" style="margin:0">"El cuerpo no te va a cambiar en 3 meses. Pero en 6 lo vas a notar todo."</p>
+      </article>
+    </div>
+    <div class="card chip">
+      <span class="label">Para que no te confundan con otros</span>
+      <p>Hay más coaches hablando de "metabolismo" y "hormonas". Tu diferencia es concreta: <b>+40, comida real antiinflamatoria (la de siempre), padre de familia y 3 horas de fuerza a la semana</b>. "Comer como antes, pero bien." No te metas en "reprogramar" ni "reconstruir": ese terreno ya lo pisan otros.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-casos">
+    <header><span class="label">Tus casos · solo datos reales</span><h2 id="h-casos">Ya has ayudado a gente. Úsalo bien.</h2><p class="soft">Pide a cada cliente sus datos (tiempo, kilos, edad) y permiso por escrito antes de publicar nada. Con datos de salud, el doble de cuidado.</p></header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Caso</th><th>Qué consiguió</th><th>Úsalo cuando el lead…</th></tr></thead>
+        <tbody>
+          <tr><td>Esther y Merche</td><td>Dos hermanas (33 y 38 años), con trabajos muy estresantes, <b>aprobaron las pruebas físicas</b> de su oposición contigo.</td><td>Tiene un objetivo concreto y poco tiempo, o mucho estrés.</td></tr>
+          <tr><td>Cristina, 48</td><td>Después de recuperar el peso que había perdido, <b>ganó músculo y bajó unos 10 kg en 1 año</b>, y mejoró su dolor de rodilla. <i>Solo con su permiso por escrito.</i></td><td>Ha perdido peso antes y lo ha recuperado, o tiene +45 y cree que ya no puede.</td></tr>
+          <tr><td>Pendiente</td><td>Pide datos y permiso a tus otros clientes (Inés, Jesús, Elvira, Tatiana, Encarna) para tener casos de +40 con cifras.</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header>
+      <span class="label">Precios · propuesta, confírmala con Alberto</span>
+      <h2 id="h-precios">El que vendes es el <em>semestre</em>.</h2>
+      <p class="soft">Son las 3 fases completas. Con +40, 3 meses se quedan cortos y tú lo sabes.</p>
+    </header>
+    <div class="g4">
+      <article class="card dark">
+        <span class="badge">1 · El que ofreces primero</span>
+        <h3>Semestre</h3>
+        <p class="price">400 €</p>
+        <ul class="l"><li>Las 3 fases completas.</li><li>El estándar.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">2 · El que más le compensa</span>
+        <h3>Año completo</h3>
+        <p class="price">700 €</p>
+        <ul class="l"><li>Las 3 fases y 6 meses más de mantenimiento.</li><li>Analítica de control al año.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">3 · Si no llega</span>
+        <h3>Semestre en 2 pagos</h3>
+        <p class="price">210 € <small>+ 210 €</small></p>
+        <ul class="l"><li>Total 420 €: paga algo más por fraccionar.</li><li>Sigue comprometido 6 meses.</li></ul>
+      </article>
+      <article class="card chip">
+        <span class="badge">4 · Último recurso</span>
+        <h3>Trimestre</h3>
+        <p class="price">250 €</p>
+        <ul class="l"><li>Solo la fase 1, desinflamar.</li><li>Nunca lo dices primero.</li></ul>
+      </article>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cómo lo dices en la llamada</h3>
+        <p class="say">"Lo que te recomiendo son los 6 meses: 400 €. Si quieres el año, son 700 € y te quedas con el mantenimiento y la analítica de control."</p>
+        <p class="soft" style="font-size:14.5px">Lo dices una vez y te callas. El trimestre solo sale si el "no" es por dinero y tampoco le encajan los 2 pagos. Nunca bajas el precio: cambias la forma de pago.</p>
+      </div>
+      <div class="card">
+        <h3>Reglas</h3>
+        <ul class="l">
+          <li><b>El precio no va en el perfil:</b> se dice en la llamada.</li>
+          <li><b>Un downsell cada vez,</b> solo si el "no" es por dinero.</li>
+          <li><b>Pago único con descuento, nunca recargo:</b> si ofreces pago a plazos, el precio de base es el de plazos y el pago único lleva descuento.</li>
+          <li><b>Todo con contrato.</b> Sin contrato no empieza nadie.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-sube">
+    <header>
+      <span class="label">Cómo vas subiendo</span>
+      <h2 id="h-sube">Cada venta, un 20 % más. Hasta el año a 1.200 €.</h2>
+      <p class="soft">Cada vez que cierras una venta, subes un nivel. Nunca se baja.</p>
+    </header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Cuándo</th><th>Trimestre</th><th>Semestre</th><th>Año</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>Ahora</td><td>250 €</td><td><b>400 €</b></td><td>700 €</td></tr>
+          <tr><td>Nivel 1</td><td>Tras tu próxima venta</td><td>300 €</td><td><b>480 €</b></td><td>840 €</td></tr>
+          <tr><td>Nivel 2</td><td>Tras la siguiente</td><td>360 €</td><td><b>580 €</b></td><td>1.000 €</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>Tras la siguiente</td><td>400 €</td><td><b>690 €</b></td><td>1.200 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="steps">
+      <div><b>1. Cierras una venta</b><span>Al siguiente lead ya le das el precio del nivel siguiente.</span></div>
+      <div><b>2. Nunca bajas</b><span>Si te dicen que no por precio, cambias la forma de pago, no el precio.</span></div>
+      <div><b>3. El techo</b><span>Trimestre 400 €, semestre 690 € y año 1.200 €.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-gar">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-gar">Riesgo cero para el que cumple.</h2></header>
+    <div class="g2">
+      <article class="card accent">
+        <span class="label">Garantía</span>
+        <p style="font-size:20px;font-weight:700;line-height:1.4">"Si sigues el plan, me mandas tus revisiones y en la fase 1 no notas cambios, sigo contigo gratis hasta que los notes."</p>
+        <ul class="l"><li><b>Condición medible:</b> 80 % de cumplimiento o más y todas las revisiones enviadas.</li><li><b>No hay devolución de dinero:</b> la garantía protege al que trabaja.</li></ul>
+      </article>
+      <article class="card">
+        <span class="label">Contrato · firma digital antes de empezar</span>
+        <ul class="l">
+          <li>Qué incluye, cuánto dura y cómo se paga.</li>
+          <li>Horario de respuesta por WhatsApp.</li>
+          <li>Las condiciones de la garantía.</li>
+          <li><b>Consentimiento de datos de salud</b> (analíticas, medicación, lesiones) y, si quiere, de imagen.</li>
+          <li><b>Los 14 días para desistir:</b> pide empezar ya y acepta pagar la parte del servicio hecha si se echa atrás.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header>
+      <span class="label">Después de la venta</span>
+      <h2 id="h-back">Tu mejor cliente es el que ya está contigo.</h2>
+      <p class="soft">Se lo ofreces en su momento dulce: cuando se deshincha, duerme mejor, le cambia la ropa o mejora su analítica.</p>
+    </header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><ul class="l"><li><b>Trimestre → semestre:</b> paga la diferencia.</li><li><b>Semestre → año:</b> paga la diferencia.</li></ul></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Renovar antes de acabar</h3><ul class="l"><li>En la semana 10–12, nunca el último día.</li><li>Con fecha límite: precio congelado.</li></ul></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento mensual</h3><ul class="l"><li>Revisión mensual y analítica de control.</li><li>Precio a decidir con Alberto.</li></ul></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a tu pareja</h3><ul class="l"><li>Si entra, un mes gratis para los dos.</li><li>Comer igual en casa ayuda a los dos.</li></ul></article>
+    </div>
+    <p class="say">"Mira cómo estabas hace 10 semanas y cómo estás hoy. Lo difícil ya está hecho. Si renuevas esta semana, te mantengo el precio de ahora."</p>
+  </section>
+</div>

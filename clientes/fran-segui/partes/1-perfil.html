@@ -1,0 +1,348 @@
+<title>Fran Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f6f3ee;
+  --white: #ffffff;
+  --ink: #1b1a17;
+  --soft: #615d55;
+  --line: #e1dbd0;
+  --chip: #efe9df;
+  --accent: #b5531a;
+  --accent-text: #9a4514;
+  --accent-dark: #f08a4b;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfc8bc; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffe3cf; }
+.card.accent ul.l, .card.accent ol.l { color: #fff0e4; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #2a2823; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2c2a25; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #f8ece2; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#f08a4b, #b5531a, #1b1a17, #f08a4b); }
+.avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #2c2a25, #1b1a17); display: grid; place-items: center; color: #fff; font: 800 26px/1 var(--f-head); letter-spacing: .02em; }
+.ig-user { font-weight: 800; font-size: 16px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #fff; font: 700 12px/1 var(--f-head); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #2c2a25, #1b1a17); color: #fff; display: grid; align-content: end; padding: 6px; font: 700 11px/1.1 var(--f-head); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--accent-dark); display: block; font-size: 12px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--accent-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--accent-dark); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+.opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.opt .txt { white-space: pre-line; font-size: 15px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 14px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15.5px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#f08a4b, #b5531a, #1b1a17, #f08a4b); }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #e9d4c6 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #e9d4c6 0 46%, transparent 47%), #2c2a25; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+/* Marca Fran Seguí: editorial y culta. Titulares en DM Serif Display (sin mayúsculas), texto en Inter, naranja tostado y oliva. */
+:root { --olive: #55663a; --f-head: "DM Serif Display", Georgia, "Times New Roman", serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; }
+h1, h2, h3 { text-transform: none !important; font-weight: 400 !important; letter-spacing: -.01em !important; font-family: var(--f-head) !important; }
+h1 { line-height: 1.04 !important; } h2 { line-height: 1.08 !important; }
+h3 { font-size: 21px !important; line-height: 1.2 !important; }
+h1 em, h2 em { font-style: italic; }
+.olive { color: var(--olive); }
+
+.avatar img, .photo .mock img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; object-fit: cover; display: block; }
+.avatar { background: conic-gradient(#f08a4b, #b5531a, #55663a, #f08a4b); }
+.ig-grid div { background: linear-gradient(180deg, #3a362f, #1b1a17); }
+.ig-hl i span { background: var(--olive); }
+
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Fran Seguí · Parte 1 · Perfil</span>
+    <h1>Tu perfil tiene que decir en 3 segundos: <em>metabolismo +40, con comida de verdad</em>.</h1>
+    <p class="soft" style="font-size:18px">Tienes algo que casi nadie tiene: sabes de lo que hablas y lo cuentas con gracia. Pero hoy tu perfil dice "entrenador", como miles. Lo cambias esta semana. Toca un nombre y una bio para ver cómo queda y elige.</p>
+  </header>
+
+  <section class="card accent" aria-label="Tu nicho">
+    <span class="label">Tu nicho, en una frase</span>
+    <h2>Hombres y mujeres de +40 que ya no pierden grasa como antes. Con comida real, sin polvitos y sin vivir en el gimnasio.</h2>
+    <ul class="l">
+      <li><b>"No es la edad: es tu metabolismo"</b> es tu frase. Insulina, cortisol y leptina explicados para que se entiendan, sin diagnosticar a nadie.</li>
+      <li><b>Tu sello:</b> la dieta antiinflamatoria con la comida de siempre (la olla de los abuelos, sardinas, aceite de oliva, jamón). "¿Bellotas o pienso?" ya es tu forma de hablar: úsala.</li>
+      <li><b>Lo que te diferencia</b> de otros coaches de "metabolismo": eres dietista y entrenador, padre de familia, comes con los tuyos y entrenas 3 horas a la semana. Más no es mejor: mejor es mejor.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes bien</span>
+      <ul class="l">
+        <li><b>Una bio con nicho:</b> "+40 y ya no pierdes grasa como antes" engancha a quien tiene que engancharse.</li>
+        <li><b>Dietista y entrenador:</b> autoridad doble. Casi nadie la tiene.</li>
+        <li><b>Reels de comida con personalidad:</b> las sardinas, el jamón, "¿Bellotas o pienso?", "Si te quieres desinflamar, deja estas…". Ese es tu estilo y funciona.</li>
+        <li><b>Tu 2012 frente a 2026 fijado:</b> la prueba de que lo que dices lo haces.</li>
+        <li><b>Hablas bien a cámara</b> y se nota que lees y estudias.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que cambias ya</span>
+      <ul class="l">
+        <li><b>"Francisco Seguí | Entrenador"</b> no dice qué consigues ni a quién. Fuera "Entrenador" a secas.</li>
+        <li><b>No tienes destacadas:</b> quien entra no ve resultados, ni tu historia, ni cómo trabajas. Las 5 de abajo, esta semana.</li>
+        <li><b>Los 6 fijados son de comida y opinión:</b> ninguno enseña a una persona a la que hayas ayudado. Cambia uno por un caso.</li>
+        <li><b>"Empieza hoy" con un formulario largo:</b> mejor una palabra clave por privado ("escríbeme DESINFLAMA") y el formulario para el que lo prefiera.</li>
+        <li><b>Falta el rol de entrenador:</b> revisar platos, analíticas explicadas, corregir técnica, tu semana con clientes. Es lo que convierte seguidores en clientes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil de Fran Seguí"><img src="fran-avatar.jpg" alt="" width="320" height="320"></div>
+          <div>
+            <div class="ig-user">francisco_segui_pro</div>
+            <div class="ig-stats"><span><b>224</b>posts</span><span><b>1.404</b>seguidores</span><span><b>501</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Dietista-nutricionista</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>tu formulario (enlace corto)</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>✓</span></i><small>Resultados</small></div>
+          <div><i><span>FS</span></i><small>Mi historia</small></div>
+          <div><i><span>🫒</span></i><small>Comida real</small></div>
+          <div><i><span>⚡</span></i><small>Metabolismo</small></div>
+          <div><i><span>1:1</span></i><small>Asesoría</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>2012 vs 2026</em>Mismo tío, más disciplina</div>
+          <div><em>Desinflámate</em>Deja estas 3 cosas</div>
+          <div><em>Caso real</em>Tu mejor resultado</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta. Acorta el enlace del formulario (o usa una landing): el de Google Forms es larguísimo.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda: tu nombre y lo que consigues. "Fran" es más cercano que "Francisco".</p>
+        <div class="names" id="names">
+          <button class="opt" type="button" data-name="Fran Seguí | Metabolismo +40"><b>Fran Seguí | Metabolismo +40</b><span class="n">Recomendado</span></button>
+          <button class="opt" type="button" data-name="Fran Seguí | Dietista y entrenador +40"><b>Fran Seguí | Dietista y entrenador +40</b></button>
+          <button class="opt" type="button" data-name="Fran Seguí | Desinflama y pierde grasa +40"><b>Fran Seguí | Desinflama y pierde grasa +40</b></button>
+          <button class="opt" type="button" data-name="Fran Seguí | Comida real y metabolismo"><b>Fran Seguí | Comida real y metabolismo</b></button>
+          <button class="opt" type="button" data-name="Fran Seguí | +40 y mejor que a los 30"><b>Fran Seguí | +40 y mejor que a los 30</b></button>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué tú. Elige una y no la toques en 3 meses.</p>
+        <div class="opts" id="bios">
+          <button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">+40 y ya no pierdes grasa como antes?
+No es la edad: es tu metabolismo
+Dietista y entrenador · Comida real
+Escríbeme DESINFLAMA 👇</span><span class="why">Tu gancho de siempre, con el mecanismo y una acción clara.</span></button>
+          <button class="opt" type="button"><span class="tag">B · Comida de siempre</span><span class="txt">Come como tus abuelos, pero bien
+Desinflama y pierde grasa a partir de los 40
+Dietista y entrenador · 3 h/semana
+Escríbeme DESINFLAMA 👇</span><span class="why">Tu sello: la olla de los abuelos frente a los ultraprocesados.</span></button>
+          <button class="opt" type="button"><span class="tag">C · Metabolismo</span><span class="txt">Metabolismo y hormonas a tu favor +40
+Insulina, cortisol y leptina sin humo
+Dietista y entrenador · Asesoría online
+Empieza aquí 👇</span><span class="why">Para el que busca entender qué le pasa por dentro.</span></button>
+          <button class="opt" type="button"><span class="tag">D · Padre de familia</span><span class="txt">Padre, dietista y entrenador
+Pierde grasa +40 comiendo con tu familia
+Más no es mejor: mejor es mejor
+Escríbeme DESINFLAMA 👇</span><span class="why">Conecta con quien no tiene tiempo ni quiere comer aparte.</span></button>
+          <button class="opt" type="button"><span class="tag">E · Antipostureo</span><span class="txt">Sin polvitos, sin retos de 30 días
+Comida real y fuerza 3 h/semana para +40
+Dietista y entrenador
+Escríbeme DESINFLAMA 👇</span><span class="why">Tu forma de pensar en una bio: diferencia pura.</span></button>
+          <button class="opt" type="button"><span class="tag">F · Rol entrenador</span><span class="txt">Dietista y entrenador para +40
+Reviso tu plato, tu sueño y tu entreno
+Desinflama y pierde grasa como antes
+Empieza hoy 👇</span><span class="why">Te posiciona como el profesional que te acompaña cada semana.</span></button>
+          <button class="opt" type="button"><span class="tag">G · 2012 vs 2026</span><span class="txt">2012 vs 2026: mismo tío, más disciplina
+Te enseño a desinflamarte y perder grasa +40
+Dietista y entrenador · Comida real
+Escríbeme DESINFLAMA 👇</span><span class="why">Tu foto fijada convertida en bio.</span></button>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><img src="fran-avatar.jpg" alt="" width="320" height="320"></div>
+          <ul class="l">
+            <li><b>La que tienes es buena:</b> cara visible, brazos cruzados, seria pero cercana. Mantenla.</li>
+            <li><b>Si la cambias,</b> que sea un poco más cerca (cara y hombros) para que se te reconozca en pequeño.</li>
+            <li><b>Valora una con bata o polo de dietista</b> para las destacadas de "Metabolismo": refuerza la autoridad.</li>
+            <li><b>Mismo tono de color en toda la cuenta:</b> negro, blanco y tu naranja.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Resultados:</b> casos con permiso (Esther y Merche, Cristina si lo autoriza).</li><li><b>Mi historia:</b> 10 historias (abajo, escritas).</li><li><b>Comida real:</b> qué comes en un día, la compra, platos de olla.</li><li><b>Metabolismo:</b> insulina, cortisol y leptina en 30 segundos cada una.</li><li><b>Asesoría:</b> cómo trabajas y las 3 fases.</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>2012 frente a 2026:</b> se queda. Añade en el texto tu edad y peso de cada foto.</li><li><b>Tu mejor reel de comida</b> ("Si te quieres desinflamar, deja estas…").</li><li><b>Un caso real:</b> Esther y Merche aprobando sus pruebas físicas, o Cristina si da su permiso por escrito.</li></ul></div>
+          <div class="card"><span class="label">Reglas</span><ul class="l"><li><b>Una sola acción:</b> "Escríbeme DESINFLAMA" por privado.</li><li><b>Nombres de destacadas</b> de una o dos palabras.</li><li><b>Datos de salud de clientas:</b> solo con consentimiento por escrito y sin diagnósticos en el texto.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Tu historia: el porqué de todo</h2>
+        <p class="soft">Tu cliente +40 confía en quien ha pasado por algo. Tú fuiste el niño gordito, creciste con la comida de tus abuelos y hoy eres dietista y entrenador. Cuéntalo con humor, como hablas.</p>
+        <div class="card accent"><span class="label">Lo que necesito de ti esta semana</span><p>Tu edad y tu peso en la foto de 2012 y en la de 2026, cómo comes hoy en un día normal, cuándo te formaste como dietista y cómo empezaste a entrenar a gente. Con eso completamos los huecos marcados [pendiente].</p></div>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Destacada "Mi historia" · 10 historias</span>
+            <ol class="l">
+              <li>"De los 9 a los 14 años estaba más gordo de la cuenta. El típico gordito de la clase."</li>
+              <li>"Me salvó el kárate: llegué a cinturón marrón. Y el fútbol, todas las tardes."</li>
+              <li>"Mi referente era mi tío Julio, bombero. Le veía subir la cuerda como alma que se lleva el diablo."</li>
+              <li>"Con 15 años, 1,70 m y unos 65 kg, pisé mi primer gimnasio. Quería no pasar desapercibido."</li>
+              <li>"Desayunaba leche con galletas o Colacao, bocata gigante a las 11 y la comida de olla de mis abuelos. Mi abuelo era muy panero."</li>
+              <li>"Lo que he aprendido: la comida de olla no era el problema. Las galletas y la bollería, sí."</li>
+              <li>"[Pendiente: tu etapa adulta y tu foto de 2012, con edad y peso.]"</li>
+              <li>"Hoy soy dietista y entrenador, y padre. Como con mi familia y entreno unas 3 horas a la semana."</li>
+              <li>"Esto es un 50 % descansar y vivir sin estrés, un 30 % comer bien y un 20 % entrenar. Más no es mejor: mejor es mejor."</li>
+              <li>"Si tienes +40 y ya no pierdes grasa como antes, escríbeme DESINFLAMA."</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="label">Carrusel fijado "Mi historia" · 9 diapositivas</span>
+            <ol class="l">
+              <li><b>Portada:</b> "2012 vs 2026. Lo que he aprendido de metabolismo en este tiempo." (tus dos fotos)</li>
+              <li><b>El gordito de 9 a 14 años</b> y el kárate.</li>
+              <li><b>El tío Julio:</b> la primera vez que vi a un hombre fuerte de verdad.</li>
+              <li><b>Los 15:</b> primer gimnasio, 65 kg, cuidando un poco las cenas.</li>
+              <li><b>La comida de mis abuelos:</b> lo bueno (la olla) y lo malo (pan y bollería).</li>
+              <li><b>[Pendiente]:</b> tu etapa adulta y 2012.</li>
+              <li><b>Hoy:</b> dietista, entrenador, padre, 3 h a la semana de fuerza.</li>
+              <li><b>Tu regla 50/30/20</b> y "más no es mejor: mejor es mejor".</li>
+              <li><b>Cierre:</b> "Si tienes +40 y te has visto aquí, escríbeme DESINFLAMA y te digo por dónde empezaría yo contigo."</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  var EMO = /\p{Extended_Pictographic}/u;
+  function igLen(t) { var n = 0; Array.from(t).forEach(function (c) { if (c === "️" || c === "‍") return; n += EMO.test(c) ? 2 : 1; }); return n; }
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    var a = igLen(pvName.textContent), b = igLen(pvBio.textContent);
+    cn.textContent = a; cb.textContent = b;
+    cn.className = a > 64 ? "over" : ""; cb.className = b > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = igLen(b.querySelector(".txt").textContent) + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>

@@ -1,0 +1,478 @@
+<title>Fran Fuentes Coach</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<meta name="description" content="Fran Fuentes · Entrenamiento y nutrición para hombres de más de 40 que llevan años sin cuidarse. No llegas tarde: a los 43, mejor que nunca.">
+<!--
+  PENDIENTE / PROVISIONAL (no se ve en la página):
+  - Fotos: "antes" y "hoy" recortadas de su perfil de Instagram (baja resolución). Sustituir por originales: foto del sendero 2015, 2017, 42 años y hoy (frente/perfil/espalda).
+  - Casos: no tiene clientes de pago todavía. Añadir los 3 primeros con permiso firmado. No inventar testimonios.
+  - Fechas: aclarar "Empecé con 35" (no cuadra con sus fechas). Aquí no se usa la cifra.
+  - VSL, testimonios en vídeo y WhatsApp: pendientes.
+  - Formulario: Google Forms incrustado solo cuando la página esté en su dominio.
+-->
+<style>
+/* Layout: carta de venta larga en una columna. Hero oscuro con casos reales; muro de casos; historia con línea de tiempo y huecos de foto. Marca Fran Fuentes: negro, blanco y naranja. */
+:root {
+  --paper: #f5f5f3;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5b5b5b;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #c2410c;
+  --accent-text: #a6380a;
+  --accent-dark: #fb7a3c;
+  --on-dark: #cfcfcf;
+  --f-head: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2a2a2a; }
+.btn-a { background: var(--accent); color: var(--white); }
+.btn-a:hover { background: #a6380a; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 800 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 800 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 800 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 800 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 800 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 800 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 800 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* Historia */
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c4c4c0; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 800 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 800 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; text-align: center; font: 800 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a9a9a; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #fde4d6; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 800 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(245, 245, 243, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+/* Montserrat es ancha: titulares sin mayúsculas y algo más pequeños que en la versión condensada. */
+h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none; letter-spacing: -.025em; }
+.hero h1 { font: 800 clamp(40px, 7vw, 84px)/1 var(--f-head); text-transform: none; letter-spacing: -.035em; max-width: 15ch; }
+.brand { text-transform: none; letter-spacing: -.01em; font-size: 18px; }
+.fact b, .layer h3, .base h3, .case .big, .step h3, .err b, .turn, .me p, .quote, .seal, .final h2 { text-transform: none; letter-spacing: -.02em; }
+.fact b { font-size: 21px; } .layer h3 { font-size: 24px; } .case .big { font-size: 24px; } .step h3 { font-size: 22px; } .err b { font-size: 20px; }
+.turn { font-size: clamp(26px, 3.8vw, 42px); } .me p { font-size: clamp(22px, 3vw, 32px); } .quote { font-size: clamp(24px, 3.4vw, 38px); }
+.seal { font-size: clamp(20px, 2.4vw, 26px); }
+.final h2 { font-size: clamp(38px, 6.5vw, 78px); }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
+.duo figure { margin: 0; display: grid; gap: 8px; }
+.duo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; background: #000; }
+.duo figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); display: block; }
+.duo figcaption span { font-size: 15px; color: var(--soft); }
+.sports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.sport { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 8px; }
+.sport b { font: 800 22px/1.1 var(--f-head); letter-spacing: -.02em; }
+.sport span { color: var(--soft); font-size: 16px; }
+.empty-case { border: 2px dashed #c4c4c0; background: var(--chip); border-radius: 12px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 10px; }
+.empty-case p { color: var(--soft); max-width: 60ch; }
+@media (max-width: 680px) { .duo, .sports { grid-template-columns: 1fr; } }
+</style>
+
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/fran-avatar.jpg" alt="" width="400" height="400"><div>Fran Fuentes<small>Entrenamiento y nutrición +40</small></div></div>
+      <a class="btn btn-a js-form" href="https://forms.gle/j58sMkUxyYB8hWm" target="_blank" rel="noopener">Empieza tu cambio</a>
+    </header>
+
+    <div class="hero">
+      <div class="label">Para hombres de más de 40 que llevan años sin cuidarse</div>
+      <h1>No llegas tarde. A los 43, <em>mejor que nunca</em>.</h1>
+      <p class="lede">Con 1,69 m llegué a casi 80 kg y una barriga que me acomplejaba con la ropa. Hoy tengo más músculo, más fuerza y sigo jugando al fútbol con mis amigos. Te ayudo a conseguirlo con fuerza, comida que aprendes a organizar y sin sufrir.</p>
+      <!-- VSL PENDIENTE: cuando Fran grabe el vídeo, sustituir este comentario por
+           <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
+      <div class="ctas">
+        <a class="btn btn-a js-form" href="https://forms.gle/j58sMkUxyYB8hWm" target="_blank" rel="noopener">Empieza tu cambio</a>
+        <a class="btn btn-dark-ghost" href="https://www.instagram.com/franfuentes.coach/" target="_blank" rel="noopener">Escríbeme 40 en Instagram</a>
+        <!-- WHATSAPP PENDIENTE: añadir botón cuando tengamos su número -->
+      </div>
+      <p class="cta-note">El formulario son 2 minutos. Lo leo yo y te digo por dónde empezaría en tu caso.</p>
+
+      <div class="facts">
+        <div class="fact"><b>43 años</b><span>Mi mejor físico, no el de los 25</span></div>
+        <div class="fact"><b>Sin sufrir</b><span>Nada de pasar hambre</span></div>
+        <div class="fact"><b>Tu deporte</b><span>Fuerza que suma a tu fútbol, running o pádel</span></div>
+        <div class="fact"><b>1:1</b><span>Te reviso y ajusto cada semana</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>Quieres cambiar. Pero nunca es el momento.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Mañana empiezo… o mejor la semana que viene."</div>
+      <div class="sign">"No tengo la fuerza de voluntad para conseguirlo."</div>
+      <div class="sign">"Por las noches me he quitado los hidratos porque engordan."</div>
+      <div class="sign">"Hago cardio primero para quemar grasa y no veo cambios."</div>
+      <div class="sign">"Me da corte entrar a la sala de pesas a mi edad."</div>
+      <div class="sign">"Si me pongo a dieta, tengo que dejar de comer de todo."</div>
+    </div>
+    <p class="turn">No es tu edad ni tu fuerza de voluntad. <em>Te falta un plan que no te haga sufrir.</em></p>
+  </div>
+</section>
+
+<section id="cambio">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Mi cambio</div>
+      <h2>Una foto me cambió el chip.</h2>
+    </div>
+    <div class="duo">
+      <figure><img style="object-position:38% center" src="casos/fran-antes.jpg" alt="Fran hace unos años, con sobrepeso, en un sendero de montaña" width="700" height="381" loading="lazy"><figcaption><b>Antes</b><span>"Hace unos años, no muchos, no me cuidaba."</span></figcaption></figure>
+      <figure><img src="casos/fran-gym.jpg" alt="Fran hoy en el gimnasio, con brazos y hombros marcados" width="600" height="679" loading="lazy"><figcaption><b>Hoy · 43 años</b><span>Más músculo y más fuerza que nunca.</span></figcaption></figure>
+    </div>
+    <div class="me">
+      <img src="casos/fran-avatar.jpg" alt="Fran Fuentes corriendo" width="400" height="400" loading="lazy">
+      <p>"No llegas tarde: estás en el momento perfecto para tu cambio."</p>
+    </div>
+    <div class="timeline">
+      <figure><div class="ph">Foto del sendero · pendiente (original)</div><figcaption><b>La foto</b><span>Casi 80 kg con 1,69 m. Junto a mi mejor amigo, "de repente, estaba como él".</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>Dos años después</b><span>Más de 15 kg menos… pero pasando hambre y sin músculo.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>A los 42</b><span>Bajé demasiado con un plan de hambre y perdí músculo. Error.</span></figcaption></figure>
+      <figure><div class="ph">Foto de hoy · pendiente</div><figcaption><b>A los 43</b><span>Fuerza, músculo y fútbol con los amigos. Sin sufrir.</span></figcaption></figure>
+    </div>
+    <div class="read stack">
+      <p>Hice deporte desde los 6 años: fútbol, balonmano. Pensaba que estando delgado no necesitaba un gimnasio. Con los años me fui dejando, <strong>comida basura, pedidos los fines de semana</strong>, y acabé comprándome ropa cada vez más suelta.</p>
+      <p>Empecé en un parque con mi mejor amigo y luego cometí todos los errores: <strong>pasar hambre, entrenar sin rutina, quitar hidratos por la noche, el cardio antes de las pesas</strong>. Pasé también una etapa muy dura, y el gimnasio fue lo que me sostuvo.</p>
+      <p>Hoy entreno fuerza de verdad, como sin pasar hambre y sigo con mi fútbol. En el gimnasio me piden consejo y mis amigos me preguntan cómo lo hago. Eso es lo que quiero para ti.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>Pasar hambre</b><span>Bajas, pero pierdes músculo y vuelves. <em>Lo que funciona:</em> aprender a organizar tu plato.</span></div>
+      <div class="err"><b>Más no es mejor</b><span>Entrenar todos los días sin rutina ni intensidad. <em>Lo que funciona:</em> fuerza bien hecha y progresión.</span></div>
+      <div class="err"><b>El "mañana empiezo"</b><span>Esperar el momento perfecto. <em>Lo que funciona:</em> empezar hoy con un plan que encaje en tu vida.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método Segunda Juventud</div>
+      <h2>Arrancar. Construir. Mejor que nunca.</h2>
+      <p class="lede">Seis meses con un orden claro. Cada semana miro cómo respondes y ajusto tu plan.</p>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Arrancar sin sufrir</h3><p>Hábitos que duran, fuerza básica bien hecha y la primera grasa fuera. Sin hambre.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Construir</h3><p>Músculo y rendimiento: progresas en cargas y lo combinas con tu deporte.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Mejor que nunca</h3><p>Consolidas tu físico y tu energía, y aprendes a mantenerlo solo.</p></article>
+      <article class="layer"><span class="n">Cada semana</span><h3>Revisión 1:1</h3><p>Me mandas tu revisión, te corrijo la técnica por vídeo y ajusto el plan. Hablas directamente conmigo.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Combínalo con tu deporte</span>
+      <h3>La fuerza no te quita tu fútbol: te lo devuelve.</h3>
+      <p>Yo sigo jugando con mis amigos y saliendo a correr. El plan se monta alrededor de lo que te gusta hacer, para que rindas más y te lesiones menos.</p>
+    </div>
+    <div class="sports">
+      <div class="sport"><b>Fútbol de veteranos</b><span>Más potencia, más aguante y menos lesiones de gemelo y rodilla.</span></div>
+      <div class="sport"><b>Running</b><span>Fuerza para correr mejor, no solo más kilómetros.</span></div>
+      <div class="sport"><b>Pádel</b><span>Hombros, cadera y core que aguantan los partidos de la semana.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Resultados</div>
+      <h2>Tus primeros resultados, aquí.</h2>
+    </div>
+    <!-- CASOS PENDIENTES: cuando los 3 primeros clientes den permiso por escrito, añadir aquí sus antes y después con la plantilla .wall > .case de la landing de Diego. No inventar testimonios. -->
+    <div class="empty-case">
+      <p><b>Estoy abriendo mis primeras plazas.</b> El primer caso de esta página puede ser el tuyo: te acompaño de cerca durante seis meses y, si me dejas, contamos tu cambio aquí.</p>
+      <div class="ctas"><a class="btn btn-a js-form" href="https://forms.gle/j58sMkUxyYB8hWm" target="_blank" rel="noopener">Quiero una de las plazas</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label">Garantía</div>
+      <h2 style="margin-top:10px">Si cumples y no ves cambios en la fase 1, sigo contigo gratis.</h2>
+      <ul>
+        <li>Sigues el plan y me envías tus revisiones semanales.</li>
+        <li>Si aun así no hay cambios, seguimos trabajando sin coste hasta que lleguen.</li>
+        <li>Todo queda por escrito en el contrato antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes más de 40 y llevas años sin cuidarte como te gustaría.</li>
+          <li>Quieres perder barriga y ganar fuerza, no solo bajar de peso.</li>
+          <li>Te gusta tu deporte y quieres rendir y sentirte ágil otra vez.</li>
+          <li>Estás cansado del "mañana empiezo".</li>
+          <li>Vas a seguir el plan y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio milagro en 30 días.</li>
+          <li>Tienes una enfermedad que necesita seguimiento médico presencial.</li>
+          <li>No vas a mandar tus revisiones ni contarme cómo vas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Me cuentas tu caso</h3><p>2 minutos en el formulario: cómo estás, qué has probado y qué deporte haces.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te llamo y te digo por dónde empezaría contigo.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas tu plan</h3><p>Tu fase 1 hecha para ti y la primera revisión en el calendario.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Empieza tu cambio.</h2>
+      <p class="lede">Lo leo yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn btn-a js-form" id="formBtn" href="https://forms.gle/j58sMkUxyYB8hWm" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Tengo más de 40. ¿De verdad no llego tarde?</summary><p>No. Yo tengo mi mejor físico a los 43. El cuerpo responde a cualquier edad si le das fuerza, buena comida y descanso.</p></details>
+      <details><summary>Llevo años sin hacer nada. ¿Por dónde empiezo?</summary><p>Por lo básico y sin agobios: pocos ejercicios bien hechos y aprender a organizar tu plato. La fase 1 está pensada para eso.</p></details>
+      <details><summary>¿Voy a pasar hambre?</summary><p>No. Lo pasé yo y no funciona. Aprendes a comer para perder grasa sin dejar de comer lo que te gusta.</p></details>
+      <details><summary>Juego al fútbol (o corro, o hago pádel). ¿Lo tengo que dejar?</summary><p>Al contrario. El plan se monta alrededor de tu deporte para que rindas más y te lesiones menos.</p></details>
+      <details><summary>Me da vergüenza la sala de pesas.</summary><p>A mí también me pasó. Te doy la rutina clara, con vídeos, para que entres sabiendo exactamente qué hacer.</p></details>
+      <details><summary>No tengo mucho tiempo.</summary><p>El plan se ajusta a tu semana real. Es mejor poco y constante que mucho y dejarlo al mes.</p></details>
+      <details><summary>¿Y si no veo resultados?</summary><p>Si cumples el plan y me mandas tus revisiones y en la fase 1 no ves cambios, sigo contigo gratis hasta que lleguen. Queda por escrito.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Rellena el formulario y te lo explico cuando hablemos.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Tu segunda juventud empieza hoy.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-form" href="https://forms.gle/j58sMkUxyYB8hWm" target="_blank" rel="noopener">Empieza tu cambio</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/franfuentes.coach/" target="_blank" rel="noopener">Escríbeme 40 en Instagram</a>
+    </div>
+    <p class="cta-note">O escríbeme <b>40</b> por privado en <a href="https://www.instagram.com/franfuentes.coach/" target="_blank" rel="noopener">@franfuentes.coach</a> y te contesto yo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Fran Fuentes · Entrenamiento y nutrición</span><span><a href="https://www.instagram.com/franfuentes.coach/" target="_blank" rel="noopener">@franfuentes.coach</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-form" href="https://forms.gle/j58sMkUxyYB8hWm" target="_blank" rel="noopener">Empieza tu cambio</a></div>
+
+<script>
+(function () {
+  var FORM = "https://forms.gle/j58sMkUxyYB8hWm?utm_source=landing&utm_medium=web";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // En su dominio el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de Fran Fuentes"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

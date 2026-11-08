@@ -1,0 +1,333 @@
+<title>Fran Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f5f5f3;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5b5b5b;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #c2410c;
+  --accent-text: #a6380a;
+  --accent-dark: #fb7a3c;
+  --f-head: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffe3d4; }
+.card.accent ul.l, .card.accent ol.l { color: #ffefe6; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fdeee6; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: nicho, diagnóstico y lo que hay que aclarar arriba; debajo, vista previa del perfil (fija en escritorio) y a su lado nombres, bios, foto, destacadas, fijados y tu historia. */
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#fb7a3c, #c2410c, #141414, #fb7a3c); }
+.avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #2a2a2a, #141414); display: grid; place-items: center; color: #fff; font: 800 26px/1 var(--f-head); letter-spacing: .02em; }
+.ig-user { font-weight: 800; font-size: 16px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #fff; font: 700 12px/1 var(--f-head); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #2a2a2a, #141414); color: #fff; display: grid; align-content: end; padding: 6px; font: 700 11px/1.1 var(--f-head); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--accent-dark); display: block; font-size: 12px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--accent-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--accent-dark); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+.opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.opt .txt { white-space: pre-line; font-size: 15px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 14px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15.5px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#fb7a3c, #c2410c, #141414, #fb7a3c); }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #e9d4c6 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #e9d4c6 0 46%, transparent 47%), #2a2a2a; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+/* Marca Fran Fuentes: Montserrat es más ancha que una condensada → titulares sin mayúsculas y algo más pequeños. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Fran Fuentes · Parte 1 · Perfil</span>
+    <h1>Tu perfil tiene que decir en 3 segundos: <em>a los 43, mejor que nunca</em>.</h1>
+    <p class="soft" style="font-size:18px">Tu cuerpo es tu mejor argumento y hoy tu perfil no lo vende. Esto lo dejas hecho esta semana. Toca un nombre y una bio para ver cómo queda y elige.</p>
+  </header>
+
+  <section class="card accent" aria-label="Tu nicho">
+    <span class="label">Tu nicho, en una frase</span>
+    <h2>Hombres de más de 40 que llevan años sin cuidarse y creen que ya es tarde.</h2>
+    <ul class="l">
+      <li><b>"No llegas tarde, estás en el momento perfecto para tu cambio."</b> Es tu frase. Repítela durante un año en bio, vídeos y llamadas.</li>
+      <li><b>Tu prueba eres tú:</b> 1,69 m, de casi 80 kg y una barriga "apretada, redonda y acomplejada con la ropa" a más músculo y más fuerza a los 43.</li>
+      <li><b>Tu sello:</b> fuerza + tu deporte (fútbol, correr), autoestima y "segunda juventud". Y sin sufrir: "lo primero que vas a dejar de hacer es sufrir".</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes bien</span>
+      <ul class="l">
+        <li><b>"No llegas tarde"</b> abre tu bio: es una frase que se queda.</li>
+        <li><b>Tu físico se ve:</b> la foto de perfil corriendo sin camiseta vende sola.</li>
+        <li><b>Tienes tu "antes"</b> publicado (el sendero, "hace unos años no me cuidaba"). Úsalo mucho más.</li>
+        <li><b>Destacadas cortas</b> (Mi cambio, Empezamos, Qué hago, Mi historia) y un formulario como acción.</li>
+        <li><b>Estilo de carrusel limpio</b> en blanco, negro y naranja: ya tienes marca.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que cambias ya</span>
+      <ul class="l">
+        <li><b>173 seguidores:</b> tu problema es de volumen. No necesitas más reels bonitos: necesitas 100 conversaciones al día. Eso va en tu embudo.</li>
+        <li><b>El nombre acaba en "|" suelto</b> y no dice lo que consigues. Fuera.</li>
+        <li><b>"Que llevan años parados"</b> no es tu historia: tú nunca dejaste el deporte. Cámbialo por "que llevan años sin cuidarse".</li>
+        <li><b>No se te ve como entrenador:</b> faltan correcciones de técnica, planes explicados y "si fueras mi cliente…". Tu físico atrae; el rol de entrenador vende.</li>
+        <li><b>Ningún resultado de cliente todavía.</b> Prioridad del mes: tus 3 primeros casos (lo tienes en la Oferta).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-label="Para aclarar con Fran">
+    <span class="label">Para aclarar con Fran · antes de publicar nada</span>
+    <ul class="l">
+      <li><b>"Empecé con 35":</b> por tus propias fechas (40 años en 2023) en 2015 tenías unos 32 y en 2021 unos 38. ¿Qué pasó exactamente a los 35? Elige una fecha y úsala siempre igual, o di "empecé pasados los 30".</li>
+      <li><b>"Mayores de 40 que llevan años parados":</b> tú hiciste deporte toda la vida; lo que te faltaba era cuidarte. Propuesta de bio: <b>"…que llevan años sin cuidarse"</b>.</li>
+      <li><b>Usuario:</b> hoy eres @franfuentes.coach y en tu documento propones @franfuentesmethod. Decide uno ya: con 173 seguidores cambiar no cuesta nada; dentro de un año, sí. Mi voto: quedarte con <b>@franfuentes.coach</b> (se entiende qué eres).</li>
+      <li><b>"Mejor que nunca":</b> úsalo con lo que es verdad (más músculo, más fuerza, mejor de cabeza). No prometas abdominales: tú mismo dices que aún los persigues.</li>
+    </ul>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil"><span>FF</span></div>
+          <div>
+            <div class="ig-user">franfuentes.coach</div>
+            <div class="ig-stats"><span><b>63</b>posts</span><span><b>173</b>seguidores</span><span><b>182</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Entrenador personal</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>forms.gle/j58sMkUxyYB8hWm</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>A/A</span></i><small>Mi cambio</small></div>
+          <div><i><span>✓</span></i><small>Resultados</small></div>
+          <div><i><span>FF</span></i><small>Mi historia</small></div>
+          <div><i><span>3F</span></i><small>Método</small></div>
+          <div><i><span>1:1</span></i><small>Asesoría</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>Antes / Ahora</em>De casi 80 kg a los 43</div>
+          <div><em>No llegas tarde</em>Tu manifiesto</div>
+          <div><em>Mi historia</em>La foto del sendero</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda: tu nombre y lo que consigues. Nada de una barra suelta al final.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="Fran Fuentes | Mejor que nunca a los 40+"><b>Fran Fuentes | Mejor que nunca a los 40+</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="Fran Fuentes | Coach +40 · No llegas tarde"><b>Fran Fuentes | Coach +40 · No llegas tarde</b></button><button class="opt" type="button" data-name="Fran Fuentes | Fuerza y físico a partir de los 40"><b>Fran Fuentes | Fuerza y físico a partir de los 40</b></button><button class="opt" type="button" data-name="Fran Fuentes | Tu segunda juventud empieza a los 40"><b>Fran Fuentes | Tu segunda juventud empieza a los 40</b></button><button class="opt" type="button" data-name="Fran Fuentes | Entrenamiento y nutrición +40"><b>Fran Fuentes | Entrenamiento y nutrición +40</b></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué tú, y caben en 150 caracteres. Elige una y no la toques en 3 meses.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">No llegas tarde
+Hombres +40 que llevan años sin cuidarse
+Fuerza y físico sin sufrir
+A los 43, mejor que nunca 👇</span><span class="why">Tu frase ancla arriba, a quién ayudas y la prueba: tú.</span></button><button class="opt" type="button"><span class="tag">B · Tu cambio</span><span class="txt">De casi 80 kg y barriga a mi mejor físico a los 43
+Te ayudo a hacerlo sin sufrir
+Hombres +40 · Fuerza y nutrición
+Empieza aquí 👇</span><span class="why">Tu transformación en una línea: quien lee piensa "si él pudo, yo también".</span></button><button class="opt" type="button"><span class="tag">C · Segunda juventud</span><span class="txt">Tu segunda juventud empieza a los 40
+Más músculo, menos barriga, más energía
+Compatible con tu fútbol o tu running
+Escríbeme 40 👇</span><span class="why">Para el que aún juega o corre y quiere volver a sentirse ágil.</span></button><button class="opt" type="button"><span class="tag">D · Directa</span><span class="txt">¿Más de 40 y crees que ya es tarde?
+No lo es: a los 43 estoy mejor que nunca
+Entreno y nutrición sin sufrir
+Empieza aquí 👇</span><span class="why">Ataca la excusa número uno de tu cliente: la edad.</span></button><button class="opt" type="button"><span class="tag">E · Rol entrenador</span><span class="txt">Coach de hombres +40
+Plan de fuerza y comida a tu medida
+Te corrijo y ajusto cada semana
+No llegas tarde 👇</span><span class="why">Te posiciona como entrenador, no como "el que está en forma".</span></button><button class="opt" type="button"><span class="tag">F · Sin sufrir</span><span class="txt">Lo primero que dejas conmigo es sufrir
+Hombres +40 · Fuerza y nutrición
+A los 43, mejor que nunca
+Empieza aquí 👇</span><span class="why">Tu frase literal: "lo primero que vas a dejar de hacer es sufrir".</span></button><button class="opt" type="button"><span class="tag">G · Mañana empiezo</span><span class="txt">¿Llevas años con el "mañana empiezo"?
+Hombres +40: fuerza y nutrición sin sufrir
+A los 43, mejor que nunca
+Escríbeme 40 👇</span><span class="why">Engancha al que se autosabotea, el dolor nº 1 de tu cliente ideal.</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><span></span></div>
+          <ul class="l">
+            <li><b>Tu foto actual funciona:</b> tu físico es tu argumento. Mantén el concepto.</li>
+            <li><b>Un poco más cerca:</b> de pecho para arriba, que en pequeño se te vea la cara y el físico a la vez.</li>
+            <li><b>Mirando a cámara y con media sonrisa:</b> cercano, que dé confianza a un hombre de 45 que se siente fuera de forma.</li>
+            <li><b>Luz de día de frente</b> y fondo limpio (el exterior que ya usas vale).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Mi cambio:</b> antes y ahora, con tus fotos.</li><li><b>Resultados:</b> se crea con tu primer caso (hasta entonces, no la abras vacía).</li><li><b>Mi historia:</b> 10 historias (abajo, escritas).</li><li><b>Método:</b> las 3 fases, en 5 historias.</li><li><b>Asesoría:</b> cómo trabajas y cómo empezar.</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>Antes / Ahora:</b> la foto del sendero frente a tu físico de hoy.</li><li><b>"No llegas tarde":</b> un yapping de 40 segundos con tu manifiesto.</li><li><b>Carrusel "Mi historia":</b> abajo, diapositiva a diapositiva.</li></ul></div>
+          <div class="card"><span class="label">Reglas</span><ul class="l"><li><b>Una sola acción:</b> el formulario, o "escríbeme 40" por privado.</li><li><b>Nombres de destacadas</b> de una o dos palabras.</li><li><b>Nada de testimonios</b> que no sean de clientes reales y con permiso por escrito.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Tu historia: tu mejor caso de éxito</h2>
+        <p class="soft">Tu cliente no compra un plan: compra verse en ti. Cuéntala con datos y sin dramas. Lo personal se queda en una frase: "pasé una etapa muy dura y el gimnasio me sostuvo".</p>
+        <div class="card accent"><span class="label">Lo que necesito de ti esta semana</span><p>Busca la foto del sendero de 2015 (la original, en buena calidad), alguna de la boda de 2017, una de 2023 y fotos de hoy de frente, perfil y espalda con la misma luz. Sin fotos, tu historia pierde la mitad de su fuerza.</p></div>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Destacada "Mi historia" · 10 historias</span>
+            <ol class="l">
+              <li>"Deporte desde los 6 años: fútbol y balonmano. Creía que estando delgado no me hacía falta un gimnasio."</li>
+              <li>"Con los años me fui dejando: comida basura, pedidos los fines de semana, alguna cerveza entre semana. Casi 80 kg con 1,69 m."</li>
+              <li>"Una foto en un sendero con mi mejor amigo, que siempre había sido rellenito… y de repente yo estaba como él."</li>
+              <li>"Empezamos en un parque: flexiones, sentadillas, dominadas y correr. Ahí fue el antes y el después."</li>
+              <li>"Me quité más de 15 kg en dos años. Pero pasando hambre y sin saber lo que comía."</li>
+              <li>"Pasé una etapa muy dura. El gimnasio me sostuvo: había días que entrenaba con la cabeza a mil."</li>
+              <li>"Con 42 llegué a 59–60 kg con un plan que me hacía pasar hambre. Perdí músculo. Error."</li>
+              <li>"Hoy, a los 43: más músculo, más fuerza y mi fútbol con los amigos. Sin sufrir."</li>
+              <li>"En el gimnasio me piden consejo. En la playa mis amigos me preguntan cómo lo hago."</li>
+              <li>"No llegas tarde: estás en el momento perfecto para tu cambio. Escríbeme 40."</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="label">Carrusel fijado "Mi historia" · 9 diapositivas</span>
+            <ol class="l">
+              <li><b>Portada:</b> "Con 1,69 m llegué a casi 80 kg. A los 43 estoy mejor que nunca." (foto del sendero + foto de hoy)</li>
+              <li><b>El deportista que se dejó:</b> fútbol toda la vida… y ropa cada vez más suelta.</li>
+              <li><b>La foto:</b> "de repente, estaba como él".</li>
+              <li><b>Error 1 · Pasar hambre:</b> 15 kg menos en dos años, sin músculo.</li>
+              <li><b>Error 2 · Más es mejor:</b> entrenar todos los días sin rutina ni llegar al fallo.</li>
+              <li><b>Error 3 · Definir de más:</b> 59–60 kg con hambre y perdiendo músculo.</li>
+              <li><b>Lo que cambió:</b> fuerza de verdad, comida que aprendes a organizar, descanso.</li>
+              <li><b>Hoy:</b> 43 años, fuerza, fútbol y "me piden consejo en el gimnasio".</li>
+              <li><b>Cierre:</b> "No llegas tarde. Escríbeme 40 y te digo por dónde empezaría en tu caso."</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = pvName.textContent.length; cb.textContent = pvBio.textContent.length;
+    cn.className = pvName.textContent.length > 64 ? "over" : ""; cb.className = pvBio.textContent.length > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = b.querySelector(".txt").textContent.length + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>

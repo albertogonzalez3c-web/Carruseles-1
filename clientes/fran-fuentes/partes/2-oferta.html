@@ -1,0 +1,198 @@
+<title>Fran Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f5f5f3;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5b5b5b;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #c2410c;
+  --accent-text: #a6380a;
+  --accent-dark: #fb7a3c;
+  --f-head: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffe3d4; }
+.card.accent ul.l, .card.accent ol.l { color: #ffefe6; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fdeee6; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: el Método Segunda Juventud en 3 fases, qué incluye, por qué tú, casos, precios en orden de presentación, escalera de subida, garantía y contrato, back-end. */
+.phase .n { font: 800 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 800 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Marca Fran Fuentes: Montserrat es más ancha que una condensada → titulares sin mayúsculas y algo más pequeños. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+.tbl td:not(:last-child) { white-space: nowrap; }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Fran Fuentes · Parte 2 · Oferta</span>
+    <h1>Método <em>Segunda Juventud</em>: a los 40, mejor que nunca.</h1>
+    <p class="soft" style="font-size:18px">Para hombres de más de 40 que llevan años sin cuidarse. Fuerza, comida que aprenden a organizar y su deporte de siempre, sin sufrir. Esto lo tienes que poder explicar en 2 minutos sin titubear.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">Tres fases. Seis meses para cambiar de verdad.</h2></header>
+    <div class="g3">
+      <article class="card phase"><span class="n">01</span><h3>Arrancar sin sufrir · meses 1–2</h3><p class="soft">Hábitos que duran: aprender a organizar el plato, fuerza básica bien hecha y la primera grasa fuera. Sin hambre y sin "mañana empiezo".</p></article>
+      <article class="card phase"><span class="n">02</span><h3>Construir · meses 3–4</h3><p class="soft">Músculo y rendimiento: entrenar al fallo de verdad, progresar en cargas y combinarlo con su fútbol, su running o su pádel.</p></article>
+      <article class="card phase"><span class="n">03</span><h3>Mejor que nunca · meses 5–6</h3><p class="soft">Consolidar el físico y la energía, y que sepa mantenerlo solo. La segunda juventud no es un verano: es su forma de vivir.</p></article>
+    </div>
+    <div class="card chip">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Plan de fuerza</b> adaptado a su horario y a su deporte, con técnica corregida por vídeo.</li>
+        <li><b>Plan de comida</b> que aprende a montar él: "cómo organizo un plato", sin pesar cada gramo para siempre.</li>
+        <li><b>Revisión semanal</b> con ajustes y soporte por WhatsApp en horario fijo (por escrito, nada de "24 horas").</li>
+        <li><b>Acompañamiento cercano:</b> lo que tú echaste de menos con otros entrenadores ("contratar a números").</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-labelledby="h-porque">
+    <span class="label">Por qué tú</span>
+    <h2 id="h-porque">No tienes títulos ni clientes todavía. Tienes algo que vende más: tu cuerpo a los 43.</h2>
+    <ul class="l">
+      <li><b>Lo viviste:</b> deportista toda la vida que se dejó hasta casi 80 kg con 1,69 m, una foto que lo cambió todo y años de prueba y error.</li>
+      <li><b>Cometiste los errores de tu cliente:</b> pasar hambre, entrenar sin rutina, quitar hidratos por la noche, el cardio antes de las pesas, definir de más hasta perder músculo.</li>
+      <li><b>Hoy:</b> más músculo y más fuerza a los 43, te piden consejo en el gimnasio y tus amigos quieren "verse como tú".</li>
+      <li><b>Sé honesto con esto:</b> no vendas "años de experiencia como entrenador". Vende "lo que me funcionó a mí, ahora con un plan para ti". Y forma: cada semana que estudias, se nota en la llamada.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que nunca prometes">
+    <div class="card">
+      <span class="label">Lo que nunca prometes</span>
+      <ul class="l">
+        <li><b>"Tu cambio en 90 días":</b> lo dices tú mismo, no existe. Vende seis meses.</li>
+        <li><b>Abdominales con fecha:</b> ni siquiera tú los has cerrado aún. Promete fuerza, energía y un físico del que estar orgulloso.</li>
+        <li><b>Disponible 24 horas:</b> horario de respuesta por escrito.</li>
+        <li><b>Diagnósticos:</b> si hay lesión seria o una enfermedad, se deriva al médico o al fisio.</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <span class="label">Tus 3 primeros clientes · este mes</span>
+      <h3>Precio de lanzamiento a cambio de su caso.</h3>
+      <ul class="l">
+        <li><b>Solo 3 plazas</b> al −30 % (semestre a 350 € en vez de 500 €).</li>
+        <li><b>A cambio, por escrito:</b> fotos de inicio y cada mes, testimonio en vídeo a los 3 meses y permiso para publicarlo.</li>
+        <li><b>Ya tienes 3 candidatas</b> de tu entorno: cierra con ellas esta semana con estas condiciones.</li>
+        <li><b>A partir del cliente 4,</b> precio normal. Sin excepciones.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header><span class="label">Precios · propuesta para confirmar con Alberto</span><h2 id="h-precios">El semestre es el que vendes.</h2><p class="soft">Tú pensabas en 300–350 € al trimestre o 100 € al mes. Encaja: mínimo trimestral (en 30 días, como mucho, se coge un hábito) y el semestre como el plan normal. Nada de mensualidades sueltas.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">1 · Se ofrece primero</span><h3>Semestre</h3><p class="price">500 €</p><p class="soft">Las 3 fases completas. El plan normal.</p></article>
+      <article class="card dark"><span class="badge">2 · El mejor valor</span><h3>Año</h3><p class="price">850 €</p><p class="soft">Las 3 fases y 6 meses de consolidación. Solo 350 € más que el semestre.</p></article>
+      <article class="card"><span class="badge">3 · Si es por liquidez</span><h3>Semestre en 2 pagos</h3><p class="price">2 × 265 €</p><p class="soft">Paga algo más por fraccionar. Nunca bajes el precio.</p></article>
+      <article class="card chip"><span class="badge">4 · Último recurso</span><h3>Trimestre</h3><p class="price">300 €</p><p class="soft">Solo la fase 1. Nunca como primera opción.</p></article>
+    </div>
+    <div class="say">"Lo normal es hacerlo en seis meses: son 500 €. Si lo quieres para el año entero, son 850 €. ¿Cuál encaja contigo?" Y te callas.</div>
+    <div class="card tblwrap">
+      <h3>Escalera de subida: cada venta cerrada, +20 %</h3>
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>300 €</td><td>500 €</td><td>850 €</td><td>Ahora (tras tus 3 plazas de lanzamiento)</td></tr>
+          <tr><td>Nivel 1</td><td>360 €</td><td>600 €</td><td>1.020 €</td><td>Tras la siguiente venta</td></tr>
+          <tr><td>Nivel 2</td><td>430 €</td><td>720 €</td><td>1.225 €</td><td>Tras la siguiente</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>450 €</td><td>750 €</td><td>1.250 €</td><td>Y ahí te quedas</td></tr>
+        </tbody>
+      </table>
+      <p class="soft" style="font-size:14px">Los precios nunca bajan. Si una semana no cierras, no es el precio: es el número de conversaciones.</p>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Garantía y contrato">
+    <div class="card dark">
+      <span class="label">Garantía</span>
+      <h3>"Si sigues el plan, me envías tus revisiones y en la fase 1 no ves cambios, sigo contigo gratis hasta que lleguen."</h3>
+      <p class="soft">Condición medible en el contrato: 80 % de cumplimiento y todas las revisiones semanales enviadas. Sin devoluciones de dinero.</p>
+    </div>
+    <div class="card">
+      <span class="label">Contrato · firma antes de empezar</span>
+      <ul class="l">
+        <li>Qué se entrega, duración, pagos y garantía.</li>
+        <li>Horario de respuesta por WhatsApp.</li>
+        <li>Consentimiento de datos de salud y, aparte, de imagen (fotos y vídeo).</li>
+        <li><b>14 días de desistimiento:</b> el cliente pide empezar ya y acepta pagar la parte prestada si se echa atrás.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header><span class="label">Back-end · en su momento dulce</span><h2 id="h-back">Cuando se vea cambiado, le ofreces seguir.</h2><p class="soft">Señales: le queda pequeña la camiseta de brazo y pecho, sus amigos le preguntan qué hace, rinde más en su partido.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><p class="soft">Trimestre → semestre pagando la diferencia; semestre → año igual.</p></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Antes de acabar</h3><p class="soft">Nunca al final. Con fecha límite y precio congelado.</p></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento</h3><p class="soft">Revisión mensual y plan actualizado (precio a decidir).</p></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a un amigo del fútbol</h3><p class="soft">Si entra, un mes gratis. Tu nicho juega en equipo.</p></article>
+    </div>
+  </section>
+</div>

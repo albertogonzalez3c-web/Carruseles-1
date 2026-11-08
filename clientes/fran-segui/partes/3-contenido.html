@@ -1,0 +1,721 @@
+<title>Fran Seguí Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: cabecera + pestañas fijas (Plan, Ángulos, Guiones, Grabar bien). Rampa de 1-2 a 3-5 reels al día + 3-5 carruseles, YouTube 1/semana, voz en off con 3 ganchos de prueba, reels promocionados y mucho rol entrenador. Paleta cálida de Fran. */
+:root {
+  --paper: #f6f3ee;
+  --white: #ffffff;
+  --ink: #1b1a17;
+  --soft: #615d55;
+  --line: #ddd5c8;
+  --chip: #efe9df;
+  --accent: #b5531a;
+  --accent-soft: #e0915f;
+  --accent-text: #9a4514;
+  --f-head: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 800 clamp(38px, 6.4vw, 66px)/.95 var(--f-head); text-transform: uppercase; letter-spacing: -.01em; }
+h2 { font: 800 clamp(26px, 3.6vw, 36px)/1.02 var(--f-head); text-transform: uppercase; }
+h3 { font: 700 21px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 68ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(246, 243, 238, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 6px; padding: 9px 14px; font: 700 15px/1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible, .cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 32px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 800px; }
+.card { background: var(--white); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c9ccd2; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.dark .label { color: var(--accent-soft); }
+.card.acc { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.acc .label { color: #ffe0d2; }
+.card.acc ul.l, .card.acc ol.l { color: #fff0e9; }
+.card.acc ul.l b, .card.acc ol.l b { color: var(--white); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 4px; background: var(--chip); color: var(--ink); }
+.tag.a { background: var(--accent); color: var(--white); }
+.fmt { display: grid; gap: 8px; }
+.fmt .ico { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font: 800 16px/1 var(--f-head); color: var(--white); }
+.fmt.big { box-shadow: inset 0 0 0 2px var(--accent); }
+/* Etapas */
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.stage-h .big { font: 800 36px/1 var(--f-head); color: var(--accent-text); }
+.stage-h .pct { font: 500 11.5px/1 var(--f-mono); background: var(--ink); color: var(--white); padding: 6px 8px; border-radius: 4px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 8px; padding: 10px; display: grid; gap: 5px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font: 700 16px/1 var(--f-head); text-transform: uppercase; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 6px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.2; color: var(--white); }
+.k-vo { background: #b5531a; }
+.k-food { background: #55663a; }
+.k-car { background: #8a6d1f; }
+.k-yap { background: #6a4a9c; }
+.k-trend { background: #1f6f6b; }
+.k-gs { background: #2c4f9e; }
+.k-rol { background: #1b1a17; box-shadow: inset 3px 0 0 #d9864f; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 10px 8px 0; }
+.tbl td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.tblwrap { overflow-x: auto; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 4px; white-space: nowrap; }
+.ti .n.first { background: var(--accent); color: var(--white); }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: var(--white); font: 800 18px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--accent-soft); color: var(--ink); }
+/* Ángulos */
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 8px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; min-width: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 6px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+/* Guiones */
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .line:first-of-type { border-top: 0; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--accent-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.variants { display: grid; gap: 6px; background: var(--chip); border-radius: 8px; padding: 10px 12px; }
+.variants b { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check { padding-left: 0; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
+@media (max-width: 900px) {
+  .g3 { grid-template-columns: 1fr 1fr; }
+  .g5 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .g2, .g3, .g5 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .script .line { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* Fran Seguí: titulares en serif, el resto en Inter */
+h1 { font: 400 clamp(38px, 6vw, 62px)/1.02 var(--f-head); text-transform: none; letter-spacing: -.01em; }
+h2 { font: 400 clamp(26px, 3.4vw, 36px)/1.08 var(--f-head); text-transform: none; }
+h3 { font: 700 18px/1.25 var(--f-body); text-transform: none; letter-spacing: 0; }
+.tab { font: 700 14px/1 var(--f-body); text-transform: none; letter-spacing: 0; }
+.fmt .ico, .day .dn, .stage-h .big, .steps > div::before { font-family: var(--f-body); }
+.stage-h .big { font-weight: 800; font-size: 30px; }
+.day .dn { font-size: 14px; }
+.warn { box-shadow: inset 4px 0 0 #9a3b2f, inset 0 0 0 1px var(--line); }
+</style>
+
+<header class="top wrap">
+  <span class="label">Fran Seguí · Parte 3 · Contenido</span>
+  <h1>Comida de verdad, metabolismo explicado y tú dirigiendo.</h1>
+  <p class="lede">Para mayores de 40 que ya no pierden grasa como antes. Tu ventaja: comunicas bien, eres culto y lo que dices sobre comida, metabolismo y hormonas se entiende. Empiezas con 1–2 reels al día y 3 carruseles a la semana, y subes a 3–5 reels diarios cuando domines los ganchos de prueba. YouTube, 1 vídeo a la semana y ni uno más. Y mucho rol de entrenador.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="El plan">
+    <div class="sec">
+      <div class="head"><span class="label">Tus formatos</span><h2>Seis formatos de reel, más carruseles. Y el rol de entrenador por encima de todos.</h2><p class="soft">Tus reels de comida y tu yapping directo ("Si te quieres desinflamar, deja estas MIERDAS", "El verdadero desastre") ya funcionan: son la base. Encima pones autoridad: desde la semana 3, al menos 4 de cada 10 reels son de rol entrenador.</p></div>
+      <div class="g3">
+        <article class="card fmt"><span class="ico k-food">CR</span><h3>Comida real</h3><p class="soft">Tu plato antiinflamatorio, lo que comías de niño frente a lo que comes hoy, la compra en el súper, comer en familia. "¿Bellotas o pienso?".</p></article>
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Clips tuyos cocinando o entrenando y tu voz encima. Cada guion se publica con 3 ganchos distintos como reels de prueba.</p></article>
+        <article class="card fmt"><span class="ico k-yap">YA</span><h3>Yapping culto</h3><p class="soft">Tú a cámara explicando metabolismo, insulina o leptina como se lo contarías a un amigo de 45. Sin tecnicismos que no expliques.</p></article>
+        <article class="card fmt"><span class="ico k-gs">GS</span><h3>Green screen</h3><p class="soft">Tú delante de una etiqueta, un titular, un "polvito" milagro o una dieta de moda, desmontándolo.</p></article>
+        <article class="card fmt"><span class="ico k-trend">TR</span><h3>Tendencia</h3><p class="soft">Audio o formato que se esté moviendo, adaptado al +40 que ya no pierde grasa. Para llegar a gente nueva.</p></article>
+        <article class="card fmt"><span class="ico k-car">CA</span><h3>Carrusel</h3><p class="soft">Metabolismo explicado en 7 diapositivas: qué es la leptina, por qué inflama el ultraprocesado, tu 50/30/20. 3–5 a la semana.</p></article>
+        <article class="card fmt big"><span class="ico k-rol">RE</span><h3>Rol entrenador</h3><p class="soft">Revisando la cesta o el plato de un seguidor, explicando una analítica sin diagnosticar, corrigiendo técnica, "si fueras mi cliente". Tu formato más importante.</p></article>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La rampa</span><h2>De 1–2 reels al día a 3–5, siempre con 3–5 carruseles a la semana.</h2><p class="soft">El mínimo no se negocia: <b>1 reel cada día</b> pase lo que pase. Subes de etapa cuando la anterior te sale sin esfuerzo y ya sacas 3 ganchos de cada voz en off sin pensarlo. Y no grabas a diario: grabas en lote.</p></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:28px"></div>
+      <p class="soft" style="font-size:14px">El % de rol entrenador se calcula sobre los reels (los carruseles van aparte). Desde la semana 3 tiene que estar por encima del 40 %.</p>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voz en off · Reels de prueba</span><h2>Un guion, tres ganchos, gana el que mejor rinde.</h2><p class="soft">Instagram te deja publicar un reel <b>como prueba</b>: solo lo ve gente que no te sigue y no aparece en tu perfil. Úsalo para que los datos decidan el gancho, no tu intuición.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">El sistema</span>
+          <div class="steps">
+            <div><p><b>Graba el cuerpo del vídeo una vez:</b> clips cocinando, comiendo o entrenando + tu voz con la idea principal.</p></div>
+            <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C (texto en pantalla y frase de voz).</p></div>
+            <div><p><b>Publica las 3 como reel de prueba</b> el mismo día, con unas horas de diferencia.</p></div>
+            <div><p><b>A las 24–72 h compara:</b> visualizaciones, % que lo ve entero, compartidos y guardados.</p></div>
+            <div><p><b>La ganadora la compartes en tu perfil.</b> Las otras dos se quedan como prueba.</p></div>
+            <div><p><b>Apúntalo en tu reporte:</b> qué tipo de gancho ganó (pregunta, dato, comida, polémica). En un mes sabrás qué le funciona a tu público.</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tu registro de pruebas</h3>
+          <div class="tblwrap">
+            <table class="tbl">
+              <thead><tr><th>Guion</th><th>Gancho</th><th>Vistas</th><th>% entero</th><th>Comp.</th><th>Gana</th></tr></thead>
+              <tbody>
+                <tr><td>Ej.: desinflamar</td><td>A · pregunta</td><td>1.100</td><td>17 %</td><td>3</td><td></td></tr>
+                <tr><td></td><td>B · comida</td><td>3.400</td><td>29 %</td><td>18</td><td>✓</td></tr>
+                <tr><td></td><td>C · polémica</td><td>2.300</td><td>22 %</td><td>8</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="soft" style="font-size:13.5px">Los números del ejemplo son ilustrativos. Cada prueba la apuntas en tu reporte semanal. <b>La voz en off ganadora es la que cuenta como reel del día.</b></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Reels promocionados · 5 € al día</span><h2>Pagar solo por seguidores que salgan a menos de 1 €.</h2><p class="soft">Además del orgánico, vas a promocionar tus mejores reels con poco dinero para ver si te traen seguidores baratos. Si salen caros, se para. Sin excepciones.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">Cómo se hace</span>
+          <div class="steps">
+            <div><p><b>Elige el reel:</b> uno que ya haya funcionado en orgánico (más retención y compartidos), nunca uno nuevo.</p></div>
+            <div><p><b>Promociónalo desde Instagram:</b> objetivo "visitas al perfil" o "más seguidores", España, 35–55 años, intereses salud, nutrición y fitness (o el público automático).</p></div>
+            <div><p><b>5 € al día durante 5–7 días.</b> No lo toques antes del día 3: el algoritmo necesita aprender.</p></div>
+            <div><p><b>Mide:</b> gasto total ÷ seguidores nuevos = € por seguidor. Apúntalo en tu reporte.</p></div>
+            <div><p><b>Decide:</b> menos de 1 € por seguidor → sigue o sube a 7–10 €/día. Más de 1 € → se para y pruebas otro reel.</p></div>
+          </div>
+        </div>
+        <div class="card warn">
+          <span class="label">Antes de gastar un euro</span>
+          <h3>Confirma que tu otro trabajo te lo permite.</h3>
+          <p class="soft">En tu historia cuentas que te preocupa una incompatibilidad con tu trabajo y una posible suspensión de empleo y sueldo. <b>Promocionar es hacer publicidad de un servicio de pago</b>: antes de lanzar el primer anuncio, consulta tu situación (convenio, compatibilidad, alta como autónomo). Si no está claro, se queda en orgánico hasta que lo esté.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Rol entrenador · tu formato estrella</span><h2>Que te vean trabajando de entrenador y dietista, no hablando de ello.</h2></div>
+      <div class="g3">
+        <div class="card"><h3>Reviso tu cesta de la compra</h3><p class="soft">Un seguidor te manda la foto de su carro o su ticket (con permiso). Qué sobra, qué inflama, qué cambiarías por comida de siempre.</p></div>
+        <div class="card"><h3>Reviso tu plato</h3><p class="soft">Foto de un plato real de un seguidor y lo ajustas: proteína, verdura, aceite, cantidades. Nada de juzgar: corregir.</p></div>
+        <div class="card"><h3>Analítica explicada</h3><p class="soft">Qué significan la glucosa, la insulina, los triglicéridos o la PCR en una analítica anonimizada. <b>Explicas, no diagnosticas</b>, y siempre "consúltalo con tu médico".</p></div>
+        <div class="card"><h3>Corrección de técnica</h3><p class="soft">El vídeo de un cliente o seguidor (con permiso): lo paras, corriges y enseñas cómo se hace. Core, cadera, empuje y tracción, con tu lenguaje técnico explicado.</p></div>
+        <div class="card"><h3>"Si fueras mi cliente…"</h3><p class="soft">"Si tuvieras 45 años, poco tiempo y barriga que no se va, esto es lo primero que te cambiaría."</p></div>
+        <div class="card"><h3>Plan de 3 horas a la semana</h3><p class="soft">Pizarra o tablet: cómo repartes 3 horas de fuerza para alguien con trabajo e hijos. Tu 50/30/20 en la práctica.</p></div>
+        <div class="card"><h3>Entrenando a un cliente</h3><p class="soft">Tú dirigiendo una sesión ("baja más", "aguanta", "última"). "Siempre estás encima" es lo que dicen de ti tus clientas: enséñalo.</p></div>
+        <div class="card"><h3>Revisión semanal en pantalla</h3><p class="soft">Cómo revisas a un cliente: peso, medidas, sueño, hambre y qué cambias. Siempre anonimizado.</p></div>
+        <div class="card acc"><span class="label">Regla</span><p><b>Pide permiso siempre</b> y anonimiza: sin caras, nombres, empresas ni datos de salud si no te lo autorizan por escrito. Un "con permiso de mi cliente" en pantalla te da más autoridad.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">YouTube</span><h2>1 vídeo a la semana. Ni uno más.</h2><p class="soft">Vídeos de 10 a 15 minutos (no te gustan los vídeos muy largos: perfecto, no hacen falta). Se graban en lote con los reels. En la descripción, siempre tu formulario. De cada vídeo salen 3–5 clips para Instagram.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>8 títulos para arrancar</h3>
+          <div id="yt"></div>
+        </div>
+        <div class="card dark">
+          <span class="label">En cada vídeo</span>
+          <ul class="l">
+            <li><b>Primeros 30 segundos:</b> el problema del +40 que ya no pierde grasa como antes, y qué va a sacar si se queda.</li>
+            <li><b>A mitad:</b> "Si quieres que revise tu caso, tienes el formulario en la descripción."</li>
+            <li><b>Siempre comida real en pantalla:</b> un plato, una compra o una receta.</li>
+            <li><b>Al final:</b> CTA al formulario y "escríbeme DESINFLAMA por Instagram".</li>
+            <li><b>Publica siempre el mismo día</b> (por ejemplo, el domingo) y no falles ni una semana.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Bloque de historias · todos los días</span><h2>Entre 6 y 10 historias al día, en 4 bloques.</h2><p class="soft">Los reels te traen gente nueva. Las historias hacen que confíen en ti y te escriban. Tu vida real (familia, cocina, entreno) es lo que más engancha a un +40.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Tu día en 4 bloques</h3>
+          <ul class="l">
+            <li><b>Mañana (2–3) · Tú:</b> desayuno de verdad, entreno, café. Que vean que haces lo que predicas.</li>
+            <li><b>Mediodía (2–3) · Rol entrenador:</b> el plato de hoy explicado, una corrección, un consejo de metabolismo.</li>
+            <li><b>Tarde (1–2) · Familia y prueba:</b> comer en familia, el feedback de un cliente, un antes y después (con permiso).</li>
+            <li><b>Noche (1–2) · Conversación:</b> encuesta o caja de preguntas. Cada respuesta es una conversación que abres.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Un tema para cada día</h3>
+          <ul class="l">
+            <li><b>Lunes:</b> la compra de la semana y por qué cada cosa.</li>
+            <li><b>Martes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Miércoles:</b> metabolismo en 3 historias (insulina, leptina o cortisol).</li>
+            <li><b>Jueves:</b> caja de preguntas: "pregúntame lo que quieras de comer para desinflamarte".</li>
+            <li><b>Viernes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Sábado:</b> comer fuera o en familia sin descontrolarte.</li>
+            <li><b>Domingo:</b> comida de olla de las de antes, versión antiinflamatoria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Martes y viernes · Secuencia CTA en 5 historias</span>
+        <ol class="l">
+          <li><b>El problema:</b> "Si tienes más de 40 y ya no pierdes grasa como antes…"</li>
+          <li><b>Por qué pasa:</b> "No es la edad: es un metabolismo inflamado, mal descanso y comida que no es comida."</li>
+          <li><b>La prueba:</b> el caso de un cliente (con permiso) o tu 2012 frente a 2026.</li>
+          <li><b>La oferta:</b> "Esta semana reviso 3 casos más para empezar conmigo."</li>
+          <li><b>La acción:</b> "Escríbeme <b>DESINFLAMA</b> por privado y te digo si encajas." + caja de preguntas o sticker de enlace.</li>
+        </ol>
+        <p style="font-size:14px">Cada "DESINFLAMA" entra al CRM y se contesta ese mismo día.</p>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Stickers que más conversaciones abren</h3>
+          <ul class="l">
+            <li><b>Encuesta:</b> "¿Te cuesta más desde los 40? Sí / Muchísimo". A quien vote, le escribes.</li>
+            <li><b>Caja de preguntas:</b> "Pregúntame por qué no bajas de peso". Respondes en historia y luego por privado.</li>
+            <li><b>Deslizador:</b> "¿Cuánto te hinchas después de comer?". Quien lo mueve a tope, está caliente.</li>
+            <li><b>Quiz:</b> "¿Qué inflama más? A) pan blanco B) jamón C) aceite". Enseña y engancha.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Reglas</h3>
+          <ul class="l">
+            <li><b>Habla a cámara</b> en al menos 2 historias al día.</li>
+            <li><b>Subtítulos siempre.</b></li>
+            <li><b>Responde en menos de 1 hora</b> todo lo que te llegue de historias.</li>
+            <li><b>Familia, con cabeza:</b> que se vea la vida familiar, pero sin caras de tus hijos si no lo tienes claro.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Serie "Mi historia"</span><h2>Del niño gordito al +40 que entrena 3 horas a la semana.</h2><p class="soft">Tu historia conecta con quien se avergüenza de su cuerpo. Faltan datos de tu etapa adulta: complétalos antes de grabar (edad y peso en 2012 y en 2026, cuándo empezaste a formarte, cómo comes hoy).</p></div>
+      <div class="g2">
+        <div class="card">
+          <ul class="l">
+            <li><b>Carrusel fijado:</b> "2012 vs 2026. Mismo tío, 14 años de disciplina. Más no es mejor: mejor es mejor."</li>
+            <li><b>Reel 1 · El niño gordito:</b> "De los 9 a los 14 estaba más gordo de la cuenta. Sé lo que es avergonzarse."</li>
+            <li><b>Reel 2 · El tío Julio:</b> "Mi tío era bombero y subía la cuerda como alma que se lleva el diablo. Ahí entendí lo que era estar fuerte."</li>
+            <li><b>Reel 3 · Comida de olla vs bollería:</b> "Mis abuelos me daban comida de olla. El problema no era eso: eran las galletas del desayuno."</li>
+            <li><b>Reel 4 · El primer gimnasio:</b> "Con 15 años, 65 kilos y una idea: no pasar desapercibido."</li>
+            <li><b>Reel 5 · Lo que sé hoy:</b> "El físico es un 20 % entreno. El 50 % es descanso y vida sin estrés, y el 30 %, comida."</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <span class="label">Antes de grabarla</span>
+          <p>Busca fotos de cada etapa: de niño, la de los 15 en el gimnasio, la de 2012 y la de ahora. Una foto de cada etapa vale más que el guion.</p>
+          <p style="font-size:14px">En YouTube da para tu mejor vídeo: "Cómo como hoy frente a cómo comía de niño (y qué cambiaría tu abuela)".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Estados de WhatsApp · todos los días</span><h2>Quien te da su número te ve cada día sin que le escribas.</h2><p class="soft">Cada persona que pasa a tu WhatsApp ve tus Estados. Es la forma más barata de calentar a quien todavía no se decide.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Prepáralo una vez</h3>
+          <ul class="l">
+            <li><b>WhatsApp Business</b> con tu foto de perfil de Instagram.</li>
+            <li><b>Descripción:</b> "Entrenador y dietista · +40: metabolismo y hormonas a tu favor".</li>
+            <li><b>Catálogo:</b> tu asesoría con una foto y 3 líneas.</li>
+            <li><b>Mensaje de bienvenida</b> y <b>respuestas rápidas</b> (cómo funciona, cuándo empezar, horarios).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Que te vean: guárdalos y que te guarden</h3>
+          <ul class="l">
+            <li><b>Los Estados solo los ve quien tiene tu número guardado.</b> Al pasar a WhatsApp: "guárdame, que subo consejos cada día".</li>
+            <li><b>Listas de difusión:</b> clientes · interesados · fríos.</li>
+            <li><b>Etiquetas:</b> nuevo, interesado, llamada agendada, cliente.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Rutina diaria · 3 a 5 Estados</span>
+        <ul class="l">
+          <li><b>Recicla 2–3 historias de Instagram.</b></li>
+          <li><b>1 exclusivo:</b> un plato antiinflamatorio, un caso o una encuesta "responde 1 o 2" ("¿qué te cuesta más? 1 comida, 2 entreno").</li>
+          <li><b>Martes y viernes, CTA:</b> "Esta semana reviso 2 casos más. Respóndeme DESINFLAMA."</li>
+          <li><b>Mide:</b> apunta cada día cuántos te responden. Cada respuesta va al CRM.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁNGULOS -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos de comunicación">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Tu banco de ideas</span>
+        <h2>Todo lo que le puedes decir al +40 que ya no pierde grasa como antes.</h2>
+        <p class="soft">Cuando no sepas qué grabar, abre esto, elige y copia. Las frases entre comillas son tuyas o de tus clientes, tal cual.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Cómo usarlo</span>
+        <ul class="l">
+          <li><b>Rota las familias:</b> cada semana, al menos 4 distintas, y rol entrenador siempre.</li>
+          <li><b>De 1 ángulo salen 3 piezas:</b> una voz en off con 3 ganchos de prueba, un yapping o carrusel y una historia.</li>
+          <li><b>Repite tu frase:</b> "más no es mejor: mejor es mejor".</li>
+          <li><b>Límite legal:</b> explicas metabolismo y hormonas, no diagnosticas. Nada de "normaliza tu analítica", "cura la resistencia a la insulina" ni "pierde X kilos en Y días".</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar (p. ej. leptina, pan, familia, polvitos, insulina…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- GUIONES -->
+  <section class="view" id="v-gui" hidden aria-label="Guiones listos">
+    <div class="sec">
+      <div class="head"><span class="label">Para grabar esta semana</span><h2>Cinco guiones. Esta semana están grabados.</h2><p class="soft">Las dos voces en off llevan 3 ganchos cada una para publicarlas como reels de prueba. Dilo con tus palabras, pero no cambies la estructura.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- GRABAR -->
+  <section class="view" id="v-rec" hidden aria-label="Grabar bien">
+    <div class="sec">
+      <div class="head"><span class="label">Cocina, mesa y gimnasio</span><h2>La comida tiene que dar hambre y tu voz se tiene que oír.</h2><p class="soft">Tus reels de comida son tu fuerte: un plato bien grabado vende más que diez frases. Esto se arregla en una tarde.</p></div>
+      <div class="g2">
+        <div class="card acc">
+          <span class="label">Planos de comida</span>
+          <ul class="l">
+            <li><b>Cenital:</b> el plato desde arriba, con la mesa limpia y luz de ventana.</li>
+            <li><b>45 grados:</b> el plato a la altura de la mesa, tú detrás hablando o sujetándolo.</li>
+            <li><b>Detalle:</b> el aceite cayendo, la sardina abierta, el corte del jamón, el pan.</li>
+            <li><b>Proceso:</b> manos cortando, la sartén, el súper con el carro y las etiquetas.</li>
+            <li><b>Graba 10–15 clips por sesión</b> y tendrás material para toda la semana.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Luz</span>
+          <ul class="l">
+            <li><b>Cocina:</b> luz de ventana lateral. Apaga la luz amarilla del techo: tiñe la comida.</li>
+            <li><b>Gimnasio:</b> la zona más iluminada, luz de frente o de lado, nunca de espaldas a un ventanal.</li>
+            <li><b>Yapping:</b> de frente a la ventana o con un aro de luz a la altura de los ojos.</li>
+            <li><b>Graba a la misma hora</b> para que todos tus vídeos tengan el mismo aspecto.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <span class="label">Audio y cámara</span>
+          <ul class="l">
+            <li><b>Micro de solapa inalámbrico</b> para yapping y rol entrenador.</li>
+            <li><b>La voz en off se graba aparte,</b> en un cuarto sin eco (con muebles o cortinas, o dentro del coche).</li>
+            <li><b>Cámara trasera,</b> 4K o 1080p a 30 fps, trípode o pinza. Lente limpia (en la cocina se ensucia rápido).</li>
+            <li><b>Pide permiso</b> en tu gimnasio y a cualquier persona que salga en el plano.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Checklist antes de grabar</h3>
+          <ul class="l check">
+            <li>Luz de ventana o de frente, nunca detrás.</li>
+            <li>Mesa o encimera limpia y ordenada.</li>
+            <li>Lente limpia y móvil fijo.</li>
+            <li>Micro puesto y probado.</li>
+            <li>Lista de planos y guiones del día en el móvil.</li>
+            <li>Sabes el gancho de memoria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card dark">
+        <span class="label">Graba en lote</span>
+        <h3>2 sesiones de grabación a la semana. El resto, publicar y vender.</h3>
+        <ul class="l">
+          <li><b>Sesión 1 · Cocina (domingo):</b> el YouTube de la semana + todos los reels de comida real + clips para las voces en off + 2 carruseles fotografiados.</li>
+          <li><b>Sesión 2 · Gimnasio (miércoles):</b> rol entrenador, yapping, tendencias y green screen de la semana.</li>
+          <li><b>Montaje:</b> las 3 versiones de cada voz en off el mismo día que la grabas.</li>
+          <li><b>Los demás días:</b> publicar, historias, Estados y conversaciones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = {
+    rol: { n: "Rol entrenador", c: "k-rol" },
+    food: { n: "Comida real", c: "k-food" },
+    vo: { n: "Voz en off", c: "k-vo" },
+    yap: { n: "Yapping", c: "k-yap" },
+    trend: { n: "Tendencia", c: "k-trend" },
+    gs: { n: "Green screen", c: "k-gs" },
+    car: { n: "Carrusel", c: "k-car" }
+  };
+
+  /* ---------- Etapas ---------- */
+  var STAGES = [
+    { t: "Semanas 1 y 2 · 1–2 reels al día", s: "Arranque: nunca menos de 1 reel al día y 3 carruseles a la semana.", plan: [["vo", "car"], ["food", "yap"], ["rol", "car"], ["vo", "gs"], ["food", "car"], ["rol", "trend"], ["yap"]] },
+    { t: "Semanas 3 y 4 · 2–3 reels al día", s: "Sube a 2–3 reels diarios y 4 carruseles. Desde aquí, el rol entrenador manda.", plan: [["rol", "vo", "car"], ["rol", "food", "yap"], ["rol", "vo", "car"], ["rol", "food", "gs"], ["rol", "vo", "car"], ["rol", "food", "trend"], ["rol", "yap", "car"]] },
+    { t: "Mes 2 en adelante · 3–5 reels al día", s: "Cuando ya sacas 3 ganchos de cada voz en off sin pensar: 3–5 reels diarios y 5 carruseles.", plan: [["rol", "rol", "vo", "food", "car"], ["rol", "vo", "food", "yap", "car"], ["rol", "rol", "vo", "gs"], ["rol", "vo", "food", "yap", "car"], ["rol", "rol", "vo", "food", "trend", "car"], ["rol", "rol", "food", "car"], ["rol", "rol", "vo", "yap"]] }
+  ];
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var cnt = {}, reels = 0, car = 0;
+    Object.keys(K).forEach(function (k) { cnt[k] = 0; });
+    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; if (k === "car") car++; else reels++; }); });
+    var days = st.plan.map(function (d, i) {
+      var r = d.filter(function (k) { return k !== "car"; }).length;
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + r + ' reel' + (r === 1 ? '' : 's') + '</small></div>' +
+        d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") + '</div>';
+    }).join("");
+    var desglose = Object.keys(cnt).filter(function (k) { return cnt[k] && k !== "car"; }).map(function (k) { return cnt[k] + " " + K[k].n.toLowerCase(); }).join(" · ");
+    var pct = Math.round(cnt.rol / reels * 100);
+    return '<div class="stage"><div class="stage-h"><span class="big" data-reels="' + reels + '" data-car="' + car + '" data-rol="' + cnt.rol + '">' + reels + ' reels + ' + car + ' carruseles/semana</span><h3>' + esc(st.t) + '</h3><span class="pct">' + pct + ' % rol entrenador</span></div><p class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desglose + ')</p><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- YouTube ---------- */
+  var YT = [
+    ["Por qué a partir de los 40 ya no pierdes grasa como antes (y qué hacer)", "El primero: presenta tu nicho y tu forma de trabajar.", true],
+    ["Cómo comía de niño y cómo como hoy: la comida de siempre no era el problema", "El segundo: tu historia y tu sello de comida real.", true],
+    ["Dieta antiinflamatoria sin complicarte: qué comer en una semana normal", "Valor puro con muchos clips de cocina para reels.", false],
+    ["Insulina, leptina y cortisol explicados para gente normal", "Tu lado culto, sin tecnicismos.", false],
+    ["Reviso la compra de un seguidor de 45 años y se la cambio", "Rol entrenador puro: análisis en pantalla.", false],
+    ["Entrenar 3 horas a la semana con trabajo e hijos: mi plan", "Para el que no tiene tiempo.", false],
+    ["Los 'polvitos' que no necesitas (y los 3 suplementos con evidencia)", "Anti postureo.", false],
+    ["Qué come un padre de familia para mantenerse en forma a los 40", "Cercanía: tu plato y tu familia.", false]
+  ];
+  $("yt").innerHTML = YT.map(function (y, i) {
+    return '<div class="ti"><span class="n' + (y[2] ? " first" : "") + '">' + (y[2] ? "Primero" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>';
+  }).join("");
+
+  /* ---------- Ángulos ---------- */
+  var FMTS = ["Comida real", "Voz en off", "Yapping", "Tendencia", "Green screen", "Carrusel", "Rol entrenador", "YouTube", "Historias"];
+  var FAMS = [
+    { n: "Metabolismo +40", d: "Por qué a los 40 ya no funciona lo de los 25." },
+    { n: "Hormonas sin humo", d: "Insulina, leptina y cortisol explicados para gente normal." },
+    { n: "Antiinflamatorio y comida real", d: "Comida de siempre, sin ultraprocesados ni dietas raras." },
+    { n: "Antes vs ahora", d: "Cómo se comía antes y cómo se come hoy." },
+    { n: "Padre y familia", d: "Comer y entrenar con hijos, trabajo y poco tiempo." },
+    { n: "3 horas a la semana", d: "No necesitas vivir en el gimnasio." },
+    { n: "Disciplina y paciencia", d: "El cuerpo no te va a cambiar en 3 meses." },
+    { n: "Anti postureo y polvitos", d: "Ni retos de 2 meses ni suplementos milagro." },
+    { n: "Mitos", d: "Lo que se cree tu cliente y le tiene inflamado y estancado." },
+    { n: "Rol entrenador", d: "Revisando, corrigiendo, explicando, dirigiendo." },
+    { n: "Casos", d: "Tus clientes, siempre con permiso." },
+    { n: "Objeciones", d: "Lo que te dirán antes de empezar, respondido antes." },
+    { n: "Mi historia", d: "Del niño gordito al +40 que entrena con cabeza." }
+  ];
+  var ANG = [
+    [0, "A los 40 no es la edad: es lo que arrastras", ["Si tienes más de 40 y ya no pierdes grasa como antes, no es la edad. Es esto.", "A los 25 comías cualquier cosa y no pasaba nada. A los 40 tu cuerpo te pasa la factura."], ["Yapping", "Voz en off", "YouTube"]],
+    [0, "Comes menos que nunca y no bajas", ["Comes menos que nunca y no bajas ni un kilo. Tu metabolismo te está protegiendo.", "Hacer dieta a los 45 como a los 25 es el error número uno."], ["Voz en off", "Carrusel"]],
+    [0, "El músculo es tu mejor quemagrasas", ["A partir de los 40 pierdes músculo cada año si no haces nada. Y con él, metabolismo.", "Si solo haces cardio a los 45, estás perdiendo lo que más te ayuda a quemar grasa."], ["Yapping", "Carrusel"]],
+    [0, "Barriga a los 40", ["La barriga de los 40 no se va con abdominales. Se va con esto.", "Por qué la grasa se te acumula en la barriga a partir de los 40."], ["Voz en off", "Comida real"]],
+    [0, "Salud metabólica antes que estética", ["Antes de verte bien, tu cuerpo tiene que funcionar bien.", "Mi prioridad con un cliente de 45 no es el abdomen: es su salud metabólica."], ["Yapping", "YouTube"]],
+    [0, "Más no es mejor", ["Más no es mejor: mejor es mejor.", "Entrenar más y comer menos a los 45 es la receta para estancarte."], ["Yapping", "Tendencia"]],
+    [1, "La insulina, en 30 segundos", ["La insulina es la llave que guarda la grasa. Si la tienes siempre alta, no la sueltas.", "Picar entre horas todo el día mantiene la puerta de la grasa cerrada."], ["Voz en off", "Carrusel"]],
+    [1, "Leptina: la hormona que te dice 'ya basta'", ["La leptina es la hormona que te dice que ya has comido. A muchos les deja de funcionar.", "Si siempre tienes hambre aunque comas, puede que tu leptina no esté haciendo su trabajo."], ["Yapping", "Carrusel", "YouTube"]],
+    [1, "Leptina y dietas de hambre", ["Cada dieta de hambre le enseña a tu cuerpo a guardar más. La leptina se encarga.", "Por qué después de cada dieta vuelves con más kilos."], ["Voz en off", "Carrusel"]],
+    [1, "Cortisol: el estrés también engorda", ["Tu trabajo te está inflamando. Literal.", "Estrés alto, mal sueño y dieta estricta: tu cuerpo en modo supervivencia."], ["Yapping", "Voz en off"]],
+    [1, "Dormir mal y tener hambre", ["Duermes 6 horas y te preguntas por qué tienes hambre todo el día.", "El 50 % de tus resultados es descansar. No es una frase bonita."], ["Yapping", "Historias"]],
+    [1, "La analítica que te explico", ["Glucosa, insulina, triglicéridos: te explico qué significa cada uno en 60 segundos.", "Tu analítica dice más de tu metabolismo que tu báscula."], ["Rol entrenador", "Carrusel"]],
+    [1, "Hormonas sin humo", ["No te voy a vender una dieta para tus hormonas. Te voy a explicar cómo funcionan.", "Lo que ayuda a tus hormonas es aburrido: dormir, fuerza, comida real."], ["Yapping", "Green screen"]],
+    [2, "Si te quieres desinflamar, deja esto", ["Si te quieres desinflamar, deja estas MIERDAS.", "5 cosas de tu despensa que te tienen hinchado."], ["Comida real", "Voz en off"]],
+    [2, "¿Bellotas o pienso?", ["¿Bellotas o pienso? Lo que come el animal también lo comes tú.", "No todo el jamón es igual. Ni todos los huevos."], ["Comida real", "Tendencia"]],
+    [2, "El plato antiinflamatorio", ["Así es un plato antiinflamatorio. Sin nada raro.", "Proteína, verdura, aceite de oliva y algo de hidrato. No tiene más misterio."], ["Comida real", "Carrusel"]],
+    [2, "Sardinas, aceite y comida de siempre", ["Las sardinas de toda la vida le dan mil vueltas a cualquier suplemento.", "La dieta mediterránea de verdad no es la de las fotos de Instagram."], ["Comida real", "Voz en off"]],
+    [2, "El verdadero desastre", ["El verdadero desastre no es la pizza del sábado. Es lo que comes de lunes a viernes.", "Una comida mala no te arruina. Cinco días de ultraprocesados, sí."], ["Comida real", "Yapping"]],
+    [2, "Leer etiquetas", ["Si la lista de ingredientes es más larga que tu brazo, no es comida.", "3 cosas que miro en una etiqueta antes de meterla en el carro."], ["Green screen", "Rol entrenador"]],
+    [2, "La compra de la semana", ["Mi compra de la semana para una familia, sin nada procesado.", "Lo que entra y lo que no entra en mi carro."], ["Comida real", "Historias"]],
+    [3, "Lo que comía de niño", ["De niño desayunaba galletas, magdalenas y Colacao. Como casi todos.", "Mi desayuno de niño vs mi desayuno de hoy."], ["Comida real", "Tendencia"]],
+    [3, "La comida de olla de los abuelos", ["La comida de olla de mis abuelos era mejor que la mitad de las dietas de hoy.", "Tus abuelos no contaban calorías. Comían comida."], ["Comida real", "Yapping"]],
+    [3, "Mi abuelo era muy panero", ["Mi abuelo era muy panero. Y no, el pan no es el demonio.", "Qué pan comer y cuál dejar en la panadería."], ["Comida real", "Voz en off"]],
+    [3, "El bocata gigante de las 11", ["El bocata gigante de las 11: lo que comíamos y lo que te haría hoy.", "Antes nos movíamos todo el día. Hoy comemos igual y nos movemos la mitad."], ["Voz en off", "Tendencia"]],
+    [3, "Antes se comía mejor (en parte)", ["Antes se comía mejor en una cosa y peor en otra. Te lo explico.", "No hace falta volver a 1980. Hace falta quitar lo que llegó después."], ["Yapping", "Carrusel"]],
+    [4, "Comer lo mismo que tus hijos", ["No necesitas cocinar aparte. Tu plato y el de tus hijos pueden ser el mismo.", "Así comemos en casa: una sola comida para toda la familia."], ["Comida real", "Historias"]],
+    [4, "Ser el ejemplo en casa", ["Tus hijos no hacen lo que dices. Hacen lo que te ven hacer.", "Lo que aprenden mis hijos viéndome comer y entrenar."], ["Yapping", "Historias"]],
+    [4, "Entrenar siendo padre", ["Ser padre no es excusa para no entrenar. Es la razón para hacerlo.", "3 horas a la semana y tiempo para tu familia: se puede."], ["Yapping", "Voz en off"]],
+    [4, "Cenas en familia sin descontrol", ["Cena en familia en 15 minutos que no te infla.", "La cena de los viernes sin tirar la semana."], ["Comida real", "Historias"]],
+    [4, "Energía para jugar con tus hijos", ["Llegar a casa y tener energía para tus hijos también es un resultado.", "No quiero que estés buenísimo. Quiero que aguantes un partido con tus hijos."], ["Yapping", "Voz en off"]],
+    [5, "Con 3 horas a la semana basta", ["Con 3 horas a la semana es suficiente si sabes qué hacer.", "No necesitas vivir en el gimnasio. Necesitas entrenar mejor."], ["Yapping", "Carrusel"]],
+    [5, "El 50/30/20", ["Tus resultados son un 50 % descanso, un 30 % comida y un 20 % entreno.", "Por eso entrenar más no te está funcionando."], ["Carrusel", "Yapping"]],
+    [5, "Fuerza, no horas de cardio", ["Una hora de cinta no hace lo que hacen 45 minutos de fuerza bien hechos.", "Si solo tienes 3 horas, que sean de fuerza."], ["Voz en off", "Rol entrenador"]],
+    [5, "Entrenar con poco tiempo", ["Cómo entreno 3 días con trabajo y familia.", "El plan de 3 días para alguien que no tiene tiempo para nada."], ["Rol entrenador", "YouTube"]],
+    [5, "Moverte fuera del gimnasio", ["Lo que haces fuera del gimnasio pesa más que lo que haces dentro.", "Pasos, escaleras y paseo después de cenar: lo que nadie cuenta."], ["Voz en off", "Historias"]],
+    [6, "El cuerpo no cambia en 3 meses", ["Tu cuerpo no te va a cambiar en 3 meses. Y quien te lo prometa, te miente.", "Los retos de 8 semanas son para vender, no para cambiar."], ["Yapping", "Green screen"]],
+    [6, "La disciplina lo es todo", ["La disciplina lo es todo. La motivación dura una semana.", "No hace falta que te apetezca. Hace falta que lo hagas."], ["Yapping", "Tendencia"]],
+    [6, "Resultados que llegan con el tiempo", ["Los resultados llegan con el tiempo. El que no aguanta, no los ve.", "Lo que hice 14 años sin fallar."], ["Yapping", "Historias"]],
+    [6, "El todo o nada", ["Saltarte un día no arruina nada. Abandonar sí.", "Si fallas una comida, la siguiente es normal. Sin castigos."], ["Voz en off", "Yapping"]],
+    [6, "Constancia frente a perfección", ["Prefiero un cliente constante al 80 % que uno perfecto dos semanas.", "Lo que separa a los que cambian de los que no."], ["Rol entrenador", "Yapping"]],
+    [7, "El circo del postureo", ["El fitness se ha convertido en un circo de postureo.", "Cuerpos de Instagram que no son reales. Te explico por qué."], ["Yapping", "Green screen"]],
+    [7, "Polvitos que no necesitas", ["No necesitas tantos polvitos. Necesitas comer comida.", "Los 3 suplementos con evidencia. El resto, gástatelo en sardinas."], ["Green screen", "Carrusel"]],
+    [7, "No vendo humo", ["No voy a decirte que todo se puede conseguir en 2 meses.", "Si buscas un reto milagro, no soy tu entrenador."], ["Yapping"]],
+    [7, "Retos absurdos de 2 meses", ["Reacciono a un reto de '30 días para perder la barriga'.", "Lo que pasa el día 31 de cualquier reto."], ["Green screen", "Tendencia"]],
+    [7, "La genética manda (al final)", ["La genética manda, pero cuando ya has usado todos los cartuchos.", "Antes de culpar a tu genética, revisa esto."], ["Yapping", "Voz en off"]],
+    [8, "El pan engorda", ["El pan no engorda. Lo que le pones encima y cuánto, sí.", "No hace falta quitar el pan. Hace falta elegir cuál."], ["Comida real", "Voz en off"]],
+    [8, "No cenar para adelgazar", ["No cenar no te hace adelgazar. Te hace atracarte a las 11 de la noche.", "La cena que te ayuda a dormir y a perder grasa."], ["Voz en off", "Comida real"]],
+    [8, "Más cardio para la barriga", ["Más cardio no te quita la barriga.", "Por qué la cinta no te está funcionando a los 45."], ["Voz en off", "Green screen"]],
+    [8, "Lo light y lo 'fit'", ["Lo 'fit' del súper muchas veces es lo peor del carro.", "Galletas 'fit' vs pan de verdad: te enseño las etiquetas."], ["Green screen", "Comida real"]],
+    [8, "Los abdominales para la barriga", ["Hacer abdominales no te quita la grasa de la barriga. Se llama core y sirve para otra cosa.", "Abdominales todos los días: el mito que más tiempo te hace perder."], ["Voz en off", "Rol entrenador"]],
+    [8, "El zumo detox", ["El zumo detox no desinflama nada. Tu hígado ya lo hace solo.", "Lo que de verdad te desinflama no se vende en botella."], ["Green screen", "Tendencia"]],
+    [9, "Reviso tu cesta", ["Un seguidor me ha mandado su compra. Esto es lo que le cambiaría.", "Te reviso la cesta: lo que sobra, lo que falta y lo que te inflama."], ["Rol entrenador", "Comida real"]],
+    [9, "Reviso tu plato", ["Me habéis mandado vuestros platos. Corrijo tres.", "Este plato tiene todo para quitarte el hambre. Este otro, no."], ["Rol entrenador", "Comida real"]],
+    [9, "Analítica explicada sin diagnosticar", ["Te explico esta analítica (anónima) como se la explicaría a un cliente.", "Lo que miro en una analítica antes de pautar un plan (y por qué te mando al médico)."], ["Rol entrenador", "YouTube"]],
+    [9, "Corrijo tu técnica", ["Me han mandado este peso muerto. Mira la cadera.", "Dominancia de cadera o de rodilla: corrijo tu sentadilla."], ["Rol entrenador", "Voz en off"]],
+    [9, "Si fueras mi cliente…", ["Si fueras mi cliente, tuvieras 45 años y no bajaras de peso, esto es lo primero que cambiaría.", "Si fueras mi cliente, esta semana harías solo tres cosas."], ["Rol entrenador", "Yapping"]],
+    [9, "Así reviso a un cliente cada semana", ["Así reviso a un cliente cada semana: peso, medidas, sueño y hambre.", "Lo que cambio cuando un cliente se estanca."], ["Rol entrenador", "Historias"]],
+    [9, "Entrenando a un cliente", ["\"Siempre estás encima\": así es una sesión conmigo.", "Lo que hago cuando un cliente quiere rendirse en la última serie."], ["Rol entrenador", "Tendencia"]],
+    [10, "Opositoras con las físicas aprobadas", ["Dos hermanas, con estrés y poco tiempo, aprobaron las físicas de oposición entrenando conmigo.", "Opositar con trabajo y familia: lo que hicimos."], ["Voz en off", "Historias"]],
+    [10, "Cristina: músculo y 10 kilos en un año", ["10 kilos menos en un año y ganando músculo, después de recuperar todo el peso. (Con su permiso.)", "La báscula no lo dice todo: lo que cambió en un año."], ["Voz en off", "Historias"]],
+    [10, "\"Gracias por correr conmigo en la pista\"", ["\"Gracias por correr conmigo en la pista para darme el último empujón.\"", "El mensaje de una clienta que resume cómo trabajo."], ["Green screen", "Historias"]],
+    [10, "Mi 2012 vs mi 2026", ["2012 vs 2026. Mismo tío, 14 años de disciplina.", "Lo que cambié entre estas dos fotos (y no es el gimnasio)."], ["Tendencia", "Carrusel"]],
+    [11, "\"A mi edad ya no\"", ["\"A mi edad ya no.\" Tengo clientes de 48 que ganan músculo.", "La edad es la excusa más cómoda que existe."], ["Yapping", "Voz en off"]],
+    [11, "\"Es mi metabolismo\"", ["\"Es mi metabolismo.\" Puede ser. Y se puede mejorar.", "Tu metabolismo no está roto: está mal tratado."], ["Yapping", "Carrusel"]],
+    [11, "\"No tengo tiempo\"", ["\"No tengo tiempo.\" 3 horas a la semana. ¿Las tienes?", "Precisamente porque no tienes tiempo no puedes perderlo con lo que no funciona."], ["Yapping", "Tendencia"]],
+    [11, "\"Ya lo he probado todo\"", ["\"Ya lo he probado todo.\" Todo menos dormir, comer comida y entrenar fuerza.", "Has probado dietas. No has probado un plan."], ["Yapping", "Voz en off"]],
+    [11, "\"Es caro\"", ["¿Caro? ¿Cuánto llevas gastado en polvitos, gimnasios y dietas que no funcionaron?", "Lo caro es seguir igual otros 5 años."], ["Yapping"]],
+    [11, "\"Lo tengo que hablar con mi pareja\"", ["Cuando uno en casa empieza a comer bien, la familia entera cambia.", "Lo que dicen las parejas de mis clientes a los 3 meses."], ["Yapping", "Historias"]],
+    [12, "El niño gordito", ["De los 9 a los 14 años estaba más gordo de la cuenta. Sé lo que es avergonzarse.", "Yo también fui el gordito de clase."], ["Yapping", "Voz en off"]],
+    [12, "El tío Julio, bombero", ["Mi tío era bombero y subía la cuerda como alma que se lleva el diablo. Eso se me quedó grabado.", "La primera vez que vi lo que era estar fuerte de verdad."], ["Yapping", "Historias"]],
+    [12, "Con 15 años y 65 kilos", ["Con 15 años, 65 kilos y una idea: no pasar desapercibido.", "Mi primer día de pesas y lo que pensaba de los que entrenaban."], ["Voz en off", "Tendencia"]],
+    [12, "Kárate hasta cinturón marrón", ["Kárate hasta cinturón marrón y aun así gordito. El deporte solo no basta.", "Hacía deporte todos los días y seguía con sobrepeso. Te explico por qué."], ["Yapping", "Voz en off"]],
+    [12, "Lo que sé hoy", ["Lo que me habría dicho a mí mismo con 15 años.", "Más no es mejor: mejor es mejor. Me costó años entenderlo."], ["Yapping", "YouTube"]]
+  ];
+
+  /* ---------- Guiones ---------- */
+  var SCRIPTS = [
+    { k: "vo", t: "Si te quieres desinflamar, deja esto", clip: "Tú en la cocina: abres la despensa, sacas productos ultraprocesados y los apartas; después, tu plato antiinflamatorio.", hooks: [
+      "A · Si tienes más de 40 y vives hinchado, deja estas cinco cosas.",
+      "B · Lo que tienes en la despensa te está inflamando. Te lo enseño.",
+      "C · Llevo años sin comprar esto y no lo echo de menos."
+    ], lines: [
+      ["3–15 s", "Bollería, embutido de mala calidad, refrescos, salsas de bote y todo lo que lleva una lista de ingredientes interminable.", "Texto: TU DESPENSA TE INFLAMA"],
+      ["15–28 s", "Cámbialo por comida de siempre: aceite de oliva, pescado, huevos, legumbre, verdura y pan de verdad. No es una dieta rara: es lo que comían tus abuelos.", ""],
+      ["28–38 s", "Sígueme: cada día te enseño a desinflamarte comiendo comida.", "Texto: SÍGUEME"]
+    ] },
+    { k: "vo", t: "Por qué a los 40 ya no bajas", clip: "Clips tuyos entrenando fuerza (sentadilla, peso muerto) y cocinando; detalle del plato y de la báscula de cocina.", hooks: [
+      "A · Si a los 40 comes menos que nunca y no bajas, escucha.",
+      "B · A los 25 adelgazabas en un mes. A los 45 no. Esto es lo que cambió.",
+      "C · Hacer dieta a los 45 como a los 25 es el error número uno."
+    ], lines: [
+      ["3–15 s", "Con los años pierdes músculo, duermes peor y vives con más estrés. Tu metabolismo se protege y te cuesta más soltar la grasa.", "Texto: NO ES LA EDAD"],
+      ["15–28 s", "Comer menos y hacer más cardio lo empeora. Lo que funciona es fuerza, comida real y descanso: más no es mejor, mejor es mejor.", ""],
+      ["28–38 s", "Sígueme: te enseño a poner tu metabolismo a tu favor después de los 40.", "Texto: SÍGUEME"]
+    ] },
+    { k: "yap", t: "La leptina, en 40 segundos", clip: "Tú a cámara con buena luz, en la cocina o en el gimnasio. Rótulos sencillos.", lines: [
+      ["0–3 s", "Si siempre tienes hambre aunque comas, tienes que conocer esta hormona.", "Texto: LEPTINA"],
+      ["3–15 s", "La leptina es la hormona que le dice a tu cerebro 'ya tienes reservas, puedes dejar de comer'. La fabrica tu propia grasa.", ""],
+      ["15–30 s", "Cuando llevas años con dietas de hambre, mal sueño y mucho estrés, esa señal deja de llegar bien. Y tu cuerpo pide comida aunque no la necesite.", ""],
+      ["30–40 s", "No se arregla con un polvito. Se arregla durmiendo, entrenando fuerza y comiendo comida. Escríbeme DESINFLAMA y te cuento cómo lo trabajo.", "Texto: ESCRÍBEME \"DESINFLAMA\""]
+    ] },
+    { k: "rol", t: "Reviso la cesta de un seguidor", clip: "Foto de la cesta o del ticket de un seguidor (con permiso) en pantalla; tú señalando producto por producto. Después, tu cesta.", lines: [
+      ["0–3 s", "Un seguidor de 46 años me ha mandado su compra. Vamos a revisarla.", "Texto: REVISO TU CESTA"],
+      ["3–15 s", "Esto se queda: huevos, legumbre, fruta. Esto se va: galletas 'fit', zumos y la salsa de bote. Esto se cambia: el pan de molde por pan de verdad.", "Rótulo: CON PERMISO DE @seguidor"],
+      ["15–30 s", "No le estoy quitando comida: le estoy quitando lo que le inflama y le dejo lo que le quita el hambre.", ""],
+      ["30–40 s", "¿Quieres que revise la tuya? Mándame la foto de tu compra con la palabra DESINFLAMA.", "Texto: MÁNDAME TU CESTA"]
+    ] },
+    { k: "gs", t: "Reacciono a un 'polvito' milagro", clip: "Green screen detrás: anuncio de un quemagrasas o 'detox' (sin marca visible).", lines: [
+      ["0–3 s", "Esto promete quemar la grasa de la barriga mientras duermes.", "Detrás: el anuncio"],
+      ["3–15 s", "No existe ningún polvo que queme la grasa de una zona. Lo que te venden es cafeína cara y mucho marketing.", ""],
+      ["15–30 s", "Suplementos con evidencia hay pocos y son baratos. El resto del dinero, gástatelo en sardinas, aceite y dormir mejor.", ""],
+      ["30–40 s", "Sígueme: no te vendo humo, te enseño lo que funciona.", "Texto: SÍGUEME"]
+    ] }
+  ];
+  $("scripts").innerHTML = SCRIPTS.map(function (s) {
+    var hooks = s.hooks ? '<div class="variants"><b>0–3 s · 3 ganchos para reels de prueba</b>' + s.hooks.map(function (h) { return '<div class="hk" style="display:flex;gap:8px;align-items:flex-start"><p style="flex:1;font-weight:700;font-size:14.5px">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h.replace(/^[ABC] · /, "")) + '">Copiar</button></div>'; }).join("") + '</div>' : "";
+    var copyAll = (s.hooks ? s.hooks.join("\n") + "\n" : "") + s.lines.map(function (l) { return l[1]; }).join("\n");
+    return '<article class="card script"><span class="tag a">' + esc(K[s.k].n) + '</span><h3>' + esc(s.t) + '</h3><p class="soft" style="font-size:14px"><b>Qué se ve:</b> ' + esc(s.clip) + '</p>' + hooks +
+      s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+      '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(copyAll) + '">Copiar guion</button></article>';
+  }).join("");
+
+  var fFam = -1, fFmt = "";
+  var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>';
+          }).join("") + '<div class="meta">' + a[3].map(function (m) { return '<span class="tag' + (m === "Rol entrenador" ? " a" : "") + '">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var orig = b.textContent;
+    var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = orig; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+  renderAng();
+
+  /* ---------- Pestañas ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "ang", "gui", "rec"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>
