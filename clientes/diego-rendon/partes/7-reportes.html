@@ -86,7 +86,7 @@ input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outl
 .calc div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-bottom: 1px solid var(--sand-line); padding-bottom: 8px; }
 .calc div:last-child { border-bottom: 0; padding-bottom: 0; }
 .calc span { color: var(--soft); font-size: 14.5px; }
-.calc b { font: 800 25px/1 var(--f-head); color: var(--gold-text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.calc b { font: 800 25px/1 var(--f-head); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
 pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); background: var(--chip); border-radius: 12px; padding: 14px 16px; }
 .mood { display: flex; gap: 6px; flex-wrap: wrap; }
 .mood button { all: unset; cursor: pointer; font-size: 22px; line-height: 1; padding: 8px 10px; border-radius: 12px; background: var(--chip); }
@@ -531,7 +531,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       box.appendChild(r);
     });
     var win = sem.trials.filter(function (t) { return t.ganador; }).length;
-    el("trialCount").textContent = sem.trials.length ? sem.trials.length + " guiones · " + win + " con ganador" : "";
+    el("trialCount").textContent = sem.trials.length ? sem.trials.length + (sem.trials.length === 1 ? " guion · " : " guiones · ") + win + " con ganador" : "";
   }
   el("addTrial").addEventListener("click", function () { if (!Array.isArray(sem.trials)) sem.trials = []; sem.trials.push({ guion: "", ganchos: "", ganador: "", views: "" }); saveSem(); renderTrials(); var ins = el("trialList").querySelectorAll('input[data-t="guion"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
   el("addTask").addEventListener("click", function () { sem.tareas.push({ tarea: "", hecha: false }); saveSem(); renderTasks(); var ins = el("taskList").querySelectorAll('input[type=text]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
@@ -595,7 +595,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       "Conversaciones: " + conv + "/100" + ck(conv >= 100) + " (R1 " + num(day.ronda1) + " · R2 " + num(day.ronda2) + ")\n" +
       "Respuestas: " + resp + " (" + pct(resp, conv) + ") · Calientes: " + num(day.calientes) + "\n" +
       "Bienvenidas: " + yn(day.bienvenidas) + " · Seguimientos: " + yn(day.seguimientos) + "\n" +
-      "Llamadas: " + num(day.agendadas) + " agendadas · " + he + " hechas · " + ci + " cierres (" + pct(ci, he) + ")\n" +
+      "Llamadas: " + num(day.agendadas) + " agendadas · " + he + " hechas · " + ci + (ci === 1 ? " cierre (" : " cierres (") + pct(ci, he) + ")\n" +
       "Facturado: " + eur(fa) + (det ? "\n" + det : "") + "\n" +
       "Piezas: " + reels + "/" + obj + ck(reels >= obj) + " (voz " + num(day.voz) + " [trial " + num(day.trial) + "] · yapping " + num(day.yapping) + " · tendencia " + num(day.trend) + " · green " + num(day.green) + " · rol entrenador " + num(day.rol) + ")" + (num(day.youtube) ? " · YouTube " + num(day.youtube) : "") + "\n" +
       "Historias: " + hist + ck(hist >= 6) + " · CTA: " + yn(day.ctaHistorias) + "\n" +
@@ -631,7 +631,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
       "Facturación: " + eur(a.fa) + " · Días reportados: " + a.dias + "/7\n\n" +
       "CONTENIDO (" + STAGE_TXT[PAUTA[sem.etapa] ? sem.etapa : "s1"] + ") · cumplimiento " + comp + " %" + ckw(comp >= 90) + "\n" +
       FMT.concat([["youtube", "YouTube"]]).map(function (x) { return x[1] + ": " + a[x[0]] + "/" + p[x[0]]; }).join(" · ") + "\n" +
-      "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + " guiones probados" : "") + "\n" +
+      "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " guion probado" : " guiones probados") : "") + "\n" +
       (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
       "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes PLAN: " + num(sem.mejor) + "\n" +
       "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos · " + num(sem.respEstados) + " respuestas a Estados\n" +

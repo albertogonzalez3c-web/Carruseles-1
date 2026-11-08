@@ -613,7 +613,8 @@ ul.l b { color: var(--ink); }
   function fmtDate(iso) { if (!iso) return "—"; var d = new Date(iso), o = { day: "numeric", month: "short" }; if (d.getFullYear() !== new Date().getFullYear()) o.year = "numeric"; return d.toLocaleDateString("es-ES", o); }
   function fmtDT(v) { if (!v) return ""; var d = new Date(v); return d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }); }
   function num(v) { return parseFloat(String(v == null ? "" : v).replace(",", ".")) || 0; }
-  function eur(v) { return Math.round(v).toLocaleString("es-ES") + " €"; }
+  function grp(n) { var r = Math.round(n); return (r < 0 ? "-" : "") + String(Math.abs(r)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function eur(v) { return grp(v) + " €"; }
   function today() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
   function planM(p) { var f = PLANS.find(function (x) { return x.id === p; }); return f ? f.m : (OLD_MONTHS[p] || 0); }
   function altaOf(l) { return l.altaEl || (l.cerradoEl ? l.cerradoEl.slice(0, 10) : today()); }
@@ -829,7 +830,7 @@ ul.l b { color: var(--ink); }
       h += '<div class="card sand"><span class="label">Cliente · ' + (act ? 'activo' : 'baja') + '</span>' +
         '<p><b>' + (act ? 'Lleva ' : 'Estuvo ') + months(sd) + ' meses</b> (' + sd + ' días)' + (act && fp ? ' · plan hasta el ' + fmtDate(fp.toISOString()) : '') + ' · facturado ' + eur(billed(l)) + '</p>' +
         '<div class="fields"><label class="f">Fecha de alta<input type="date" data-f="altaEl" value="' + esc(altaOf(l)) + '"></label>' +
-        '<label class="f">Plan<select data-f="plan" id="dPlan"><option></option>' + PLANS.map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.id) + (priceOf(p.id) ? ' · ' + priceOf(p.id) + ' €' : '') + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Plan<select data-f="plan" id="dPlan"><option></option>' + PLANS.map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.id) + (priceOf(p.id) ? ' · ' + eur(priceOf(p.id)) : '') + '</option>'; }).join("") + '</select></label>' +
         '<label class="f">Primer cobro (€)<input data-f="importe" inputmode="decimal" value="' + esc(l.importe) + '"></label>' +
         '<label class="f">Pago<select data-f="pago"><option></option><option>Pago único</option><option>2 pagos</option><option>Mensual</option></select></label>' +
         '<label class="f full">Qué le convenció<input data-f="comoCerro" value="' + esc(l.comoCerro) + '"></label></div></div>';
