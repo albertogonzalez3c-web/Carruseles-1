@@ -75,7 +75,7 @@ table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--sand); vertical-align: top; }
 th { font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
 .tscroll { overflow-x: auto; }
-.ladder { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.ladder { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
 .step { background: var(--white); border-radius: 12px; padding: 10px; display: grid; gap: 2px; text-align: center; border: 2px solid transparent; }
 .step.on { border-color: var(--red); }
 .step small { font: 500 10.5px/1.2 var(--f-mono); color: var(--soft); text-transform: uppercase; }
@@ -108,7 +108,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
 
 <header class="top">
   <div class="wrap">
-    <div class="brand"><span class="label">Jony · @jnyfit._</span><b>CRM de DMs</b></div>
+    <div class="brand"><span class="label">Sistema Jony · Parte 7 de 8</span><b>CRM de DMs</b></div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-v="hoy">Hoy</button>
       <button class="tab" role="tab" aria-selected="false" data-v="emb">Embudo</button>
@@ -153,10 +153,10 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
   <!-- CLIENTES -->
   <section id="v-cli" hidden style="display:grid;gap:16px">
     <div class="card sand">
-      <span class="label">Escalera de precios (propuesta, confirmar con Alberto)</span>
+      <span class="label">Programa OBRA · escalera de precios (propuesta, confirmar con Jony y Alberto)</span>
       <h3 id="nivelTxt"></h3>
       <div class="ladder" id="ladder"></div>
-      <p class="note">Cada venta cerrada sube un nivel (≈ +20 %) hasta el tope, que se mantiene hasta tener 10 casos. Ajuste manual solo si Alberto lo decide.</p>
+      <p class="note">Ventas 1–5: fundadores a $197 (o 2 pagos de $105) a cambio de testimonio en vídeo, fotos y permiso. Desde la venta 6, cada venta sube un escalón (+20 %) hasta el tope de $597. Mensual (plan B, mínimo 2 meses): $97 fundadores / $127 después. Mantenimiento: $79/mes (no cuenta como venta de la escalera). Quien recibió un precio lo mantiene 72 h. Ajuste manual solo si Alberto lo decide.</p>
       <div class="row"><button class="btn small ghost" id="nivDown">− Bajar nivel</button><button class="btn small ghost" id="nivUp">+ Subir nivel</button></div>
     </div>
     <div class="card">
@@ -202,9 +202,11 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
     { k: "hecha", n: "Llamada hecha" }, { k: "seg", n: "Seguimiento" }, { k: "cliente", n: "Cliente" }, { k: "perdido", n: "Perdido" }
   ];
   var SN = {}; STAGES.forEach(function (s) { SN[s.k] = s.n; });
-  var PLANS = { "12 semanas": [297, 357, 427, 497, 597], "6 meses": [497, 597, 717, 857, 997] };
-  var NIVN = ["Fundador", "Nivel 2", "Nivel 3", "Nivel 4", "Tope"];
-  var MAXN = 4;
+  var LADDER = [197, 297, 357, 427, 517, 597];
+  var NIVN = ["Fundadores (1–5)", "Venta 6 · Base", "Venta 7", "Venta 8", "Venta 9", "Venta 10+ · Tope"];
+  var MAXN = 5, FUND = 5;
+  var PLAN_LIST = ["Programa OBRA 12 semanas", "Mensual", "Mantenimiento"];
+  var PAGOS = ["Completo", "2 pagos (fundador)"];
 
   $("a-origen").innerHTML = ORIGEN.map(function (o) { return "<option>" + o + "</option>"; }).join("");
   $("a-objetivo").innerHTML = OBJ.map(function (o) { return "<option>" + o + "</option>"; }).join("");
@@ -245,7 +247,21 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
       .catch(function (e) { setStatus(errMsg(e, "cambiar precios"), true); });
   }
   function byId(id) { for (var i = 0; i < leads.length; i++) if (leads[i].id === id) return leads[i]; return null; }
-  function precio(plan) { var p = PLANS[plan] || PLANS["12 semanas"]; return p[Math.min(cfg.nivel || 0, MAXN)]; }
+  function nivelAct() { return Math.min(cfg.nivel || 0, MAXN); }
+  function precio(plan) {
+    var n = nivelAct();
+    if (plan === "Mensual") return n === 0 ? 97 : 127;
+    if (plan === "Mantenimiento") return 79;
+    return LADDER[n];
+  }
+  function precioPago(plan, pago) { return (plan === PLAN_LIST[0] && nivelAct() === 0 && pago === PAGOS[1]) ? 210 : precio(plan); }
+  function contarVenta() {
+    var n = cfg.nivel || 0, v = cfg.ventasDesdeSubida || 0;
+    if (n === 0) { v++; if (v >= FUND) { n = 1; v = 0; } }
+    else if (n < MAXN) { n++; v = 0; }
+    else v++;
+    saveCfg(n, v);
+  }
 
   /* ---------- Alta ---------- */
   $("addForm").addEventListener("submit", async function (e) {
@@ -255,7 +271,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
       nombre: nombre, ig: $("a-ig").value.trim(), tel: $("a-tel").value.trim(), edad: $("a-edad").value.trim(),
       origen: $("a-origen").value, palabra: $("a-palabra").value.trim().toUpperCase(), objetivo: $("a-objetivo").value,
       dolor: $("a-dolor").value.trim(), etapa: "nuevo", temp: "tibio", objecion: "", proximo: today(), notas: "",
-      plan: "12 semanas", importe: 0, pago: "Completo", alta: "", precioSubido: false, creado: now(), actualizado: now()
+      plan: PLAN_LIST[0], importe: 0, pago: "Completo", alta: "", precioSubido: false, creado: now(), actualizado: now()
     };
     $("addBtn").disabled = true;
     try { await addLead(data); $("addForm").reset(); $("a-palabra").value = "PLAN"; $("addNote").textContent = "Añadido. Contéstale ya."; }
@@ -315,14 +331,14 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
     }).join("");
 
     // Clientes
-    var n = Math.min(cfg.nivel || 0, MAXN);
-    $("nivelTxt").textContent = "Nivel actual: " + NIVN[n] + " · 12 semanas " + usd(PLANS["12 semanas"][n]) + " · 6 meses " + usd(PLANS["6 meses"][n]);
-    $("ladder").innerHTML = NIVN.map(function (x, i) { return '<div class="step' + (i === n ? " on" : "") + '"><small>' + esc(x) + '</small><b>' + usd(PLANS["12 semanas"][i]) + '</b><small>6 m: ' + usd(PLANS["6 meses"][i]) + '</small></div>'; }).join("");
+    var n = nivelAct();
+    $("nivelTxt").textContent = "Escalón actual: " + NIVN[n] + " · 12 semanas " + usd(LADDER[n]) + " · mensual " + usd(n === 0 ? 97 : 127) + (n === 0 ? " · fundadores vendidos: " + (cfg.ventasDesdeSubida || 0) + " de " + FUND : "");
+    $("ladder").innerHTML = NIVN.map(function (x, i) { return '<div class="step' + (i === n ? " on" : "") + '"><small>' + esc(x) + '</small><b>' + usd(LADDER[i]) + '</b><small>' + (i === 0 ? "mensual $97" : "mensual $127") + '</small></div>'; }).join("");
     $("cliBody").innerHTML = cli.length ? cli.map(function (l) {
-      var fin = l.alta ? addDays(l.alta, l.plan === "6 meses" ? 182 : 84) : "";
+      var fin = l.alta && l.plan !== "Mantenimiento" ? addDays(l.alta, l.plan === "Mensual" ? 60 : 84) : "";
       var soon = fin && fin <= addDays(t, 14);
-      return '<tr><td><b>' + esc(l.nombre) + '</b><br><span class="note">' + esc(l.ig || "") + '</span></td><td>' + esc(l.plan) + '<br><span class="note">' + esc(l.pago) + '</span></td><td>' + usd(l.importe) + '</td><td>' + fdate(l.alta) + '</td><td>' + (fin ? fdate(fin) + (soon ? ' <span class="chip hot">Renovar</span>' : '') : "—") + '</td><td><button class="btn small ghost" data-open="' + esc(l.id) + '">Ficha</button></td></tr>';
-    }).join("") : '<tr><td colspan="6" class="note">Aún sin clientes. Las 5 primeras plazas son a precio fundador.</td></tr>';
+      return '<tr><td><b>' + esc(l.nombre) + '</b><br><span class="note">' + esc(l.ig || "") + '</span></td><td>' + esc(l.plan) + '<br><span class="note">' + esc(l.pago) + '</span></td><td>' + usd(l.importe) + '</td><td>' + fdate(l.alta) + '</td><td>' + (fin ? fdate(fin) + (soon ? ' <span class="chip hot">' + (l.plan === "Mensual" ? "Fin del mínimo" : "Ofrecer Mantenimiento") + '</span>' : '') : (l.plan === "Mantenimiento" ? "Mes a mes" : "—")) + '</td><td><button class="btn small ghost" data-open="' + esc(l.id) + '">Ficha</button></td></tr>';
+    }).join("") : '<tr><td colspan="6" class="note">Aún sin clientes. Las 5 primeras plazas son de fundador ($197).</td></tr>';
     $("cliFoot").innerHTML = cli.length ? '<tr><th colspan="2">Total</th><th>' + usd(fact) + '</th><th colspan="3"></th></tr>' : '';
 
     if (openId && $("dlg").open) syncDlg();
@@ -349,8 +365,8 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
         '<label class="f full">Dolor (sus palabras)<textarea id="f-dolor" maxlength="600">' + esc(l.dolor || "") + '</textarea></label>' +
         '<label class="f full">Objeción<input id="f-objecion" maxlength="200" value="' + esc(l.objecion || "") + '" placeholder="dinero, tiempo, mamá, lo pienso…"></label>' +
         '<label class="f full">Notas<textarea id="f-notas" maxlength="2000">' + esc(l.notas || "") + '</textarea></label>' +
-        '<label class="f">Plan' + sel("f-plan", ["12 semanas", "6 meses"], l.plan) + '</label>' +
-        '<label class="f">Pago' + sel("f-pago", ["Completo", "3 cuotas"], l.pago) + '</label>' +
+        '<label class="f">Plan' + sel("f-plan", PLAN_LIST, l.plan) + '</label>' +
+        '<label class="f">Pago' + sel("f-pago", PAGOS, l.pago) + '</label>' +
         '<label class="f">Importe ($)<input id="f-importe" inputmode="decimal" value="' + esc(l.importe || "") + '"></label>' +
         '<label class="f">Fecha de alta<input type="date" id="f-alta" value="' + esc(l.alta || "") + '"></label>' +
       '</div>' +
@@ -361,7 +377,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
   }
   function syncDlg() {
     var l = byId(openId); if (!l) { closeDlg(); return; }
-    var hint = l.etapa === "cliente" ? "Cliente desde " + fdate(l.alta) + "." : "Precio actual de " + l.plan + ": " + usd(precio(l.plan)) + (l.pago === "3 cuotas" ? " · 3 cuotas de " + usd(Math.round(precio(l.plan) * 1.1 / 3)) : "") + ".";
+    var hint = l.etapa === "cliente" ? "Cliente desde " + fdate(l.alta) + "." : "Precio actual de " + l.plan + ": " + usd(precio(l.plan)) + (l.plan === PLAN_LIST[0] && nivelAct() === 0 ? " (o 2 pagos de $105)" : "") + (l.plan === "Mensual" ? " al mes, mínimo 2 meses" : "") + ".";
     $("f-hint").textContent = hint;
     ["etapa", "temp", "plan", "pago"].forEach(function (k) { var el = $("f-" + k); if (el && document.activeElement !== el && el.value !== (l[k] || "")) el.value = l[k] || ""; });
   }
@@ -394,16 +410,13 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
     $("f-win").addEventListener("click", win);
     function win() {
       var cur = byId(id); if (!cur) return;
-      var imp = Number($("f-importe").value.replace(",", ".")) || precio(cur.plan) * (cur.pago === "3 cuotas" ? 1.1 : 1);
+      var imp = Number($("f-importe").value.replace(",", ".")) || precioPago(cur.plan, cur.pago);
       var o = { etapa: "cliente", importe: Math.round(imp * 100) / 100, alta: cur.alta || today(), llamadaHecha: true };
-      if (!cur.precioSubido) {
-        o.precioSubido = true;
-        var n = cfg.nivel || 0;
-        if (n < MAXN) saveCfg(n + 1, 0); else saveCfg(n, (cfg.ventasDesdeSubida || 0) + 1);
-      }
+      var cuenta = !cur.precioSubido && cur.plan !== "Mantenimiento";
+      if (cuenta) { o.precioSubido = true; contarVenta(); }
       updLead(id, o);
       $("f-importe").value = o.importe; $("f-alta").value = o.alta; $("f-etapa").value = "cliente";
-      $("f-msg").textContent = "Cliente registrado. Precio subido al siguiente nivel.";
+      $("f-msg").textContent = cuenta ? "Cliente registrado. Venta contada en la escalera." : "Cliente registrado.";
     }
     $("f-wa").addEventListener("click", function () {
       var cur = byId(id); var n = String((cur && cur.tel) || "").replace(/[^\d]/g, "");
@@ -424,16 +437,18 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
 
   /* ---------- Mensajes ---------- */
   var MSGS = [
-    ["1 · Respuesta a PLAN (en menos de 1 h)", "¡Qué onda [nombre]! Gracias por escribirme 💪\nAntes de nada, para ver si te puedo ayudar: ¿qué buscas ahorita, perder grasa, ganar músculo o las dos?"],
-    ["2 · Calificar (después de su respuesta)", "Va, te entiendo perfecto, yo estuve igual.\n¿Cuánto tiempo llevas entrenando? ¿Y qué es lo que más te ha frenado hasta ahora: la comida, la rutina o el tiempo con el trabajo?"],
-    ["3 · Profundizar", "Eso es lo más común, sobre todo si trabajas pesado. ¿Qué has probado ya? (rutinas de YouTube, dietas, suplementos…)\nY si en 3 meses lo lograras, ¿qué cambiaría para ti?"],
-    ["4 · Invitar a llamada", "Mira, por aquí es difícil ver tu caso bien. Si quieres hacemos una videollamada de 30 min, te digo exactamente qué cambiaría en tu caso y si puedo ayudarte o no. Sin compromiso.\n¿Te queda mejor [día] a las [hora] o [día] a las [hora]?"],
-    ["5 · Confirmar llamada", "¡Listo [nombre]! Quedamos el [día] a las [hora] por [WhatsApp/Zoom]. Ten a la mano qué comes en un día normal y tu rutina. Nos vemos 💪"],
-    ["6 · Seguimiento 24 h (no contestó)", "[nombre], ¿cómo vas? Me quedé con lo que me dijiste de [su dolor]. ¿Seguimos?"],
-    ["7 · Seguimiento 72 h", "Te dejo este video que hice justo sobre [su problema]: [link]. Cuando quieras lo vemos en tu caso."],
-    ["8 · Recuperar tibio (después de la llamada)", "[nombre], estuve pensando en lo que me contaste. Se me ocurrió algo para tu caso con [objeción]. ¿Te lo cuento en 5 min por llamada?"],
-    ["9 · Pedir permiso para contenido", "Oye, ¿te parece si comparto tu progreso en mis historias? Puede ser sin cara y sin nombre, como tú prefieras. Si no, cero problema."]
+    ["/plan · Respuesta a PLAN (en menos de 1 h)", "¡Qué onda, [nombre]! Gracias por escribir 💪\nPara decirte por dónde empezar necesito 3 cosas rápidas:\n1️⃣ ¿Qué quieres: bajar la panza, ganar músculo o las dos?\n2️⃣ ¿Ya entrenas o vas empezando? ¿Cuántos días puedes ir?\n3️⃣ ¿En qué trabajas y a qué hora sales?"],
+    ["/diag · Diagnóstico (antes del audio)", "Va, ya vi lo tuyo. Te mando un audio con lo que yo cambiaría primero 👇\n(Nota de voz de 45–60 s: su error n.º 1 + qué harías tú + \"esto es lo que hago con mis clientes\".)"],
+    ["/llamada · Invitar a llamada", "Mira, por aquí te puedo dar tips, pero para armarte algo que de verdad te funcione con tu jornada necesito conocerte mejor. ¿Te late una videollamada de 20 min esta semana? Sin compromiso: te digo qué haría yo en tu caso y, si quieres que te ayude, te explico cómo trabajo.\n¿Te queda mejor [día] o [día] después de las [hora]?"],
+    ["/precio · Si pregunta el precio por DM", "Te soy directo: el precio depende de lo que necesitas y eso lo vemos en la llamada de 20 min. Ahorita tengo plazas de fundador a un precio que no voy a repetir. ¿Te queda mejor [día] o [día]?"],
+    ["Confirmar llamada", "¡Listo, [nombre]! Quedamos el [día] a las [hora] por [Instagram/WhatsApp]. Ten a la mano qué comes en un día normal y tu rutina. Nos vemos 💪"],
+    ["Seguimiento 24 h (no contestó)", "[nombre], ¿cómo vas? Me quedé con lo que me dijiste de [su dolor]. ¿Seguimos?"],
+    ["Seguimiento 72 h", "Te dejo este video que hice justo sobre [su problema]: [link]. Cuando quieras lo vemos en tu caso."],
+    ["Recuperar tibio (después de la llamada)", "[nombre], estuve pensando en lo que me contaste. Se me ocurrió algo para tu caso con [objeción]. ¿Te lo cuento en 5 min por llamada? Tu precio te lo guardo hasta [fecha +72 h]."],
+    ["Semana 10 · Ofrecer Mantenimiento", "[nombre], vas en la semana 10 y se nota el cambio 🔥 Para que no se pierda, tengo el Mantenimiento: plan actualizado y check-in cada 2 semanas por $79 al mes. ¿Lo dejamos listo para cuando acabes?"],
+    ["Pedir permiso para contenido", "Oye, ¿te parece si comparto tu progreso en mis historias? Puede ser sin cara y sin nombre, como tú prefieras. Si no, cero problema."]
   ];
+
   $("msgs").innerHTML = MSGS.map(function (m, i) { return '<div class="msg"><h3>' + esc(m[0]) + '</h3><pre>' + esc(m[1]) + '</pre><button class="btn small ghost" data-copy="' + i + '">Copiar</button></div>'; }).join("");
   $("msgs").addEventListener("click", function (e) {
     var b = e.target.closest("[data-copy]"); if (!b) return;
