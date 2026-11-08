@@ -571,7 +571,7 @@ pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); 
         '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
       function paint() {
         var c = promoCps(p), sp = row.querySelector("[data-cps]");
-        sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (c < 1 ? " · por debajo de 1 €: se queda" : (c <= 1.5 ? " · entre 1 y 1,5 €: cambia el gancho" : (num(p.dias) >= 3 ? " · más de 1,5 € tras " + num(p.dias) + " días: córtalo" : " · más de 1,5 €: espera al día 3 y, si sigue, córtalo")));
+        sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (num(p.dias) < 2 ? " · espera al día 2 para decidir" : (c < 1 ? " · por debajo de 1 €: se queda y escalas hacia 10 €/día" : (c <= 1.5 ? " · entre 1 y 1,5 €: cambia el gancho" : " · más de 1,5 € a los " + num(p.dias) + " días: córtalo")));
         sp.className = "cps" + (c == null ? "" : (c < 1 ? " ok" : " bad")); promoHead();
       }
       if (!p.decision) p.decision = "Probando";

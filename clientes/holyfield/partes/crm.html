@@ -464,10 +464,10 @@ h1 { letter-spacing: -.025em !important; }
         <div class="tw"><table class="ctab">
           <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Semestre en 2 pagos</th></tr></thead>
           <tbody>
-            <tr><td>0</td><td>250 €</td><td>400 €</td><td>700 €</td><td>210 + 210 €</td></tr>
-            <tr><td>1</td><td>300 €</td><td>480 €</td><td>840 €</td><td>250 + 250 €</td></tr>
-            <tr><td>2</td><td>360 €</td><td>580 €</td><td>1.000 €</td><td>305 + 305 €</td></tr>
-            <tr><td>3</td><td>400 €</td><td>690 €</td><td>1.200 €</td><td>360 + 360 €</td></tr>
+            <tr><td>0</td><td>300 €</td><td>500 €</td><td>850 €</td><td>265 + 265 €</td></tr>
+            <tr><td>1</td><td>360 €</td><td>600 €</td><td>1.020 €</td><td>315 + 315 €</td></tr>
+            <tr><td>2</td><td>430 €</td><td>720 €</td><td>1.225 €</td><td>380 + 380 €</td></tr>
+            <tr><td>3</td><td>520 €</td><td>865 €</td><td>1.470 €</td><td>455 + 455 €</td></tr>
           </tbody>
         </table></div>
         <p class="say">"El semestre son [precio]. Si te viene mejor, lo puedes pagar en dos pagos de [cuota]."</p>
@@ -591,7 +591,7 @@ h1 { letter-spacing: -.025em !important; }
   ];
 
   /* Precios por niveles: cada venta cerrada sube un nivel (~20 %) hasta el máximo */
-  var LEVELS = { "Trimestre": [250, 300, 360, 400], "Semestre": [400, 480, 580, 690], "Año": [700, 840, 1000, 1200] };
+  var LEVELS = { "Trimestre": [300, 360, 430, 520], "Semestre": [500, 600, 720, 865], "Año": [850, 1020, 1225, 1470] };
   var MAXN = 3, nivel = 0, ventasDesdeSubida = 0;
   function r5(x) { return Math.round(x / 5) * 5; }
   function cuota2(n) { return r5(LEVELS.Semestre[n == null ? nivel : n] * 1.05 / 2); }
@@ -760,7 +760,7 @@ h1 { letter-spacing: -.025em !important; }
     var pr = [["Semestre", "El estándar", true], ["Año", "Mejor valor"], ["Semestre en 2 pagos", "2 × " + cuota2() + " €"], ["Trimestre", "Último recurso"]];
     box.innerHTML = '<div class="nv-top"><div><span class="label">Precios actuales</span><h3>Nivel de precios actual: ' + nivel + ' de ' + MAXN + '</h3></div><div class="nv-dots" aria-hidden="true">' + dots + '</div></div>' +
       '<div class="nv-prices">' + pr.map(function (p) { return '<div class="' + (p[2] ? "star" : "") + '"><span>' + esc(p[0]) + '</span><b>' + eur(priceOf(p[0])) + '</b><span>' + esc(p[1]) + '</span></div>'; }).join("") + '</div>' +
-      '<p class="soft" style="font-size:13.5px"><b>Regla:</b> cada venta cerrada sube un nivel hasta el máximo (Año 1.200 € / Trimestre 400 €). El semestre es lo que se vende. <b>Precios en PROPUESTA:</b> confírmalos con Alberto.' + (ventasDesdeSubida ? ' · Ventas desde la última subida: ' + ventasDesdeSubida : '') + '</p>' +
+      '<p class="soft" style="font-size:13.5px"><b>Regla:</b> cada venta cerrada sube un nivel hasta el máximo (Año 1.470 € / Trimestre 520 €). El semestre es lo que se vende. <b>Precios en PROPUESTA:</b> confírmalos con Alberto.' + (ventasDesdeSubida ? ' · Ventas desde la última subida: ' + ventasDesdeSubida : '') + '</p>' +
       '<div class="phone-line"><button type="button" class="btn small" id="nvUp"' + (nivel >= MAXN ? " disabled" : "") + '>' + (nivel >= MAXN ? "Ya estás en el máximo" : "Subir a nivel " + (nivel + 1)) + '</button>' +
       (nivel > 0 ? '<button type="button" class="linkish" id="nvDownAsk">Bajar un nivel</button><span id="nvDownBox" hidden class="phone-line"><span class="soft" style="font-size:13px">¿Seguro? Bajar precios solo si no estás cerrando nada.</span><button type="button" class="btn small ghost" id="nvDownYes">Sí, bajar</button><button type="button" class="linkish" id="nvDownNo">Cancelar</button></span>' : '') + '</div>';
     $("nvUp").addEventListener("click", function () { setNivel(nivel + 1); });

@@ -156,7 +156,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
       <span class="label">Programa OBRA · escalera de precios (propuesta, confirmar con Jony y Alberto)</span>
       <h3 id="nivelTxt"></h3>
       <div class="ladder" id="ladder"></div>
-      <p class="note">Ventas 1–5: fundadores a $197 (o 2 pagos de $105) a cambio de testimonio en vídeo, fotos y permiso. Desde la venta 6, cada venta sube un escalón (+20 %) hasta el tope de $597. Mensual (plan B, mínimo 2 meses): $97 fundadores / $127 después. Mantenimiento: $79/mes (no cuenta como venta de la escalera). Quien recibió un precio lo mantiene 72 h. Ajuste manual solo si Alberto lo decide.</p>
+      <p class="note">Ventas 1–5: fundadores a $250 (o 2 pagos de $130) a cambio de testimonio en vídeo, fotos y permiso. Desde la venta 6, cada venta sube un escalón (+20 %) hasta el tope de $600. Mensual (plan B, mínimo 2 meses): $97 fundadores / $127 después. Mantenimiento: $79/mes (no cuenta como venta de la escalera). Quien recibió un precio lo mantiene 72 h. Ajuste manual solo si Alberto lo decide.</p>
       <div class="row"><button class="btn small ghost" id="nivDown">− Bajar nivel</button><button class="btn small ghost" id="nivUp">+ Subir nivel</button></div>
     </div>
     <div class="card">
@@ -202,7 +202,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
     { k: "hecha", n: "Llamada hecha" }, { k: "seg", n: "Seguimiento" }, { k: "cliente", n: "Cliente" }, { k: "perdido", n: "Perdido" }
   ];
   var SN = {}; STAGES.forEach(function (s) { SN[s.k] = s.n; });
-  var LADDER = [197, 297, 357, 427, 517, 597];
+  var LADDER = [250, 300, 360, 432, 518, 600];
   var NIVN = ["Fundadores (1–5)", "Venta 6 · Base", "Venta 7", "Venta 8", "Venta 9", "Venta 10+ · Tope"];
   var MAXN = 5, FUND = 5;
   var PLAN_LIST = ["Programa OBRA 12 semanas", "Mensual", "Mantenimiento"];
@@ -254,7 +254,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
     if (plan === "Mantenimiento") return 79;
     return LADDER[n];
   }
-  function precioPago(plan, pago) { return (plan === PLAN_LIST[0] && nivelAct() === 0 && pago === PAGOS[1]) ? 210 : precio(plan); }
+  function precioPago(plan, pago) { return (plan === PLAN_LIST[0] && nivelAct() === 0 && pago === PAGOS[1]) ? 260 : precio(plan); }
   function contarVenta() {
     var n = cfg.nivel || 0, v = cfg.ventasDesdeSubida || 0;
     if (n === 0) { v++; if (v >= FUND) { n = 1; v = 0; } }
@@ -338,7 +338,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
       var fin = l.alta && l.plan !== "Mantenimiento" ? addDays(l.alta, l.plan === "Mensual" ? 60 : 84) : "";
       var soon = fin && fin <= addDays(t, 14);
       return '<tr><td><b>' + esc(l.nombre) + '</b><br><span class="note">' + esc(l.ig || "") + '</span></td><td>' + esc(l.plan) + '<br><span class="note">' + esc(l.pago) + '</span></td><td>' + usd(l.importe) + '</td><td>' + fdate(l.alta) + '</td><td>' + (fin ? fdate(fin) + (soon ? ' <span class="chip hot">' + (l.plan === "Mensual" ? "Fin del mínimo" : "Ofrecer Mantenimiento") + '</span>' : '') : (l.plan === "Mantenimiento" ? "Mes a mes" : "—")) + '</td><td><button class="btn small ghost" data-open="' + esc(l.id) + '">Ficha</button></td></tr>';
-    }).join("") : '<tr><td colspan="6" class="note">Aún sin clientes. Las 5 primeras plazas son de fundador ($197).</td></tr>';
+    }).join("") : '<tr><td colspan="6" class="note">Aún sin clientes. Las 5 primeras plazas son de fundador ($250).</td></tr>';
     $("cliFoot").innerHTML = cli.length ? '<tr><th colspan="2">Total</th><th>' + usd(fact) + '</th><th colspan="3"></th></tr>' : '';
 
     if (openId && $("dlg").open) syncDlg();
@@ -377,7 +377,7 @@ dialog::backdrop { background: rgba(20,20,20,.5); }
   }
   function syncDlg() {
     var l = byId(openId); if (!l) { closeDlg(); return; }
-    var hint = l.etapa === "cliente" ? "Cliente desde " + fdate(l.alta) + "." : "Precio actual de " + l.plan + ": " + usd(precio(l.plan)) + (l.plan === PLAN_LIST[0] && nivelAct() === 0 ? " (o 2 pagos de $105)" : "") + (l.plan === "Mensual" ? " al mes, mínimo 2 meses" : "") + ".";
+    var hint = l.etapa === "cliente" ? "Cliente desde " + fdate(l.alta) + "." : "Precio actual de " + l.plan + ": " + usd(precio(l.plan)) + (l.plan === PLAN_LIST[0] && nivelAct() === 0 ? " (o 2 pagos de $130)" : "") + (l.plan === "Mensual" ? " al mes, mínimo 2 meses" : "") + ".";
     $("f-hint").textContent = hint;
     ["etapa", "temp", "plan", "pago"].forEach(function (k) { var el = $("f-" + k); if (el && document.activeElement !== el && el.value !== (l[k] || "")) el.value = l[k] || ""; });
   }

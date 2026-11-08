@@ -1,0 +1,336 @@
+<title>PG Team Recomposición</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<meta name="description" content="Sergio PG · PG TEAM. Recomposición corporal: gana músculo y pierde grasa a la vez, aunque tengas poco tiempo, creas que llegas tarde o lleves años estancado. Boceto de landing.">
+<style>
+/* Layout: carta de venta en una columna sobre negro, con la marca PG TEAM (negro + verde lima, titulares condensados). Boceto: barra fija arriba que lo indica. */
+:root {
+  --bg: #0b0b0b;
+  --bg2: #141414;
+  --bg3: #1d1d1d;
+  --ink: #f4f5f0;
+  --soft: #b7bab0;
+  --line: #2a2a2a;
+  --lime: #b7f000;
+  --lime-ink: #0b0b0b;
+  --f-head: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 760px; }
+section { padding-block: clamp(56px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(46px, 9vw, 104px)/.92 var(--f-head); text-transform: uppercase; letter-spacing: .005em; }
+h2 { font: 400 clamp(36px, 6vw, 68px)/.95 var(--f-head); text-transform: uppercase; }
+h3 { font: 800 20px/1.25 var(--f-body); }
+h1 em, h2 em { font-style: normal; color: var(--lime); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--lime); }
+.lede { color: var(--soft); font-size: 19px; max-width: 62ch; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.draft { position: sticky; top: 0; z-index: 20; background: var(--lime); color: var(--lime-ink); font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: 8px max(16px, env(safe-area-inset-left, 0px)); padding-top: calc(8px + env(safe-area-inset-top, 0px)); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--lime); color: var(--lime-ink); font: 800 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 6px; text-transform: uppercase; letter-spacing: .03em; transition: transform .15s ease; text-align: center; }
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.logo { font: 400 28px/1 var(--f-head); letter-spacing: .02em; }
+.logo i { font-style: italic; color: var(--lime); }
+.logo span { font-size: 18px; margin-left: 4px; }
+.top a.small { font: 600 14px/1 var(--f-body); text-decoration: none; padding: 11px 14px; border-radius: 6px; box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+.hero { padding-block: clamp(30px, 6vw, 70px) clamp(56px, 8vw, 96px); }
+.hero-g { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.hero .sub { color: var(--soft); font-size: clamp(18px, 2vw, 21px); margin-top: 22px; max-width: 46ch; }
+.hero .sub b { color: var(--ink); }
+.hero .ctas { margin-top: 30px; }
+.hero .proof { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 26px; font: 500 13px/1.3 var(--f-mono); color: var(--soft); text-transform: uppercase; letter-spacing: .06em; }
+.hero .proof b { color: var(--lime); }
+.hero-img { position: relative; border-radius: 10px; overflow: hidden; background: var(--bg2); box-shadow: 0 0 0 2px var(--lime); }
+.hero-img img { display: block; width: 100%; height: auto; }
+.hero-img figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 12px; background: linear-gradient(transparent, rgba(0,0,0,.85)); font: 500 12px/1.3 var(--f-mono); color: #fff; }
+
+.pains { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 34px; }
+.pain { background: var(--bg2); border-radius: 8px; padding: 18px 20px; font-size: 18px; font-weight: 700; border-left: 4px solid var(--lime); }
+.pain span { display: block; font: 500 12px/1.3 var(--f-mono); color: var(--soft); text-transform: uppercase; letter-spacing: .06em; margin-top: 6px; font-weight: 500; }
+
+.story { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 0 26px; margin-top: 34px; }
+.story > div { padding-block: 18px; border-top: 1px solid var(--line); }
+.story .yr { font: 400 30px/1 var(--f-head); color: var(--lime); }
+.story p { color: var(--soft); }
+.story p b { color: var(--ink); }
+.ph { display: grid; place-items: center; text-align: center; background: repeating-linear-gradient(45deg, var(--bg2) 0 12px, var(--bg3) 12px 24px); border-radius: 8px; min-height: 180px; padding: 18px; font: 500 12px/1.4 var(--f-mono); color: var(--soft); text-transform: uppercase; letter-spacing: .06em; }
+
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 34px; }
+.pil { background: var(--bg2); border-radius: 10px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.pil .n { font: 400 54px/1 var(--f-head); color: var(--lime); }
+.pil p { color: var(--soft); font-size: 16.5px; }
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.pha { border-radius: 10px; padding: 18px 20px; box-shadow: inset 0 0 0 1.5px var(--line); display: grid; gap: 6px; align-content: start; }
+.pha .w { font: 500 12px/1.3 var(--f-mono); color: var(--lime); text-transform: uppercase; letter-spacing: .08em; }
+.pha p { color: var(--soft); font-size: 16px; }
+.nn { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; align-items: center; }
+.nn b { font-size: 15px; margin-right: 6px; }
+.nn span { background: var(--lime); color: var(--lime-ink); font-weight: 700; font-size: 14px; padding: 7px 12px; border-radius: 999px; }
+
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 34px; align-items: start; }
+.case { background: var(--bg2); border-radius: 10px; overflow: hidden; display: grid; }
+.case img { display: block; width: 100%; height: auto; }
+.case .c { padding: 16px 18px; display: grid; gap: 6px; }
+.case .c b { font: 400 24px/1.05 var(--f-head); text-transform: uppercase; }
+.case .c span { color: var(--soft); font-size: 15px; }
+.case .c small { font: 500 11px/1.3 var(--f-mono); color: var(--lime); text-transform: uppercase; letter-spacing: .06em; }
+.note { margin-top: 18px; font: 500 12.5px/1.5 var(--f-mono); color: var(--soft); border: 1px dashed #3a3a3a; border-radius: 6px; padding: 12px 14px; }
+
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 34px; }
+.fit > div { background: var(--bg2); border-radius: 10px; padding: 22px; }
+.fit ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; color: var(--soft); font-size: 16.5px; }
+.fit .yes { box-shadow: inset 0 0 0 2px var(--lime); }
+
+.steps3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 34px; }
+.st { background: var(--bg2); border-radius: 10px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.st .n { width: 42px; height: 42px; border-radius: 50%; background: var(--lime); color: var(--lime-ink); display: grid; place-items: center; font: 400 22px/1 var(--f-head); }
+.st p { color: var(--soft); font-size: 16px; }
+
+.form { background: var(--ink); color: #0b0b0b; border-radius: 14px; padding: clamp(20px, 4vw, 40px); display: grid; gap: 16px; margin-top: 30px; }
+.form .label { color: #3d5600; }
+.form h3 { font: 400 clamp(28px, 4vw, 40px)/1 var(--f-head); text-transform: uppercase; }
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: grid; gap: 6px; font-size: 14px; font-weight: 700; }
+.field input, .field select, .field textarea { font: 400 16px/1.4 var(--f-body); padding: 13px 14px; border-radius: 6px; border: 1.5px solid #c9ccc2; background: #fff; color: #0b0b0b; width: 100%; min-width: 0; }
+.field textarea { min-height: 90px; resize: vertical; }
+.field.full { grid-column: 1 / -1; }
+.form .btn { background: #0b0b0b; color: var(--lime); width: 100%; }
+.form .ph-note { font: 500 12px/1.45 var(--f-mono); color: #4b4e45; }
+.form .ok { background: var(--lime); border-radius: 8px; padding: 14px 16px; font-weight: 700; }
+
+.faq { margin-top: 30px; display: grid; gap: 10px; }
+.faq details { background: var(--bg2); border-radius: 8px; padding: 0 20px; }
+.faq summary { cursor: pointer; padding: 18px 0; font-weight: 800; font-size: 17.5px; list-style: none; display: flex; justify-content: space-between; gap: 14px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--lime); font: 400 26px/1 var(--f-head); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { color: var(--soft); padding-bottom: 18px; font-size: 16.5px; }
+
+.final { text-align: center; }
+.final h2 { margin-inline: auto; max-width: 16ch; }
+.final .ctas { justify-content: center; margin-top: 28px; }
+footer { padding-block: 34px calc(90px + env(safe-area-inset-bottom, 0px)); color: var(--soft); font-size: 14px; border-top: 1px solid var(--line); }
+
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; display: none; padding: 10px max(16px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(11,11,11,.94); border-top: 1px solid var(--line); }
+.bar .btn { width: 100%; padding: 16px; }
+
+@media (max-width: 900px) {
+  .hero-g { grid-template-columns: 1fr; }
+  .hero-img { max-width: 460px; }
+  .pillars, .phases, .cases, .steps3 { grid-template-columns: 1fr; }
+  .cases { max-width: 520px; }
+  .bar { display: block; }
+}
+@media (max-width: 620px) {
+  .pains, .fit, .fgrid { grid-template-columns: 1fr; }
+  .story { grid-template-columns: 1fr; }
+  .story > div:nth-child(odd) { border-top: 1px solid var(--line); padding-bottom: 0; }
+  .story > div:nth-child(even) { border-top: 0; padding-top: 8px; }
+  .top a.small { display: none; }
+}
+</style>
+
+<div class="draft" role="note">Boceto de landing · textos, casos y formulario pendientes de confirmar con Sergio</div>
+
+<header class="wrap top">
+  <div class="logo"><i>PG</i><span>TEAM</span></div>
+  <a class="small" href="#formulario">Quiero mi plan</a>
+</header>
+
+<section class="hero" aria-label="Portada">
+  <div class="wrap hero-g">
+    <div>
+      <span class="label">Recomposición corporal · Sergio PG</span>
+      <h1 style="margin-top:14px">Gana músculo y pierde grasa <em>a la vez.</em></h1>
+      <p class="sub">Aunque tengas poco tiempo, creas que llegas tarde o lleves años estancado. <b>Ni volumen eterno ni definición eterna</b>: un plan que encaja en tu semana y que ajustamos cada semana con datos.</p>
+      <div class="ctas"><a class="btn" href="#formulario">Quiero mi plan</a><a class="btn ghost" href="#metodo">Ver cómo trabajo</a></div>
+      <div class="proof"><span><b>+10</b> años entrenando</span><span><b>Competidor</b> natural 2024</span><span><b>PG</b> TEAM</span></div>
+    </div>
+    <figure class="hero-img" style="margin:0">
+      <img src="casos/recomp-90dias.jpg" alt="Caso del PG TEAM: recomposición corporal en 90 días, antes día 1 y después día 90" width="900" height="1166">
+      <figcaption>Caso real del PG TEAM · 90 días · [confirmar permiso]</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section aria-label="¿Te suena?">
+  <div class="wrap">
+    <span class="label">¿Te suena?</span>
+    <h2 style="margin-top:12px">Entrenas, comes "bien"… <em>y sigues igual.</em></h2>
+    <div class="pains">
+      <div class="pain">"Subo, me tapo. Bajo, me quedo flaco."<span>Y vuelta a empezar cada año</span></div>
+      <div class="pain">"No tengo tiempo con el trabajo."<span>Y las dietas cerradas no duran</span></div>
+      <div class="pain">"Con esta edad ya no lo puedo lograr."<span>Llegas tarde, crees</span></div>
+      <div class="pain">"Bajo 5 kilos y de ahí no paso."<span>Estancado y frustrado</span></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Mi historia">
+  <div class="wrap">
+    <div class="read">
+      <span class="label">Mi historia</span>
+      <h2 style="margin-top:12px">8 años dando <em>vueltas en círculo.</em></h2>
+    </div>
+    <div class="story">
+      <div class="yr">17 años</div><div><p><b>55 kilos, 1,70 y barriga.</b> Flaco y blando a la vez. En la playa pedía las fotos de lado o con camiseta ancha. Ese verano dije: hasta aquí.</p></div>
+      <div class="yr">Año 1</div><div><p><b>Rutina, dieta y cardio copiados de un influencer.</b> Seis días a la semana sin plan. Subí 20 kilos y me creí fuerte.</p></div>
+      <div class="yr">Años 2–8</div><div><p><b>El círculo:</b> un año de volumen comiendo todo lo que pillaba, luego definición pasando hambre. +20, −24. En volumen "qué fuerte estás"; en definición "¿estás enfermo?". Nunca tuve abdominales.</p></div>
+      <div class="yr">2024</div><div><p><b>Dejé de improvisar:</b> plan, datos y alguien que me guiara. Me propuse competir en natural… y llegué al mejor físico de mi vida.</p></div>
+      <div class="yr">Hoy</div><div><p><b>Hago con el PG TEAM lo que me habría ahorrado 8 años.</b> Mi primer cliente fue mi hermano pequeño. Comida variada, sin alimentos prohibidos y sin dietas de culturista.</p></div>
+    </div>
+    <div class="g2" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:26px">
+      <div class="ph">[Foto de Sergio con 17 años]</div>
+      <div class="ph">[Foto en volumen / en definición]</div>
+      <div class="ph">[Foto del DEBUT 2024]</div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" aria-label="El método">
+  <div class="wrap">
+    <div class="read">
+      <span class="label">Método Sin Círculos</span>
+      <h2 style="margin-top:12px">Músculo y menos grasa <em>a la vez.</em></h2>
+      <p class="lede" style="margin-top:18px">No necesitas entrenar más: necesitas entrenar mejor. No necesitas pasar hambre: necesitas un plan que se adapte a tu vida.</p>
+    </div>
+    <div class="pillars">
+      <div class="pil"><span class="n">01</span><h3>Entreno con plan</h3><p>3–4 sesiones bien hechas, cargas registradas y progresión semana a semana.</p></div>
+      <div class="pil"><span class="n">02</span><h3>Comida variada a tu vida</h3><p>Sin alimentos prohibidos ni menús de culturista. La dieta se adapta a ti, no al revés.</p></div>
+      <div class="pil"><span class="n">03</span><h3>Medir y decidir cada semana</h3><p>Fotos, cintura y cargas. Se acabó el "¿subo o bajo?": decidimos con números.</p></div>
+    </div>
+    <div class="phases">
+      <div class="pha"><span class="w">Semanas 1–4</span><h3>Romper el círculo</h3><p>Ordenamos comida y entreno, técnica y punto de partida medido.</p></div>
+      <div class="pha"><span class="w">Semanas 5–16</span><h3>Recomposición</h3><p>La cintura baja mientras las cargas suben. Revisión cada semana.</p></div>
+      <div class="pha"><span class="w">Semanas 17–24</span><h3>Sin depender de mí</h3><p>Aprendes a ajustar solo y decidimos tu siguiente etapa.</p></div>
+    </div>
+    <div class="nn"><b>Lo único que te pido:</b><span>Cargas registradas</span><span>Foto + cintura cada semana</span><span>Proteína y pasos diarios</span></div>
+  </div>
+</section>
+
+<section aria-label="Resultados">
+  <div class="wrap">
+    <span class="label">Resultados del PG TEAM</span>
+    <h2 style="margin-top:12px">Resultados <em>que hablan.</em></h2>
+    <div class="cases">
+      <article class="case"><img src="casos/pablo-2meses.jpg" alt="Antes y después de Pablo tras 2 meses en el PG TEAM" width="900" height="723" loading="lazy"><div class="c"><small>Recomposición · 2 meses</small><b>Pablo</b><span>"Disciplina, trabajo y sobre todo fuerza de voluntad."</span></div></article>
+      <article class="case"><img src="casos/recomp-90dias.jpg" alt="Antes día 1 y después día 90 de un cliente del PG TEAM" width="900" height="1166" loading="lazy"><div class="c"><small>Recomposición · 90 días</small><b>Más músculo, menos grasa</b><span>Entreno inteligente, alimentación equilibrada y hábitos sólidos.</span></div></article>
+      <article class="case"><img src="casos/chica-12dias.jpg" alt="Clienta del PG TEAM, fotos del 3 y del 15 de noviembre de 2025" width="900" height="1339" loading="lazy"><div class="c"><small>Chicas del TEAM · constancia</small><b>12 días cumpliendo</b><span>Mejorando el % graso sin perder rendimiento, y disfrutando.</span></div></article>
+    </div>
+    <p class="note">Boceto: casos sacados de las stories de Sergio, tal y como están publicados. Antes de subir la web: permiso por escrito de cada cliente, confirmar si el caso de 2 meses y el de 90 días son la misma persona (Pablo), y añadir el caso de Virginia (49 años, −11 kg en 2 meses) solo con fotos y permiso.</p>
+  </div>
+</section>
+
+<section aria-label="Para quién es">
+  <div class="wrap">
+    <span class="label">Para quién es</span>
+    <h2 style="margin-top:12px">Esto es para ti <em>si…</em></h2>
+    <div class="fit">
+      <div class="yes"><h3>Sí</h3><ul>
+        <li>Llevas tiempo entrenando y tu físico apenas cambia.</li>
+        <li>Vives entre volúmenes que te tapan y definiciones que te dejan flaco.</li>
+        <li>Trabajas y tienes 3–4 huecos a la semana, no más.</li>
+        <li>Quieres entender lo que haces y no depender de nadie para siempre.</li>
+      </ul></div>
+      <div><h3>No</h3><ul>
+        <li>Buscas bajar barriga en un mes para el verano y olvidarte.</li>
+        <li>Quieres un plan pero no piensas mandar tus revisiones.</li>
+        <li>Buscas atajos o fórmulas mágicas.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Cómo empezar">
+  <div class="wrap">
+    <span class="label">Cómo empezar</span>
+    <h2 style="margin-top:12px">3 pasos. <em>Sin compromiso.</em></h2>
+    <div class="steps3">
+      <div class="st"><span class="n">1</span><h3>Rellenas el formulario</h3><p>2 minutos: tu situación, tus horarios y qué quieres conseguir.</p></div>
+      <div class="st"><span class="n">2</span><h3>Te escribo por WhatsApp</h3><p>En menos de 24 h, para agendar una llamada de 20 minutos.</p></div>
+      <div class="st"><span class="n">3</span><h3>Te digo por dónde empezar</h3><p>En la llamada vemos tu caso y si el PG TEAM encaja contigo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario" aria-label="Formulario">
+  <div class="wrap read">
+    <span class="label">Formulario</span>
+    <h2 style="margin-top:12px">Cuéntame <em>tu caso.</em></h2>
+    <form class="form" id="f" novalidate>
+      <span class="label">Formulario provisional · conectar con el de Sergio</span>
+      <h3>Quiero mi plan de recomposición</h3>
+      <div class="fgrid">
+        <label class="field">Nombre<input name="nombre" autocomplete="given-name" required></label>
+        <label class="field">WhatsApp<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
+        <label class="field">Edad<input name="edad" inputmode="numeric"></label>
+        <label class="field">¿Dónde estás ahora?<select name="fase"><option>En volumen</option><option>En definición</option><option>Ni una ni otra</option><option>Empezando</option></select></label>
+        <label class="field">Días que puedes entrenar<select name="dias"><option>2</option><option selected>3</option><option>4</option><option>5 o más</option></select></label>
+        <label class="field">¿Cuánto llevas entrenando?<select name="tiempo"><option>Menos de 1 año</option><option>1–3 años</option><option>Más de 3 años</option></select></label>
+        <label class="field full">¿Qué te gustaría ver en el espejo en 6 meses?<textarea name="objetivo"></textarea></label>
+      </div>
+      <button class="btn" type="submit">Enviar y que me escriba Sergio</button>
+      <p class="ph-note">Boceto: este formulario no envía nada todavía. Sustituir por el formulario real de Sergio (Tally, Jotform o Google Forms) con utm por canal. Mientras tanto: escríbele RECOMP por Instagram.</p>
+      <p class="ok" id="ok" hidden>Boceto: aquí se enviaría a Sergio. De momento, escríbele RECOMP por Instagram a @sergiopg96.</p>
+    </form>
+  </div>
+</section>
+
+<section aria-label="Preguntas frecuentes">
+  <div class="wrap read">
+    <span class="label">Preguntas frecuentes</span>
+    <h2 style="margin-top:12px">Lo que <em>me preguntan.</em></h2>
+    <div class="faq">
+      <details><summary>¿De verdad se puede ganar músculo y perder grasa a la vez?</summary><p>Sí, sobre todo si llevas tiempo entrenando sin plan, si vuelves después de un parón o si tienes algo de grasa que perder. Es lo que llamamos recomposición: la cintura baja mientras las cargas suben.</p></details>
+      <details><summary>Tengo poco tiempo. ¿Me sirve?</summary><p>Está pensado para eso: 3–4 entrenos a la semana y una versión de 2 entrenos para las semanas malas.</p></details>
+      <details><summary>¿Voy a pasar hambre o comer siempre lo mismo?</summary><p>No. Comida variada, con alimentos que ya comes y sin nada prohibido. Ajustamos cantidades, no tu vida.</p></details>
+      <details><summary>Tengo más de 40. ¿Llego tarde?</summary><p>No. Ajustamos el volumen de entreno y la recuperación a tu edad y a tu trabajo. Una de mis clientas empezó con 49 años.</p></details>
+      <details><summary>¿Es online?</summary><p>[Confirmar con Sergio: online para toda España y presencial en Canarias.] El seguimiento es semanal por app y WhatsApp.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de la modalidad y de tu caso. Te lo explico en la llamada, sin compromiso.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" aria-label="Llamada final">
+  <div class="wrap">
+    <span class="label">Deja de dar vueltas</span>
+    <h2 style="margin-top:12px">Sal del círculo <em>esta semana.</em></h2>
+    <div class="ctas"><a class="btn" href="#formulario">Quiero mi plan</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">PG TEAM · Sergio PG · Entrenador online · Boceto de landing para revisar con Alberto.</div>
+</footer>
+
+<div class="bar"><a class="btn" href="#formulario">Quiero mi plan</a></div>
+
+<script>
+document.getElementById("f").addEventListener("submit", function (e) {
+  e.preventDefault();
+  document.getElementById("ok").hidden = false;
+});
+</script>

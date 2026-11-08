@@ -284,7 +284,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
 
         <div class="grp">
           <div class="gh">Anuncios de seguidores (voz en off) <small id="promoCount"></small></div>
-          <p class="soft" style="font-size:13px">Se promociona la mejor voz en off orgánica de la semana, con su "sígueme". 5–10 € al día, de 5 a 7 días. Si el coste baja de <b>1 € por seguidor</b>, se mantiene; si no, se corta y entra la siguiente ganadora.</p>
+          <p class="soft" style="font-size:13px">Se promociona la mejor voz en off orgánica de la semana, con su "sígueme". 5–10 € al día; se valora a los 2 días. <b>Menos de 1 € por seguidor:</b> se mantiene y se escala. <b>Entre 1 y 1,5 €:</b> cambia el gancho. <b>Más de 1,5 €:</b> se corta y entra la siguiente ganadora.</p>
           <div id="promoList" style="display:grid;gap:8px"></div>
           <button type="button" class="btn ghost small" id="addPromo">+ Añadir anuncio</button>
         </div>
@@ -595,7 +595,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
         '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
       function paint() {
         var c = promoCps(p), sp = row.querySelector("[data-cps]");
-        sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (c < 1 ? " · por debajo de 1 €: mantener" : (num(p.dias) >= 5 ? " · por encima de 1 € tras " + num(p.dias) + " días: cortar" : " · por encima de 1 €: sigue probando hasta 5–7 días"));
+        sp.textContent = c == null ? "€ por seguidor: —" : "€ por seguidor: " + eur(c) + (num(p.dias) < 2 ? " · espera al día 2 para decidir" : (c < 1 ? " · por debajo de 1 €: mantener y escalar hacia 10 €/día" : (c <= 1.5 ? " · entre 1 y 1,5 €: cambia el gancho" : " · por encima de 1,5 € a los " + num(p.dias) + " días: cortar")));
         sp.className = "cps" + (c == null ? "" : (c < 1 ? " ok" : " bad")); promoHead();
       }
       if (!p.decision) p.decision = "Probando";
