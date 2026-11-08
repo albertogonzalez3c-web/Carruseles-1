@@ -130,6 +130,19 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
   h2 { font-size: 20px; }
 }
 @media print { nav.tabs { display: none; } section.view[hidden] { display: grid !important; } body::before { display: none; } }
+
+/* Claude Code editor */
+.cc-code { display: block; font: 500 13px/1.45 ui-monospace, Menlo, Consolas, monospace; background: rgba(127,127,127,.12); border-radius: 8px; padding: 8px 10px; margin: 6px 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+li .cc-code, p .cc-code { display: inline; padding: 1px 6px; margin: 0; }
+
+.ed-g { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ed-list { display: grid; gap: 12px; }
+.ed-pr { gap: 10px; }
+.ed-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.ed-top b { flex: 1 1 180px; min-width: 0; }
+.ed-txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--soft); background: rgba(127,127,127,.08); border-radius: 10px; padding: 12px; margin: 0; max-height: 320px; overflow: auto; }
+@media (max-width: 900px) { .ed-g { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ed-g { grid-template-columns: 1fr; } }
 </style>
 
 <header class="hero">
@@ -157,7 +170,7 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
     <button class="tab" role="tab" aria-selected="false" data-v="yt">YouTube</button>
     <button class="tab" role="tab" aria-selected="false" data-v="sto">Stories</button>
     <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar y trial reels</button>
-    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude como editor</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude Code editor</button>
   </div>
 </nav>
 
@@ -420,48 +433,92 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
   </div>
 </section>
 
-<!-- ============ CLAUDE ============ -->
-<section class="view" id="v-cla" hidden>
-  <div class="card dark">
-    <span class="label" style="color:#ff8a95">Claude como editor</span>
-    <h2>Tu editor de guiones en el bolsillo</h2>
-    <p class="soft">Claude te ayuda a convertir lo que vives en la obra y en el gym en guiones, ganchos y carruseles en 2 minutos. Regla: <b style="color:#fff">Claude propone, tú lo dices con tus palabras.</b> Nunca le pidas cifras ni testimonios que no sean reales, y nunca publiques algo que no dirías tú.</p>
-  </div>
-  <div class="grid2">
-    <div class="card">
-      <span class="label">Paso 1 · Instalar</span>
-      <ul class="clean">
-        <li>Descarga la app <b>Claude</b> (App Store o Google Play) y entra con tu correo.</li>
-        <li>Activa el micrófono: puedes dictarle notas de voz al salir de la obra.</li>
-      </ul>
+<!-- ============ CLAUDE CODE ============ -->
+<section class="view" id="v-cla" hidden aria-label="Claude Code como editor">
+    <div class="sec">
+      <div class="head"><span class="label">Tu editor de vídeo</span><h2>Claude Code como editor: grabas, sueltas el vídeo y Claude te lo edita.</h2><p class="soft">Claude Code es Claude trabajando en tu ordenador: abre tus vídeos, corta silencios, pone subtítulos, saca versiones de gancho y exporta en 9:16. Lo montas una vez y lo vas educando con cada corrección.</p></div>
+      <div class="card dark"><span class="label">La regla</span><ul class="l">
+        <li><b>Claude edita, tú decides.</b> Revisas cada vídeo antes de publicarlo.</li>
+        <li><b>Nunca inventa cifras, resultados ni testimonios</b> en textos ni subtítulos.</li>
+        <li><b>Nunca toca tus originales:</b> 1-sin-editar/ no se borra jamás.</li>
+      </ul></div>
     </div>
-    <div class="card">
-      <span class="label">Paso 2 · Crear el Proyecto "Mi contenido"</span>
-      <ul class="clean">
-        <li>En Claude: <b>Proyectos → Crear proyecto</b> → nombre "Mi contenido".</li>
-        <li>Pega el texto de abajo en <b>Instrucciones del proyecto</b>.</li>
-        <li>Desde ese momento, cada chat dentro del proyecto ya sabe quién eres, cómo hablas y qué vendes.</li>
-      </ul>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 1 · Una sola vez</span><h3>Instala Claude Code y ffmpeg</h3></div>
+      <div class="ed-g">
+        <div class="card"><span class="tag">Mac / Linux</span><b>En la Terminal</b><code class="cc-code">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="copy cc-cp" data-cc="curl -fsSL https://claude.ai/install.sh | bash">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">brew install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Windows</span><b>En PowerShell</b><code class="cc-code">irm https://claude.ai/install.ps1 | iex</code><button type="button" class="copy cc-cp" data-cc="irm https://claude.ai/install.ps1 | iex">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">winget install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Sin terminal</span><b>App de escritorio</b><p class="soft">Descarga la app de escritorio de Claude (claude.ai/download) y usa la pestaña <b>Code</b>.</p></div>
+        <div class="card"><span class="tag">Arrancar</span><b>Abre tu carpeta</b><p class="soft">Abre la terminal en la carpeta Contenido-Jony, escribe <code class="cc-code">claude</code>, inicia sesión con tu cuenta de Claude y acepta el permiso de acceso a la carpeta.</p></div>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="ang" style="padding:0">
-      <div class="top"><span class="fam">Instrucciones del proyecto (pégalas tal cual)</span><button class="copy" id="copyProj">Copiar</button></div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 2</span><h3>Tu carpeta de trabajo</h3></div>
+      <div class="card"><pre class="ed-txt">Contenido-Jony/
+├─ 1-sin-editar/   ← sueltas aquí lo que grabas (nunca se borra)
+├─ 2-editados/     ← Claude guarda aquí lo terminado
+├─ 3-recursos/     ← música, logos, tipografías, b-roll, subtítulos
+├─ 4-referencias/  ← vídeos de creadores que quieres imitar + nota.md
+└─ CLAUDE.md       ← tus instrucciones (abajo)</pre><p class="soft">nota.md en 4-referencias/: una línea por vídeo → &quot;[archivo]: copiar el ritmo de cortes / el estilo de subtítulos / el gancho de los 2 primeros segundos&quot;.</p></div>
     </div>
-    <pre id="proj" style="white-space:pre-wrap;font:500 14px/1.55 var(--f-body);margin:0;background:var(--chip);border-radius:12px;padding:12px 14px"></pre>
-  </div>
-  <div class="card"><h2>Prompts listos</h2><p class="soft">Cópialos dentro del proyecto y rellena lo que va entre [corchetes].</p></div>
-  <div class="angs" id="prompts"></div>
-  <div class="card warn">
-    <span class="label">Reglas con Claude</span>
-    <ul class="clean">
-      <li>Claude propone, tú lo grabas con tus palabras. Si suena a robot, no lo publiques.</li>
-      <li>Nunca le pidas inventar cifras, resultados ni testimonios. Solo datos tuyos reales (144 → 177 → 145 lb, 465 lb, 8 meses) o de clientes con permiso.</li>
-      <li>Nada de estatus migratorio ni temas legales, aunque te lo sugiera.</li>
-      <li>No le pegues datos personales de clientes (nombre completo, teléfono, fotos).</li>
-      <li>Sin prompts de anuncios: tú no pones publicidad.</li>
-    </ul>
-  </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 3</span><h3>Instala las skills que te ha pasado Alberto</h3></div>
+      <div class="card"><ol class="l">
+        <li>Copia la carpeta de skills a <code class="cc-code">~/.claude/skills/</code> (para todos tus proyectos) o a <code class="cc-code">.claude/skills/</code> dentro de Contenido-Jony.</li>
+        <li>Cada skill va en su propia carpeta con su archivo <b>SKILL.md</b> dentro.</li>
+        <li>Abre Claude Code en tu carpeta y escribe <code class="cc-code">/skills</code>: tienen que salir en la lista.</li>
+      </ol></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 4</span><h3>Tu CLAUDE.md: crea este archivo dentro de Contenido-Jony</h3><p class="soft">Claude lo lee cada vez que lo abres en esa carpeta. Retócalo con tus palabras.</p></div>
+      <div class="card chip ed-pr"><div class="ed-top"><span class="tag">CLAUDE.md</span><b>Cópialo tal cual</b><button type="button" class="copy cc-cp" data-cc="# Quién soy&#10;Jony (Jonathan García, @jnyfit._), 19 años, Los Ángeles, trabajo en construcción. &quot;Jony · El coach de los latinos&quot;; serie fija &quot;De la obra al gym&quot;.&#10;&#10;# A quién le hablo (mi nicho)&#10;Latinos en EE. UU. que trabajan duro; sobre todo chavos de 18 a 25 que empiezan o están estancados intentando perder grasa o ganar músculo sin taparse de grasa.&#10;&#10;# Mi método&#10;Método OBRA: Orden, Base, Repeticiones que progresan, Ajustar sin prohibir. Programa OBRA de 12 semanas.&#10;&#10;# Mi tono&#10;Español latino neutro, directo, como con un compa del gym. Frases cortas. Libras y dólares.&#10;&#10;# CTA&#10;&quot;Escríbeme PLAN&quot; por DM.&#10;&#10;# Estilo de edición que quiero&#10;Vida real, rápido y crudo: clips de la obra, el gym y el súper con texto encima; cortes cada 1 s en el gancho; subtítulos grandes en mayúsculas; música de tendencia baja bajo la voz.&#10;Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido).&#10;&#10;# Formatos que hago&#10;voz en off sobre clips míos, rol entrenador (corrigiendo y explicando), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.&#10;&#10;# Antes de editar&#10;- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.&#10;- Usa recursos de 3-recursos/ (música, logos, tipografías, b-roll).&#10;&#10;# Reglas&#10;- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.&#10;- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.&#10;- No inventes cifras, resultados ni testimonios en textos o subtítulos. Si falta un dato, pregúntame.&#10;- No hago anuncios.&#10;- Nunca hables de estatus migratorio, papeles ni temas legales. &quot;Llegar de fuera&quot; = cultura, comida, horarios.&#10;- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.&#10;&#10;# Lecciones aprendidas (añádelas aquí cada vez que te corrija)&#10;- ">Copiar</button></div><pre class="ed-txt"># Quién soy
+Jony (Jonathan García, @jnyfit._), 19 años, Los Ángeles, trabajo en construcción. &quot;Jony · El coach de los latinos&quot;; serie fija &quot;De la obra al gym&quot;.
+
+# A quién le hablo (mi nicho)
+Latinos en EE. UU. que trabajan duro; sobre todo chavos de 18 a 25 que empiezan o están estancados intentando perder grasa o ganar músculo sin taparse de grasa.
+
+# Mi método
+Método OBRA: Orden, Base, Repeticiones que progresan, Ajustar sin prohibir. Programa OBRA de 12 semanas.
+
+# Mi tono
+Español latino neutro, directo, como con un compa del gym. Frases cortas. Libras y dólares.
+
+# CTA
+&quot;Escríbeme PLAN&quot; por DM.
+
+# Estilo de edición que quiero
+Vida real, rápido y crudo: clips de la obra, el gym y el súper con texto encima; cortes cada 1 s en el gancho; subtítulos grandes en mayúsculas; música de tendencia baja bajo la voz.
+Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido).
+
+# Formatos que hago
+voz en off sobre clips míos, rol entrenador (corrigiendo y explicando), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.
+
+# Antes de editar
+- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.
+- Usa recursos de 3-recursos/ (música, logos, tipografías, b-roll).
+
+# Reglas
+- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.
+- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.
+- No inventes cifras, resultados ni testimonios en textos o subtítulos. Si falta un dato, pregúntame.
+- No hago anuncios.
+- Nunca hables de estatus migratorio, papeles ni temas legales. &quot;Llegar de fuera&quot; = cultura, comida, horarios.
+- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.
+
+# Lecciones aprendidas (añádelas aquí cada vez que te corrija)
+- </pre></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 5 · Cada semana</span><h3>Educa a tu editor</h3></div>
+      <div class="card"><ol class="l">
+        <li><b>Graba</b> y suelta los vídeos en 1-sin-editar/.</li>
+        <li><b>Pide la edición</b> con una de las órdenes de abajo.</li>
+        <li><b>Corrige con feedback concreto</b> ("subtítulos más arriba", "corta antes", "menos zoom"), nunca "no me gusta".</li>
+        <li><b>Lo que funcione,</b> cópialo a 4-referencias/ como ejemplo bueno.</li>
+        <li><b>Añade la lección a CLAUDE.md</b> (o pídeselo: orden 8). Cada semana edita más a tu gusto.</li>
+      </ol></div>
+      <div class="ed-list"><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 1</span><b>Editar un reel al estilo de una referencia</b><button type="button" class="copy cc-cp" data-cc="Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes quemados con la palabra clave resaltada y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo.">Copiar</button></div><p class="ed-txt">Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes quemados con la palabra clave resaltada y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 2</span><b>3 versiones de gancho para trial reels</b><button type="button" class="copy cc-cp" data-cc="Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C.">Copiar</button></div><p class="ed-txt">Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 3</span><b>Recortar silencios</b><button type="button" class="copy cc-cp" data-cc="Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después.">Copiar</button></div><p class="ed-txt">Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 4</span><b>Exportar en 9:16</b><button type="button" class="copy cc-cp" data-cc="Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/.">Copiar</button></div><p class="ed-txt">Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 5</span><b>Voz en off sobre b-roll</b><button type="button" class="copy cc-cp" data-cc="Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/, cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre &quot;Escríbeme PLAN&quot; en pantalla. 9:16, a 2-editados/.">Copiar</button></div><p class="ed-txt">Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/, cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre &quot;Escríbeme PLAN&quot; en pantalla. 9:16, a 2-editados/.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 6</span><b>Preparar portada</b><button type="button" class="copy cc-cp" data-cc="Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 con este título grande: &quot;[TÍTULO]&quot;, usando la tipografía de 3-recursos/tipografias/. Guárdala como .jpg al lado del vídeo.">Copiar</button></div><p class="ed-txt">Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 con este título grande: &quot;[TÍTULO]&quot;, usando la tipografía de 3-recursos/tipografias/. Guárdala como .jpg al lado del vídeo.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 7</span><b>Subtítulos .srt + revisión</b><button type="button" class="copy cc-cp" data-cc="Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md.">Copiar</button></div><p class="ed-txt">Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 8</span><b>Aprender de una corrección</b><button type="button" class="copy cc-cp" data-cc="Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: &#x27;subtítulos más arriba&#x27;, &#x27;menos zoom&#x27;, &#x27;cortes más rápidos en el gancho&#x27;]. Corrígelo y, cuando te diga que está bien, añade la lección a la sección &#x27;Lecciones aprendidas&#x27; de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno.">Copiar</button></div><p class="ed-txt">Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: &#x27;subtítulos más arriba&#x27;, &#x27;menos zoom&#x27;, &#x27;cortes más rápidos en el gancho&#x27;]. Corrígelo y, cuando te diga que está bien, añade la lección a la sección &#x27;Lecciones aprendidas&#x27; de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno.</p></div></div>
+    </div>
 </section>
 
 </main>
@@ -681,31 +738,8 @@ details.sc summary small { color: var(--soft); font-size: 13px; }
   $("carC").innerHTML = carHTML(CC, "C");
   $("carV").innerHTML = carHTML(CV, "V");
 
-  /* ---------- Claude ---------- */
-  var PROJ = "Soy Jony (Jonathan García, @jnyfit._), 19 años, vivo en Los Ángeles y trabajo en construcción. Soy \"Jony · El coach de los latinos\". Serie fija: \"De la obra al gym\".\n\n" +
-    "A QUIÉN LE HABLO: latinos en EE. UU. que trabajan duro (construcción, restaurantes, almacenes). Vendo sobre todo a chavos de 18 a 25 que empiezan o están estancados: perfectos de lunes a viernes y atracón el finde, quieren perder la panza o ganar músculo sin taparse de grasa.\n\n" +
-    "MI HISTORIA (datos reales, no inventes otros): empecé con flexiones en mi cuarto a los 15; primer gym a los 17; bulk sucio de 4.000 kcal con mass gainer: de 144 a 177 lb, más grasa que músculo; después definición extrema, hambre, atracones y estancamiento; me dijeron que estaba obsesionado; punto de inflexión: \"me gusta esto, voy a ser paciente y dejar de buscar atajos\". Hoy 145 lb, peso muerto de 465 lb, cambio en 8 meses. Un compañero de la obra me pidió que lo llevara al gym y así empecé a ayudar.\n\n" +
-    "MÉTODO OBRA: Orden (horario, sueño, pasos que encajan con la jornada), Base (calorías y proteína claras sin dieta cerrada, técnica de los básicos, comida latina en porciones), Repeticiones que progresan (cada semana un poco más), Ajustar sin prohibir (fiestas, carne asada y comida fuera sin romper el plan). Programa OBRA de 12 semanas.\n\n" +
-    "MITOS QUE ODIO: los carbos engordan, la grasa se convierte en músculo, cuanto más sudas más quemas, grasa localizada, té verde mágico, la proteína en polvo o la creatina te ponen grande solas, la rutina de tu influencer te va a poner así.\n\n" +
-    "TONO: español latino neutro, directo, como hablo con un compa del gym (\"qué onda\", \"chavos\", \"reventado\", \"lonche\"). Frases cortas. Nada de palabras de España. Libras y dólares. Fe (God first) solo si sale natural.\n\n" +
-    "CTA: siempre \"Escríbeme PLAN por DM\". No tengo link ni landing. No hago anuncios.\n\n" +
-    "REGLAS: nunca inventes cifras, resultados ni testimonios; si falta un dato, pregúntame. Nunca hables de estatus migratorio, papeles ni temas legales: \"llegar de fuera\" es solo cultura, comida, horarios. Sin consejos médicos. Propón y yo lo digo con mis palabras.";
-  $("proj").textContent = PROJ;
-  $("copyProj").addEventListener("click", function () { copyText(PROJ, this); });
-  var PR = [
-    ["Guion corto viral (15 s)", "Escríbeme un guion de reel de 12–15 segundos sobre: [tema o algo que me pasó hoy]. Dame: gancho de los 2 primeros segundos (texto en pantalla + lo que digo), 3–4 tomas con lo que grabo en cada una y el texto encima, y el cierre con \"Escríbeme PLAN\". Que se entienda sin sonido."],
-    ["5 ganchos para trial reels", "Este reel me funcionó: [pega el guion o describe el video y sus views]. Dame 5 ganchos nuevos para el mismo video, uno de cada tipo: número, polémica, identidad (\"si trabajas en construcción…\"), historia y pregunta. Máximo 12 palabras cada uno. Solo datos reales míos."],
-    ["Carrusel de conexión", "Hazme un carrusel de conexión de 7 slides sobre: [momento de mi historia o de mi día en la obra]. Slide 1 portada con frase gancho de 6–9 palabras, una idea por slide (máx. 25 palabras), penúltimo con la lección y el último \"Escríbeme PLAN\". Tono vulnerable pero sin drama. Dime qué foto mía va en cada slide."],
-    ["Carrusel de valor", "Hazme un carrusel de valor de 7 slides sobre: [mito, guía del súper, técnica o letra del método OBRA]. Que sea guardable: lista o pasos claros, sin tecnicismos, con ejemplos de comida latina o del súper de aquí si aplica. Último slide: \"Escríbeme PLAN\"."],
-    ["Caption (descripción)", "Escríbeme la descripción para este post: [pega el guion o el carrusel]. 4–6 líneas: primera línea que enganche, la historia o el consejo ampliado, una pregunta para comentarios y \"Escríbeme PLAN por DM\". Máximo 3 hashtags."],
-    ["Nota de voz → reel", "Te paso lo que dije en una nota de voz al salir de la obra: [pega la transcripción o dicta]. Conviértelo en 2 guiones de reel distintos (uno de 15 s con texto en pantalla y otro de yapping de 30–45 s). Respeta mis palabras y mis expresiones; solo ordénalo y córtalo."],
-    ["Vlog de YouTube \"De la obra al gym\"", "Voy a grabar el vlog de esta semana: [qué hago, qué entreno, qué consejo quiero dar]. Dame: 3 títulos, la idea de miniatura (3 palabras), el gancho de los primeros 20 s y la escaleta por bloques (mañana, obra, gym con 2–3 consejos, cena y reflexión, CTA PLAN). Dime también 5 clips para cortar en reels."],
-    ["Yapping (hablar a cámara)", "Quiero hacer un yapping de 30–60 s sobre: [tema: disciplina, paciencia, familia, comida de casa, ser latino aquí…]. Dame el arranque por el final (la frase más fuerte primero), 3 ideas en viñetas para no leer y el cierre. Nada de guion palabra por palabra: solo la estructura."],
-    ["Rol entrenador (corrección)", "Grabé a [yo / un compa con permiso] haciendo [ejercicio] y el fallo es [lo que veo]. Hazme un reel de corrección de 15 s: gancho (\"estás haciendo mal X si…\"), el error, la corrección en 2–3 claves cortas y el CTA \"Mándame tu video, escríbeme PLAN\". Basado en técnica y en el método OBRA, sin consejos médicos."],
-    ["Revisar mi guion", "Revisa este guion antes de grabar: [pega]. Dime: ¿el gancho para el scroll en 2 s?, ¿hay una sola idea?, ¿suena a mí o a robot?, ¿hay algún dato que no sea real o algo de temas legales que deba quitar? Dame la versión corregida más corta."]
-  ];
-  $("prompts").innerHTML = PR.map(function (x, i) { return '<div class="ang"><div class="top"><span class="fam">Prompt ' + (i + 1) + '</span><button class="copy" data-p="' + i + '">Copiar</button></div><b>' + esc(x[0]) + '</b><small>' + esc(x[1]) + '</small></div>'; }).join("");
-  $("prompts").addEventListener("click", function (e) { var b = e.target.closest("[data-p]"); if (b) copyText(PR[Number(b.dataset.p)][1], b); });
+  /* ---------- Claude Code ---------- */
+  $("v-cla").addEventListener("click", function (e) { var b = e.target.closest("[data-cc]"); if (b) copyText(b.getAttribute("data-cc"), b); });
 
   /* ---------- Guiones ---------- */
   var S = [

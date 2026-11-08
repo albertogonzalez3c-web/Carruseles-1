@@ -1,0 +1,236 @@
+<title>JuanmiBaronFit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+:root{--bg:#0a0b09;--bg2:#121411;--card:#171a15;--line:#262a23;--ink:#f1f4ee;--soft:#a2ab9d;--lime:#c5f018;--lime-d:#a8d10a;--f-head:"Archivo Black","Arial Black",Arial,sans-serif;--f-body:"Inter","Helvetica Neue",Arial,sans-serif;--f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;padding-bottom:84px}
+a{color:inherit}
+.in{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(56px,8vw,96px)}
+.alt{background:var(--bg2)}
+h1,h2,h3{margin:0;font-family:var(--f-head);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(36px,7vw,72px);line-height:.98}
+h2{font-size:clamp(28px,4.4vw,46px);line-height:1.02}
+h3{font-size:19px;line-height:1.15}
+em{font-style:normal;color:var(--lime)}
+p{margin:0}.soft{color:var(--soft)}
+.label{font:600 12px/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.stack{display:grid;gap:16px}.stack-l{display:grid;gap:28px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--lime);color:#0a0b09;font:800 16px/1 var(--f-body);text-decoration:none;padding:17px 24px;border-radius:8px;text-transform:uppercase;letter-spacing:.02em;transition:transform .15s ease,background .15s ease}
+.btn:hover{background:var(--lime-d);transform:translateY(-1px)}
+.btn svg{width:20px;height:20px;flex:none}
+.pend{display:inline-block;font:600 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:#3a3110;color:#f3dc8a;border-radius:4px;padding:5px 7px}
+/* top */
+.top{display:flex;align-items:center;justify-content:space-between;padding-block:18px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font:400 16px/1 var(--f-head);text-transform:uppercase}
+.brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--lime)}
+.top a.small{font:700 13px/1 var(--f-body);text-decoration:none;border:1px solid var(--line);padding:10px 12px;border-radius:6px}
+/* hero */
+.hero{padding-top:clamp(24px,5vw,48px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,48px);align-items:center}
+.hero p.lead{font-size:clamp(17px,2vw,20px);color:#d5dbd0;max-width:560px}
+.proof{display:flex;flex-wrap:wrap;gap:8px 18px;font:600 13px/1.3 var(--f-body);color:var(--soft)}
+.proof span::before{content:"✓ ";color:var(--lime)}
+/* vsl */
+.vsl{position:relative;aspect-ratio:9/16;max-height:640px;width:100%;margin-inline:auto;max-width:360px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000}
+.vsl video,.vsl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vsl .ov{position:absolute;inset:0;display:grid;place-items:center;align-content:end;gap:10px;padding:22px;text-align:center;background:linear-gradient(180deg,rgba(10,11,9,0) 30%,rgba(10,11,9,.92) 100%)}
+.play{width:72px;height:72px;border-radius:50%;background:var(--lime);display:grid;place-items:center;margin-bottom:auto;margin-top:38%;box-shadow:0 0 0 10px rgba(197,240,24,.18)}
+.play svg{width:28px;height:28px;margin-left:4px}
+.vsl .ov strong{font:400 20px/1.1 var(--f-head);text-transform:uppercase}
+/* problem */
+.quote{border-left:3px solid var(--lime);padding:6px 0 6px 16px;font-size:18px}
+/* method */
+.pillar{position:relative;padding-top:58px}
+.pillar .n{position:absolute;top:20px;left:22px;font:400 40px/1 var(--f-head);color:var(--lime)}
+.phase{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start;border-top:1px solid var(--line);padding-top:18px}
+.phase b{font:400 15px/1 var(--f-head);background:var(--lime);color:#0a0b09;padding:8px 10px;border-radius:5px;text-transform:uppercase;white-space:nowrap}
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:grid;min-width:0}
+.case .ph{aspect-ratio:4/5;position:relative;background:repeating-linear-gradient(135deg,#141712 0 14px,#11140f 14px 28px);display:grid;place-items:center;text-align:center;padding:16px}
+.case .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.case .ph .frame{position:absolute;inset:12px;border:1.5px dashed #3c4237;border-radius:8px}
+.case .ph .halves{position:absolute;inset:12px;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.case .ph .halves span{display:grid;place-items:end center;padding-bottom:10px;font:600 11px/1 var(--f-mono);letter-spacing:.12em;color:#5d6657;text-transform:uppercase}
+.case .ph .halves span:first-child{border-right:1.5px dashed #3c4237}
+.case .ph .mid{position:relative;display:grid;gap:8px;justify-items:center;color:#7d8777;font-size:13px}
+.case .ph .mid svg{width:34px;height:34px;opacity:.7}
+.case .body{padding:18px 20px 22px;display:grid;gap:8px}
+.case .kpi{font:400 30px/1 var(--f-head);color:var(--lime);text-transform:uppercase}
+.tst{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px;display:grid;gap:14px;min-width:0}
+.tst p.q{font-size:17px}
+.tst .who{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--soft)}
+.tst .who i{width:36px;height:36px;border-radius:50%;background:#262a23;display:block}
+/* me */
+.me{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,48px);align-items:center}
+.me img{width:100%;max-width:420px;border-radius:12px;display:block;margin-inline:auto;border:1px solid var(--line)}
+/* fit */
+.yes li::marker{content:"✓  ";color:var(--lime)}.no li::marker{content:"✕  ";color:#ff7a7a}
+ul{margin:0;padding-left:22px;display:grid;gap:8px}
+/* steps */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.steps .card::before{counter-increment:s;content:"0" counter(s);font:400 34px/1 var(--f-head);color:var(--lime)}
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--lime);font:400 22px/1 var(--f-head)}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:#d5dbd0}
+.final{text-align:center;display:grid;gap:18px;justify-items:center}
+footer{padding-block:28px;border-top:1px solid var(--line);color:var(--soft);font-size:13px}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(10,11,9,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:12px max(16px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px))}
+.sticky .btn{width:100%;max-width:520px;margin:0 auto;display:flex}
+@media (min-width:900px){.sticky{display:none}body{padding-bottom:0}}
+@media (max-width:860px){.hero-grid,.me{grid-template-columns:minmax(0,1fr)}.cases,.steps,.g3{grid-template-columns:minmax(0,1fr)}.g2{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+
+<!-- BOCETO EN CONDICIONES · Pendientes marcados con [pendiente]. Para poner el VSL: sustituye el bloque .vsl por <video controls playsinline poster="casos/vsl-poster.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video> -->
+
+<header class="in top">
+  <div class="brand"><img src="casos/juanmi-avatar.jpg" alt="Juanmi Barón">JuanmiBaronFit</div>
+  <a class="small" href="https://wa.link/vy3btp" target="_blank" rel="noopener">WhatsApp</a>
+</header>
+
+<section class="hero">
+  <div class="in hero-grid">
+    <div class="stack-l">
+      <span class="label">Entrenador online para hombres +30</span>
+      <h1>¿Años entrenando y <em>ni se nota?</em></h1>
+      <p class="lead">Te ayudo a ponerte fuerte entrenando 3–4 días por semana y a estar definido todo el año <strong>comiendo más, no menos</strong>. Con un método por bloques que pone primero lo que de verdad cambia tu físico.</p>
+      <div><a class="btn" href="https://wa.link/vy3btp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg>Quiero mi plan por WhatsApp</a></div>
+      <div class="proof"><span>Sin vivir en el gym</span><span>Sin vivir a dieta</span><span>Revisión cada semana</span></div>
+    </div>
+    <div class="vsl" aria-label="Vídeo de presentación (próximamente)">
+      <img src="casos/juanmi-fisico.jpg" alt="Juanmi Barón">
+      <div class="ov">
+        <span class="play"><svg viewBox="0 0 24 24" fill="#0a0b09" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>
+        <span class="label">VSL · próximamente</span>
+        <strong>Cómo ordeno tu entreno para que por fin se note</strong>
+        <span class="soft" style="font-size:13px">2 minutos · Mira esto antes de escribirme</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="in stack-l">
+    <div class="stack"><span class="label">¿Te suena?</span><h2>No te faltan ganas. <em>Te falta orden.</em></h2></div>
+    <div class="g2">
+      <p class="quote">"Llevo años yendo al gimnasio y si me quito la camiseta parece que no entreno."</p>
+      <p class="quote">"Cada vez que intento definir, como menos, pierdo fuerza y a las semanas vuelvo a estar igual."</p>
+      <p class="quote">"Entre el trabajo y la familia no puedo ir 6 días. Y cuando voy, hago un poco de todo."</p>
+      <p class="quote">"De lunes a viernes lo hago bien y el finde lo deshago todo."</p>
+    </div>
+    <p class="soft" style="max-width:720px">Pasados los 30 no se entrena como a los 20. El problema casi nunca es la genética ni la edad: es hacer de todo un poco, sin prioridades, y comer cada vez menos esperando que algún día salga el abdomen.</p>
+  </div>
+</section>
+
+<section>
+  <div class="in stack-l">
+    <div class="stack"><span class="label">Método Prioridades</span><h2>Bloques por orden de <em>prioridades</em></h2><p class="soft" style="max-width:720px">Cada sesión, cada semana y cada fase están ordenadas para que lo que más cambia tu físico vaya siempre primero. Si un día solo tienes 30 minutos, lo importante ya está hecho.</p></div>
+    <div class="g3">
+      <div class="card pillar"><span class="n">01</span><h3>Bloques de entreno</h3><p class="soft">Primero fuerza en los básicos, después músculo, al final movilidad y accesorios. Cargas apuntadas y progresión semana a semana.</p></div>
+      <div class="card pillar"><span class="n">02</span><h3>Comer más</h3><p class="soft">Proteína fija, calorías ajustadas a tu vida y opciones para comer fuera y fines de semana. Definir sin vivir a dieta.</p></div>
+      <div class="card pillar"><span class="n">03</span><h3>Ajuste semanal</h3><p class="soft">Revisión cada semana con cargas, fotos y peso. Decidimos con datos qué subir, qué mantener y qué cambiar.</p></div>
+    </div>
+    <div class="stack">
+      <div class="phase"><b>Fase 1 · Base</b><p><strong>Semanas 1–4.</strong> <span class="soft">Técnica, cargas registradas y primeras subidas de fuerza. Tú: 3–4 sesiones y apuntar todo.</span></p></div>
+      <div class="phase"><b>Fase 2 · Construir</b><p><strong>Meses 2–4.</strong> <span class="soft">Más músculo y menos grasa a la vez. Tú: comer lo pautado, también el finde.</span></p></div>
+      <div class="phase"><b>Fase 3 · Definido todo el año</b><p><strong>Meses 5–6 en adelante.</strong> <span class="soft">Bloques cortos de definición y mantenimiento comiendo alto. Tú: sostenerlo sin depender de la motivación.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="casos">
+  <div class="in stack-l">
+    <div class="stack"><span class="label">Casos de éxito</span><h2>Hombres como tú. <em>Resultados reales.</em></h2><p class="soft">Cada caso con su tiempo y lo que cambió. <span class="pend">Fotos pendientes de subir</span></p></div>
+    <div class="cases">
+      <article class="case">
+        <div class="ph"><div class="halves"><span>Antes</span><span>Después</span></div><div class="mid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>Foto del caso pendiente</div></div>
+        <div class="body"><span class="kpi">−7 kg</span><h3>Y su rodilla recuperada</h3><p class="soft">[pendiente: edad, tiempo y qué cambió · permiso del cliente]</p></div>
+      </article>
+      <article class="case">
+        <div class="ph"><div class="halves"><span>Antes</span><span>Después</span></div><div class="mid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>Foto del caso pendiente</div></div>
+        <div class="body"><span class="kpi">Cambio físico real</span><h3>Método + constancia, sin atajos</h3><p class="soft">[pendiente: edad, tiempo y qué cambió · permiso del cliente]</p></div>
+      </article>
+      <article class="case">
+        <div class="ph"><div class="halves"><span>Antes</span><span>Después</span></div><div class="mid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-8 8"/></svg>Foto del caso pendiente</div></div>
+        <div class="body"><span class="kpi">−8 kg</span><h3>En 3 meses</h3><p class="soft">[pendiente: edad y qué cambió · permiso del cliente]</p></div>
+      </article>
+    </div>
+    <div class="g3">
+      <div class="tst"><span class="pend">Testimonio pendiente</span><p class="q">"[Frase literal del cliente sobre cómo estaba antes y cómo está ahora.]"</p><div class="who"><i></i>[Nombre o inicial], [edad] años</div></div>
+      <div class="tst"><span class="pend">Testimonio pendiente</span><p class="q">"[Frase literal del cliente sobre el método o la revisión semanal.]"</p><div class="who"><i></i>[Nombre o inicial], [edad] años</div></div>
+      <div class="tst"><span class="pend">Testimonio pendiente</span><p class="q">"[Frase literal del cliente sobre comer más y seguir definido.]"</p><div class="who"><i></i>[Nombre o inicial], [edad] años</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in me">
+    <img src="casos/juanmi-fisico.jpg" alt="Juanmi Barón, entrenador">
+    <div class="stack">
+      <span class="label">Quién soy</span>
+      <h2>Soy Juanmi. <em>Así estoy todo el año.</em></h2>
+      <p class="soft">Entreno a hombres de más de 30 que llevan años yendo al gimnasio sin que se note. Mi forma de trabajar es la misma que uso conmigo: bloques por orden de prioridades, comer más y revisar cada semana.</p>
+      <p class="soft"><span class="pend">pendiente</span> Tu historia en 3 frases: cuántos años entrenaste sin que se notara, qué cambiaste y desde cuándo entrenas a otros.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="in stack-l">
+    <div class="stack"><span class="label">Para quién es</span><h2>Es para ti si… <em>y no lo es si…</em></h2></div>
+    <div class="g2">
+      <div class="card"><h3>Sí, si…</h3><ul class="yes"><li>Tienes más de 30 y llevas tiempo entrenando sin que se note.</li><li>Puedes entrenar 3–4 días por semana.</li><li>Quieres estar fuerte y definido sin vivir a dieta.</li><li>Estás dispuesto a apuntar tus cargas y mandar tu revisión cada semana.</li></ul></div>
+      <div class="card"><h3>No, si…</h3><ul class="no"><li>Buscas perder 10 kg en un mes.</li><li>Quieres solo una dieta en PDF.</li><li>No vas a seguir el plan ni a revisar nada.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in stack-l">
+    <div class="stack"><span class="label">Cómo funciona</span><h2>Tres pasos para <em>empezar</em></h2></div>
+    <div class="steps">
+      <div class="card"><h3>Escríbeme por WhatsApp</h3><p class="soft">Cuéntame cuánto llevas entrenando y qué quieres cambiar.</p></div>
+      <div class="card"><h3>Llamada de 20 minutos</h3><p class="soft">Te digo qué cambiaría en tu caso y vemos si encaja trabajar juntos.</p></div>
+      <div class="card"><h3>Empiezas el lunes</h3><p class="soft">En 48 h tienes tu plan por bloques, tu pauta y tu primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="in stack-l">
+    <div class="stack"><span class="label">Preguntas frecuentes</span><h2>Lo que me preguntan <em>antes de empezar</em></h2></div>
+    <div class="stack">
+      <details><summary>¿Cuántos días tengo que entrenar?</summary><p>Entre 3 y 4 por semana. Cada sesión va por bloques: si un día vas justo de tiempo, haces lo prioritario y la sesión cuenta.</p></details>
+      <details><summary>¿De verdad se puede definir comiendo más?</summary><p>Sí. Con proteína suficiente, calorías bien ajustadas y entreno de fuerza que progresa, el cuerpo gasta más y conservas músculo. Los déficits van en bloques cortos, solo cuando tocan.</p></details>
+      <details><summary>Tengo molestias en la rodilla / hombro / espalda. ¿Puedo?</summary><p>Adapto los ejercicios a tu caso. Si hay una lesión, primero la valora un fisio o un médico y trabajamos en coordinación. No sustituyo a un profesional sanitario.</p></details>
+      <details><summary>¿Entreno en gimnasio o en casa?</summary><p>El método está pensado para gimnasio. Si entrenas en casa con material, lo adaptamos en la llamada. <span class="pend">confirmar</span></p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de la duración. Te lo explico en la llamada cuando sepa qué necesitas; nada de sorpresas ni permanencias ocultas.</p></details>
+      <details><summary>¿Cómo es el seguimiento?</summary><p>Revisión semanal con cargas, fotos y peso, ajustes en tu plan y WhatsApp directo para dudas y vídeos de técnica.</p></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in final">
+    <span class="label">Tu turno</span>
+    <h2>Que este año <em>sí se note.</em></h2>
+    <p class="soft" style="max-width:560px">Escríbeme por WhatsApp, cuéntame tu caso y vemos si encaja.</p>
+    <a class="btn" href="https://wa.link/vy3btp" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+  </div>
+</section>
+
+<footer><div class="in row" style="display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between"><span>© JuanmiBaronFit · Asesoramiento deportivo</span><a href="https://www.instagram.com/juanmibaronfit/" target="_blank" rel="noopener">@juanmibaronfit</a></div></footer>
+
+<div class="sticky"><a class="btn" href="https://wa.link/vy3btp" target="_blank" rel="noopener">Quiero mi plan por WhatsApp</a></div>

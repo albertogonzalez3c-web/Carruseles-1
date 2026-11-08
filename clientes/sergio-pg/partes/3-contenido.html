@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: cabecera + pestañas fijas (Plan, Ángulos, Guiones, Claude como editor, Grabar bien). Nicho y método Sin Círculos arriba; rampa de 1 a 3 piezas al día con mínimo 3 carruseles a la semana alternando conexión y valor, YouTube 1/semana (vlog), reels de prueba, mucho rol entrenador y casos de recomposición, canal "Diario de un natty". Sin anuncios. Paleta negra, blanca y verde lima del PG TEAM; titulares en Anton. */
+/* Layout: cabecera + pestañas fijas (Plan, Ángulos, Guiones, Claude Code como editor, Grabar bien). Nicho y método Sin Círculos arriba; rampa de 1 a 3 piezas al día con mínimo 3 carruseles a la semana alternando conexión y valor, YouTube 1/semana (vlog), reels de prueba, mucho rol entrenador y casos de recomposición, canal "Diario de un natty". Sin anuncios. Paleta negra, blanca y verde lima del PG TEAM; titulares en Anton. */
 :root {
   --paper: #f4f5f0;
   --white: #ffffff;
@@ -170,11 +170,13 @@ ul.l b, ol.l b { color: var(--ink); }
 :root { --lime: #b7f000; --on-dark: #cfd2c8; }
 h1, h2 { text-transform: uppercase !important; letter-spacing: .005em !important; font-weight: 400 !important; }
 .brand b, .tab, .day .dn, .cs h3.ph { text-transform: none !important; }
+code { font: 500 13px/1.45 var(--f-mono); background: rgba(0,0,0,.07); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.card.dark code { background: rgba(255,255,255,.14); color: #fff; }
 </style>
 <header class="top wrap">
   <span class="label">Sergio PG · Recomposición corporal · Parte 3 · Contenido</span>
   <h1>Pasaste 8 años subiendo y bajando en círculos. Enseña cada día cómo se sale de ahí.</h1>
-  <p class="lede">Para hombres de 20 a 40 que entrenan y siguen igual: flacos con barriga o atrapados entre volúmenes que les tapan y definiciones que les dejan flacos. Tu mensaje: <b>"Si trabajas conmigo, lo primero que vas a dejar de hacer es improvisar."</b> Empiezas con <b>1 pieza al día</b> y subes hasta <b>3 al día</b>. Carruseles <b>mínimo 3 a la semana, alternando conexión y valor</b>. YouTube, 1 vídeo a la semana con tu día a día. Mucho rol de entrenador y muchos casos de recomposición. Sin anuncios: todo orgánico. Tu palabra clave: <b>RECOMP</b>.</p>
+  <p class="lede">Para hombres de 20 a 40 que entrenan y siguen igual: flacos con barriga o atrapados entre volúmenes que les tapan y definiciones que les dejan flacos. Tu mensaje: <b>"Si trabajas conmigo, lo primero que vas a dejar de hacer es improvisar."</b> Empiezas con <b>1 pieza al día</b> y subes hasta <b>3 al día</b>. Carruseles <b>mínimo 3 a la semana, alternando conexión y valor</b>. YouTube, 1 vídeo a la semana con tu día a día. Mucho rol de entrenador y muchos casos de recomposición. Sin anuncios: todo orgánico. Y Claude Code edita tus vídeos en tu ordenador. Tu palabra clave: <b>RECOMP</b>.</p>
 </header>
 
 <nav class="tabs" aria-label="Secciones">
@@ -182,7 +184,7 @@ h1, h2 { text-transform: uppercase !important; letter-spacing: .005em !important
     <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
     <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
     <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
-    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude como editor</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude Code como editor</button>
     <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
   </div>
 </nav>
@@ -238,7 +240,7 @@ h1, h2 { text-transform: uppercase !important; letter-spacing: .005em !important
           <span class="label">El sistema</span>
           <div class="steps">
             <div><p><b>Graba el cuerpo del vídeo una vez:</b> clips entrenando o cocinando + tu voz con la idea principal.</p></div>
-            <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C (texto en pantalla y frase de voz). Claude te escribe las variantes (pestaña "Claude como editor").</p></div>
+            <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C (texto en pantalla y frase de voz). Claude Code te monta las 3 versiones (pestaña "Claude Code como editor").</p></div>
             <div><p><b>Publica las 3 como reel de prueba</b> el mismo día, con unas horas de diferencia.</p></div>
             <div><p><b>A las 24–72 h compara:</b> visualizaciones, % que lo ve entero, compartidos y guardados.</p></div>
             <div><p><b>La ganadora la compartes en tu perfil.</b> Las otras dos se quedan como prueba.</p></div>
@@ -497,31 +499,61 @@ h1, h2 { text-transform: uppercase !important; letter-spacing: .005em !important
   </section>
 
   <!-- CLAUDE -->
-  <section class="view" id="v-cla" hidden aria-label="Claude como editor">
+  <section class="view" id="v-cla" hidden aria-label="Claude Code como editor">
     <div class="sec">
-      <div class="head"><span class="label">Claude como editor</span><h2>Instala la app de Claude y úsala como tu editor de guiones.</h2><p class="soft">No te va a grabar los vídeos, pero te ahorra horas: escribe ganchos, variantes para reels de prueba, captions y carruseles con tu voz. Tú pones la idea y la verdad; Claude te la ordena.</p></div>
+      <div class="head"><span class="label">Claude Code como editor</span><h2>Tu editor de vídeo vive en tu ordenador y aprende tu estilo.</h2><p class="soft">Claude Code es Claude trabajando dentro de tu ordenador: abre tus vídeos en bruto, corta silencios, pone subtítulos, monta las 3 versiones de gancho y te deja todo en una carpeta. Tú grabas; él edita; tú le corriges y aprende. Se instala una vez (30 minutos) y cada semana edita mejor.</p></div>
       <div class="g2">
         <div class="card dark">
-          <span class="label">Cómo montarlo (10 minutos, una vez)</span>
+          <span class="label">1 · Instalarlo (una vez)</span>
           <div class="steps">
-            <div><p><b>Descarga la app de Claude</b> (móvil y ordenador) y crea tu cuenta.</p></div>
-            <div><p><b>Crea un proyecto llamado "Sergio PG · Contenido".</b></p></div>
-            <div><p><b>Pega el bloque "Tu contexto"</b> (abajo) en las instrucciones del proyecto. Así no tienes que explicarle quién eres cada vez.</p></div>
-            <div><p><b>Sube como archivos</b> tu historia, tus guiones que mejor han funcionado y este banco de ángulos (copia y pega).</p></div>
-            <div><p><b>Cada lunes:</b> pídele los guiones de la semana con los prompts de abajo. Revisa, cambia lo que no suene a ti y graba.</p></div>
+            <div><p><b>Instala Claude Code.</b> Mac o Linux: abre la Terminal y pega <code>curl -fsSL https://claude.ai/install.sh | bash</code>. Windows: abre PowerShell y pega <code>irm https://claude.ai/install.ps1 | iex</code>. Si prefieres sin terminal: app de escritorio de Claude, pestaña <b>Code</b>.</p></div>
+            <div><p><b>Inicia sesión</b> con tu cuenta de Claude la primera vez que lo abras (escribe <code>claude</code> en la terminal).</p></div>
+            <div><p><b>Instala ffmpeg</b> (lo que usa para editar vídeo). Mac: <code>brew install ffmpeg</code>. Windows: <code>winget install ffmpeg</code>. O pídeselo a Claude: "instálame ffmpeg".</p></div>
+            <div><p><b>Crea la carpeta</b> "Contenido-Sergio" (abajo) y ábrela con Claude Code: en la terminal, <code>cd</code> a la carpeta y <code>claude</code>. Cuando te pida permiso para acceder a la carpeta, dale que sí.</p></div>
+            <div><p><b>Instala las skills que te pasó Alberto:</b> copia cada carpeta de skill en <code>~/.claude/skills/</code> (en Windows, <code>C:\Users\tu-usuario\.claude\skills\</code>). Comprueba dentro de Claude Code con <code>/skills</code> que aparecen.</p></div>
+            <div><p><b>Crea el archivo CLAUDE.md</b> en la carpeta con el texto de abajo. Es su manual: lo lee cada vez que empieza.</p></div>
           </div>
         </div>
         <div class="card">
-          <h3>Reglas para que no suene a robot</h3>
+          <span class="label">2 · La carpeta "Contenido-Sergio"</span>
           <ul class="l">
-            <li><b>Lee en voz alta</b> todo lo que te dé. Si no lo dirías así en el gym, cámbialo.</li>
-            <li><b>Nunca le dejes inventar datos:</b> ni kilos, ni plazos, ni casos. Solo lo que tú le das.</li>
-            <li><b>Pídele siempre 3 opciones</b> y quédate con la mejor (o mezcla).</li>
-            <li><b>Dale ejemplos tuyos:</b> "escribe como este guion" funciona mejor que cualquier instrucción.</li>
-            <li><b>No pegues datos de clientes</b> (nombres, salud, fotos). Habla de "una clienta de 49 años".</li>
+            <li><b>1-sin-editar/</b> · Lo que grabas tal cual sale del móvil. Pásalo cada día (AirDrop, cable o Drive).</li>
+            <li><b>2-editados/</b> · Lo que te devuelve Claude, listo para subir. Una subcarpeta por semana.</li>
+            <li><b>3-recursos/</b> · Tu logo PG TEAM, tipografías, músicas, plantillas de caso (día 1 / día 90), fotos de tu historia.</li>
+            <li><b>4-referencias/</b> · Vídeos de creadores que quieres imitar, cada uno con una nota al lado (<code>nombre.txt</code>): "copiar el ritmo de cortes", "copiar los subtítulos amarillos", "copiar cómo entra el gancho".</li>
+            <li><b>CLAUDE.md</b> · Tus instrucciones (abajo). Crece cada semana con lo que le corriges.</li>
+          </ul>
+          <p class="soft" style="font-size:13.5px"><b>Nombres de archivo:</b> fecha-formato-ángulo, por ejemplo <code>2025-12-01_yapping_subia-20-bajaba-24.mp4</code>. Así Claude sabe qué es cada cosa y tú lo encuentras.</p>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">3 · Tu CLAUDE.md (cópialo entero en la carpeta)</span>
+        <p id="claudemd" style="background:var(--chip);border-left:4px solid var(--lime);border-radius:4px;padding:12px 14px;font-size:14px;white-space:pre-line;font-family:var(--f-mono)"></p>
+        <button type="button" class="cp" id="cp-claudemd" style="justify-self:start">Copiar CLAUDE.md</button>
+      </div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">4 · Rutina para educarle (cada semana)</span>
+          <div class="steps">
+            <div><p><b>Graba</b> en lote y suelta todo en <code>1-sin-editar/</code> con su nombre.</p></div>
+            <div><p><b>Pídele la edición</b> con una de las órdenes de abajo.</p></div>
+            <div><p><b>Revisa y dale feedback concreto:</b> "los cortes van lentos", "subtítulos más grandes", "el gancho entra tarde". Que lo corrija.</p></div>
+            <div><p><b>Cuando un vídeo quede como quieres, dile:</b> "guarda este como ejemplo y apunta en CLAUDE.md lo que has aprendido". Así no repite el error.</p></div>
+            <div><p><b>Cada domingo:</b> "repasa CLAUDE.md y resume las lecciones de esta semana". En un mes edita como tú.</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Reglas de oro</h3>
+          <ul class="l">
+            <li><b>Nunca borra originales:</b> está en tu CLAUDE.md, pero revisa que los brutos siguen en <code>1-sin-editar/</code>.</li>
+            <li><b>No inventa cifras</b> ni textos de casos: los datos los pones tú.</li>
+            <li><b>Nada de datos de clientes</b> (salud, nombres sin permiso) en vídeos ni en notas.</li>
+            <li><b>Revisa cada vídeo antes de subirlo.</b> Él edita; la última palabra es tuya.</li>
+            <li><b>Si algo falla</b> (ffmpeg, permisos), pégale el error tal cual: "esto me sale, arréglalo".</li>
           </ul>
         </div>
       </div>
+      <div class="head" style="margin-top:6px"><span class="label">5 · Órdenes de ejemplo</span><h2>Copia, pega y cambia el nombre del archivo.</h2></div>
       <div class="g2" id="prompts"></div>
     </div>
   </section>
@@ -579,8 +611,8 @@ h1, h2 { text-transform: uppercase !important; letter-spacing: .005em !important
         <ul class="l">
           <li><b>Sesión 1 (fin de semana, 2 horas):</b> el YouTube de la semana (tu día) + clips para voces en off + 2–3 rol entrenador.</li>
           <li><b>Sesión 2 (entre semana, 45 minutos tras entrenar):</b> yapping, tendencias y green screen.</li>
-          <li><b>Lunes, 30 minutos con Claude:</b> guiones, ganchos y textos de los carruseles de la semana.</li>
-          <li><b>Montaje:</b> las 3 versiones de cada voz en off el mismo día que la grabas. Carruseles en Canva con tu plantilla PG TEAM.</li>
+          <li><b>Edición con Claude Code:</b> sueltas los brutos en <code>1-sin-editar/</code> y le pides la edición; tú solo revisas y corriges.</li>
+          <li><b>Montaje:</b> las 3 versiones de cada voz en off las saca Claude Code el mismo día. Carruseles en Canva con tu plantilla PG TEAM.</li>
         </ul>
       </div>
     </div>
@@ -850,22 +882,58 @@ h1, h2 { text-transform: uppercase !important; letter-spacing: .005em !important
       '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(copyAll) + '">Copiar guion</button></article>';
   }).join("");
 
-  /* ---------- Prompts de Claude ---------- */
-  var CTX = "Eres mi editor de contenido. Soy Sergio PG (@sergiopg96), entrenador online en Canarias, culturista natural (competí en 2024). Ayudo a hombres de 20 a 40 que entrenan y siguen igual —flacos con barriga o atrapados entre volúmenes que les tapan y definiciones que les dejan flacos— a ganar músculo y perder grasa a la vez (recomposición), aunque tengan poco tiempo, crean que llegan tarde o lleven años estancados. Mi método: Sin Círculos (entreno con plan, comida variada a tu vida, medir y decidir cada semana). Mi historia: empecé con 17 años, 55 kg y barriga sin músculo; pasé 8 años subiendo 20 kg en volumen y bajando 24 en definición sin tener abdominales, hasta que dejé de improvisar y competí. Mi frase: \"Si trabajas conmigo, lo primero que vas a dejar de hacer es improvisar.\" Mi palabra clave es RECOMP. Hablo en español de España, cercano, directo, como a un colega del gym, sin palabrotas ni promesas de plazos. Nunca inventes datos, cifras ni casos: si te falta algo, pregúntame.";
+  /* ---------- Claude Code: CLAUDE.md y órdenes ---------- */
+  var CLAUDEMD = [
+    "# Contenido-Sergio · instrucciones para Claude Code",
+    "",
+    "## Quién soy",
+    "Sergio PG (@sergiopg96), entrenador online en Canarias y culturista natural (competí en 2024). Experto en recomposición corporal: ayudo a hombres de 20 a 40 que entrenan y siguen igual —flacos con barriga o atrapados entre volúmenes y definiciones— a ganar músculo y perder grasa a la vez, aunque tengan poco tiempo, crean que llegan tarde o lleven años estancados.",
+    "Método Sin Círculos: entreno con plan, comida variada a tu vida, medir y decidir cada semana.",
+    "Mi historia: empecé con 17 años, 55 kg y barriga sin músculo; 8 años subiendo 20 kg y bajando 24 sin abdominales; dejé de improvisar y competí en natural.",
+    "",
+    "## Tono",
+    "Español de España, cercano y directo, como a un colega del gym. Frases cortas. Sin palabrotas, sin promesas de plazos, sin \"hola chicos\".",
+    "CTA: \"Escríbeme RECOMP\" (captación) o \"Sígueme\" (alcance).",
+    "",
+    "## Estilo de edición",
+    "- Formato vertical 9:16, 1080x1920, 30 fps.",
+    "- Yapping: corta silencios y muletillas, ritmo rápido, zoom suave cada 3–5 s en frases clave.",
+    "- Green screen: el recurso (post, titular, estudio) arriba; yo abajo.",
+    "- Trends: respeta el audio y el ritmo del trend; mi texto encima.",
+    "- Subtítulos siempre: grandes, en blanco con palabra clave en verde lima (#b7f000), 3–5 palabras por línea, centrados en el tercio inferior.",
+    "- Gancho en los 3 primeros segundos con texto en pantalla (máximo 5 palabras).",
+    "- Voz en off: monta 3 versiones del mismo vídeo cambiando solo los 3 primeros segundos (gancho A, B y C) para reels de prueba.",
+    "- Casos: plantilla PG TEAM de 3-recursos (día 1 / día X), fondo negro y verde lima.",
+    "- Mira 4-referencias/ y sus notas antes de editar: copia lo que dicen las notas.",
+    "",
+    "## Reglas",
+    "- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre en copias.",
+    "- Guarda lo editado en 2-editados/AAAA-semana-NN/.",
+    "- Nombres: fecha_formato_angulo.mp4 (ej.: 2025-12-01_yapping_subia-20-bajaba-24.mp4).",
+    "- No inventes cifras, resultados ni textos de casos. Si falta un dato, pregúntame.",
+    "- Nada de datos de clientes (salud, nombres o caras sin permiso). Prozis nunca aparece en los vídeos de captación.",
+    "- Antes de una edición larga, dime en 3 líneas qué vas a hacer.",
+    "",
+    "## Lecciones aprendidas",
+    "(Aquí apuntas lo que te corrijo cada semana. Ejemplo: \"los cortes de yapping, más rápidos: máximo 0,3 s de silencio\".)",
+    "",
+    "## Ejemplos buenos",
+    "(Rutas de vídeos que me encantaron y por qué.)"
+  ].join("\n");
   var PROMPTS = [
-    { t: "1 · Tu contexto (pégalo en el proyecto)", d: "Va en las instrucciones del proyecto. Así Claude sabe quién eres en cada chat.", p: CTX },
-    { t: "2 · Los guiones de la semana", d: "Cada lunes. Te da el calendario con la rampa en la que estés.", p: "Estoy en la etapa de [1 / 2 / 3] piezas al día. Prepárame el contenido de esta semana: [7 / 14 / 21] piezas siguiendo esta mezcla: rol entrenador, casos de recomposición, yapping, green screen, voz en off, tendencia y 3 carruseles alternando conexión y valor (esta semana empiezo por [conexión / valor]). Para cada pieza: día, formato, ángulo, gancho de los 3 primeros segundos y guion de 30–40 segundos con texto en pantalla. Usa mis ángulos: [pega 6–8 ángulos del banco]." },
-    { t: "3 · 3 ganchos para reels de prueba", d: "Para cada voz en off. Publicas las 3 versiones como prueba.", p: "Este es el cuerpo de mi voz en off: [pega el guion]. Escríbeme 3 ganchos distintos para los 3 primeros segundos (máximo 12 palabras cada uno): A en forma de pregunta, B con un dato de mi historia, C con una frase literal de mis clientes (\"es que mi genética es mala\", \"solo consigo bajar 5 kg\", \"no tengo tiempo con el trabajo\", \"con esta edad ya no lo puedo lograr\"). Dame también el texto en pantalla de cada uno (máximo 5 palabras)." },
-    { t: "4 · Carrusel de conexión", d: "Tu historia, tu competición, tu día a día.", p: "Escríbeme un carrusel de CONEXIÓN de 7 slides sobre: [tema, p. ej. \"un año de pollo, arroz, atún y huevo\"]. Slide 1: portada con una frase que pique (máximo 9 palabras). Slides 2–6: la historia en frases cortas, en primera persona, con un momento concreto y lo que sentí. Slide 7: lección + \"Escríbeme RECOMP\". Dame también la caption (máximo 120 palabras) y 3 portadas alternativas." },
-    { t: "5 · Carrusel de valor", d: "Recomposición explicada, errores, guías.", p: "Escríbeme un carrusel de VALOR de 7 slides sobre: [tema, p. ej. \"cómo saber si te toca volumen, definición o recomposición\"]. Slide 1: portada con promesa concreta sin plazos. Slides 2–6: un punto por slide, con ejemplo práctico y nada de tecnicismos sin explicar. Slide 7: resumen + \"Guárdalo y escríbeme RECOMP\". Dame la caption y 3 portadas alternativas." },
-    { t: "6 · Green screen contra un mito", d: "Pega el texto del post o del mito.", p: "Voy a grabar un green screen reaccionando a esto: [pega el post, titular o mito]. Escríbeme un guion de 30–40 s: 0–3 s gancho citando el mito, 3–15 s por qué es falso (con un ejemplo de mi historia si encaja), 15–30 s qué funciona de verdad, 30–40 s cierre \"sígueme\". Tono: respetuoso con quien lo publicó, firme con la idea." },
-    { t: "7 · Caso de recomposición", d: "Sin datos personales ni de salud.", p: "Tengo un caso de cliente con permiso: [edad, situación (trabajo, tiempo), qué le frustraba con sus palabras, cuánto tiempo, qué cambió en fotos/cintura/cargas]. Escríbeme: 1) un reel de 30 s día 1 vs. hoy, 2) un carrusel de 6 slides contado como historia, 3) 3 historias para Instagram. No exageres ni inventes números, no menciones nada de salud y recalca que cada cuerpo va a su ritmo." },
-    { t: "8 · Yapping a partir de una nota de voz", d: "Grabas una nota de voz andando y Claude la ordena.", p: "Te paso la transcripción de una nota de voz mía: [pega]. Conviértela en un yapping de 45 s para hablar a cámara: gancho en la primera frase, una sola idea, frases cortas que pueda decir de memoria, y cierre con \"escríbeme RECOMP\" o \"sígueme\". Mantén mis expresiones; no lo hagas sonar a anuncio." },
-    { t: "9 · El vlog de YouTube", d: "Estructura del vídeo de tu día a día.", p: "Esta semana voy a grabar mi vlog de YouTube sobre: [tema del día, p. ej. \"un día de recomposición: comida, entreno y revisiones\"]. Dame: 3 títulos, la estructura por bloques de 10–15 minutos con un consejo práctico en cada bloque, dónde meter un caso de cliente y el CTA del formulario, la descripción y 4 clips de 30 s que pueda sacar para Instagram." },
-    { t: "10 · Captions e historias CTA", d: "Para martes y viernes.", p: "Escríbeme la secuencia de 5 historias de CTA de esta semana (problema, por qué pasa, prueba, oferta, acción con \"Escríbeme RECOMP\"), usando esta prueba: [caso o mi historia]. Y 3 captions cortas (máximo 60 palabras) para los reels de esta semana: [pega los títulos]." }
+    { t: "Editar un yapping", d: "El formato con el que empiezas.", p: "Edita 1-sin-editar/2025-12-01_yapping_subia-20-bajaba-24.mp4 siguiendo mi CLAUDE.md: corta silencios y muletillas, gancho con texto en los 3 primeros segundos, subtítulos con mi estilo y CTA \"Escríbeme RECOMP\" al final. Guárdalo en 2-editados/ con el mismo nombre." },
+    { t: "3 versiones de gancho (reels de prueba)", d: "Para cada voz en off.", p: "Con 1-sin-editar/2025-12-02_vozenoff_bascula.mp4 monta 3 versiones que solo cambien los 3 primeros segundos: A \"Mismo peso. Distinto cuerpo.\", B \"Solo consigo bajar 5 kg y no paso de ahí\", C \"Si solo miras la báscula, nunca vas a ver tu progreso\". Texto en pantalla de máximo 5 palabras. Guárdalas como _A, _B y _C." },
+    { t: "Green screen contra un mito", d: "Pones la captura del post en 3-recursos.", p: "Monta un green screen con 3-recursos/post-barriga-7-dias.png arriba y mi vídeo 1-sin-editar/2025-12-03_greenscreen_barriga.mp4 abajo. Subtítulos con mi estilo y un texto inicial \"¿Bajar solo la barriga?\"." },
+    { t: "Caso de recomposición", d: "Con fotos y permiso del cliente.", p: "Con las fotos 3-recursos/caso-cliente-dia1.jpg y caso-cliente-dia90.jpg haz un reel de 20 s con mi plantilla PG TEAM: 3 s antes, 3 s después y mi voz de 1-sin-editar/2025-12-04_caso_audio.m4a. Texto: \"Recomposición · 90 días\". No añadas cifras que yo no haya dicho." },
+    { t: "Imitar una referencia", d: "Cuando ves un estilo que te gusta.", p: "Mira 4-referencias/creador-cortes-rapidos.mp4 y su nota. Edita 1-sin-editar/2025-12-05_yapping_no-llegas-tarde.mp4 copiando ese ritmo de cortes y ese estilo de subtítulos, sin copiar su música ni su marca." },
+    { t: "Clips del vlog de YouTube", d: "De 1 vídeo largo salen 3–4 reels.", p: "Del vlog 1-sin-editar/2025-12-07_youtube_un-dia-conmigo.mp4 saca los 4 mejores momentos de 30–40 s en vertical, con subtítulos y un gancho de texto cada uno. Dime de qué minuto sale cada uno y por qué lo elegiste." },
+    { t: "Guardar lo aprendido", d: "Después de corregirle. Así no repite el error.", p: "Este vídeo ya está como quiero. Guárdalo como ejemplo en CLAUDE.md (sección Ejemplos buenos) y apunta en Lecciones aprendidas qué te he corregido hoy, en una línea cada cosa." },
+    { t: "Repaso del domingo", d: "Cada semana, 5 minutos.", p: "Repasa CLAUDE.md y lo que hemos editado esta semana en 2-editados/. Resume en 5 líneas qué ha funcionado, qué te sigo corrigiendo y propón 2 cambios para tu forma de editar la semana que viene." }
   ];
-  $("prompts").innerHTML = PROMPTS.map(function (p, i) {
-    return '<article class="card script"><span class="tag' + (i === 0 ? ' a' : '') + '">' + (i === 0 ? 'Primero' : 'Prompt') + '</span><h3>' + esc(p.t) + '</h3><p class="soft" style="font-size:14px">' + esc(p.d) + '</p><p style="background:var(--chip);border-left:4px solid var(--lime);border-radius:4px;padding:12px 14px;font-size:14.5px;white-space:pre-line">' + esc(p.p) + '</p><button type="button" class="cp" style="justify-self:start" data-cp="' + esc(p.p) + '">Copiar prompt</button></article>';
+  $("claudemd").textContent = CLAUDEMD;
+  $("cp-claudemd").setAttribute("data-cp", CLAUDEMD);
+  $("prompts").innerHTML = PROMPTS.map(function (p) {
+    return '<article class="card script"><span class="tag a">Orden</span><h3>' + esc(p.t) + '</h3><p class="soft" style="font-size:14px">' + esc(p.d) + '</p><p style="background:var(--chip);border-left:4px solid var(--lime);border-radius:4px;padding:12px 14px;font-size:14.5px;white-space:pre-line">' + esc(p.p) + '</p><button type="button" class="cp" style="justify-self:start" data-cp="' + esc(p.p) + '">Copiar orden</button></article>';
   }).join("");
 
   /* ---------- Pestañas ---------- */

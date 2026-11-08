@@ -179,7 +179,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
     <button class="tab" role="tab" aria-selected="false" data-v="cas">Casos de éxito</button>
     <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
     <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
-    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude como editor</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude Code editor</button>
   </div>
 </nav>
 
@@ -519,126 +519,121 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
   </section>
 
   <!-- CLAUDE -->
-  <section class="view" id="v-cla" hidden aria-label="Claude como editor">
+  <section class="view" id="v-cla" hidden aria-label="Claude Code como editor">
         <div class="sec">
-      <div class="head"><span class="label">Claude como editor</span><h2>Claude te propone. Tú lo dices con tus palabras.</h2><p class="soft">Para sostener 2 piezas al día sin quemarte: Claude te hace borradores de guiones, ganchos, carruseles y captions con tu nicho, tu método y tu historia ya cargados. Tú eliges, corriges y grabas. <b>Regla de oro: Claude nunca inventa cifras, clientes ni resultados.</b> Si falta un dato, lo deja entre corchetes y lo pones tú.</p></div>
+      <div class="head"><span class="label">Claude Code como editor</span><h2>Tú grabas. Claude Code edita en tu computador. Tú das el visto bueno.</h2><p class="soft">Para sostener 2 piezas al día sin pasarte la noche editando: Claude Code trabaja dentro de tu carpeta de contenido, corta, subtitula y exporta con ffmpeg siguiendo tu manual (CLAUDE.md). <b>Claude propone, tú decides y lo dices con tus palabras.</b> Nunca inventa cifras y nunca toca tus originales.</p></div>
       <div class="g2">
         <div class="card dark">
-          <span class="label">Configúralo una vez (15 minutos)</span>
-          <ol class="l">
-            <li><b>Instala la app de Claude</b> en el celular y en el computador, y entra con tu cuenta.</li>
-            <li>Ve a <b>Proyectos → Crear proyecto</b> y llámalo <b>"Mi contenido"</b>.</li>
-            <li>En <b>instrucciones del proyecto</b>, pega el texto de la derecha (botón "Copiar").</li>
-            <li>Opcional: sube como archivo del proyecto tus mejores 5 guiones y 3 carruseles, para que copie tu forma de hablar.</li>
-            <li>Cada vez que quieras una pieza, abre un chat dentro de ese proyecto y usa uno de los prompts de abajo.</li>
-          </ol>
+          <span class="label">Configúralo una vez (30–45 minutos)</span>
+          <ol class="l"><li><b>Instala Claude Code.</b> En Mac o Linux, abre la Terminal y pega: <code>curl -fsSL https://claude.ai/install.sh | bash</code>. En Windows, en PowerShell: <code>irm https://claude.ai/install.ps1 | iex</code>. O instala la app de escritorio de Claude y usa la pestaña <b>Code</b>.</li><li><b>Inicia sesión.</b> Escribe <code>claude</code> en la terminal (o abre la pestaña Code) y entra con tu cuenta.</li><li><b>Instala ffmpeg.</b> Es lo que usa Claude para cortar, subtitular y exportar vídeo. Mac: <code>brew install ffmpeg</code>. Windows: <code>winget install ffmpeg</code>. Linux: <code>sudo apt install ffmpeg</code>. O pídeselo a Claude: "instálame ffmpeg".</li><li><b>Crea la carpeta y dale acceso.</b> Crea <b>Contenido-Sebas</b> con 4 subcarpetas: <b>1-sin-editar/</b> (lo que grabas), <b>2-editados/</b> (lo que exporta Claude), <b>3-recursos/</b> (logo, música, fuentes, fotos de clientes con permiso) y <b>4-referencias/</b> (vídeos de creadores a imitar, cada uno con un .txt: qué copiar y qué no). Abre Claude Code dentro de esa carpeta (<code>cd Contenido-Sebas</code> y <code>claude</code>) y acepta darle acceso.</li><li><b>Instala las skills de Alberto.</b> Copia las carpetas de skills que te pasó Alberto en <code>~/.claude/skills/</code> (en Windows, <code>C:\Users\tu-usuario\.claude\skills\</code>). Reinicia Claude Code y escribe <code>/skills</code> para comprobar que aparecen.</li><li><b>Pega tu CLAUDE.md.</b> Crea el archivo <b>CLAUDE.md</b> en la raíz de Contenido-Sebas con el texto de la derecha. Claude lo lee cada vez que abres la carpeta: es su manual de cómo editas tú.</li></ol>
         </div>
         <div class="card">
-          <span class="label">Instrucciones del proyecto "Mi contenido"</span>
-          <pre style="white-space:pre-wrap;font-size:12.5px;line-height:1.45;max-height:340px;overflow:auto;background:var(--chip);padding:12px;border-radius:8px;margin:0">Soy Sebastián Palacios (@spalacios.af), nutricionista y preparador físico. Marca: Autoridad Física. Trabajo online con asesorías 1:1.
+          <span class="label">CLAUDE.md · pégalo en la raíz de Contenido-Sebas</span>
+          <pre style="white-space:pre-wrap;font-size:12.5px;line-height:1.45;max-height:380px;overflow:auto;background:var(--chip);padding:12px;border-radius:8px;margin:0"># Contenido-Sebas · instrucciones para Claude Code
 
-A QUIÉN LE HABLO
-Hombres latinos de 20 a 35 que llevan años entrenando y saben de fitness (conocen RIR, déficit, superávit), pero viven entre volúmenes que los tapan y definiciones que los dejan flacos. Con ropa se ven bien; sin polera, no. Culpan a su genética. Mercado: Chile y Latinoamérica, y latinos que viven en Estados Unidos.
+Soy Sebastián Palacios (@spalacios.af), nutricionista y preparador físico. Marca: Autoridad Física. Tú eres mi editor de vídeo y de contenido en esta carpeta.
 
-MI MÉTODO: EMD · Ejecuta, Mide, Decide
-- Ejecuta: rutina estable con progresión y dieta cerrada con porciones de intercambio que encaja en su horario. No se cambia por impulso.
-- Mide: tendencia de peso, cargas, medidas, fotos y vídeos de técnica. Lo que no se registra no existe.
-- Decide: cada ajuste tiene un motivo y un dato detrás. Volumen o definición se decide con números, no con el espejo.
-Fases: 1) Diagnóstico y base (semanas 1–4), 2) Construcción (meses 2–5), 3) Dirección propia (mes 6).
-No negociables: revisión semanal completa (peso, medidas, fotos, vídeo), cargas registradas en cada sesión, peso diario en ayunas y pasos.
-Sin química. Sin improvisar.
+## A quién le hablo
+Hombres latinos de 20 a 35 que llevan años entrenando y saben de fitness (RIR, déficit, superávit), pero viven entre volúmenes que los tapan y definiciones que los dejan flacos. Con ropa se ven bien; sin polera, no. Culpan a su genética. Mercado: Chile, Latinoamérica y latinos que viven en EE. UU.
 
-MI FRASE: &quot;No necesitas hacer más. Necesitas dejar de improvisar.&quot;
+## Mi método: EMD · Ejecuta, Mide, Decide
+- Ejecuta: rutina estable con progresión y dieta cerrada con porciones de intercambio. No se cambia por impulso.
+- Mide: tendencia de peso, cargas, medidas, fotos y vídeos de técnica.
+- Decide: cada ajuste con un dato detrás. Volumen o definición se decide con números, no con el espejo.
+Frase: &quot;No necesitas hacer más. Necesitas dejar de improvisar.&quot; Sin química. Sin improvisar.
 
-MI HISTORIA (lo que puedes usar)
-- Empecé con 1,80 m y 60–62 kg: flaco, con piernas &quot;como dos palos&quot; y un rollito en la guata. Me daba vergüenza sacarme la polera.
-- Primer volumen: subí 20–22 kg en 4 meses, casi todo grasa, porque creía que había que comer mucho.
-- Después, definiciones extremas (1.800 kcal) con atracones, y volúmenes a 3.800 kcal donde me tapaba.
-- Me titulé de nutricionista y me certifiqué en entrenamiento, y aun así me costaba dirigirme a mí mismo.
-- Mi primera asesoría costaba 25 USD al mes; tenía 12 clientes y casi ninguno cumplía.
-- Hoy hago mi primer volumen de más de 5 meses, medido.
-NO uses: nada de salud mental, problemas familiares, rupturas, ni datos de terceros.
+## Tono
+Español latino neutro, directo, de entrenador a alumno. Frases cortas. Términos técnicos explicados en una línea. Nada de promesas mágicas.
 
-TONO
-Español latino neutro (que lo entienda un chileno y un mexicano en Houston). Directo, cercano, de entrenador a alumno. Frases cortas. Nada de &quot;brutal&quot;, nada de promesas mágicas. Puedo usar palabras técnicas (RIR, déficit) porque mi público las conoce, pero explicadas en una línea.
+## CTA
+- Orgánico: &quot;Escríbeme MÉTODO&quot;.
+- Anuncios (Reels promocionados en EE. UU.): &quot;Sígueme para…&quot;. Sin &quot;¿tienes…?&quot; ni atributos personales del espectador, sin antes/después ni kilos con plazo.
 
-CTA
-- Contenido orgánico: &quot;Escríbeme MÉTODO y te respondo yo.&quot;
-- Anuncios: &quot;Sígueme para…&quot; (nunca venta directa).
+## Formatos (2 piezas al día)
+Reels 9:16 1080x1920 de 20–45 s: rol entrenador, caso de éxito, voz en off (con 3 ganchos para trial reels), yapping, tendencia, green screen. Carruseles 1080x1350: 3 por semana alternando conexión y valor. YouTube 1 por semana (16:9).
 
-REGLAS DE META (anuncios y contenido promocionado)
-- Nunca decirle a quien lo ve lo que le pasa a su cuerpo (&quot;¿tienes grasa abdominal?&quot;, &quot;¿estás gordo?&quot;). Primera persona (&quot;yo entrené años sin cambiar&quot;) o &quot;la mayoría&quot;.
-- Sin antes/después en anuncios ni promesas de kilos con plazo.
+## Estilo de edición
+- Estética oscura (negro, blanco, gris), una palabra clave en azul eléctrico; dorado solo como fondo de una cifra.
+- Gancho en los 3 primeros segundos, texto grande en pantalla desde el segundo 0.
+- Subtítulos siempre, letra condensada en mayúsculas, 2–4 palabras por línea, centrados en el tercio inferior.
+- Cortes cada 2–3 s, sin silencios ni muletillas; música baja por debajo de la voz.
+- Gráficos simples (flechas, cifras, planilla) solo cuando expliquen algo. Nada de efectos de IA llamativos.
 
-REGLAS PARA TI, CLAUDE
-- Tú propones; yo lo digo con mis palabras.
-- Nunca inventes cifras, testimonios, clientes ni resultados. Si falta un dato, déjalo entre [corchetes] para que lo complete yo.
-- Si algo choca con mi nicho o mi método, dímelo.</pre>
-          <button type="button" class="cp" style="justify-self:start" data-cp="Soy Sebastián Palacios (@spalacios.af), nutricionista y preparador físico. Marca: Autoridad Física. Trabajo online con asesorías 1:1.
+## Reglas
+1. Nunca inventes cifras, clientes, resultados ni testimonios. Si falta un dato, escribe [FALTA DATO].
+2. Nunca borres ni sobrescribas nada de 1-sin-editar/. Trabaja sobre copias y guarda en 2-editados/.
+3. Nombres de archivo: AAAA-MM-DD_formato_angulo (ej.: 2026-11-10_voz-en-off_volumen-sin-taparte.mp4).
+4. Antes de editar, dime en 3 líneas qué vas a hacer. Después, qué hiciste y dónde está el archivo.
+5. Si un guion rompe una regla de Meta o promete algo que no puedo demostrar, avísame.
+6. Nada de mi vida personal sensible (salud mental, familia, rupturas) salvo que yo lo escriba.
 
-A QUIÉN LE HABLO
-Hombres latinos de 20 a 35 que llevan años entrenando y saben de fitness (conocen RIR, déficit, superávit), pero viven entre volúmenes que los tapan y definiciones que los dejan flacos. Con ropa se ven bien; sin polera, no. Culpan a su genética. Mercado: Chile y Latinoamérica, y latinos que viven en Estados Unidos.
+## Ejemplos que funcionaron
+(Se van añadiendo: archivo, por qué funcionó, vistas.)
 
-MI MÉTODO: EMD · Ejecuta, Mide, Decide
-- Ejecuta: rutina estable con progresión y dieta cerrada con porciones de intercambio que encaja en su horario. No se cambia por impulso.
-- Mide: tendencia de peso, cargas, medidas, fotos y vídeos de técnica. Lo que no se registra no existe.
-- Decide: cada ajuste tiene un motivo y un dato detrás. Volumen o definición se decide con números, no con el espejo.
-Fases: 1) Diagnóstico y base (semanas 1–4), 2) Construcción (meses 2–5), 3) Dirección propia (mes 6).
-No negociables: revisión semanal completa (peso, medidas, fotos, vídeo), cargas registradas en cada sesión, peso diario en ayunas y pasos.
-Sin química. Sin improvisar.
+## Lecciones
+(Se van añadiendo: lo que corrijo de tus ediciones para no repetirlo.)
+</pre>
+          <button type="button" class="cp" style="justify-self:start" data-cp="# Contenido-Sebas · instrucciones para Claude Code
 
-MI FRASE: &quot;No necesitas hacer más. Necesitas dejar de improvisar.&quot;
+Soy Sebastián Palacios (@spalacios.af), nutricionista y preparador físico. Marca: Autoridad Física. Tú eres mi editor de vídeo y de contenido en esta carpeta.
 
-MI HISTORIA (lo que puedes usar)
-- Empecé con 1,80 m y 60–62 kg: flaco, con piernas &quot;como dos palos&quot; y un rollito en la guata. Me daba vergüenza sacarme la polera.
-- Primer volumen: subí 20–22 kg en 4 meses, casi todo grasa, porque creía que había que comer mucho.
-- Después, definiciones extremas (1.800 kcal) con atracones, y volúmenes a 3.800 kcal donde me tapaba.
-- Me titulé de nutricionista y me certifiqué en entrenamiento, y aun así me costaba dirigirme a mí mismo.
-- Mi primera asesoría costaba 25 USD al mes; tenía 12 clientes y casi ninguno cumplía.
-- Hoy hago mi primer volumen de más de 5 meses, medido.
-NO uses: nada de salud mental, problemas familiares, rupturas, ni datos de terceros.
+## A quién le hablo
+Hombres latinos de 20 a 35 que llevan años entrenando y saben de fitness (RIR, déficit, superávit), pero viven entre volúmenes que los tapan y definiciones que los dejan flacos. Con ropa se ven bien; sin polera, no. Culpan a su genética. Mercado: Chile, Latinoamérica y latinos que viven en EE. UU.
 
-TONO
-Español latino neutro (que lo entienda un chileno y un mexicano en Houston). Directo, cercano, de entrenador a alumno. Frases cortas. Nada de &quot;brutal&quot;, nada de promesas mágicas. Puedo usar palabras técnicas (RIR, déficit) porque mi público las conoce, pero explicadas en una línea.
+## Mi método: EMD · Ejecuta, Mide, Decide
+- Ejecuta: rutina estable con progresión y dieta cerrada con porciones de intercambio. No se cambia por impulso.
+- Mide: tendencia de peso, cargas, medidas, fotos y vídeos de técnica.
+- Decide: cada ajuste con un dato detrás. Volumen o definición se decide con números, no con el espejo.
+Frase: &quot;No necesitas hacer más. Necesitas dejar de improvisar.&quot; Sin química. Sin improvisar.
 
-CTA
-- Contenido orgánico: &quot;Escríbeme MÉTODO y te respondo yo.&quot;
-- Anuncios: &quot;Sígueme para…&quot; (nunca venta directa).
+## Tono
+Español latino neutro, directo, de entrenador a alumno. Frases cortas. Términos técnicos explicados en una línea. Nada de promesas mágicas.
 
-REGLAS DE META (anuncios y contenido promocionado)
-- Nunca decirle a quien lo ve lo que le pasa a su cuerpo (&quot;¿tienes grasa abdominal?&quot;, &quot;¿estás gordo?&quot;). Primera persona (&quot;yo entrené años sin cambiar&quot;) o &quot;la mayoría&quot;.
-- Sin antes/después en anuncios ni promesas de kilos con plazo.
+## CTA
+- Orgánico: &quot;Escríbeme MÉTODO&quot;.
+- Anuncios (Reels promocionados en EE. UU.): &quot;Sígueme para…&quot;. Sin &quot;¿tienes…?&quot; ni atributos personales del espectador, sin antes/después ni kilos con plazo.
 
-REGLAS PARA TI, CLAUDE
-- Tú propones; yo lo digo con mis palabras.
-- Nunca inventes cifras, testimonios, clientes ni resultados. Si falta un dato, déjalo entre [corchetes] para que lo complete yo.
-- Si algo choca con mi nicho o mi método, dímelo.">Copiar instrucciones</button>
+## Formatos (2 piezas al día)
+Reels 9:16 1080x1920 de 20–45 s: rol entrenador, caso de éxito, voz en off (con 3 ganchos para trial reels), yapping, tendencia, green screen. Carruseles 1080x1350: 3 por semana alternando conexión y valor. YouTube 1 por semana (16:9).
+
+## Estilo de edición
+- Estética oscura (negro, blanco, gris), una palabra clave en azul eléctrico; dorado solo como fondo de una cifra.
+- Gancho en los 3 primeros segundos, texto grande en pantalla desde el segundo 0.
+- Subtítulos siempre, letra condensada en mayúsculas, 2–4 palabras por línea, centrados en el tercio inferior.
+- Cortes cada 2–3 s, sin silencios ni muletillas; música baja por debajo de la voz.
+- Gráficos simples (flechas, cifras, planilla) solo cuando expliquen algo. Nada de efectos de IA llamativos.
+
+## Reglas
+1. Nunca inventes cifras, clientes, resultados ni testimonios. Si falta un dato, escribe [FALTA DATO].
+2. Nunca borres ni sobrescribas nada de 1-sin-editar/. Trabaja sobre copias y guarda en 2-editados/.
+3. Nombres de archivo: AAAA-MM-DD_formato_angulo (ej.: 2026-11-10_voz-en-off_volumen-sin-taparte.mp4).
+4. Antes de editar, dime en 3 líneas qué vas a hacer. Después, qué hiciste y dónde está el archivo.
+5. Si un guion rompe una regla de Meta o promete algo que no puedo demostrar, avísame.
+6. Nada de mi vida personal sensible (salud mental, familia, rupturas) salvo que yo lo escriba.
+
+## Ejemplos que funcionaron
+(Se van añadiendo: archivo, por qué funcionó, vistas.)
+
+## Lecciones
+(Se van añadiendo: lo que corrijo de tus ediciones para no repetirlo.)
+">Copiar CLAUDE.md</button>
         </div>
       </div>
       <div class="card acc">
-        <span class="label">Las 4 reglas</span>
-        <ul class="l">
-          <li><b>Claude propone, tú lo dices con tus palabras.</b> Si lees el guion tal cual, se nota.</li>
-          <li><b>Nunca cifras inventadas.</b> Datos de clientes, solo reales y con permiso.</li>
-          <li><b>Revisa siempre las reglas de Meta</b> antes de promocionar algo.</li>
-          <li><b>Tu historia sensible no entra.</b> Lo personal lo cuentas tú, si quieres, sin pasarlo por Claude.</li>
-        </ul>
+        <span class="label">Rutina para educar a Claude · cada semana</span>
+        <ol class="l">
+          <li><b>Grabas</b> en lote y dejas todo en 1-sin-editar/ con un nombre claro.</li>
+          <li><b>Claude edita</b> con una de las órdenes de abajo y exporta en 2-editados/.</li>
+          <li><b>Le das feedback concreto</b>: "subtítulos más grandes", "el gancho entra tarde", "corta este silencio". Nunca "no me gusta".</li>
+          <li><b>Guardas lo aprendido</b>: lo que funcionó va a "Ejemplos" y lo que corregiste a "Lecciones" en tu CLAUDE.md (orden 8). En 3–4 semanas edita como tú.</li>
+          <li><b>Los domingos</b>: pídele que lea tus ejemplos con más vistas y te proponga qué repetir la semana siguiente.</li>
+        </ol>
       </div>
     </div>
     <div class="sec">
-      <div class="head"><span class="label">10 prompts listos</span><h2>Copia, rellena lo que va entre [corchetes] y pega en tu proyecto.</h2></div>
-      <div class="g2">
-<article class="card"><h3>Guion de voz en off (30–45 s)</h3><p class="soft" style="font-size:14px">Escríbeme un guion de voz en off de 30–45 segundos sobre este ángulo: [ángulo]. Estructura: gancho de 0–3 s, desarrollo en 2 bloques con un dato de mi historia o de mi método EMD, y cierre con &quot;Escríbeme MÉTODO&quot;. Añade al lado de cada bloque qué clips debería mostrar (entreno, planilla, balanza, cocina) y el texto en pantalla. Máximo 110 palabras habladas.</p><button type="button" class="cp" style="justify-self:start" data-cp="Escríbeme un guion de voz en off de 30–45 segundos sobre este ángulo: [ángulo]. Estructura: gancho de 0–3 s, desarrollo en 2 bloques con un dato de mi historia o de mi método EMD, y cierre con &quot;Escríbeme MÉTODO&quot;. Añade al lado de cada bloque qué clips debería mostrar (entreno, planilla, balanza, cocina) y el texto en pantalla. Máximo 110 palabras habladas.">Copiar prompt</button></article>
-<article class="card"><h3>5 ganchos para trial reels</h3><p class="soft" style="font-size:14px">Este es el cuerpo de mi reel: [pega el guion]. Dame 5 ganchos distintos para los primeros 3 segundos, cada uno de un tipo: pregunta, frase literal de cliente, dato de mi historia, mito, y &quot;si te pasa X…&quot;. Máximo 12 palabras cada uno. Dime cuáles 3 publicarías como trial reels y por qué.</p><button type="button" class="cp" style="justify-self:start" data-cp="Este es el cuerpo de mi reel: [pega el guion]. Dame 5 ganchos distintos para los primeros 3 segundos, cada uno de un tipo: pregunta, frase literal de cliente, dato de mi historia, mito, y &quot;si te pasa X…&quot;. Máximo 12 palabras cada uno. Dime cuáles 3 publicarías como trial reels y por qué.">Copiar prompt</button></article>
-<article class="card"><h3>Carrusel de conexión</h3><p class="soft" style="font-size:14px">Hazme un carrusel de CONEXIÓN de 7 slides sobre: [historia, vulnerabilidad, caso o creencia]. Slide 1: portada con titular de máximo 8 palabras y una palabra a resaltar en azul. Slides 2–6: una idea por slide, máximo 25 palabras. Slide 7: cierre con &quot;Si te pasa esto, escríbeme MÉTODO&quot;. Usa solo lo que está en mi historia o lo que yo te dé.</p><button type="button" class="cp" style="justify-self:start" data-cp="Hazme un carrusel de CONEXIÓN de 7 slides sobre: [historia, vulnerabilidad, caso o creencia]. Slide 1: portada con titular de máximo 8 palabras y una palabra a resaltar en azul. Slides 2–6: una idea por slide, máximo 25 palabras. Slide 7: cierre con &quot;Si te pasa esto, escríbeme MÉTODO&quot;. Usa solo lo que está en mi historia o lo que yo te dé.">Copiar prompt</button></article>
-<article class="card"><h3>Carrusel de valor</h3><p class="soft" style="font-size:14px">Hazme un carrusel de VALOR de 7 slides sobre: [tema educativo, método, base científica o error]. Portada que pique + 5 slides con un paso o idea concreta cada una (máximo 25 palabras) + cierre &quot;Guárdalo y, si quieres aplicarlo a tu caso, escríbeme MÉTODO&quot;. Si citas evidencia, dilo en general y sin inventar estudios.</p><button type="button" class="cp" style="justify-self:start" data-cp="Hazme un carrusel de VALOR de 7 slides sobre: [tema educativo, método, base científica o error]. Portada que pique + 5 slides con un paso o idea concreta cada una (máximo 25 palabras) + cierre &quot;Guárdalo y, si quieres aplicarlo a tu caso, escríbeme MÉTODO&quot;. Si citas evidencia, dilo en general y sin inventar estudios.">Copiar prompt</button></article>
-<article class="card"><h3>Caption</h3><p class="soft" style="font-size:14px">Escríbeme el caption para esta pieza: [pega el guion o el carrusel]. Primera línea que enganche (máximo 10 palabras), 3–5 líneas cortas que amplíen la idea, y el CTA &quot;Escríbeme MÉTODO&quot;. Sin hashtags de relleno: como mucho 3 relevantes.</p><button type="button" class="cp" style="justify-self:start" data-cp="Escríbeme el caption para esta pieza: [pega el guion o el carrusel]. Primera línea que enganche (máximo 10 palabras), 3–5 líneas cortas que amplíen la idea, y el CTA &quot;Escríbeme MÉTODO&quot;. Sin hashtags de relleno: como mucho 3 relevantes.">Copiar prompt</button></article>
-<article class="card"><h3>Caso de éxito desde los datos</h3><p class="soft" style="font-size:14px">Tengo estos datos reales de un cliente (con su permiso): [edad, años entrenando, contexto, qué había probado, fase que hicimos, cambios en cintura/cargas/fotos, frase literal suya]. Con eso hazme: 1) un guion de reel de caso de éxito de 30–40 s y 2) un carrusel de 7 slides. Usa SOLO estos datos; si falta algo, pon [falta este dato].</p><button type="button" class="cp" style="justify-self:start" data-cp="Tengo estos datos reales de un cliente (con su permiso): [edad, años entrenando, contexto, qué había probado, fase que hicimos, cambios en cintura/cargas/fotos, frase literal suya]. Con eso hazme: 1) un guion de reel de caso de éxito de 30–40 s y 2) un carrusel de 7 slides. Usa SOLO estos datos; si falta algo, pon [falta este dato].">Copiar prompt</button></article>
-<article class="card"><h3>Rol entrenador</h3><p class="soft" style="font-size:14px">Este es un mensaje real de un cliente (sin nombre): [pega el mensaje]. Escríbeme un reel de rol entrenador de 30–40 s donde lo leo y respondo como coach: qué está haciendo mal o bien, qué decidiría yo con mi método EMD y por qué. Cierre con &quot;¿Quieres que revise tu caso así? Escríbeme MÉTODO&quot;.</p><button type="button" class="cp" style="justify-self:start" data-cp="Este es un mensaje real de un cliente (sin nombre): [pega el mensaje]. Escríbeme un reel de rol entrenador de 30–40 s donde lo leo y respondo como coach: qué está haciendo mal o bien, qué decidiría yo con mi método EMD y por qué. Cierre con &quot;¿Quieres que revise tu caso así? Escríbeme MÉTODO&quot;.">Copiar prompt</button></article>
-<article class="card"><h3>Anuncio &quot;sígueme&quot; para EE. UU.</h3><p class="soft" style="font-size:14px">Escríbeme un guion de voz en off de 30 s para un Reel que voy a promocionar como anuncio de seguidores dirigido a hombres latinos de 20 a 35 que viven en Estados Unidos, sobre el ángulo: [ángulo]. Cumple las reglas de Meta del proyecto: primera persona o &quot;la mayoría&quot;, nada de atributos personales del espectador, sin antes/después ni promesas con plazo. Cierre: &quot;Sígueme para…&quot;. Dame 3 ganchos alternativos.</p><button type="button" class="cp" style="justify-self:start" data-cp="Escríbeme un guion de voz en off de 30 s para un Reel que voy a promocionar como anuncio de seguidores dirigido a hombres latinos de 20 a 35 que viven en Estados Unidos, sobre el ángulo: [ángulo]. Cumple las reglas de Meta del proyecto: primera persona o &quot;la mayoría&quot;, nada de atributos personales del espectador, sin antes/después ni promesas con plazo. Cierre: &quot;Sígueme para…&quot;. Dame 3 ganchos alternativos.">Copiar prompt</button></article>
-<article class="card"><h3>Revisión de mi guion</h3><p class="soft" style="font-size:14px">Revisa este guion que escribí yo: [pega tu guion]. Dime: 1) si el gancho para el scroll en 3 s, 2) si se entiende a qué nicho le hablo, 3) qué frase sobra, 4) si rompe alguna regla de Meta o promete algo que no puedo demostrar. Propón una versión mejorada, pero mantén mis palabras donde funcionen.</p><button type="button" class="cp" style="justify-self:start" data-cp="Revisa este guion que escribí yo: [pega tu guion]. Dime: 1) si el gancho para el scroll en 3 s, 2) si se entiende a qué nicho le hablo, 3) qué frase sobra, 4) si rompe alguna regla de Meta o promete algo que no puedo demostrar. Propón una versión mejorada, pero mantén mis palabras donde funcionen.">Copiar prompt</button></article>
-<article class="card"><h3>Semana de contenido</h3><p class="soft" style="font-size:14px">Con mi plan de 2 piezas al día (11 reels + 3 carruseles por semana, alternando conexión y valor, 6 de cada 10 reels de rol entrenador o casos de éxito), propón la semana [A o B] con un ángulo distinto para cada pieza, sacado de mi nicho y mi método EMD. Formato tabla: día, formato, ángulo, gancho.</p><button type="button" class="cp" style="justify-self:start" data-cp="Con mi plan de 2 piezas al día (11 reels + 3 carruseles por semana, alternando conexión y valor, 6 de cada 10 reels de rol entrenador o casos de éxito), propón la semana [A o B] con un ángulo distinto para cada pieza, sacado de mi nicho y mi método EMD. Formato tabla: día, formato, ángulo, gancho.">Copiar prompt</button></article>
-</div></div>
+      <div class="head"><span class="label">8 órdenes listas</span><h2>Copia, cambia lo que va entre [corchetes] y pégalo en Claude Code.</h2></div>
+      <div class="g2"><article class="card"><h3>Editar un reel</h3><p class="soft" style="font-size:14px">Edita 1-sin-editar/[archivo].mp4 como reel 9:16 siguiendo mi CLAUDE.md: quita silencios y muletillas, subtítulos con mi estilo, gancho en pantalla desde el segundo 0 y exporta en 2-editados/ con el nombre fecha_formato_ángulo.</p><button type="button" class="cp" style="justify-self:start" data-cp="Edita 1-sin-editar/[archivo].mp4 como reel 9:16 siguiendo mi CLAUDE.md: quita silencios y muletillas, subtítulos con mi estilo, gancho en pantalla desde el segundo 0 y exporta en 2-editados/ con el nombre fecha_formato_ángulo.">Copiar orden</button></article><article class="card"><h3>3 ganchos para trial reels</h3><p class="soft" style="font-size:14px">Del reel 2-editados/[archivo].mp4 haz 3 versiones cambiando solo los 3 primeros segundos con estos ganchos: A [gancho], B [gancho], C [gancho]. Mismo cuerpo. Exporta las 3 con sufijo -A, -B, -C.</p><button type="button" class="cp" style="justify-self:start" data-cp="Del reel 2-editados/[archivo].mp4 haz 3 versiones cambiando solo los 3 primeros segundos con estos ganchos: A [gancho], B [gancho], C [gancho]. Mismo cuerpo. Exporta las 3 con sufijo -A, -B, -C.">Copiar orden</button></article><article class="card"><h3>Voz en off sobre clips</h3><p class="soft" style="font-size:14px">Monta una voz en off con el audio 1-sin-editar/[voz].m4a sobre los clips 1-sin-editar/[clips]. Cortes cada 2–3 s, subtítulos, la palabra clave en azul y cierre con el texto &quot;ESCRÍBEME MÉTODO&quot;.</p><button type="button" class="cp" style="justify-self:start" data-cp="Monta una voz en off con el audio 1-sin-editar/[voz].m4a sobre los clips 1-sin-editar/[clips]. Cortes cada 2–3 s, subtítulos, la palabra clave en azul y cierre con el texto &quot;ESCRÍBEME MÉTODO&quot;.">Copiar orden</button></article><article class="card"><h3>Caso de éxito</h3><p class="soft" style="font-size:14px">Con las fotos de 3-recursos/[cliente]/ (tengo su permiso) y esta frase literal suya: &quot;[frase]&quot;, monta un reel de caso de éxito de 30 s siguiendo la plantilla de mi CLAUDE.md. No añadas ningún dato que no te haya dado.</p><button type="button" class="cp" style="justify-self:start" data-cp="Con las fotos de 3-recursos/[cliente]/ (tengo su permiso) y esta frase literal suya: &quot;[frase]&quot;, monta un reel de caso de éxito de 30 s siguiendo la plantilla de mi CLAUDE.md. No añadas ningún dato que no te haya dado.">Copiar orden</button></article><article class="card"><h3>Copiar una referencia</h3><p class="soft" style="font-size:14px">Mira 4-referencias/[video].mp4 y su nota. Dime en 5 puntos qué hace con el ritmo, los textos y los cortes, y aplica solo lo que encaje con mi estilo a 1-sin-editar/[archivo].mp4.</p><button type="button" class="cp" style="justify-self:start" data-cp="Mira 4-referencias/[video].mp4 y su nota. Dime en 5 puntos qué hace con el ritmo, los textos y los cortes, y aplica solo lo que encaje con mi estilo a 1-sin-editar/[archivo].mp4.">Copiar orden</button></article><article class="card"><h3>Clips desde YouTube</h3><p class="soft" style="font-size:14px">Del vídeo largo 1-sin-editar/[youtube].mp4 sácame los 4 mejores momentos de 20–40 s para reels: dime los minutos, por qué cada uno y expórtalos en 9:16 con subtítulos.</p><button type="button" class="cp" style="justify-self:start" data-cp="Del vídeo largo 1-sin-editar/[youtube].mp4 sácame los 4 mejores momentos de 20–40 s para reels: dime los minutos, por qué cada uno y expórtalos en 9:16 con subtítulos.">Copiar orden</button></article><article class="card"><h3>Revisión antes de publicar</h3><p class="soft" style="font-size:14px">Revisa todo lo que hay hoy en 2-editados/: dime si algún gancho tarda más de 3 s, si hay subtítulos mal, si alguno rompe reglas de Meta o promete algo que no puedo demostrar. No cambies nada sin preguntarme.</p><button type="button" class="cp" style="justify-self:start" data-cp="Revisa todo lo que hay hoy en 2-editados/: dime si algún gancho tarda más de 3 s, si hay subtítulos mal, si alguno rompe reglas de Meta o promete algo que no puedo demostrar. No cambies nada sin preguntarme.">Copiar orden</button></article><article class="card"><h3>Guardar una lección</h3><p class="soft" style="font-size:14px">Esta edición quedó mejor que las anteriores porque [motivo]. Añádelo a la sección Ejemplos de mi CLAUDE.md, y añade a Lecciones: [lo que corregí].</p><button type="button" class="cp" style="justify-self:start" data-cp="Esta edición quedó mejor que las anteriores porque [motivo]. Añádelo a la sección Ejemplos de mi CLAUDE.md, y añade a Lecciones: [lo que corregí].">Copiar orden</button></article></div>
+    </div>
   </section>
 
   <!-- GRABAR -->
