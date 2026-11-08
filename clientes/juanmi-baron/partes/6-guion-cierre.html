@@ -1,0 +1,304 @@
+<title>Juanmi Guion de cierre</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: guion de cierre imprimible de Juanmi Barón; de la pre-llamada por WhatsApp al onboarding, una columna de lectura con frases literales en recuadro y botón de copiar. Negro + lima. */
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --sand: #ebebe8;
+  --sand-line: #d6d6d3;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --gold: #4d7c0f;
+  --gold-text: #3f6212;
+  --chip: #ededeb;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: clamp(28px, 5vw, 52px) max(16px, env(safe-area-inset-right, 0px)) 70px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 18px; }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.5vw, 54px)/1 var(--f-head); letter-spacing: 0; text-transform: uppercase; }
+h2 { font: 700 26px/1.12 var(--f-head); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: space-between; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: #fff; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: #fff; }
+.card.dark .label { color: #bef264; }
+.card.dark ul.l, .card.dark ul.l b { color: #e2e2e2; }
+.cs { padding: 22px clamp(18px, 3vw, 28px); gap: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 4px solid var(--gold); border-radius: 10px; padding: 11px 14px; font-size: 15px; font-weight: 600; }
+.say.placeholder { border: 1.5px dashed var(--gold); border-left-width: 4px; }
+.say .cpy { all: unset; cursor: pointer; float: right; margin: -2px -4px 4px 10px; font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .04em; padding: 6px 8px; border-radius: 8px; background: var(--white); box-shadow: inset 0 0 0 1px var(--sand-line); color: var(--ink); }
+.say .cpy:focus-visible { outline: 3px solid var(--ink); }
+.cs h3.ph { font: 700 25px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--sand-line); }
+.cs h4 { margin: 4px 0 0; font: 700 15.5px/1.3 var(--f-body); color: var(--gold-text); }
+.tw { overflow-x: auto; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+.ctab th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 8px 10px; background: var(--chip); }
+.ctab td { padding: 9px 10px; border-top: 1px solid var(--sand-line); vertical-align: top; }
+.note { background: var(--white); border: 1.5px dashed var(--sand-line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; font-size: 14px; }
+.check-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14.5px; }
+.objs { display: grid; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; margin-top: 10px; font-size: 14.5px; }
+.obj > b { font-size: 15px; }
+.obj .say { display: block; margin: 0 0 6px; }
+@media (max-width: 640px) { .grid2, .obj { grid-template-columns: 1fr; } }
+@media print {
+  @page { margin: 14mm 12mm; }
+  body { background: #fff; font-size: 11.5pt; }
+  .wrap { padding: 0; max-width: none; gap: 10px; }
+  .noprint, .say .cpy { display: none !important; }
+  .card, .cs { padding: 0; border-radius: 0; background: #fff !important; }
+  .card.sand, .card.dark, .note { background: #fff !important; color: #000 !important; border: 1px solid #bbb; padding: 10px 12px; border-radius: 6px; }
+  .card.dark .label, .card.dark ul.l { color: #000 !important; }
+  .say { background: #fff; border: 1px solid #c9c9c6; border-left: 4px solid #4d7c0f; break-inside: avoid; }
+  .cs h3.ph { break-after: avoid; }
+  h4 { break-after: avoid; }
+  .obj, table, .grid2 > * { break-inside: avoid; }
+  .tw { overflow: visible; }
+  .ctab { min-width: 0; }
+  a { color: #000; }
+}
+
+/* Juanmi: Inter Tight, sin mayúsculas forzadas */
+h1, h2, h3, .brand b, .cs h3.ph, .tab, .day .dn { text-transform: none !important; }
+h1 { letter-spacing: -.025em !important; }
+</style>
+
+<main class="wrap">
+  <header class="top">
+    <div style="display:grid;gap:8px">
+      <span class="label">JuanmiBaronFit · Entrenador de hombres +30 · Material de mentoría</span>
+      <h1>Guion de llamada de cierre</h1>
+      <p class="soft">Para hombres de más de 30 que llevan años entrenando y ni se nota. Todo el proceso: pre-llamada por WhatsApp, llamada, objeciones, cobro y onboarding.</p>
+    </div>
+    <button type="button" class="btn noprint" id="printBtn">Imprimir o guardar en PDF</button>
+  </header>
+      <article class="card cs" id="cierre">
+        <span class="label">Proceso de cierre · de WhatsApp al pago</span>
+        <h2>Guion de cierre: preparas por WhatsApp, cualificas, escuchas, resumes, propones y cierras.</h2>
+        <p class="soft">Tu cliente es un hombre de más de 30 que lleva años entrenando: sabe lo básico, ha probado cosas y desconfía de los vendedores. No le convences hablando, le convences entendiendo su caso mejor que nadie. Orden fijo. Hablas tú el 30 % del tiempo como mucho. Las frases en recuadro son casi literales: dilas con tus palabras, pero no te saltes ninguna.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Fase</th><th>Objetivo</th><th>Tiempo</th></tr></thead>
+          <tbody>
+            <tr><td>0 · Pre-llamada por WhatsApp</td><td>Que llegue cualificado, caliente y sin sorpresas</td><td>Antes</td></tr>
+            <tr><td>1 · Conexión + Autoridad</td><td>Bajar defensas y liderar la llamada</td><td>4 min</td></tr>
+            <tr><td>2 · Descubrimiento</td><td>Dolor, intentos, frenos, deseo y urgencia</td><td>18 min</td></tr>
+            <tr><td>2.5 · Resumen + Validación</td><td>Que se sienta entendido</td><td>2 min</td></tr>
+            <tr><td>3 · Propuesta + Precio</td><td>Solo lo que resuelve su caso</td><td>6 min</td></tr>
+            <tr><td>4 · Objeciones + Cierre</td><td>Aclarar, aislar, solucionar y cobrar</td><td>10 min</td></tr>
+            <tr><td>5 · Onboarding</td><td>Que empiece en 24 h y no se arrepienta</td><td>Después</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3 class="ph">Fase 0 · Pre-llamada por WhatsApp</h3>
+        <p class="soft">Tu WhatsApp está en la bio: la mayoría te escribirá por ahí. La venta empieza aquí, no en la llamada.</p>
+        <h4>Cualificación en 4 mensajes</h4>
+        <ul class="l">
+          <li><b>Situación:</b> "¿Cuántos años tienes y cuánto llevas entrenando?"</li>
+          <li><b>Cómo entrena:</b> "¿Cuántos días vas y sigues algún plan o vas un poco a lo que toca?"</li>
+          <li><b>Qué quiere:</b> "¿Qué te gustaría cambiar: fuerza, la barriga, que se note más el entreno…?"</li>
+          <li><b>Por qué ahora:</b> "¿Qué ha hecho que me escribas justo ahora?"</li>
+        </ul>
+        <p class="say">"Por lo que me cuentas, te pasa lo mismo que a la mayoría de mis clientes antes de empezar: entrenas, pero sin orden, y comes poco entre semana para compensar el finde. ¿Lo vemos en una llamada de 30–40 minutos y te digo qué haría en tu caso? ¿Te viene mejor [día] a las [hora] o [día] a las [hora]?"</p>
+        <p class="soft">Siempre dos opciones, máximo 2–3 días vista. <b>No encaja</b> si busca un milagro en 4 semanas, no puede entrenar ni 3 días o necesita un tratamiento médico antes: díselo con respeto y no le agendes.</p>
+        <h4>Del agendado a la llamada</h4>
+        <ul class="check-l">
+          <li>☐ <b>Al agendar:</b> confirmación + un caso parecido al suyo (con permiso) + audio corto tuyo: "gracias por la confianza, nos vemos el [día]".</li>
+          <li>☐ <b>Le pides 2 cosas:</b> "Si puedes, mándame antes de la llamada una foto de cómo entrenas ahora (tu rutina) y qué comiste ayer. Así voy al grano."</li>
+          <li>☐ <b>Si tiene pareja e hijos:</b> "Si quieres que esté tu pareja, perfecto." Evita el "lo hablo con mi mujer" al final.</li>
+          <li>☐ <b>El día de la llamada:</b> 3 líneas de tu metodología + "llévate papel y boli".</li>
+          <li>☐ <b>1 hora antes:</b> recordatorio con el enlace.</li>
+        </ul>
+
+        <div class="card sand">
+          <h3>Antes de la llamada (5 min, obligatorio)</h3>
+          <ul class="check-l">
+            <li>☐ Lee su ficha del CRM y lo que te mandó: rutina, comidas, edad, trabajo, familia, lesiones.</li>
+            <li>☐ Apunta <b>una frase literal suya</b> para el resumen ("llevo años y ni se nota", "el finde lo tiro todo", "la rodilla no me deja").</li>
+            <li>☐ Elige <b>el caso</b> que más se parece a él (rodilla, −8 kg en 3 meses, años estancado).</li>
+            <li>☐ Mira tu <b>nivel de precios actual</b> en la pestaña Clientes del CRM y ten abierto el <b>enlace de pago</b>.</li>
+            <li>☐ Cámara a la altura de los ojos, buena luz, móvil en silencio. A la hora en punto.</li>
+          </ul>
+        </div>
+
+        <h3 class="ph">Fase 1 · Conexión + Autoridad (4 min)</h3>
+        <h4>Small talk (uno o dos)</h4>
+        <ul class="l">
+          <li>"¿Qué tal, vienes del trabajo? ¿A qué te dedicas?"</li>
+          <li>"¿Has entrenado hoy?"</li>
+          <li>"Vi que me escribiste por el reel de [tema]. ¿Qué te hizo clic?"</li>
+        </ul>
+        <h4>Marco de autoridad (casi literal)</h4>
+        <p class="say">"Te cuento cómo va esto. Primero te hago unas preguntas para entender bien tu caso: cómo entrenas, cómo comes y qué te ha pasado hasta ahora. Si veo que te puedo ayudar, te explico cómo trabajo y vemos si tiene sentido. Y si veo que no es para ti, te lo digo igual. ¿Te parece?"</p>
+        <p class="soft">Espera el sí. <b>Errores:</b> hablar de ti antes de saber nada de él, alargar el small talk o empezar a explicar el programa.</p>
+
+        <h3 class="ph">Fase 2 · Descubrimiento (18 min)</h3>
+        <p class="soft">Aquí se gana la venta. Preguntas, escuchas, apuntas sus palabras y aguantas silencios de 5 segundos. Todavía no das soluciones.</p>
+        <h4>2.1 Dolor</h4>
+        <p class="say">"¿Por qué has decidido coger esta llamada ahora y no hace un año?"</p>
+        <ul class="l">
+          <li>¿Cuántos años llevas entrenando? ¿Y cuánto hace que no notas cambios?</li>
+          <li>¿Qué es lo que más te molesta cuando te miras? (la barriga, que con camiseta no se nota, la fuerza estancada…)</li>
+          <li>Ponme un ejemplo reciente: una foto, la playa, una camisa, un comentario.</li>
+          <li>¿Cómo comes de lunes a viernes? ¿Y el fin de semana?</li>
+          <li>¿Tienes alguna molestia o lesión que te limite?</li>
+        </ul>
+        <p class="soft">Si contesta en superficie ("nada, quiero definirme"):</p>
+        <p class="say">"Te lo pregunto porque cuanto mejor entienda tu caso, mejor te voy a poder ayudar. Tómate tu tiempo."</p>
+        <p class="soft">Quédate con <b>un dolor principal</b> y apúntalo en el CRM con sus palabras.</p>
+        <h4>2.2 Intentos</h4>
+        <p class="say">"Seguro que ya lo has intentado. Cuéntame uno o dos intentos serios y qué no funcionó."</p>
+        <ul class="l"><li>¿Qué falló exactamente? ¿Cuánto te duró? ¿Por qué lo dejaste?</li></ul>
+        <p class="soft">Lo típico en tu cliente: dietas muy estrictas que no aguanta, más cardio para compensar, rutinas de 6 días que no le caben, entrenador que le pasaba un PDF y no le revisaba. Apúntalo: lo usas en la fase 3.</p>
+        <h4>2.3 Frenos</h4>
+        <p class="say">"Imagínate que empiezas hoy con un entrenador, no hace falta que sea yo. ¿Qué miedo o qué duda te vendría?"</p>
+        <p class="soft">Apunta el miedo literal ("no voy a tener tiempo", "lo dejo a las 3 semanas", "la rodilla", "no quiero vivir a dieta").</p>
+        <h4>2.4 Deseo y urgencia</h4>
+        <p class="say">"¿Qué tendría que pasar en 3 meses y en 6 para que digas: esto funciona?"</p>
+        <ul class="l">
+          <li>Y cuando lo consigas, ¿qué cambia? (verse bien sin camiseta, fuerza, energía con los niños, la analítica…)</li>
+          <li>Del 1 al 10, ¿cómo de importante es solucionarlo ya? Si da menos de 7: "¿Qué haría falta para que fuera un 9?"</li>
+        </ul>
+        <p class="say">"Si fueras a contratar a alguien para esto, ¿a qué una o dos cosas le darías más importancia?"</p>
+
+        <h3 class="ph">Fase 2.5 · Resumen + Validación (2 min)</h3>
+        <p class="say">"A ver si lo he pillado. Llevas [años] entrenando y [su frase literal]. Has probado [intento] y no funcionó porque [motivo]. Lo que quieres es [deseo] y lo que más te preocupa es [miedo]. ¿Me dejo algo?"</p>
+        <p class="say">"Te voy a ser sincero: sí creo que te puedo ayudar. Lo que te pasa es lo más común en hombres de más de 30 que entrenan: no te falta constancia, te falta orden y comer bien. Te explico en cinco minutos cómo lo haríamos y luego me dices qué dudas te quedan, ¿vale?"</p>
+        <p class="soft">Si <b>no</b> es para él, díselo aquí. Cumplir el marco te da credibilidad.</p>
+
+        <h3 class="ph">Fase 3 · Propuesta + Precio (6 min)</h3>
+        <h4>Qué es (20 segundos)</h4>
+        <p class="say">"Ayudo a hombres de más de 30 que llevan años entrenando y ni se nota a ponerse fuertes sin vivir en el gym y a estar definidos todo el año comiendo más."</p>
+        <h4>Método en 2 minutos · Metodología JuanmiBaronFit</h4>
+        <p class="soft">Empieza por el pilar que más le importa (lo dijo en la 2.4) y aterrízalo con SU rutina y SU comida.</p>
+        <ul class="l">
+          <li><b>Pilar 1 · Bloques por orden de prioridades:</b> "Tus [días] sesiones, de 60 minutos, ordenadas: primero lo que más te hace progresar, cuando estás fresco. Lo accesorio, al final o fuera. Con tu horario lo haríamos así: [ejemplo]."</li>
+          <li><b>Pilar 2 · Comer más y estar definido:</b> "Dejas de vivir a dieta: más comida entre semana, proteína en cada comida y margen para el finde. Pierdes grasa pasando menos hambre."</li>
+          <li><b>Pilar 3 · Fuerza que se sostiene:</b> "Cargas apuntadas que suben cada semana, técnica primero, y si hay molestia [rodilla/espalda] se adapta, no se para. Y te reviso cada semana."</li>
+        </ul>
+        <p class="soft"><b>3 no negociables:</b> 3–4 sesiones ordenadas, proteína en cada comida y revisión semanal. [Confirmar con Juanmi qué incluye exactamente: app, revisiones, WhatsApp, videollamadas.]</p>
+        <h4>Resuelve el miedo de la 2.3</h4>
+        <p class="say">"Antes me dijiste que te preocupaba [miedo literal]. Justo por eso lo planteamos así: [solución concreta]."</p>
+        <h4>Caso parecido</h4>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Caso</th><th>Qué contar</th><th>Úsalo cuando el lead…</th></tr></thead>
+          <tbody>
+            <tr><td>−7 kg y su rodilla recuperada</td><td>Bajó 7 kg sin dejar de entrenar adaptando la pierna a su rodilla. [Confirmar tiempo y detalles.]</td><td>Tiene una molestia o lesión y cree que tiene que parar.</td></tr>
+            <tr><td>−8 kg en 3 meses</td><td>8 kilos menos en 3 meses sin vivir a dieta. [Confirmar punto de partida.]</td><td>Quiere perder la barriga y ha fracasado con dietas.</td></tr>
+            <tr><td>Cambio físico real</td><td>Método, constancia y sin atajos. [Confirmar datos.]</td><td>Lleva años estancado y duda de que a su edad se pueda.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="say placeholder">"[Cliente, con permiso]: llegó con [edad] años y [situación]. En [meses] meses [resultado real]. Lo que más le costó fue [x]."</p>
+        <h4>El precio: así se presenta</h4>
+        <p class="soft">Siempre en este orden. Mira tu nivel actual en la pestaña Clientes del CRM. Precios en <b>propuesta</b>: confírmalos con Alberto.</p>
+        <ol class="l">
+          <li><b>Primero el semestre</b>, como lo normal: "Lo que recomiendo es el semestre: en 3 meses ordenas y empiezas a ver cambios, pero el físico que se mantiene se construye en 6."</li>
+          <li><b>El año, como mejor valor:</b> "Si quieres asegurarte de llegar al verano siguiente ya definido, el año te sale mucho mejor."</li>
+          <li><b>Trimestre solo como último recurso.</b></li>
+        </ol>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Semestre en 2 pagos</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>350 €</td><td>600 €</td><td>1.100 €</td><td>315 + 315 €</td></tr>
+            <tr><td>1</td><td>420 €</td><td>720 €</td><td>1.320 €</td><td>380 + 380 €</td></tr>
+            <tr><td>2</td><td>505 €</td><td>865 €</td><td>1.585 €</td><td>455 + 455 €</td></tr>
+            <tr><td>3</td><td>605 €</td><td>1.035 €</td><td>1.900 €</td><td>545 + 545 €</td></tr>
+          </tbody>
+        </table></div>
+        <p class="say">"El semestre son [precio]. Si te viene mejor, en dos pagos de [cuota]."</p>
+        <p class="soft"><b>Dilo una vez y calla.</b> No lo justifiques ni lo rebajes.</p>
+        <p class="say">"Hasta aquí lo importante. ¿Qué dudas te quedan: cómo funciona, el pago o cuándo empezar?"</p>
+
+        <h3 class="ph">Fase 4 · Objeciones + Cierre (10 min)</h3>
+        <ol class="l">
+          <li><b>Aclarar:</b> "¿A qué te refieres exactamente?"</li>
+          <li><b>Aislar:</b> "Quitando eso, ¿hay algo más que te frene para empezar hoy?"</li>
+          <li><b>Solucionar:</b> validas y das una salida concreta.</li>
+        </ol>
+        <div class="objs">
+          <div class="obj"><b>"No tengo tiempo"</b><span><span class="say">"¿Cuántas horas a la semana podrías entrenar de verdad?"</span>"Con 3 sesiones de una hora bien ordenadas basta. Mis clientes con menos tiempo son los que más progresan, porque cada sesión cuenta. No te pido más horas: te pido que las que ya vas sirvan."</span></div>
+          <div class="obj"><b>"Tengo familia / niños"</b><span><span class="say">"¿Qué te preocupa exactamente: el tiempo, las comidas en casa…?"</span>"Por eso trabajo así: comes lo mismo que tu familia ajustando cantidades, y las sesiones se encajan en tu semana real. Y tu familia gana un padre con más energía."</span></div>
+          <div class="obj"><b>"Ya lo he intentado todo"</b><span><span class="say">"¿Qué crees que faltó en esos intentos?"</span>"Casi siempre falta lo mismo: orden y alguien que ajuste cada semana. Probar muchas cosas no es lo mismo que hacer una bien durante 6 meses."</span></div>
+          <div class="obj"><b>"Es caro" / "No tengo el dinero ahora"</b><span><span class="say">"¿Es que ahora no lo tienes o que no tienes claro que valga lo que cuesta?"</span>Liquidez: "El precio no lo toco, pero el semestre va en dos pagos." Valor: "¿Cuánto llevas pagado de gimnasio estos años para estar igual? Lo caro es seguir así otro año." Nunca bajes el precio.</span></div>
+          <div class="obj"><b>"Tengo una lesión / me duele la rodilla"</b><span><span class="say">"¿Te la ha visto un fisio o un médico? ¿Qué te ha dicho?"</span>"Se entrena alrededor de la molestia, no se para: tengo un cliente que bajó 7 kg y recuperó su rodilla entrenando. Si hay diagnóstico, coordino con tu fisio." Si necesita tratamiento médico primero, díselo con honestidad.</span></div>
+          <div class="obj"><b>"Lo hablo con mi mujer / pareja"</b><span>1. "Tiene todo el sentido." 2. "¿Qué crees que te va a preguntar?" (respóndelo ahora). 3. "Quitando eso, ¿tú lo tienes claro?" 4. Propón una llamada corta con los dos o un audio tuyo explicándolo. Cierra día y hora para la respuesta.</span></div>
+          <div class="obj"><b>"Me lo pienso"</b><span><span class="say">"Normal. ¿Qué es exactamente lo que tienes que pensar? Lo vemos ahora."</span>Casi siempre esconde precio, pareja o miedo. Aclara y aísla. "Llevas [años] entrenando igual. Cada mes que lo piensas es otro mes igual."</span></div>
+          <div class="obj"><b>"Lo puedo hacer solo"</b><span>"Claro que puedes. Llevas [años] haciéndolo solo. La pregunta es si quieres seguir otros [años] igual o ahorrártelos."</span></div>
+        </div>
+        <h4>Señales de compra</h4>
+        <p class="soft">"¿Cómo se paga?", "¿cuándo empiezo?", "¿qué pasa después?": deja de vender y cobra.</p>
+        <p class="say">"Perfecto. Te paso ahora el enlace y nos quedamos un minuto hasta que te llegue la confirmación, ¿vale?"</p>
+        <p class="soft">No cuelgas hasta ver el pago confirmado.</p>
+
+        <div class="grid2">
+          <div class="card sand"><h3>Si no se presenta</h3><ul class="l">
+            <li><b>A los 5 minutos:</b> "Buenas [nombre], te estoy esperando en la llamada. ¿Te ha surgido algo?"</li>
+            <li>Reagenda <b>una sola vez</b>, en 1–2 días.</li>
+            <li>Si falla otra vez, a seguimiento por WhatsApp (día 2, 7 y 14).</li>
+          </ul></div>
+          <div class="card sand"><h3>Si no cierra en la llamada</h3><ul class="l">
+            <li><b>24 h:</b> audio por WhatsApp con su objetivo en sus palabras y el resumen.</li>
+            <li><b>48 h:</b> el caso más parecido al suyo: "esto es lo que te decía".</li>
+            <li><b>Día 5:</b> último mensaje con fecha concreta para decidir.</li>
+            <li>CRM en "Llamada hecha" con su dolor y su objeción literal. Verá tus Estados a diario.</li>
+          </ul></div>
+        </div>
+
+        <h3 class="ph">Fase 5 · Onboarding (primeras 24–72 h)</h3>
+        <div class="card">
+          <ul class="check-l">
+            <li>☐ <b>Mismo día:</b> audio de bienvenida por WhatsApp + qué va a pasar esta semana.</li>
+            <li>☐ <b>Formulario de inicio:</b> fotos (frente, perfil, espalda, misma luz), medidas, horarios, comidas habituales, lesiones y material.</li>
+            <li>☐ <b>En 72 h:</b> plan entregado con su primera sesión ordenada por bloques y su comida ajustada.</li>
+            <li>☐ <b>Primera revisión</b> agendada para el día 7.</li>
+            <li>☐ <b>Permiso por escrito</b> para usar fotos y caso más adelante.</li>
+            <li>☐ CRM: pasarlo a <b>"Cliente"</b> y <b>subir el nivel de precios</b>.</li>
+          </ul>
+        </div>
+
+        <div class="card dark">
+          <span class="label">Antes de cada llamada, recuerda</span>
+          <ul class="l">
+            <li>El silencio trabaja por ti.</li>
+            <li>El orden no se rompe.</li>
+            <li>Habla de SU rutina y SU comida, no del programa en general.</li>
+            <li>No tienes que convencer a nadie. Si es para él, lo verá solo.</li>
+          </ul>
+        </div>
+      </article>
+</main>
+
+<script>
+(function () {
+  function copy(text, btn) {
+    function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = "Copiar"; }, 1400); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  }
+  document.querySelectorAll(".say").forEach(function (p) {
+    var txt = p.textContent.trim();
+    var b = document.createElement("button"); b.type = "button"; b.className = "cpy"; b.textContent = "Copiar";
+    b.addEventListener("click", function () { copy(txt, b); });
+    p.insertBefore(b, p.firstChild);
+  });
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+})();
+</script>
