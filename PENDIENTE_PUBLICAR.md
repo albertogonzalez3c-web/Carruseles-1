@@ -13,3 +13,6 @@ Clientes antiguos (ya publicados en 8 enlaces sueltos): republicar las 2 página
 - clientes/fran-segui/partes/crm.html → https://claude.ai/artifact/TMfVbQ1ENMxA3xvZzQq1iq
 - clientes/fran-segui/partes/7-reportes.html → https://claude.ai/artifact/4RYs2SMvqgbtbaGNrksYDe
 (Opcional, preguntar a Alberto: pasar también los antiguos a hub; cambia sus enlaces.)
+
+## AL FINAL (petición de Alberto): página maestra con los 17 clientes
+Una sola página "Clientes Mentoría" con los 17: para cada cliente, nombre, nicho en una línea, método, precio de entrada, estado (publicado / qué falta confirmar) y su enlace (hub para los nuevos; para los 11 antiguos, sus 8 enlaces en desplegable o su landing/perfil). URLs de los antiguos: buscar en el historial de commits / resumen de la sesión o con Artifact action "list".
