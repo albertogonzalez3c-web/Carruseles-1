@@ -192,6 +192,61 @@ ul.l b, ol.l b { color: var(--ink); }
       <div id="stages" style="display:grid;gap:28px"></div>
     </div>
 
+    <div class="sec" id="carruseles-cv">
+      <style>
+.cv-rule { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.cv-week { display: grid; gap: 8px; }
+.cv-row { display: grid; grid-template-columns: 44px 92px 1fr; gap: 8px; align-items: start; font-size: 14px; line-height: 1.35; }
+.cv-row b { font-weight: 800; }
+.cv-pill { display: inline-block; border-radius: 999px; padding: 3px 9px; font-size: 12px; font-weight: 800; letter-spacing: .02em; text-align: center; }
+.cv-pill.con { background: var(--ink); color: var(--white); }
+.cv-pill.val { background: var(--chip); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cv-wk { font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); margin: 6px 0 0; }
+.cv-list { display: grid; gap: 8px; }
+.cv-i { border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); padding: 0; }
+.cv-i summary { cursor: pointer; padding: 10px 12px; font-size: 14.5px; font-weight: 700; line-height: 1.35; list-style: none; }
+.cv-i summary::-webkit-details-marker { display: none; }
+.cv-i summary::before { content: "+"; display: inline-block; width: 16px; font-weight: 800; }
+.cv-i[open] summary::before { content: "–"; }
+.cv-i p { margin: 0; padding: 0 12px 10px 28px; font-size: 13.5px; line-height: 1.45; }
+.cv-h { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 0 0 10px; }
+.cv-slides { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.cv-slides div { border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); padding: 10px; font-size: 13.5px; line-height: 1.4; background: var(--white); }
+.cv-slides b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+@media (max-width: 560px) { .cv-slides { grid-template-columns: 1fr; } .cv-row { grid-template-columns: 38px 86px 1fr; } }
+#stages .item.car-val { box-shadow: inset 0 0 0 2px rgba(255,255,255,.85); }
+.car-note { margin: 4px 0 0; }
+</style>
+      <div class="head"><span class="label">Carruseles · mínimo 3 por semana</span><h2>Carruseles: 3/semana alternando conexión y valor</h2><p class="soft">Regla de Alberto para todos: nunca menos de 3 carruseles a la semana. Uno conecta (quién eres y por qué haces esto), el siguiente aporta valor (lo que sabes y cómo lo aplicas), y así siempre. La conexión hace que te sigan; el valor hace que te guarden y te escriban.</p></div>
+      <div class="g2">
+        <div class="card"><h3>La regla</h3>
+          <ul class="cv-rule">
+            <li><b>Mínimo 3 a la semana</b> en todas las etapas (lunes, miércoles y viernes si no sabes cuándo). Si te sobra energía, 4–5: nunca menos de 3.</li>
+            <li><b>Alternas:</b> conexión → valor → conexión. La semana siguiente empiezas por el tipo contrario.</li>
+            <li><b>Conexión:</b> tu historia, tu día a día, lo que te cuesta, tus creencias, por qué haces lo que haces, casos de clientes contados como historia.</li>
+            <li><b>Valor:</b> educativo, tu método, errores, guías paso a paso, mitos desmontados.</li>
+            <li><b>Estructura fija:</b> portada con gancho, 4–6 slides de desarrollo y cierre con CTA ("escríbeme 5H", guardar o compartir).</li>
+          </ul>
+        </div>
+        <div class="card"><h3>Ejemplo de dos semanas</h3>
+          <div class="cv-week">
+            <p class="cv-wk">Semana A</p><div class="cv-row"><b>Lun</b><span class="cv-pill con">Conexión</span><span>Trabajo a jornada completa y entreno 4 días: mi semana real.</span></div><div class="cv-row"><b>Mié</b><span class="cv-pill val">Valor</span><span>La rutina de 45 minutos para los días sin tiempo.</span></div><div class="cv-row"><b>Vie</b><span class="cv-pill con">Conexión</span><span>Con 20 años pesaba 56 kilos y no me gustaba lo que veía.</span></div>
+            <p class="cv-wk">Semana B · empieza por el contrario</p><div class="cv-row"><b>Lun</b><span class="cv-pill val">Valor</span><span>Bloques de 12 semanas: por qué dejé de cambiar de rutina.</span></div><div class="cv-row"><b>Mié</b><span class="cv-pill con">Conexión</span><span>Lo primero que le enseñé a mi hermano en el gimnasio.</span></div><div class="cv-row"><b>Vie</b><span class="cv-pill val">Valor</span><span>Qué como en un día de trabajo (táper incluido).</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-slides" style="margin-top:14px">
+        <div><b>Slide 1 · Portada</b>El gancho en una frase grande. Que pare el dedo: una cifra, una frase que tu cliente diría o una promesa concreta.</div>
+        <div><b>Slides 2–6 · Desarrollo</b>Una idea por slide, frases cortas. En conexión, cuéntalo como una historia; en valor, como pasos o lista.</div>
+        <div><b>Último slide · Cierre</b>Una sola llamada a la acción: "escríbeme 5H", "guárdalo" o "compártelo con…".</div>
+      </div>
+      <div class="g2" style="margin-top:14px">
+        <div class="card"><div class="cv-h"><span class="cv-pill con">Conexión</span><h3 style="margin:0">11 ideas de conexión</h3></div><div class="cv-list"><details class="cv-i"><summary>Trabajo a jornada completa fuera del fitness y entreno 4 días.</summary><p><b>Desarrollo (slides 2–6):</b> Mi agenda de lunes a domingo · cuándo entreno · cuánto dura · qué sacrifico y qué no.</p><p><b>Cierre:</b> Si yo puedo, tú también. Escríbeme 5H.</p></details><details class="cv-i"><summary>Con 20 años pesaba 56 kilos y no me gustaba lo que veía.</summary><p><b>Desarrollo (slides 2–6):</b> La foto · lo que pensaba · lo que probé · lo que cambió · hoy.</p><p><b>Cierre:</b> Guárdalo si te ves en esa foto.</p></details><details class="cv-i"><summary>El día que dejé de evitar el espejo.</summary><p><b>Desarrollo (slides 2–6):</b> Qué sentía · qué me decía · el primer cambio que noté · confianza que se entrena.</p><p><b>Cierre:</b> Escríbeme 5H si te pasa.</p></details><details class="cv-i"><summary>Lo primero que le enseñé a mi hermano en el gimnasio.</summary><p><b>Desarrollo (slides 2–6):</b> Los básicos · la técnica · la paciencia · lo que me enseñó él a mí.</p><p><b>Cierre:</b> Comparte con alguien que quieras llevar al gimnasio.</p></details><details class="cv-i"><summary>Por qué estudié Ciencias del Deporte.</summary><p><b>Desarrollo (slides 2–6):</b> Lo que buscaba · lo que descubrí · por qué no soy influencer · lo que aplico contigo.</p><p><b>Cierre:</b> Sígueme si quieres datos, no modas.</p></details><details class="cv-i"><summary>Anas (con permiso): de no ganar peso a verse distinto.</summary><p><b>Desarrollo (slides 2–6):</b> Punto de partida · lo que comía · 3 cambios · cómo se ve hoy.</p><p><b>Cierre:</b> Escríbeme 5H si te ves en Anas.</p></details><details class="cv-i"><summary>Mis semanas imposibles: viajes y turnos.</summary><p><b>Desarrollo (slides 2–6):</b> La semana que todo falla · mi plan B de 2–3 sesiones · lo que nunca suelto.</p><p><b>Cierre:</b> Guárdalo para la tuya.</p></details><details class="cv-i"><summary>El deporte me ordenó la cabeza (lo que me da cada sesión).</summary><p><b>Desarrollo (slides 2–6):</b> Rutina · calma · energía · por qué entreno aunque esté cansado.</p><p><b>Cierre:</b> Cuéntame qué te da a ti.</p></details><details class="cv-i"><summary>Lo que me dicen mis clientes cuando empiezan.</summary><p><b>Desarrollo (slides 2–6):</b> &#x27;No tengo tiempo&#x27; · &#x27;ya lo he intentado&#x27; · &#x27;no me veo bien&#x27; · lo que les respondo.</p><p><b>Cierre:</b> Escríbeme 5H si dices alguna.</p></details><details class="cv-i"><summary>Mark (con permiso): lo que cambió en sus 12 semanas.</summary><p><b>Desarrollo (slides 2–6):</b> Cómo llegó · su semana · sus sesiones · su cambio · su frase.</p><p><b>Cierre:</b> ¿Quieres tus 12 semanas? Escríbeme 5H.</p></details><details class="cv-i"><summary>Lo que no publico: los días que no me apetece.</summary><p><b>Desarrollo (slides 2–6):</b> Cansancio · trabajo · cómo cumplo igual · los hábitos mínimos.</p><p><b>Cierre:</b> Guárdalo para un día flojo.</p></details></div></div>
+        <div class="card"><div class="cv-h"><span class="cv-pill val">Valor</span><h3 style="margin:0">11 ideas de valor</h3></div><div class="cv-list"><details class="cv-i"><summary>La rutina de 45 minutos para los días sin tiempo.</summary><p><b>Desarrollo (slides 2–6):</b> Calentamiento · 4 ejercicios · series y descansos · cómo progresar.</p><p><b>Cierre:</b> Guárdalo para tu día más corto.</p></details><details class="cv-i"><summary>Bloques de 12 semanas: por qué dejé de cambiar de rutina.</summary><p><b>Desarrollo (slides 2–6):</b> El error de cambiar cada mes · cómo se progresa · qué pasa en la semana 12.</p><p><b>Cierre:</b> Escríbeme 5H y te digo cómo empezar tu bloque.</p></details><details class="cv-i"><summary>Qué como en un día de trabajo (táper incluido).</summary><p><b>Desarrollo (slides 2–6):</b> Desayuno · táper · merienda · cena en 10 minutos · proteína en cada comida.</p><p><b>Cierre:</b> Guárdalo para mañana.</p></details><details class="cv-i"><summary>Menos de 5 horas a la semana: así se reparten.</summary><p><b>Desarrollo (slides 2–6):</b> 4 sesiones · qué va en cada una · pasos · descanso.</p><p><b>Cierre:</b> Escríbeme 5H si quieres la tuya.</p></details><details class="cv-i"><summary>Método 5H en un carrusel.</summary><p><b>Desarrollo (slides 2–6):</b> 4 sesiones cortas · comida simple · hábitos mínimos · Base, Transformación, Para siempre.</p><p><b>Cierre:</b> Escríbeme 5H y te digo tu fase.</p></details><details class="cv-i"><summary>5 mitos de redes que te hacen perder el tiempo.</summary><p><b>Desarrollo (slides 2–6):</b> Cardio para quemar grasa localizada · cambiar de rutina · dietas de Instagram · suplementos · entrenar a diario.</p><p><b>Cierre:</b> ¿Cuál te creías?</p></details><details class="cv-i"><summary>Sentadilla, peso muerto, press y remo: tu base.</summary><p><b>Desarrollo (slides 2–6):</b> Por qué los básicos · técnica en una frase · cuántas series · cómo subir.</p><p><b>Cierre:</b> Guárdalo para tu próximo entreno.</p></details><details class="cv-i"><summary>Plan B: 2–3 sesiones para semanas imposibles.</summary><p><b>Desarrollo (slides 2–6):</b> Cuándo usarlo · qué sesiones · lo mínimo que no sueltas.</p><p><b>Cierre:</b> Guárdalo para tu próxima semana difícil.</p></details><details class="cv-i"><summary>Delgado que no gana: los 4 errores.</summary><p><b>Desarrollo (slides 2–6):</b> Comer poco sin saberlo · cambiar de rutina · no progresar cargas · no dormir.</p><p><b>Cierre:</b> Escríbeme 5H si te pasa.</p></details><details class="cv-i"><summary>Agenda tus sesiones como reuniones: cómo hacerlo.</summary><p><b>Desarrollo (slides 2–6):</b> Bloques en el calendario · horas realistas · qué hacer si se cae una.</p><p><b>Cierre:</b> Guárdalo y agéndalas hoy.</p></details><details class="cv-i"><summary>Proteína en cada comida sin complicarte.</summary><p><b>Desarrollo (slides 2–6):</b> Ejemplos de supermercado · cantidades fáciles · comer fuera.</p><p><b>Cierre:</b> Guárdalo para tu compra.</p></details></div></div>
+      </div>
+      <p class="soft" style="font-size:14px">En el banco de ángulos, filtra por <b>Carrusel · conexión</b> o <b>Carrusel · valor</b> para sacar más.</p>
+    </div>
+
     <div class="sec">
       <div class="head"><span class="label">Tu día como prueba</span><h2>Tu agenda es tu mejor argumento de venta.</h2><p class="soft">Tu cliente dice "no tengo tiempo". Tú trabajas a jornada completa fuera del fitness y entrenas 4 días. Enséñalo una vez a la semana, sin postureo.</p></div>
       <div class="g3">
@@ -650,6 +705,19 @@ ul.l b, ol.l b { color: var(--ink); }
   ];
   var fFam = -1, fFmt = "";
   var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  /* ---------- Carruseles: conexión o valor ---------- */
+  (function () {
+    var CON = [1, 2, 6, 10], ADD = [1, 2, 10, 7];
+    ANG.forEach(function (a) {
+      var tag = CON.indexOf(a[0]) >= 0 ? "Carrusel · conexión" : "Carrusel · valor";
+      var i = a[3].indexOf("Carrusel");
+      if (i >= 0) a[3][i] = tag;
+      else if (ADD.indexOf(a[0]) >= 0 && a[3].indexOf(tag) < 0) a[3].push(tag);
+    });
+    var fi = FMTS.indexOf("Carrusel");
+    if (fi >= 0) FMTS.splice(fi, 1, "Carrusel · conexión", "Carrusel · valor");
+    else FMTS.push("Carrusel · conexión", "Carrusel · valor");
+  })();
   function renderAng() {
     var q = norm($("ang-q").value || "");
     var list = ANG.filter(function (a) {
@@ -745,3 +813,24 @@ ul.l b, ol.l b { color: var(--ink); }
   });
 })();
 </script>
+<script>
+(function () {
+  /* Carruseles del calendario: alternan conexión y valor */
+  var stages = document.querySelectorAll("#stages .stage");
+  for (var s = 0; s < stages.length; s++) {
+    var items = stages[s].querySelectorAll(".item.k-car"), n = items.length;
+    for (var i = 0; i < n; i++) {
+      var con = i % 2 === 0;
+      items[i].textContent = "Carrusel · " + (con ? "conexión" : "valor");
+      items[i].classList.add(con ? "car-con" : "car-val");
+    }
+    if (n) {
+      var p = document.createElement("p");
+      p.className = "soft car-note"; p.style.fontSize = "13.5px";
+      p.textContent = n + " carruseles esta semana, alternando conexión y valor. La semana siguiente empiezas por el tipo contrario (si esta abre con conexión, la próxima abre con valor).";
+      stages[s].appendChild(p);
+    }
+  }
+})();
+</script>
+

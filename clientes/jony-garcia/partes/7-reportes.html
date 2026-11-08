@@ -1,0 +1,284 @@
+<title>Jony Reportes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: reporte diario de Jony para Alberto. Arriba el formulario del día (contenido, crecimiento, conversaciones, llamadas, cierres), debajo resumen de 7 y 30 días, mensaje listo para copiar e histórico. Guardado en la base de datos compartida (colección diario, un documento por fecha). Sin anuncios. */
+:root {
+  --paper: #f4f2ee; --white: #fff; --sand: #e9e5de; --line: #d6d0c6; --ink: #141414; --soft: #5d5a55;
+  --red: #c4162a; --red-text: #a3101f; --chip: #eeeae3; --green: #3f6b3a;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-head: "Archivo Black", "Arial Black", Impact, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(28px, 4.5vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+h2 { font: 400 20px/1.15 var(--f-head); text-transform: uppercase; }
+h3 { font: 800 15px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.note { font-size: 13px; color: var(--soft); }
+header.top { padding-block: 20px 6px; display: grid; gap: 8px; }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--red-text); }
+main { padding-block: 12px 60px; display: grid; gap: 16px; }
+main > * { min-width: 0; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); }
+.btn { font: 700 14px/1 var(--f-body); background: var(--red); color: #fff; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+.btn.ghost { background: var(--white); color: var(--red-text); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn[aria-pressed="true"] { background: var(--ink); color: #fff; box-shadow: none; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+input, select, textarea { font: 600 14.5px/1.3 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 60px; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--red); outline-offset: 1px; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); min-width: 0; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.full { grid-column: 1 / -1; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.close { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1fr) auto; gap: 8px; align-items: end; background: var(--chip); border-radius: 12px; padding: 10px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.kpi { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; min-width: 0; }
+.kpi b { font: 400 24px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12.5px; color: var(--soft); font-weight: 600; }
+pre.msg { white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); margin: 0; background: var(--chip); border-radius: 12px; padding: 12px 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--sand); white-space: nowrap; }
+th { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.tscroll { overflow-x: auto; }
+.saved { font: 500 12px/1 var(--f-mono); color: var(--green); }
+@media (max-width: 760px) {
+  .g4, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .close { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .close .del { grid-column: 1 / -1; justify-self: start; }
+}
+</style>
+
+<header class="wrap top">
+  <span class="label">Jony · @jnyfit._ · Para Alberto</span>
+  <h1>Reporte diario</h1>
+  <p class="soft">2 minutos cada noche. Lo que no se mide no mejora. Manda el mensaje de abajo a Alberto por WhatsApp cada domingo (o a diario las primeras 2 semanas).</p>
+  <span class="status" id="status" role="status">Conectando…</span>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h2>El día</h2>
+      <label class="f" style="width:180px">Fecha<input type="date" id="fecha"></label>
+    </div>
+    <span class="label">Contenido publicado</span>
+    <div class="g4">
+      <label class="f">Reels<input id="d-reels" inputmode="numeric"></label>
+      <label class="f">Trial reels<input id="d-trials" inputmode="numeric"></label>
+      <label class="f">Carruseles<input id="d-carruseles" inputmode="numeric"></label>
+      <label class="f">YouTube<input id="d-youtube" inputmode="numeric"></label>
+    </div>
+    <span class="label">Crecimiento</span>
+    <div class="g4">
+      <label class="f">Views del día (todas las piezas)<input id="d-views" inputmode="numeric"></label>
+      <label class="f">Seguidores totales hoy<input id="d-seguidores" inputmode="numeric"></label>
+      <label class="f">Mejor pieza (views)<input id="d-mejorViews" inputmode="numeric"></label>
+      <label class="f">Mejor pieza (tema/gancho)<input id="d-mejor" maxlength="140"></label>
+    </div>
+    <span class="label">Ventas</span>
+    <div class="g4">
+      <label class="f">DMs nuevos<input id="d-dms" inputmode="numeric"></label>
+      <label class="f">Conversaciones abiertas por ti<input id="d-conversaciones" inputmode="numeric"></label>
+      <label class="f">Llamadas agendadas<input id="d-agendadas" inputmode="numeric"></label>
+      <label class="f">Llamadas hechas<input id="d-llamadas" inputmode="numeric"></label>
+    </div>
+    <div class="row"><b>¿Cerraste hoy?</b><button class="btn small ghost" id="closedNo" aria-pressed="true">No</button><button class="btn small ghost" id="closedYes" aria-pressed="false">Sí</button></div>
+    <div id="closesWrap" hidden style="display:grid;gap:8px">
+      <div id="closesList" style="display:grid;gap:8px"></div>
+      <button class="btn small ghost" id="addClose" style="justify-self:start">+ Otro cierre</button>
+    </div>
+    <label class="f full">Qué aprendí hoy / qué me frenó<textarea id="d-notas" maxlength="1500"></textarea></label>
+    <span class="saved" id="sv"></span>
+  </div>
+
+  <div class="card sand">
+    <div class="row" style="justify-content:space-between"><h2>Últimos 7 días</h2><span class="note" id="rangeTxt"></span></div>
+    <div class="kpis" id="k7"></div>
+    <h3>Mensaje para Alberto</h3>
+    <pre class="msg" id="msg"></pre>
+    <button class="btn small" id="copyMsg" style="justify-self:start">Copiar mensaje</button>
+  </div>
+
+  <div class="card">
+    <h2>Últimos 30 días</h2>
+    <div class="kpis" id="k30"></div>
+  </div>
+
+  <div class="card">
+    <h2>Histórico</h2>
+    <div class="tscroll"><table>
+      <thead><tr><th>Fecha</th><th>Reels</th><th>Carr.</th><th>YT</th><th>Views</th><th>Seguid.</th><th>DMs</th><th>Conv.</th><th>Agend.</th><th>Llam.</th><th>Cierres</th><th>Facturado</th></tr></thead>
+      <tbody id="histBody"></tbody>
+      <tfoot id="histFoot"></tfoot>
+    </table></div>
+  </div>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function addDays(s, n) { var p = s.split("-"); var d = new Date(+p[0], +p[1] - 1, +p[2]); d.setDate(d.getDate() + n); return ymd(d); }
+  function fdate(s) { var p = s.split("-"); return p[2] + "/" + p[1]; }
+  function num(v) { var n = Number(String(v == null ? "" : v).replace(/[^\d.,-]/g, "").replace(",", ".")); return isFinite(n) ? n : 0; }
+  function usd(n) { var r = Math.round((Number(n) || 0) * 100) / 100, a = Math.abs(r), s = Math.floor(a).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), dec = Math.round(a * 100) % 100; return (r < 0 ? "-" : "") + "$" + s + (dec ? "." + pad(dec) : ""); }
+  function fnum(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+  var FIELDS = ["reels", "trials", "carruseles", "youtube", "views", "seguidores", "mejorViews", "mejor", "dms", "conversaciones", "agendadas", "llamadas", "notas"];
+  var PLANS = ["12 semanas", "6 meses"];
+  var days = {}, db = null, local = false, fecha = ymd(new Date()), cerrado = false, cierres = [];
+  $("fecha").value = fecha;
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.classList.toggle("err", !!err); }
+
+  /* ---------- Formulario ---------- */
+  function load() {
+    var d = days[fecha] || {};
+    FIELDS.forEach(function (k) { var el = $("d-" + k); if (document.activeElement !== el) el.value = d[k] == null ? "" : d[k]; });
+    if ($("closesWrap").contains(document.activeElement)) return;
+    cerrado = !!d.cerrado; cierres = (d.cierres || []).map(function (c) { return Object.assign({}, c); });
+    renderCloses();
+  }
+  function renderCloses() {
+    $("closedYes").setAttribute("aria-pressed", cerrado ? "true" : "false");
+    $("closedNo").setAttribute("aria-pressed", cerrado ? "false" : "true");
+    $("closesWrap").hidden = !cerrado;
+    $("closesList").innerHTML = cierres.map(function (c, i) {
+      return '<div class="close" data-i="' + i + '"><label class="f">Cliente<input data-k="cliente" maxlength="80" value="' + esc(c.cliente || "") + '"></label>' +
+        '<label class="f">Plan<select data-k="plan">' + PLANS.map(function (p) { return '<option' + (p === c.plan ? " selected" : "") + '>' + p + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Importe ($)<input data-k="importe" inputmode="decimal" value="' + esc(c.importe == null ? "" : c.importe) + '"></label>' +
+        '<button class="btn small ghost del" data-del="' + i + '">Quitar</button></div>';
+    }).join("");
+  }
+  function collect() {
+    var d = { fecha: fecha };
+    FIELDS.forEach(function (k) { d[k] = $("d-" + k).value.trim(); });
+    d.cerrado = cerrado;
+    d.cierres = cerrado ? cierres.map(function (c) { return { cliente: String(c.cliente || "").trim(), plan: c.plan || PLANS[0], importe: String(c.importe == null ? "" : c.importe).trim() }; }) : [];
+    return d;
+  }
+  var saveT = null, chain = Promise.resolve();
+  function schedule() { $("sv").textContent = "Guardando…"; clearTimeout(saveT); saveT = setTimeout(save, 600); }
+  function save() {
+    saveT = null;
+    var d = collect(), f = fecha;
+    d.actualizado = new Date().toISOString();
+    days[f] = d; renderSummary();
+    if (local) { $("sv").textContent = "Sin base de datos: no se guarda"; return; }
+    chain = chain.then(function () { return db.collection("diario").doc(f).set(d); }).then(function () {
+      $("sv").textContent = "Guardado ✓";
+    }, function (e) {
+      var c = e && e.code;
+      $("sv").textContent = "";
+      setStatus(c === "invalid_argument" ? "No tienes permiso para guardar" : c === "quota_exceeded" ? "La base de datos está llena" : c === "revoked" ? "Acceso retirado" : "No se ha podido guardar", true);
+    });
+  }
+  FIELDS.forEach(function (k) { $("d-" + k).addEventListener("input", schedule); });
+  $("closedYes").addEventListener("click", function () { cerrado = true; if (!cierres.length) cierres.push({ cliente: "", plan: PLANS[0], importe: "" }); renderCloses(); schedule(); });
+  $("closedNo").addEventListener("click", function () { cerrado = false; renderCloses(); schedule(); });
+  $("addClose").addEventListener("click", function () { cierres.push({ cliente: "", plan: PLANS[0], importe: "" }); renderCloses(); schedule(); });
+  $("closesList").addEventListener("input", function (e) { var k = e.target.dataset.k; if (!k) return; var i = Number(e.target.closest(".close").dataset.i); cierres[i][k] = e.target.value; schedule(); });
+  $("closesList").addEventListener("change", function (e) { var k = e.target.dataset.k; if (!k) return; var i = Number(e.target.closest(".close").dataset.i); cierres[i][k] = e.target.value; schedule(); });
+  $("closesList").addEventListener("click", function (e) { var b = e.target.closest("[data-del]"); if (!b) return; cierres.splice(Number(b.dataset.del), 1); if (!cierres.length) cerrado = false; renderCloses(); schedule(); });
+  $("fecha").addEventListener("change", function () {
+    if (!this.value) return;
+    if (saveT) { clearTimeout(saveT); save(); }
+    fecha = this.value; $("sv").textContent = ""; load();
+  });
+
+  /* ---------- Resumen ---------- */
+  function agg(from, to) {
+    var a = { reels: 0, trials: 0, carruseles: 0, youtube: 0, views: 0, dms: 0, conversaciones: 0, agendadas: 0, llamadas: 0, ventas: 0, fact: 0, segIni: null, segFin: null, mejor: null, dias: 0 };
+    Object.keys(days).sort().forEach(function (k) {
+      if (k < from || k > to) return;
+      var d = days[k]; a.dias++;
+      ["reels", "trials", "carruseles", "youtube", "views", "dms", "conversaciones", "agendadas", "llamadas"].forEach(function (f) { a[f] += num(d[f]); });
+      (d.cierres || []).forEach(function (c) { a.ventas++; a.fact += num(c.importe); });
+      var s = num(d.seguidores); if (s > 0) { if (a.segIni === null) a.segIni = s; a.segFin = s; }
+      var mv = num(d.mejorViews); if (mv > 0 && (!a.mejor || mv > a.mejor.v)) a.mejor = { v: mv, t: d.mejor || "", f: k };
+    });
+    return a;
+  }
+  function segGain(a, from) {
+    if (a.segFin === null) return null;
+    // compara con el último dato anterior al rango si existe
+    var prev = null; Object.keys(days).sort().forEach(function (k) { if (k < from && num(days[k].seguidores) > 0) prev = num(days[k].seguidores); });
+    var base = prev !== null ? prev : a.segIni;
+    return a.segFin - base;
+  }
+  function kpis(a, g) {
+    return [
+      [fnum(a.reels + a.trials), "Reels (" + fnum(a.trials) + " trial)"], [fnum(a.carruseles) + " / " + fnum(a.youtube), "Carruseles / YouTube"],
+      [fnum(a.views), "Views"], [g === null ? "—" : (g >= 0 ? "+" : "") + fnum(g), "Seguidores" + (a.segFin !== null ? " (" + fnum(a.segFin) + ")" : "")],
+      [fnum(a.dms), "DMs nuevos"], [fnum(a.conversaciones), "Conversaciones abiertas"], [fnum(a.llamadas) + " / " + fnum(a.agendadas), "Llamadas hechas / agendadas"],
+      [fnum(a.ventas) + " · " + usd(a.fact), "Ventas · facturado"]
+    ].map(function (k) { return '<div class="kpi"><b>' + esc(k[0]) + '</b><span>' + esc(k[1]) + '</span></div>'; }).join("");
+  }
+  function renderSummary() {
+    var to = fecha, f7 = addDays(to, -6), f30 = addDays(to, -29);
+    var a7 = agg(f7, to), g7 = segGain(a7, f7), a30 = agg(f30, to), g30 = segGain(a30, f30);
+    $("rangeTxt").textContent = fdate(f7) + " – " + fdate(to);
+    $("k7").innerHTML = kpis(a7, g7);
+    $("k30").innerHTML = kpis(a30, g30);
+    var cierre = a7.llamadas ? Math.round(a7.ventas / a7.llamadas * 100) + " %" : "—";
+    var hoy = days[to] || {};
+    $("msg").textContent =
+      "Reporte Jony · " + fdate(f7) + "–" + fdate(to) + "\n" +
+      "📱 Contenido: " + fnum(a7.reels) + " reels + " + fnum(a7.trials) + " trial · " + fnum(a7.carruseles) + " carruseles · " + fnum(a7.youtube) + " YouTube\n" +
+      "👀 Views: " + fnum(a7.views) + " · Seguidores: " + (g7 === null ? "—" : (g7 >= 0 ? "+" : "") + fnum(g7)) + (a7.segFin !== null ? " (total " + fnum(a7.segFin) + ")" : "") + "\n" +
+      "🔥 Mejor pieza: " + (a7.mejor ? fnum(a7.mejor.v) + " views · " + (a7.mejor.t || "sin tema") : "—") + "\n" +
+      "💬 DMs: " + fnum(a7.dms) + " · Conversaciones: " + fnum(a7.conversaciones) + "\n" +
+      "📞 Llamadas: " + fnum(a7.llamadas) + " hechas / " + fnum(a7.agendadas) + " agendadas · Cierre: " + cierre + "\n" +
+      "💵 Ventas: " + fnum(a7.ventas) + " · " + usd(a7.fact) + "\n" +
+      "🧠 Hoy: " + (hoy.notas ? hoy.notas : "—");
+    // histórico
+    var keys = Object.keys(days).sort().reverse();
+    $("histBody").innerHTML = keys.length ? keys.map(function (k) {
+      var d = days[k], cs = d.cierres || [], fa = cs.reduce(function (s, c) { return s + num(c.importe); }, 0);
+      return "<tr><td>" + fdate(k) + "</td><td>" + fnum(num(d.reels) + num(d.trials)) + "</td><td>" + fnum(num(d.carruseles)) + "</td><td>" + fnum(num(d.youtube)) + "</td><td>" + fnum(num(d.views)) + "</td><td>" + (num(d.seguidores) ? fnum(num(d.seguidores)) : "—") + "</td><td>" + fnum(num(d.dms)) + "</td><td>" + fnum(num(d.conversaciones)) + "</td><td>" + fnum(num(d.agendadas)) + "</td><td>" + fnum(num(d.llamadas)) + "</td><td>" + cs.length + "</td><td>" + usd(fa) + "</td></tr>";
+    }).join("") : '<tr><td colspan="12" class="note">Aún no hay días guardados.</td></tr>';
+    var all = agg("0000-00-00", "9999-99-99");
+    $("histFoot").innerHTML = keys.length ? "<tr><th>Total</th><th>" + fnum(all.reels + all.trials) + "</th><th>" + fnum(all.carruseles) + "</th><th>" + fnum(all.youtube) + "</th><th>" + fnum(all.views) + "</th><th></th><th>" + fnum(all.dms) + "</th><th>" + fnum(all.conversaciones) + "</th><th>" + fnum(all.agendadas) + "</th><th>" + fnum(all.llamadas) + "</th><th>" + all.ventas + "</th><th>" + usd(all.fact) + "</th></tr>" : "";
+  }
+  $("copyMsg").addEventListener("click", function () {
+    var b = this, t = $("msg").textContent;
+    function ok() { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar mensaje"; }, 1400); }
+    function fb() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (x) { b.textContent = "Cópialo a mano"; } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+  });
+
+  load(); renderSummary();
+
+  /* ---------- Base de datos ---------- */
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) { local = true; setStatus("Sin base de datos: modo prueba, no se guarda nada", true); return; }
+    db = c; var got = false;
+    var timer = setTimeout(function () { if (!got) setStatus("La base de datos tarda en responder…", true); }, 10000);
+    db.collection("diario").onSnapshot(function (snap) {
+      got = true; clearTimeout(timer);
+      var nd = {}; snap.docs.forEach(function (d) { nd[d.id] = d.data(); });
+      if (saveT && days[fecha]) nd[fecha] = days[fecha];
+      days = nd;
+      setStatus("Guardado en la nube · " + Object.keys(days).length + " días");
+      if (!saveT) load();
+      renderSummary();
+    }, function (err) { clearTimeout(timer); setStatus(err && err.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); });
+  })();
+})();
+</script>

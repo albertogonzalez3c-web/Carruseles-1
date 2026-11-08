@@ -136,7 +136,7 @@ h1, h2 { font-family: var(--f-head) !important; font-weight: 400 !important; tex
   <header class="head">
     <span class="label">Giorgia De Santis · Reporte para Alberto</span>
     <h1>Tus números, cada día. Sin excusas.</h1>
-    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Mujeres de 25 a 45 años que ya entrenan o lo han intentado, pero con trabajo, turnos o familia empiezan y lo dejan: entrenar con estructura y técnica y comer sin planes cerrados, para que cuidarse deje de depender de la motivación y de hacerlo perfecto · Método Constante.</p>
+    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Mujeres de 25 a 45 años que ya entrenan o lo han intentado, pero con trabajo, turnos o familia empiezan y lo dejan: entrenar con estructura y técnica y comer sin planes cerrados, para que cuidarse deje de depender de la motivación y de hacerlo perfecto · Método Dirección.</p>
     <p class="soft">Cada noche lo del día, cada domingo lo de la semana. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo es lo que hay que corregir mañana. Tu mínimo de contenido es <b>1 pieza al día</b>; la segunda, solo los días que vas con fuerza. Lo que no se mide no mejora, pero tampoco tiene que ser perfecto.</p>
     <div class="bar">
       <label for="fecha">Día<input type="date" id="fecha"></label>
@@ -284,7 +284,7 @@ h1, h2 { font-family: var(--f-head) !important; font-weight: 400 !important; tex
           <div class="nums">
             <label>Seguidores al empezar la semana<input data-s="segIni" type="number" min="0" inputmode="numeric" placeholder="4150"></label>
             <label>Seguidores al acabar<input data-s="segFin" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-            <label>Mensajes con la palabra CONSTANTE<input data-s="mejor" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Mensajes con la palabra DIRECCIÓN<input data-s="mejor" type="number" min="0" inputmode="numeric" placeholder="0"></label>
             <label>Respuestas a tus Estados de WhatsApp<input data-s="respEstados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           </div>
           <label class="fld">Mejor pieza de la semana (enlace)<input data-s="mejorLink" placeholder="https://www.instagram.com/reel/…"></label>
@@ -471,7 +471,7 @@ h1, h2 { font-family: var(--f-head) !important; font-weight: 400 !important; tex
         '<label>Importe cobrado hoy (€)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
         '<label>Plan<select data-k="plan">' + opt(PLANES, c.plan) + '</select></label>' +
         '<label>Pago<select data-k="pago">' + opt(PAGOS, c.pago) + '</select></label>' +
-        '<label class="full">Cómo fue (de dónde vino, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: escribió CONSTANTE en una historia; dudaba por los turnosempo"></label></div>';
+        '<label class="full">Cómo fue (de dónde vino, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: escribió DIRECCIÓN en una historia; dudaba por los turnosempo"></label></div>';
       row.querySelectorAll("select").forEach(function (s) { if (!c[s.dataset.k]) c[s.dataset.k] = s.value; });
       row.querySelectorAll("[data-k]").forEach(function (inp) {
         var h = function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveDay(); update(); };
@@ -650,8 +650,7 @@ h1, h2 { font-family: var(--f-head) !important; font-weight: 400 !important; tex
       "Bienvenidas: " + yn(day.bienvenidas) + " · Seguimientos: " + yn(day.seguimientos) + "\n" +
       "Llamadas: " + num(day.agendadas) + " agendadas · " + he + " hechas · " + ci + (ci === 1 ? " cierre (" : " cierres (") + pct(ci, he) + ")\n" +
       "Facturado: " + eur(fa) + (det ? "\n" + det : "") + "\n" +
-      "Piezas: " + reels + "/" + obj + ck(reels >= obj) + " (técnica " + num(day.tecnica) + " · voz " + num(day.voz) + " [trial " + num(day.trial) + "] · rol entrenador " + num(day.rol) + " · yapping " + num(day.yapping) + " · receta " + num(day.receta) + " · carruseles " + num(day.carrusel) + ")" + (num(day.youtube) ? " · YouTube " + num(day.youtube) : "") + "
-" +
+      "Piezas: " + reels + "/" + obj + ck(reels >= obj) + " (técnica " + num(day.tecnica) + " · voz " + num(day.voz) + " [trial " + num(day.trial) + "] · rol entrenador " + num(day.rol) + " · yapping " + num(day.yapping) + " · receta " + num(day.receta) + " · carruseles " + num(day.carrusel) + ")" + (num(day.youtube) ? " · YouTube " + num(day.youtube) : "") + "\n" +
       "Historias: " + hist + ck(hist >= 4) + " · CTA: " + yn(day.ctaHistorias) + "\n" +
       "WhatsApp: " + est + " Estados" + ck(est >= 2) + " · " + num(day.contactos) + " contactos guardados" +
       (day.animo ? "\nÁnimo: " + moods[day.animo] + " " + day.animo + "/5" : "") + (day.nota ? "\n" + day.nota : "");
@@ -688,7 +687,7 @@ h1, h2 { font-family: var(--f-head) !important; font-weight: 400 !important; tex
       FMT.concat(EXTRA).map(function (x) { return x[1] + ": " + a[x[0]] + "/" + p[x[0]]; }).join(" · ") + "\n" +
       "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " guion probado" : " guiones probados") : "") + "\n" +
       (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
-      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes CONSTANTE: " + num(sem.mejor) + "\n" +
+      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes DIRECCIÓN: " + num(sem.mejor) + "\n" +
       (sem.promos && sem.promos.length ? "ANUNCIOS DE SEGUIDORES (VOZ EN OFF): " + eur(pt.g) + " · " + pt.f + " seguidores · " + (pt.e == null ? "—" : eur(pt.e) + "/seguidor" + ckw(pt.e < 1)) + "\n" + sem.promos.map(function (q) { var e = promoEps(q); return "  · " + (q.reel || "(sin título)") + ": " + num(q.dias) + " días · " + eur(num(q.gasto)) + " · " + num(q.seguidores) + " seg." + (e == null ? "" : " → " + eur(e) + "/seg.") + (q.decision ? " · " + q.decision : ""); }).join("\n") + "\n" : "") +
       "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos · " + num(sem.respEstados) + " respuestas a Estados\n" +
       "Seguidores: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + "\n" +

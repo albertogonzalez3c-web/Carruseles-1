@@ -206,6 +206,61 @@ h3 { font: 700 18px/1.25 var(--f-body); text-transform: none; letter-spacing: 0;
       <p class="soft" style="font-size:14px">El % de rol entrenador se calcula sobre los reels (los carruseles van aparte). Desde la semana 3 tiene que estar por encima del 40 %.</p>
     </div>
 
+    <div class="sec" id="carruseles-cv">
+      <style>
+.cv-rule { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.cv-week { display: grid; gap: 8px; }
+.cv-row { display: grid; grid-template-columns: 44px 92px 1fr; gap: 8px; align-items: start; font-size: 14px; line-height: 1.35; }
+.cv-row b { font-weight: 800; }
+.cv-pill { display: inline-block; border-radius: 999px; padding: 3px 9px; font-size: 12px; font-weight: 800; letter-spacing: .02em; text-align: center; }
+.cv-pill.con { background: var(--ink); color: var(--white); }
+.cv-pill.val { background: var(--chip); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cv-wk { font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); margin: 6px 0 0; }
+.cv-list { display: grid; gap: 8px; }
+.cv-i { border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); padding: 0; }
+.cv-i summary { cursor: pointer; padding: 10px 12px; font-size: 14.5px; font-weight: 700; line-height: 1.35; list-style: none; }
+.cv-i summary::-webkit-details-marker { display: none; }
+.cv-i summary::before { content: "+"; display: inline-block; width: 16px; font-weight: 800; }
+.cv-i[open] summary::before { content: "–"; }
+.cv-i p { margin: 0; padding: 0 12px 10px 28px; font-size: 13.5px; line-height: 1.45; }
+.cv-h { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 0 0 10px; }
+.cv-slides { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.cv-slides div { border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); padding: 10px; font-size: 13.5px; line-height: 1.4; background: var(--white); }
+.cv-slides b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+@media (max-width: 560px) { .cv-slides { grid-template-columns: 1fr; } .cv-row { grid-template-columns: 38px 86px 1fr; } }
+#stages .item.car-val { box-shadow: inset 0 0 0 2px rgba(255,255,255,.85); }
+.car-note { margin: 4px 0 0; }
+</style>
+      <div class="head"><span class="label">Carruseles · mínimo 3 por semana</span><h2>Carruseles: 3/semana alternando conexión y valor</h2><p class="soft">Regla de Alberto para todos: nunca menos de 3 carruseles a la semana. Uno conecta (quién eres y por qué haces esto), el siguiente aporta valor (lo que sabes y cómo lo aplicas), y así siempre. La conexión hace que te sigan; el valor hace que te guarden y te escriban.</p></div>
+      <div class="g2">
+        <div class="card"><h3>La regla</h3>
+          <ul class="cv-rule">
+            <li><b>Mínimo 3 a la semana</b> en todas las etapas (lunes, miércoles y viernes si no sabes cuándo). Si te sobra energía, 4–5: nunca menos de 3.</li>
+            <li><b>Alternas:</b> conexión → valor → conexión. La semana siguiente empiezas por el tipo contrario.</li>
+            <li><b>Conexión:</b> tu historia, tu día a día, lo que te cuesta, tus creencias, por qué haces lo que haces, casos de clientes contados como historia.</li>
+            <li><b>Valor:</b> educativo, tu método, errores, guías paso a paso, mitos desmontados.</li>
+            <li><b>Estructura fija:</b> portada con gancho, 4–6 slides de desarrollo y cierre con CTA ("escríbeme DESINFLAMA", guardar o compartir).</li>
+          </ul>
+        </div>
+        <div class="card"><h3>Ejemplo de dos semanas</h3>
+          <div class="cv-week">
+            <p class="cv-wk">Semana A</p><div class="cv-row"><b>Lun</b><span class="cv-pill con">Conexión</span><span>2012 vs 2026: mismo tío, 14 años de disciplina.</span></div><div class="cv-row"><b>Mié</b><span class="cv-pill val">Valor</span><span>La leptina explicada en 7 diapositivas.</span></div><div class="cv-row"><b>Vie</b><span class="cv-pill con">Conexión</span><span>Lo que se come en mi casa un día normal.</span></div>
+            <p class="cv-wk">Semana B · empieza por el contrario</p><div class="cv-row"><b>Lun</b><span class="cv-pill val">Valor</span><span>El plato antiinflamatorio: cómo montarlo sin nada raro.</span></div><div class="cv-row"><b>Mié</b><span class="cv-pill con">Conexión</span><span>Del niño gordito al +40 que entrena con cabeza.</span></div><div class="cv-row"><b>Vie</b><span class="cv-pill val">Valor</span><span>La regla 50/30/20: por qué entrenar más no te funciona.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-slides" style="margin-top:14px">
+        <div><b>Slide 1 · Portada</b>El gancho en una frase grande. Que pare el dedo: una cifra, una frase que tu cliente diría o una promesa concreta.</div>
+        <div><b>Slides 2–6 · Desarrollo</b>Una idea por slide, frases cortas. En conexión, cuéntalo como una historia; en valor, como pasos o lista.</div>
+        <div><b>Último slide · Cierre</b>Una sola llamada a la acción: "escríbeme DESINFLAMA", "guárdalo" o "compártelo con…".</div>
+      </div>
+      <div class="g2" style="margin-top:14px">
+        <div class="card"><div class="cv-h"><span class="cv-pill con">Conexión</span><h3 style="margin:0">11 ideas de conexión</h3></div><div class="cv-list"><details class="cv-i"><summary>2012 vs 2026. Mismo tío, 14 años de disciplina.</summary><p><b>Desarrollo (slides 2–6):</b> Foto 2012 · qué hacía mal · lo que aprendí · foto hoy · más no es mejor.</p><p><b>Cierre:</b> Si quieres empezar hoy, escríbeme DESINFLAMA.</p></details><details class="cv-i"><summary>Del niño gordito al +40 que entrena con cabeza.</summary><p><b>Desarrollo (slides 2–6):</b> Cómo era de niño · lo que oía · los errores de joven · lo que hago hoy.</p><p><b>Cierre:</b> Guárdalo si también fuiste el gordito.</p></details><details class="cv-i"><summary>Lo que se come en mi casa un día normal.</summary><p><b>Desarrollo (slides 2–6):</b> Desayuno · la olla · la cena · por qué no cocino aparte.</p><p><b>Cierre:</b> ¿Qué se come en tu casa? Cuéntamelo.</p></details><details class="cv-i"><summary>Padre, trabajo y 3 horas de fuerza.</summary><p><b>Desarrollo (slides 2–6):</b> Mi semana real · cuándo entreno · lo que no negocio · lo que sí.</p><p><b>Cierre:</b> Escríbeme DESINFLAMA y lo encajamos en la tuya.</p></details><details class="cv-i"><summary>Por qué me obsesiona el metabolismo de los +40.</summary><p><b>Desarrollo (slides 2–6):</b> Lo que vi en mí · lo que veo en mis clientes · por qué la comida de siempre funciona.</p><p><b>Cierre:</b> Sígueme si quieres entender tu cuerpo.</p></details><details class="cv-i"><summary>Paciencia: el cuerpo no te cambia en 3 meses.</summary><p><b>Desarrollo (slides 2–6):</b> Mis 14 años en 6 slides · lo que pasa en el mes 1, 3, 6 · por qué rendirse sale caro.</p><p><b>Cierre:</b> Guárdalo para cuando quieras tirar la toalla.</p></details><details class="cv-i"><summary>Lo que me dicen mis clientes en la primera llamada.</summary><p><b>Desarrollo (slides 2–6):</b> &#x27;Como sano y no bajo&#x27; · &#x27;me noto hinchado&#x27; · &#x27;ya no es como antes&#x27; · lo que les respondo.</p><p><b>Cierre:</b> Escríbeme DESINFLAMA si dices alguna.</p></details><details class="cv-i"><summary>Antes y ahora de un cliente (con permiso).</summary><p><b>Desarrollo (slides 2–6):</b> Cómo llegó · qué cambiamos en la comida · fuerza · cómo está hoy.</p><p><b>Cierre:</b> Escríbeme DESINFLAMA si quieres tu cambio.</p></details><details class="cv-i"><summary>Lo que no compro: polvitos, retos y milagros.</summary><p><b>Desarrollo (slides 2–6):</b> Mi despensa real · lo que nunca entra · por qué.</p><p><b>Cierre:</b> Comparte con quien gasta en suplementos milagro.</p></details><details class="cv-i"><summary>El día que dejé de vivir a dieta.</summary><p><b>Desarrollo (slides 2–6):</b> Lo que hacía antes · lo que cambió · cómo como hoy · cero culpa.</p><p><b>Cierre:</b> Guárdalo si estás cansado de dietas.</p></details><details class="cv-i"><summary>Mis domingos: compra, olla y fuerza.</summary><p><b>Desarrollo (slides 2–6):</b> El mercado · la olla de la semana · la sesión del domingo · tiempo con los míos.</p><p><b>Cierre:</b> ¿Cómo son tus domingos?</p></details></div></div>
+        <div class="card"><div class="cv-h"><span class="cv-pill val">Valor</span><h3 style="margin:0">11 ideas de valor</h3></div><div class="cv-list"><details class="cv-i"><summary>La leptina explicada en 7 diapositivas.</summary><p><b>Desarrollo (slides 2–6):</b> Qué es · qué hace · por qué deja de funcionar · dietas de hambre · cómo ayudarla.</p><p><b>Cierre:</b> Guárdalo y escríbeme DESINFLAMA.</p></details><details class="cv-i"><summary>El plato antiinflamatorio, sin nada raro.</summary><p><b>Desarrollo (slides 2–6):</b> Proteína · verdura · aceite de oliva · hidrato · ejemplos de casa.</p><p><b>Cierre:</b> Guárdalo para tu próxima comida.</p></details><details class="cv-i"><summary>La regla 50/30/20: por qué entrenar más no te funciona.</summary><p><b>Desarrollo (slides 2–6):</b> 50 % descanso · 30 % comida · 20 % entreno · qué cambiar primero.</p><p><b>Cierre:</b> Escríbeme DESINFLAMA si entrenas mucho y no bajas.</p></details><details class="cv-i"><summary>Comes sano y no bajas: 5 razones.</summary><p><b>Desarrollo (slides 2–6):</b> Picoteo · &#x27;sano&#x27; no es poco · sueño · estrés · cero fuerza.</p><p><b>Cierre:</b> ¿Cuál es la tuya?</p></details><details class="cv-i"><summary>La insulina en 30 segundos (y lo que haces mal).</summary><p><b>Desarrollo (slides 2–6):</b> Qué es · picar todo el día · cenas tardías · qué hacer.</p><p><b>Cierre:</b> Guárdalo.</p></details><details class="cv-i"><summary>Método Desinflama en un carrusel.</summary><p><b>Desarrollo (slides 2–6):</b> Comida real · metabolismo y hormonas · fuerza 3 h · Desinflamar, Recomponer, Mantener.</p><p><b>Cierre:</b> Escríbeme DESINFLAMA y te digo tu fase.</p></details><details class="cv-i"><summary>Tu analítica: qué significa cada valor (sin diagnosticar).</summary><p><b>Desarrollo (slides 2–6):</b> Glucosa · triglicéridos · colesterol · qué preguntar a tu médico.</p><p><b>Cierre:</b> Guárdalo para tu próxima analítica.</p></details><details class="cv-i"><summary>3 horas de fuerza a la semana: cómo repartirlas.</summary><p><b>Desarrollo (slides 2–6):</b> 3 sesiones · ejercicios básicos · progresión · adaptar a molestias.</p><p><b>Cierre:</b> Guárdalo y empieza esta semana.</p></details><details class="cv-i"><summary>Antes se comía mejor (en parte): qué recuperar.</summary><p><b>Desarrollo (slides 2–6):</b> La olla · el pescado · menos ultraprocesado · lo que sí era peor.</p><p><b>Cierre:</b> Comparte con tu familia.</p></details><details class="cv-i"><summary>Por qué a los 40 ya no funciona lo de los 25.</summary><p><b>Desarrollo (slides 2–6):</b> Músculo · sueño · estrés · hormonas · qué cambiar.</p><p><b>Cierre:</b> Escríbeme DESINFLAMA si te pasa.</p></details><details class="cv-i"><summary>5 mitos que te tienen inflamado.</summary><p><b>Desarrollo (slides 2–6):</b> Los batidos detox · comer cada 2 horas · eliminar el pan · cardio eterno · light = sano.</p><p><b>Cierre:</b> ¿Cuál te creías?</p></details></div></div>
+      </div>
+      <p class="soft" style="font-size:14px">En el banco de ángulos, filtra por <b>Carrusel · conexión</b> o <b>Carrusel · valor</b> para sacar más.</p>
+    </div>
+
     <div class="sec">
       <div class="head"><span class="label">Voz en off · Reels de prueba</span><h2>Un guion, tres ganchos, gana el que mejor rinde.</h2><p class="soft">Instagram te deja publicar un reel <b>como prueba</b>: solo lo ve gente que no te sigue y no aparece en tu perfil. Úsalo para que los datos decidan el gancho, no tu intuición.</p></div>
       <div class="g2">
@@ -700,6 +755,19 @@ h3 { font: 700 18px/1.25 var(--f-body); text-transform: none; letter-spacing: 0;
 
   var fFam = -1, fFmt = "";
   var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  /* ---------- Carruseles: conexión o valor ---------- */
+  (function () {
+    var CON = [4, 6, 10, 12], ADD = [12, 4, 6, 8];
+    ANG.forEach(function (a) {
+      var tag = CON.indexOf(a[0]) >= 0 ? "Carrusel · conexión" : "Carrusel · valor";
+      var i = a[3].indexOf("Carrusel");
+      if (i >= 0) a[3][i] = tag;
+      else if (ADD.indexOf(a[0]) >= 0 && a[3].indexOf(tag) < 0) a[3].push(tag);
+    });
+    var fi = FMTS.indexOf("Carrusel");
+    if (fi >= 0) FMTS.splice(fi, 1, "Carrusel · conexión", "Carrusel · valor");
+    else FMTS.push("Carrusel · conexión", "Carrusel · valor");
+  })();
   function renderAng() {
     var q = norm($("ang-q").value || "");
     var list = ANG.filter(function (a) {
@@ -748,3 +816,24 @@ h3 { font: 700 18px/1.25 var(--f-body); text-transform: none; letter-spacing: 0;
   });
 })();
 </script>
+<script>
+(function () {
+  /* Carruseles del calendario: alternan conexión y valor */
+  var stages = document.querySelectorAll("#stages .stage");
+  for (var s = 0; s < stages.length; s++) {
+    var items = stages[s].querySelectorAll(".item.k-car"), n = items.length;
+    for (var i = 0; i < n; i++) {
+      var con = i % 2 === 0;
+      items[i].textContent = "Carrusel · " + (con ? "conexión" : "valor");
+      items[i].classList.add(con ? "car-con" : "car-val");
+    }
+    if (n) {
+      var p = document.createElement("p");
+      p.className = "soft car-note"; p.style.fontSize = "13.5px";
+      p.textContent = n + " carruseles esta semana, alternando conexión y valor. La semana siguiente empiezas por el tipo contrario (si esta abre con conexión, la próxima abre con valor).";
+      stages[s].appendChild(p);
+    }
+  }
+})();
+</script>
+

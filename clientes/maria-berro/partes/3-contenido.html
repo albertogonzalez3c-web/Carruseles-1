@@ -72,6 +72,7 @@ ul.l b, ol.l b { color: var(--ink); }
 .item { border-radius: 9px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.25; color: var(--white); }
 .rest { font-size: 12.5px; color: var(--soft); }
 .k-vo { background: #c8433f; }
+.k-car { background: #3f5d63; }
 .k-yap { background: #7a3e8e; }
 .k-trend { background: #1f6f6b; }
 .k-gs { background: #2c4f9e; }
@@ -161,7 +162,7 @@ ul.l b, ol.l b { color: var(--ink); }
   <!-- PLAN -->
   <section class="view" id="v-plan" aria-label="El plan">
     <div class="sec">
-      <div class="head"><span class="label">Tus 4 formatos</span><h2>Solo estos cuatro. No necesitas más.</h2><p class="soft">Cuatro formatos que puedes grabar tú sola, en casa o en el gimnasio, en una sesión.</p></div>
+      <div class="head"><span class="label">Tus 4 formatos + carruseles</span><h2>Cuatro formatos de reel. Y 3 carruseles a la semana.</h2><p class="soft">Cuatro formatos que puedes grabar tú sola, en casa o en el gimnasio, en una sesión.</p></div>
       <div class="g4">
         <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Tú entrenando o en tu día a día, y tu voz encima contando una idea. El más fácil para empezar: no tienes que hablar a cámara. <b>La que mejor funcione en orgánico es la que se promociona como anuncio de seguidores</b> (Parte 4).</p></article>
         <article class="card fmt"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">Tú hablando a cámara, como si se lo contaras a una amiga. 30–60 segundos, una sola idea. Es el que más confianza genera.</p></article>
@@ -171,10 +172,65 @@ ul.l b, ol.l b { color: var(--ink); }
     </div>
 
     <div class="sec">
-      <div class="head"><span class="label">Cómo vas subiendo</span><h2>Una semana para arrancar. Desde la segunda, 2 reels al día.</h2></div>
+      <div class="head"><span class="label">Cómo vas subiendo</span><h2>Una semana para arrancar. Desde la segunda, 2 reels al día. Siempre 3 carruseles a la semana.</h2></div>
       <div class="legend" id="legend"></div>
       <div id="stages" style="display:grid;gap:26px"></div>
       <p class="soft" style="font-size:14px">2 al día parece mucho, pero no se graba a diario: en <b>2 sesiones de grabación por semana</b> sacas los 14 (7 por sesión, con la misma luz y el mismo sitio). Si un día solo sale 1, no pasa nada: lo que no vale es parar dos días seguidos.</p>
+    </div>
+
+    <div class="sec" id="carruseles-cv">
+      <style>
+.cv-rule { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.cv-week { display: grid; gap: 8px; }
+.cv-row { display: grid; grid-template-columns: 44px 92px 1fr; gap: 8px; align-items: start; font-size: 14px; line-height: 1.35; }
+.cv-row b { font-weight: 800; }
+.cv-pill { display: inline-block; border-radius: 999px; padding: 3px 9px; font-size: 12px; font-weight: 800; letter-spacing: .02em; text-align: center; }
+.cv-pill.con { background: var(--ink); color: var(--white); }
+.cv-pill.val { background: var(--chip); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cv-wk { font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); margin: 6px 0 0; }
+.cv-list { display: grid; gap: 8px; }
+.cv-i { border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); padding: 0; }
+.cv-i summary { cursor: pointer; padding: 10px 12px; font-size: 14.5px; font-weight: 700; line-height: 1.35; list-style: none; }
+.cv-i summary::-webkit-details-marker { display: none; }
+.cv-i summary::before { content: "+"; display: inline-block; width: 16px; font-weight: 800; }
+.cv-i[open] summary::before { content: "–"; }
+.cv-i p { margin: 0; padding: 0 12px 10px 28px; font-size: 13.5px; line-height: 1.45; }
+.cv-h { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 0 0 10px; }
+.cv-slides { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.cv-slides div { border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); padding: 10px; font-size: 13.5px; line-height: 1.4; background: var(--white); }
+.cv-slides b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+@media (max-width: 560px) { .cv-slides { grid-template-columns: 1fr; } .cv-row { grid-template-columns: 38px 86px 1fr; } }
+#stages .item.car-val { box-shadow: inset 0 0 0 2px rgba(255,255,255,.85); }
+.car-note { margin: 4px 0 0; }
+</style>
+      <div class="head"><span class="label">Carruseles · mínimo 3 por semana</span><h2>Carruseles: 3/semana alternando conexión y valor</h2><p class="soft">Regla de Alberto para todos: nunca menos de 3 carruseles a la semana. Uno conecta (quién eres y por qué haces esto), el siguiente aporta valor (lo que sabes y cómo lo aplicas), y así siempre. La conexión hace que te sigan; el valor hace que te guarden y te escriban.</p></div>
+      <div class="g2">
+        <div class="card"><h3>La regla</h3>
+          <ul class="cv-rule">
+            <li><b>Mínimo 3 a la semana</b> en todas las etapas (lunes, miércoles y viernes si no sabes cuándo). Si te sobra energía, 4–5: nunca menos de 3.</li>
+            <li><b>Alternas:</b> conexión → valor → conexión. La semana siguiente empiezas por el tipo contrario.</li>
+            <li><b>Conexión:</b> tu historia, tu día a día, lo que te cuesta, tus creencias, por qué haces lo que haces, casos de clientes contados como historia.</li>
+            <li><b>Valor:</b> educativo, tu método, errores, guías paso a paso, mitos desmontados.</li>
+            <li><b>Estructura fija:</b> portada con gancho, 4–6 slides de desarrollo y cierre con CTA ("escríbeme MEJOR", guardar o compartir).</li>
+          </ul>
+        </div>
+        <div class="card"><h3>Ejemplo de dos semanas</h3>
+          <div class="cv-week">
+            <p class="cv-wk">Semana A</p><div class="cv-row"><b>Lun</b><span class="cv-pill con">Conexión</span><span>A los 23 odiaba mi cuerpo. A los 34, mejor que nunca.</span></div><div class="cv-row"><b>Mié</b><span class="cv-pill val">Valor</span><span>3 días de fuerza: la semana exacta que haría si empezara hoy.</span></div><div class="cv-row"><b>Vie</b><span class="cv-pill con">Conexión</span><span>Lo que como un domingo con mi familia (y sigo avanzando).</span></div>
+            <p class="cv-wk">Semana B · empieza por el contrario</p><div class="cv-row"><b>Lun</b><span class="cv-pill val">Valor</span><span>5 mitos de los 30 y 40 que te tienen estancada.</span></div><div class="cv-row"><b>Mié</b><span class="cv-pill con">Conexión</span><span>La foto que no quería que nadie viera.</span></div><div class="cv-row"><b>Vie</b><span class="cv-pill val">Valor</span><span>Cómo cenar fuera sin perder lo conseguido: mi guía.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cv-slides" style="margin-top:14px">
+        <div><b>Slide 1 · Portada</b>El gancho en una frase grande. Que pare el dedo: una cifra, una frase que tu cliente diría o una promesa concreta.</div>
+        <div><b>Slides 2–6 · Desarrollo</b>Una idea por slide, frases cortas. En conexión, cuéntalo como una historia; en valor, como pasos o lista.</div>
+        <div><b>Último slide · Cierre</b>Una sola llamada a la acción: "escríbeme MEJOR", "guárdalo" o "compártelo con…".</div>
+      </div>
+      <div class="g2" style="margin-top:14px">
+        <div class="card"><div class="cv-h"><span class="cv-pill con">Conexión</span><h3 style="margin:0">12 ideas de conexión</h3></div><div class="cv-list"><details class="cv-i"><summary>A los 23 odiaba mi cuerpo. A los 34 me veo mejor que nunca.</summary><p><b>Desarrollo (slides 2–6):</b> Foto a los 23 y foto hoy · qué pensaba al mirarme · qué probé y no funcionó · qué cambió (fuerza + comida real) · cómo me siento ahora.</p><p><b>Cierre:</b> Si te ves en la de los 23, escríbeme MEJOR.</p></details><details class="cv-i"><summary>La foto que no quería que nadie viera.</summary><p><b>Desarrollo (slides 2–6):</b> Por qué la escondía · lo que me decía a mí misma · el día que decidí cambiar · lo que aprendí de esa chica.</p><p><b>Cierre:</b> Guárdalo para el día que no te veas bien.</p></details><details class="cv-i"><summary>Lo que como un domingo con mi familia.</summary><p><b>Desarrollo (slides 2–6):</b> Comida, postre, cena: fotos reales · por qué no como aparte · cómo lo equilibro el lunes · sin culpa.</p><p><b>Cierre:</b> Cuéntame qué se come en tu casa el domingo.</p></details><details class="cv-i"><summary>Dietista, entrenadora… y también me cuesta.</summary><p><b>Desarrollo (slides 2–6):</b> Los días que no me apetece entrenar · qué hago esos días · por qué el hábito gana a la motivación.</p><p><b>Cierre:</b> Si te pasa, escríbeme MEJOR y te cuento cómo lo trabajamos.</p></details><details class="cv-i"><summary>Por qué me hice dietista.</summary><p><b>Desarrollo (slides 2–6):</b> La chica que probaba todas las dietas · lo que descubrí estudiando · por qué ahora ayudo a mujeres de 30 y 40.</p><p><b>Cierre:</b> Sígueme si quieres dejar de empezar dietas cada lunes.</p></details><details class="cv-i"><summary>Mi semana real: trabajo, entreno y casa.</summary><p><b>Desarrollo (slides 2–6):</b> Lunes a domingo en 6 slides · cuándo entreno · qué como · cuánto duermo · lo que no hago.</p><p><b>Cierre:</b> Guárdalo y compáralo con tu semana.</p></details><details class="cv-i"><summary>Lo que me dijo una clienta en su revisión de la semana 8.</summary><p><b>Desarrollo (slides 2–6):</b> Su frase literal (con permiso) · cómo empezó · qué cambió en su forma de verse · lo que me enseñó.</p><p><b>Cierre:</b> Escríbeme MEJOR si quieres tu primera revisión.</p></details><details class="cv-i"><summary>Mejor que nunca no es ser perfecta.</summary><p><b>Desarrollo (slides 2–6):</b> Lo que significa para mí · mis &#x27;defectos&#x27; que ya no escondo · por qué la meta es mantenerlo, no llegar.</p><p><b>Cierre:</b> Comparte con una amiga que necesita leerlo.</p></details><details class="cv-i"><summary>Las cosas que dejé de hacer a los 30.</summary><p><b>Desarrollo (slides 2–6):</b> Pesarme cada día · dietas de 1.200 kcal · cardio para &#x27;quemar&#x27; la cena · compararme · qué hago en su lugar.</p><p><b>Cierre:</b> ¿Cuál dejas tú hoy?</p></details><details class="cv-i"><summary>Volver a sentirte tú después de ser madre (lo que me cuentan mis clientas).</summary><p><b>Desarrollo (slides 2–6):</b> Sus frases reales · el cansancio · la ropa que ya no vale · el primer cambio que notan · sin prisas.</p><p><b>Cierre:</b> Escríbeme MEJOR y vemos tu punto de partida.</p></details><details class="cv-i"><summary>Antes y ahora de una clienta (con permiso).</summary><p><b>Desarrollo (slides 2–6):</b> Foto 1 vs foto 2 · lo que hacía antes · los 3 cambios clave · lo que dice ella hoy.</p><p><b>Cierre:</b> ¿Quieres el tuyo? Escríbeme MEJOR.</p></details><details class="cv-i"><summary>Mi primera vez con pesas: lo que sentí.</summary><p><b>Desarrollo (slides 2–6):</b> Vergüenza en la zona de pesas · miedo a ponerme grande · el primer mes · lo que pasó con mi glúteo y mi cintura.</p><p><b>Cierre:</b> Si te da miedo empezar, guárdalo.</p></details></div></div>
+        <div class="card"><div class="cv-h"><span class="cv-pill val">Valor</span><h3 style="margin:0">12 ideas de valor</h3></div><div class="cv-list"><details class="cv-i"><summary>Tu cuerpo a los 30 y 40 no es el de los 20 (y no pasa nada).</summary><p><b>Desarrollo (slides 2–6):</b> Qué cambia: músculo, hormonas, sueño · qué hacer con cada uno · sin diagnosticar.</p><p><b>Cierre:</b> Guárdalo y escríbeme MEJOR si quieres tu plan.</p></details><details class="cv-i"><summary>3 días de fuerza: la semana que haría si empezara hoy.</summary><p><b>Desarrollo (slides 2–6):</b> Día 1 piernas y glúteo · día 2 torso · día 3 completo · series y descansos · cómo progresar.</p><p><b>Cierre:</b> Guárdalo para tu próxima semana.</p></details><details class="cv-i"><summary>Las pesas no te ponen grande. Te ponen firme.</summary><p><b>Desarrollo (slides 2–6):</b> El mito · qué pasa de verdad · cuánta fuerza necesitas · cómo se ve en 3 meses.</p><p><b>Cierre:</b> Envíaselo a quien te dijo lo contrario.</p></details><details class="cv-i"><summary>5 mitos de los 30 y 40 que te tienen estancada.</summary><p><b>Desarrollo (slides 2–6):</b> Cenar fruta · eliminar hidratos · cardio en ayunas · &#x27;metabolismo roto&#x27; · detox · qué hacer en su lugar.</p><p><b>Cierre:</b> ¿Cuál te creías? Escríbeme MEJOR.</p></details><details class="cv-i"><summary>Cómo cenar fuera sin perder lo conseguido.</summary><p><b>Desarrollo (slides 2–6):</b> Antes de salir · qué pedir · el vino · el postre · el día siguiente.</p><p><b>Cierre:</b> Guárdalo para tu próxima cena.</p></details><details class="cv-i"><summary>Proteína en cada comida: cómo llegar con comida de casa.</summary><p><b>Desarrollo (slides 2–6):</b> Desayuno · comida · merienda · cena · ejemplos con lo que ya compras.</p><p><b>Cierre:</b> Guárdalo y haz la compra con esto.</p></details><details class="cv-i"><summary>Activar, Esculpir, Para siempre: mi método en 3 fases.</summary><p><b>Desarrollo (slides 2–6):</b> Fase 1 qué pasa y qué haces · fase 2 · fase 3 · los 3 no negociables.</p><p><b>Cierre:</b> Escríbeme MEJOR y te digo en qué fase empezarías.</p></details><details class="cv-i"><summary>Glúteo: los 4 ejercicios que no faltan en mis planes.</summary><p><b>Desarrollo (slides 2–6):</b> Hip thrust · sentadilla · peso muerto rumano · zancada · técnica en una frase cada uno.</p><p><b>Cierre:</b> Guárdalo para tu día de pierna.</p></details><details class="cv-i"><summary>Por qué tu dieta funciona 3 semanas y luego no.</summary><p><b>Desarrollo (slides 2–6):</b> Demasiado restrictiva · sin plan para el finde · sin fuerza · sin seguimiento · la alternativa.</p><p><b>Cierre:</b> Escríbeme MEJOR si te ha pasado.</p></details><details class="cv-i"><summary>Qué mirar además de la báscula.</summary><p><b>Desarrollo (slides 2–6):</b> Foto semanal · cintura · ropa · fuerza · energía · cómo medirlo bien.</p><p><b>Cierre:</b> Guárdalo y empieza esta semana.</p></details><details class="cv-i"><summary>Mantener sin rebote: cómo subo calorías a mis clientas.</summary><p><b>Desarrollo (slides 2–6):</b> Por qué no se corta de golpe · semanas de subida · señales de que vas bien · findes y vacaciones.</p><p><b>Cierre:</b> Escríbeme MEJOR si vienes de un rebote.</p></details><details class="cv-i"><summary>Plan para una semana de locos (trabajo + niños).</summary><p><b>Desarrollo (slides 2–6):</b> 2 sesiones de 40 minutos · comidas de batch cooking · lo mínimo innegociable.</p><p><b>Cierre:</b> Guárdalo para tu semana más difícil.</p></details></div></div>
+      </div>
+      <p class="soft" style="font-size:14px">En el banco de ángulos, filtra por <b>Carrusel · conexión</b> o <b>Carrusel · valor</b> para sacar más.</p>
     </div>
 
     <div class="sec">
@@ -404,7 +460,8 @@ ul.l b, ol.l b { color: var(--ink); }
     vo: { n: "Voz en off", c: "k-vo" },
     yap: { n: "Yapping", c: "k-yap" },
     trend: { n: "Tendencia", c: "k-trend" },
-    gs: { n: "Green screen", c: "k-gs" }
+    gs: { n: "Green screen", c: "k-gs" },
+    car: { n: "Carrusel", c: "k-car" }
   };
 
   /* ---------- Etapas ---------- */
@@ -412,16 +469,17 @@ ul.l b, ol.l b { color: var(--ink); }
     { t: "Semana 1", s: "Arrancar sin agobio: 1 de cada formato para coger el ritmo.", plan: [["vo"], [], ["yap"], [], ["trend"], [], ["gs"]] },
     { t: "Desde la semana 2", s: "2 reels al día. Lo grabas todo en 2 sesiones por semana y solo publicas.", plan: [["vo", "yap"], ["trend", "gs"], ["vo", "yap"], ["trend", "gs"], ["vo", "yap"], ["trend", "gs"], ["vo", "yap"]] }
   ];
+  STAGES.forEach(function (st) { [0, 2, 4].forEach(function (i) { st.plan[i].push("car"); }); });
   $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
   $("stages").innerHTML = STAGES.map(function (st) {
-    var cnt = { vo: 0, yap: 0, trend: 0, gs: 0 }, total = 0;
-    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; total++; }); });
+    var cnt = { vo: 0, yap: 0, trend: 0, gs: 0 }, total = 0, car = 0;
+    st.plan.forEach(function (d) { d.forEach(function (k) { if (k === "car") { car++; return; } cnt[k]++; total++; }); });
     var days = st.plan.map(function (d, i) {
       return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + d.length + '</small></div>' +
         (d.length ? d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") : '<span class="rest">Descanso</span>') + '</div>';
     }).join("");
     var desglose = Object.keys(cnt).filter(function (k) { return cnt[k]; }).map(function (k) { return cnt[k] + " " + K[k].n.toLowerCase(); }).join(" · ");
-    return '<div class="stage"><div class="stage-h"><span class="big" data-total="' + total + '">' + total + ' reels</span><h3>' + esc(st.t) + '</h3><span class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desglose + ')</span></div><div class="week">' + days + '</div></div>';
+    return '<div class="stage"><div class="stage-h"><span class="big" data-total="' + total + '">' + total + ' reels + ' + car + ' carruseles</span><h3>' + esc(st.t) + '</h3><span class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desglose + ')</span></div><div class="week">' + days + '</div></div>';
   }).join("");
 
   /* ---------- YouTube ---------- */
@@ -537,6 +595,19 @@ ul.l b, ol.l b { color: var(--ink); }
   ];
   var fFam = -1, fFmt = "";
   var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  /* ---------- Carruseles: conexión o valor ---------- */
+  (function () {
+    var CON = [0, 5, 6, 11, 12], ADD = [0, 5, 6, 11, 12, 1, 2, 3, 9, 13];
+    ANG.forEach(function (a) {
+      var tag = CON.indexOf(a[0]) >= 0 ? "Carrusel · conexión" : "Carrusel · valor";
+      var i = a[3].indexOf("Carrusel");
+      if (i >= 0) a[3][i] = tag;
+      else if (ADD.indexOf(a[0]) >= 0 && a[3].indexOf(tag) < 0) a[3].push(tag);
+    });
+    var fi = FMTS.indexOf("Carrusel");
+    if (fi >= 0) FMTS.splice(fi, 1, "Carrusel · conexión", "Carrusel · valor");
+    else FMTS.push("Carrusel · conexión", "Carrusel · valor");
+  })();
   function renderAng() {
     var q = norm($("ang-q").value || "");
     var list = ANG.filter(function (a) {
@@ -624,3 +695,24 @@ ul.l b, ol.l b { color: var(--ink); }
   });
 })();
 </script>
+<script>
+(function () {
+  /* Carruseles del calendario: alternan conexión y valor */
+  var stages = document.querySelectorAll("#stages .stage");
+  for (var s = 0; s < stages.length; s++) {
+    var items = stages[s].querySelectorAll(".item.k-car"), n = items.length;
+    for (var i = 0; i < n; i++) {
+      var con = i % 2 === 0;
+      items[i].textContent = "Carrusel · " + (con ? "conexión" : "valor");
+      items[i].classList.add(con ? "car-con" : "car-val");
+    }
+    if (n) {
+      var p = document.createElement("p");
+      p.className = "soft car-note"; p.style.fontSize = "13.5px";
+      p.textContent = n + " carruseles esta semana, alternando conexión y valor. La semana siguiente empiezas por el tipo contrario (si esta abre con conexión, la próxima abre con valor).";
+      stages[s].appendChild(p);
+    }
+  }
+})();
+</script>
+
