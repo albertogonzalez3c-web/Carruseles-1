@@ -1,0 +1,233 @@
+<title>Zent SaiyaTrainer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Zent (Jorge Gabriel), el entrenador de los latinos en Estados Unidos. Plan KAME para hombres +30 que quieren retomar el entrenamiento aunque el trabajo y la familia les dejen poco tiempo. Sin dietas extremas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Boceto de landing de Zent: estética de sus ilustraciones (noche azul, morado, atardecer naranja). Siempre oscura: es su marca. */
+:root { --bg: #0b0c26; --bg2: #121443; --panel: #171a4f; --panel2: #1f2260; --ink: #f3f2ff; --soft: #b9bde6; --line: #2c2f72; --blue: #3a5bff; --purple: #7c4dff; --sun: #ff9f3a; --sun-ink: #1a0f00; --f-head: "Russo One", "Arial Black", Arial, sans-serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace; color-scheme: dark; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark; } }
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: dark; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16.5px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; padding-bottom: 78px; }
+.in { max-width: 1060px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding: clamp(48px, 8vw, 92px) 0; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-size: clamp(34px, 6.2vw, 64px); line-height: 1.02; }
+h2 { font-size: clamp(26px, 4vw, 40px); line-height: 1.08; }
+h3 { font-size: 19px; line-height: 1.2; }
+h1 em, h2 em { font-style: normal; color: var(--sun); }
+p { margin: 0; }
+.soft { color: var(--soft); }
+.label { display: block; margin-bottom: 10px; font: 600 11.5px/1.3 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--sun); }
+.boceto { background: var(--sun); color: var(--sun-ink); font: 600 12px/1.35 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; text-align: center; padding: 8px 16px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font: 700 15px/1.2 var(--f-body); }
+.brand img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--purple); }
+.brand small { display: block; color: var(--soft); font-weight: 500; font-size: 12.5px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 800 15.5px/1.1 var(--f-body); padding: 16px 22px; border-radius: 10px; background: var(--sun); color: var(--sun-ink); text-decoration: none; border: 0; cursor: pointer; text-align: center; }
+.btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--soft); }
+.btn.sm { padding: 11px 14px; font-size: 13.5px; }
+.hero { padding-top: 18px; background: radial-gradient(120% 90% at 85% 10%, rgba(255,159,58,.22) 0%, rgba(124,77,255,.18) 35%, rgba(11,12,38,0) 70%); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 52px); align-items: center; }
+.hero .lead { font-size: clamp(17px, 2vw, 19.5px); color: var(--soft); margin-top: 18px; max-width: 580px; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hero .note { margin-top: 12px; font-size: 13.5px; color: var(--soft); }
+.hero figure { margin: 0; justify-self: center; width: 100%; max-width: 380px; position: relative; }
+.hero figure img { width: 100%; display: block; border-radius: 18px; aspect-ratio: 332 / 583; object-fit: cover; box-shadow: 0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,.45); }
+.hero figure figcaption { position: absolute; left: 12px; right: 12px; bottom: 12px; background: rgba(11,12,38,.82); border-radius: 10px; padding: 10px 12px; font-size: 13.5px; color: var(--ink); }
+.quote { font: 400 clamp(22px, 3.4vw, 34px)/1.25 var(--f-head); max-width: 900px; }
+.quote em { font-style: normal; color: var(--sun); }
+.band { background: linear-gradient(90deg, var(--blue), var(--purple)); }
+.band .quote { color: #fff; }
+.band .quote em { color: #ffe1bd; }
+.pains { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
+.pain { background: var(--panel); border-radius: 12px; padding: 18px 20px; font-size: 17px; box-shadow: inset 0 0 0 1px var(--line); }
+.pain::before { content: "“"; font: 400 34px/0 var(--f-head); color: var(--sun); display: block; height: 18px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.card { background: var(--panel); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.card .n { font: 400 38px/1 var(--f-head); color: var(--sun); }
+.card i { color: #9ea3d8; font-size: 14.5px; }
+.phase { border-top: 3px solid var(--purple); padding-top: 14px; display: grid; gap: 6px; }
+.story { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(20px, 4vw, 48px); align-items: center; margin-top: 8px; }
+.story img { width: 100%; border-radius: 16px; display: block; aspect-ratio: 332 / 583; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
+.tl { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; }
+.tl li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.tl b { font: 600 12px/1.3 var(--f-mono); color: var(--sun); letter-spacing: .04em; }
+.yes li, .no li { margin-bottom: 8px; }
+ul.l { margin: 0; padding-left: 20px; color: var(--soft); display: grid; gap: 8px; }
+ul.l b { color: var(--ink); }
+.steps { counter-reset: s; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.step { background: var(--panel); border-radius: 14px; padding: 22px; box-shadow: inset 0 0 0 1px var(--line); display: grid; gap: 8px; }
+.step::before { counter-increment: s; content: counter(s); width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--sun); color: var(--sun-ink); font: 400 20px/1 var(--f-head); }
+.pending { border: 2px dashed var(--line); border-radius: 14px; padding: 22px; color: var(--soft); text-align: center; display: grid; gap: 6px; }
+details { background: var(--panel); border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); padding: 4px 18px; }
+details + details { margin-top: 10px; }
+summary { cursor: pointer; font-weight: 700; padding: 14px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--sun); font: 400 22px/1 var(--f-head); }
+details[open] summary::after { content: "–"; }
+details p { padding: 0 0 16px; color: var(--soft); }
+.final { text-align: center; background: radial-gradient(90% 120% at 50% 100%, rgba(255,159,58,.25) 0%, rgba(124,77,255,.2) 40%, rgba(11,12,38,0) 75%); }
+.final .btn { margin-top: 24px; }
+footer { padding: 28px 0 36px; color: var(--soft); font-size: 13.5px; border-top: 1px solid var(--line); }
+.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(11,12,38,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sticky span { font-size: 14px; color: var(--soft); }
+.sticky span b { color: var(--ink); }
+@media (max-width: 860px) { .hero-grid, .story { grid-template-columns: 1fr; } .hero figure { max-width: 300px; } .story img { max-width: 300px; } .g3, .steps { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .pains, .g2 { grid-template-columns: 1fr; } .top .btn { display: none; } .sticky span { display: none; } .sticky .btn { width: 100%; } .tl li { grid-template-columns: 60px minmax(0, 1fr); } }
+</style>
+
+<div class="boceto" role="note">Boceto de landing · enlace del test, casos y textos por confirmar con Zent</div>
+
+<header class="in top">
+  <div class="brand"><img src="casos/zent-avatar.jpg" alt="Zent, ilustración anime de Jorge" width="42" height="42"><span>SaiyaTrainer<small>Zent · Jorge Gabriel</small></span></div>
+  <a class="btn sm" href="https://tally.so/r/Ek7eQq" data-test target="_blank" rel="noopener">Haz el test</a>
+</header>
+
+<section class="hero">
+  <div class="in hero-grid">
+    <div>
+      <span class="label">Plan KAME · online · para latinos +30 en EE. UU.</span>
+      <h1>El entrenador de los <em>latinos</em> en Estados Unidos.</h1>
+      <p class="lead">Ayudo a hombres latinos de +30 en Estados Unidos que entrenaban de jóvenes a retomar el entrenamiento y ponerse en forma, aunque el trabajo y la familia les dejen poco tiempo. Sin dietas extremas.</p>
+      <div class="ctas">
+        <a class="btn" href="https://tally.so/r/Ek7eQq" data-test target="_blank" rel="noopener">Haz mi test de 2 minutos</a>
+        <a class="btn ghost" href="#metodo">Cómo trabajo</a>
+      </div>
+      <p class="note">Con tu test te digo en una llamada corta cómo lo haría en tu caso. Sin compromiso.</p>
+    </div>
+    <figure>
+      <img src="casos/zent-morado.jpg" alt="Zent, ilustración anime con sudadera morada sin mangas frente al mar al atardecer" width="332" height="583">
+      <figcaption>Soy Jorge. Zent es mi personaje: así explico el entrenamiento para que se recuerde.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <span class="label">¿Te suena?</span>
+    <h2>Entrenabas de joven. Luego llegó <em>la vida</em>.</h2>
+    <div class="pains">
+      <p class="pain">Entre el trabajo y la casa no encuentro el momento para entrenar.</p>
+      <p class="pain">Empiezo con todas las ganas y a las 3 semanas lo dejo.</p>
+      <p class="pain">Llego tan cansado que lo último que quiero es ir al gym.</p>
+      <p class="pain">Las dietas de internet no tienen nada que ver con la comida de mi casa.</p>
+    </div>
+    <p class="soft" style="margin-top:20px;max-width:720px">No es falta de ganas ni de disciplina. Casi siempre es un plan pensado para alguien con todo el tiempo del mundo.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="in"><p class="quote">"El problema no es que no tengas tiempo; es que sigues intentando <em>entrenar como cuando sí lo tenías</em>."</p><p style="margin-top:14px;color:#e6e4ff">— Zent</p></div>
+</section>
+
+<section id="metodo">
+  <div class="in">
+    <span class="label">Método KAME</span>
+    <h2>Entrenar dentro de <em>la vida que tienes</em>, no de la que tenías a los 20.</h2>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Tiempo real</h3><p class="soft">2 a 4 sesiones de 35–45 minutos que caben en tu semana, y una versión de 20 minutos para cuando todo sale mal.</p><i>A los 19 pasaba más de 2 horas en bus por trayecto. Aprendí a entrenar con el tiempo que había.</i></div>
+      <div class="card"><span class="n">2</span><h3>Comida real</h3><p class="soft">La comida de tu casa, organizada. Sin prohibir el arroz, la arepa ni las tortillas: aprendes cuánto y cómo.</p><i>No me alcanzaba para la comida "fit" de internet. Comía lo que cocinaba mi mamá y progresé.</i></div>
+      <div class="card"><span class="n">3</span><h3>Retomar sin culpa</h3><p class="soft">Cada domingo revisamos tu semana y ajustamos. Una semana mala no borra lo que ya hiciste.</p><i>Me lesioné, subí de peso y volví. Por eso sé que retomar se aprende.</i></div>
+    </div>
+    <div class="g3">
+      <div class="phase"><span class="label">Semanas 1–4</span><h3>Arranque</h3><p class="soft">Plan según tu agenda real, técnica y primeros hábitos.</p></div>
+      <div class="phase"><span class="label">Semanas 5–12</span><h3>Progreso</h3><p class="soft">Subes cargas y ajustamos cada semana según tu trabajo y tu casa.</p></div>
+      <div class="phase"><span class="label">Mes 4 en adelante</span><h3>Autonomía</h3><p class="soft">Aprendes a ajustar solo con turnos, viajes y fiestas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="in story">
+    <img src="casos/zent-azul.jpg" alt="Zent con camiseta azul en un gimnasio al atardecer, con el texto disciplina, constancia, enfoque, resultados" width="332" height="583" loading="lazy">
+    <div>
+      <span class="label">Mi historia</span>
+      <h2>No empecé con condiciones perfectas. <em>Nadie lo hace.</em></h2>
+      <ul class="tl">
+        <li><b>Antes</b><span class="soft">El flaco que se tapaba los brazos con ropa ancha y no podía con la barra vacía.</span></li>
+        <li><b>19 años</b><span class="soft">Más de 2 horas de bus por trayecto y 8 de trabajo. Entrenaba igual.</span></li>
+        <li><b>2018</b><span class="soft">Técnico en entrenamiento deportivo y entrenador personal en gimnasios de cadena.</span></li>
+        <li><b>2020</b><span class="soft">Sin trabajo por la pandemia: mancuernas de cemento en casa.</span></li>
+        <li><b>2021</b><span class="soft">Llegué a Estados Unidos. 8 horas en un hotel, sin carro. Entrenar se me cayó.</span></li>
+        <li><b>2023</b><span class="soft">Lesión de tobillo y kilos de más. Volví a empezar.</span></li>
+        <li><b>Hoy</b><span class="soft">Pasados los 30, construyendo la mejor versión física que he tenido. Y ayudando a otros latinos a hacer lo mismo.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <span class="label">¿Es para ti?</span>
+    <h2>Hecho para el que <em>quiere volver</em>.</h2>
+    <div class="g2">
+      <div class="card yes"><h3>Es para ti si…</h3><ul class="l"><li>Eres latino, tienes más de 30 y vives en EE. UU.</li><li>Entrenabas o hacías deporte de joven y quieres retomarlo.</li><li>Trabajas muchas horas y tienes pareja, hijos o las dos cosas.</li><li>Quieres un plan que quepa en tu semana y comer como en tu casa.</li></ul></div>
+      <div class="card no"><h3>No es para ti si…</h3><ul class="l"><li>Buscas resultados mágicos en 30 días o atajos químicos.</li><li>Quieres una dieta extrema.</li><li>No puedes comprometerte con un mínimo de 2 sesiones a la semana.</li><li>Necesitas atención médica antes que un entrenador.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="in">
+    <span class="label">Cómo empezamos</span>
+    <h2>Tres pasos. <em>Sin compromiso</em> hasta el tercero.</h2>
+    <div class="steps">
+      <div class="step"><h3>Haz el test</h3><p class="soft">2 minutos: tu trabajo, tu horario, tu familia y lo que quieres lograr.</p></div>
+      <div class="step"><h3>Hablamos 30 minutos</h3><p class="soft">Te digo cómo lo haría en tu caso. Si encaja, te explico el plan y las opciones.</p></div>
+      <div class="step"><h3>Empiezas tu Plan KAME</h3><p class="soft">Plan de 3, 6 o 12 meses según tu objetivo. Se puede pagar en cuotas. [confirmar]</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="in">
+    <span class="label">Resultados</span>
+    <h2>Casos reales, <em>con permiso</em>.</h2>
+    <div class="g3">
+      <div class="pending"><b>[Caso 1 pendiente]</b><span>Cliente activo · con permiso · su semana real + un logro</span></div>
+      <div class="pending"><b>[Caso 2 pendiente]</b><span>Antiguo cliente · con permiso</span></div>
+      <div class="pending"><b>[Caso 3 pendiente]</b><span>Captura de mensaje (nombre tapado si lo pide)</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="in">
+    <span class="label">Preguntas frecuentes</span>
+    <h2>Lo que me preguntan <em>antes de empezar</em>.</h2>
+    <div style="margin-top:24px">
+      <details><summary>¿De verdad sirve entrenar 2 o 3 días?</summary><p>Sí, si son sesiones de cuerpo completo con intención y subes la carga poco a poco. Mejor dos sesiones que haces que cinco que nunca empiezas.</p></details>
+      <details><summary>¿Tengo que dejar el arroz, las tortillas o la comida de mi casa?</summary><p>No. Organizamos la comida que ya comes: porciones claras, proteína suficiente y nada prohibido.</p></details>
+      <details><summary>¿Funciona online?</summary><p>Recibes tu plan, videos de cada ejercicio y un check-in cada domingo para ajustar la semana siguiente. Si quieres, reviso tu técnica por video.</p></details>
+      <details><summary>¿Y si tengo una semana horrible en el trabajo?</summary><p>Para eso está la versión de 20 minutos y el ajuste del domingo. Una semana mala no borra lo que ya hiciste.</p></details>
+      <details><summary>Me molesta la rodilla o la espalda. ¿Puedo empezar?</summary><p>Si hay dolor fuerte o reciente, primero tu médico. Si es una molestia conocida, adaptamos los ejercicios desde el primer día.</p></details>
+      <details><summary>¿Necesito gimnasio?</summary><p>Ayuda, pero no es obligatorio: hay planes en casa o mixtos. Yo entrené en pandemia con mancuernas de cemento.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="in">
+    <span class="label">Tu siguiente paso</span>
+    <h2>Empieza por <em>2 minutos</em>.</h2>
+    <p class="soft" style="max-width:620px;margin:14px auto 0">Haz el test y te digo cómo lo haría en tu caso. Si no es para ti, también te lo digo.</p>
+    <a class="btn" href="https://tally.so/r/Ek7eQq" data-test target="_blank" rel="noopener">Haz mi test</a>
+  </div>
+</section>
+
+<footer>
+  <div class="in">
+    <p>Zent · Jorge Gabriel · SaiyaTrainer · @saiyatrainer · Entrenador personal certificado [confirmar certificación].</p>
+    <p style="margin-top:6px">Este servicio no sustituye la atención médica. Ante dolor, lesión o enfermedad, consulta a tu médico.</p>
+  </div>
+</footer>
+
+<div class="sticky"><span><b>Plan KAME</b> · latinos +30 en EE. UU.</span><a class="btn sm" href="https://tally.so/r/Ek7eQq" data-test target="_blank" rel="noopener">Haz mi test de 2 min</a></div>
