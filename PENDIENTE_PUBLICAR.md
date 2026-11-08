@@ -17,3 +17,6 @@ Clientes antiguos (ya publicados en 8 enlaces sueltos): republicar las 2 página
 ## AL FINAL (petición de Alberto): página maestra con los 17 clientes
 Una sola página "Clientes Mentoría" con los 17: para cada cliente, nombre, nicho en una línea, método, precio de entrada, estado (publicado / qué falta confirmar) y su enlace (hub para los nuevos; para los 11 antiguos, sus 8 enlaces en desplegable o su landing/perfil). URLs de los antiguos: buscar en el historial de commits / resumen de la sesión o con Artifact action "list".
 Datos de la página maestra (17 clientes, URLs antiguas e info): clientes/_maestra/datos.json. Rellenar la URL hub de los 6 nuevos al publicarlos.
+
+## Holyfield: nicho rehecho (+25, "para los que creen que es imposible")
+Republicar sus 8 páginas en sus URLs de siempre (landing con casos/holy-avatar.jpg, mujer-recomposicion-1.jpg, mujer-recomposicion-2.jpg en files).
