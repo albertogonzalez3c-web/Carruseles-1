@@ -128,7 +128,7 @@ h1 { letter-spacing: -.025em !important; }
   <header class="head">
     <span class="label">JuanmiBaronFit · Hombres +30 · Reporte para Alberto</span>
     <h1>Tus números, cada día. Sin excusas.</h1>
-    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Hombres de más de 30 que llevan años entrenando y ni se nota: quieren ponerse fuertes sin vivir en el gym y estar definidos todo el año comiendo más. · Metodología de bloques por orden de prioridades.</p>
+    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Hombres +30 que llevan años entrenando y ni se nota: fuertes sin vivir en el gym y definidos todo el año comiendo más. · Método Prioridades.</p>
     <p class="soft">Cada noche lo del día (5 minutos), cada domingo lo de la semana. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo es lo que hay que corregir mañana. Lo que no se mide no se puede ajustar.</p>
     <div class="bar">
       <label for="fecha">Día<input type="date" id="fecha"></label>
@@ -275,7 +275,7 @@ h1 { letter-spacing: -.025em !important; }
           <div class="nums">
             <label>Seguidores al empezar la semana<input data-s="segIni" type="number" min="0" inputmode="numeric" placeholder="1838"></label>
             <label>Seguidores al acabar<input data-s="segFin" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-            <label>Mensajes AJUSTE + WhatsApp nuevos<input data-s="mejor" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Mensajes BLOQUES + WhatsApp nuevos<input data-s="mejor" type="number" min="0" inputmode="numeric" placeholder="0"></label>
             <label>Respuestas a tus Estados de WhatsApp<input data-s="respEstados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           </div>
           <label class="fld">Mejor pieza de la semana (enlace)<input data-s="mejorLink" placeholder="https://www.instagram.com/reel/…"></label>
@@ -697,7 +697,7 @@ h1 { letter-spacing: -.025em !important; }
       "Rol entrenador: " + (rp == null ? "—" : rp + " %") + (rolOn && rp != null ? ckw(rp >= 40) : "") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " guion probado" : " guiones probados") : "") + "\n" +
       (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
       ((sem.promos || []).length ? "Anuncios de seguidores (voz en off): " + eur(pa.g) + " · " + pa.s + " seguidores · " + (pa.cps == null ? "—" : eur(pa.cps) + " por seguidor") + (pa.cps == null ? "" : ckw(pa.cps < 1)) + "\n" + sem.promos.map(function (x) { var c = promoCps(x); return "  · " + (x.reel || "(sin título)") + ": " + num(x.dias) + " días · " + eur(num(x.gasto)) + " · " + num(x.seguidores) + " seg." + (c == null ? "" : " · " + eur(c) + "/seg.") + " → " + (x.decision || "Probando"); }).join("\n") + "\n" : "") +
-      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes AJUSTE/WhatsApp: " + num(sem.mejor) + "\n" +
+      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes BLOQUES/WhatsApp: " + num(sem.mejor) + "\n" +
       "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos · " + num(sem.respEstados) + " respuestas a Estados\n" +
       "Seguidores: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + "\n" +
       (sem.mejorLink ? "Mejor pieza: " + sem.mejorLink + (sem.mejorPorque ? " · " + sem.mejorPorque : "") + "\n" : "") + "\n" +

@@ -1,0 +1,183 @@
+<title>Carlos Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+:root{--paper:#f3f4f2;--white:#fff;--ink:#0d0f0c;--soft:#55605a;--line:#d8ddd6;--chip:#eaeee6;--lime:#ff4d3d;--lime-text:#b42318;--dark:#0d0f0c;--f-head:"Archivo Black","Arial Black",Arial,sans-serif;--f-body:"Inter","Helvetica Neue",Arial,sans-serif;--f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#101210;--white:#191c18;--ink:#eef2ea;--soft:#a3ad9f;--line:#2c312a;--chip:#20241f;--lime-text:#ff6b5e;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#101210;--white:#191c18;--ink:#eef2ea;--soft:#a3ad9f;--line:#2c312a;--chip:#20241f;--lime-text:#ff6b5e;color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:clamp(28px,5vw,56px);display:grid;gap:34px}
+h1,h2,h3{margin:0;font-family:var(--f-head);font-weight:400;text-transform:uppercase;letter-spacing:-.005em;text-wrap:balance}
+h1{font-size:clamp(32px,5.6vw,58px);line-height:1}h2{font-size:clamp(23px,3.2vw,32px);line-height:1.05}h3{font-size:17px;line-height:1.15}
+h1 em,h2 em{font-style:normal;color:var(--lime-text)}
+p{margin:0}.soft{color:var(--soft)}
+.label{font:500 11.5px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--lime-text)}
+.head{display:grid;gap:12px;max-width:820px}
+.sec{display:grid;gap:14px}.sec>header{display:grid;gap:8px;max-width:820px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{background:var(--white);border-radius:6px;padding:18px 20px;display:grid;gap:10px;align-content:start;min-width:0;box-shadow:inset 0 0 0 1px var(--line)}
+.card.chip{background:var(--chip);box-shadow:none}
+.card.dark{background:#0d0f0c;color:#eef2ea;box-shadow:none}.card.dark .soft{color:#a3ad9f}.card.dark .label{color:#ff4d3d}.card.dark em{color:#ff4d3d;font-style:normal}
+.card.lime{background:#ff4d3d;color:#0d0f0c;box-shadow:none}.card.lime .label,.card.lime .soft{color:#4a0d07}
+ul,ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.tag{display:inline-block;font:600 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;padding:5px 7px;border-radius:4px;background:var(--chip);color:var(--ink)}
+.tag.l{background:#ff4d3d;color:#0d0f0c}.tag.r{background:#fde2e2;color:#8a1c1c}
+.msg{background:var(--chip);border-radius:6px;padding:12px 14px;white-space:pre-wrap;font-size:15px;overflow-wrap:anywhere}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+button.cp{font:600 12px/1 var(--f-body);padding:8px 12px;border-radius:4px;border:0;background:#0d0f0c;color:#ff4d3d;cursor:pointer}
+table{width:100%;border-collapse:collapse;font-size:14.5px}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{font:600 11.5px/1.2 var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--soft)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start}
+.num{width:44px;height:44px;border-radius:50%;background:#0d0f0c;color:#ff4d3d;display:grid;place-items:center;font:400 18px/1 var(--f-head)}
+.nav{display:flex;flex-wrap:wrap;gap:6px}.nav a{font:600 12.5px/1 var(--f-body);padding:8px 10px;border-radius:4px;background:var(--chip);color:var(--ink);text-decoration:none}
+.big{font:400 clamp(26px,4vw,40px)/1 var(--f-head)}
+.confirm{background:#fff7d6;color:#5c4400;border-radius:4px;padding:1px 5px;font-size:.92em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .confirm{background:#3a3110;color:#f3dc8a}}
+@media (max-width:760px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
+</style>
+<main class="wrap">
+
+<section class="card dark" aria-label="Nicho y método">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="big" style="color:#eef2ea">La vida adulta te ha pasado por encima. <em>Tu físico no tiene por qué quedarse ahí.</em></p>
+  <p class="soft">Frase exacta, igual en todas partes: <strong style="color:#eef2ea">"Ayudo a hombres de 25 a 40 a los que la vida adulta les ha pasado por encima —trabajo, horarios, pareja, hijos, cenas— y hoy se ven peor que a los 20, a recuperar su físico y su energía con un plan que cabe en su semana real, sin vivir a dieta."</strong></p>
+  <div class="g3">
+    <div><span class="label">Pilar 1 · Tu agenda manda</span><p>El plan se construye sobre tu horario real: turnos, niños, viajes. 3–4 sesiones que caben, pasos y sueño mínimos. <span class="soft">Por qué: José trabaja en hostelería con un horario imposible y bajó 10 kg.</span></p></div>
+    <div><span class="label">Pilar 2 · Entreno con estructura</span><p>Rutina con orden, cargas apuntadas y progresión. Nada de Weider de 5 días sin intensidad. <span class="soft">Por qué: Carlos perdió años entrenando "mucho y mal" antes de aprenderlo.</span></p></div>
+    <div><span class="label">Pilar 3 · Comida de casa, flexible</span><p>Comes lo de tu casa y sales a cenar. Se pesa 4 semanas para aprender raciones y luego a ojo con referencias. <span class="soft">Por qué: "pesar la comida es un coñazo" es la frase que más escucha.</span></p></div>
+  </div>
+  <div class="g3">
+    <div><span class="label">Fase 1 · Reinicio (sem. 1–4)</span><p>Qué pasa: vuelves a tener rutina, primeras bajadas de cintura y de peso. Qué haces tú: entrenos agendados y pesar la comida estas 4 semanas.</p></div>
+    <div><span class="label">Fase 2 · Reconstrucción (mes 2–4)</span><p>Qué pasa: pierdes grasa y ganas fuerza a la vez; la ropa cambia. Qué haces tú: cumplir el plan también el finde y mandar revisión.</p></div>
+    <div><span class="label">Fase 3 · Para siempre (mes 5–6)</span><p>Qué pasa: comes a ojo, mantienes y decides si seguir subiendo músculo. Qué haces tú: sostenerlo sin depender de mí.</p></div>
+  </div>
+  <p><span class="label">3 no negociables</span> · Entrenos agendados en el calendario cada domingo · Cargas apuntadas en cada sesión · Revisión semanal (fotos, cintura, peso y cargas).</p>
+  <p class="soft">Nombre: <strong style="color:#ff4d3d">Método Reinicio</strong>. Sale de su historia: tuvo que empezar de cero más de una vez (tras el covid y tras una operación) y volvió mejor cada vez. Palabra clave de DM: <strong style="color:#eef2ea">REINICIO</strong>.</p>
+</section>
+
+<header class="head">
+  <span class="label">Carlos Santos · Parte 4 de 8 · Embudo</span>
+  <h1>Del Reel al cliente: <em>sin dejar nada al azar</em></h1>
+  <p class="soft">Tres motores llenan tu WhatsApp: anuncios de Reels, mucho contenido (tú lo aguantas) y 100 conversaciones al día. Después, 6 pasos fijos hasta el cierre.</p>
+  <nav class="nav"><a href="#kpi">KPIs</a><a href="#ads">Anuncios paso a paso</a><a href="#guiones">3 guiones</a><a href="#conv">100 conversaciones</a><a href="#proceso">Proceso de cierre</a><a href="#seg">Seguimiento</a><a href="#cont">Contenido</a></nav>
+</header>
+
+<section class="sec" id="kpi">
+  <header><span class="label">Números diarios</span><h2>Lo que mides cada día</h2></header>
+  <div class="card tw"><table><thead><tr><th>Métrica</th><th>Objetivo</th><th>Dónde</th></tr></thead><tbody>
+    <tr><td>Conversaciones abiertas</td><td><strong>100</strong> (2 rondas de 50)</td><td>Reporte</td></tr>
+    <tr><td>Respuestas</td><td>20–30</td><td>CRM</td></tr>
+    <tr><td>Pasan a WhatsApp o formulario</td><td>8–10</td><td>CRM</td></tr>
+    <tr><td>Llamadas agendadas</td><td>2–3</td><td>CRM</td></tr>
+    <tr><td>Ventas por semana</td><td>2–3</td><td>CRM y reporte</td></tr>
+    <tr><td>Reels publicados</td><td>3–5 al día</td><td>Reporte</td></tr>
+    <tr><td>Anuncios: € por seguidor</td><td>menos de 1 €</td><td>Reporte</td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="sec" id="ads">
+  <header><span class="label">Motor 1</span><h2>Promocionar Reels: <em>5–10 € al día, paso a paso</em></h2><p class="soft">No es un anuncio de venta: es empujar tu mejor Reel a hombres de España que aún no te conocen para que te sigan y te escriban.</p></header>
+  <div class="card">
+    <div class="step"><span class="num">1</span><div><h3>Elige el Reel</h3><p>El que mejor haya ido en orgánico esa semana (más guardados y compartidos). Mejor si es voz en off "sígueme" sobre uno de tus ángulos. Debe ser tuyo, sin música con copyright y vertical 9:16.</p></div></div>
+    <div class="step"><span class="num">2</span><div><h3>Pulsa "Promocionar"</h3><p>Debajo del Reel, en la app de Instagram (cuenta profesional y vinculada a tu página de Facebook "Entrenador Online").</p></div></div>
+    <div class="step"><span class="num">3</span><div><h3>Objetivo: "Más visitas al perfil"</h3><p>Es el objetivo de tráfico. Así llega gente que entra, ve tus casos y te sigue.</p></div></div>
+    <div class="step"><span class="num">4</span><div><h3>Público: crea el tuyo</h3><p>Ubicación <strong>España</strong>. Edad <strong>25 a 65+</strong>. Sin intereses. Si tras 2 campañas ves que te siguen sobre todo mujeres, prueba solo hombres.</p></div></div>
+    <div class="step"><span class="num">5</span><div><h3>Presupuesto y duración</h3><p><strong>5 € al día</strong>, duración abierta o 4 días. Pagas con tarjeta en "Pagos de anuncios".</p></div></div>
+    <div class="step"><span class="num">6</span><div><h3>A los 2 días, decide con el semáforo</h3><p>€ por seguidor = gasto ÷ seguidores nuevos de esos días. Lo apuntas en el reporte.</p>
+      <p><span class="tag l">Menos de 1 €</span> Se mantiene y se escala hacia 10 €/día.</p>
+      <p><span class="tag">1–1,5 €</span> Mismo Reel con otro gancho en los 3 primeros segundos.</p>
+      <p><span class="tag r">Más de 1,5 €</span> Se corta. Pruebas otro ángulo.</p></div></div>
+  </div>
+  <div class="card chip"><span class="label">Normas de Meta (que no te lo rechacen)</span><ul>
+    <li>Nunca le digas a quien lo ve lo que le pasa a su cuerpo: nada de "¿Tienes barriga?" ni "¿Te sobran kilos?".</li>
+    <li>Habla en primera persona ("yo entrenaba 5 días y estaba igual") o con "la mayoría" ("la mayoría de hombres con turnos…").</li>
+    <li>Nada de antes/después en el anuncio ni de "−10 kg en 30 días".</li>
+  </ul></div>
+</section>
+
+<section class="sec" id="guiones">
+  <header><span class="label">3 guiones voz en off "sígueme"</span><h2>Graba clips tuyos y pon la voz encima</h2><p class="soft">30–45 segundos, subtítulos siempre, un solo ángulo por anuncio, 3 ganchos para probar.</p></header>
+  <div class="card"><div class="row"><span class="label">Guion 1</span><button class="cp" data-cp="m5">Copiar</button></div><div class="msg" id="m5">ÁNGULO: Mi plan cabe en tu turno
+Ganchos a probar:
+1) "Sale de trabajar a la 1 de la mañana y aun así bajó 10 kilos."
+2) "La mayoría de hombres con turnos cree que no puede entrenar. Él tampoco lo creía."
+3) "Esto es lo que hago con clientes que trabajan en hostelería."
+Cuerpo: "Mi cliente trabaja en hostelería, con un horario que no deja vivir. No le pedí 6 días de gimnasio. Le monté 3 entrenos que caben en su semana, comida de su casa y una revisión cada domingo. En 6 meses, de 82 a 72 kilos. Y después ganó músculo."
+Cierre: "Si tu trabajo te come la semana, sígueme. Te enseño cómo se hace con vida real."
+Texto en pantalla: "3 entrenos · comida de casa · revisión semanal"
+Clips: tú entrenando con un cliente, una libreta con cargas, un tupper normal, el móvil con WhatsApp.</div></div><div class="card"><div class="row"><span class="label">Guion 2</span><button class="cp" data-cp="m6">Copiar</button></div><div class="msg" id="m6">ÁNGULO: Mucho gym, poco cambio
+Ganchos:
+1) "Yo entrenaba 5 días a la semana y estaba igual."
+2) "Durante años hice esto en el gimnasio y no servía de nada."
+3) "El error que comete la mayoría que vuelve al gym después de años."
+Cuerpo: "Un músculo por día, mucho volumen, cero intensidad y sin descansar. Me partía y no cambiaba. Cuando empecé a entrenar con orden, apuntar las cargas y descansar, mi físico cambió más en un año que en tres."
+Cierre: "Sígueme y te enseño a entrenar menos días y mejor."
+Texto en pantalla: "Más días ≠ más resultados"
+Clips: tú en press de banca, la libreta de cargas, un temporizador de descanso.</div></div><div class="card"><div class="row"><span class="label">Guion 3</span><button class="cp" data-cp="m7">Copiar</button></div><div class="msg" id="m7">ÁNGULO: Pesar la comida es un coñazo
+Ganchos:
+1) "Solo hago pesar la comida 4 semanas a mis clientes."
+2) "La mayoría deja la dieta por esto. Y tiene solución."
+3) "No vas a pesar la comida toda tu vida."
+Cuerpo: "Pesar la comida es un coñazo, lo sé. Por eso solo lo hacemos el primer mes: para que aprendas cómo es tu ración de arroz, de carne, de aceite. Después comes a ojo, comes lo de tu casa y sales a cenar."
+Cierre: "Sígueme si quieres comer normal y aun así ver cambios."
+Texto en pantalla: "4 semanas pesando → toda la vida a ojo"
+Clips: báscula de cocina, plato de comida casera, tú en un restaurante.</div></div>
+</section>
+
+<section class="sec" id="conv">
+  <header><span class="label">Motor 3</span><h2>100 conversaciones al día, <em>2 rondas de 50</em></h2></header>
+  <div class="g2">
+    <div class="card"><span class="label">Dónde están</span><ul>
+      <li>Seguidores nuevos de los anuncios y del orgánico (todos, el mismo día).</li>
+      <li>Quien reacciona a tus historias o comenta.</li>
+      <li>Hombres de 25–40 que siguen cuentas de tu zona, gimnasios y equipos de fútbol amateur.</li>
+      <li>Compañeros de tu gimnasio y gente del pueblo.</li>
+      <li>Antiguos interesados parados, como Jorge.</li>
+    </ul></div>
+    <div class="card chip"><span class="label">Ritmo</span><p>Ronda 1 por la mañana (50), ronda 2 por la tarde (50). Nunca el mismo mensaje copiado a todos: cambia el nombre y el detalle.</p></div>
+  </div>
+  <div class="card"><div class="row"><span class="label">Apertura 1 · seguidor nuevo</span><button class="cp" data-cp="m8">Copiar</button></div><div class="msg" id="m8">Ey [nombre], gracias por seguirme 💪 Una pregunta rápida: ¿estás entrenando ahora o la vida te ha comido la semana?</div></div><div class="card"><div class="row"><span class="label">Apertura 2 · reacción a historia</span><button class="cp" data-cp="m9">Copiar</button></div><div class="msg" id="m9">¡Qué bueno ver que te ha gustado el vídeo de los turnos! ¿Tú a qué te dedicas, que me da que te tocó de cerca?</div></div><div class="card"><div class="row"><span class="label">Apertura 3 · perfil de la zona</span><button class="cp" data-cp="m10">Copiar</button></div><div class="msg" id="m10">[Nombre], ¿qué tal? Vi que sigues a [gimnasio/equipo]. ¿Sigues jugando o lo has dejado con el curro?</div></div><div class="card"><div class="row"><span class="label">Apertura 4 · reactivar a Jorge</span><button class="cp" data-cp="m11">Copiar</button></div><div class="msg" id="m11">Jorge, ¿qué tal todo? Me acordé de ti: estoy ayudando a gente con trabajos que no dejan tiempo a entrenar 3 días y comer de casa. ¿Cómo te va con lo de tu rutina?</div></div>
+</section>
+
+<section class="sec" id="proceso">
+  <header><span class="label">Proceso de cierre</span><h2>6 pasos, <em>siempre los mismos</em></h2></header>
+  <div class="card">
+    <div class="step"><span class="num">1</span><div><h3>Conectar</h3><p>Pregunta abierta sobre su vida, no sobre su cuerpo. Responde a lo que diga.</p></div></div>
+    <div class="step"><span class="num">2</span><div><h3>Dolor</h3><p>"¿Y cómo te ves ahora comparado con cuando estabas bien?" Deja que lo cuente.</p></div></div>
+    <div class="step"><span class="num">3</span><div><h3>Cualificar</h3><p>Horario real, qué ha probado, si quiere hacerlo ahora o "algún día".</p></div></div>
+    <div class="step"><span class="num">4</span><div><h3>Formulario o WhatsApp + llamada</h3><p>"Te paso un formulario de 2 minutos y lo vemos en una llamada de 20."</p></div></div>
+    <div class="step"><span class="num">5</span><div><h3>Llamada (20–30 min)</h3><p>Situación → objetivo → qué le frena → Método Reinicio → precio (semestre primero) → objeciones.</p></div></div>
+    <div class="step"><span class="num">6</span><div><h3>Pago y bienvenida</h3><p>Pago el mismo día, contrato, cuestionario y primer entreno en 48 h.</p></div></div>
+  </div>
+  <div class="card"><div class="row"><span class="label">Paso 2 · dolor</span><button class="cp" data-cp="m12">Copiar</button></div><div class="msg" id="m12">Te entiendo perfectamente. Es lo que más veo: gente que estaba bien a los 20 y el curro y la vida le han pasado por encima. ¿Qué es lo que más te molesta ahora mismo: cómo te ves, la energía o la ropa?</div></div><div class="card"><div class="row"><span class="label">Paso 3 · cualificar</span><button class="cp" data-cp="m13">Copiar</button></div><div class="msg" id="m13">Para ver si te puedo ayudar necesito saber 2 cosas: ¿qué horario tienes una semana normal? ¿Y es algo que quieres empezar ya o más adelante?</div></div><div class="card"><div class="row"><span class="label">Paso 4 · formulario y llamada</span><button class="cp" data-cp="m14">Copiar</button></div><div class="msg" id="m14">Perfecto. Rellena esto (2 minutos) y te llamo para verlo juntos: [link formulario Jotform]. ¿Te viene mejor mañana a mediodía o por la tarde?</div></div><div class="card"><div class="row"><span class="label">Paso 5 · objeciones</span><button class="cp" data-cp="m15">Copiar</button></div><div class="msg" id="m15">OBJECIONES (las que más escuchas)
+"No tengo tiempo" → "Por eso existe el método: 3 entrenos que caben en tu semana. ¿Qué 3 huecos tienes?"
+"Me lo pienso y ya te digo" → "Claro. ¿Qué es lo que te tienes que pensar exactamente: el precio, el tiempo o si te va a funcionar?"
+"Este mes tengo que pagar otras cosas" → "Lo entiendo. Tienes el semestre en 2 pagos. ¿Te cuadra mejor así?"
+"Pesar la comida es un coñazo" → "Solo 4 semanas. Después comes a ojo."
+"Odio hacer piernas" → "Dos días, 40 minutos. Lo vas a sobrevivir."
+"Ya lo intenté solo" → "Por eso esta vez no vas solo: revisión cada semana y me escribes cuando quieras." </div></div><div class="card"><div class="row"><span class="label">Paso 6 · bienvenida</span><button class="cp" data-cp="m16">Copiar</button></div><div class="msg" id="m16">¡Bienvenido al Reinicio, [nombre]! 🔥 Ahora te mando el contrato y un cuestionario. En 48 h tienes tu primer entreno. Este domingo agendamos tus 3 sesiones en el calendario.</div></div>
+</section>
+
+<section class="sec" id="seg">
+  <header><span class="label">Seguimiento</span><h2>Los que no responden o "se lo piensan"</h2></header>
+  <div class="card"><div class="row"><span class="label">Día 2</span><button class="cp" data-cp="m17">Copiar</button></div><div class="msg" id="m17">Ey [nombre], ¿pudiste ver lo que hablamos? Sin presión, solo quiero saber si sigue en pie lo de empezar.</div></div><div class="card"><div class="row"><span class="label">Día 7</span><button class="cp" data-cp="m18">Copiar</button></div><div class="msg" id="m18">Me acordé de ti: esta semana un cliente con turnos de noche ha bajado 2 cm de cintura. Si quieres lo vemos en 15 minutos.</div></div><div class="card"><div class="row"><span class="label">Día 14</span><button class="cp" data-cp="m19">Copiar</button></div><div class="msg" id="m19">Último mensaje, prometido 🙂 Si ahora no es el momento, perfecto. Cuando lo sea, escríbeme REINICIO y lo retomamos.</div></div>
+</section>
+
+<section class="sec" id="cont">
+  <header><span class="label">Motor 2 · Contenido (resumen)</span><h2>Tú aguantas volumen: <em>úsalo</em></h2></header>
+  <div class="g3">
+    <div class="card"><span class="label">Reels</span><p class="big">3–5 / día</p><p>Voz en off con 3 ganchos para trial reels, rol entrenador con clientes y casos.</p></div>
+    <div class="card"><span class="label">YouTube</span><p class="big">1 → 3 / sem.</p><p>Empieza con 1 vídeo largo semanal (tu día a día dando consejos) y sube a 3 cuando lo tengas automatizado.</p></div>
+    <div class="card"><span class="label">Carruseles</span><p class="big">3 / sem.</p><p>Alternando conexión y valor. Detalle completo en la parte 3.</p></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){document.querySelectorAll("[data-cp]").forEach(function(b){b.addEventListener("click",function(){var el=document.getElementById(b.getAttribute("data-cp"));if(!el)return;var t=el.innerText,o=b.textContent;var done=function(m){b.textContent=m;setTimeout(function(){b.textContent=o},1400)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done("Copiado")},function(){done("Selecciona")})}else{done("Selecciona")}})})})();
+</script>
