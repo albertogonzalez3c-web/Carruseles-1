@@ -89,6 +89,31 @@ ul.l b, ol.l b { color: var(--ink); }
 .kpis span { color: #c9ccd2; font-size: 14px; }
 @media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nmx { background: #1d2027; color: #fff; border-radius: 8px; padding: clamp(18px, 3vw, 28px); display: grid; gap: 14px; margin-block: 8px 18px; }
+.nmx-l { font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: #e8703f; }
+.nmx-h { margin: 0; font-size: clamp(21px, 2.8vw, 30px); line-height: 1.18; color: #fff; text-wrap: balance; }
+.nmx-p { margin: 0; color: #c9ccd2; font-size: 15.5px; }
+.nmx-p b { color: #fff; }
+.nmx-t { font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: #e8703f; margin-top: 6px; }
+.nmx-g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nmx-g3 > div { background: #2a2e37; border-radius: 6px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.nmx-g3 b { color: #fff; font-size: 16px; }
+.nmx-g3 span { color: #c9ccd2; font-size: 14.5px; line-height: 1.45; }
+.nmx-f { display: grid; gap: 8px; }
+.nmx-f > div { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr) minmax(0, 1.4fr); gap: 12px; background: #2a2e37; border-radius: 6px; padding: 12px 14px; font-size: 14.5px; color: #c9ccd2; line-height: 1.45; }
+.nmx-f > div.hd { background: none; padding: 0 14px; font: 500 11px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #9aa0aa; }
+.nmx-f b { color: #fff; display: block; font-size: 15px; }
+.nmx-n { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: #c9ccd2; font-size: 15px; }
+.nmx-n b { color: #fff; }
+@media (max-width: 700px) {
+  .nmx-g3 { grid-template-columns: 1fr; }
+  .nmx-f > div { grid-template-columns: 1fr; gap: 4px; }
+  .nmx-f > div.hd { display: none; }
+  .nmx-f i { font-style: normal; display: block; font: 500 10.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #e8703f; margin-top: 4px; }
+}
+@media (min-width: 701px) { .nmx-f i { display: none; } }
 </style>
 
 <div class="wrap">
@@ -97,6 +122,32 @@ ul.l b, ol.l b { color: var(--ink); }
     <h1>No te falta audiencia. Te faltan <em>conversaciones</em>.</h1>
     <p class="soft" style="font-size:18px">Con 2.100 seguidores puedes llenar tu agenda si abres conversaciones todos los días, sin excepción. El contenido te da autoridad; las conversaciones te dan clientes. Esto es lo que haces cada día a partir de mañana.</p>
   </header>
+
+  <section class="nmx" aria-label="Tu nicho y tu método">
+    <span class="nmx-l">Tu nicho en una frase · Tu método en 30 segundos</span>
+    <h2 class="nmx-h">"Hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual, con curro y estrés, y quieren verse los abdominales sin pasar hambre."</h2>
+    <p class="nmx-p">La prueba eres tú: <b>"Entrené 5–6 días durante años y tardé 5 o 6 años en ver mis abdominales. No me faltaba esfuerzo: me faltaba estructura."</b></p>
+    <div class="nmx-t">Método DR · 3 pilares</div>
+    <div class="nmx-g3">
+      <div><b>1 · Entrenar mejor, no más</b><span>Estructura e intensidad por encima del volumen: fuera las series basura, cada serie cuenta y queda apuntada.</span></div>
+      <div><b>2 · Descanso que te deja rendir</b><span>Dormir y recuperar para llegar a cada sesión con fuerza. Sin descanso, la intensidad no existe.</span></div>
+      <div><b>3 · Déficit sin pasar hambre</b><span>Comiendo lo que te gusta, dentro y fuera de casa, también el finde. Si pasas hambre, lo dejas.</span></div>
+    </div>
+    <div class="nmx-t">3 fases · 6 meses</div>
+    <div class="nmx-f">
+      <div class="hd"><span>Fase</span><span>Qué pasa</span><span>Qué haces tú</span></div>
+      <div><span><b>1 · Desbloquear</b>Meses 1–2</span><span><i>Qué pasa</i>Ordenamos tu semana en 4 sesiones con intensidad real y arrancamos un déficit sin hambre. Bajan los primeros kilos de grasa y vuelves a progresar en los básicos.</span><span><i>Qué haces tú</i>Cumples las 4 sesiones y las apuntas en la tabla, duermes 7 horas y mandas tu revisión cada semana.</span></div>
+      <div><span><b>2 · Construir</b>Meses 3–4</span><span><i>Qué pasa</i>Subimos cargas con la tabla de progresión: ganas músculo y fuerza mientras sigues bajando grasa, sin volumen basura.</span><span><i>Qué haces tú</i>Progresas en cada sesión, cumples tus comidas el 80 % de la semana y no fallas ninguna revisión.</span></div>
+      <div><span><b>3 · Revelar y mantener</b>Meses 5–6</span><span><i>Qué pasa</i>Afinamos hasta que se ven los abdominales y te enseño a mantenerlos comiendo de todo, sin definiciones eternas.</span><span><i>Qué haces tú</i>Aplicas lo aprendido, decides tus comidas con criterio y mantienes las 4 sesiones.</span></div>
+    </div>
+    <div class="nmx-t">3 no negociables</div>
+    <ol class="nmx-n">
+      <li><b>4 sesiones a la semana</b> con tabla de progresión.</li>
+      <li><b>Dormir 7 horas.</b></li>
+      <li><b>Revisión semanal</b>, sin fallar ni una.</li>
+    </ol>
+  </section>
+
 
   <section class="card accent" aria-label="El objetivo diario">
     <span class="label">Tu objetivo diario · no negociable</span>
@@ -122,7 +173,7 @@ ul.l b, ol.l b { color: var(--ink); }
   </section>
 
   <section class="sec" aria-labelledby="h-donde">
-    <header><span class="label">Dónde encontrarlos</span><h2 id="h-donde">Hombres de 25 a 35 que entrenan y están estancados.</h2></header>
+    <header><span class="label">Dónde encontrarlos</span><h2 id="h-donde">Hombres de 25 a 35 que entrenan 5–6 días, siguen igual y quieren verse los abdominales.</h2></header>
     <div class="g3">
       <div class="card"><span class="n">1</span><h3>Nuevos seguidores</h3><p class="soft">Bienvenida a cada uno. Son los más calientes que vas a tener.</p></div>
       <div class="card"><span class="n">2</span><h3>Historias</h3><p class="soft">Quien ve, reacciona o responde a tus historias y encuestas.</p></div>

@@ -227,6 +227,24 @@ h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none
 .empty-case { border: 2px dashed #c4c4c0; background: var(--chip); border-radius: 12px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 10px; }
 .empty-case p { color: var(--soft); max-width: 60ch; }
 @media (max-width: 680px) { .duo, .sports { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #c2410c); --nm-at: var(--accent-text, #a6380a); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
 </style>
 
 <div class="dark">
@@ -237,9 +255,9 @@ h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none
     </header>
 
     <div class="hero">
-      <div class="label">Para hombres de más de 40 que llevan años sin cuidarse</div>
+      <div class="label">Para hombres de 40 a 50 que llevan años sin cuidarse y creen que ya es tarde</div>
       <h1>No llegas tarde. A los 43, <em>mejor que nunca</em>.</h1>
-      <p class="lede">Con 1,69 m llegué a casi 80 kg y una barriga que me acomplejaba con la ropa. Hoy tengo más músculo, más fuerza y sigo jugando al fútbol con mis amigos. Te ayudo a conseguirlo con fuerza, comida que aprendes a organizar y sin sufrir.</p>
+      <p class="lede">Si te ves con barriga y crees que ya es tarde: recupera el físico y la energía <b>sin sufrir</b> y sigue disfrutando de tu deporte. Con 1,69 m llegué a casi 80 kg y una barriga que me acomplejaba con la ropa. Empecé tarde y a los 43 estoy mejor que nunca: más músculo, más fuerza y sigo jugando al fútbol con mis amigos.</p>
       <!-- VSL PENDIENTE: cuando Fran grabe el vídeo, sustituir este comentario por
            <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
       <div class="ctas">
@@ -317,10 +335,11 @@ h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none
       <h2>Arrancar. Construir. Mejor que nunca.</h2>
       <p class="lede">Seis meses con un orden claro. Cada semana miro cómo respondes y ajusto tu plan.</p>
     </div>
+    <section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Para quién es</span><p class="nm-big">Hombres de 40 a 50 que llevan años sin cuidarse, se ven con barriga y creen que ya es tarde, y quieren recuperar el físico y la energía —sin sufrir— para seguir disfrutando de su deporte.</p></div><div class="nm-meth"><span class="nm-lab">Método Segunda Juventud en 30 segundos</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Fuerza sin sufrir</b><span>Progresiva, 3–4 sesiones a la semana. Empiezas suave y subes cada semana.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer sin pasar hambre</b><span>Mi error a los 42: bajé a 59–60 kg pasando hambre y perdí músculo. Tú comes bien y saciado.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Fuerza + tu deporte</b><span>Lo combinamos con tu fútbol, running o pádel para que rindas más y te lesiones menos.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Arrancar sin sufrir</b><p><em>Qué pasa:</em> Pierdes la primera barriga, duermes mejor y recuperas energía sin pasar hambre.</p><p><em>Qué haces tú:</em> 3 sesiones de fuerza, proteína en cada comida y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Construir</b><p><em>Qué pasa:</em> Ganas músculo y fuerza, la ropa te sienta distinta y rindes más en tu deporte.</p><p><em>Qué haces tú:</em> Subes a 3–4 sesiones con progresión y lo combinas con tu deporte.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Mejor que nunca</b><p><em>Qué pasa:</em> Consolidas el físico y la energía, y aprendes a mantenerlo sin sufrir.</p><p><em>Qué haces tú:</em> Ajustas la comida para mantener y sigues entrenando con autonomía.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>3–4 sesiones de fuerza a la semana</span><span>Proteína y saciedad en cada comida</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: "Empecé tarde y a los 43 estoy mejor que nunca."</p></section>
     <div class="layers">
-      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Arrancar sin sufrir</h3><p>Hábitos que duran, fuerza básica bien hecha y la primera grasa fuera. Sin hambre.</p></article>
-      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Construir</h3><p>Músculo y rendimiento: progresas en cargas y lo combinas con tu deporte.</p></article>
-      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Mejor que nunca</h3><p>Consolidas tu físico y tu energía, y aprendes a mantenerlo solo.</p></article>
+      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Arrancar sin sufrir</h3><p>Pierdes la primera barriga, duermes mejor y recuperas energía sin pasar hambre. Tú: 3 sesiones de fuerza, proteína en cada comida y tu revisión semanal.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Construir</h3><p>Ganas músculo y fuerza, la ropa te sienta distinta y rindes más en tu deporte. Tú: subes a 3–4 sesiones con progresión y lo combinas con tu deporte.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Mejor que nunca</h3><p>Consolidas el físico y la energía, y aprendes a mantenerlo sin sufrir. Tú: ajustas la comida para mantener y sigues entrenando con autonomía.</p></article>
       <article class="layer"><span class="n">Cada semana</span><h3>Revisión 1:1</h3><p>Me mandas tu revisión, te corrijo la técnica por vídeo y ajusto el plan. Hablas directamente conmigo.</p></article>
     </div>
     <div class="base">

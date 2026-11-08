@@ -132,6 +132,21 @@ ul.l b, ol.l b { color: var(--ink); }
   .week { grid-template-columns: 1fr 1fr; }
   .script .line { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Nicho en una frase + método en 30 segundos */
+.nm { display: grid; gap: 14px; border-radius: 14px; padding: 20px; background: var(--ink); color: #fff; margin-block: 6px 4px; }
+.nm-lbl { font: 500 11.5px/1.2 var(--f-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-dark, #f5b8a8); display: block; margin-bottom: 6px; }
+.nm-big { font: 700 clamp(19px, 2.6vw, 25px)/1.3 var(--f-body, inherit); margin: 0; color: #fff; text-wrap: pretty; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nm-c { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.nm-c b { font-size: 15.5px; color: #fff; }
+.nm-c span, .nm-c p { font-size: 14px; color: #d8d6d0; margin: 0; line-height: 1.45; }
+.nm-c .nm-n { font: 500 11px/1 var(--f-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark, #f5b8a8); }
+.nm-c p b { font-size: 13.5px; color: #fff; }
+.nm-no { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.nm-no li { background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 700; }
+.nm-proof { margin: 0; font-size: 15px; color: #fff; border-left: 3px solid var(--accent-dark, #f5b8a8); padding-left: 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } .nm { padding: 16px; } }
 </style>
 <header class="top wrap">
   <span class="label">Zakaria Cheggari · Parte 3 · Contenido</span>
@@ -151,6 +166,14 @@ ul.l b, ol.l b { color: var(--ink); }
 <main class="wrap">
   <!-- PLAN -->
   <section class="view" id="v-plan" aria-label="El plan">
+  <section class="nm" aria-label="Tu nicho y tu método">
+    <div><span class="nm-lbl">Tu nicho en una frase</span><p class="nm-big">Personas de +30 con jornada completa y casi sin tiempo que han perdido la confianza frente al espejo y quieren transformar su físico entrenando menos de 5 horas a la semana.</p></div>
+    <div><span class="nm-lbl">Tu método en 30 segundos · Método 5H · 3 pilares</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Pilar 1</span><b>4 sesiones cortas</b><span>Máximo 70 minutos cada una, con ciclos de 12 semanas. Nada de cambiar de rutina cada mes.</span></div><div class="nm-c"><span class="nm-n">Pilar 2</span><b>Comida simple que encaja en tu jornada</b><span>Lo que puedes comer un día de trabajo real. Sin dietas de Instagram.</span></div><div class="nm-c"><span class="nm-n">Pilar 3</span><b>Hábitos mínimos innegociables</b><span>Pocos, claros y diarios. Los que sostienen todo lo demás.</span></div></div></div>
+    <div><span class="nm-lbl">3 fases</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Base</b><p><b>Qué pasa:</b> Tu cuerpo aprende a entrenar 4 días sin que tu vida se resienta. Primera grasa fuera y más energía.</p><p><b>Qué haces tú:</b> Agendas las 4 sesiones, proteína en cada comida, tus hábitos mínimos y tu revisión semanal.</p></div><div class="nm-c"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Transformación</b><p><b>Qué pasa:</b> Completas tu primer ciclo de 12 semanas: sube la fuerza y cambian el espejo y la ropa.</p><p><b>Qué haces tú:</b> Progresas cargas siguiendo tu tabla, mantienes la comida simple y no cambias de rutina.</p></div><div class="nm-c"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><b>Qué pasa:</b> Consolidas el físico y la confianza. Tienes un plan para las semanas imposibles: viajes, turnos, vacaciones.</p><p><b>Qué haces tú:</b> Usas tu plan B de 2–3 sesiones cuando la semana se complica y aprendes a ajustarte solo.</p></div></div></div>
+    <div><span class="nm-lbl">3 no negociables</span><ul class="nm-no"><li>Las 4 sesiones agendadas como reuniones</li><li>Proteína en cada comida</li><li>Revisión semanal</li></ul></div>
+    <p class="nm-proof">Yo trabajo a jornada completa fuera del fitness y entreno 4 días: si yo puedo, tú también.</p>
+  </section>
+
     <div class="sec">
       <div class="head"><span class="label">Tus 6 formatos</span><h2>Cinco formatos de reel, carruseles y uno que pesa más que todos: el rol de entrenador.</h2><p class="soft">Con 191 seguidores no te compran por lo que dices, sino por lo que te ven hacer: entrenar con poco tiempo y dirigir a otros como licenciado en Ciencias del Deporte. Desde la semana 3, al menos 4 de cada 10 reels son de rol entrenador.</p></div>
       <div class="g3">
@@ -547,7 +570,8 @@ ul.l b, ol.l b { color: var(--ink); }
     { n: "Rol entrenador", d: "Corrigiendo, revisando, planificando, dirigiendo." },
     { n: "Autoridad: Ciencias del Deporte", d: "Licenciado, no influencer." },
     { n: "Casos", d: "Anas, Mark, Miriam y tu hermano (con permiso y datos reales)." },
-    { n: "Objeciones y frenos", d: "Lo que te dirán antes de empezar, respondido antes." }
+    { n: "Objeciones y frenos", d: "Lo que te dirán antes de empezar, respondido antes." },
+    { n: "Método 5H", d: "Tus 3 pilares, tus 3 fases y tus no negociables, explicados." }
   ];
   var ANG = [
     [0, "No es que no tengas tiempo", ["\"No tengo tiempo.\" No es que no tengas tiempo: es que no tienes un plan para el que tienes.", "Trabajo a jornada completa y entreno 4 días. Te enseño cómo."], ["Voz en off", "Yapping", "Carrusel"]],
@@ -617,7 +641,12 @@ ul.l b, ol.l b { color: var(--ink); }
     [11, "\"Online no me funciona\"", ["Llevo clientes desde Francia y Suiza. Lo que funciona es el seguimiento, no tenerme al lado.", "Online sin seguimiento es un PDF. Con seguimiento, es un entrenador."], ["Yapping", "Voz en off"]],
     [11, "\"Pagar ya me va a cambiar\"", ["Pagar a un entrenador no te cambia. Hacer el plan, sí.", "Busco gente comprometida, no gente que pague por pagar."], ["Yapping", "Tendencia"]],
     [11, "\"No sé por dónde empezar\"", ["\"No sé por dónde empezar.\" Empieza por aquí: 3 días, 45 minutos.", "3 pasos para empezar esta semana sin tiempo."], ["Voz en off", "Carrusel"]],
-    [11, "\"Lo tengo que pensar\"", ["Llevas pensándolo desde enero.", "Pensarlo no cambia nada. Empezar, sí."], ["Tendencia", "Yapping"]]
+    [11, "\"Lo tengo que pensar\"", ["Llevas pensándolo desde enero.", "Pensarlo no cambia nada. Empezar, sí."], ["Tendencia", "Yapping"]],
+    [12, "Método 5H en 30 segundos", ["4 sesiones, comida simple y 3 hábitos: así se transforma un físico con menos de 5 horas a la semana.", "Mi método cabe en una agenda llena. Te lo explico en 30 segundos."], ["Voz en off", "Carrusel", "Yapping"]],
+    [12, "Pilar 1: 4 sesiones de máximo 70 minutos", ["No necesitas 2 horas al día. Necesitas 4 sesiones de 70 minutos bien hechas.", "Ciclos de 12 semanas: por qué no debes cambiar de rutina cada mes."], ["Voz en off", "Rol entrenador", "Carrusel"]],
+    [12, "Pilar 2: comida simple que encaja en tu jornada", ["Lo que como un día de trabajo de 9 a 6, sin dietas de Instagram.", "Si tu dieta no cabe en tu jornada, no es una dieta: es un castigo."], ["Voz en off", "Carrusel", "Historias"]],
+    [12, "Pilar 3: hábitos mínimos innegociables", ["3 hábitos que hago aunque la semana sea un desastre.", "Pocos hábitos, pero innegociables: eso es lo que funciona."], ["Yapping", "Carrusel"]],
+    [12, "Las 3 fases: Base, Transformación y Para siempre", ["Qué pasa en tu cuerpo en los primeros 6 meses, fase a fase.", "Mes 1–2, 3–4 y 5–6: así es un proceso de verdad."], ["Carrusel", "YouTube"]]
   ];
   var fFam = -1, fFmt = "";
   var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };

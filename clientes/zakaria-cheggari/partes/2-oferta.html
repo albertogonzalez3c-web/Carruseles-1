@@ -79,6 +79,21 @@ ul.l b, ol.l b { color: var(--ink); }
 .steps span { color: var(--soft); font-size: 14.5px; }
 @media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
 
+
+/* Nicho en una frase + método en 30 segundos */
+.nm { display: grid; gap: 14px; border-radius: 14px; padding: 20px; background: var(--ink); color: #fff; margin-block: 6px 4px; }
+.nm-lbl { font: 500 11.5px/1.2 var(--f-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-dark, #f5b8a8); display: block; margin-bottom: 6px; }
+.nm-big { font: 700 clamp(19px, 2.6vw, 25px)/1.3 var(--f-body, inherit); margin: 0; color: #fff; text-wrap: pretty; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nm-c { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.nm-c b { font-size: 15.5px; color: #fff; }
+.nm-c span, .nm-c p { font-size: 14px; color: #d8d6d0; margin: 0; line-height: 1.45; }
+.nm-c .nm-n { font: 500 11px/1 var(--f-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark, #f5b8a8); }
+.nm-c p b { font-size: 13.5px; color: #fff; }
+.nm-no { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.nm-no li { background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 700; }
+.nm-proof { margin: 0; font-size: 15px; color: #fff; border-left: 3px solid var(--accent-dark, #f5b8a8); padding-left: 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } .nm { padding: 16px; } }
 </style>
 
 <div class="wrap">
@@ -87,6 +102,15 @@ ul.l b, ol.l b { color: var(--ink); }
     <h1>Método <em>5H</em>: tu físico, en menos de 5 horas a la semana.</h1>
     <p class="soft" style="font-size:18px">Para personas de +30 con trabajo, hijos y cero tiempo, que han perdido la confianza delante del espejo. Una oferta que tienes que poder explicar en 2 minutos, mirando a los ojos y sin pedir perdón por el precio.</p>
   </header>
+
+  <section class="nm" aria-label="Tu nicho y tu método">
+    <div><span class="nm-lbl">Tu nicho en una frase</span><p class="nm-big">Personas de +30 con jornada completa y casi sin tiempo que han perdido la confianza frente al espejo y quieren transformar su físico entrenando menos de 5 horas a la semana.</p></div>
+    <div><span class="nm-lbl">Tu método en 30 segundos · Método 5H · 3 pilares</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Pilar 1</span><b>4 sesiones cortas</b><span>Máximo 70 minutos cada una, con ciclos de 12 semanas. Nada de cambiar de rutina cada mes.</span></div><div class="nm-c"><span class="nm-n">Pilar 2</span><b>Comida simple que encaja en tu jornada</b><span>Lo que puedes comer un día de trabajo real. Sin dietas de Instagram.</span></div><div class="nm-c"><span class="nm-n">Pilar 3</span><b>Hábitos mínimos innegociables</b><span>Pocos, claros y diarios. Los que sostienen todo lo demás.</span></div></div></div>
+    <div><span class="nm-lbl">3 fases</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Base</b><p><b>Qué pasa:</b> Tu cuerpo aprende a entrenar 4 días sin que tu vida se resienta. Primera grasa fuera y más energía.</p><p><b>Qué haces tú:</b> Agendas las 4 sesiones, proteína en cada comida, tus hábitos mínimos y tu revisión semanal.</p></div><div class="nm-c"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Transformación</b><p><b>Qué pasa:</b> Completas tu primer ciclo de 12 semanas: sube la fuerza y cambian el espejo y la ropa.</p><p><b>Qué haces tú:</b> Progresas cargas siguiendo tu tabla, mantienes la comida simple y no cambias de rutina.</p></div><div class="nm-c"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><b>Qué pasa:</b> Consolidas el físico y la confianza. Tienes un plan para las semanas imposibles: viajes, turnos, vacaciones.</p><p><b>Qué haces tú:</b> Usas tu plan B de 2–3 sesiones cuando la semana se complica y aprendes a ajustarte solo.</p></div></div></div>
+    <div><span class="nm-lbl">3 no negociables</span><ul class="nm-no"><li>Las 4 sesiones agendadas como reuniones</li><li>Proteína en cada comida</li><li>Revisión semanal</li></ul></div>
+    <p class="nm-proof">Yo trabajo a jornada completa fuera del fitness y entreno 4 días: si yo puedo, tú también.</p>
+  </section>
+
 
   <section class="sec" aria-labelledby="h-fases">
     <header><span class="label">El método</span><h2 id="h-fases">3 fases, 6 meses. Base, transformación y para siempre.</h2></header>

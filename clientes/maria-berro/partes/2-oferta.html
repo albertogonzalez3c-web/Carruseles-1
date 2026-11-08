@@ -72,6 +72,24 @@ ul.l b, ol.l b { color: var(--ink); }
 .steps b { font-size: 16px; }
 .steps span { color: var(--soft); font-size: 14px; }
 @media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--coral, #c8433f); --nm-at: var(--coral-text, #b23a36); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
 </style>
 
 <div class="wrap">
@@ -80,6 +98,7 @@ ul.l b, ol.l b { color: var(--ink); }
     <h1>Método <em>Mejor Que Nunca</em>.</h1>
     <p class="soft" style="font-size:18px">Para mujeres que quieren verse mejor que nunca a los 30 y a los 40, y mantenerlo toda la vida. Una oferta clara, en 3 fases, que puedes explicar en 2 minutos.</p>
   </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Mujeres de 30 a 45 que se cuidan a medias, han probado dietas que no les duran y quieren verse mejor que nunca —y mantenerlo— sin dietas extremas ni vivir en el gimnasio.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Mejor Que Nunca</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Nutrición de dietista</b><span>Con la comida de casa y de tu familia, los findes y las cenas. Nada de pollo con arroz todo el día.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Fuerza con buena técnica</b><span>Para glúteo y tono, a tu medida. Las pesas no te ponen grande: te ponen firme.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Seguimiento semanal cercano</b><span>Revisión cada semana y WhatsApp conmigo. No vas sola.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Activar</b><p><em>Qué pasa:</em> Pierdes la primera grasa, te deshinchas y el hábito se queda.</p><p><em>Qué haces tú:</em> 3 días de fuerza aprendiendo la técnica, comida real de casa y tu foto y revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Esculpir</b><p><em>Qué pasa:</em> Glúteo, cintura y tono: tu cuerpo cambia de forma, no solo de peso.</p><p><em>Qué haces tú:</em> Subes cargas con buena técnica y mantienes la comida real cada día.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><em>Qué pasa:</em> Consolidas lo conseguido y aprendes a mantenerlo comiendo con normalidad.</p><p><em>Qué haces tú:</em> Subimos calorías poco a poco y aprendes a gestionar cenas, findes y vacaciones.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>3 días de fuerza</span><span>Proteína y comida real cada día</span><span>Foto y revisión semanal</span></div></div><p class="nm-proof">Prueba: "A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca."</p></section>
 
   <section class="sec" aria-labelledby="h-fases">
     <header><span class="label">El método</span><h2 id="h-fases">3 fases, 6 meses. Primero activas, luego esculpes y después lo mantienes para siempre.</h2></header>

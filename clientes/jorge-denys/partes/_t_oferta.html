@@ -1,0 +1,262 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"></head><body><title>Jorge Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f3f4f6;
+  --white: #ffffff;
+  --ink: #0f172a;
+  --soft: #556070;
+  --line: #d9dde3;
+  --chip: #eceff3;
+  --accent: #f5b800;
+  --accent-text: #8a6400;
+  --accent-dark: #f5b800;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cbd2db; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffeaa0; }
+.card.accent ul.l, .card.accent ol.l { color: #fff4cc; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #1e293b; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #1e293b; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fff6d6; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: el Método 90 en 3 fases, qué incluye, por qué tú, casos, precios en orden de presentación, escalera de subida, garantía y contrato, back-end. */
+.phase .n { font: 800 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 800 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nmx { background: #0f172a; color: #fff; border-radius: 8px; padding: clamp(18px, 3vw, 28px); display: grid; gap: 14px; margin-block: 8px 18px; }
+.nmx-l { font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: #f5b800; }
+.nmx-h { margin: 0; font-size: clamp(21px, 2.8vw, 30px); line-height: 1.18; color: #fff; text-wrap: balance; }
+.nmx-p { margin: 0; color: #cbd2db; font-size: 15.5px; }
+.nmx-p b { color: #fff; }
+.nmx-t { font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: #f5b800; margin-top: 6px; }
+.nmx-g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nmx-g3 > div { background: #1e293b; border-radius: 6px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.nmx-g3 b { color: #fff; font-size: 16px; }
+.nmx-g3 span { color: #cbd2db; font-size: 14.5px; line-height: 1.45; }
+.nmx-f { display: grid; gap: 8px; }
+.nmx-f > div { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr) minmax(0, 1.4fr); gap: 12px; background: #1e293b; border-radius: 6px; padding: 12px 14px; font-size: 14.5px; color: #cbd2db; line-height: 1.45; }
+.nmx-f > div.hd { background: none; padding: 0 14px; font: 500 11px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #9aa0aa; }
+.nmx-f b { color: #fff; display: block; font-size: 15px; }
+.nmx-n { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: #cbd2db; font-size: 15px; }
+.nmx-n b { color: #fff; }
+@media (max-width: 700px) {
+  .nmx-g3 { grid-template-columns: 1fr; }
+  .nmx-f > div { grid-template-columns: 1fr; gap: 4px; }
+  .nmx-f > div.hd { display: none; }
+  .nmx-f i { font-style: normal; display: block; font: 500 10.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #f5b800; margin-top: 4px; }
+}
+@media (min-width: 701px) { .nmx-f i { display: none; } }
+
+/* Marca Jorge Denys: tinta azul noche, amarillo y azul. Bebas Neue solo tiene un peso: sin negrita sintética. */
+body { font-synthesis: none; }
+h1, h2, h3, .price, .big, .phase .n, .kpis b { font-weight: 400 !important; letter-spacing: .01em; }
+.card.accent { color: var(--ink); }
+.card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b, .card.accent .label, .card.accent p, .card.accent li { color: var(--ink); }
+.card.accent ul.l, .card.accent ol.l { color: #3d3a2a; }
+.card.accent .say { background: rgba(15, 23, 42, .08); border-left-color: var(--ink); color: var(--ink); }
+.card.accent .badge { background: rgba(15, 23, 42, .12); color: var(--ink); }
+.btn-a { color: var(--ink) !important; }
+.seal { color: var(--ink) !important; }
+
+.phase .n { color: var(--accent-text); }
+.card.dark .n { color: var(--accent); }
+.todo { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 15px; }
+.todo b { display: block; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Jorge Denys · Parte 2 · Oferta</span>
+    <h1>Método <em>90</em>: de 100 kg a competir. Ahora, tu plan.</h1>
+    <p class="soft" style="font-size:18px">Lo que vendes no es "una rutina y una dieta". Es dejar de empezar de cero cada pocos meses, con un plan que encaje en una jornada de 10–12 horas. Esto lo tienes que poder explicar en 2 minutos sin titubear.</p>
+  </header>
+
+  <section class="card accent" aria-label="Nicho y método">
+    <span class="label">Tu nicho en una frase</span>
+    <h2>Personas de +30 con sobrepeso y jornadas largas que quieren perder entre 10 y 20 kg sin vivir en el gimnasio ni pasar hambre, y no volver a empezar de cero.</h2>
+    <span class="label" style="margin-top:6px">Tu método en 30 segundos</span>
+    <p style="font-size:17px;font-weight:600">Método 90: 3 pilares (una estructura que encaja en tu jornada, descanso para entrenar con intensidad en vez de 40 series, y déficit controlado sin pasar hambre), 3 fases y 3 innegociables (tabla de progresión, revisión semanal en la app y pasos diarios).</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-pilares">
+    <header><span class="label">Los 3 pilares · el mecanismo</span><h2 id="h-pilares">Por qué funciona cuando lo demás no ha funcionado.</h2><p class="soft">Cada pilar sale de un error tuyo. Por eso lo puedes explicar con tu historia.</p></header>
+    <div class="g3">
+      <article class="card"><span class="badge">Pilar 1</span><h3>Una estructura que encaja en tu jornada</h3><p class="soft">Días, horas y comidas montados sobre su horario real (turnos, 12 h de trabajo, hijos). No sobre el horario ideal. <b>Tu error:</b> 6 días a la semana porque "tocaba".</p></article>
+      <article class="card"><span class="badge">Pilar 2</span><h3>Descanso para entrenar con intensidad</h3><p class="soft">Menos series, más calidad. Llegar descansado al entreno que toca. <b>Tu error:</b> 40 series al día y dormir 3–4 horas.</p></article>
+      <article class="card"><span class="badge">Pilar 3</span><h3>Déficit controlado sin pasar hambre</h3><p class="soft">Comer lo que le gusta (dulce incluido) dentro de un déficit medido. Los hidratos no se quitan. <b>Tu error:</b> estricto de lunes a viernes y fiesta el finde.</p></article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">Las 3 fases · qué pasa y qué hace el cliente</span><h2 id="h-fases">Seis meses. El primer cambio, en 90 días.</h2></header>
+    <div class="g3">
+      <article class="card phase"><span class="n">01</span><h3>Base · meses 1–3</h3><p class="soft">Lo primero que deja de hacer: intentar cambiarlo todo de golpe. Pasos diarios, déficit controlado, fuerza 3–4 días con tabla de progresión y dormir más. Aquí llegan los primeros kilos fuera.</p><p class="todo"><b>Lo que haces tú</b>Enviar la revisión semanal en la app y cumplir el 80 % del plan, también la semana mala.</p></article>
+      <article class="card phase"><span class="n">02</span><h3>Construir · meses 4–5</h3><p class="soft">Seguir bajando grasa sin perder fuerza: cargas que suben, técnica cuidada (nada de lesiones por ego) y un finde que ya no rompe la semana.</p><p class="todo"><b>Lo que haces tú</b>Apuntar cada entreno en la tabla, hacer los pasos y avisar antes de un evento o viaje, no después.</p></article>
+      <article class="card phase"><span class="n">03</span><h3>Para siempre · mes 6</h3><p class="soft">Autonomía: que sepa montar su plato, ajustar su semana y mantener el peso sin depender de nadie. El objetivo es no volver a empezar de cero.</p><p class="todo"><b>Lo que haces tú</b>Planificar tú la semana con mi revisión y decidir si sigues con mantenimiento.</p></article>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Innegociables e incluye">
+    <div class="card dark">
+      <span class="label">Los 3 innegociables</span>
+      <h3>Sin esto no hay garantía. Se firma en el contrato.</h3>
+      <ul class="l">
+        <li><b>Tabla de progresión:</b> cada entreno apuntado. Lo que no se mide no avanza (tu primer cliente no la tenía y no podíais medir).</li>
+        <li><b>Revisión semanal en la app:</b> peso, fotos, adherencia y sensaciones. Un día fijo, siempre.</li>
+        <li><b>Pasos diarios:</b> un mínimo que se sube por fases. Es lo que más mueve el déficit en alguien que trabaja sentado o 12 horas.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Qué incluye</span>
+      <ul class="l">
+        <li><b>Plan de fuerza</b> según sus días y horas reales, con tabla de progresión y corrección de técnica por vídeo.</li>
+        <li><b>Plan de comida</b> en déficit, sin quitar hidratos ni el dulce, que aprende a montar él.</li>
+        <li><b>App de seguimiento:</b> revisión semanal con ajustes y una descripción exacta de lo que tiene que hacer.</li>
+        <li><b>Soporte por WhatsApp</b> en horario fijo, por escrito. Acompañamiento también en semanas complicadas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-labelledby="h-porque">
+    <span class="label">Por qué tú</span>
+    <h2 id="h-porque">Pesabas 100 kg con 29 años. Hoy subes a una tarima de culturismo natural.</h2>
+    <ul class="l">
+      <li><b>Lo viviste:</b> 100 kg con 1,71 m, alcohol a diario, sin quitarte la camiseta en la playa. Y −16 kg el primer año.</li>
+      <li><b>Cometiste sus errores:</b> 40 series, 3–4 horas de sueño, fiesta el finde, atracones de helado, lesiones por ego. Lo cuentas sin vergüenza.</li>
+      <li><b>Compites en natural:</b> Euronaturals PRO Qualifier y Ben Weider Naturals. Autoridad sin química.</li>
+      <li><b>Tienes casos:</b> el futbolista de 108 a 92,5 kg en 3 meses trabajando 12 h, Omar en 8 semanas, clientes de más de 50.</li>
+      <li><b>Tu diferencia:</b> no le das una tabla y desapareces. Explicas el porqué y le enseñas a cuidarse.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que nunca prometes y a quién no">
+    <div class="card">
+      <span class="label">Lo que nunca prometes</span>
+      <ul class="l">
+        <li><b>Kilos con fecha:</b> "vas a ver cambios en 90 días", sí. "Vas a perder 15 kg en 3 meses", nunca.</li>
+        <li><b>Disponible 24 horas:</b> horario de respuesta por escrito.</li>
+        <li><b>Diagnósticos:</b> lesión seria o enfermedad → médico o fisio.</li>
+        <li><b>Resultados de competición:</b> tu nicho no quiere subir a una tarima. Quiere ir a la playa sin camiseta.</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <span class="label">A quién dices que no</span>
+      <h3>Si no hay compromiso, no hay plaza.</h3>
+      <ul class="l">
+        <li><b>El que solo trae excusas</b> y no prioriza su físico.</li>
+        <li><b>El que no cumple</b> y pide cambiar la rutina cada semana porque "no ve resultados".</li>
+        <li><b>El que quiere bajar sin hacer nada:</b> "¿no puedo bajar sin entrenar?" se trabaja; "no pienso moverme", no.</li>
+        <li><b>Dilo en la llamada:</b> "Yo me comprometo contigo. Necesito que tú también."</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header><span class="label">Precios · propuesta para confirmar con Alberto</span><h2 id="h-precios">El semestre es el que vendes.</h2><p class="soft">Mínimo trimestral: en menos de 90 días no hay cambio que enseñar. El semestre es el plan normal. Nada de mensualidades sueltas.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">1 · Se ofrece primero</span><h3>Semestre</h3><p class="price">500 €</p><p class="soft">Las 3 fases completas. El plan normal.</p></article>
+      <article class="card dark"><span class="badge">2 · El mejor valor</span><h3>Año</h3><p class="price">850 €</p><p class="soft">Las 3 fases y 6 meses de mantenimiento. Solo 350 € más que el semestre.</p></article>
+      <article class="card"><span class="badge">3 · Si es por liquidez</span><h3>Semestre en 2 pagos</h3><p class="price">2 × 265 €</p><p class="soft">Paga algo más por fraccionar. Nunca bajes el precio.</p></article>
+      <article class="card chip"><span class="badge">4 · Último recurso</span><h3>Trimestre</h3><p class="price">300 €</p><p class="soft">Solo la fase Base. Nunca como primera opción.</p></article>
+    </div>
+    <div class="say">"Lo normal es hacerlo en seis meses: los primeros cambios los ves en 90 días y los otros tres son para no volver a empezar de cero. Son 500 €. Si lo quieres para el año entero, 850 €. ¿Cuál encaja contigo?" Y te callas.</div>
+    <div class="card tblwrap">
+      <h3>Escalera de subida: cada venta cerrada, +20 %</h3>
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>300 €</td><td>500 €</td><td>850 €</td><td>Ahora</td></tr>
+          <tr><td>Nivel 1</td><td>360 €</td><td>600 €</td><td>1.020 €</td><td>Tras la siguiente venta</td></tr>
+          <tr><td>Nivel 2</td><td>430 €</td><td>720 €</td><td>1.225 €</td><td>Tras la siguiente</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>450 €</td><td>750 €</td><td>1.250 €</td><td>Y ahí te quedas</td></tr>
+        </tbody>
+      </table>
+      <p class="soft" style="font-size:14px">Los precios nunca bajan. Si una semana no cierras, no es el precio: es el número de conversaciones. Y nada de planes gratis a amigos: eso ya lo hiciste.</p>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Garantía y contrato">
+    <div class="card dark">
+      <span class="label">Garantía</span>
+      <h3>"Si cumples los 3 innegociables y en 90 días no ves cambios, sigo contigo gratis hasta que lleguen."</h3>
+      <p class="soft">Condición medible en el contrato: 80 % de cumplimiento, todas las revisiones semanales enviadas y la tabla de progresión al día. Sin devoluciones de dinero.</p>
+    </div>
+    <div class="card">
+      <span class="label">Contrato · firma antes de empezar</span>
+      <ul class="l">
+        <li>Qué se entrega, duración, pagos, garantía y los 3 innegociables.</li>
+        <li>Horario de respuesta por WhatsApp y día fijo de revisión.</li>
+        <li>Consentimiento de datos de salud y, aparte, de imagen (fotos y vídeo; con la cara tapada si lo pide).</li>
+        <li><b>14 días de desistimiento:</b> el cliente pide empezar ya y acepta pagar la parte prestada si se echa atrás.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header><span class="label">Back-end · en su momento dulce</span><h2 id="h-back">Cuando se vea cambiado, le ofreces seguir.</h2><p class="soft">Señales: la ropa le sobra, en el trabajo le preguntan qué hace, carga más que el mes pasado, ya va a la playa sin camiseta.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><p class="soft">Trimestre → semestre pagando la diferencia; semestre → año igual.</p></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Antes de acabar</h3><p class="soft">En el mes 5, nunca al final. Con fecha límite y precio congelado.</p></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento</h3><p class="soft">Revisión mensual y plan actualizado (precio a decidir).</p></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a un compañero del trabajo</h3><p class="soft">Si entra, un mes gratis. Quien hace 12 horas contigo tiene el mismo problema.</p></article>
+    </div>
+  </section>
+</div>
+</body></html>

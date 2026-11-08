@@ -131,12 +131,37 @@ ul.l b, ol.l b { color: var(--ink); }
   .week { grid-template-columns: 1fr 1fr; }
   .script .line { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Nicho y método (bloque común) */
+.nmx { background: #1d2027; color: #fff; border-radius: 8px; padding: clamp(18px, 3vw, 28px); display: grid; gap: 14px; margin-block: 8px 18px; }
+.nmx-l { font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: #e8703f; }
+.nmx-h { margin: 0; font-size: clamp(21px, 2.8vw, 30px); line-height: 1.18; color: #fff; text-wrap: balance; }
+.nmx-p { margin: 0; color: #c9ccd2; font-size: 15.5px; }
+.nmx-p b { color: #fff; }
+.nmx-t { font: 500 11.5px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; color: #e8703f; margin-top: 6px; }
+.nmx-g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nmx-g3 > div { background: #2a2e37; border-radius: 6px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.nmx-g3 b { color: #fff; font-size: 16px; }
+.nmx-g3 span { color: #c9ccd2; font-size: 14.5px; line-height: 1.45; }
+.nmx-f { display: grid; gap: 8px; }
+.nmx-f > div { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr) minmax(0, 1.4fr); gap: 12px; background: #2a2e37; border-radius: 6px; padding: 12px 14px; font-size: 14.5px; color: #c9ccd2; line-height: 1.45; }
+.nmx-f > div.hd { background: none; padding: 0 14px; font: 500 11px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #9aa0aa; }
+.nmx-f b { color: #fff; display: block; font-size: 15px; }
+.nmx-n { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: #c9ccd2; font-size: 15px; }
+.nmx-n b { color: #fff; }
+@media (max-width: 700px) {
+  .nmx-g3 { grid-template-columns: 1fr; }
+  .nmx-f > div { grid-template-columns: 1fr; gap: 4px; }
+  .nmx-f > div.hd { display: none; }
+  .nmx-f i { font-style: normal; display: block; font: 500 10.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #e8703f; margin-top: 4px; }
+}
+@media (min-width: 701px) { .nmx-f i { display: none; } }
 </style>
 
 <header class="top wrap">
   <span class="label">DR TEAM · Diego Rendón · Parte 3 · Contenido</span>
   <h1>Contenido todos los días. Sin excusas.</h1>
-  <p class="lede">Para el intermedio estancado: hombres de 25 a 35 que llevan años entrenando y se ven igual. Arrancas con 2 piezas al día y subes hasta 5. YouTube, 2 vídeos a la semana desde el primer día. Y mucho rol de entrenador: que te vean corrigiendo, revisando y dirigiendo. Eso es lo que vende un coach.</p>
+  <p class="lede">Para el intermedio estancado: hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual, con curro y estrés, y quieren verse los abdominales sin pasar hambre. Arrancas con 2 piezas al día y subes hasta 5. YouTube, 2 vídeos a la semana desde el primer día. Y mucho rol de entrenador: que te vean corrigiendo, revisando y dirigiendo. Eso es lo que vende un coach.</p>
 </header>
 
 <nav class="tabs" aria-label="Secciones">
@@ -151,6 +176,31 @@ ul.l b, ol.l b { color: var(--ink); }
 <main class="wrap">
   <!-- PLAN -->
   <section class="view" id="v-plan" aria-label="El plan">
+
+  <section class="nmx" aria-label="Tu nicho y tu método">
+    <span class="nmx-l">Tu nicho en una frase · Tu método en 30 segundos</span>
+    <h2 class="nmx-h">"Hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual, con curro y estrés, y quieren verse los abdominales sin pasar hambre."</h2>
+    <p class="nmx-p">La prueba eres tú: <b>"Entrené 5–6 días durante años y tardé 5 o 6 años en ver mis abdominales. No me faltaba esfuerzo: me faltaba estructura."</b></p>
+    <div class="nmx-t">Método DR · 3 pilares</div>
+    <div class="nmx-g3">
+      <div><b>1 · Entrenar mejor, no más</b><span>Estructura e intensidad por encima del volumen: fuera las series basura, cada serie cuenta y queda apuntada.</span></div>
+      <div><b>2 · Descanso que te deja rendir</b><span>Dormir y recuperar para llegar a cada sesión con fuerza. Sin descanso, la intensidad no existe.</span></div>
+      <div><b>3 · Déficit sin pasar hambre</b><span>Comiendo lo que te gusta, dentro y fuera de casa, también el finde. Si pasas hambre, lo dejas.</span></div>
+    </div>
+    <div class="nmx-t">3 fases · 6 meses</div>
+    <div class="nmx-f">
+      <div class="hd"><span>Fase</span><span>Qué pasa</span><span>Qué haces tú</span></div>
+      <div><span><b>1 · Desbloquear</b>Meses 1–2</span><span><i>Qué pasa</i>Ordenamos tu semana en 4 sesiones con intensidad real y arrancamos un déficit sin hambre. Bajan los primeros kilos de grasa y vuelves a progresar en los básicos.</span><span><i>Qué haces tú</i>Cumples las 4 sesiones y las apuntas en la tabla, duermes 7 horas y mandas tu revisión cada semana.</span></div>
+      <div><span><b>2 · Construir</b>Meses 3–4</span><span><i>Qué pasa</i>Subimos cargas con la tabla de progresión: ganas músculo y fuerza mientras sigues bajando grasa, sin volumen basura.</span><span><i>Qué haces tú</i>Progresas en cada sesión, cumples tus comidas el 80 % de la semana y no fallas ninguna revisión.</span></div>
+      <div><span><b>3 · Revelar y mantener</b>Meses 5–6</span><span><i>Qué pasa</i>Afinamos hasta que se ven los abdominales y te enseño a mantenerlos comiendo de todo, sin definiciones eternas.</span><span><i>Qué haces tú</i>Aplicas lo aprendido, decides tus comidas con criterio y mantienes las 4 sesiones.</span></div>
+    </div>
+    <div class="nmx-t">3 no negociables</div>
+    <ol class="nmx-n">
+      <li><b>4 sesiones a la semana</b> con tabla de progresión.</li>
+      <li><b>Dormir 7 horas.</b></li>
+      <li><b>Revisión semanal</b>, sin fallar ni una.</li>
+    </ol>
+  </section>
     <div class="sec">
       <div class="head"><span class="label">Tus 5 formatos</span><h2>Cuatro formatos y uno que pesa más que todos: el rol de entrenador.</h2><p class="soft">Con 2.100 seguidores no te compran por gracioso: te compran porque te ven actuar como un entrenador que sabe lo que hace. Desde la semana 3, al menos 4 de cada 10 piezas son de rol entrenador.</p></div>
       <div class="g5">
@@ -506,7 +556,8 @@ ul.l b, ol.l b { color: var(--ink); }
     { n: "Mitos", d: "Los 13 que te creíste tú y que se cree tu cliente." },
     { n: "Rol entrenador", d: "Corrigiendo, revisando, analizando, dirigiendo." },
     { n: "Casos", d: "Juanca, Jose, Juan, Guille y compañía." },
-    { n: "Objeciones y frenos", d: "Lo que te dirá antes de empezar, respondido antes." }
+    { n: "Objeciones y frenos", d: "Lo que te dirá antes de empezar, respondido antes." },
+    { n: "Método DR", d: "Los 3 pilares y las 3 fases, explicados para que se entiendan en 30 segundos." }
   ];
   var ANG = [
     [0, "5–6 años para ver mis abdominales", ["A mí me llevó cinco o seis años conseguir verme los abdominales. A ti no tiene por qué.", "Tardé 5 años en verme los abdominales. Estos son los errores que te ahorro."], ["Yapping", "YouTube", "Historias"]],
@@ -585,7 +636,12 @@ ul.l b, ol.l b { color: var(--ink); }
     [11, "¿Será mi genética?", ["\"Llevo tiempo entrenando y no veo cambios, ¿será mi genética?\" Spoiler: no.", "Antes de culpar a la genética, revisa esto."], ["Green screen", "Yapping"]],
     [11, "\"Es caro\"", ["¿Cuánto llevas gastado en suplementos y meses de gym sin cambiar nada?", "Lo caro es seguir 2 años más igual."], ["Yapping"]],
     [11, "\"Ya tuve entrenador y no funcionó\"", ["Ya tuve entrenador y no funcionó. Yo también. Te cuento qué cambió con el segundo.", "Un plan genérico no es un entrenador."], ["Yapping", "Voz en off"]],
-    [11, "\"No sé por dónde empezar\"", ["\"No sé por dónde empezar, todo me parece confuso.\" Empieza por aquí.", "3 pasos para salir del estancamiento esta semana."], ["Voz en off", "Rol entrenador"]]
+    [11, "\"No sé por dónde empezar\"", ["\"No sé por dónde empezar, todo me parece confuso.\" Empieza por aquí.", "3 pasos para salir del estancamiento esta semana."], ["Voz en off", "Rol entrenador"]],
+    [12, "Entrenar mejor, no más", ["Entrenas 6 días y no avanzas. Con 4 bien hechos, sí.", "Más series no es más músculo. Más intensidad, sí."], ["Voz en off", "Rol entrenador", "YouTube"]],
+    [12, "El descanso también entrena", ["Si duermes 5 horas, tu entreno de mañana ya está perdido.", "Sin descanso no hay intensidad. Y sin intensidad no hay cambio."], ["Yapping", "Voz en off"]],
+    [12, "Déficit sin pasar hambre", ["Puedes bajar grasa comiendo lo que te gusta. Te enseño cómo.", "Si pasas hambre, lo vas a dejar. Así planteo yo el déficit."], ["Voz en off", "Tendencia", "Historias"]],
+    [12, "Las 3 fases del Método DR", ["Desbloquear, construir y revelar: así se ven los abdominales en 6 meses.", "Por qué no hago volumen y definición a lo loco: las 3 fases."], ["YouTube", "Yapping"]],
+    [12, "Mis 3 no negociables", ["4 sesiones, 7 horas de sueño y una revisión a la semana. Sin eso, no trabajo contigo.", "Lo único que te pido para que esto funcione: estas 3 cosas."], ["Yapping", "Rol entrenador", "Historias"]]
   ];
   var fFam = -1, fFmt = "";
   var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
