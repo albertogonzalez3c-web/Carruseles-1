@@ -1,0 +1,3 @@
+# Xavier García (@javifitrainer) — instrucciones
+48 años, padre de familia, físico espectacular. Bio actual: "Hombres +35 con poco tiempo. Pierde barriga y recupera fuerza sin vivir a dieta. Entrena 2–3 días. Come normal. Progresa." + javifittrainer.com/Fuerteotravez. Destacados Rutinas, Mi historia. Marca azul + amarillo, logo JAVIFITTRAINER. Historia: "Así estaba antes: engordé, perdí energía, tenía dolores al levantarme y mi confianza se fue al suelo" / "Resultados: volví a sentirme vivo, más fuerte, más sano, más presente, orgulloso del ejemplo que doy en casa". CTA "PLAN" por DM. Vínculo con el ayuntamiento y organización de carreras.
+Implementación: Claudia (responsable). El plan de acción completo que pasó Alberto está en plan-accion.md (seguirlo como base).
