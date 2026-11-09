@@ -30,7 +30,8 @@ BACK = ('<a href="{href}" style="position:fixed;left:12px;bottom:12px;z-index:99
         'border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)">← Índice</a>')
 
 
-def main(folder, nombre):
+def main(folder, nombre, externos=None):
+    externos = externos or {}
     out = os.path.join(folder, "_hub")
     shutil.rmtree(out, ignore_errors=True)
     os.makedirs(os.path.join(out, "p"))
@@ -40,6 +41,9 @@ def main(folder, nombre):
         if not os.path.exists(path):
             continue
         name = "landing.html" if src == "index.html" else os.path.basename(src)
+        if os.path.basename(src) in externos:
+            cards.append((externos[os.path.basename(src)], titulo, desc + " · se abre aparte"))
+            continue
         body = open(path, encoding="utf-8").read()
         # imágenes relativas: copiar junto a la parte
         base = os.path.dirname(path)
@@ -56,7 +60,7 @@ def main(folder, nombre):
         files["p/" + name] = dst
         cards.append((f"p/{name}", titulo, desc))
     lis = "\n".join(
-        f'<a class="card" href="{h}"><b>{html.escape(t)}</b><span>{html.escape(d)}</span></a>'
+        f'<a class="card" href="{h}"{" target=\"_blank\"" if h.startswith("http") else ""}><b>{html.escape(t)}</b><span>{html.escape(d)}</span></a>'
         for h, t, d in cards)
     index = f"""<title>{html.escape(nombre)} Sistema</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -87,4 +91,5 @@ h1{{font-size:28px;line-height:1.15;margin:0 0 6px}} p.lead{{color:var(--soft);m
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    ext = json.loads(sys.argv[3]) if len(sys.argv) > 3 else {}
+    main(sys.argv[1], sys.argv[2], ext)
