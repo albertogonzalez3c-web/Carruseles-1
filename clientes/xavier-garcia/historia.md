@@ -1,6 +1,6 @@
 # Xavier García (@javifitrainer) · Su historia
 
-**Fuentes:** `instrucciones-alberto.md`, `plan-accion.md` (plan de acción de Alberto; responsable de implementación: **Claudia**) y 3 capturas (`capturas/perfil-ig.png`, `historia-antes.png`, `historia-resultados.png`).
+**Fuentes:** `instrucciones-alberto.md`, `plan-accion.md` (plan de acción de Alberto; responsable de implementación: **Claude**) y 3 capturas (`capturas/perfil-ig.png`, `historia-antes.png`, `historia-resultados.png`).
 No hay documento escrito por Xavier. **No inventar nada fuera de esto.** Las citas entre comillas son literales de sus capturas. `[confirmar]` = dato que falta y hay que pedirle.
 
 ---
@@ -10,7 +10,7 @@ No hay documento escrito por Xavier. **No inventar nada fuera de esto.** Las cit
 - Lleva una vida ocupada y mantiene un "físico espectacular" (plan de Alberto). Ha vivido distintas etapas físicas y personales y conoce las dificultades de compaginar familia, trabajo y entrenamiento.
 - **Vínculo con el ayuntamiento y con la organización de carreras** (cargo exacto, municipio y tipo de carreras: `[confirmar]`).
 - **Marca:** azul (marino + azul eléctrico) y amarillo, logo **JAVIFITTRAINER** (mancuerna dentro de un triángulo invertido).
-- **Responsable de implementación:** Claudia (coordina contenido, edita vídeos, landing, escaparates, embudos, creatividades y métricas semanales).
+- **Responsable de implementación:** Claude (coordina contenido, edita vídeos, landing, escaparates, embudos, creatividades y métricas semanales).
 
 ## Perfil actual de Instagram (captura)
 - Usuario **@javifitrainer** (con una sola "t"). Nombre: **"Xavier García | Entrenador de hombres +35"**.

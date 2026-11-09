@@ -74,7 +74,7 @@ a { color: inherit; }
 .hero .who { display: flex; align-items: center; gap: 12px; color: var(--on-dark); font-size: 15px; }
 .hero .who b { color: #fff; }
 .hero figure { margin: 0; position: relative; }
-.hero figure img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; border-radius: 18px; display: block; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.hero figure img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 0%; border-radius: 18px; display: block; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
 .hero figure figcaption { position: absolute; left: 14px; bottom: 14px; background: var(--yellow); color: var(--navy); font: 700 15px/1.1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; padding: 9px 12px; border-radius: 8px; }
 
 /* 2 · Dolor */
@@ -90,7 +90,8 @@ a { color: inherit; }
 .story .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
 .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .ba figure { margin: 0; position: relative; }
-.ba img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; border-radius: 14px; display: block; }
+.ba img[src*="antes"], .proof .mini-ba img[src*="antes"] { object-position: 50% 85% !important; }
+.ba img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; object-position: 50% 0%; border-radius: 14px; display: block; }
 .ba figcaption { position: absolute; top: 10px; left: 10px; font: 700 14px/1 var(--f-head); text-transform: uppercase; letter-spacing: .06em; padding: 7px 10px; border-radius: 6px; background: var(--navy); color: #fff; }
 .ba figure:last-child figcaption { background: var(--yellow); color: var(--navy); }
 .story .txt { display: grid; gap: 18px; }
@@ -121,7 +122,7 @@ a { color: inherit; }
 .proof .c.pending { border-style: dashed; border-color: rgba(246,201,69,.6); }
 .proof .stat { font: 700 46px/1 var(--f-head); color: var(--yellow); }
 .proof .mini-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.proof .mini-ba img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; border-radius: 10px; display: block; }
+.proof .mini-ba img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 0%; border-radius: 10px; display: block; }
 
 /* 6 · CTA final */
 .final { background: var(--blue); color: #fff; text-align: center; }
@@ -158,7 +159,6 @@ footer b { color: #fff; }
 }
 </style>
 
-<div class="draft" id="draft">Borrador para Claudia y Xavier · los huecos en amarillo [confirmar] se completan antes de publicar · número de WhatsApp pendiente</div>
 
 <header class="bar">
   <div class="wrap">
@@ -275,6 +275,7 @@ footer b { color: #fff; }
         <div><b>3 · Tu plan</b><span>Si encaja, empezamos con tu fase de Reactivar.</span></div>
       </div>
       <a class="btn" data-wa href="#cta"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Quiero recuperar mi mejor versión</a>
+      <p class="note" style="color:#e7eeff;margin-top:10px">¿Prefieres un formulario? <a href="https://javifittrainer.com/Fuerteotravez" target="_blank" rel="noopener" style="color:#ffd23f;font-weight:700">Déjame tus datos aquí</a></p>
       <p class="note" id="waNote" style="color:#e7eeff" hidden>Número de WhatsApp pendiente de confirmar: el botón se activará en cuanto se añada.</p>
     </div>
   </section>
@@ -293,7 +294,7 @@ footer b { color: #fff; }
 <script>
 (function () {
   /* Número de WhatsApp: pendiente. Formato internacional sin + ni espacios, p. ej. "34600000000". */
-  var WA_NUMBER = "";
+  var WA_NUMBER = "34681005579";
   var WA_MSG = "Hola Xavier, vengo de tu web. Quiero recuperar mi mejor versión. Tengo __ años, hijos y poco tiempo. ¿Me cuentas cómo funciona?";
   var links = document.querySelectorAll("[data-wa]");
   if (WA_NUMBER) {

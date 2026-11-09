@@ -1,6 +1,6 @@
 # PLAN DE ACCIÓN ESTRATÉGICO | XAVIER (texto de Alberto, base del sistema)
 
-Responsable de implementación: Claudia
+Responsable de implementación: Claude
 
 ## 1. Posicionamiento y nicho
 Xavier tiene 48 años, es padre de familia, lleva una vida ocupada y mantiene un físico espectacular. Representa exactamente al hombre al que queremos ayudar. Ha vivido diferentes etapas físicas y personales y conoce las dificultades de compaginar familia, trabajo y entrenamiento.
@@ -25,7 +25,7 @@ Comprar foco/iluminación; espacio fijo de grabación (preferible su gimnasio); 
 A. Yapping: por qué después de los 40 no tienes la misma energía; recuperar el físico siendo padre y trabajando; el error de entrenar como a los 20; no necesitas vivir en el gimnasio; dejar de llegar agotado a casa; qué hacer tras años descuidado; cuerpo fuerte a los 40 y 50; ser padre no significa abandonar tu físico.
 B. Green screen educativo: testosterona y envejecimiento; cortisol y estrés; insulina y resistencia a la insulina; leptina y apetito; sueño y recuperación; pérdida de masa muscular con la edad; grasa abdominal y hábitos; metabolismo. Sencillo, atractivo y riguroso; no atribuir todo a hormonas sin evidencia.
 C. Voice over: banco de recursos de Xavier entrenando, caminando, trabajando, cocinando, rutina diaria, compaginando responsabilidades. Acumular grabaciones para varias semanas.
-D. YouTube: 1 vídeo semanal bien preparado, lugar fijo del gimnasio con buena luz y sonido; Claudia edita. Temas: recuperar tu físico después de los 40 con hijos y poco tiempo; por qué estás más cansado a los 40 que a los 25; cuántos días entrenar después de los 40; perder barriga y recuperar músculo siendo padre.
+D. YouTube: 1 vídeo semanal bien preparado, lugar fijo del gimnasio con buena luz y sonido; Claude edita. Temas: recuperar tu físico después de los 40 con hijos y poco tiempo; por qué estás más cansado a los 40 que a los 25; cuántos días entrenar después de los 40; perder barriga y recuperar músculo siendo padre.
 
 ## 5. Follow Me Ads
 Seleccionar los mejores vídeos del nicho: dolores concretos, identificación inmediata, imagen y autoridad de Xavier, llamada a seguir. Subir inversión progresivamente según coste por seguidor cualificado, conversaciones y oportunidades. No seguidores por número sino hombres que puedan ser clientes. (Regla general de Alberto: Reels promocionados 5–10 €/día, valorar a los 2 días, <1 €/seguidor, España +25.)
@@ -50,6 +50,6 @@ Semanas 3–4 optimizar y escalar: 1 YouTube semanal; más contenido según capa
 
 ## 10. Responsabilidades
 Xavier: comunicación y calidad de grabación, comprar iluminación, grabar contenido y recursos, compartir historia y fotos, facilitar accesos, abrir conversaciones, documentar casos, 1 YouTube semanal.
-Claudia: coordinar contenido, preparar y editar vídeos, estructura y textos de la landing, optimizar escaparates, organizar recursos, implementar embudos, creatividades publicitarias, supervisar captación, revisar métricas semanalmente.
+Claude: coordinar contenido, preparar y editar vídeos, estructura y textos de la landing, optimizar escaparates, organizar recursos, implementar embudos, creatividades publicitarias, supervisar captación, revisar métricas semanalmente.
 
 Objetivo final: marca personal especializada en hombres +40 y padres de familia. Contenido → Atención → Confianza → Conversaciones → WhatsApp → Llamadas → Clientes. Menos contenido improvisado, más comunicación dirigida y más conversaciones comerciales de calidad.

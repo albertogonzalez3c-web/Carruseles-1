@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: reporte de Xavier (JAVIFITTRAINER) para Claudia y Alberto. Arriba el plan de arranque (semanas 1, 2 y 3–4) como checklist; luego el diario (conversaciones en 2 rondas, respuestas, cualificados, seguimientos, llamadas, cierres, reels por formato con trial reels, carruseles, YouTube, historias y WhatsApp) y el semanal (rampa de contenido, YouTube 1/semana, trial reels, Follow Me Ads, clientes, tareas, revisión semanal de Claudia y feedback). Indicadores verde/rojo frente a objetivos. Todo en la base de datos compartida. Marca azul marino, azul eléctrico y amarillo. */
+/* Layout: reporte de Xavier (JAVIFITTRAINER) para Claude y Alberto. Arriba el plan de arranque (semanas 1, 2 y 3–4) como checklist; luego el diario (conversaciones en 2 rondas, respuestas, cualificados, seguimientos, llamadas, cierres, reels por formato con trial reels, carruseles, YouTube, historias y WhatsApp) y el semanal (rampa de contenido, YouTube 1/semana, trial reels, Follow Me Ads, clientes, tareas, revisión semanal de Claude y feedback). Indicadores verde/rojo frente a objetivos. Todo en la base de datos compartida. Marca azul marino, azul eléctrico y amarillo. */
 :root {
   --paper: #f4f6fa;
   --white: #ffffff;
@@ -140,10 +140,10 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
 
 <div class="wrap">
   <header class="head">
-    <span class="label">Xavier García · JAVIFITTRAINER · Reporte para Claudia y Alberto</span>
+    <span class="label">Xavier García · JAVIFITTRAINER · Reporte para Claude y Alberto</span>
     <h1>Tus números, cada día. Sin excusas.</h1>
     <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Tu nicho: Ayudo a hombres +40 y padres de familia a recuperar su físico, energía y confianza sin dejar de lado su trabajo ni su familia. · Reconstrucción Física y Metabólica +40.</p>
-    <p class="soft">Xavier: cada noche lo del día (5 minutos) y el domingo lo de la semana. Claudia: el domingo completa su revisión semanal y marca el plan de arranque. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo, lo que hay que corregir mañana.</p>
+    <p class="soft">Xavier: cada noche lo del día (5 minutos) y el domingo lo de la semana. Claude: el domingo completa su revisión semanal y marca el plan de arranque. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo, lo que hay que corregir mañana.</p>
     <div class="bar">
       <label for="fecha">Día<input type="date" id="fecha"></label>
       <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
@@ -155,7 +155,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
   <div class="card" id="planCard">
     <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap"><span class="when">Plan de Alberto · checklist compartido</span><span class="saved" id="sv-plan"></span></div>
     <h2>Plan de arranque: semana 1, semana 2 y semanas 3–4</h2>
-    <p class="soft" style="font-size:14px">Cada tarea lleva su responsable. Claudia lo revisa cada domingo con el reporte semanal. Se guarda en la base de datos compartida.</p>
+    <p class="soft" style="font-size:14px">Cada tarea lleva su responsable. Claude lo revisa cada domingo con el reporte semanal. Se guarda en la base de datos compartida.</p>
     <div class="pbar" aria-hidden="true"><i id="planBar"></i></div>
     <p class="soft" id="planCount" style="font-size:13px"></p>
     <div class="plan" id="planBox"></div>
@@ -255,7 +255,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
         </div>
       </div>
       <div class="card">
-        <span class="label">Mensaje diario para Claudia y Alberto</span>
+        <span class="label">Mensaje diario para Claude y Alberto</span>
         <pre class="copy" id="m-dia"></pre>
         <div class="btns"><button type="button" class="btn" data-copy="m-dia" data-note="n-dia">Copiar mensaje</button></div>
         <p class="note" id="n-dia" aria-live="polite"></p>
@@ -320,7 +320,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
         </div>
 
         <div class="grp">
-          <div class="gh">Tareas de la semana (Claudia y Alberto) <small id="taskCount"></small></div>
+          <div class="gh">Tareas de la semana (Claude y Alberto) <small id="taskCount"></small></div>
           <div id="taskList" style="display:grid;gap:8px"></div>
           <button type="button" class="btn ghost small" id="addTask">+ Añadir tarea</button>
         </div>
@@ -334,7 +334,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
 
 
         <div class="grp">
-          <div class="gh">Revisión semanal de Claudia <small>la rellena Claudia el domingo</small></div>
+          <div class="gh">Revisión semanal de Claude <small>la rellena Claude el domingo</small></div>
           <div class="yn"><span>¿Landing y botón de WhatsApp funcionando en móvil?</span><div class="seg" data-ws="cLanding"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
           <div class="yn"><span>¿YouTube de la semana editado y publicado?</span><div class="seg" data-ws="cYoutube"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
           <div class="yn"><span>¿Banco de recursos de voz en off organizado (2–3 semanas)?</span><div class="seg" data-ws="cRecursos"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
@@ -374,7 +374,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
         </div>
       </div>
       <div class="card">
-        <span class="label">Mensaje semanal para Claudia y Alberto</span>
+        <span class="label">Mensaje semanal para Claude y Alberto</span>
         <pre class="copy" id="m-sem"></pre>
         <div class="btns"><button type="button" class="btn" data-copy="m-sem" data-note="n-sem">Copiar mensaje</button></div>
         <p class="note" id="n-sem" aria-live="polite"></p>
@@ -657,32 +657,32 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
     ["w3", "Semanas 3–4 · Optimizar y escalar"]
   ];
   var PLAN_ITEMS = [
-    ["w1", "w1a", "Posicionamiento y mensaje cerrados (nicho, concepto, bio)", "Claudia + Xavier"],
+    ["w1", "w1a", "Posicionamiento y mensaje cerrados (nicho, concepto, bio)", "Claude + Xavier"],
     ["w1", "w1b", "Comprar iluminación y micro; fijar el espacio de grabación", "Xavier"],
     ["w1", "w1c", "Fotos antiguas, fotos actuales e historia con fechas", "Xavier"],
-    ["w1", "w1d", "Pedir número de WhatsApp y perfil de LinkedIn", "Claudia"],
-    ["w1", "w1e", "Optimizar Instagram (nombre, bio, destacadas, fijados)", "Claudia"],
-    ["w1", "w1f", "Montar la página de Facebook como escaparate", "Claudia"],
-    ["w1", "w1g", "Estructura y textos de la landing", "Claudia"],
-    ["w1", "w1h", "Elegir los 5 perfiles de referencia para prospección", "Claudia + Xavier"],
-    ["w1", "w1i", "Sistema de registro de leads (CRM y reporte) funcionando", "Claudia"],
+    ["w1", "w1d", "Pedir número de WhatsApp y perfil de LinkedIn", "Claude"],
+    ["w1", "w1e", "Optimizar Instagram (nombre, bio, destacadas, fijados)", "Claude"],
+    ["w1", "w1f", "Montar la página de Facebook como escaparate", "Claude"],
+    ["w1", "w1g", "Estructura y textos de la landing", "Claude"],
+    ["w1", "w1h", "Elegir los 5 perfiles de referencia para prospección", "Claude + Xavier"],
+    ["w1", "w1i", "Sistema de registro de leads (CRM y reporte) funcionando", "Claude"],
     ["w1", "w1j", "Pedir documentación y permiso del cliente de ~50 kg", "Xavier"],
-    ["w2", "w2a", "Publicar la landing con botón de WhatsApp", "Claudia"],
-    ["w2", "w2b", "Primer vídeo de YouTube grabado y editado", "Xavier + Claudia"],
+    ["w2", "w2a", "Publicar la landing con botón de WhatsApp", "Claude"],
+    ["w2", "w2b", "Primer vídeo de YouTube grabado y editado", "Xavier + Claude"],
     ["w2", "w2c", "Primer banco de recursos de voz en off grabado", "Xavier"],
-    ["w2", "w2d", "Yapping, green screen y voces en off publicados", "Xavier + Claudia"],
+    ["w2", "w2d", "Yapping, green screen y voces en off publicados", "Xavier + Claude"],
     ["w2", "w2e", "Historias de Instagram y Estados de WhatsApp diarios", "Xavier"],
     ["w2", "w2f", "Prospección y conversaciones diarias (2 rondas de 50)", "Xavier"],
-    ["w2", "w2g", "Seleccionar creatividades para Follow Me Ads", "Claudia"],
-    ["w2", "w2h", "WhatsApp Business configurado (bienvenida y respuestas rápidas)", "Claudia"],
-    ["w3", "w3a", "1 vídeo de YouTube semanal sin fallar", "Xavier + Claudia"],
+    ["w2", "w2g", "Seleccionar creatividades para Follow Me Ads", "Claude"],
+    ["w2", "w2h", "WhatsApp Business configurado (bienvenida y respuestas rápidas)", "Claude"],
+    ["w3", "w3a", "1 vídeo de YouTube semanal sin fallar", "Xavier + Claude"],
     ["w3", "w3b", "Más contenido según capacidad (rampa de reels)", "Xavier"],
-    ["w3", "w3c", "Mejorar ganchos y comunicación (energía, luz, ritmo)", "Xavier + Claudia"],
-    ["w3", "w3d", "Probar ángulos de anuncios y escalar el que trae conversaciones", "Claudia"],
-    ["w3", "w3e", "Analizar leads, conversaciones y llamadas", "Claudia"],
+    ["w3", "w3c", "Mejorar ganchos y comunicación (energía, luz, ritmo)", "Xavier + Claude"],
+    ["w3", "w3d", "Probar ángulos de anuncios y escalar el que trae conversaciones", "Claude"],
+    ["w3", "w3e", "Analizar leads, conversaciones y llamadas", "Claude"],
     ["w3", "w3f", "Nuevos testimonios verificables con permiso", "Xavier"],
-    ["w3", "w3g", "Mejorar el embudo (mensajes, landing, seguimiento)", "Claudia"],
-    ["w3", "w3h", "Subir inversión solo donde haya rentabilidad", "Claudia"]
+    ["w3", "w3g", "Mejorar el embudo (mensajes, landing, seguimiento)", "Claude"],
+    ["w3", "w3h", "Subir inversión solo donde haya rentabilidad", "Claude"]
   ];
   var planState = { items: {} };
   function planDone() { return PLAN_ITEMS.filter(function (p) { return planState.items[p[1]]; }).length; }
@@ -695,7 +695,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
       col.innerHTML = '<h3>' + esc(w[1]) + '</h3><small class="pc">' + done + ' de ' + items.length + ' hechas</small>';
       items.forEach(function (p) {
         var lab = document.createElement("label"); lab.className = "pi" + (planState.items[p[1]] ? " done" : "");
-        lab.innerHTML = '<input type="checkbox"' + (planState.items[p[1]] ? " checked" : "") + '><span>' + esc(p[2]) + ' <em' + (p[3].indexOf("Claudia") === 0 ? ' class="c"' : '') + '>' + esc(p[3]) + '</em></span>';
+        lab.innerHTML = '<input type="checkbox"' + (planState.items[p[1]] ? " checked" : "") + '><span>' + esc(p[2]) + ' <em' + (p[3].indexOf("Claude") === 0 ? ' class="c"' : '') + '>' + esc(p[3]) + '</em></span>';
         lab.querySelector("input").addEventListener("change", function (e) {
           var it = Object.assign({}, planState.items); it[p[1]] = e.target.checked; planState = { items: it };
           schedule("plan", "arranque", function () { return planState; }, "sv-plan");
@@ -887,7 +887,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
     btn.addEventListener("click", function () {
       var box = el(btn.dataset.copy), note = el(btn.dataset.note);
       function fb() { var r = document.createRange(); r.selectNodeContents(box); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado."; }
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado. Pégalo en el grupo con Claudia y Alberto."; }, fb); else fb();
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado. Pégalo en el grupo con Claude y Alberto."; }, fb); else fb();
     });
   });
 
@@ -900,7 +900,7 @@ h1, h2 { letter-spacing: .005em; font-weight: 600; }
     db = c;
     var got = { d: false, s: false, p: false };
     var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
-    function ready(x) { got[x] = true; if (got.d && got.s && got.p) { clearTimeout(timer); setStatus("Guardado en directo · Claudia y Alberto lo ven al momento"); } }
+    function ready(x) { got[x] = true; if (got.d && got.s && got.p) { clearTimeout(timer); setStatus("Guardado en directo · Claude y Alberto lo ven al momento"); } }
     function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); }
     db.collection("diario").orderBy("fecha", "desc").limit(60).onSnapshot(function (snap) {
       snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha) diaMap[x.fecha] = Object.assign(blankDay(x.fecha), x); });
