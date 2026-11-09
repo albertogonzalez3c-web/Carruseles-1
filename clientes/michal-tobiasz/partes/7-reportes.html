@@ -1,0 +1,845 @@
+<title>Michał Report</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f3f4f6;
+  --white: #ffffff;
+  --sand: #e6e9ee;
+  --sand-line: #d1d6de;
+  --ink: #0b0b0c;
+  --soft: #556070;
+  --gold: #8a6514;
+  --gold-text: #6b4f0e;
+  --chip: #eceff3;
+  --rust: #9a3b2f;
+  --green: #3f6b3a;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(28px, 5vw, 52px); display: grid; gap: 22px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 400 clamp(34px, 5.5vw, 54px)/1 var(--f-head); letter-spacing: 0; text-transform: uppercase; }
+h2 { font: 400 26px/1.1 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+h3 { font: 700 16.5px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 10px; max-width: 780px; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.bar label { display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; }
+input, select, textarea { font: 600 15.5px/1.25 var(--f-body); padding: 10px 12px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; font-variant-numeric: tabular-nums; }
+textarea { min-height: 64px; resize: vertical; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
+.bar input[type=date] { width: auto; }
+.status { font: 500 12.5px/1.4 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--rust); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.col { display: grid; gap: 14px; min-width: 0; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.when { display: inline-block; width: fit-content; background: var(--gold); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+.grp { display: grid; gap: 8px; }
+.grp > .gh { font-weight: 800; font-size: 14.5px; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.grp > .gh small { font: 500 11.5px/1 var(--f-mono); color: var(--soft); font-weight: 500; }
+.nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.nums.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.nums label, .fld { display: grid; gap: 4px; font-size: 13px; font-weight: 700; color: var(--soft); }
+.yn { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 600; flex-wrap: wrap; }
+.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; flex-wrap: wrap; }
+.seg button { all: unset; cursor: pointer; padding: 7px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; color: var(--soft); }
+.seg button[aria-pressed="true"] { background: var(--gold); color: var(--white); }
+.seg button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.goal { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-size: 14px; font-weight: 700; }
+.goal.ok { background: #e3ecdd; color: var(--green); }
+.goal.bad { background: #f3e0d8; color: var(--rust); }
+.calc b.ok { color: var(--green); }
+.calc b.bad { color: var(--rust); }
+.calc b.ok::before { content: "● "; font-size: .6em; vertical-align: middle; }
+.calc b.bad::before { content: "● "; font-size: .6em; vertical-align: middle; }
+.meter { height: 10px; background: var(--sand); border-radius: 99px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--gold); border-radius: 99px; }
+.closes { display: grid; gap: 10px; background: var(--chip); border-radius: 14px; padding: 14px; }
+.row { display: grid; gap: 8px; background: var(--white); border-radius: 12px; padding: 12px; }
+.row .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.rm { all: unset; cursor: pointer; color: var(--soft); font-size: 13px; font-weight: 700; }
+.rm:focus-visible { outline: 2px solid var(--ink); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; color: var(--soft); }
+.fields .full { grid-column: 1 / -1; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { font: 700 14.5px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 12px 16px; cursor: pointer; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.saved { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.note { font-size: 13.5px; color: var(--soft); min-height: 1.2em; }
+.calc { display: grid; gap: 10px; }
+.calc div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-bottom: 1px solid var(--sand-line); padding-bottom: 8px; }
+.calc div:last-child { border-bottom: 0; padding-bottom: 0; }
+.calc span { color: var(--soft); font-size: 14.5px; }
+.calc b { font: 400 25px/1 var(--f-head); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+pre.copy { margin: 0; white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); background: var(--chip); border-radius: 12px; padding: 14px 16px; }
+.mood { display: flex; gap: 6px; flex-wrap: wrap; }
+.mood button { all: unset; cursor: pointer; font-size: 22px; line-height: 1; padding: 8px 10px; border-radius: 12px; background: var(--chip); }
+.mood button[aria-pressed="true"] { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+.mood button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ctab th { text-align: left; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 6px 8px; }
+.ctab td { padding: 7px 8px; border-top: 1px solid var(--sand-line); font-variant-numeric: tabular-nums; }
+.ctab td:not(:first-child), .ctab th:not(:first-child) { text-align: right; }
+.trow { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1.4fr) 90px auto; gap: 8px; align-items: center; }
+@media (max-width: 640px) { .trow { grid-template-columns: 1fr 1fr; } .trow input:first-child { grid-column: 1 / -1; } }
+.task { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.task input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--gold); margin: 0; }
+.wk { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.wk b { font-size: 15px; }
+.hist-wrap { overflow-x: auto; }
+.hist { width: 100%; border-collapse: collapse; min-width: 640px; }
+.hist th, .hist td { padding: 9px 10px; border-top: 1px solid var(--sand); text-align: right; font-size: 14px; font-variant-numeric: tabular-nums; }
+.hist th:first-child, .hist td:first-child { text-align: left; }
+.hist thead th { border-top: 0; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--gold-text); background: var(--chip); }
+.hist tfoot td { font-weight: 800; background: var(--sand); }
+.hist tr.sel td { background: #e3eafc; }
+.empty { color: var(--soft); text-align: center !important; padding: 20px !important; }
+.cheer.ok { background: #e3ecdd; color: var(--green); }
+.cheer { background: var(--ink); color: #fff; border-radius: 12px; padding: 12px 14px; font-weight: 700; font-size: 14.5px; }
+@media (max-width: 900px) { .g2 { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .nums.c3 { grid-template-columns: 1fr 1fr; } .fields { grid-template-columns: 1fr; } }
+h1 { text-transform: none; letter-spacing: -.02em; }
+
+/* Niche and method (shared block) */
+.nm { --nm-a: var(--accent, #8a6514); --nm-at: var(--accent-text, #6b4f0e); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+
+h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
+.prow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--sand-line); } .prow input[data-p=reel] { grid-column: 1 / -1; } .prow input, .prow select { min-width: 0; width: 100%; } .prow .pl { display: grid; gap: 3px; min-width: 0; } .prow .pl span { font-size: 12px; color: var(--soft); } .prow .rm { justify-self: start; }
+.prow .cps { font: 700 14px/1.1 var(--f-body); text-align: center; }
+.prow .cps.ok { color: var(--green); } .prow .cps.bad { color: var(--rust); } .prow .cps.warn { color: #8a6a00; } .calc b.warn { color: #8a6a00; }
+@media (max-width: 420px) { .prow { grid-template-columns: repeat(3, minmax(0, 1fr)); } .prow label.pl:last-of-type { grid-column: span 2; } }
+.calc b.warn { color: #9a6b00; }
+
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Michał Tobiasz · BodyLAB · Report for Alberto</span>
+    <h1>Your numbers, every day. No excuses.</h1>
+    <p class="nm-line" style="--nm-a:#c9a13b"><b>Niche:</b> I help busy professionals and business owners over 30 settle the one debt they keep postponing — their body and their energy — with a plan read from their own bloodwork that fits a full calendar.</p>
+    <p class="nm-line" style="--nm-a:#8a6514"><b>BodyLAB Reset:</b> Read (labs + body composition) · Fit (3 × 45–60 min, normal food, fits the calendar) · System (weekly check-in, sleep window). Phases: Audit (weeks 1–3) → Reset (weeks 4–12) → Optimize (months 4–6).</p>
+    <p class="soft">Every evening the day, every Sunday the week. It saves itself and Alberto sees it live. Green = target met; red = what to fix tomorrow. Money in złoty; ads in euro (the rule is € per follower).</p>
+    <div class="bar">
+      <label for="fecha">Day<input type="date" id="fecha"></label>
+      <span class="status" id="status" aria-live="polite">Connecting to the database…</span>
+    </div>
+  </header>
+
+  <!-- ===================== DAILY ===================== -->
+  <div class="g2">
+    <div class="col">
+      <form class="card" id="formDia" autocomplete="off">
+        <span class="when">Every evening</span>
+        <h2 id="h-dia">Today</h2>
+
+        <div class="grp">
+          <div class="gh">Conversations opened <small>target: 2 rounds of 50 = 100</small></div>
+          <div class="nums">
+            <label>Round 1 (morning)<input data-d="r1" type="number" min="0" inputmode="numeric" placeholder="50"></label>
+            <label>Round 2 (evening)<input data-d="r2" type="number" min="0" inputmode="numeric" placeholder="50"></label>
+            <label>…of which former clients<input data-d="ex" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Leads in (website, store, ads, referrals)<input data-d="leads" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <div class="meter" aria-hidden="true"><i id="convBar" style="width:0"></i></div>
+          <div class="goal" id="convGoal"></div>
+          <div class="nums">
+            <label>Replied<input data-d="respuestas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Qualified (3 questions answered)<input data-d="calientes" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <div class="yn"><span>Welcomed every new follower by hand?</span><div class="seg" data-yn="bienvenidas"><button type="button" data-v="si" aria-pressed="false">Yes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+          <div class="yn"><span>CRM follow-ups (days 2/7/14) done?</span><div class="seg" data-yn="seguimientos"><button type="button" data-v="si" aria-pressed="false">Yes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Calls</div>
+          <div class="nums">
+            <label>Calls booked today<input data-d="agendadas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Calls done today<input data-d="hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <div class="yn"><span>Did anything close today?</span><div class="seg" id="closedSeg"><button type="button" id="closedYes" aria-pressed="false">Yes</button><button type="button" id="closedNo" aria-pressed="false">No</button></div></div>
+          <div id="closesBox" class="closes" hidden>
+            <span class="label">Today's closes</span>
+            <div id="closesList" style="display:grid;gap:10px"></div>
+            <button type="button" class="btn ghost small" id="addClose">+ Add another close</button>
+          </div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Content published today <small id="dayTarget"></small></div>
+          <div class="nums c3">
+            <label>Yapping<input data-d="yap" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Voice-over<input data-d="voz" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>…of them, trial reels<input data-d="trial" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Green screen<input data-d="green" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Ranking / trend<input data-d="trend" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>In the store<input data-d="store" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>With clients<input data-d="client" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Moja historia reel<input data-d="story" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Carousel connection<input data-d="carcon" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Carousel value<input data-d="carval" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>YouTube<input data-d="youtube" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Stories<input data-d="historias" type="number" min="0" inputmode="numeric" placeholder="6–10"></label>
+          </div>
+          <p class="soft" style="font-size:13px">Ramp: stage 1 = 1 piece a day, stage 2 = 2, stage 3 = 3 (reels + carousels; YouTube and trial variants don't count). Set the stage in the weekly block. Carousels: minimum 3 a week, alternating connection and value. YouTube every 7–10 days.</p>
+          <div class="goal" id="reelGoal"></div>
+          <div class="yn"><span>CTA sequence in stories today? <small class="soft" id="ctaHint"></small></span><div class="seg" data-yn="ctaHistorias"><button type="button" data-v="si" aria-pressed="false">Yes</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">WhatsApp <small>target 3–5 Status a day</small></div>
+          <div class="nums">
+            <label>WhatsApp Status posted today<input data-d="estados" type="number" min="0" inputmode="numeric" placeholder="3–5"></label>
+            <label>New contacts saved<input data-d="contactos" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Mood <small>optional</small></div>
+          <div class="mood" id="mood" role="group" aria-label="How you felt today">
+            <button type="button" data-v="1" aria-label="1 of 5" aria-pressed="false">😞</button>
+            <button type="button" data-v="2" aria-label="2 of 5" aria-pressed="false">😕</button>
+            <button type="button" data-v="3" aria-label="3 of 5" aria-pressed="false">😐</button>
+            <button type="button" data-v="4" aria-label="4 of 5" aria-pressed="false">🙂</button>
+            <button type="button" data-v="5" aria-label="5 of 5" aria-pressed="false">🤩</button>
+          </div>
+          <label class="fld">One sentence about the day (what worked and what didn't)<textarea data-d="nota" placeholder="E.g.: 2 calls booked; round 2 finished late because of the store"></textarea></label>
+        </div>
+        <span class="saved" id="sv-dia"></span>
+      </form>
+    </div>
+
+    <div class="col">
+      <div class="cheer" id="cheerDia" hidden></div>
+      <div class="card sand">
+        <span class="label">Today's numbers</span>
+        <div class="calc">
+          <div><span>Conversations opened (target 100)</span><b id="o-conv">0 / 100</b></div>
+          <div><span>Leads in</span><b id="o-tot">0</b></div>
+          <div><span>Reply rate</span><b id="o-resp">—</b></div>
+          <div><span>Close rate (closes / calls done)</span><b id="o-close">—</b></div>
+          <div><span>Billed today</span><b id="o-fact">0 zł</b></div>
+          <div><span>Pieces published today</span><b id="o-reels">0</b></div>
+          <div><span>Stories (target 6–10)</span><b id="o-hist">0</b></div>
+          <div><span>WhatsApp Status (target 3–5)</span><b id="o-est">0</b></div>
+          <div><span>Last YouTube video (target every 7–10 days)</span><b id="o-yt">—</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Daily message for Alberto</span>
+        <pre class="copy" id="m-dia"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-dia" data-note="n-dia">Copy message</button></div>
+        <p class="note" id="n-dia" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== WEEKLY ===================== -->
+  <div class="g2">
+    <div class="col">
+      <form class="card" id="formSem" autocomplete="off">
+        <span class="when">Every Sunday</span>
+        <div class="wk"><button type="button" class="btn ghost small" id="wkPrev" aria-label="Previous week">←</button><b id="wkLabel"></b><button type="button" class="btn ghost small" id="wkNext" aria-label="Next week">→</button></div>
+
+        <div class="grp">
+          <div class="gh">Content: planned vs published</div>
+          <div class="yn"><span>Ramp stage</span><div class="seg" data-ws="etapa"><button type="button" data-v="s1" aria-pressed="false">1 · 1/day</button><button type="button" data-v="s2" aria-pressed="false">2 · 2/day</button><button type="button" data-v="s3" aria-pressed="false">3 · 3/day</button></div></div>
+          <p class="soft" style="font-size:13px">Stage 1: 4 reels + 3 carousels. Stage 2: 11 reels + 3 carousels. Stage 3: 17 reels + 4 carousels. Move up only after 2 weeks at 100 %. Yapping is the backbone.</p>
+          <table class="ctab" aria-describedby="contNote">
+            <thead><tr><th>Format</th><th>Planned</th><th>Published</th></tr></thead>
+            <tbody id="contBody"></tbody>
+          </table>
+          <p class="soft" id="contNote" style="font-size:13px">"Published" adds up automatically from that week's daily reports.</p>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Trial reels: hooks tested <small id="trialCount"></small></div>
+          <p class="soft" style="font-size:13px">Each voice-over with 2–3 different hooks as trial reels. Log the winner and publish it on the profile.</p>
+          <div id="trialList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addTrial">+ Add tested script</button>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Follow Me Ads (voice-over) <small id="promoCount"></small></div>
+          <p class="soft" style="font-size:13px">The best organic voice-over of the week, with "Obserwuj…", to Poland 30+ in Polish. Promote the Reel (profile visits), ≈ 10 €/day (≈ 300 €/month), and <b>evaluate after 2 days</b>: <b>under 1 € per follower</b> keep and scale; <b>1–1,5 €</b> change the hook; <b>over 1,5 €</b> cut. No peptides/TRT/hormones in ads.</p>
+          <div id="promoList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addPromo">+ Add ad</button>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Instagram</div>
+          <div class="nums">
+            <label>Followers at start of week<input data-s="segIni" type="number" min="0" inputmode="numeric" placeholder="1581"></label>
+            <label>Followers at end<input data-s="segFin" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Messages with the word RESET<input data-s="mejor" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Replies to your WhatsApp Status<input data-s="respEstados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <label class="fld">Best piece of the week (link)<input data-s="mejorLink" placeholder="https://www.instagram.com/reel/…"></label>
+          <label class="fld">Why do you think it worked?<input data-s="mejorPorque" placeholder="E.g.: yapping about the 4 pm crash, hook with the time on screen"></label>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Clients and back-end</div>
+          <div class="nums">
+            <label>Active clients<input data-s="activas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>New this week<input data-s="altas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Ended this week<input data-s="bajas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Renewals<input data-s="renovaciones" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Maintenance sold<input data-s="mant" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Lab+ / Executive sold<input data-s="asc" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Referrals that joined<input data-s="refs" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Former clients reactivated<input data-s="react" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          </div>
+          <label class="fld">Back-end billed this week (zł)<input data-s="backend" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Tasks from Alberto's weekly plan <small id="taskCount"></small></div>
+          <div id="taskList" style="display:grid;gap:8px"></div>
+          <button type="button" class="btn ghost small" id="addTask">+ Add task</button>
+        </div>
+
+        <div class="grp">
+          <div class="gh">For the Sunday review</div>
+          <label class="fld">Wins of the week<textarea data-s="victorias" placeholder="E.g.: 600 conversations; 3 Reset 2.0 sales; ad at 0,70 € per follower"></textarea></label>
+          <label class="fld">Blocks: what failed and why<textarea data-s="bloqueos" placeholder="E.g.: 2 days without round 2"></textarea></label>
+          <label class="fld">Questions for the review<textarea data-s="dudas" placeholder="What you want to go through on Sunday"></textarea></label>
+        </div>
+
+        <div class="grp">
+          <div class="gh">Feedback for Alberto</div>
+          <label class="fld">Mentoring score this week (1–10)<select data-s="notaMentoria"><option value="">—</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></label>
+          <label class="fld">What do you need from me next week?<textarea data-s="necesito" placeholder="E.g.: review my voice-over hooks"></textarea></label>
+        </div>
+        <span class="saved" id="sv-sem"></span>
+      </form>
+    </div>
+
+    <div class="col">
+      <div class="card sand">
+        <span class="label">Week numbers</span>
+        <div class="calc">
+          <div><span>Conversations opened (target 700)</span><b id="w-conv">0</b></div>
+          <div><span>…of which former clients</span><b id="w-ex">0</b></div>
+          <div><span>Leads in</span><b id="w-tot">0</b></div>
+          <div><span>Reply rate</span><b id="w-resp">—</b></div>
+          <div><span>Booking rate (booked / replies)</span><b id="w-agenda">—</b></div>
+          <div><span>Close rate (closes / calls done)</span><b id="w-close">—</b></div>
+          <div><span>Billed this week (front-end + back-end)</span><b id="w-fact">0 zł</b></div>
+          <div><span>Content compliance</span><b id="w-cont">—</b></div>
+          <div><span>Days with story CTA (target 2)</span><b id="w-cta">0</b></div>
+          <div><span>Yapping share of reels</span><b id="w-rol">—</b></div>
+          <div><span>YouTube (every 7–10 days)</span><b id="w-yt">—</b></div>
+          <div><span>Carousels connection + value (min 3, alternating)</span><b id="w-car">0</b></div>
+          <div><span>Ads: € per follower (target &lt; 1 €)<small id="w-promo-d" style="display:block;font-size:12.5px"></small></span><b id="w-promo">—</b></div>
+          <div><span>Trial reels published</span><b id="w-trial">0</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Weekly message for Alberto</span>
+        <pre class="copy" id="m-sem"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-sem" data-note="n-sem">Copy message</button></div>
+        <p class="note" id="n-sem" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== HISTORY ===================== -->
+  <div class="card">
+    <span class="label">Last 14 days</span>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Day</th><th>Conversations</th><th>Replies</th><th>Booked</th><th>Done</th><th>Closes</th><th>Billed</th><th>Pieces</th><th>Stories</th></tr></thead>
+        <tbody id="histBody"></tbody>
+        <tfoot id="histFoot" hidden><tr><td>Last 7 days</td><td id="s-conv"></td><td id="s-resp"></td><td id="s-ag"></td><td id="s-he"></td><td id="s-ci"></td><td id="s-fa"></td><td id="s-re"></td><td id="s-hi"></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <span class="label">Last 8 weeks</span>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Week</th><th>Conversations</th><th>% reply</th><th>Booked</th><th>Closes</th><th>Billed</th><th>Content</th><th>Followers</th><th>Score</th></tr></thead>
+        <tbody id="wkBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var PLANES = ["Semester", "Year", "Semester in 2 payments", "Quarter", "Reset 2.0 · quarter", "Reset 2.0 · semester", "BodyLAB Executive", "Lab+", "Maintenance", "Renewal", "Other"];
+  var PAGOS = ["Single payment", "2 payments", "Monthly", "Other"];
+  var ORIGENES = ["DM", "Ad", "Website", "Store", "Referral", "Former client", "Other"];
+  /* Reels (count towards the daily pieces) */
+  var FMT = [["yap", "Yapping"], ["voz", "Voice-over"], ["green", "Green screen"], ["trend", "Ranking / trend"], ["store", "In the store"], ["client", "With clients"], ["story", "Moja historia"]];
+  /* Carousels (also pieces) */
+  var EXTRA = [["carcon", "Carousel connection"], ["carval", "Carousel value"]];
+  var PAUTA = {
+    s1: { yap: 1, voz: 1, green: 0, trend: 0, store: 0, client: 0, story: 2, carcon: 2, carval: 1 },
+    s2: { yap: 3, voz: 2, green: 1, trend: 1, store: 1, client: 1, story: 2, carcon: 1, carval: 2 },
+    s3: { yap: 6, voz: 3, green: 2, trend: 2, store: 2, client: 2, story: 0, carcon: 2, carval: 2 }
+  };
+  var DIA_OBJ = { s1: 1, s2: 2, s3: 3 };
+  var STAGE_TXT = { s1: "stage 1 · 1 piece a day (4 reels + 3 carousels)", s2: "stage 2 · 2 pieces a day (11 reels + 3 carousels)", s3: "stage 3 · 3 pieces a day (17 reels + 4 carousels)" };
+  var DNUM = ["r1", "r2", "ex", "leads", "respuestas", "calientes", "agendadas", "hechas", "yap", "voz", "trial", "green", "trend", "store", "client", "story", "carcon", "carval", "youtube", "historias", "estados", "contactos"];
+
+  var db = null, diaMap = {}, semMap = {}, fetched = {};
+  var day = null, sem = null, curWeek = null;
+  var timers = {}, chains = {}, dirty = {};
+
+  function el(id) { return document.getElementById(id); }
+  function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(/\s/g, "").replace(",", ".")); return isNaN(n) ? 0 : n; }
+  /* Złoty with correct grosze: 1 300 zł · 0,60 zł · 1 234,50 zł */
+  function zl(n, dec) { var r = Math.round(num(n) * 100) / 100, neg = r < 0; r = Math.abs(r); var i = Math.floor(r), c = Math.round((r - i) * 100); if (c === 100) { i++; c = 0; } return (neg ? "-" : "") + String(i).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + (c || dec ? "," + String(c).padStart(2, "0") : "") + " zł"; }
+  /* Euro with cents for the ads rule: 0,85 € */
+  function eu(n) { var r = Math.round(num(n) * 100) / 100, neg = r < 0; r = Math.abs(r); var i = Math.floor(r), c = Math.round((r - i) * 100); if (c === 100) { i++; c = 0; } return (neg ? "-" : "") + String(i).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + "," + String(c).padStart(2, "0") + " €"; }
+  function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + " %" : "—"; }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function today() { return iso(new Date()); }
+  function nice(f, long) { return new Date(f + "T12:00:00").toLocaleDateString("en-GB", long ? { weekday: "long", day: "numeric", month: "long" } : { weekday: "short", day: "numeric", month: "short" }); }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function setStatus(t, err) { var s = el("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+  function isoWeek(f) {
+    var d = new Date(f + "T12:00:00"), dd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - dd + 3);
+    var y = d.getFullYear(), jan4 = new Date(y, 0, 4, 12), w = 1 + Math.round(((d - jan4) / 86400000 - 3 + ((jan4.getDay() + 6) % 7)) / 7);
+    return y + "-W" + String(w).padStart(2, "0");
+  }
+  function weekStart(w) { var y = +w.slice(0, 4), n = +w.slice(6), jan4 = new Date(y, 0, 4, 12), mon = new Date(jan4); mon.setDate(jan4.getDate() - ((jan4.getDay() + 6) % 7) + (n - 1) * 7); return mon; }
+  function weekDays(w) { var m = weekStart(w), out = []; for (var i = 0; i < 7; i++) { var d = new Date(m); d.setDate(m.getDate() + i); out.push(iso(d)); } return out; }
+  function shiftWeek(w, k) { var m = weekStart(w); m.setDate(m.getDate() + 7 * k); return isoWeek(iso(m)); }
+  function weekLabel(w) { var d = weekDays(w); return "Week of " + new Date(d[0] + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + " – " + new Date(d[6] + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short" }); }
+
+  function blankDay(f) { var o = { fecha: f, bienvenidas: null, seguimientos: null, ctaHistorias: null, cerrado: null, cierres: [], animo: "", nota: "" }; DNUM.forEach(function (k) { o[k] = ""; }); return o; }
+  function blankSem(w) {
+    var prev = semMap[shiftWeek(w, -1)];
+    return { semana: w, etapa: prev && PAUTA[prev.etapa] ? prev.etapa : "s1", segIni: prev && prev.segFin ? prev.segFin : "", segFin: "", mejor: "", respEstados: "", mejorLink: "", mejorPorque: "", activas: prev ? prev.activas || "" : "", altas: "", bajas: "", renovaciones: "", mant: "", asc: "", refs: "", react: "", backend: "", tareas: [], trials: [], promos: [], victorias: "", bloqueos: "", dudas: "", notaMentoria: "", necesito: "" };
+  }
+
+  /* ---------- Saving: one write at a time per document, debounced ---------- */
+  function k(col, id) { return col + "/" + id; }
+  function schedule(col, id, getData, sv) {
+    var kk = k(col, id); dirty[kk] = true;
+    el(sv).textContent = db ? "Saving…" : "No database: not saved.";
+    clearTimeout(timers[kk]);
+    timers[kk] = setTimeout(function () { timers[kk] = null; flush(col, id, getData, sv); }, 600);
+  }
+  function flush(col, id, getData, sv) {
+    if (!db) return;
+    var kk = k(col, id), data = Object.assign(clone(getData()), { actualizado: new Date().toISOString() });
+    chains[kk] = (chains[kk] || Promise.resolve()).then(function () {
+      dirty[kk] = false;
+      return db.collection(col).doc(id).set(data).then(function () {
+        if (!dirty[kk]) el(sv).textContent = "Saved " + new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+      }, function (e) {
+        dirty[kk] = false;
+        el(sv).textContent = e && e.code === "invalid_argument" ? "You don't have permission to save on this page." : (e && e.code === "quota_exceeded" ? "The database is full." : "Couldn't save. Try again.");
+      });
+    });
+  }
+  function saveDay() { var f = day.fecha; diaMap[f] = clone(day); schedule("diario", f, function () { return day.fecha === f ? day : diaMap[f]; }, "sv-dia"); }
+  function saveSem() { var w = sem.semana; semMap[w] = clone(sem); schedule("semana", w, function () { return sem.semana === w ? sem : semMap[w]; }, "sv-sem"); }
+
+  /* ---------- Daily ---------- */
+  function stageOf(f) { var s = semMap[isoWeek(f)]; if (sem && sem.semana === isoWeek(f)) s = sem; return s && PAUTA[s.etapa] ? s.etapa : "s1"; }
+  function reelsOf(d) { return d ? FMT.reduce(function (a, x) { return a + num(d[x[0]]); }, 0) : 0; }
+  function convOf(d) { return d ? num(d.r1) + num(d.r2) : 0; }
+  function piezasOf(d) { return d ? reelsOf(d) + num(d.carcon) + num(d.carval) : 0; }
+  function cierresOf(d) { return d && d.cerrado === true ? (d.cierres || []).length : 0; }
+  function factOf(d) { return d && d.cerrado === true ? (d.cierres || []).reduce(function (a, c) { return a + num(c.importe); }, 0) : 0; }
+  function setPressed(box, v) { box.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.v === v ? "true" : "false"); }); }
+  function ynVal(v) { return v === true ? "si" : (v === false ? "no" : ""); }
+  function lastYT(f) { var best = null; Object.keys(diaMap).forEach(function (x) { if (x <= f && num(diaMap[x].youtube) > 0 && (!best || x > best)) best = x; }); if (day && day.fecha <= f && num(day.youtube) > 0 && (!best || day.fecha > best)) best = day.fecha; return best; }
+  function daysBetween(a, b) { return Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 86400000); }
+
+  function fillDay() {
+    document.querySelectorAll("[data-d]").forEach(function (i) { if (document.activeElement !== i) i.value = day[i.dataset.d] == null ? "" : day[i.dataset.d]; });
+    document.querySelectorAll("[data-yn]").forEach(function (b) { setPressed(b, ynVal(day[b.dataset.yn])); });
+    setPressed(el("mood"), String(day.animo || ""));
+    renderCloses();
+  }
+  function renderCloses() {
+    el("closedYes").setAttribute("aria-pressed", day.cerrado === true ? "true" : "false");
+    el("closedNo").setAttribute("aria-pressed", day.cerrado === false ? "true" : "false");
+    el("closesBox").hidden = day.cerrado !== true;
+    var list = el("closesList"); list.innerHTML = "";
+    (day.cierres || []).forEach(function (c, i) {
+      var row = document.createElement("div"); row.className = "row";
+      var opt = function (arr, v) { return arr.map(function (o) { return "<option" + (o === v ? " selected" : "") + ">" + esc(o) + "</option>"; }).join(""); };
+      row.innerHTML = '<div class="top"><b>Close ' + (i + 1) + '</b>' + (day.cierres.length > 1 ? '<button type="button" class="rm">Remove</button>' : '') + '</div>' +
+        '<div class="fields"><label>Client<input data-k="clienta" value="' + esc(c.clienta) + '" placeholder="Name"></label>' +
+        '<label>Charged today (zł)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
+        '<label>Plan<select data-k="plan">' + opt(PLANES, c.plan) + '</select></label>' +
+        '<label>Payment<select data-k="pago">' + opt(PAGOS, c.pago) + '</select></label>' +
+        '<label>Origin<select data-k="origen">' + opt(ORIGENES, c.origen) + '</select></label>' +
+        '<label class="full">How it went (what convinced him)<input data-k="como" value="' + esc(c.como) + '" placeholder="E.g.: store customer, owner of a shop, the labs convinced him"></label></div>';
+      row.querySelectorAll("select").forEach(function (s) { if (!c[s.dataset.k]) c[s.dataset.k] = s.value; });
+      row.querySelectorAll("[data-k]").forEach(function (inp) {
+        var h = function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveDay(); update(); };
+        inp.addEventListener("input", h); inp.addEventListener("change", h);
+      });
+      var rm = row.querySelector(".rm");
+      if (rm) rm.addEventListener("click", function () { day.cierres.splice(i, 1); saveDay(); renderCloses(); update(); });
+      list.appendChild(row);
+    });
+  }
+  el("closedYes").addEventListener("click", function () { if (day.cerrado === true) return; day.cerrado = true; if (!day.cierres.length) day.cierres.push({}); saveDay(); renderCloses(); update(); });
+  el("closedNo").addEventListener("click", function () { if (day.cerrado === false) return; day.cerrado = false; saveDay(); renderCloses(); update(); });
+  el("addClose").addEventListener("click", function () { day.cierres.push({}); saveDay(); renderCloses(); update(); });
+  document.querySelectorAll("[data-d]").forEach(function (i) {
+    i.addEventListener("input", function () { if (day[i.dataset.d] === i.value) return; day[i.dataset.d] = i.value; saveDay(); update(); });
+  });
+  document.querySelectorAll("[data-yn]").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var v = b.dataset.v === "si"; if (day[box.dataset.yn] === v) return;
+      day[box.dataset.yn] = v; setPressed(box, b.dataset.v); saveDay(); update();
+    });
+  });
+  el("mood").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (String(day.animo) === b.dataset.v) return;
+    day.animo = b.dataset.v; setPressed(el("mood"), b.dataset.v); saveDay(); update();
+  });
+
+  /* ---------- Weekly ---------- */
+  function weekAgg(w) {
+    var a = { conv: 0, ex: 0, leads: 0, resp: 0, ag: 0, he: 0, ci: 0, fa: 0, yap: 0, voz: 0, trial: 0, green: 0, trend: 0, store: 0, client: 0, story: 0, carcon: 0, carval: 0, youtube: 0, historias: 0, estados: 0, contactos: 0, cta: 0, dias: 0 };
+    weekDays(w).forEach(function (f) {
+      var d = (day && day.fecha === f) ? day : diaMap[f]; if (!d) return;
+      if (hasData(d)) a.dias++;
+      a.conv += convOf(d); a.resp += num(d.respuestas); a.ag += num(d.agendadas); a.he += num(d.hechas);
+      a.ci += cierresOf(d); a.fa += factOf(d);
+      ["ex", "leads", "yap", "voz", "trial", "green", "trend", "store", "client", "story", "carcon", "carval", "youtube", "historias", "estados", "contactos"].forEach(function (x) { a[x] += num(d[x]); });
+      if (d.ctaHistorias === true) a.cta++;
+    });
+    return a;
+  }
+  function pautaOf(s) { return clone(PAUTA[PAUTA[s.etapa] ? s.etapa : "s1"]); }
+  function reelsOfAgg(a) { return FMT.reduce(function (s, x) { return s + a[x[0]]; }, 0); }
+  function yapPct(a) { var t = reelsOfAgg(a); return t ? Math.round(a.yap / t * 100) : null; }
+  function contCompliance(s, a) {
+    var p = pautaOf(s), tot = 0, done = 0;
+    FMT.concat(EXTRA).forEach(function (x) { tot += p[x[0]]; done += Math.min(a[x[0]], p[x[0]]); });
+    return tot ? Math.round(done / tot * 100) : 0;
+  }
+  function fillSem() {
+    el("wkLabel").textContent = weekLabel(sem.semana);
+    document.querySelectorAll("[data-s]").forEach(function (i) { if (document.activeElement !== i) i.value = sem[i.dataset.s] == null ? "" : sem[i.dataset.s]; });
+    setPressed(document.querySelector('[data-ws="etapa"]'), PAUTA[sem.etapa] ? sem.etapa : "s1");
+    renderTasks(); renderTrials(); renderPromos();
+  }
+  function renderTasks() {
+    var box = el("taskList"); box.innerHTML = "";
+    if (!sem.tareas.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">Write here the tasks Alberto gave you in the review and tick them when done.</p>';
+    sem.tareas.forEach(function (t, i) {
+      var r = document.createElement("div"); r.className = "task";
+      r.innerHTML = '<input type="checkbox" aria-label="Done"' + (t.hecha ? " checked" : "") + '><input type="text" value="' + esc(t.tarea) + '" placeholder="Task" aria-label="Task"><button type="button" class="rm">Remove</button>';
+      r.querySelector('input[type=checkbox]').addEventListener("change", function (e) { t.hecha = e.target.checked; saveSem(); update(); });
+      r.querySelector('input[type=text]').addEventListener("input", function (e) { if (t.tarea === e.target.value) return; t.tarea = e.target.value; saveSem(); update(); });
+      r.querySelector(".rm").addEventListener("click", function () { sem.tareas.splice(i, 1); saveSem(); renderTasks(); update(); });
+      box.appendChild(r);
+    });
+    var done = sem.tareas.filter(function (t) { return t.hecha; }).length;
+    el("taskCount").textContent = sem.tareas.length ? done + " of " + sem.tareas.length + " done" : "";
+  }
+  function renderTrials() {
+    var box = el("trialList"); box.innerHTML = "";
+    if (!Array.isArray(sem.trials)) sem.trials = [];
+    if (!sem.trials.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">No script tested yet this week.</p>';
+    sem.trials.forEach(function (t, i) {
+      var r = document.createElement("div"); r.className = "trow";
+      r.innerHTML = '<input type="text" data-t="guion" value="' + esc(t.guion) + '" placeholder="Script (topic)" aria-label="Script">' +
+        '<input type="text" data-t="ganchos" value="' + esc(t.ganchos) + '" placeholder="Hooks tested (A / B / C)" aria-label="Hooks tested">' +
+        '<input type="text" data-t="ganador" value="' + esc(t.ganador) + '" placeholder="Winning hook" aria-label="Winning hook">' +
+        '<input type="number" min="0" inputmode="numeric" data-t="views" value="' + esc(t.views) + '" placeholder="Views" aria-label="Views of the winner">' +
+        '<button type="button" class="rm">Remove</button>';
+      r.querySelectorAll("[data-t]").forEach(function (inp) { inp.addEventListener("input", function () { if (t[inp.dataset.t] === inp.value) return; t[inp.dataset.t] = inp.value; saveSem(); update(); }); });
+      r.querySelector(".rm").addEventListener("click", function () { sem.trials.splice(i, 1); saveSem(); renderTrials(); update(); });
+      box.appendChild(r);
+    });
+    var win = sem.trials.filter(function (t) { return t.ganador; }).length;
+    el("trialCount").textContent = sem.trials.length ? sem.trials.length + (sem.trials.length === 1 ? " script · " : " scripts · ") + win + " with winner" : "";
+  }
+  function promoCps(p) { var g = num(p.gasto), s = num(p.seguidores); return s > 0 ? g / s : null; }
+  function promoAgg() { var g = 0, s = 0; (sem.promos || []).forEach(function (p) { g += num(p.gasto); s += num(p.seguidores); }); return { g: g, s: s, cps: s > 0 ? g / s : null }; }
+  function renderPromos() {
+    var box = el("promoList"); box.innerHTML = "";
+    if (!Array.isArray(sem.promos)) sem.promos = [];
+    if (!sem.promos.length) box.innerHTML = '<p class="soft" style="font-size:13.5px">No ads this week.</p>';
+    sem.promos.forEach(function (p, i) {
+      var row = document.createElement("div"); row.className = "prow";
+      var DEC = ["Testing", "Keep", "Scale", "Change hook", "Cut"];
+      row.innerHTML = '<input type="text" data-p="reel" value="' + esc(p.reel) + '" placeholder="Ad / angle (voice-over)" aria-label="Ad or angle">' +
+        '<label class="pl"><span>Days</span><input type="number" min="0" inputmode="numeric" data-p="dias" value="' + esc(p.dias) + '" placeholder="Days" aria-label="Days promoted"></label>' +
+        '<label class="pl"><span>Spend €</span><input type="number" min="0" step="0.01" inputmode="decimal" data-p="gasto" value="' + esc(p.gasto) + '" placeholder="Spend €" aria-label="Spend in euro"></label>' +
+        '<label class="pl"><span>Followers</span><input type="number" min="0" inputmode="numeric" data-p="seguidores" value="' + esc(p.seguidores) + '" placeholder="Followers" aria-label="Followers gained"></label>' +
+        '<label class="pl"><span>Decision</span><select data-p="decision" aria-label="Decision">' + DEC.map(function (d) { return '<option' + (p.decision === d ? ' selected' : '') + '>' + d + '</option>'; }).join("") + '</select></label>' +
+        '<button type="button" class="rm">Remove</button>' +
+        '<span class="cps" style="grid-column:1 / -1;text-align:left" data-cps></span>';
+      function paint() {
+        var c = promoCps(p), sp = row.querySelector("[data-cps]");
+        sp.textContent = c == null ? "€ per follower: —" : "€ per follower: " + eu(c) + (num(p.dias) < 2 ? " · evaluate after 2 days" : (c < 1 ? " · under 1 €: keep and scale" : (c <= 1.5 ? " · 1–1,5 €: change the hook" : " · over 1,5 €: cut")));
+        sp.className = "cps" + (c == null || num(p.dias) < 2 ? "" : (c < 1 ? " ok" : (c <= 1.5 ? " warn" : " bad"))); promoHead();
+      }
+      if (!p.decision) p.decision = "Testing";
+      row.querySelectorAll("[data-p]").forEach(function (inp) {
+        var h = function () { if (p[inp.dataset.p] === inp.value) return; p[inp.dataset.p] = inp.value; paint(); saveSem(); update(); };
+        inp.addEventListener("input", h); inp.addEventListener("change", h);
+      });
+      row.querySelector(".rm").addEventListener("click", function () { sem.promos.splice(i, 1); saveSem(); renderPromos(); update(); });
+      paint();
+      box.appendChild(row);
+    });
+    promoHead();
+  }
+  function promoHead() { var a = promoAgg(); el("promoCount").textContent = sem.promos.length ? sem.promos.length + (sem.promos.length === 1 ? " ad · " : " ads · ") + eu(a.g) + " · " + a.s + " followers" : ""; }
+  el("addPromo").addEventListener("click", function () { if (!Array.isArray(sem.promos)) sem.promos = []; sem.promos.push({ reel: "", dias: "", gasto: "", seguidores: "", decision: "Testing" }); saveSem(); renderPromos(); update(); });
+  el("addTrial").addEventListener("click", function () { if (!Array.isArray(sem.trials)) sem.trials = []; sem.trials.push({ guion: "", ganchos: "", ganador: "", views: "" }); saveSem(); renderTrials(); var ins = el("trialList").querySelectorAll('input[data-t="guion"]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
+  el("addTask").addEventListener("click", function () { sem.tareas.push({ tarea: "", hecha: false }); saveSem(); renderTasks(); var ins = el("taskList").querySelectorAll('input[type=text]'); if (ins.length) ins[ins.length - 1].focus(); update(); });
+  document.querySelectorAll("[data-s]").forEach(function (i) {
+    var h = function () { if (sem[i.dataset.s] === i.value) return; sem[i.dataset.s] = i.value; saveSem(); update(); };
+    i.addEventListener("input", h); i.addEventListener("change", h);
+  });
+  document.querySelectorAll("[data-ws]").forEach(function (box) {
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      if (String(sem[box.dataset.ws]) === b.dataset.v) return;
+      sem[box.dataset.ws] = b.dataset.v; setPressed(box, b.dataset.v); saveSem(); update();
+    });
+  });
+  el("wkPrev").addEventListener("click", function () { loadWeek(shiftWeek(curWeek, -1)); });
+  el("wkNext").addEventListener("click", function () { loadWeek(shiftWeek(curWeek, 1)); });
+
+  /* ---------- Calculations and messages ---------- */
+  function update() {
+    var f = day.fecha, conv = convOf(day), resp = num(day.respuestas), he = num(day.hechas), ci = cierresOf(day), fa = factOf(day), reels = piezasOf(day);
+    var st = stageOf(f), isToday = f === today();
+    el("h-dia").textContent = isToday ? "Today · " + nice(f, true) : nice(f, true);
+    el("convBar").style.width = Math.min(100, conv) + "%";
+    var obj = DIA_OBJ[st], hist = num(day.historias), est = num(day.estados), entered = hasData(day), past = f < today();
+    var judge = entered || past;
+    el("dayTarget").textContent = "target today: " + obj + (obj === 1 ? " piece" : " pieces") + " · stories 6–10 · " + STAGE_TXT[st];
+    var rg = el("reelGoal");
+    rg.textContent = reels >= obj ? "✓ " + reels + " pieces today (minimum " + obj + "). Done." : reels + " of " + obj + " pieces today. " + (obj - reels) + " to go.";
+    rg.className = "goal" + (reels >= obj ? " ok" : (judge ? " bad" : ""));
+    var dow = new Date(f + "T12:00:00").getDay();
+    el("ctaHint").textContent = (dow === 2 || dow === 5) ? "(due today: Tuesday and Friday)" : "(due Tuesday and Friday)";
+    function mark(id, ok) { var b = el(id); b.className = ok ? "ok" : (judge ? "bad" : ""); }
+    el("o-conv").textContent = conv + " / 100"; mark("o-conv", conv >= 100);
+    el("o-tot").textContent = num(day.leads);
+    el("o-resp").textContent = pct(resp, conv);
+    el("o-close").textContent = pct(ci, he);
+    el("o-fact").textContent = zl(fa);
+    el("o-reels").textContent = reels + " / " + obj; mark("o-reels", reels >= obj);
+    el("o-hist").textContent = hist; mark("o-hist", hist >= 6);
+    el("o-est").textContent = est; mark("o-est", est >= 3);
+    var ly = lastYT(f), lyd = ly ? daysBetween(ly, f) : null, oy = el("o-yt");
+    oy.textContent = ly ? (lyd === 0 ? "today" : lyd + " days ago") : "none yet"; oy.className = ly ? (lyd <= 10 ? "ok" : "bad") : "";
+    var cg2 = el("convGoal");
+    cg2.className = "goal" + (conv >= 100 ? " ok" : (judge ? " bad" : ""));
+    cg2.textContent = conv >= 100 ? "✓ 100 conversations opened (" + num(day.r1) + " + " + num(day.r2) + ")." : (conv ? conv + " of 100. Round 1: " + num(day.r1) + "/50 · round 2: " + num(day.r2) + "/50." : "Target: round 1 (50) in the morning + round 2 (50) in the evening.");
+    var cheer = el("cheerDia"), fails = [];
+    if (judge) {
+      if (conv < 100) fails.push("conversations " + conv + "/100");
+      if (reels < obj) fails.push("pieces " + reels + "/" + obj);
+      if (hist < 6) fails.push("stories " + hist + "/6");
+      if (est < 3) fails.push("Status " + est + "/3");
+      if (day.bienvenidas === false) fails.push("welcomes");
+      if (day.seguimientos === false) fails.push("follow-ups");
+    }
+    if (ci) { cheer.className = "cheer ok"; cheer.textContent = "Close done (" + ci + "). Raise the price level in the CRM." + (fails.length ? " Pending: " + fails.join(", ") + "." : ""); cheer.hidden = false; }
+    else if (judge && !fails.length) { cheer.className = "cheer ok"; cheer.textContent = "Full day: every target green."; cheer.hidden = false; }
+    else if (fails.length) { cheer.className = "cheer"; cheer.textContent = "In red: " + fails.join(", ") + ". Fix it tomorrow."; cheer.hidden = false; }
+    else cheer.hidden = true;
+    var yn = function (v) { return v === true ? "Yes" : (v === false ? "No ❌" : "—"); };
+    var ck = function (ok) { return ok ? " ✅" : " ❌"; };
+    var det = day.cerrado === true ? (day.cierres || []).map(function (c, i) { return "  " + (i + 1) + ". " + (c.clienta || "Client") + " · " + zl(c.importe) + " · " + (c.plan || "") + " · " + (c.pago || "") + " · " + (c.origen || "") + (c.como ? "\n     " + c.como : ""); }).join("\n") : "";
+    var moods = { "1": "😞", "2": "😕", "3": "😐", "4": "🙂", "5": "🤩" };
+    el("m-dia").textContent = "📲 Michał's report · " + nice(f, true) + "\n\n" +
+      "Conversations: " + conv + "/100" + ck(conv >= 100) + " (round 1: " + num(day.r1) + " · round 2: " + num(day.r2) + " · former clients: " + num(day.ex) + ") · Leads in: " + num(day.leads) + "\n" +
+      "Replies: " + resp + " (" + pct(resp, conv) + ") · Qualified: " + num(day.calientes) + "\n" +
+      "Welcomes: " + yn(day.bienvenidas) + " · Follow-ups: " + yn(day.seguimientos) + "\n" +
+      "Calls: " + num(day.agendadas) + " booked · " + he + " done · " + ci + (ci === 1 ? " close (" : " closes (") + pct(ci, he) + ")\n" +
+      "Billed: " + zl(fa) + (det ? "\n" + det : "") + "\n" +
+      "Pieces: " + reels + " (min " + obj + ")" + ck(reels >= obj) + " (yapping " + num(day.yap) + " · voice-over " + num(day.voz) + " [trial " + num(day.trial) + "] · green " + num(day.green) + " · ranking " + num(day.trend) + " · store " + num(day.store) + " · clients " + num(day.client) + " · historia " + num(day.story) + ")" + (num(day.carcon) ? " · carousel connection " + num(day.carcon) : "") + (num(day.carval) ? " · carousel value " + num(day.carval) : "") + (num(day.youtube) ? " · YouTube " + num(day.youtube) : "") + "\n" +
+      "Stories: " + hist + ck(hist >= 6) + " · CTA: " + yn(day.ctaHistorias) + "\n" +
+      "WhatsApp: " + est + " Status" + ck(est >= 3) + " · " + num(day.contactos) + " contacts saved" +
+      (day.animo ? "\nMood: " + moods[day.animo] + " " + day.animo + "/5" : "") + (day.nota ? "\n" + day.nota : "");
+
+    var w = sem.semana, a = weekAgg(w), p = pautaOf(sem), comp = contCompliance(sem, a);
+    var rowF = function (x) {
+      var ok = a[x[0]] >= p[x[0]];
+      return "<tr><td>" + x[1] + "</td><td>" + p[x[0]] + "</td><td style=\"color:" + (ok ? "var(--green)" : "inherit") + ";font-weight:700\">" + a[x[0]] + (ok ? " ✓" : "") + "</td></tr>";
+    };
+    el("contBody").innerHTML = FMT.map(rowF).join("") + "<tr><td><b>Total reels</b></td><td><b>" + FMT.reduce(function (s, x) { return s + p[x[0]]; }, 0) + "</b></td><td><b>" + reelsOfAgg(a) + "</b></td></tr>" + EXTRA.map(rowF).join("") + "<tr><td>YouTube</td><td>every 7–10 days</td><td>" + a.youtube + "</td></tr>";
+    var wHas = a.dias > 0 || w < isoWeek(today());
+    function wm(id, ok) { el(id).className = wHas ? (ok ? "ok" : "bad") : ""; }
+    var yp = yapPct(a), carT = a.carcon + a.carval, back = num(sem.backend);
+    el("w-conv").textContent = a.conv + " / 700"; wm("w-conv", a.conv >= 700);
+    el("w-ex").textContent = a.ex;
+    el("w-tot").textContent = a.leads;
+    el("w-resp").textContent = pct(a.resp, a.conv);
+    el("w-agenda").textContent = pct(a.ag, a.resp);
+    el("w-close").textContent = pct(a.ci, a.he);
+    el("w-fact").textContent = zl(a.fa + back) + (back ? " (back-end " + zl(back) + ")" : "");
+    el("w-cont").textContent = comp + " %"; wm("w-cont", comp >= 90);
+    el("w-cta").textContent = a.cta + " / 2"; wm("w-cta", a.cta >= 2);
+    el("w-rol").textContent = yp == null ? "—" : yp + " %";
+    var wd = weekDays(w), ly = lastYT(wd[6]), lyd = ly ? daysBetween(ly, wd[6]) : null;
+    el("w-yt").textContent = a.youtube + " this week" + (ly ? " · last " + nice(ly) : ""); el("w-yt").className = wHas ? (ly && lyd <= 10 ? "ok" : "bad") : "";
+    el("w-car").textContent = a.carcon + " connection + " + a.carval + " value = " + carT + " / 3"; wm("w-car", carT >= 3 && a.carcon >= 1 && a.carval >= 1);
+    var pa = promoAgg(), wp = el("w-promo");
+    wp.textContent = pa.cps == null ? (pa.g ? "no foll." : "—") : eu(pa.cps); el("w-promo-d").textContent = pa.g ? eu(pa.g) + " spent · " + pa.s + " followers" : "";
+    wp.className = pa.cps == null ? (pa.g ? "bad" : "") : (pa.cps < 1 ? "ok" : (pa.cps <= 1.5 ? "warn" : "bad"));
+    el("w-trial").textContent = a.trial;
+    var trs = (sem.trials || []).filter(function (t) { return t.guion || t.ganador; });
+    var segD = sem.segIni !== "" && sem.segFin !== "" ? num(sem.segFin) - num(sem.segIni) : null;
+    var tdone = sem.tareas.filter(function (t) { return t.hecha; }).length;
+    el("m-sem").textContent = "📊 Michał's week · " + weekLabel(w) + "\n\n" +
+      "SALES\nConversations: " + a.conv + "/700" + ck(a.conv >= 700) + " · Former clients: " + a.ex + " · Leads in: " + a.leads + "\nReplies: " + a.resp + " (" + pct(a.resp, a.conv) + ")\n" +
+      "Booked: " + a.ag + " (" + pct(a.ag, a.resp) + ") · Done: " + a.he + " · Closes: " + a.ci + " (" + pct(a.ci, a.he) + ")\n" +
+      "Billed: " + zl(a.fa) + " front-end + " + zl(back) + " back-end = " + zl(a.fa + back) + " · Days reported: " + a.dias + "/7\n\n" +
+      "CONTENT (" + STAGE_TXT[PAUTA[sem.etapa] ? sem.etapa : "s1"] + ") · compliance " + comp + " %" + ck(comp >= 90) + "\n" +
+      FMT.concat(EXTRA).map(function (x) { return x[1] + ": " + a[x[0]] + "/" + p[x[0]]; }).join(" · ") + "\n" +
+      "Carousels: " + a.carcon + " connection + " + a.carval + " value" + ck(carT >= 3 && a.carcon >= 1 && a.carval >= 1) + " · YouTube: " + a.youtube + (ly ? " (last " + nice(ly) + ")" : " (none yet)") + "\n" +
+      "Yapping share: " + (yp == null ? "—" : yp + " %") + " · Trial reels: " + a.trial + (trs.length ? " · " + trs.length + (trs.length === 1 ? " script tested" : " scripts tested") : "") + "\n" +
+      (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(untitled)") + (t.ganador ? " → winner: " + t.ganador : "") + (t.views ? " (" + t.views + " views)" : ""); }).join("\n") + "\n" : "") +
+      ((sem.promos || []).length ? "Follow Me Ads: " + eu(pa.g) + " · " + pa.s + " followers · " + (pa.cps == null ? "—" : eu(pa.cps) + " per follower") + (pa.cps == null ? "" : ck(pa.cps < 1)) + "\n" + sem.promos.map(function (x) { var c = promoCps(x); return "  · " + (x.reel || "(untitled)") + ": " + num(x.dias) + " days · " + eu(x.gasto) + " · " + num(x.seguidores) + " foll." + (c == null ? "" : " · " + eu(c) + "/foll.") + " → " + (x.decision || "Testing"); }).join("\n") + "\n" : "") +
+      "Stories: " + a.historias + " · CTA days: " + a.cta + "/2" + ck(a.cta >= 2) + " · RESET messages: " + num(sem.mejor) + "\n" +
+      "WhatsApp: " + a.estados + " Status · " + a.contactos + " new contacts · " + num(sem.respEstados) + " replies to Status\n" +
+      "Followers: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + "\n" +
+      (sem.mejorLink ? "Best piece: " + sem.mejorLink + (sem.mejorPorque ? " · " + sem.mejorPorque : "") + "\n" : "") + "\n" +
+      "CLIENTS & BACK-END\nActive: " + num(sem.activas) + " · New: " + num(sem.altas) + " · Ended: " + num(sem.bajas) + " · Renewals: " + num(sem.renovaciones) + "\nMaintenance: " + num(sem.mant) + " · Lab+/Executive: " + num(sem.asc) + " · Referrals: " + num(sem.refs) + " · Former clients reactivated: " + num(sem.react) + "\n\n" +
+      "WEEKLY PLAN: " + tdone + "/" + sem.tareas.length + " tasks done" + (sem.tareas.length ? "\n" + sem.tareas.map(function (t) { return (t.hecha ? "✅ " : "⬜ ") + (t.tarea || "(unnamed)"); }).join("\n") : "") + "\n\n" +
+      (sem.victorias ? "Wins: " + sem.victorias + "\n" : "") +
+      (sem.bloqueos ? "Blocks: " + sem.bloqueos + "\n" : "") +
+      (sem.dudas ? "Questions for Sunday: " + sem.dudas + "\n" : "") +
+      "Mentoring score: " + (sem.notaMentoria || "—") + "/10" + (sem.necesito ? "\nWhat I need from you: " + sem.necesito : "");
+    renderHist(); renderWkHist();
+  }
+
+  /* ---------- History ---------- */
+  function hasData(d) { return !!(d && (convOf(d) || num(d.leads) || num(d.respuestas) || num(d.agendadas) || num(d.hechas) || d.cerrado === true || piezasOf(d) || num(d.historias) || num(d.estados) || num(d.youtube))); }
+  function renderHist() {
+    var rows = Object.keys(diaMap).sort().reverse().map(function (x) { return diaMap[x]; }).filter(hasData);
+    var body = el("histBody");
+    if (!rows.length) { body.innerHTML = '<tr><td class="empty" colspan="9">No days with data yet. Start today.</td></tr>'; el("histFoot").hidden = true; return; }
+    body.innerHTML = rows.slice(0, 14).map(function (d) {
+      return '<tr' + (d.fecha === day.fecha ? ' class="sel"' : '') + '><td>' + nice(d.fecha) + '</td><td>' + convOf(d) + '</td><td>' + num(d.respuestas) + '</td><td>' + num(d.agendadas) + '</td><td>' + num(d.hechas) + '</td><td>' + cierresOf(d) + '</td><td>' + zl(factOf(d)) + '</td><td>' + piezasOf(d) + '</td><td>' + num(d.historias) + '</td></tr>';
+    }).join("");
+    var l7 = rows.slice(0, 7), s = function (fn) { return l7.reduce(function (a, d) { return a + fn(d); }, 0); };
+    el("s-conv").textContent = s(convOf); el("s-resp").textContent = s(function (d) { return num(d.respuestas); });
+    el("s-ag").textContent = s(function (d) { return num(d.agendadas); }); el("s-he").textContent = s(function (d) { return num(d.hechas); });
+    el("s-ci").textContent = s(cierresOf); el("s-fa").textContent = zl(s(factOf)); el("s-re").textContent = s(piezasOf); el("s-hi").textContent = s(function (d) { return num(d.historias); });
+    el("histFoot").hidden = false;
+  }
+  function renderWkHist() {
+    var ws = {}; Object.keys(semMap).forEach(function (w) { ws[w] = 1; }); Object.keys(diaMap).forEach(function (f) { if (hasData(diaMap[f])) ws[isoWeek(f)] = 1; });
+    var list = Object.keys(ws).sort().reverse().slice(0, 8), body = el("wkBody");
+    if (!list.length) { body.innerHTML = '<tr><td class="empty" colspan="9">No weeks with data yet.</td></tr>'; return; }
+    body.innerHTML = list.map(function (w) {
+      var s = semMap[w] || blankSem(w), a = weekAgg(w), segD = s.segIni !== "" && s.segFin !== "" && s.segIni != null && s.segFin != null ? num(s.segFin) - num(s.segIni) : null;
+      return '<tr' + (w === curWeek ? ' class="sel"' : '') + '><td>' + weekLabel(w).replace("Week of ", "") + '</td><td>' + a.conv + '</td><td>' + pct(a.resp, a.conv) + '</td><td>' + a.ag + '</td><td>' + a.ci + '</td><td>' + zl(a.fa + num(s.backend)) + '</td><td>' + contCompliance(s, a) + ' %</td><td>' + (segD == null ? "—" : (segD >= 0 ? "+" : "") + segD) + '</td><td>' + (s.notaMentoria || "—") + '</td></tr>';
+    }).join("");
+  }
+
+  /* ---------- Date and week loading ---------- */
+  function focusedIn(id) { var a = document.activeElement; return !!(a && el(id).contains(a) && (a.tagName === "INPUT" || a.tagName === "SELECT" || a.tagName === "TEXTAREA")); }
+  function loadDate(f) {
+    day = diaMap[f] ? Object.assign(blankDay(f), clone(diaMap[f])) : blankDay(f); day.fecha = f;
+    el("sv-dia").textContent = "";
+    fillDay();
+    if (isoWeek(f) !== curWeek) loadWeek(isoWeek(f), true); else update();
+    if (db && !fetched["d" + f] && !diaMap[f]) {
+      fetched["d" + f] = true;
+      db.collection("diario").doc(f).get().then(function (r) { if (r.exists && !diaMap[f]) { diaMap[f] = Object.assign(blankDay(f), r.data()); applyRemote(); } }, function () {});
+    }
+  }
+  function loadWeek(w) {
+    curWeek = w;
+    sem = semMap[w] ? Object.assign(blankSem(w), clone(semMap[w])) : blankSem(w); sem.semana = w;
+    if (!Array.isArray(sem.tareas)) sem.tareas = [];
+    if (!Array.isArray(sem.trials)) sem.trials = [];
+    if (!Array.isArray(sem.promos)) sem.promos = [];
+    el("sv-sem").textContent = "";
+    fillSem(); update();
+    if (db) {
+      var need = [];
+      if (!fetched["s" + w] && !semMap[w]) { fetched["s" + w] = true; need.push(db.collection("semana").doc(w).get().then(function (r) { if (r.exists && !semMap[w]) semMap[w] = r.data(); })); }
+      weekDays(w).forEach(function (f) { if (!fetched["d" + f] && !diaMap[f]) { fetched["d" + f] = true; need.push(db.collection("diario").doc(f).get().then(function (r) { if (r.exists && !diaMap[f]) diaMap[f] = Object.assign(blankDay(f), r.data()); })); } });
+      if (need.length) Promise.all(need).then(applyRemote, function () {});
+    }
+  }
+  function applyRemote() {
+    var f = el("fecha").value;
+    if (diaMap[f] && !dirty[k("diario", f)] && !focusedIn("formDia")) { day = Object.assign(blankDay(f), clone(diaMap[f])); day.fecha = f; fillDay(); }
+    if (semMap[curWeek] && !dirty[k("semana", curWeek)] && !focusedIn("formSem")) { sem = Object.assign(blankSem(curWeek), clone(semMap[curWeek])); sem.semana = curWeek; if (!Array.isArray(sem.tareas)) sem.tareas = []; if (!Array.isArray(sem.trials)) sem.trials = []; if (!Array.isArray(sem.promos)) sem.promos = []; fillSem(); }
+    update();
+  }
+  el("fecha").value = today();
+  el("fecha").addEventListener("change", function () { if (el("fecha").value) loadDate(el("fecha").value); });
+  document.querySelectorAll("form").forEach(function (f) { f.addEventListener("submit", function (e) { e.preventDefault(); }); });
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = el(btn.dataset.copy), note = el(btn.dataset.note);
+      function fb() { var r = document.createRange(); r.selectNodeContents(box); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); note.textContent = "Text selected: copy it with Ctrl+C or long-press."; }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copied. Paste it into Alberto's WhatsApp."; }, fb); else fb();
+    });
+  });
+
+  loadDate(today());
+
+  /* ---------- Connection ---------- */
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) { setStatus("No database in this view: you can fill it in and copy the message, but it isn't saved. Open the page from claude.ai with your account.", true); return; }
+    db = c;
+    var got = { d: false, s: false };
+    var timer = setTimeout(function () { setStatus("The database is slow to respond…", true); }, 10000);
+    function ready(x) { got[x] = true; if (got.d && got.s) { clearTimeout(timer); setStatus("Saved live · Alberto sees it instantly"); } }
+    function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Access revoked" : "Couldn't read the database", true); }
+    db.collection("diario").orderBy("fecha", "desc").limit(60).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha) diaMap[x.fecha] = Object.assign(blankDay(x.fecha), x); });
+      if (!snap.metadata.fromCache) ready("d");
+      applyRemote();
+    }, onErr);
+    db.collection("semana").orderBy("semana", "desc").limit(12).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.semana) semMap[x.semana] = x; });
+      if (!snap.metadata.fromCache) ready("s");
+      applyRemote();
+    }, onErr);
+  })();
+})();
+</script>

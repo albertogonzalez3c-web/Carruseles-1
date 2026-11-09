@@ -1,0 +1,375 @@
+<title>Michał Funnel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f1f0ec;
+  --white: #ffffff;
+  --ink: #0b0d12;
+  --soft: #545a66;
+  --line: #d8d6cf;
+  --chip: #e8e6df;
+  --gold: #c9992b;
+  --gold-text: #7f5d0e;
+  --blue: #8a6514;
+  --dark2: #171a22;
+  --f-head: "Anton", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1; }
+h1 em, h2 em { font-style: normal; color: var(--gold-text); }
+h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.05; }
+h3 { font-size: 20px; line-height: 1.15; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--gold); }
+.card.dark .label { color: var(--gold); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c4c8d0; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.blue { background: var(--blue); color: #fff; box-shadow: none; }
+.card.blue h2, .card.blue h3 { color: #fff; }
+.card.blue .label { color: #f3e6c4; }
+.card.blue ul.l, .card.blue ol.l, .card.blue .soft { color: #f3e6c4; }
+.card.blue ul.l b { color: #fff; }
+.card.warn { background: #fff4d9; box-shadow: inset 0 0 0 1px #ecd391; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--gold); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; }
+.card.dark .say { background: var(--dark2); color: var(--white); }
+.card.blue .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--gold-text); }
+.card.dark .badge { background: var(--dark2); color: var(--gold); }
+.card.blue .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbf1d4; }
+.tbl td b { color: var(--ink); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.card.dark .cp { background: var(--dark2); color: #fff; box-shadow: inset 0 0 0 1px #333a48; }
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--ink); color: var(--gold); display: grid; place-items: center; font: 400 18px/1 var(--f-head); flex: none; }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--gold-text); font-weight: 800; }
+.big { font: 400 clamp(56px, 10vw, 100px)/.9 var(--f-head); color: var(--gold); }
+.nicho { font: 400 clamp(24px, 3.2vw, 34px)/1.12 var(--f-head); text-transform: uppercase; color: var(--white); }
+.nicho em { font-style: normal; color: var(--gold); }
+.fases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.fases > div { background: var(--dark2); border-radius: 6px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.fases b { color: #fff; }
+.fases p { color: #c4c8d0; font-size: 14.5px; }
+.fases .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--gold); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 4px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .fases { grid-template-columns: 1fr; } .card { padding: 16px; } }
+.say.pl { background: #fbf3df; border-left-color: #8a6514; font-weight: 500; }
+code { font: 500 13px/1.3 var(--f-mono); background: var(--chip); padding: 2px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+.lang { font: 500 10.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+</style>
+<main class="wrap">
+<header class="head">
+  <span class="label">Michał Tobiasz · BodyLAB · Part 4</span>
+  <h1>Funnel: <em>100 conversations a day</em>, one destination</h1>
+  <p class="soft">Everything ends in the same place: a 1:1 conversation that becomes a 30-minute call. Former clients first, then 100 conversations a day in two rounds of 50, the store, Follow Me Ads and your content. <b>All DM and WhatsApp templates come in English with the Polish version underneath — the Polish one is what you send.</b></p>
+  <div class="path"><span>Former clients</span><i>+</i><span>2 × 50 conversations</span><i>+</i><span>Store</span><i>+</i><span>Follow Me Ads</span><i>+</i><span>Content</span><i>→</i><span>DM / WhatsApp</span><i>→</i><span>Qualify</span><i>→</i><span>Call</span><i>→</i><span>Payment + labs</span></div>
+  <nav class="toc"><a href="#nicho">Niche</a><a href="#kpi">KPIs</a><a href="#c1">1 · Former clients</a><a href="#c2">2 · 100 a day</a><a href="#dry">Poles are dry</a><a href="#proceso">Lead → call</a><a href="#seg">Follow-ups</a><a href="#c4">3 · Ads</a><a href="#c5">4 · Store &amp; content</a><a href="#dia">Your day</a></nav>
+</header>
+
+<section class="card dark" id="nicho">
+  <span class="label">Your niche in one sentence · Your method in 30 seconds</span>
+  <p class="nicho">I help <em>busy professionals and business owners over 30</em> settle the one debt they keep postponing — <em>their body and their energy</em> — with a plan read from their own bloodwork that fits a full calendar.</p>
+  <p class="soft"><b style="color:#fff">BodyLAB Reset · hormonal-metabolic reset</b> (PL: <i>reset hormonalno-metaboliczny</i>): we read your labs and body composition first, then fix leptin, cortisol, testosterone, estradiol and insulin with food, training, sleep and — when the labs call for it — targeted support. Leaner, sharper at work, more energy. No camp, no chaos.</p>
+  <div class="g3">
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pillar 1 · Read</span><p class="soft">Bloodwork + body composition before any plan. Testosterone, SHBG, estradiol, cortisol, insulin/HOMA-IR, leptin, thyroid. Your numbers, not the mirror, decide.<br><i style="opacity:.8">Why: as a bodybuilder I pushed my body with extremes — olive oil by the glass, doping as a tool. I learned the hard way what hormones do when you ignore them. Today I read the labs before I touch anything.</i></p></div>
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pillar 2 · Fit</span><p class="soft">The plan fits your calendar: 3 sessions of 45–60 min, normal food (steak, pizza, business lunch), travel and late meetings included.<br><i style="opacity:.8">Why: I ate 5–6 forced meals a day "until I threw up". It worked for the stage and wrecked my life. Now I run a coaching business and a supplement store — my own plan has to fit a full day too.</i></p></div>
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pillar 3 · System</span><p class="soft">A system that works on the days motivation doesn't: weekly check-in, sleep window, a default week you can run on autopilot.<br><i style="opacity:.8">Why: for years I said "tomorrow for sure" and didn't go. At the end of 2022 a lot fell apart at once. I didn't come back with motivation — I came back with routine: sleep, food, training, step by step.</i></p></div>
+  </div>
+  <div class="fases">
+    <div><span class="lbl">Phase 1 · Weeks 1–3</span><b>Audit</b><p><b>What happens:</b> full bloodwork panel, body composition, sleep/stress/calendar audit; baseline energy and focus scores.<br><b>What you do:</b> get the labs done, send photos and 7 days of your real routine.</p></div>
+    <div><span class="lbl">Phase 2 · Weeks 4–12</span><b>Reset</b><p><b>What happens:</b> nutrition for insulin and leptin, 3 sessions/week, cortisol and sleep protocol, targeted supplementation; peptides/TRT discussed only if labs show a reason. Retest at week 10–12.<br><b>What you do:</b> run the default week and report every Sunday.</p></div>
+    <div><span class="lbl">Phase 3 · Months 4–6</span><b>Optimize</b><p><b>What happens:</b> body-composition push, cognitive performance at work, a maintenance system you can run alone; second retest.<br><b>What you do:</b> own the system — and decide if you stay on maintenance.</p></div>
+  </div>
+  <p class="soft"><b style="color:#fff">3 non-negotiables:</b> bloodwork at the start and a retest (no labs, no plan) · weekly check-in (weight trend, photos, energy/focus/sleep 1–10) · 3 training sessions a week and a protected sleep window.</p>
+  <div class="say">"I was 64 kg at 180 cm when I was 12. I became a bodybuilder with medals. Today I put my business and my life first — and I still look and feel better than ever. If a guy who lived on extremes can run this on a full calendar, so can you." — Michał</div>
+</section>
+
+<section class="sec" id="kpi">
+  <header><span class="label">Daily KPIs · what's expected</span><h2>The numbers <em>aren't negotiable</em></h2><p class="soft">Log them every evening in your report. If a week doesn't close, look at this table before you look at the price.</p></header>
+  <div class="card tblwrap"><table class="tbl">
+    <thead><tr><th>Action</th><th>Every day</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Round 1 · conversations opened</td><td><b>50</b></td><td>Morning, 8:00–10:00, before the store</td></tr>
+      <tr><td>Round 2 · conversations opened</td><td><b>50</b></td><td>Evening, 19:00–21:00, when business owners answer</td></tr>
+      <tr><td>Former clients (weeks 1–3)</td><td><b>10–15</b></td><td>Inside the 100. Personalised, never copy-paste</td></tr>
+      <tr><td>Welcome to new followers</td><td><b>All</b></td><td>Within 24 h. Inside the 100</td></tr>
+      <tr><td>Follow-ups (days 2, 7, 14)</td><td><b>All that are due</b></td><td>The CRM shows them every morning</td></tr>
+      <tr><td>Qualified (3 questions answered)</td><td><b>5–8</b></td><td>Conversations that reach "what do you do / what do you want / labs?"</td></tr>
+      <tr><td>Calls booked</td><td><b>1–2</b></td><td>7–10 a week</td></tr>
+      <tr><td>Content pieces</td><td><b>1 → 2 → 3</b></td><td>Ramp in the Content page; YouTube every 7–10 days</td></tr>
+      <tr><td>Follow Me Ads</td><td><b>≈ 10 €</b></td><td>≈ 300 €/month. Check € per follower every 2 days</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="sec" id="c1">
+  <header><span class="label">Channel 1 · First push · weeks 1–3</span><h2>Reactivate <em>former clients</em></h2><p class="soft">The offer (Reset 2.0) and the 3 touches are on the Offer page. Here, the how.</p></header>
+  <div class="g3">
+    <div class="card"><span class="n">1</span><h3>Day 1: list in the CRM</h3><p class="soft">Export every former client you can reach (WhatsApp, old spreadsheet, app). Load them into the CRM with origin "Former client" and a segment A/B/C/D in the notes plus one real detail of their process.</p></div>
+    <div class="card"><span class="n">2</span><h3>10–15 a day, in order</h3><p class="soft">A first (best results: testimonial + referrals), then D (said yes, never joined), then B and C. Touch 1 today, touch 2 on day 3, touch 3 on day 9.</p></div>
+    <div class="card"><span class="n">3</span><h3>3-week target</h3><p class="soft"><b>6 Reset 2.0 sales, 6 testimonials with photos and 5 referrals.</b> Testimonials go straight to "Wasze sukcesy" and the pinned posts.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="c2">
+  <header><span class="label">Channel 2 · 100 conversations a day · 2 rounds of 50</span><h2>Where busy people 30+ <em>already are</em></h2><p class="soft">Not spam: finding your client where he already is and talking about something of his. Never sell in the first message, never a link in the first message.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Where to find them</span><ol class="l">
+      <li><b>Around your own profile:</b> new followers, story viewers, people who like or comment your posts. Always first.</li>
+      <li><b>Polish business accounts:</b> entrepreneur podcasts, business media, local business groups, coworkings in your city — the people who comment there.</li>
+      <li><b>Store customers</b> who followed @kopalnia.supli_.</li>
+      <li><b>Gyms and clubs</b> in your city: members who post training before or after work.</li>
+      <li><b>Location tags</b> of business districts, conferences and events.</li>
+      <li><b>Hashtags:</b> #przedsiębiorca #biznes #ceo #właścicielfirmy #pracazdalna + city.</li>
+    </ol></div>
+    <div class="card"><span class="badge">Criteria · all of them</span><ul class="l">
+      <li>Roughly 30–55.</li>
+      <li>Works with responsibility or owns a business (bio, posts, LinkedIn link, office stories).</li>
+      <li>Lives in Poland, writes in Polish.</li>
+      <li>Active in the last 7 days, public profile.</li>
+      <li><b>Not a coach</b> and not selling plans.</li>
+    </ul></div>
+    <div class="card"><span class="badge">How not to burn the account</span><ul class="l">
+      <li>Before writing: <b>follow, like 2 posts and reply to a story</b>. The DM lands as a conversation, not in requests.</li>
+      <li>Each round of 50 in blocks of 10–15 with breaks, never 50 in a row.</li>
+      <li>Rotate the 7 openers and personalise the first sentence.</li>
+      <li>Week 1: 2 × 25. Week 2: 2 × 40. Week 3: 2 × 50.</li>
+    </ul></div>
+  </div>
+  <div class="card"><span class="label">7 openers · EN for you, PL to send</span><div class="g2" id="openers" style="margin-top:6px"></div></div>
+  <div class="card"><span class="label">The path of the conversation</span>
+    <div class="path" style="margin-top:6px"><span>1 · Something of his</span><i>→</i><span>2 · What he does</span><i>→</i><span>3 · What bothers him</span><i>→</i><span>4 · Labs / what he tried</span><i>→</i><span>5 · "Want me to tell you what I'd change?"</span><i>→</i><span>Call</span></div>
+  </div>
+  <div class="g3" id="welcomes"></div>
+</section>
+
+<section class="sec" id="dry">
+  <header><span class="label">Poles are dry · don't take it personally</span><h2>Short answers are <em>normal</em>, not a no</h2><p class="soft">Polish communication is direct and economical, especially in writing and especially with men 30+ in business. What feels cold is usually just efficient. Here's how to read it and when to push.</p></header>
+  <div class="g2">
+    <div class="card"><span class="badge">How to read replies</span><div class="tblwrap"><table class="tbl" style="min-width:0">
+      <thead><tr><th>They write</th><th>It means</th><th>You do</th></tr></thead>
+      <tbody>
+        <tr><td>"ok" / "jasne" / "dzięki"</td><td>Got it. Neutral.</td><td>Ask the next question straight away.</td></tr>
+        <tr><td>One-word answer, no greeting</td><td>He's busy, not annoyed.</td><td>Keep your messages as short as his.</td></tr>
+        <tr><td>"zobaczę" / "pomyślę"</td><td>A real "I'll think about it".</td><td>Give a date: "To odezwę się w czwartek, ok?"</td></tr>
+        <tr><td>"napiszę" ("I'll write")</td><td>Often he won't.</td><td>Follow up on day 2 without guilt.</td></tr>
+        <tr><td>Reply after 2–3 days</td><td>Normal for a business owner.</td><td>Answer like nothing happened.</td></tr>
+        <tr><td>"nie, dzięki" / "nie jestem zainteresowany"</td><td>A clear no. Respect it.</td><td>"Jasne, powodzenia." and close. No 2nd push.</td></tr>
+        <tr><td>He writes "Pan"</td><td>He prefers formal.</td><td>Mirror it: switch to Pan/Pani.</td></tr>
+      </tbody>
+    </table></div></div>
+    <div class="card dark"><span class="label">Style rules for your messages</span><ul class="l">
+      <li><b>Short and direct:</b> 1–3 sentences. Say the time, the price, the next step. Directness is respect.</li>
+      <li><b>Little enthusiasm:</b> no "Super!!! 🔥🔥". One emoji at most, often none. American-style hype reads as fake.</li>
+      <li><b>Don't apologise for writing</b> ("przepraszam, że przeszkadzam"). It lowers your position.</li>
+      <li><b>Ty by default on Instagram</b>, with a capital letter (Ty, Ciebie, Twój) — polite and modern. First WhatsApp to someone 45+ from the website: "Dzień dobry" and mirror their tone.</li>
+      <li><b>Facts beat promises:</b> "500+ metamorfoz", "badania", "3 treningi w tygodniu". Poles distrust big claims.</li>
+      <li><b>When to insist:</b> no answer → days 2, 7, 14, then stop. After a call: 3 touches in 5 days. A soft "maybe" always gets a concrete date.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="proceso">
+  <header><span class="label">From the moment the lead leaves his details to the call</span><h2>Every step <em>with its message</em></h2><p class="soft">A lead can arrive by DM (keyword RESET), the website form (bodylabcoaching.eu/pl), the store QR or a referral. From there it's always the same 8 steps, and every one is logged in the CRM.</p></header>
+  <div class="g4">
+    <div class="card"><span class="n">1</span><h3>Lead in · within 1 h</h3><p class="soft">Form, keyword or store QR → into the CRM with its origin → first message on WhatsApp or DM within 1 hour.</p></div>
+    <div class="card"><span class="n">2</span><h3>Qualify · 3 questions</h3><p class="soft">What he does and hours a week, what he wants in 3–6 months, labs in the last year. Plus "why now?".</p></div>
+    <div class="card"><span class="n">3</span><h3>Invite · 2 options</h3><p class="soft">Call within 48 h, always two concrete slots. Zoom or phone.</p></div>
+    <div class="card"><span class="n">4</span><h3>Confirm · ask for labs</h3><p class="soft">Confirmation + "send me labs from the last 12 months if you have them". It raises show-up and commitment.</p></div>
+    <div class="card"><span class="n">5</span><h3>Day of the call</h3><p class="soft">Morning: a similar case. 1 h before: the link.</p></div>
+    <div class="card"><span class="n">6</span><h3>The call · 35–40 min</h3><p class="soft">Closing script (page 6). Price, silence, payment link.</p></div>
+    <div class="card"><span class="n">7</span><h3>Setting · same day</h3><p class="soft">Payment confirmed → onboarding pack + lab list + intake form → lab review booked. Client in CRM, ladder +1.</p></div>
+    <div class="card"><span class="n">8</span><h3>No-show / no close</h3><p class="soft">5-min message, one reschedule. No close: 24 h, 48 h, day 5 (see CRM).</p></div>
+  </div>
+  <div class="g2" id="procMsgs"></div>
+</section>
+
+<section class="sec" id="seg">
+  <header><span class="label">Follow-ups · days 2, 7, 14</span><h2>Three messages, <em>then you stop</em></h2><p class="soft">The CRM shows who is due each morning. Same templates there, with a copy button.</p></header>
+  <div class="g3" id="seguimientos"></div>
+</section>
+
+<section class="sec" id="c4">
+  <header><span class="label">Channel 3 · Follow Me Ads · voice-over</span><h2>300 € a month, <em>only to get followers</em></h2><p class="soft">The ad doesn't sell. It brings busy Poles 30+ to your profile, they see the proof, and they enter channels 2 and 4 (you welcome every new follower by hand).</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">The piece</span><ul class="l"><li>30–45 s Reel, <b>your voice-over</b> over clips of you working, in the store, training, cooking.</li><li>One angle per ad, hook in the first 3 s (3 versions).</li><li>Close: <b>"Obserwuj…"</b>. Subtitles always.</li><li>Promote the organic voice-over that performed best.</li></ul></div>
+    <div class="card"><span class="badge">Setup</span><ul class="l"><li>From the Reel: Promote → <b>More profile visits</b>.</li><li><b>≈ 10 €/day</b> (≈ 300 €/month), one ad at a time at the start. <b>Evaluate after 2 days.</b></li><li>Audience: <b>Poland, 30+</b> (30–55), language <b>Polish</b>, interests in business / entrepreneurship / fitness — or Advantage+ with Polish language.</li></ul></div>
+    <div class="card"><span class="badge">Traffic light (€ per follower)</span><ul class="l"><li><b style="color:#157a3b">Under 1 € (≈ 4,30 zł):</b> keep it and scale.</li><li><b style="color:#9a6b00">1–1,5 € (≈ 4,30–6,50 zł):</b> change the hook, same body.</li><li><b style="color:#b42318">Over 1,5 € after 2 days:</b> cut it.</li><li>Log every ad in your weekly report.</li></ul></div>
+  </div>
+  <div class="card warn"><span class="label">Meta rules</span><p class="soft">Never tell the viewer what's happening to his body ("Masz brzuch?", "Brak energii?", "Niski testosteron?" are banned). First person ("I used to crash at 4 pm") or "most people" ("większość"). No before/after, no "X kg in Y weeks". <b>No peptides, TRT or hormone talk in Meta ads: Meta rejects them and can block the ad account — keep those topics for organic content.</b></p></div>
+  <div class="g3" id="ads"></div>
+</section>
+
+<section class="sec" id="c5">
+  <header><span class="label">Channel 4 · Store and content</span><h2>Two sources that <em>feed the DMs</em></h2></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Store</span><p class="soft">Card or QR at the counter → WhatsApp → CRM (origin: Store). Every "what should I take for energy?" is a conversation: answer it, then ask about labs.</p></div>
+    <div class="card"><span class="badge">Content</span><p class="soft">CTA everywhere: <b>"Napisz RESET"</b> (organic) and "Obserwuj…" (ads). Stories on Tuesday and Friday with a CTA sequence and a question box.</p></div>
+    <div class="card"><span class="badge">WhatsApp Status</span><p class="soft">Save every lead as a contact. Monday: a client result. Wednesday: an anonymised lab panel "this is what I read". Friday: places this month + "Napisz RESET".</p></div>
+  </div>
+</section>
+
+<section class="sec" id="dia">
+  <header><span class="label">Your day · Polish time</span><h2>The system fits in <em>about 3 hours</em></h2><p class="soft">Built around your work in the store and with clients.</p></header>
+  <div class="card tblwrap"><table class="tbl">
+    <thead><tr><th>Block</th><th>What you do</th><th>Time</th></tr></thead>
+    <tbody>
+      <tr><td>Morning · 8:00</td><td>CRM: follow-ups due · <b>round 1: 50 conversations</b> (incl. former clients and welcomes) · publish piece 1</td><td>60–75 min</td></tr>
+      <tr><td>Midday</td><td>Store / clients · answer replies between tasks · record 1 clip if there's a moment</td><td>15 min</td></tr>
+      <tr><td>Afternoon</td><td>Check-ins of your clients · publish piece 2 (from week 3) · check the ad (€/follower)</td><td>30 min</td></tr>
+      <tr><td>Evening · 19:00</td><td><b>Round 2: 50 conversations</b> · calls · welcomes · daily report for Alberto</td><td>75 min</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card dark"><span class="label">Week 1, day by day</span><ul class="l">
+    <li><b>Monday:</b> choose the bio, reorder highlights, load former clients into the CRM. First 10 touches + 2 × 25 conversations.</li>
+    <li><b>Tuesday:</b> 2 × 25, 10 touches, ask segment A for testimonials. Record story reel 1 and 2 voice-overs.</li>
+    <li><b>Wednesday:</b> launch Follow Me Ads with the best voice-over at ≈ 10 €/day.</li>
+    <li><b>Thursday–Friday:</b> 2 × 25, touch 2 for Monday's list, first calls. Friday: evaluate the ad (2 days).</li>
+    <li><b>Saturday:</b> store QR card printed; fill "Wasze sukcesy" with what arrived.</li>
+    <li><b>Sunday:</b> weekly report to Alberto. Week 2: 2 × 40.</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copied</div>
+<script>
+(function () {
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  var uid = 0;
+  function biCard(parent, badge, en, pl, extraCls, note) {
+    var c = el("div", "card" + (extraCls ? " " + extraCls : ""));
+    var r = el("div", "row"); r.appendChild(el("span", "badge", badge));
+    var id = "c" + (uid++);
+    var b = el("button", "cp", "Copy PL"); b.setAttribute("data-copy", id + "pl"); r.appendChild(b); c.appendChild(r);
+    c.appendChild(el("span", "lang", "EN · for you"));
+    var s = el("div", "say", en); s.id = id + "en"; s.style.fontWeight = "500"; c.appendChild(s);
+    c.appendChild(el("span", "lang", "PL · to send"));
+    var p = el("div", "say pl", pl); p.id = id + "pl"; c.appendChild(p);
+    if (note) { var n = el("p", "soft", note); n.style.fontSize = "13.5px"; c.appendChild(n); }
+    parent.appendChild(c); return c;
+  }
+
+  var OP = [
+    ["1 · Story", "Hi [name], saw your story from [the gym / a trip / the office]. How do you fit training in with work at that pace?", "Cześć [imię], widziałem Twoją relację z [siłowni / wyjazdu / biura]. Jak godzisz treningi z pracą przy takim tempie?"],
+    ["2 · New follower", "Hi [name], thanks for the follow. One question so I know what's useful for you: what's harder right now — time, energy, or knowing what to do?", "Cześć [imię], dzięki za obserwację. Jedno pytanie, żebym wiedział, co Ci się przyda: co jest teraz trudniejsze — czas, energia czy wiedza, co robić?"],
+    ["3 · Business account", "Hi [name], saw your comment on [account] about [topic]. I run a business too and know that rhythm. How's your shape holding up with all that on your plate?", "Cześć [imię], widziałem Twój komentarz u [konto] o [temat]. Też prowadzę firmę i znam ten rytm. Jak u Ciebie z formą przy tylu obowiązkach?"],
+    ["4 · Direct question", "Quick question from a coach to someone who runs a company: what's harder for you — finding time to train or having energy after 4 pm?", "Krótkie pytanie od trenera do kogoś, kto prowadzi firmę: co jest u Ciebie trudniejsze — znaleźć czas na trening czy mieć energię po 16:00?"],
+    ["5 · Identification", "I'm writing because your profile reminded me of many of my clients: business sorted, body and energy always 'later'. Is it like that for you or is it working?", "Piszę, bo Twój profil przypomniał mi wielu moich podopiecznych: firma ogarnięta, a forma i energia zawsze „na później”. U Ciebie podobnie czy to działa?"],
+    ["6 · Store customer", "Hi [name], thanks for stopping by Kopalnia. You asked about [supplement] for energy — if you want, I'll tell you which blood tests are worth doing before you buy anything.", "Cześć [imię], dzięki za wizytę w Kopalni. Pytałeś o [suplement] na energię — jeśli chcesz, podpowiem, które badania warto zrobić, zanim cokolwiek kupisz."],
+    ["7 · Commented a lab post", "Saw your comment on my post about [testosterone / cortisol]. Have you ever done those tests, or are you still thinking about it?", "Widziałem Twój komentarz pod postem o [testosteronie / kortyzolu]. Robiłeś kiedyś te badania czy dopiero się zastanawiasz?"]
+  ];
+  var op = document.getElementById("openers");
+  OP.forEach(function (o) { biCard(op, o[0], o[1], o[2], "chip"); });
+
+  var WL = [
+    ["Keyword RESET", "Hi [name], thanks for writing. Before I tell you how I work, two questions: what do you do for a living, and what bothers you most right now — your shape, your energy, or both?", "Cześć [imię], dzięki za wiadomość. Zanim opowiem, jak pracuję, dwa pytania: czym zajmujesz się zawodowo i co teraz najbardziej Ci przeszkadza — sylwetka, energia czy jedno i drugie?"],
+    ["Follower from an ad", "Hi [name], thanks for the follow. You found me through the video about [topic] — what made you stop on it?", "Cześć [imię], dzięki za obserwację. Trafiłeś tu przez film o [temat] — co Cię w nim zatrzymało?"],
+    ["Story reply", "Thanks for replying. Tell me a bit more: how does that look in your week right now?", "Dzięki za odpowiedź. Napisz coś więcej: jak to teraz wygląda w Twoim tygodniu?"]
+  ];
+  var wl = document.getElementById("welcomes");
+  WL.forEach(function (w) { biCard(wl, "Welcome · " + w[0], w[1], w[2]); });
+
+  var PM = [
+    ["1 · First WhatsApp after the form (within 1 h)", "Hi [name], Michał Tobiasz from BodyLAB here. I got your form: [short summary of what he wrote]. I suggest a 30-minute call to see if and how I can help. Does [day] at [time] or [day] at [time] work?", "Cześć [imię], tu Michał Tobiasz z BodyLAB. Dostałem Twoje zgłoszenie: [krótko, co napisał]. Proponuję 30-minutową rozmowę, żeby zobaczyć, czy i jak mogę pomóc. Pasuje Ci [dzień] o [godz.] czy [dzień] o [godz.]?", "Formal version for 45+ or if he writes formally: „Dzień dobry, tu Michał Tobiasz z BodyLAB. Otrzymałem Pana zgłoszenie… Czy pasuje Panu [dzień] o [godz.]?”"],
+    ["2 · Qualifying questions", "So I don't waste your time on the call, three quick questions: 1) What do you do and roughly how many hours a week do you work? 2) What would you like to change in the next 3–6 months? 3) Have you done blood tests in the last year?", "Żeby nie tracić Twojego czasu na rozmowie, trzy krótkie pytania: 1) Czym się zajmujesz i ile mniej więcej godzin tygodniowo pracujesz? 2) Co chcesz zmienić w ciągu 3–6 miesięcy? 3) Robiłeś badania krwi w ostatnim roku?", "Then: „A dlaczego właśnie teraz?” (why now). Log the answers in the CRM in his words."],
+    ["3 · Invitation to the call", "From what you're telling me, this is exactly the kind of situation I work with. Let's do a 30-minute call and I'll tell you specifically what I'd change. [Day] at [time] or [day] at [time]?", "Z tego, co piszesz, to dokładnie taka sytuacja, z jaką pracuję. Zróbmy 30 minut rozmowy — powiem Ci konkretnie, co bym zmienił. [Dzień] o [godz.] czy [dzień] o [godz.]?", "Always two options, within 48 h."],
+    ["4 · Confirmation", "Confirmed: [day], [time], [Zoom / phone]. If you have blood test results from the last 12 months, send them before the call and I'll look at them. Talk soon.", "Potwierdzam: [dzień], [godz.], [Zoom / telefon]. Jeśli masz wyniki badań z ostatnich 12 miesięcy, wyślij je przed rozmową — przejrzę je. Do usłyszenia.", "Mark \"Case sent\" and \"Labs requested\" in the CRM."],
+    ["5 · Morning of the call", "Good morning [name], we're talking today at [time]. Here's a case similar to yours: [link]. See you later.", "Dzień dobry [imię], dziś o [godz.] rozmawiamy. Podsyłam przypadek podobny do Twojego: [link]. Do usłyszenia.", ""],
+    ["6 · One hour before", "Call in one hour. Link: [link].", "Za godzinę rozmowa. Link: [link].", "Short on purpose."],
+    ["7 · No-show at 5 minutes", "[Name], I'm on the call waiting. Did something come up? We can move it to tomorrow.", "[Imię], czekam na rozmowie. Coś Ci wypadło? Możemy przełożyć na jutro.", "Reschedule once. Then back to follow-ups 2/7/14."],
+    ["8 · Setting after payment", "Welcome to BodyLAB. Attached: the blood test list and a short intake form. Once you send the results, we book the review and start. Any questions, write here.", "Witaj w BodyLAB. W załączniku lista badań i krótka ankieta. Gdy wyślesz wyniki, umawiamy omówienie i startujemy. W razie pytań pisz tutaj.", "Same day: client in CRM, ladder +1, permission form for photos."]
+  ];
+  var pm = document.getElementById("procMsgs");
+  PM.forEach(function (m) { biCard(pm, m[0], m[1], m[2], "", m[3]); });
+
+  var SG = [
+    ["Day 2 · no reply", "[Name], bumping this up. No pressure — I'm just curious how it looks on your side.", "[Imię], podbijam wiadomość. Bez presji — po prostu ciekawi mnie, jak to u Ciebie wygląda."],
+    ["Day 7 · value", "I posted something today that fits what you wrote: [topic]. If you want, I'll tell you how I'd set it up in your case.", "Wrzuciłem dziś materiał, który pasuje do tego, o czym pisałeś: [temat]. Jeśli chcesz, powiem Ci, jak ustawiłbym to w Twoim przypadku."],
+    ["Day 14 · close", "Last message so I don't clutter your inbox. If you ever want to sort out your shape and energy based on your labs, write RESET. Good luck with work.", "Piszę ostatni raz, żeby nie zawracać głowy. Jeśli kiedyś zechcesz uporządkować formę i energię na podstawie badań, napisz RESET. Powodzenia w pracy."]
+  ];
+  var sg = document.getElementById("seguimientos");
+  SG.forEach(function (s) { biCard(sg, s[0], s[1], s[2]); });
+
+  var AD = [
+    { t: "Ad 1 · The last unpaid debt",
+      hooks: [["Most business owners I know have paid every debt except one.", "Większość przedsiębiorców, których znam, spłaciła każdy dług poza jednym."], ["I spent 10 years as a bodybuilder. Here's what busy people actually need.", "Przez 10 lat byłem kulturystą. Oto czego naprawdę potrzebują zapracowani."], ["I sorted my company before I sorted my body. Big mistake.", "Najpierw ogarnąłem firmę, dopiero potem ciało. To był błąd."]],
+      en: "Most people over 30 I work with have their life in order: company, team, family. The one thing they keep postponing is their own body and energy. I know that pattern. I was a bodybuilder with medals, and still there was a time I let everything slide. What brought me back wasn't motivation. It was a system that fits a full calendar: three sessions a week, normal food, and decisions based on lab results, not guesses.\n\nFollow me if you want to settle that last debt.",
+      pl: "Większość osób po trzydziestce, z którymi pracuję, ma poukładane życie: firma, zespół, rodzina. Jedyne, co ciągle odkładają, to własne ciało i energia. Znam ten schemat. Byłem kulturystą z medalami, a i tak przyszedł moment, w którym wszystko odpuściłem. Z powrotem nie przywróciła mnie motywacja, tylko system, który mieści się w pełnym kalendarzu: trzy treningi w tygodniu, normalne jedzenie i decyzje na podstawie wyników badań, a nie zgadywania.\n\nObserwuj, jeśli chcesz spłacić ten ostatni dług.",
+      txt: "THE LAST DEBT · OSTATNI DŁUG", clips: "You in the store, at the laptop, a 45-min session, a business lunch, an old competition photo for 1 second, you to camera at the end" },
+    { t: "Ad 2 · Done by 4 pm",
+      hooks: [["At 4 pm I used to be done for the day. Here's what changed.", "O 16:00 byłem już do niczego. Oto co się zmieniło."], ["Most people blame their age for the afternoon crash. I blamed my schedule.", "Większość ludzi zrzuca popołudniowy spadek energii na wiek. Ja zrzucałem go na grafik."], ["My best work hours used to end at lunch.", "Moje najlepsze godziny pracy kończyły się w porze obiadu."]],
+      en: "For years my energy was gone by the afternoon. Coffee, something sweet, another coffee. I thought it was age or the job. When I started reading my own data — sleep, meals, training, my lab results — I saw the pattern: I was running a business on the worst fuel. Today my afternoons are my most productive hours, and I didn't add a single hour to my day. Most busy people don't need more time. They need a better system.\n\nFollow me for a system that fits a busy calendar.",
+      pl: "Przez lata moja energia kończyła się po południu. Kawa, coś słodkiego, kolejna kawa. Myślałem, że to wiek albo praca. Kiedy zacząłem czytać własne dane — sen, posiłki, treningi, wyniki badań — zobaczyłem schemat: prowadziłem firmę na najgorszym paliwie. Dziś popołudnia to moje najbardziej produktywne godziny, a nie dodałem do doby ani godziny. Większość zapracowanych nie potrzebuje więcej czasu. Potrzebuje lepszego systemu.\n\nObserwuj, jeśli chcesz system, który pasuje do pełnego kalendarza.",
+      txt: "16:00 · NO MORE CRASH / KONIEC ZE SPADKIEM", clips: "Clock at 16:00, coffee cups, you at the desk, a short training clip, a healthy lunch, you working focused in the evening" },
+    { t: "Ad 3 · More isn't better",
+      hooks: [["I used to drink olive oil from a glass to hit my calories.", "Kiedyś piłem oliwę ze szklanki, żeby dobić kalorie."], ["I was a bodybuilder for 10 years. Most of what I did, I wouldn't recommend to anyone.", "Przez 10 lat byłem kulturystą. Większości tego, co robiłem, nie polecam nikomu."], ["More and harder isn't better. It's usually just shorter.", "Więcej i ciężej nie znaczy lepiej. Zwykle znaczy tylko krócej."]],
+      en: "I started at 64 kilos and 180 centimetres, aged twelve. Then I went all in: six forced meals a day, extreme diets, training until I could barely walk. It got me on stage. It also nearly cost me everything else. Today I run a business and I train three times a week. I look and feel better than in my competition years. Most people over 30 don't need extremes. They need something they can keep for years.\n\nFollow me if you want results without turning your life into a camp.",
+      pl: "Zaczynałem od 64 kilogramów przy 180 centymetrach, miałem dwanaście lat. Potem wszedłem w to na całość: sześć posiłków dziennie na siłę, ekstremalne diety, treningi do upadłego. To dało mi scenę. I prawie kosztowało mnie wszystko inne. Dziś prowadzę firmę i trenuję trzy razy w tygodniu. Wyglądam i czuję się lepiej niż w latach startów. Większość osób po trzydziestce nie potrzebuje ekstremów. Potrzebuje czegoś, co utrzyma latami.\n\nObserwuj, jeśli chcesz efektów bez zamieniania życia w obóz.",
+      txt: "64 KG · 180 CM · AGE 12 → TODAY", clips: "Childhood photo if available, olive oil glass (re-enactment), competition photo, today in the store and training, you to camera" }
+  ];
+  var ad = document.getElementById("ads");
+  AD.forEach(function (a, i) {
+    var c = el("div", "card" + (i === 0 ? " dark" : ""));
+    c.appendChild(el("h3", null, a.t));
+    c.appendChild(el("span", "label", "3 hooks (0–3 s) · one per version · EN / PL"));
+    var ul = el("ul", "l"); a.hooks.forEach(function (h) { var li = el("li"); li.appendChild(el("b", null, h[1])); li.appendChild(document.createTextNode(" — " + h[0])); ul.appendChild(li); }); c.appendChild(ul);
+    c.appendChild(el("span", "label", "Voice-over (3–35 s) · EN"));
+    var s = el("div", "say", a.en); s.id = "ad" + i + "en"; s.style.fontWeight = "500"; c.appendChild(s);
+    var b = el("button", "cp", "Copy EN"); b.setAttribute("data-copy", "ad" + i + "en"); b.style.width = "fit-content"; c.appendChild(b);
+    c.appendChild(el("span", "label", "Voice-over · PL (record this one)"));
+    var p = el("div", "say pl", a.pl); p.id = "ad" + i + "pl"; c.appendChild(p);
+    var b2 = el("button", "cp", "Copy PL"); b2.setAttribute("data-copy", "ad" + i + "pl"); b2.style.width = "fit-content"; c.appendChild(b2);
+    c.appendChild(el("span", "label", "On-screen text"));
+    c.appendChild(el("p", "soft", a.txt));
+    c.appendChild(el("span", "label", "Clips"));
+    c.appendChild(el("p", "soft", a.clips));
+    ad.appendChild(c);
+  });
+
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    var t = document.getElementById(b.getAttribute("data-copy")); if (!t) return;
+    try { navigator.clipboard.writeText(t.textContent.trim()).then(function () { show("Copied"); }, function () { show("Couldn't copy"); }); }
+    catch (err) { show("Couldn't copy"); }
+  });
+})();
+</script>

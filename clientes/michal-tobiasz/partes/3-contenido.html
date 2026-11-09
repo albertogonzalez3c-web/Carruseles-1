@@ -1,0 +1,861 @@
+<title>Michał Content</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+
+:root {
+  --paper: #f3f4f6;
+  --white: #ffffff;
+  --ink: #0b0b0c;
+  --soft: #556070;
+  --line: #d1d6de;
+  --chip: #eceff3;
+  --accent: #8a6514;
+  --accent-soft: #e0bf6a;
+  --accent-text: #6b4f0e;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(38px, 6.4vw, 66px)/.95 var(--f-head); text-transform: uppercase; letter-spacing: -.01em; }
+h2 { font: 400 clamp(26px, 3.6vw, 36px)/1.02 var(--f-head); text-transform: uppercase; }
+h3 { font: 400 21px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 68ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(243, 244, 246, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 6px; padding: 9px 14px; font: 400 15px/1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible, .cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 32px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 800px; }
+.card { background: var(--white); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c9ccd2; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.dark .label { color: var(--accent-soft); }
+.card.acc { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.acc .label { color: #f3e6c4; }
+.card.acc ul.l, .card.acc ol.l { color: #f3e6c4; }
+.card.acc ul.l b, .card.acc ol.l b { color: var(--white); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 4px; background: var(--chip); color: var(--ink); }
+.tag.a { background: var(--accent); color: var(--white); }
+.fmt { display: grid; gap: 8px; }
+.fmt .ico { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font: 400 16px/1 var(--f-head); color: var(--white); }
+.fmt.big { box-shadow: inset 0 0 0 2px var(--accent); }
+/* Stages */
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.stage-h .big { font: 400 36px/1 var(--f-head); color: var(--accent-text); }
+.stage-h .pct { font: 500 11.5px/1 var(--f-mono); background: var(--ink); color: var(--white); padding: 6px 8px; border-radius: 4px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 8px; padding: 10px; display: grid; gap: 5px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font: 400 16px/1 var(--f-head); text-transform: uppercase; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 6px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.2; color: var(--white); }
+.k-vo { background: #8a6514; }
+.k-yap { background: #6a4a9c; }
+.k-trend { background: #1f6f6b; }
+.k-gs { background: #2c4f9e; }
+.k-rol { background: #0b0b0c; box-shadow: inset 3px 0 0 #e0bf6a; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 10px 8px 0; }
+.tbl td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.tblwrap { overflow-x: auto; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 4px; white-space: nowrap; }
+.ti .n.first { background: var(--accent); color: var(--white); }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: var(--white); font: 400 18px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--accent-soft); color: var(--ink); }
+/* Angles */
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 8px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; min-width: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 6px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+/* Scripts */
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .line:first-of-type { border-top: 0; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--accent-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.variants { display: grid; gap: 6px; background: var(--chip); border-radius: 8px; padding: 10px 12px; }
+.variants b { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check { padding-left: 0; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
+@media (max-width: 900px) {
+  .g3 { grid-template-columns: 1fr 1fr; }
+  .g5 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .g2, .g3, .g5 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .script .line { grid-template-columns: 1fr; gap: 2px; }
+}
+
+
+h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
+
+/* Michał adjustments */
+.k-vo { background: #8a6514; }
+.k-caso { background: #7a5f12; }
+.k-carc { background: #ffffff; color: #0b0b0c !important; box-shadow: inset 0 0 0 2px #0b0b0c; }
+.k-carv { background: #c9a13b; color: #0b0b0c !important; }
+.k-rol { background: #0b0b0c; box-shadow: inset 3px 0 0 #c9a13b; }
+.legend i.k-carc { box-shadow: inset 0 0 0 2px #0b0b0c; }
+.fmt .ico { font-size: 15px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 900px) { .g4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .g4 { grid-template-columns: 1fr; } }
+.niche { background: #0b0b0c; color: #fff; box-shadow: inset 4px 0 0 #c9a13b; }
+.niche .label { color: #c9a13b; }
+.niche .nq { font: 400 clamp(24px, 3.2vw, 34px)/1.08 var(--f-head); letter-spacing: .01em; color: #fff; }
+.pil { box-shadow: inset 0 0 0 2px var(--accent); }
+.pil .pn { width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: #fff; display: grid; place-items: center; font: 400 22px/1 var(--f-head); }
+.fase p b { color: var(--ink); }
+.cgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 700px) { .cgrid { grid-template-columns: 1fr; } }
+.cslide { background: #fff; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); padding: 16px; display: grid; gap: 8px; align-content: start; }
+.cslide.cv { box-shadow: inset 0 0 0 1px var(--line), inset 4px 0 0 #c9a13b; }
+.cslide.cc { box-shadow: inset 0 0 0 1px var(--line), inset 4px 0 0 #0b0b0c; }
+.cslide .big { font: 400 25px/1.04 var(--f-head); letter-spacing: .01em; color: #0b0b0c; }
+.cslide .big em { font-style: normal; color: var(--accent); }
+.cslide ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 14px; line-height: 1.4; }
+.cslide .tp { font: 700 11px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.cslide .pil2 { font-size: 12.5px; color: var(--soft); }
+.casetbl td, .casetbl th { vertical-align: top; }
+.k-story { background: #3a2c0a; box-shadow: inset 3px 0 0 #c9a13b; }
+.k-store { background: #5b4a2a; }
+.k-client { background: #7a5f12; }
+.k-yap { background: #4b3f6b; }
+.k-gs { background: #2f4858; }
+.k-trend { background: #1f5f5b; }
+.k-vo { background: #8a6514; }
+details > summary { cursor: pointer; font-weight: 700; font-size: 14.5px; color: var(--accent-text); }
+.plbox { white-space: pre-line; background: #fbf3df; border-left: 3px solid var(--accent); border-radius: 6px; padding: 12px 14px; font-size: 14.5px; line-height: 1.5; margin: 8px 0; }
+code { font: 500 12.5px/1.3 var(--f-mono); background: rgba(255,255,255,.12); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
+.card:not(.dark) code { background: var(--chip); }
+
+</style>
+
+<header class="top wrap">
+  <span class="label">Michał Tobiasz · BodyLAB · Part 3 · Content</span>
+  <h1>Easy to film, every day. A lot of talking, a lot of proof.</h1>
+  <p class="lede">Your block with organic content ends here: everything is decided. <b>A ramp</b> (1 piece a day → 2 → 3), <b>lots of yapping</b> with your light, ranking trends, green screens over lab results and studies, voice-overs tested as trial reels, clips in the store and with clients, <b>minimum 3 carousels a week</b> alternating connection and value, and YouTube every 7–10 days. All copy is in English; before recording, use the "Translate to Polish" order in the Claude Code tab.</p>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">The plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="his">Moja historia</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Angles</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="car">Carousels</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Ready scripts</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="yt">YouTube</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Film it well</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude Code editor</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="The plan">
+    <div class="sec">
+      <div class="head"><span class="label">Your niche and your method</span><h2>Who you talk to and what you sell. Always the same.</h2><p class="soft">Everything you publish comes from here. If a piece doesn't speak to this person or teach part of the method, it doesn't get filmed.</p></div>
+      <div class="card niche">
+        <span class="label">Your niche</span>
+        <p class="nq">I help busy professionals and business owners over 30 settle the one debt they keep postponing — their body and their energy — with a plan read from their own bloodwork that fits a full calendar.</p>
+      </div>
+      <div class="g3">
+        <article class="card pil"><span class="pn">R</span><h3>Pillar 1 · Read</h3><p class="soft">Bloodwork and body composition before any plan: testosterone, SHBG, estradiol, cortisol, insulin/HOMA-IR, leptin, thyroid, vitamin D. The numbers decide, not the mirror.</p><p class="soft" style="font-style:italic">Why: as a bodybuilder I pushed my body with extremes and learned the hard way what hormones do when you ignore them.</p></article>
+        <article class="card pil"><span class="pn">F</span><h3>Pillar 2 · Fit</h3><p class="soft">The plan fits the calendar: 3 sessions × 45–60 min, normal food, business lunches, travel and late meetings included.</p><p class="soft" style="font-style:italic">Why: six forced meals a day got me on stage and wrecked my life. Today I run a business and a store — my plan has to fit a full day too.</p></article>
+        <article class="card pil"><span class="pn">S</span><h3>Pillar 3 · System</h3><p class="soft">A system that works on the days motivation doesn't: weekly check-in, protected sleep window, a default week and an emergency week.</p><p class="soft" style="font-style:italic">Why: "today I rest, tomorrow for sure" — for years. At the end of 2022 a lot fell apart. Routine brought me back, not motivation.</p></article>
+      </div>
+      <div class="g3">
+        <article class="card fase"><span class="tag a">Phase 1 · weeks 1–3</span><h3>Audit</h3><p class="soft"><b>What happens:</b> full lab panel, body composition, sleep/stress/calendar audit, baseline energy and focus scores.</p><p class="soft"><b>What he does:</b> labs, photos, 7 days of his real routine.</p></article>
+        <article class="card fase"><span class="tag a">Phase 2 · weeks 4–12</span><h3>Reset</h3><p class="soft"><b>What happens:</b> nutrition for insulin and leptin, 3 sessions/week, cortisol and sleep protocol, targeted supplementation; peptides/TRT only if labs show a reason. Retest at week 10–12.</p><p class="soft"><b>What he does:</b> runs the default week and reports every Sunday.</p></article>
+        <article class="card fase"><span class="tag a">Phase 3 · months 4–6</span><h3>Optimize</h3><p class="soft"><b>What happens:</b> body-composition push, cognitive performance, a maintenance system; second retest.</p><p class="soft"><b>What he does:</b> owns the system and decides about maintenance.</p></article>
+      </div>
+      <div class="card dark">
+        <span class="label">3 non-negotiables of BodyLAB Reset</span>
+        <ul class="l">
+          <li><b>Labs at the start and a retest:</b> no labs, no plan.</li>
+          <li><b>Weekly check-in:</b> weight trend, photos, energy/focus/sleep 1–10.</li>
+          <li><b>3 sessions a week + a protected sleep window.</b></li>
+        </ul>
+      </div>
+      <div class="card chip"><span class="label">Your line</span><p style="font-weight:700;font-size:17px">"You've paid every other debt. This is the last one — and you're hearing it from someone who was a bodybuilder and now puts his business first."</p><p class="soft" style="font-size:14px">It should appear, one way or another, in everything you publish. DM keyword: <b>RESET</b>.</p></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Your formats</span><h2>Yapping first. Proof always. The rest supports them.</h2><p class="soft">You have a light, a camera and a story. Talking to camera is the fastest format to film and the one that builds trust with busy people. Around it: proof (clients, labs) and reach formats (rankings, voice-over).</p></div>
+      <div class="g4">
+        <article class="card fmt big"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">You to camera with your light, one idea, 30–60 s. Car, office, store, kitchen. The backbone of your week.</p></article>
+        <article class="card fmt big"><span class="ico k-gs">GS</span><h3>Green screen</h3><p class="soft">You in front of an anonymised lab result, a study or a headline. Your technical authority, visible.</p></article>
+        <article class="card fmt"><span class="ico k-trend">RK</span><h3>Ranking / trend</h3><p class="soft">"Worst to best", tier lists, "I rated…". Supplements, breakfasts, habits. Pure reach.</p></article>
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voice-over</h3><p class="soft">Your clips + your voice. Each script with 3 hooks as trial reels; the winner may become a Follow Me Ad.</p></article>
+        <article class="card fmt"><span class="ico k-store">ST</span><h3>In the store</h3><p class="soft">Filmed at @kopalnia.supli_: shelves, customer questions, "what I'd never buy". Easy, authentic, sells both businesses.</p></article>
+        <article class="card fmt"><span class="ico k-client">CL</span><h3>With clients</h3><p class="soft">Lab review, check-in, a session or a chat — with permission. Proof and "coach at work" in one.</p></article>
+        <article class="card fmt"><span class="ico k-carc">CC</span><h3>Carousel connection</h3><p class="soft">Story, vulnerability, client stories, beliefs. Makes people follow you for who you are.</p></article>
+        <article class="card fmt"><span class="ico k-carv">CV</span><h3>Carousel value</h3><p class="soft">Labs, hormones, method, mistakes. Makes people save you and see you as the expert.</p></article>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">The ramp · how many pieces</span><h2>Start at 1 a day. Earn the 2. Then 3.</h2><p class="soft">You were blocked; we don't fix that with 3 posts a day from Monday. Each stage lasts at least 2 weeks and you only move up when the previous one was 100 % met (your report shows it). <b>Carousels: minimum 3 a week in every stage</b>, alternating connection and value. Trial-reel hook variants don't count as pieces: the piece is the winner. Film in batches, never daily from zero.</p></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:28px"></div>
+      <div class="card acc"><span class="label">Carousel rule</span><p><b>3 a week, alternating connection and value</b>, never two of the same type in a row. Connection = your story, vulnerability, a client story, a belief. Value = labs, hormones, method, mistakes. You have 24 ideas with slide structure in the <b>Carousels</b> tab and 100+ angles filtered by "Carousel connection" / "Carousel value" in <b>Angles</b>.</p></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Yapping · your main format</span><h2>Light on, phone up, one idea. 10 in one hour.</h2><p class="soft">Busy people trust a face that talks to them like a colleague. You don't need a script: you need a hook, one idea and a close.</p></div>
+      <div class="g3">
+        <div class="card"><h3>The structure (30–60 s)</h3><ol class="l"><li><b>Hook (0–3 s):</b> the sentence from the angle bank, word for word.</li><li><b>One idea:</b> one hormone, one mistake, one story. Never three.</li><li><b>Proof:</b> your past, a client, a study, a lab line.</li><li><b>Close:</b> a sentence to remember, or "Napisz RESET" (max 1 in 3).</li></ol></div>
+        <div class="card"><h3>Where to film</h3><ul class="l"><li><b>Car</b> (parked) before work: natural light, quiet.</li><li><b>Office / desk:</b> laptop behind you = "business owner".</li><li><b>Store:</b> shelves behind you = authority.</li><li><b>Kitchen:</b> food topics.</li><li><b>Gym:</b> only for training topics.</li></ul></div>
+        <div class="card dark"><span class="label">Batch session · 60 min</span><ul class="l"><li>Light on, mic on, same outfit or 2 outfits.</li><li>10 hooks from the bank on a sheet.</li><li>1 take each, max 2. Imperfect is fine.</li><li>Claude Code cuts, subtitles and exports (orders in the editor tab).</li></ul></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voice-over · Trial reels</span><h2>One script, three hooks, the data picks the winner.</h2><p class="soft">Instagram lets you publish a reel <b>as a trial</b>: only non-followers see it and it doesn't appear on your profile. Exactly what you preach: decide with data.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">The system</span>
+          <div class="steps">
+            <div><p><b>Record the body once:</b> clips (store, office, training) + your voice with the main idea.</p></div>
+            <div><p><b>Edit 3 versions</b> changing only the first 3 seconds: hook A, B and C.</p></div>
+            <div><p><b>Publish the 3 as trial reels</b> on the same day, a few hours apart.</p></div>
+            <div><p><b>After 24–72 h compare:</b> views, % watched to the end, shares and saves.</p></div>
+            <div><p><b>Share the winner to your profile</b>: that's the piece of the day.</p></div>
+            <div><p><b>Log it in your report:</b> which hook type won. In a month you'll know what your audience likes — and which one to use in Follow Me Ads.</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Your test log</h3>
+          <div class="tblwrap">
+            <table class="tbl">
+              <thead><tr><th>Script</th><th>Hook</th><th>Views</th><th>% full</th><th>Wins</th></tr></thead>
+              <tbody>
+                <tr><td>E.g.: the last debt</td><td>A · question</td><td>900</td><td>17 %</td><td></td></tr>
+                <tr><td></td><td>B · olive oil</td><td>2 400</td><td>29 %</td><td>✓</td></tr>
+                <tr><td></td><td>C · the 4 pm crash</td><td>1 300</td><td>21 %</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="soft" style="font-size:13.5px">Example numbers are illustrative. Log every test in your weekly report.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Follow Me Ads · Poland 30+</span><h2>The best organic voice-over of the week gets promoted. ≈10 € a day.</h2></div>
+      <div class="g2">
+        <div class="card acc">
+          <span class="label">How it works</span>
+          <ul class="l">
+            <li><b>The piece:</b> the voice-over that performed best organically (30–45 s, one angle, hook in 3 s, close "Obserwuj…", subtitles).</li>
+            <li><b>Where:</b> promote the Reel → objective "More profile visits".</li>
+            <li><b>Audience:</b> Poland, 30+ (30–55), Polish language, business/entrepreneurship/fitness interests, or Advantage+ with Polish.</li>
+            <li><b>Money:</b> ≈ 300 €/month, ≈ 10 €/day. <b>Evaluate after 2 days.</b></li>
+            <li><b>Angles that fit ads:</b> the unpaid debt, the 4 pm crash, ex-bodybuilder "more isn't better", 45-minute session.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Traffic light after 2 days</span>
+          <ul class="l">
+            <li><b>Under 1 € per follower:</b> keep and scale.</li>
+            <li><b>1–1,5 €:</b> change the hook and test again.</li>
+            <li><b>Over 1,5 €:</b> cut, next winner in.</li>
+          </ul>
+          <p class="soft" style="font-size:13.5px"><b>Meta rules:</b> never tell the viewer what's wrong with his body; first person or "most people"; no before/after. <b>No peptides, TRT or hormones in ads</b> (Meta rejects and can block the account) — those stay organic. The 3 ready ad scripts (EN + PL) are on the Funnel page.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Stories by blocks · every day</span><h2>6–10 stories a day in 4 blocks.</h2><p class="soft">Reels bring new people. Stories make them trust you and write. Every story reply is answered by hand.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Your day in 4 blocks</h3>
+          <ul class="l">
+            <li><b>Morning (2–3) · You:</b> your training before work, breakfast, the day's plan.</li>
+            <li><b>Midday (2–3) · Store / coach at work:</b> a customer question, a check-in read, an anonymised lab line.</li>
+            <li><b>Afternoon (1–2) · Proof:</b> a client result or message (with permission).</li>
+            <li><b>Evening (1–2) · Conversation:</b> poll or question box. Every answer is a conversation you open.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>A theme for each day</h3>
+          <ul class="l">
+            <li><b>Monday:</b> poll "What runs out first: time or energy?" Write to everyone who votes.</li>
+            <li><b>Tuesday:</b> <b>CTA sequence</b>.</li>
+            <li><b>Wednesday:</b> lab day: one marker explained + "Did you test it this year? YES / NO".</li>
+            <li><b>Thursday:</b> question box: "Ask me anything about hormones after 30".</li>
+            <li><b>Friday:</b> <b>CTA sequence</b>.</li>
+            <li><b>Saturday:</b> store or family/weekend without losing the week.</li>
+            <li><b>Sunday:</b> your own check-in + the YouTube video when there is one.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Tuesday and Friday · CTA sequence in 5 stories</span>
+        <ol class="l">
+          <li><b>The problem:</b> "Most business owners I talk to have one thing they keep postponing…"</li>
+          <li><b>Why it happens:</b> "Not laziness. No system that fits a full calendar — and nobody ever read their labs."</li>
+          <li><b>The proof:</b> a client result with permission (or your own labs/routine).</li>
+          <li><b>The offer:</b> "This month I'm opening [x] places in BodyLAB Reset."</li>
+          <li><b>The action:</b> "Napisz <b>RESET</b> and I'll tell you if it's for you." + question box.</li>
+        </ol>
+        <p style="font-size:14px">Every RESET goes into the CRM and gets answered by hand the same day. WhatsApp Status: Monday result, Wednesday lab, Friday places.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="view" id="v-his" hidden aria-label="Moja historia">
+    <div class="sec">
+      <div class="head"><span class="label">Series "Moja historia" · your 7-reel storyboard</span><h2>From the skinny 12-year-old to the guy who coaches busy people.</h2><p class="soft">This is your storyboard, respected. Below each reel: the English summary for Alberto and the <b>original Polish text</b> to record. We only changed what was necessary: (1) the final CTA keyword (RESET instead of START, optional), (2) reel 7 now names business owners so it matches the new niche, (3) one line in reel 6 about labs. Publish 1 → 7 every 2–3 days; reels 1, 4 and 7 are the pillars.</p></div>
+      <div class="card dark"><span class="label">Rules of the series (from your storyboard)</span><ul class="l">
+        <li><b>Edit structure:</b> hook = the client's inner voice → scene = your parallel weak moment → turn = what you really needed → soft close. <b>Never open with a trophy.</b></li>
+        <li><b>Every reel stands alone:</b> on a growing account most people see one reel first, so each one has its own closing with value.</li>
+        <li><b>Hard CTA only in reels 1 and 7.</b> The rest close with a lesson. Seven "write to me" in a row push cold audiences away.</li>
+        <li><b>Medals = background proof</b>, never the heart of the story. The heart is the boy on the couch and the guy whose life fell apart.</li>
+        <li><b>After the series:</b> 2–3 posts with a client's story using the same hook → scene → turn. Recycle pillars 1, 4 and 7 every few months.</li>
+      </ul></div>
+      <div id="story" style="display:grid;gap:12px"></div>
+    </div>
+  </section>
+
+  <!-- ANGLES -->
+  <section class="view" id="v-ang" hidden aria-label="Angles">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Your angle bank · 100+</span>
+        <h2>Everything you can say to a busy person over 30 who keeps postponing his body.</h2>
+        <p class="soft">16 families, each tied to the method. Every angle has 2 hooks ready to copy and the formats it fits. Use the filters: <b>Carousel connection</b> and <b>Carousel value</b> give you the 3 carousels of the week. Brackets [confirm] = only with a real client and permission.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">How to use it</span>
+        <ul class="l">
+          <li><b>Rotate families:</b> every week at least one lab/hormone family, one "busy life" family and one proof family.</li>
+          <li><b>1 angle = 3 pieces:</b> a yapping or voice-over (3 hooks), a carousel and a story.</li>
+          <li><b>Peptides/TRT:</b> technical and educational in organic content. Never in Meta ads.</li>
+          <li><b>Limit:</b> no invented numbers. Client data only real and with permission.</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Search (e.g. cortisol, CEO, store, TRT, pizza, sleep…)" aria-label="Search angles">
+        <div class="chips" id="ang-fams" role="group" aria-label="Families"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formats"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- CAROUSELS -->
+  <section class="view" id="v-car" hidden aria-label="Carousels">
+    <div class="sec">
+      <div class="head"><span class="label">Carousels · 3 a week alternating connection and value</span><h2>Your black PORADNIK template, one word in gold, 6–8 slides, close with RESET.</h2><p class="soft">Odd weeks: connection (Mon), value (Wed), connection (Fri). Even weeks: value, connection, value. Keep the style of "Niski testosteron? Sprawdź objawy": black background, white condensed type, one keyword in gold, numbered list. Your photo on the cover for connection; a lab line or a number on the cover for value.</p></div>
+      <div class="g2">
+        <div class="card dark"><span class="label">Connection</span><p>Story, vulnerability, client stories, beliefs. <b>Goal:</b> he sees himself in you and follows you for who you are. Close: "If this is you, napisz RESET".</p></div>
+        <div class="card acc"><span class="label">Value</span><p>Labs, hormones, method, mistakes. <b>Goal:</b> he saves and shares it. Close: "Save it — and if you want it applied to your labs, napisz RESET".</p></div>
+      </div>
+      <div class="sec"><div class="head"><span class="label">Connection carousels · 12 ideas</span><h2>Story, vulnerability, clients and beliefs.</h2></div><div class="cgrid">
+<article class="cslide cc"><span class="tp">Connection · Your story · start</span><p class="big">64 kg at 180 cm. <em>Age 12.</em></p><ol><li>Cover: your childhood photo + the headline.</li><li>"I looked at better-built classmates and thought one thing: I have to sort myself out."</li><li>I didn't dream about medals. I wanted to stop hiding in photos.</li><li>Home: a bench, a bar, dumbbells, push-ups.</li><li>Everyone starts from the same place: feeling not enough.</li><li>Today I coach busy people who feel that again at 35.</li><li>Close: "If this is you, napisz RESET".</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Your story · extremes</span><p class="big">I drank <em>olive oil</em> from a glass.</p><ol><li>Cover: the sentence, big.</li><li>6 forced meals a day, "until I threw up, and then more".</li><li>Extreme diets. Shortcuts most people should never touch.</li><li>An ego that thought it would win everything.</li><li>Lesson: more and harder isn't better. It's usually just shorter.</li><li>Why I'm the opposite with my clients now.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Vulnerability · pillar</span><p class="big">I saw myself falling <em>and pretended</em> I didn't.</p><ol><li>Cover: a quiet photo, the sentence.</li><li>Training without heart. Parties every week.</li><li>End of 2022: relationship, job, head — at the same time.</li><li>The worst part wasn't falling. It was pretending.</li><li>"If you feel you're letting go piece by piece and say 'it's not that bad yet' — I've been there."</li><li>No CTA. Just: "Naming it is the first step."</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · The turn</span><p class="big">No big revelation. <em>One decision.</em></p><ol><li>Cover: sunrise / empty gym.</li><li>Back to routine — not to the stage, to myself.</li><li>I left a comfortable job and bet on what I wanted.</li><li>Sleep, food, training, physio, people who pull you up.</li><li>Step by step, not overnight.</li><li>Close: "Don't wait for rock bottom."</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · The coach who didn't want to go</span><p class="big">"Today I rest. <em>Tomorrow for sure.</em>"</p><ol><li>Cover: you on the couch, gym bag by the door.</li><li>You think a coach always feels like training?</li><li>For years I said it and didn't go.</li><li>The difference isn't that I don't feel it. It's that I know what to do with it.</li><li>Motivation comes and goes. A system stays.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Medals</span><p class="big">I have medals. <em>My clients don't care.</em></p><ol><li>Cover: medal photo, slightly out of focus.</li><li>Years of prep, stage, Bucharest [confirm].</li><li>What I'm proudest of today is different.</li><li>A client who gets his confidence back at 40.</li><li>Why I stopped talking about competitions.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Business</span><p class="big">I put my business first. <em>And I'm in better shape.</em></p><ol><li>Cover: you in the store or at the laptop.</li><li>A coaching business, a supplement store, a full calendar.</li><li>I train 3 times a week. Not 6.</li><li>My meals fit my day, not the other way round.</li><li>Busy isn't the excuse. No system is.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Belief</span><p class="big">The last debt <em>nobody pays</em>.</p><ol><li>Cover: "You've paid everything. Except this."</li><li>Flat, car, company loan, kids' school — all planned.</li><li>Your body and energy: "from Monday" since years.</li><li>The interest: sleep, focus, patience, libido.</li><li>Paying it off doesn't take a camp. It takes a plan.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Client story [confirm]</span><p class="big">He runs a company of <em>[x] people</em>.</p><ol><li>Cover: before/after (with permission).</li><li>Who he is: age, job, hours a week.</li><li>What he said in the first message (literal).</li><li>What the labs showed (anonymised).</li><li>What we changed: 3 things.</li><li>His sentence today.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Client story woman 30+ [confirm]</span><p class="big">Two kids, a full-time job <em>and [result]</em>.</p><ol><li>Cover: before/after (with permission).</li><li>Her week before: no time, no energy.</li><li>What she had tried.</li><li>The plan that fit her calendar.</li><li>Her numbers (only real ones).</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · 500+ lessons</span><p class="big">After <em>500 transformations</em>, I know this.</p><ol><li>Cover: Sukcesy collage.</li><li>The ones who succeed aren't the most motivated.</li><li>They have a system and send their data.</li><li>They eat normally, not perfectly.</li><li>They don't quit after a bad week.</li><li>Close with RESET.</li></ol></article>
+<article class="cslide cc"><span class="tp">Connection · Why labs now</span><p class="big">Why I read your blood <em>before your diet</em>.</p><ol><li>Cover: a lab sheet (blurred).</li><li>As a bodybuilder I messed with my hormones.</li><li>I learned what happens when you ignore them.</li><li>Most busy men 35+ never had a proper panel.</li><li>Guessing is the most expensive plan.</li><li>Close with RESET.</li></ol></article>
+</div></div>
+<div class="sec"><div class="head"><span class="label">Value carousels · 12 ideas</span><h2>Labs, hormones, method and mistakes.</h2></div><div class="cgrid">
+<article class="cslide cv"><span class="tp">Value · Testosterone (your existing format)</span><p class="big">Low testosterone? <em>Check the signs.</em></p><ol><li>Cover (your PORADNIK style).</li><li>01 Signs: energy, libido, mood, belly fat, recovery.</li><li>02 Causes: sleep, body fat, stress, alcohol, age.</li><li>03 Tests: total, free, SHBG, estradiol, LH, prolactin.</li><li>04 Plan: what to fix first.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Labs</span><p class="big">The <em>12 markers</em> I check in every busy man 30+.</p><ol><li>Cover.</li><li>Testosterone total + free, SHBG.</li><li>Estradiol (sensitive), LH, prolactin.</li><li>Fasting glucose + insulin (HOMA-IR).</li><li>Cortisol (morning), TSH, fT3, fT4.</li><li>Lipids, vitamin D, ferritin, liver.</li><li>How to do the test (fasted, morning).</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Cortisol</span><p class="big">Your cortisol curve is <em>upside down</em>.</p><ol><li>Cover.</li><li>Normal: high at 8 am, low at night.</li><li>Busy owner: flat morning, high at 23:00.</li><li>What causes it: coffee, screens, late emails, no light.</li><li>4 fixes: morning light, coffee after breakfast, shutdown, sleep window.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Insulin</span><p class="big">The <em>4 pm crash</em> is your lunch.</p><ol><li>Cover.</li><li>What a carb-only lunch does to blood sugar.</li><li>Order: vegetables → protein → carbs.</li><li>10-minute walk after lunch.</li><li>3 office lunches that keep you sharp.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Leptin</span><p class="big">Why your diet <em>stopped working</em> at week 6.</p><ol><li>Cover.</li><li>Leptin: the "fuel gauge" hormone.</li><li>Long low-calorie diets lower it.</li><li>Hunger up, energy down, fat loss stalls.</li><li>Diet breaks and refeeds: when I use them.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Estradiol</span><p class="big">Men need estradiol. <em>In the right range.</em></p><ol><li>Cover.</li><li>What it does in men: libido, joints, mood, bones.</li><li>Belly fat → aromatase → more estradiol.</li><li>Too low is a problem too (the bodybuilder mistake).</li><li>When I test it and how I read it.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · TRT (technical)</span><p class="big">TRT without hype <em>and without fear</em>.</p><ol><li>Cover.</li><li>What TRT is (and what it isn't).</li><li>When it makes sense: labs + symptoms, with a doctor.</li><li>What comes first: sleep, fat loss, training.</li><li>Monitoring: hematocrit, estradiol, PSA, lipids.</li><li>Fertility: the talk to have before.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Peptides (technical)</span><p class="big">"Peptides": <em>three very different worlds</em>.</p><ol><li>Cover.</li><li>GLP-1 (semaglutide, tirzepatide): appetite, studies, muscle loss risk.</li><li>GH secretagogues (ipamorelin, CJC): what's claimed vs shown.</li><li>"Healing" peptides (BPC-157): mostly animal data.</li><li>How I discuss them inside the programme.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Method</span><p class="big">The <em>45-minute</em> session for busy people.</p><ol><li>Cover.</li><li>Warm-up 5 min.</li><li>2 compound lifts, 3 sets each.</li><li>2 supersets for the rest.</li><li>Done. 3 times a week.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Lifestyle</span><p class="big">Business lunch <em>without losing the afternoon</em>.</p><ol><li>Cover.</li><li>Order protein first, double vegetables.</li><li>Bread or dessert — pick one.</li><li>Alcohol: one glass, with food.</li><li>Walk the call afterwards.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Sleep</span><p class="big">Sleep is your <em>cheapest</em> performance upgrade.</p><ol><li>Cover.</li><li>What 5-hour nights do to testosterone and hunger.</li><li>The sleep window (same time ±30 min).</li><li>Last coffee before 14:00.</li><li>30-minute shutdown, phone out of the bedroom.</li><li>Close: save + RESET.</li></ol></article>
+<article class="cslide cv"><span class="tp">Value · Supplements (from the store)</span><p class="big">Supplements for 30+: <em>worth it or not</em>.</p><ol><li>Cover: you between the shelves.</li><li>Worth it: creatine, vitamin D (after testing), magnesium, omega-3.</li><li>Situational: caffeine, ashwagandha, protein powder.</li><li>Mostly useless: "test boosters", fat burners, detox.</li><li>Rule: labs first, then buy.</li><li>Close: save + RESET.</li></ol></article>
+</div></div>
+    </div>
+  </section>
+
+  <!-- SCRIPTS -->
+  <section class="view" id="v-gui" hidden aria-label="Ready scripts">
+    <div class="sec">
+      <div class="head"><span class="label">To film this week</span><h2>Seven scripts. Filmed by Sunday.</h2><p class="soft">Voice-overs come with 3 hooks for trial reels. Say it in your own words (and in Polish — use the translate order in the Claude Code tab), but keep the structure.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- YOUTUBE -->
+  <section class="view" id="v-yt" hidden aria-label="YouTube">
+    <div class="sec">
+      <div class="head"><span class="label">YouTube · every 7–10 days</span><h2>One easy video. Never a production.</h2><p class="soft">10–15 minutes, filmed in your batch session, one topic. From each video you get 3–4 clips for Instagram. Description: bodylabcoaching.eu/pl + "Napisz RESET na Instagramie". Polish title and spoken in Polish.</p></div>
+      <div class="g2">
+        <div class="card"><h3>10 titles for the first 3 months</h3><div id="yt"></div></div>
+        <div class="card dark">
+          <span class="label">The simple template (copy for every video)</span>
+          <ol class="l">
+            <li><b>0:00–0:30 · Hook:</b> the problem in one sentence + what they'll get if they stay.</li>
+            <li><b>0:30–1:30 · Who I am:</b> "I was a bodybuilder, now I run a business and coach busy people 30+. 500+ transformations."</li>
+            <li><b>1:30–9:00 · 3 points:</b> one per chapter, each with a lab line, study or client example on screen.</li>
+            <li><b>Middle:</b> "If you want me to read your labs, the link is in the description."</li>
+            <li><b>9:00–10:00 · What to do this week:</b> 1–3 actions.</li>
+            <li><b>Close:</b> "Napisz RESET na Instagramie."</li>
+          </ol>
+          <p class="soft" style="font-size:13.5px">Setup: your light, one camera at eye level, a lav mic, office or store background. One take with pauses — Claude Code cuts it.</p>
+        </div>
+      </div>
+      <div class="card"><div class="row" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3>YouTube description template</h3><button type="button" class="cp" data-cp="[Title]
+
+In this video: [1 sentence of what they'll learn].
+
+00:00 [Hook]
+00:30 Who I am
+01:30 [Point 1]
+04:00 [Point 2]
+06:30 [Point 3]
+09:00 What to do this week
+
+Want me to read your labs and build a plan that fits your calendar? Write RESET on Instagram: @michaltobiasz_coach
+Website: bodylabcoaching.eu/pl
+Supplements I actually use: @kopalnia.supli_">Copy</button></div>
+<pre style="white-space:pre-wrap;font-size:13px;background:var(--chip);padding:12px;border-radius:8px;margin:0">[Title]
+
+In this video: [1 sentence of what they'll learn].
+
+00:00 [Hook] · 00:30 Who I am · 01:30 [Point 1] · 04:00 [Point 2] · 06:30 [Point 3] · 09:00 What to do this week
+
+Want me to read your labs and build a plan that fits your calendar? Write RESET on Instagram: @michaltobiasz_coach
+Website: bodylabcoaching.eu/pl · Supplements I actually use: @kopalnia.supli_</pre></div>
+    </div>
+  </section>
+
+  <!-- RECORD -->
+  <section class="view" id="v-rec" hidden aria-label="Film it well">
+    <div class="sec">
+      <div class="head"><span class="label">Film it well</span><h2>You already have the light. Now: one setup, used every week.</h2><p class="soft">Your look is premium (black, gold, studio photo). Keep the content raw but clean: face lit, sound clear, lab or store behind you.</p></div>
+      <div class="g2">
+        <div class="card acc">
+          <span class="label">Your light / flash for yapping</span>
+          <ul class="l">
+            <li><b>Light in front of you, slightly to one side</b> (45°), a bit above eye level. Never a window behind you.</li>
+            <li>If it's a flash/LED panel: continuous mode, soft (diffuser), 50–70 % power — not harsh.</li>
+            <li><b>Phone at eye level</b> on a tripod, rear camera, 4K or 1080p at 30 fps.</li>
+            <li><b>Lav mic</b> for yapping and store clips. Voice-overs recorded separately at home.</li>
+            <li>Same spot every week = 2 minutes to set up.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">In the store · @kopalnia.supli_</span>
+          <ul class="l">
+            <li>Film when the store is quiet (opening or closing).</li>
+            <li>Shelves behind you, products in hand for rankings.</li>
+            <li>Ask regular customers if you can film a 20-second question (with permission).</li>
+            <li>Never film customers' faces without permission; never show receipts or screens.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="card"><h3>Green screen over labs</h3><ul class="l"><li>Anonymise the PDF first: blur name, PESEL, date of birth, lab ID.</li><li>Instagram editor → Green screen → choose the image, or CapCut "Remove background".</li><li>Point at one line at a time. Max 3 markers per video.</li><li>Studies: show the title and one graph, say the year and sample size.</li></ul></div>
+        <div class="card"><h3>Rankings / tier lists</h3><ul class="l"><li>Format: "worst to best", 5–7 items, 3–5 s each.</li><li>Product in hand or text on screen with a score.</li><li>Last item = the surprise (the one they don't expect).</li><li>Close: "What would you add? Comment."</li></ul></div>
+        <div class="card"><h3>With clients</h3><ul class="l"><li>Written permission first (template on the Profile page).</li><li>Formats: lab review on Zoom (screen recorded, anonymised), a check-in read, a session in the gym, a 30-second testimonial.</li><li>No face? Hands, back, screen only.</li></ul></div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Checklist before filming</h3>
+          <ul class="l check">
+            <li>Light on, in front, not behind.</li>
+            <li>Lens clean, phone fixed at eye level.</li>
+            <li>Mic on and tested.</li>
+            <li>Black / neutral outfit (BodyLAB look).</li>
+            <li>Client permissions in writing; lab PDFs anonymised.</li>
+            <li>Hook memorised (in Polish).</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <span class="label">Batch it</span>
+          <h3>2 filming sessions a week. The rest: publish and talk.</h3>
+          <ul class="l">
+            <li><b>Session 1 (90 min, home/office):</b> 10 yapping hooks + 1 green screen + voice-overs (+ YouTube every 7–10 days).</li>
+            <li><b>Session 2 (45 min, store / gym):</b> 1 ranking, 2 store clips, clips for voice-overs, a client piece if scheduled.</li>
+            <li><b>Carousels:</b> the 3 of the week in one go, same template.</li>
+            <li><b>Other days:</b> publish, stories, 2 × 50 conversations, welcomes and follow-ups.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAUDE -->
+  <section class="view" id="v-cla" hidden aria-label="Claude Code editor">
+    <div class="sec">
+      <div class="head"><span class="label">Claude Code as your editor</span><h2>You film. Claude Code edits on your computer. You approve.</h2><p class="soft">To keep up 1 → 2 → 3 pieces a day without editing at night: Claude Code works inside your content folder, cuts, subtitles and exports with ffmpeg following your manual (CLAUDE.md), and <b>translates every script into natural Polish before you record</b>. <b>Claude proposes, you decide and say it in your own words.</b> It never invents numbers and never touches your originals.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">Set it up once (30–45 minutes)</span>
+          <ol class="l"><li><b>Install Claude Code.</b> On Mac or Linux, open Terminal and paste: <code>curl -fsSL https://claude.ai/install.sh | bash</code>. On Windows, in PowerShell: <code>irm https://claude.ai/install.ps1 | iex</code>. Or install the Claude desktop app and use the <b>Code</b> tab.</li><li><b>Sign in.</b> Type <code>claude</code> in the terminal (or open the Code tab) and log in with your account.</li><li><b>Install ffmpeg.</b> It's what Claude uses to cut, subtitle and export video. Mac: <code>brew install ffmpeg</code>. Windows: <code>winget install ffmpeg</code>. Linux: <code>sudo apt install ffmpeg</code>. Or ask Claude: "install ffmpeg for me".</li><li><b>Create the folder and give access.</b> Create <b>Contenido-Michal</b> with 4 subfolders: <b>1-sin-editar/</b> (raw footage), <b>2-editados/</b> (what Claude exports), <b>3-recursos/</b> (BodyLAB logo, music, fonts, client photos with permission, anonymised lab PDFs) and <b>4-referencias/</b> (videos to imitate, each with a .txt: what to copy and what not). Open Claude Code inside it (<code>cd Contenido-Michal</code> then <code>claude</code>) and accept access.</li><li><b>Install Alberto's skills.</b> Copy the skill folders Alberto gave you into <code>~/.claude/skills/</code> (on Windows <code>C:\Users\your-user\.claude\skills\</code>). Restart Claude Code and type <code>/skills</code> to check they appear.</li><li><b>Paste your CLAUDE.md.</b> Create <b>CLAUDE.md</b> in the root of Contenido-Michal with the text on the right. Claude reads it every time you open the folder: it's its manual of how you edit and how you speak.</li></ol>
+        </div>
+        <div class="card">
+          <span class="label">CLAUDE.md · paste it in the root of Contenido-Michal</span>
+          <pre id="claudemd" style="white-space:pre-wrap;font-size:12.5px;line-height:1.45;max-height:380px;overflow:auto;background:var(--chip);padding:12px;border-radius:8px;margin:0"></pre>
+          <button type="button" class="cp" style="justify-self:start" id="cpClaude">Copy CLAUDE.md</button>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Routine to train Claude · every week</span>
+        <ol class="l">
+          <li><b>Write or pick</b> the week's scripts (bank, Ready scripts) and run order 1 to get them in natural Polish.</li>
+          <li><b>Film</b> in batches and drop everything in 1-sin-editar/ with a clear name.</li>
+          <li><b>Claude edits</b> with the orders below and exports to 2-editados/.</li>
+          <li><b>Give concrete feedback</b>: "bigger subtitles", "hook comes in late", "cut this silence", "this Polish sounds translated". Never just "I don't like it".</li>
+          <li><b>Save what it learned</b>: what worked goes to "Examples" and what you corrected to "Lessons" in CLAUDE.md (order 9). In 3–4 weeks it edits like you.</li>
+          <li><b>Sundays</b>: ask it to read your best-performing examples and suggest what to repeat next week.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">9 ready orders</span><h2>Copy, change what's in [brackets] and paste it into Claude Code.</h2></div>
+      <div class="g2" id="orders"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var K = { story: ["Moja historia reel", "k-story"], yap: ["Yapping", "k-yap"], vo: ["Voice-over", "k-vo"], gs: ["Green screen", "k-gs"], trend: ["Ranking / trend", "k-trend"], store: ["In the store", "k-store"], client: ["With clients", "k-client"], carc: ["Carousel connection", "k-carc"], carv: ["Carousel value", "k-carv"] };
+  var STAGES = [
+    { t: "Stage 1 · weeks 1–2 · 1 piece a day", s: "4 reels + 3 carousels (connection, value, connection). Story reels 1–4 go out here, every 2–3 days.", plan: [["story"], ["carc"], ["yap"], ["carv"], ["story"], ["carc"], ["vo"]] },
+    { t: "Stage 2 · weeks 3–4 · 2 pieces a day", s: "11 reels + 3 carousels (value, connection, value). Story reels 5–7 finish here; yapping becomes the backbone.", plan: [["story", "carv"], ["yap", "client"], ["vo", "carc"], ["gs", "yap"], ["story", "carv"], ["trend", "store"], ["yap", "vo"]] },
+    { t: "Stage 3 · week 5 onwards · 3 pieces a day", s: "17 reels + 4 carousels (connection, value, connection, value). Story slots become client stories with the same hook → scene → turn.", plan: [["yap", "vo", "carc"], ["client", "gs", "yap"], ["store", "yap", "carv"], ["vo", "trend", "yap"], ["client", "gs", "carc"], ["yap", "store", "trend"], ["vo", "yap", "carv"]] }
+  ];
+  var YT = [
+    ["Badania krwi po 30-tce: 12 wyników, które sprawdzam u każdego zapracowanego faceta", "EN: Blood tests after 30 — the 12 markers I check in every busy man. Your best first video: pillar Read.", true],
+    ["Byłem kulturystą. Dziś prowadzę firmę i trenuję 3 razy w tygodniu", "EN: I was a bodybuilder, now I run a business and train 3×/week. Your story in 10 minutes.", true],
+    ["Spadek energii o 16:00: insulina, kortyzol i co z tym zrobić", "EN: The 4 pm crash — insulin, cortisol and what to do."],
+    ["Testosteron całkowity vs wolny: dlaczego „norma” nie znaczy dobrze", "EN: Total vs free testosterone — why 'normal' isn't optimal."],
+    ["Czytam wyniki badań klienta (anonimowo): co zmieniłem i dlaczego", "EN: I read a client's labs (anonymised) — coach at work."],
+    ["TRT bez mitów: kiedy ma sens, a kiedy najpierw sen i redukcja", "EN: TRT without myths — technical, educational."],
+    ["Peptydy: co mówią badania, a co to marketing", "EN: Peptides — what studies say vs marketing."],
+    ["Trening 45 minut dla zapracowanych: cały plan na tydzień", "EN: The 45-minute session — full weekly plan."],
+    ["Ranking suplementów dla 30+: od najgorszego do najlepszego (prosto ze sklepu)", "EN: Supplement ranking for 30+, filmed in the store."],
+    ["Dlaczego dieta przestaje działać po 6 tygodniach (leptyna)", "EN: Why your diet stops working at week 6 — leptin."]
+  ];
+  var FMTS = ["Yapping", "Voice-over", "Green screen", "Ranking / trend", "In the store", "With clients", "Moja historia", "Carousel connection", "Carousel value", "YouTube", "Stories"];
+  var FAMS = [
+    { n: "The unpaid debt", d: "The core message: they paid everything except their body and energy." },
+    { n: "Reading bloodwork", d: "Read · labs before any plan, 'normal' vs optimal." },
+    { n: "Testosterone", d: "Read · total, free, SHBG, what lowers it, what doesn't help." },
+    { n: "Cortisol", d: "Read + System · stress, sleep, the calendar of a busy owner." },
+    { n: "Insulin", d: "Fit · lunch, the 4 pm crash, fasting insulin." },
+    { n: "Leptin", d: "Fit · why diets stall, hunger, undereating all day." },
+    { n: "Estradiol", d: "Read · men need it in range; women 30+ and the cycle." },
+    { n: "Cognition & productivity", d: "The payoff at work: focus, decisions, energy." },
+    { n: "Business owner, no time", d: "Fit · 45-minute sessions, travel, crazy weeks." },
+    { n: "Ex-bodybuilder", d: "You're hearing it from someone who was one. Lessons, not medals." },
+    { n: "Myths", d: "What busy people believe and what actually works." },
+    { n: "Peptides & TRT (technical)", d: "Educational, organic only. Never in Meta ads." },
+    { n: "Cases · 500+ transformations", d: "Proof. Real clients, with permission." },
+    { n: "Store & supplements", d: "Filmed at @kopalnia.supli_: honest, from behind the counter." },
+    { n: "Life without a camp", d: "Fit · eating out, alcohol, sleep, holidays, process." },
+    { n: "Objections", d: "What he'll say before starting, answered before." }
+  ];
+  var CC = "Carousel connection", CV = "Carousel value", Y = "Yapping", V = "Voice-over", G = "Green screen", R = "Ranking / trend", S = "In the store", C = "With clients", H = "Moja historia", T = "YouTube", ST = "Stories";
+  var ANG = [
+    [0, "The last debt", ["You've paid off the flat, the car and the company loan. One debt is still open: your body.", "Every debt in your life has a plan. Except this one."], [Y, V, CC]],
+    [0, "Postponed since 2019", ["'From Monday' has been your start date for five years.", "Most busy people have postponed their body longer than any invoice."], [Y, V, CC]],
+    [0, "Your calendar has everyone but you", ["Your calendar has meetings with everyone except the person who runs the company.", "Book yourself 3 × 45 minutes a week. Treat it like your most important client."], [Y, CV, ST, CC]],
+    [0, "Interest on the debt", ["Postponing your body has interest: energy, sleep, focus. You pay it every afternoon.", "The longer you postpone it, the more expensive it gets. Here's the bill."], [V, CV]],
+    [0, "You built a company, not a body", ["You know how to build a company from zero. The body works the same way: system, data, consistency.", "If you ran your company the way you run your body, it would be bankrupt."], [Y, R]],
+    [0, "Your kids copy you", ["Your kids won't remember your advice about health. They'll copy what you do.", "I want my clients to keep up with their kids, not watch from the bench."], [Y, CC]],
+    [0, "Not 25 anymore", ["At 25 you could sleep 5 hours and still train. At 38 the bill arrives.", "It's not age. It's 13 years of postponed maintenance."], [V, Y, CC]],
+    [1, "Labs before the plan", ["I don't write a single meal until I've seen your labs.", "Most plans are written for an average person. Your labs aren't average."], [Y, G, CV]],
+    [1, "The panel I order", ["The 12 markers I check in every busy man over 30.", "Save this before your next blood test: what to ask the lab for."], [CV, G]],
+    [1, "'Normal' isn't optimal", ["'Your results are normal' doesn't mean they're good for you.", "Lab ranges are built on average people. Average isn't your goal."], [G, Y, CV]],
+    [1, "Reading a panel live", ["Let's read a 41-year-old CEO's blood test together (anonymised). [confirm]", "Look at this line. This is why he felt flat with 'normal' testosterone."], [G, C, T]],
+    [1, "Retest day", ["Week 12 retest: what changed in the labs and what didn't.", "The best moment of my job: the retest."], [C, ST, CC]],
+    [1, "Vitamin D in Poland", ["October to March in Poland: why vitamin D is on every panel I order.", "The first line I look at on a Polish blood test."], [G, S, CV]],
+    [1, "How to do the test", ["Fasted, morning, no hard training the day before: how to do the blood test so it's worth reading.", "Most people waste their blood test by doing it wrong."], [CV, Y]],
+    [2, "Total vs free", ["Your total testosterone can be fine and you can still feel flat. Meet SHBG.", "Total testosterone is the headline. Free testosterone is the story."], [G, CV]],
+    [2, "7 signs men ignore", ["Low testosterone isn't only about libido. 7 signs men over 30 ignore.", "Before blaming age, check these 7 things."], [CV, V]],
+    [2, "Sleep and testosterone", ["One week of 5-hour nights lowered testosterone in young men by 10–15 % in a study. Imagine 10 years of it.", "The cheapest testosterone booster: 7 hours of sleep."], [Y, CV, G]],
+    [2, "Belly fat and testosterone", ["Fat tissue converts testosterone into estradiol. Losing the belly is a hormonal strategy.", "Why fat loss is the first 'testosterone booster' I prescribe."], [V, CV]],
+    [2, "Booster ranking", ["I ranked the 'testosterone boosters' on my store shelf. Most are useless.", "Tribulus, ashwagandha, zinc, D3: which ones actually do something?"], [R, S]],
+    [2, "Stress vs testosterone", ["Cortisol and testosterone sit on a seesaw. Your calendar decides which one wins.", "Chronic stress is the testosterone killer nobody measures."], [Y, G]],
+    [2, "Training for hormones", ["3 heavy sessions a week beat 6 junk sessions for your hormones.", "What actually raises testosterone in the gym, and what's a myth."], [CV, Y]],
+    [3, "Wired at night, dead in the morning", ["Wired at night, dead in the morning: that's a cortisol curve upside down.", "Cortisol should peak at 8 am, not at 11 pm."], [V, CV]],
+    [3, "Coffee on an empty stomach", ["Three coffees before lunch and no breakfast: the cortisol trap of every business owner.", "When I drink my first coffee — and why it's not at 6 am."], [Y, ST]],
+    [3, "Stress belly", ["More training won't fix stress belly fat. Lower cortisol will.", "Why some busy people diet perfectly and the waist doesn't move."], [G, CV]],
+    [3, "Emails at 23:00", ["Answering emails at 23:00 costs you more than sleep. It costs you tomorrow.", "The 30-minute shutdown routine I give every CEO client."], [Y, CV]],
+    [3, "HIIT on top of stress", ["When a stressed business owner adds HIIT 6 times a week, cortisol wins.", "More training isn't the answer when your life already is the stress."], [Y, V]],
+    [3, "How cortisol is measured", ["Blood, saliva or urine: how cortisol is really measured and why one morning test can lie.", "What a 4-point saliva test shows that a blood test can't."], [G, CV]],
+    [3, "2 minutes between meetings", ["2 minutes between meetings that calm you down more than a smoke break.", "The breathing drill I do before a hard call."], [Y, ST]],
+    [4, "The 4 pm crash", ["The 4 pm crash isn't laziness. It's your lunch.", "The lunch that kills your afternoon — and the one that saves it."], [V, CV]],
+    [4, "Fasting insulin", ["Your glucose is fine. Have you ever checked your fasting insulin?", "HOMA-IR: the number that can show trouble years before your glucose does."], [G, CV]],
+    [4, "Order of eating", ["Same lunch, different order, different blood sugar.", "Vegetables, protein, then carbs: the simplest hack for office lunches."], [Y, CV]],
+    [4, "Business lunch", ["How to order at a business lunch without losing your afternoon.", "Pizza with a client? Here's how I'd do it."], [Y, ST]],
+    [4, "Walk after lunch", ["A 10-minute walk after lunch does more for your blood sugar than you think.", "Phone calls? Take them walking after lunch."], [Y, CV]],
+    [4, "The candy bowl", ["The candy bowl on the office desk costs more than you think.", "Why the 3 pm snack makes you hungrier at 5."], [V]],
+    [4, "Carbs aren't evil", ["I'm not taking your bread away. I'm moving it.", "Carbs in the evening help some busy people sleep better. Here's when."], [Y, CV]],
+    [5, "Diet stalls at week 6", ["Why your diet worked for 6 weeks and then stopped: leptin.", "The hormone that decides when your body lets go of fat."], [V, CV]],
+    [5, "Diet breaks", ["Why I sometimes add calories in the middle of a cut.", "The diet break most busy people never try."], [CV, Y]],
+    [5, "Bad night, hungry day", ["After a bad night you're hungrier. It's not weakness, it's leptin and ghrelin.", "Sleep less, eat more: the hormones behind it."], [CV, Y]],
+    [5, "Leptin resistance", ["More fat should mean more leptin and less hunger. Unless the brain stops listening.", "Leptin resistance explained in 60 seconds."], [G, T]],
+    [5, "Yo-yo dieting", ["Every crash diet makes the next one harder. Here's why.", "Why 1,200 calories is the worst plan for a busy man."], [V, CV]],
+    [5, "Leptin on the panel", ["Why I add leptin to the panel when a client 'can't lose weight'.", "Leptin on a blood test: what high and low mean."], [G]],
+    [5, "Undereating all day", ["Most busy people don't overeat. They undereat all day and overeat at night.", "No breakfast, no lunch, then the fridge at 22:00: the pattern I see most."], [Y, ST, CC]],
+    [6, "Men need estradiol", ["Estradiol isn't a 'female hormone'. Men need it too — in range.", "Too low or too high: both hurt libido and joints."], [G, CV]],
+    [6, "Belly = estrogen factory", ["Belly fat is an estrogen factory. That's why losing it changes everything.", "Aromatase explained with one picture."], [V, CV]],
+    [6, "Weekend beers", ["What weekend beers do to your estradiol.", "Alcohol, belly fat, estradiol: the triangle I see in many men 35+."], [Y, CV, CC]],
+    [6, "Women 30+ and the cycle", ["Women 30+: estradiol and progesterone change across the cycle — and so should the training week.", "Why I plan female clients' hard sessions around the cycle."], [CV, C]],
+    [6, "The bodybuilder mistake", ["Crushing estradiol with pills: a bodybuilder mistake I now see in normal men.", "I did it in my competition years. Here's why I don't recommend it."], [Y, G]],
+    [6, "When I test E2", ["Water retention, mood swings, puffy face: when I check estradiol.", "When a man needs an E2 test — and when he doesn't."], [CV]],
+    [6, "Sensitive vs standard test", ["Sensitive estradiol test vs standard: why it matters for men.", "The E2 line on your lab sheet: how I read it."], [G]],
+    [7, "Brain fog", ["My best decisions used to end at noon. Here's how I got the afternoons back.", "Brain fog is a performance problem, not a character flaw."], [V, Y]],
+    [7, "Train before hard meetings", ["A 45-minute session before work is my best productivity tool.", "Why I train before hard meetings."], [Y, ST, CC]],
+    [7, "Sleep and decisions", ["After one bad night your reaction time looks like you've had a drink. Would you sign a contract like that?", "Sleep is the cheapest performance upgrade in your company."], [Y, CV]],
+    [7, "Coffee number four", ["Coffee number four isn't focus. It's borrowed energy.", "How I use caffeine like a tool, not a crutch."], [Y, CV]],
+    [7, "Decision fatigue", ["Decide your meals once a week. Save your decisions for the business.", "The default menu: why my clients eat the same 3 breakfasts."], [CV, Y]],
+    [7, "Hormones and leadership", ["Drive, confidence, patience: what your hormones do to how you lead.", "Low energy at work isn't always the job."], [V, G]],
+    [7, "Energy as a KPI", ["Every client rates energy and focus 1–10 each week. It moves before the scale does.", "The KPI I track before weight: energy."], [C, CV]],
+    [8, "The 45-minute session", ["The 45-minute session I give to people who 'have no time'.", "3 × 45 minutes a week is about 2 % of your week."], [Y, CV]],
+    [8, "Business trip week", ["Business trip? My 20-minute hotel-room session.", "Airports, hotels, conferences: how my clients keep the week."], [Y, ST]],
+    [8, "The emergency week", ["Every client has a plan for crazy weeks. Most coaches pretend they don't exist.", "Bad week at work? The minimum that keeps you on track."], [CV, Y]],
+    [8, "Delegate it", ["You delegate accounting. Why are you still planning your own nutrition?", "You pay experts for everything in your company except your body."], [V, Y]],
+    [8, "Training in the calendar", ["My training is in the calendar like a client meeting. It never gets cancelled.", "7:00 training, phone in the locker."], [ST, Y]],
+    [8, "Weekend with the family", ["Weekend with the kids, Monday back on track: how I plan it.", "Your weekend shouldn't erase your week."], [Y, CV, CC]],
+    [8, "ROI of 3 hours", ["Calculate the ROI of 3 hours of training a week on your business.", "The best investment in your company isn't software."], [V, R]],
+    [9, "Olive oil from a glass", ["I drank olive oil from a glass to hit my calories. Don't.", "What 10 years of bodybuilding taught me about what NOT to do."], [V, Y, CC]],
+    [9, "Medals don't matter", ["I have medals. My clients don't care, and they're right.", "The day I realised the stage didn't make me happier."], [Y, CC]],
+    [9, "Shortcuts and their price", ["I used shortcuts most people should never touch. Here's what they cost.", "Why I talk about enhanced bodybuilding openly — and why it's not for you."], [Y, G]],
+    [9, "From 6 forced meals to 3", ["Six forced meals a day 'until I threw up'. Busy people need the opposite.", "From 6 meals to 3: what I changed when I started running a business."], [V, CC]],
+    [9, "64 kg at 180 cm", ["64 kg at 180 cm, age 12. I just wanted to stop hiding in photos.", "I wasn't born with genetics. I was born skinny."], [H, Y, CC]],
+    [9, "The coach who didn't want to go", ["You think a coach always feels like training? I don't.", "'Today I rest, tomorrow for sure.' I said it for years."], [H, Y, CC]],
+    [9, "Stage prep vs business week", ["How I trained for the stage vs how I train now with a business.", "Same guy, two lives: competition prep vs a business owner's week."], [CV, T, CC]],
+    [10, "Dry rice and chicken", ["You don't need dry rice and chicken to look good.", "Steak, pizza, a business lunch — and still progressing."], [Y, CV]],
+    [10, "Cardio for the belly", ["Hours of cardio won't fix a stress belly.", "Your belly doesn't care how many crunches you do."], [G, Y]],
+    [10, "'It's my age'", ["'It's my age.' Usually it's your sleep, your stress and your lunch.", "40 isn't the problem. 15 years of postponing is."], [V, Y]],
+    [10, "Fasting + 4 coffees", ["Intermittent fasting plus 4 coffees isn't a strategy. It's a cortisol spike.", "Fasting works for some busy people and wrecks others. Here's how I decide."], [G, CV]],
+    [10, "More supplements", ["More supplements won't fix bad sleep. I say this as someone who works in a supplement store.", "Supplements are 5 % of the result. Here's the other 95 %."], [S, Y]],
+    [10, "Detox", ["Your liver detoxes. Juice cleanses don't.", "I ranked 'detox' products. Spoiler: you don't need any."], [R, G]],
+    [10, "Failure every set", ["Training to failure every set is how I trained for the stage. A busy 40-year-old needs something else.", "Hard, not destroyed: how intense your sessions should be."], [Y, CV]],
+    [11, "What TRT is", ["TRT explained in 60 seconds, without hype and without fear.", "TRT isn't 'steroids for the gym'. Here's the difference."], [G, T, CV]],
+    [11, "When TRT makes sense", ["When TRT makes sense — and when sleep and fat loss come first.", "I don't start with TRT. I start with your labs."], [Y, G]],
+    [11, "TRT monitoring", ["On TRT? These markers have to be checked: hematocrit, estradiol, PSA, lipids.", "TRT without monitoring is the real danger."], [CV, G]],
+    [11, "The peptide map", ["Peptides: what they are, what studies say and what's internet hype.", "BPC-157, ipamorelin, semaglutide: three very different things people call 'peptides'."], [G, T]],
+    [11, "GLP-1 and muscle", ["GLP-1 drugs and muscle: why people lose muscle on them and how to prevent it.", "On a GLP-1? Protein and strength training aren't optional."], [G, CV]],
+    [11, "TRT and fertility", ["TRT and fertility: the conversation most men have too late.", "Planning kids? Read this before any TRT conversation."], [CV]],
+    [11, "90 days natural first", ["Before any hormone: 90 days of sleep, training and fat loss. Then we look again.", "The 90-day test I run before any TRT conversation."], [Y, CV]],
+    [12, "What 500+ have in common", ["500+ transformations. The 3 things all of them had in common.", "After 500 transformations, here's what actually predicts success."], [Y, CC]],
+    [12, "The CEO case [confirm]", ["[Name], [age], runs a company of [x] people: [result] in [weeks].", "He had 'no time'. Here's what his week looked like."], [C, CC]],
+    [12, "The woman 30+ case [confirm]", ["[Name], [age], [job]: from [problem] to [result].", "Two kids, a full-time job and [result]."], [C, CC]],
+    [12, "Two blood tests, 12 weeks apart", ["Same man, two blood tests, 12 weeks apart (anonymised, with permission).", "His retest after 12 weeks: what moved."], [G, C]],
+    [12, "The client who came back", ["He left, came back two years later, and this time it stuck. Why. [confirm]", "Former client, second round: what changed."], [CC, Y]],
+    [12, "Client messages", ["Messages from clients that make my day (with permission).", "'[client message]' — the kind of message I live for."], [ST, C]],
+    [12, "The one who didn't make it", ["A client who didn't make it — and what I learned.", "Not every transformation works. This is why."], [Y, CC]],
+    [13, "Ranking for 30+", ["Supplements for busy people over 30, ranked worst to best.", "Tier list: what I'd buy with 100 zł."], [R, S]],
+    [13, "What I actually take", ["What I actually take every day — I work in a supplement store, I've tried everything.", "My daily stack costs less than you think."], [S, Y, CC]],
+    [13, "What I'd never sell you", ["5 products on my shelf I'd never sell you.", "Fat burners: the honest answer from behind the counter."], [S, R]],
+    [13, "The counter question", ["The question I hear most at the counter from men over 35.", "'What do you have for energy?' My answer surprises people."], [S, Y]],
+    [13, "Creatine for managers", ["Creatine isn't only for gym bros. Why I recommend it to 40-year-old managers.", "Creatine and the brain: what the research suggests."], [S, CV]],
+    [13, "Magnesium and sleep", ["Magnesium: which form, when, and for whom.", "The 2 supplements I suggest for sleep before anything else."], [S, CV]],
+    [13, "Test before you buy", ["Before you buy vitamin D, check your level. I say this as a seller.", "Test, don't guess: why I send customers for labs."], [S, Y]],
+    [14, "Steak and pizza", ["Steak, pizza and still progressing: how I eat out 3 times a week.", "The restaurant rule I give every client."], [Y, ST, CC]],
+    [14, "Weddings and name days", ["Polish weddings, name days and business dinners: the survival guide.", "Wine with clients: what each glass costs you."], [CV, Y]],
+    [14, "The sleep window", ["My non-negotiable: the sleep window. How I protect it.", "Phone out of the bedroom: the hardest and best change."], [Y, CV]],
+    [14, "The process is the goal", ["The process is the goal, not the finish line.", "A shape you can't keep is worthless."], [H, Y, CC]],
+    [14, "Holidays", ["Holiday week: the 3 things I keep and everything I let go.", "Coming back from holidays without 'starting again'."], [CV]],
+    [14, "Saturday ruins the week", ["Your week isn't ruined on Monday. It's ruined on Saturday.", "Friday evening planning: 3 decisions."], [Y]],
+    [14, "Steps on a desk day", ["8,000 steps on a desk day: how my clients do it.", "Walking meetings: my favourite business hack."], [Y, ST]],
+    [15, "'No time'", ["'I don't have time.' You have 3 × 45 minutes. You don't have a system.", "Busy people don't need more time. They need fewer decisions."], [Y, V, CC]],
+    [15, "'Too expensive'", ["'1,300 zł is a lot.' How much does one more year of feeling like this cost?", "You spend more on your car's service than on your body."], [Y]],
+    [15, "'Tried everything'", ["'I've tried everything.' Did anyone read your labs first?", "Most people tried diets. Few tried a system."], [Y, V, CC]],
+    [15, "'Too old'", ["'I'm 45, it's too late.' It's never too late — it just gets more expensive.", "My oldest client started at [age]. [confirm]"], [Y]],
+    [15, "'After this project'", ["'After this project.' There's always another project.", "The perfect moment never comes in business. Same with your body."], [Y, CC]],
+    [15, "'Online won't work for me'", ["'Online coaching won't work for me.' Your labs travel by email.", "I don't need to stand next to you. I need your data every Sunday."], [Y]],
+    [15, "'I need to talk to my wife'", ["'I need to talk to my wife.' Great — here's what to tell her.", "Your partner wants you healthy too."], [Y]]
+  ];
+  var SCRIPTS = [
+    { k: "vo", t: "The last unpaid debt", clip: "You in the store, at the laptop, a short session, a business lunch, a 1-second competition photo, you to camera at the end.", hooks: ["A · You've paid off the flat, the car and the company loan. One debt is still open.", "B · Most business owners I know have postponed their body longer than any invoice.", "C · I was a bodybuilder. Now I run a business. Here's what I learned about the last debt."], lines: [["3–15 s", "Most people over 30 I work with have their life in order: company, team, family. The one thing they keep postponing is their own body and energy.", "Text: THE LAST DEBT"], ["15–30 s", "I know it from the inside. I had medals and still let everything slide. What brought me back wasn't motivation — it was a system that fits a full calendar.", "Text: 3 × 45 MIN · NORMAL FOOD · YOUR LABS"], ["30–40 s", "Three sessions a week, normal food and decisions based on your labs. If you want to pay off that last debt, write RESET.", "Text: NAPISZ RESET"]] },
+    { k: "yap", t: "The 4 pm crash is your lunch", clip: "You to camera with your light, at your desk. Optional: a plate photo.", lines: [["0–3 s", "The 4 pm crash isn't laziness. It's your lunch.", "Text: 16:00 = LUNCH"], ["3–15 s", "A big plate of carbs, no protein, coffee on top. Blood sugar up, then down, right when you need your head for the afternoon meetings.", ""], ["15–30 s", "Try this tomorrow: vegetables first, then protein, then carbs. Same lunch, different order. And take your first call walking.", ""], ["30–40 s", "Watch how your 4 pm feels. Save this for tomorrow's lunch.", "Text: SAVE"]] },
+    { k: "gs", t: "'Normal' testosterone, flat man", clip: "Green screen: anonymised lab sheet with total testosterone, SHBG and free testosterone highlighted.", lines: [["0–3 s", "His testosterone is 'normal'. So why does he feel flat? Look at this line.", "Behind: the lab sheet"], ["3–15 s", "Total testosterone in range. But SHBG is high — it binds testosterone, so the free part, the one you actually use, is low.", "Arrow on SHBG and free T"], ["15–30 s", "This is why I never stop at the first line. We worked on sleep, body fat and training first, then retested.", ""], ["30–40 s", "If you want me to read your labs, write RESET.", "Text: NAPISZ RESET"]] },
+    { k: "trend", t: "Supplements for 30+ · worst to best", clip: "In the store, product in hand, score on screen for each, 3–5 s per product.", lines: [["0–3 s", "Supplements for busy people over 30, ranked worst to best. From behind the counter.", "Text: RANKING"], ["3–20 s", "7: fat burners. 6: 'test boosters'. 5: detox. 4: ashwagandha — situational. 3: omega-3. 2: vitamin D — after testing. 1: creatine.", "Score on each product"], ["20–30 s", "The surprise: the best 'supplement' isn't on the shelf. It's 7 hours of sleep.", ""], ["30–35 s", "What would you add? Comment.", "Text: COMMENT"]] },
+    { k: "yap", t: "You're hearing it from an ex-bodybuilder", clip: "You to camera with your light. At the end, an old competition photo for one second.", lines: [["0–3 s", "I drank olive oil from a glass to hit my calories. Here's what I'd tell my younger self.", "Text: DON'T"], ["3–15 s", "Six forced meals a day, extreme diets, shortcuts most people should never touch. It got me on stage and almost cost me everything else.", ""], ["15–30 s", "Today I train three times a week, eat normally and run a business. I look and feel better than in my competition years. More and harder isn't better. It's usually just shorter.", ""], ["30–40 s", "Follow if you want results without turning life into a camp.", "Text: FOLLOW"]] },
+    { k: "client", t: "Coach at work · reading a check-in", clip: "Screen recording of an anonymised check-in (weight trend, energy 1–10, photos blurred) with your face in the corner.", lines: [["0–3 s", "This is a business owner's Sunday check-in. Here's what I change — and what I don't.", "Text: CHECK-IN"], ["3–15 s", "Weight trend flat for 2 weeks, but energy went from 5 to 7 and waist is down. He wanted to cut calories.", ""], ["15–30 s", "I don't. The waist and energy say it's working; the scale is water from a travel week. We keep the plan and protect his sleep window.", ""], ["30–40 s", "This is what you get every Sunday. Write RESET.", "Text: NAPISZ RESET"]] },
+    { k: "store", t: "The counter question", clip: "In the store, a (real, with permission) customer or you re-telling the question.", lines: [["0–3 s", "The question I hear most at the counter from men over 35: 'what do you have for energy?'", "Text: 'FOR ENERGY?'"], ["3–15 s", "My honest answer: probably nothing on this shelf — until we know why you're tired. Sleep? Cortisol? Iron? Vitamin D? Testosterone?", ""], ["15–30 s", "So I send them to do a blood panel first. Then we buy what's actually missing, if anything.", ""], ["30–40 s", "Want the list of tests? Write RESET.", "Text: NAPISZ RESET"]] }
+  ];
+  var STORY = [
+    { n: 1, t: "\"Tomorrow, for sure\"", pillar: true, role: "Maximum identification from second one. You open with YOUR weakness, not your success.", scene: "You today, in shape, in home clothes on the couch → B-roll: phone face-up, half-packed gym bag by the door → you slowly get up, low angle, walk out of frame.", en: "Hook: 'I don't feel like going to training today… I know that sentence better than you think.' VO: you think a coach always feels like it? For years I said 'today I rest, tomorrow for sure' and didn't go. The difference between us isn't that I don't feel it — it's that I know what to do with it. Close: motivation comes and goes; a system stays. Soft CTA.", pl: "Napisy: „nie chce mi się dzisiaj jechać na trening” (po 2 sek) …to zdanie znam lepiej niż myślisz.\n\nVoice-over: „Myślisz, że trener nigdy tak nie ma? Że zawsze mu się chce? Latami mówiłem sobie »dzisiaj poleżę, ale jutro już na pewno idę«. I nie szedłem. Trening przestał być fajną zabawą, ciężary mnie męczyły, a ja udawałem, że to tylko gorszy tydzień. Różnica między mną a Tobą nie jest taka, że ja tego nie czuję. Tylko taka, że wiem już, co z tym zrobić.”\n\nZamknięcie (napis): „Nie potrzebujesz więcej motywacji. Potrzebujesz planu, który działa w dni, gdy jej nie ma.”\nVoice-over: „Motywacja przychodzi i odchodzi. System zostaje. Jeśli chcesz, żeby ktoś ustawił Ci taki system — wiesz, gdzie mnie znaleźć. A jeśli jeszcze nie — po prostu zostań, pokażę Ci resztę tej drogi.”", change: "None." },
+    { n: 2, t: "\"I was the skinny kid in the last row\"", role: "You're not a genetic freak. You were small and insecure. The client who feels 'too small / too out of shape' sees his start.", scene: "Old photos aged 12–16 (raw, phone quality = credibility) or VO over calm B-roll (walk, empty gym in the morning). First/last shot: you today.", en: "On screen: '64 kg. 180 cm. Skinny. I just wanted to stop being ashamed in photos.' VO: age 12, looking at better-built classmates; no dream of medals; home bench, bar, dumbbells, push-ups. Everyone starts from feeling not enough. Close: you don't need genetics, you need a first step.", pl: "Napisy: 64 kg. 180 cm. „chuderlawy”. Chciałem tylko przestać się wstydzić na zdjęciach.\n\nVoice-over: „Miałem 12 lat, ważyłem 64 kilo przy 180 wzrostu. Patrzyłem na lepiej zbudowanych kolegów i myślałem tylko jedno: »w końcu muszę się ogarnąć«. Nie marzyłem o scenie ani medalach. Chciałem po prostu lepiej wyglądać, mieć trochę więcej pewności siebie. Zaczynałem w domu, ławeczka, gryf, hantle i pompki. Każdy zaczyna od tego samego miejsca — od poczucia, że jest się niewystarczającym.”\n\nZamknięcie (napis): „Nie potrzebujesz genów. Potrzebujesz pierwszego kroku — dosłownie ławeczka i hantle w pokoju wystarczą.”\nVoice-over: „Każdy zaczyna od poczucia, że jest niewystarczający. Różnica jest tylko w tym, kto zrobił pierwszy krok. Twój może być dzisiaj.”", change: "None." },
+    { n: 3, t: "\"I thought more and harder was always better\"", role: "Obsession and its price — framed as a lesson/warning, never a flex. Light touch on enhancement.", scene: "Darker light, tight frames, gym after hours. B-roll: weighed food, kitchen scale, macro notebook. Face to camera on 'I was wrong'.", en: "On screen: 'I drank olive oil from a glass to hit calories.' VO: 5–6 forced meals a day, extreme diets, doping as a tool, an ego that felt like a god. One piece of advice from that time: more and harder isn't better — it's usually just shorter. Close: if you push to the max and see nothing, the problem isn't doing too little.", pl: "Napisy: Piłem oliwę ze szklanki, żeby dobić kalorie. Byłem pewny, że tak wygląda „robienie tego dobrze”.\n\nVoice-over: „Wszedłem w to na całość. Pięć, sześć posiłków dziennie na siłę, do wymiotów i dalej. Ekstremalne diety, doping jako narzędzie, żeby wejść na kolejny poziom. Czułem się jak bóg. Miałem przerośnięte ego i pewność, że wygram wszystko. To był świat wyczynu — i część mnie jako zawodnika zawsze tam będzie. Ale gdybym miał dać Ci jedną radę z tamtego okresu, to taką: więcej i ciężej nie znaczy lepiej. Zwykle znaczy tylko krócej.”\n\nZamknięcie (napis): „Jeśli katujesz się na maxa i nie widzisz efektów — problem nie w tym, że robisz za mało.”\nVoice-over: „Więcej nie znaczy lepiej. Zwykle znaczy tylko krócej. Zapamiętaj to, zanim się wypalisz.”", change: "Your choice (from your storyboard): if you don't want to name doping, replace that sentence with „wchodziłem w rozwiązania, do których większość ludzi nie powinna sięgać”." },
+    { n: 4, t: "\"I felt myself falling and pretended not to see it\"", pillar: true, role: "The emotional heart. Here the client stops seeing a coach and starts seeing a person.", scene: "The rawest, quietest post. No music or minimal. Face to camera, static, close. Optional sparse B-roll: city at night, empty flat.", en: "On screen: 'There was a moment I almost lost everything. And I knew it.' VO: parties every week, substances, training without heart; end of 2022 relationship, job and head fell apart at once; the worst was seeing it and pretending. 'If you feel you're letting go piece by piece — I've been there.' Close: zero CTA, on purpose.", pl: "Napisy: Był moment, w którym prawie to wszystko straciłem. I dobrze o tym wiedziałem.\n\nVoice-over: „Był taki okres, że co tydzień była impreza. Używki na porządku dziennym. Trening jeszcze gdzieś tam był, ale bez serca. Pod koniec 2022 posypało mi się wiele rzeczy naraz — związek, praca, głowa. Najgorsze nie było to, że upadałem. Najgorsze było to, że to widziałem i wolałem udawać, że nie. Mówię Ci to nie po to, żebyś mnie żałował. Mówię, bo jeśli teraz czujesz, że odpuszczasz kawałek po kawałku i wmawiasz sobie, że »jeszcze nie jest źle« — ja tam byłem.”\n\nZamknięcie (napis): „Jeśli to czytasz i czujesz się przyłapany — to dobrze. To znaczy, że jeszcze widzisz.”\nVoice-over: „Nie sprzedaję Ci tu niczego. Mówię tylko: nazwanie tego na głos to pierwszy krok, żeby z tego wyjść. Mnie zajęło to za długo.”", change: "Decide consciously how much to show; you can keep „używki” general, without details. Sensitive: only you decide." },
+    { n: 5, t: "\"The day I stopped running\"", role: "The turn. After the bottom comes a decision: 'you can get out'.", scene: "Energy shift: brighter, movement, morning, sunrise, empty gym. Momentum edit: shoes, water, first set. Contrast with the silence of post 4.", en: "On screen: 'No movie-style rock bottom. One decision: enough pretending.' VO: back to routine — not to the stage, to myself; left a comfortable job and bet on what I wanted; sleep, food, training, physio, people who pull you up; step by step. Close: don't wait for rock bottom.", pl: "Napisy: Nie było spektakularnego dna z filmu. Była jedna decyzja: dość udawania.\n\nVoice-over: „Nie było jednego wielkiego olśnienia. Była decyzja, że wracam do rutyny — nie na scenę, do siebie. Zostawiłem etat, na którym siedziałem z wygody, i postawiłem w pełni na to, co naprawdę chciałem robić. Wróciłem do porządku: sen, jedzenie, treningi, fizjo, ludzie, którzy ciągną w górę, a nie w dół. Nie z dnia na dzień. Krok po kroku. I pierwszy raz od dawna poczułem, że idę we właściwą stronę.”\n\nZamknięcie (napis): „Nie czekaj na dno. Wystarczy jedna decyzja i powrót do podstaw.”\nVoice-over: „Nie musisz mieć wielkiego olśnienia. Wystarczy, że dziś zrobisz jedną rzecz porządnie. Potem drugą. Tak to się zaczyna naprawdę.”", change: "None." },
+    { n: 6, t: "\"The process is the goal, not the finish line\"", role: "You repackage what you sell: from extremes and rigid diets to sustainable for years. 'With me you won't turn life into a camp.'", scene: "Calmer, 'wiser' mood. You to camera over coffee or a meal out. B-roll: normal meal (steak, pizza) next to scale/macros. Alternative: carousel with 3–4 lessons.", en: "On screen: 'Not a sprint, a marathon. And a diet doesn't have to be punishment.' VO: the process is the goal; nothing quick stays; you don't need dry rice and chicken; steak or pizza and still progress; a shape you can't keep is worthless. Added line: today I start with your labs, not with a diet. Close: save it.", pl: "Napisy: To nie sprint. To maraton. A dieta nie musi być karą.\n\nVoice-over: „Największą lekcję dostałem nie na scenie, tylko po latach. Że to proces jest celem samym w sobie — trzeba czerpać radość z każdego kroku, nie tylko z mety. Że nic, co przyszło szybko i łatwo, nie zostaje. I że nie musisz jeść suchego ryżu z kurczakiem, żeby wyglądać dobrze. Możesz liczyć makro, jeść normalnie, wyjść na stek czy pizzę i dalej robić postępy. Forma, której nie da się utrzymać, jest nic niewarta. Dlatego dziś zaczynam od Twoich badań, a nie od diety.”\n\nZamknięcie (napis): „Forma, której nie utrzymasz, jest bezużyteczna. Zapisz sobie to.”\nVoice-over: „Możesz jeść normalnie, wychodzić na stek czy pizzę i dalej robić postępy. Sztywna dieta, która trwa 3 tygodnie, nie zmieni niczego. Zapisz ten post na moment, gdy znowu zechcesz zacząć »od poniedziałku na sucho«.”", change: "Added one sentence at the end of the VO: „Dlatego dziś zaczynam od Twoich badań, a nie od diety.” (connects the story to BodyLAB Reset)." },
+    { n: 7, t: "\"Who I do all this for\"", pillar: true, role: "Closing and the main CTA of the series. Not 'buy' — 'meet who I coach and how'. Add a client result here once you have permission.", scene: "Warm, direct to camera. If you have permission: a client's before/after or short quote (6/10 → 9/10). End: you in your daily coaching context (phone, plan, message to a client).", en: "On screen: 'I don't coach future champions. I coach busy people over 30 — business owners and people with demanding jobs — who want to look and feel good without wrecking their lives.' VO: from skinny kid through obsession and doping and almost losing myself, to here; proudest not of medals but of clients getting their confidence back. CTA: write one word, RESET.", pl: "Napisy: Nie prowadzę przyszłych mistrzów. Prowadzę zapracowanych ludzi po trzydziestce — przedsiębiorców i osoby z odpowiedzialną pracą — którzy chcą wyglądać i czuć się dobrze, bez rujnowania sobie życia.\n\nVoice-over: „Przeszedłem drogę od chudego dzieciaka, przez obsesję i doping, przez okres, w którym prawie się pogubiłem, aż do miejsca, w którym jestem teraz. I najbardziej dumny jestem nie z medali, tylko z tego, kiedy widzę, jak ktoś, kogo prowadzę, wreszcie łapie pewność siebie. Jeśli masz dość sztywnych diet, tracisz motywację i brakuje Ci czasu — ale nie chcesz zamieniać życia w wyrzeczenie — to prowadzę dokładnie takich ludzi. Napisz do mnie. Opowiedz, gdzie teraz jesteś.”\n\n[MIEJSCE NA DOWÓD]: „X przyszedł do mnie z dokładnie tym samym »nie mam czasu«. Dziś wygląda tak →” (tylko prawdziwy przypadek, za zgodą)\n\nZamknięcie (napis): „Dość sztywnych diet i tracenia motywacji — ale bez rujnowania sobie życia? Prowadzę dokładnie takich ludzi.”\nVoice-over: „Napisz do mnie w wiadomości jedno słowo: »RESET«. Odpiszę i opowiesz mi, gdzie teraz jesteś. Bez zobowiązań — po prostu pogadamy.”", change: "(1) On-screen text: „zapracowanych facetów” → „zapracowanych ludzi po trzydziestce — przedsiębiorców i osoby z odpowiedzialną pracą” to match the niche. (2) Keyword „START” → „RESET” so every CTA is the same word (keep START if you prefer)." }
+  ];
+  var CLAUDE_MD = "# Contenido-Michal · instructions for Claude Code\n\nI'm Michał Tobiasz (@michaltobiasz_coach), online coach, brand BodyLAB by Michał Tobiasz. I also work in a supplement store (@kopalnia.supli_). You are my video and content editor in this folder.\n\n## Who I talk to\n" + document.querySelector(".niche .nq").textContent.trim() + "\nBusy professionals and business owners in Poland, 30–55. Their career is sorted; their body and energy are the one debt they keep postponing. They are tired of rigid diets, short on time, crash in the afternoon, sleep badly.\n\n## My method: BodyLAB Reset (reset hormonalno-metaboliczny)\n- Read: bloodwork + body composition first (testosterone, SHBG, estradiol, cortisol, insulin/HOMA-IR, leptin, thyroid, vitamin D).\n- Fit: the plan fits the calendar (3 × 45–60 min, normal food, business lunches, travel).\n- System: weekly check-in, sleep window, default week + emergency week.\nPhases: Audit (weeks 1–3) → Reset (weeks 4–12, retest) → Optimize (months 4–6).\nMy story as background proof: skinny kid (64 kg at 180 cm, age 12) → bodybuilder with medals → today I put my business and life first. Medals are proof, never the message.\n\n## Language\n- Scripts, captions and on-screen text are published in POLISH. When I give you an English script, translate it into natural, spoken Polish (how a Polish man in his 30s talks), not a literal translation. Use 'Ty' (capitalised in captions), short sentences, no American hype, max 1 emoji.\n- Keep technical terms correct in Polish (testosteron wolny, SHBG, insulina na czczo, HOMA-IR, kortyzol, leptyna, estradiol).\n- Always show me the Polish version and, below it, a back-translation in English so I can check the meaning.\n\n## CTA\n- Organic: 'Napisz RESET'.\n- Meta ads (promoted Reels, Poland 30+): 'Obserwuj…'. Never 'Masz…?' or any health trait attributed to the viewer, no before/after, no 'X kg in Y weeks'. NEVER peptides, TRT or hormones in ads (Meta rejects and can block the ad account).\n\n## Formats (ramp: 1 → 2 → 3 pieces a day)\nReels 9:16 1080x1920, 20–60 s: yapping (main format), green screen over anonymised labs or studies, ranking/trend, voice-over (3 hooks for trial reels), in the store, with clients, Moja historia series. Carousels 1080x1350: 3 a week alternating connection and value, black PORADNIK template. YouTube 16:9 every 7–10 days.\n\n## Editing style\n- Black / white / grey, one keyword in gold (#C9A13B). Clean, premium, not flashy.\n- Hook on screen from second 0, big condensed uppercase text.\n- Subtitles always, 2–4 words per line, lower third, Polish characters correct (ą ć ę ł ń ó ś ź ż).\n- Cuts every 2–3 s, no silences or filler words; music low under the voice.\n- Lab results: always blurred personal data (name, PESEL, date of birth, lab ID). Max 3 markers highlighted.\n\n## Rules\n1. Never invent numbers, clients, results, lab values or testimonials. Missing data → [MISSING DATA].\n2. Never delete or overwrite anything in 1-sin-editar/. Work on copies, save to 2-editados/.\n3. File names: YYYY-MM-DD_format_angle (e.g. 2026-11-16_yapping_4pm-crash.mp4).\n4. Before editing, tell me in 3 lines what you'll do. After, what you did and where the file is.\n5. Warn me if a script breaks a Meta rule or promises something I can't prove.\n6. Nothing sensitive from my private life (relationships, substances, the end of 2022) beyond what I write myself. No client health data that could identify them.\n\n## Examples that worked\n(Added over time: file, why it worked, views.)\n\n## Lessons\n(Added over time: what I corrected in your edits so it doesn't happen again.)";
+  var ORDERS = [
+    ["1 · Translate to natural Polish (before recording)", "Translate this script into natural, spoken Polish following the Language section of my CLAUDE.md — the way a Polish man in his 30s would say it to camera, not a literal translation. Keep the 3 hooks separate, keep it short, and add an English back-translation below so I can check the meaning: [paste the English script]"],
+    ["2 · Edit a reel", "Edit 1-sin-editar/[file].mp4 as a 9:16 reel following my CLAUDE.md: remove silences and filler words, Polish subtitles in my style, hook on screen from second 0, and export to 2-editados/ named date_format_angle."],
+    ["3 · 3 hooks for trial reels", "From the reel 2-editados/[file].mp4 make 3 versions changing only the first 3 seconds with these hooks (in Polish): A [hook], B [hook], C [hook]. Same body. Export the 3 with suffix -A, -B, -C."],
+    ["4 · Voice-over on clips", "Build a voice-over with the audio 1-sin-editar/[voice].m4a over the clips 1-sin-editar/[clips]. Cuts every 2–3 s, Polish subtitles, the keyword in gold, and end with the text \"NAPISZ RESET\" (or \"OBSERWUJ\" if it's for an ad)."],
+    ["5 · Green screen over labs", "Take 3-recursos/[lab].pdf, blur every personal detail (name, PESEL, date of birth, lab ID), and put it as the background of 1-sin-editar/[file].mp4 with me in front. Highlight only these lines when I mention them: [marker 1], [marker 2]. Don't change any value."],
+    ["6 · Client result", "With the photos in 3-recursos/[client]/ (I have written permission) and this literal sentence: \"[sentence]\", build a 30-second client-result reel following the template in my CLAUDE.md. Don't add any number I haven't given you."],
+    ["7 · Clips from YouTube", "From the long video 1-sin-editar/[youtube].mp4 give me the 4 best 20–40 s moments for reels: tell me the timestamps and why, and export them 9:16 with Polish subtitles."],
+    ["8 · Check before publishing", "Review everything in 2-editados/ today: tell me if any hook takes longer than 3 s, if subtitles have mistakes or missing Polish characters, if any lab data is visible, and if anything breaks Meta rules (especially peptides/TRT/hormones in something meant for ads). Don't change anything without asking."],
+    ["9 · Save a lesson", "This edit came out better than the previous ones because [reason]. Add it to the Examples section of my CLAUDE.md, and add to Lessons: [what I corrected]."]
+  ];
+
+  /* ---------- Stages ---------- */
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k][1] + '"></i>' + K[k][0] + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var cnt = {}, reels = 0, car = 0;
+    Object.keys(K).forEach(function (k) { cnt[k] = 0; });
+    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; if (/^car/.test(k)) car++; else reels++; }); });
+    var days = st.plan.map(function (d, i) {
+      var r = d.filter(function (k) { return !/^car/.test(k); }).length;
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + r + ' reel' + (r === 1 ? '' : 's') + (d.length > r ? ' +1 car.' : '') + '</small></div>' +
+        d.map(function (k) { return '<div class="item ' + K[k][1] + '">' + K[k][0] + '</div>'; }).join("") + '</div>';
+    }).join("");
+    var breakdown = Object.keys(cnt).filter(function (k) { return cnt[k]; }).map(function (k) { return cnt[k] + " " + K[k][0].toLowerCase(); }).join(" · ");
+    return '<div class="stage"><div class="stage-h"><span class="big" data-reels="' + reels + '" data-car="' + car + '">' + reels + ' reels + ' + car + ' carousels</span><h3>' + esc(st.t) + '</h3><span class="pct">' + (cnt.yap || 0) + ' yapping</span></div><p class="soft" style="font-size:14px">' + esc(st.s) + ' (' + breakdown + ')</p><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- Story ---------- */
+  $("story").innerHTML = STORY.map(function (s) {
+    return '<article class="card' + (s.pillar ? ' pil' : '') + '"><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="tag a">Reel ' + s.n + (s.pillar ? ' · pillar' : '') + '</span>' + (s.n === 1 || s.n === 7 ? '<span class="tag">Hard CTA</span>' : '<span class="tag">Closes with a lesson</span>') + '</div><h3>' + esc(s.t) + '</h3>' +
+      '<p class="soft"><b>Role:</b> ' + esc(s.role) + '</p><p class="soft"><b>Scene:</b> ' + esc(s.scene) + '</p><p class="soft"><b>In English:</b> ' + esc(s.en) + '</p>' +
+      '<p class="soft" style="font-size:14px"><b>What we changed:</b> ' + esc(s.change) + '</p>' +
+      '<details><summary>Original Polish text to record</summary><div class="plbox">' + esc(s.pl) + '</div><button type="button" class="cp" data-cp="' + esc(s.pl) + '">Copy PL</button></details></article>';
+  }).join("");
+
+  /* ---------- YouTube ---------- */
+  $("yt").innerHTML = YT.map(function (y, i) {
+    return '<div class="ti"><span class="n' + (y[2] ? " first" : "") + '">' + (y[2] ? "First" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>';
+  }).join("");
+
+  /* ---------- Angles ---------- */
+  var fFam = -1, fFmt = "";
+  var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ł/g, "l"); };
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n + " " + a[3].join(" ")).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " of " + ANG.length + " angles";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">No angle matches.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copy</button></div>';
+          }).join("") + '<div class="meta">' + a[3].map(function (m) { return '<span class="tag' + (m === CC || m === CV ? " a" : "") + '">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">All families</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">All formats</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  renderAng();
+
+  /* ---------- Scripts ---------- */
+  $("scripts").innerHTML = SCRIPTS.map(function (s) {
+    var hooks = s.hooks ? '<div class="variants"><b>0–3 s · 3 hooks for trial reels</b>' + s.hooks.map(function (h) { return '<div class="hk" style="display:flex;gap:8px;align-items:flex-start"><p style="flex:1;font-weight:700;font-size:14.5px">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h.replace(/^[ABC] · /, "")) + '">Copy</button></div>'; }).join("") + '</div>' : "";
+    var copyAll = (s.hooks ? s.hooks.join("\n") + "\n" : "") + s.lines.map(function (l) { return l[1]; }).join("\n");
+    return '<article class="card script"><span class="tag a">' + esc(K[s.k][0]) + '</span><h3>' + esc(s.t) + '</h3><p class="soft" style="font-size:14px"><b>What we see:</b> ' + esc(s.clip) + '</p>' + hooks +
+      s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+      '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(copyAll) + '">Copy script</button></article>';
+  }).join("");
+
+  /* ---------- Claude ---------- */
+  $("claudemd").textContent = CLAUDE_MD;
+  $("cpClaude").setAttribute("data-cp", CLAUDE_MD);
+  $("orders").innerHTML = ORDERS.map(function (o, i) {
+    return '<article class="card' + (i === 0 ? ' pil' : '') + '"><h3>' + esc(o[0]) + '</h3><p class="soft" style="font-size:14px">' + esc(o[1]) + '</p><button type="button" class="cp" style="justify-self:start" data-cp="' + esc(o[1]) + '">Copy order</button></article>';
+  }).join("");
+
+  /* ---------- Copy ---------- */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var orig = b.textContent;
+    var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = orig; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.getAttribute("data-cp")).then(function () { done("Copied"); }, function () { done("Select it"); });
+    else done("Select it");
+  });
+
+  /* ---------- Tabs ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "his", "ang", "car", "gui", "yt", "rec", "cla"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>
