@@ -89,7 +89,7 @@ Normas Meta: nada de "¿tienes barriga?" ni afirmar rasgos del que mira. Primera
 
 ### 12 · Lo que tienen en común 500 transformaciones
 **Ganchos:** "15 años y más de 500 transformaciones. Esto es lo que todos tienen en común." · "Los que lo consiguen no tienen más fuerza de voluntad." · "Lo que hacen los hombres que bajan la barriga y no la recuperan."
-**Voz:** Después de más de 500 clientes, los que consiguen el cambio y lo mantienen hacen tres cosas. Uno: no hacen dietas extremas; comen comida normal en cantidades ajustadas. Dos: entrenan fuerza, aunque sean tres días. Tres: revisan cada semana y ajustan, en vez de abandonar al primer estancamiento. No es motivación. Es un sistema. Y cualquier hombre con trabajo y familia lo puede seguir.
+**Voz:** Después de más de 500 clientes, los que consiguen el cambio y lo mantienen hacen tres cosas. Uno: no hacen dietas extremas; comen comida normal en cantidades ajustadas. Dos: entrenan fuerza, aunque sean tres días. Tres: revisan cada semana y ajustan, en vez de abandonar al primer estancamiento. No es motivación. Es un sistema. Lo he visto funcionar en oficinistas, comerciales que viven en el coche y autónomos con hijos. Cualquier hombre con trabajo y familia lo puede seguir.
 **Cierre:** Sígueme y te enseño el sistema paso a paso.
 
 ## Cómo probarlos
