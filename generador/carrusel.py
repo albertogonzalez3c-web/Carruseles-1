@@ -586,7 +586,113 @@ def slide_oscuro(s):
     return img
 
 
-ESTILOS = {"oscuro": slide_oscuro, "dibujo": slide_dibujo, "caja": slide_caja, "doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
+# ---------- estilo "caso" (venta): mismo fondo oscuro + antes/después, listas ✗/✓ y ficha de resultados ----------
+
+NARANJA = (232, 140, 60)
+ROJO = (226, 60, 60)
+VERDE = (60, 190, 90)
+
+
+def chip(d, x, y, texto, fondo, color):
+    f = fuente("Bold", 30)
+    w = int(f.getlength(texto)) + 36
+    d.rounded_rectangle((x - w // 2, y, x + w // 2, y + 52), radius=12, fill=fondo)
+    d.text((x, y + 26), texto, font=f, fill=color, anchor="mm")
+
+
+def antes_despues(img, s, y, alto):
+    """Dos tarjetas lado a lado con etiqueta Antes / Ahora."""
+    d = ImageDraw.Draw(img)
+    hueco, x0 = 20, 70
+    w = (W - 2 * x0 - hueco) // 2
+    for i, (clave, etiqueta, fondo, color) in enumerate((
+            ("antes", {"es": "Antes", "en": "Before"}, BLANCO, NEGRO),
+            ("despues", {"es": "Ahora", "en": "Now"}, NARANJA, NEGRO))):
+        x = x0 + i * (w + hueco)
+        tarjeta_foto(img, s[clave], (x, y, x + w, y + alto), s.get("foco_" + clave, (0.5, 0.45)))
+        chip(d, x + w // 2, y + alto - 76, t(etiqueta), fondo, color)
+    return y + alto
+
+
+def marca(d, x, y, tipo):
+    """Dibuja una ✗ roja o un ✓ verde de 34 px con esquina superior izquierda en (x, y)."""
+    if tipo == "no":
+        d.line((x + 4, y + 4, x + 30, y + 30), fill=ROJO, width=7)
+        d.line((x + 30, y + 4, x + 4, y + 30), fill=ROJO, width=7)
+    else:
+        d.line((x + 2, y + 18, x + 13, y + 30, x + 32, y + 4), fill=VERDE, width=7, joint="curve")
+
+
+def lista(d, items, y, tipo, tam=44):
+    for it in items:
+        alto = parrafo(ImageDraw.Draw(Image.new("RGB", (W, 400))), t(it), 0, 0, W - 290, tam)
+        d.rounded_rectangle((90, y, W - 90, y + alto + 36), radius=16, fill=(28, 28, 28), outline=(70, 70, 70), width=2)
+        marca(d, 120, y + 18 + (tam - 34) // 2, tipo)
+        parrafo(d, t(it), 180, y + 16, W - 290, tam)
+        y += alto + 36 + 18
+    return y
+
+
+def ficha(d, filas, y, titulo):
+    """Tarjeta blanca tipo 'ficha de revisiones': filas (etiqueta, valor, unidad)."""
+    alto = 90 + 100 * len(filas)
+    d.rounded_rectangle((90, y, W - 90, y + alto), radius=24, fill=BLANCO)
+    d.text((125, y + 32), t(titulo), font=fuente("Bold", 38), fill=NEGRO)
+    for i, (et, val, ud) in enumerate(filas):
+        yy = y + 100 + i * 100
+        d.line((125, yy - 12, W - 125, yy - 12), fill=(225, 225, 225), width=2)
+        d.text((125, yy + 30), t(et).upper(), font=fuente("SemiBold", 32), fill=(120, 120, 120), anchor="lm")
+        fu = fuente("Regular", 30)
+        uw = fu.getlength(t(ud))
+        d.text((W - 125, yy + 34), t(ud), font=fu, fill=(130, 130, 130), anchor="rm")
+        fv = fuente("Black", 64)
+        d.text((W - 125 - uw - 14, yy + 30), t(val), font=fv, fill=NARANJA if str(t(val)).startswith(("−", "-")) else NEGRO, anchor="rm")
+    return y + alto
+
+
+def contenido_caso(img, d, s, y):
+    """Dibuja título, antes/después, pasos, lista, ficha, logros y texto desde y. Devuelve la y final."""
+    if s.get("titulo"):
+        y = parrafo(d, t(s["titulo"]), 90, y, W - 180, s.get("tam_titulo", 62), "Bold", centrado=True, interlineado=1.08) + 40
+    if s.get("antes"):
+        y = antes_despues(img, s, y, s.get("alto_fotos", 560)) + 40
+    if s.get("pasos"):
+        for et, tx in s["pasos"]:
+            d.text((110, y), t(et).upper(), font=fuente("Bold", 32), fill=NARANJA)
+            y = parrafo(d, t(tx), 110, y + 42, W - 220, 46) + 28
+        y += 10
+    if s.get("lista"):
+        y = lista(d, s["lista"], y, s.get("marca", "no"))
+    if s.get("ficha"):
+        y = ficha(d, s["ficha"], y, s.get("titulo_ficha", {"es": "Ficha de revisiones", "en": "Review record"})) + 30
+    if s.get("logros"):
+        y = lista(d, s["logros"], y, "si", 40)
+    if s.get("texto"):
+        for p_ in t(s["texto"]).split("\n\n"):
+            y = parrafo(d, p_, 110, y, W - 220, 46, centrado=s.get("centrado", False)) + 22
+    return y
+
+
+def slide_caso(s):
+    tipo = s.get("tipo", "punto")
+    if tipo in ("cta", "punto") and not any(k in s for k in ("lista", "antes", "ficha", "pasos")):
+        return slide_oscuro(s)
+    img = fondo_oscuro()
+    d = ImageDraw.Draw(img)
+    arriba = cabecera(img) + 50
+    if s.get("semana"):
+        chip(d, W - 170, 85, t(s["semana"]), (35, 35, 35), BLANCO)
+    # Primera pasada en blanco para medir el bloque y centrarlo entre la cabecera y el pie.
+    prueba = img.copy()
+    alto = contenido_caso(prueba, ImageDraw.Draw(prueba), s, 0) 
+    abajo = H - 190
+    y = max(arriba, arriba + (abajo - arriba - alto) // 2) if tipo != "portada" else arriba
+    contenido_caso(img, d, s, y)
+    pie_desliza(d, t(s.get("pie", {"es": "Desliza para ver más →", "en": "Swipe for more →"})))
+    return img
+
+
+ESTILOS = {"caso": slide_caso, "oscuro": slide_oscuro, "dibujo": slide_dibujo, "caja": slide_caja, "doble": slide_doble, "cierre": slide_cierre, "subtitulo": slide_subtitulo, "tarjeta": slide_tarjeta, "titular": slide_titular}
 
 
 def generar(ruta_json):
