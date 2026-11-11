@@ -1,0 +1,383 @@
+<title>Ofertas AGLEZ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: dos pestañas (asesoría Optimización y mentoría). Cada una: programa, precios en orden de presentación, garantía y contrato, diferencial y back-end. Marca AGLEZ: fondo claro sobrio, amarillo solo como acento de fondo. */
+:root {
+  --paper: #f4f3ef;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5f5f5a;
+  --line: #dedbd2;
+  --chip: #efede7;
+  --accent: #ffd21f;
+  --accent-text: #7a5f00;
+  --rust: #a3452a;
+  --green: #3f6b3a;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main.wrap { padding-block: 26px 64px; display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.4vw, 56px)/1.02 var(--f-body); letter-spacing: -.03em; }
+h2 { font: 800 clamp(23px, 3vw, 30px)/1.12 var(--f-body); }
+h3 { font: 700 18px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { position: sticky; top: 0; z-index: 5; background: rgba(244, 243, 239, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+header.top .wrap { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding-block: 12px; }
+.brand { display: grid; gap: 3px; }
+.brand b { font: 800 18px/1 var(--f-body); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { all: unset; cursor: pointer; padding: 10px 16px; border-radius: 999px; font-weight: 700; font-size: 14.5px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.view { display: grid; gap: 34px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.chip { background: var(--chip); }
+.card.dark { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.card.dark .soft, .card.dark ul.l { color: #c4c1b8; }
+.card.dark ul.l b { color: var(--white); }
+.card.dark .label { color: var(--accent); }
+.card.acc { background: var(--accent); border-color: var(--accent); }
+.card.acc .soft, .card.acc ul.l { color: #3a3200; }
+.card.acc .label { color: var(--ink); }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: var(--accent); color: var(--ink); }
+.price { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.price small { font-size: 15px; font-weight: 700; letter-spacing: 0; }
+.phase .n { font: 800 44px/1 var(--f-body); color: var(--accent-text); letter-spacing: -.04em; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.facts span { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 14px; font-weight: 600; }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 12px 12px 12px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.when { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.when div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 2px; }
+.when b { font-size: 17px; }
+.when span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) {
+  .g4, .when { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 620px) {
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; }
+  .tbl thead { display: none; }
+  .tbl tr { border-top: 1px solid var(--line); padding-block: 10px; }
+  .tbl td { border: 0; padding: 3px 0; }
+  .tbl td[data-h]::before { content: attr(data-h) ": "; font-weight: 700; color: var(--ink); }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="label">AGLEZ</span><b>Ofertas</b></div>
+    <nav class="tabs" role="tablist" aria-label="Ofertas">
+      <button class="tab" role="tab" id="tab-ase" aria-selected="true" aria-controls="view-ase">Asesoría · Optimización</button>
+      <button class="tab" role="tab" id="tab-men" aria-selected="false" aria-controls="view-men">Mentoría</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ===================== ASESORÍA ===================== -->
+<div class="view" id="view-ase" role="tabpanel" aria-labelledby="tab-ase">
+  <header class="sec">
+    <span class="label">Asesoría 1:1 · Español e inglés</span>
+    <h1>Optimización.</h1>
+    <p class="soft" style="font-size:18px;max-width:740px">Prepara tu cuerpo para el cambio. Para adultos ocupados que lo han intentado y su cuerpo no responde: molestias, digestiones, energía baja o ansiedad con la comida. Primero lo básico bien hecho; después, el cambio.</p>
+    <div class="facts"><span>Fisioterapeuta</span><span>12 años entrenando</span><span>Casi 10 asesorando</span><span>+1.800 personas</span><span>11 competiciones al natural</span></div>
+  </header>
+
+  <section class="sec" aria-labelledby="h-prog">
+    <header><span class="label">El programa</span><h2 id="h-prog">6 meses, tres fases.</h2></header>
+    <div class="g3">
+      <article class="card phase">
+        <span class="n">01</span>
+        <h3>Preparar · meses 1–2</h3>
+        <p class="soft">Que el cuerpo esté listo para cambiar.</p>
+        <ul class="l"><li>Digestión y sueño.</li><li>Dolor e inflamación (fisio).</li><li>Sensibilidad a la insulina.</li><li>Analítica de inicio.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">02</span>
+        <h3>Transformar · meses 2–4</h3>
+        <p class="soft">Perder grasa o recomponer.</p>
+        <ul class="l"><li>Déficit bien hecho, sin extremos.</li><li>Fuerza adaptada a sus lesiones.</li><li>Cortisol y leptina bajo control.</li><li>Analítica en el mes 3.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">03</span>
+        <h3>Consolidar · meses 4–6</h3>
+        <p class="soft">Que no vuelva.</p>
+        <ul class="l"><li>Subir calorías poco a poco.</li><li>Ganar músculo.</li><li>Testosterona en su sitio.</li><li>Analítica en el mes 6.</li></ul>
+      </article>
+    </div>
+    <p class="say">"Ninguna dieta te ha funcionado porque tu cuerpo no estaba preparado para el cambio. Primero lo preparamos; después cambia."</p>
+    <div class="card chip">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Plan por fases</b> que se ajusta cada semana.</li>
+        <li><b>Nutrición</b> hecha para él, con lo básico bien hecho desde la primera semana.</li>
+        <li><b>Entrenamiento con readaptación de lesiones:</b> lo diseña un fisioterapeuta.</li>
+        <li><b>WhatsApp diario</b> y <b>revisión semanal</b>.</li>
+        <li><b>Analíticas</b> al inicio, en el mes 3 y en el mes 6 (y en el 12 con el año completo).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-pa">
+    <header><span class="label">Precios · en el orden en que se presentan</span><h2 id="h-pa">Se empieza por el año. Se baja solo si hace falta.</h2></header>
+    <div class="g4">
+      <article class="card dark">
+        <span class="badge">1 · Se ofrece primero</span>
+        <h3>Año completo</h3>
+        <p class="price">1.200 € <small>pago único</small></p>
+        <p class="soft">1.250 € a plazos (Klarna o Sequra).</p>
+        <ul class="l"><li>Las 3 fases y la <b>fase 4 · Autonomía</b>.</li><li>Analítica también a los 12 meses.</li><li>Solo 500 € más que el semestre por 6 meses más.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">2 · Estándar</span>
+        <h3>Semestre</h3>
+        <p class="price">700 €</p>
+        <ul class="l"><li>Las 3 fases.</li><li>El programa por defecto.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">3 · Downsell</span>
+        <h3>Semestre en 2 pagos</h3>
+        <p class="price">375 € <small>+ 375 € al mes</small></p>
+        <ul class="l"><li>Total 750 €: algo más por fraccionar.</li><li>Empieza casi con lo del trimestre, pero <b>comprometido a 6 meses</b>.</li></ul>
+      </article>
+      <article class="card chip">
+        <span class="badge">4 · Último recurso</span>
+        <h3>Trimestre</h3>
+        <p class="price">400 €</p>
+        <ul class="l"><li>Preparar y el inicio de Transformar.</li><li>Nunca en la web ni como primer precio de la llamada.</li></ul>
+      </article>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cómo se dice el año</h3>
+        <p class="say">"Son 1.250 €, o 1.200 € si lo pagas de una vez."</p>
+        <p class="soft" style="font-size:14.5px">En España no se puede cobrar un recargo por el medio de pago. Se presenta como <b>descuento por pago único</b>, que es legal, y esos 50 € cubren la comisión de Klarna.</p>
+      </div>
+      <div class="card">
+        <h3>Reglas</h3>
+        <ul class="l">
+          <li><b>El precio no se publica:</b> se da en la llamada, una vez y en silencio.</li>
+          <li><b>Un downsell cada vez,</b> y solo si el "no" es por dinero.</li>
+          <li><b>Todo con contrato,</b> sin excepciones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ga">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-ga">Riesgo cero para el que hace su parte.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="label">Garantía · bajo contrato</span>
+        <p style="font-size:19px;font-weight:700;line-height:1.4">"Si haces tu parte y no ves resultados, o si no te atiendo como te prometo, te devuelvo lo que invertiste."</p>
+        <ul class="l"><li><b>"Hacer tu parte", medible:</b> 80 % de cumplimiento o más y todas las revisiones semanales enviadas.</li><li><b>"Atenderte como prometo", medible:</b> respuesta en WhatsApp en menos de 24 h y revisión cada semana.</li></ul>
+      </article>
+      <article class="card">
+        <span class="label">Contrato · firma digital antes de empezar</span>
+        <ul class="l">
+          <li>Qué se entrega, la duración y los pagos.</li>
+          <li>Las condiciones exactas de la garantía.</li>
+          <li>Consentimiento para tratar datos de salud (analíticas y lesiones) y, si quiere, de imagen.</li>
+          <li><b>Los 14 días para echarse atrás:</b> el cliente pide empezar ya y acepta pagar la parte ya prestada si desiste.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ho">
+    <header>
+      <span class="label">Lo que te diferencia</span>
+      <h2 id="h-ho">Fisio, digestión y hormonas.</h2>
+      <p class="soft">Esto es lo que no tiene un entrenador con PDF. Se usa en la llamada, en YouTube y en el contenido.</p>
+    </header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Área</th><th>Qué le pasa</th><th>Qué haces tú</th><th>Cómo se mide</th></tr></thead>
+        <tbody>
+          <tr><td>Fisio</td><td data-h="Qué pasa">Entrena con dolor o lo ha dejado por una lesión.</td><td data-h="Qué haces">Readaptación dentro del plan: el entrenamiento se adapta a la lesión, no al revés.</td><td data-h="Medida">Dolor y movilidad en la revisión semanal.</td></tr>
+          <tr><td>Digestión</td><td data-h="Qué pasa">Hinchazón y pesadez. Cree que es grasa y es inflamación.</td><td data-h="Qué haces">Orden de comidas, fibra, tolerancias y horarios.</td><td data-h="Medida">Digestión y hinchazón en la revisión semanal.</td></tr>
+          <tr><td>Insulina</td><td data-h="Qué pasa">Sedentarismo y picoteo: guarda grasa abdominal.</td><td data-h="Qué haces">Reparto de hidratos según actividad, fuerza y pasos.</td><td data-h="Medida">Glucosa e insulina en ayunas (HOMA-IR), HbA1c, triglicéridos/HDL.</td></tr>
+          <tr><td>Leptina</td><td data-h="Qué pasa">Tras dietas fuertes: hambre, bajón y rebote.</td><td data-h="Qué haces">Sin déficits extremos, pausas de dieta y subida de calorías en Consolidar.</td><td data-h="Medida">Hambre, energía y estancamiento en la revisión.</td></tr>
+          <tr><td>Cortisol</td><td data-h="Qué pasa">Estrés y poco sueño: retención, hambre, ansiedad con la comida.</td><td data-h="Qué haces">Sueño primero; no sumar estrés con entrenos o dietas excesivas.</td><td data-h="Medida">Cortisol matinal (orientativo); sueño y estrés semanales.</td></tr>
+          <tr><td>Testosterona</td><td data-h="Qué pasa">Baja con grasa abdominal, mal sueño y sedentarismo.</td><td data-h="Qué haces">Perder grasa, fuerza, sueño, vitamina D y zinc.</td><td data-h="Medida">Total, libre, SHBG, estradiol, LH.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="when">
+      <div><b>Inicio</b><span>Punto de partida</span></div>
+      <div><b>Mes 3</b><span>Mitad de Transformar</span></div>
+      <div><b>Mes 6</b><span>Fin de Consolidar</span></div>
+      <div><b>Mes 12</b><span>Solo el año completo</span></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Analítica: qué pedir</h3>
+        <ul class="l">
+          <li><b>Metabolismo:</b> glucosa, insulina, HbA1c.</li>
+          <li><b>Grasas e hígado:</b> perfil lipídico, GGT, ALT.</li>
+          <li><b>Tiroides:</b> TSH, T4 libre.</li>
+          <li><b>Hormonas:</b> testosterona total y libre, SHBG.</li>
+          <li><b>Otros:</b> vitamina D, ferritina, PCR.</li>
+        </ul>
+        <p class="soft" style="font-size:14px">En ayunas de 10–12 h, entre las 8 y las 10, sin entrenar fuerte 48 h antes ni alcohol 72 h antes, y siempre en el mismo laboratorio.</p>
+      </div>
+      <div class="card chip">
+        <h3>El límite, para ir fuerte sin pillarse</h3>
+        <ul class="l">
+          <li><b>Tú sí:</b> interpretas tendencias, readaptas lesiones y ajustas alimentación, entrenamiento y hábitos.</li>
+          <li><b>Tú no:</b> diagnosticas ni recetas medicación ni terapia hormonal.</li>
+          <li><b>Derivas al médico</b> si un valor sale muy fuera de rango.</li>
+          <li><b>En anuncios:</b> nada de "cura tu…". Sí "entiende tu cuerpo y tus analíticas".</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ba">
+    <header><span class="label">Back-end</span><h2 id="h-ba">Cada cliente vale más en su momento dulce.</h2><p class="soft">No hay una semana fija. Se ofrece cuando ve un resultado claro.</p></header>
+    <div class="card dark">
+      <span class="label">Señales del momento dulce</span>
+      <ul class="l"><li><b>Una foto comparada</b> que le impacta.</li><li><b>La analítica</b> mejor que la anterior.</li><li><b>Se le fue el dolor</b> o duerme y digiere bien por primera vez en años.</li><li><b>Un comentario espontáneo</b> del tipo "me ha dicho mi pareja…".</li></ul>
+    </div>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de programa</h3><ul class="l"><li><b>Trimestre → semestre:</b> +300 €.</li><li><b>Semestre → año:</b> +500 €.</li></ul></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Renovar antes de acabar</h3><ul class="l"><li>Nunca al final.</li><li>Con incentivo y fecha límite: precio congelado o un mes gratis.</li></ul></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento mensual</h3><ul class="l"><li>App, una revisión al mes y analítica de control.</li><li>Precio a decidir.</li></ul></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a alguien</h3><ul class="l"><li>Se pide en el mismo momento dulce.</li><li>Si entra, un mes gratis.</li></ul></article>
+    </div>
+    <p class="soft" style="font-size:14.5px">Andrés y Fran lo apuntan cada semana en el panel del equipo (back-end ofrecido, cerrado y en euros).</p>
+  </section>
+</div>
+
+<!-- ===================== MENTORÍA ===================== -->
+<div class="view" id="view-men" role="tabpanel" aria-labelledby="tab-men" hidden>
+  <header class="sec">
+    <span class="label">Mentoría 1:1 · AGLEZ Academy</span>
+    <h1>Empresario, no entrenador de tablita.</h1>
+    <p class="soft" style="font-size:18px;max-width:760px">Para entrenadores que arrancan de cero o están estancados en los inicios. Sistemas reales y métricas. El negocio llega al punto que se merece: hay que ganárselo a pulso y poner el trabajo.</p>
+  </header>
+
+  <section class="sec" aria-labelledby="h-mi">
+    <header><span class="label">Qué incluye</span><h2 id="h-mi">Un servicio 1:1 contigo. La academia es el apoyo.</h2></header>
+    <div class="g3">
+      <article class="card"><h3>1:1 con Alberto</h3><ul class="l"><li><b>Plan de acción semanal:</b> cada tarea y en qué orden.</li><li><b>Revisión cada domingo</b> con métricas.</li><li><b>WhatsApp directo</b>.</li></ul></article>
+      <article class="card"><h3>Sistemas y métricas</h3><ul class="l"><li><b>Calendario de contenido.</b></li><li>Embudo, captación, venta.</li><li>Leads, llamadas, cierres y facturación controlados.</li></ul></article>
+      <article class="card chip"><h3>Academia y comunidad</h3><ul class="l"><li><b>Acceso a AGLEZ Academy:</b> formación teórico-práctica.</li><li><b>Comunidad</b> como extra.</li></ul></article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-mp">
+    <header><span class="label">Precio y formato</span><h2 id="h-mp">Solo 3 meses de entrada.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="badge">Precio actual</span>
+        <h3>Mentoría 3 meses</h3>
+        <p class="price">1.500 €</p>
+        <ul class="l"><li>Precio de lanzamiento: <b>sube después de las primeras ventas</b>.</li><li>Un precio fijo para todos. Nada "a ojo según la persona": si dos alumnos hablan, el precio tiene que ser el mismo.</li></ul>
+      </article>
+      <article class="card">
+        <h3>Por qué 3 meses y no más</h3>
+        <ul class="l">
+          <li><b>Para comprobar que congeniáis.</b></li>
+          <li><b>Porque el proyecto es igual de importante para los dos.</b></li>
+          <li><b>Para tener la máxima cercanía.</b></li>
+        </ul>
+        <p class="soft" style="font-size:14.5px">Si funciona, seguís a largo plazo. Nunca más de 3 meses de entrada.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-mg">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-mg">No te dejo a medias.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="label">Garantía · bajo contrato</span>
+        <p style="font-size:19px;font-weight:700;line-height:1.4">"Si en 3 meses no recuperas la inversión, seguimos trabajando juntos. Y si el servicio no está a la altura de la calidad que te prometo, te devuelvo tu inversión."</p>
+      </article>
+      <article class="card">
+        <span class="label">"Calidad", medible en el contrato</span>
+        <ul class="l">
+          <li><b>Revisión cada domingo,</b> sin faltar.</li>
+          <li><b>Respuesta en WhatsApp en menos de 24 h.</b></li>
+          <li><b>Plan de acción entregado cada semana.</b></li>
+          <li>Y por su parte: ejecutar el plan y reportar sus números.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-mb">
+    <header><span class="label">Back-end</span><h2 id="h-mb">El alumno que gana dinero quiere seguir.</h2><p class="soft">Momento dulce: su <b>primer mes rentable</b>, o su primer cliente que recupera la inversión.</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>3 meses más</h3><ul class="l"><li>Ofrecida en el momento dulce, no al final.</li><li>A precio de alumno.</li></ul></article>
+      <article class="card"><span class="badge">Ascensión</span><h3>6 meses</h3><ul class="l"><li>Seis meses directos con descuento frente a dos renovaciones.</li></ul></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Academia + grupo</h3><ul class="l"><li>Academia, grupo y 1 revisión al mes.</li><li>Precio a decidir.</li></ul></article>
+      <article class="card acc"><span class="badge">Hecho por ti</span><h3>Gestión de anuncios</h3><ul class="l"><li>Los anuncios del alumno, gestionados por Alberto.</li><li>Es tu fuerte: el upsell más natural.</li></ul></article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-mc">
+    <header><span class="label">Captación</span><h2 id="h-mc">Abrir muchísimas conversaciones.</h2></header>
+    <div class="g2">
+      <div class="card">
+        <h3>Setters</h3>
+        <ul class="l">
+          <li><b>Axell y Andrés</b> abren conversaciones en frío con entrenadores y apuntan cada día de qué perfil o página salen y quién responde (panel del equipo).</li>
+          <li><b>Primer mensaje:</b> "Ey [nombre], he visto tu perfil. ¿Ahora mismo vives de las asesorías o lo compaginas con otra cosa?"</li>
+          <li><b>Filtro:</b> cuántos clientes tiene, cuánto factura, qué le frena y si puede invertir. Si encaja, llamada con Alberto.</li>
+        </ul>
+      </div>
+      <div class="card chip">
+        <h3>Contenido en @albertomentor</h3>
+        <ul class="l">
+          <li><b>Clips</b> de la academia gratuita de YouTube (3 vídeos a la semana).</li>
+          <li><b>Yapping</b> a cámara.</li>
+          <li>Nada más hasta que el sistema esté rodado.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute("aria-selected", on ? "true" : "false");
+        document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+      });
+      window.scrollTo(0, 0);
+    });
+  });
+})();
+</script>

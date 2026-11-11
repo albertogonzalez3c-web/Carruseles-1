@@ -1,0 +1,344 @@
+<title>Sebastián Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f1f0ec;
+  --white: #ffffff;
+  --ink: #0b0d12;
+  --soft: #545a66;
+  --line: #d8d6cf;
+  --chip: #e8e6df;
+  --gold: #c9992b;
+  --gold-text: #7f5d0e;
+  --blue: #1d4ed8;
+  --dark2: #171a22;
+  --f-head: "Anton", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1; }
+h1 em, h2 em { font-style: normal; color: var(--gold-text); }
+h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.05; }
+h3 { font-size: 20px; line-height: 1.15; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--gold); }
+.card.dark .label { color: var(--gold); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c4c8d0; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.blue { background: var(--blue); color: #fff; box-shadow: none; }
+.card.blue h2, .card.blue h3 { color: #fff; }
+.card.blue .label { color: #c8d6ff; }
+.card.blue ul.l, .card.blue ol.l, .card.blue .soft { color: #e3e9ff; }
+.card.blue ul.l b { color: #fff; }
+.card.warn { background: #fff4d9; box-shadow: inset 0 0 0 1px #ecd391; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--gold); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; }
+.card.dark .say { background: var(--dark2); color: var(--white); }
+.card.blue .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--gold-text); }
+.card.dark .badge { background: var(--dark2); color: var(--gold); }
+.card.blue .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbf1d4; }
+.tbl td b { color: var(--ink); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.card.dark .cp { background: var(--dark2); color: #fff; box-shadow: inset 0 0 0 1px #333a48; }
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--ink); color: var(--gold); display: grid; place-items: center; font: 400 18px/1 var(--f-head); flex: none; }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--gold-text); font-weight: 800; }
+.big { font: 400 clamp(56px, 10vw, 100px)/.9 var(--f-head); color: var(--gold); }
+.nicho { font: 400 clamp(24px, 3.2vw, 34px)/1.12 var(--f-head); text-transform: uppercase; color: var(--white); }
+.nicho em { font-style: normal; color: var(--gold); }
+.fases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.fases > div { background: var(--dark2); border-radius: 6px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.fases b { color: #fff; }
+.fases p { color: #c4c8d0; font-size: 14.5px; }
+.fases .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--gold); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 4px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .fases { grid-template-columns: 1fr; } .card { padding: 16px; } }
+</style>
+<main class="wrap">
+<header class="head">
+  <span class="label">Sebastián Palacios · Autoridad Física · Parte 4</span>
+  <h1>Embudo: <em>cinco canales</em>, una sola conversación</h1>
+  <p class="soft">Eres de los que pueden con un sistema completo, así que aquí va entero. Todo desemboca en lo mismo: una conversación 1 a 1 que termina en una llamada de diagnóstico desde tu landing. Sin ManyChat: <b>cada mensaje lo escribes tú</b>.</p>
+  <div class="path"><span>Antiguos clientes</span><i>+</i><span>50 en frío EE. UU.</span><i>+</i><span>Tus conversaciones</span><i>+</i><span>Anuncios "sígueme"</span><i>+</i><span>Contenido</span><i>→</i><span>DM</span><i>→</i><span>Landing</span><i>→</i><span>Llamada</span><i>→</i><span>WhatsApp</span></div>
+  <nav class="toc"><a href="#nicho">Nicho</a><a href="#kpi">KPIs</a><a href="#c1">1 · Francotirador</a><a href="#c2">2 · 50 en frío</a><a href="#c3">3 · Bienvenidas</a><a href="#c4">4 · Anuncios</a><a href="#c5">5 · Contenido</a><a href="#cierre">Conversión</a><a href="#dia">Tu día</a></nav>
+</header>
+
+<section class="card dark" id="nicho">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="nicho">Ayudo a hombres latinos de 20 a 35 que <em>llevan años entrenando</em> y saben de fitness, pero viven entre volúmenes que los tapan y definiciones que los dejan flacos, a construir el físico que <em>por fin refleje su esfuerzo</em>. Sin química. Sin improvisar.</p>
+  <p class="soft">Método <b style="color:#fff">EMD · Ejecuta, Mide, Decide</b>: una estrategia estable, adaptada a tu vida, medida cada semana y ajustada con datos, no con ansiedad.</p>
+  <div class="g3">
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pilar 1 · Ejecuta</span><p class="soft">Rutina estable con progresión y dieta cerrada con intercambios que encaja en tu horario. No se cambia por impulso.<br><i style="opacity:.8">Por qué: cambié de rutina y de entrenador una y otra vez. Mi mejor progreso fue en 2020, con la misma rutina en casa registrando cada serie.</i></p></div>
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pilar 2 · Mide</span><p class="soft">Tendencia de peso, cargas, medidas, fotos y vídeos de técnica. Lo que no se registra no existe.<br><i style="opacity:.8">Por qué: con macros a ojo subí 20 kg en 4 meses, casi todo grasa, y no lo vi venir. Cuando empecé a registrar cargas, progresaba casi cada serie.</i></p></div>
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pilar 3 · Decide</span><p class="soft">Cada ajuste tiene un motivo y un dato detrás. Volumen o definición se decide con números, no con el espejo.<br><i style="opacity:.8">Por qué: hice volúmenes a 3.800 kcal que me taparon y definiciones a 1.800 kcal con atracones. Decidía por el espejo; hoy decido por la tendencia.</i></p></div>
+  </div>
+  <div class="fases">
+    <div><span class="lbl">Fase 1 · Semanas 1–4</span><b>Diagnóstico y base</b><p><b>Qué pasa:</b> auditamos tu historial, fijamos punto de partida y decidimos con datos si toca volumen o definición.<br><b>Qué haces tú:</b> registras todo y mandas tu primera revisión completa.</p></div>
+    <div><span class="lbl">Fase 2 · Meses 2–5</span><b>Construcción</b><p><b>Qué pasa:</b> volumen controlado o déficit bien planteado, progresión semanal y ajustes por tendencia.<br><b>Qué haces tú:</b> ejecutas sin cambiar nada por tu cuenta y reportas cada semana.</p></div>
+    <div><span class="lbl">Fase 3 · Mes 6</span><b>Dirección propia</b><p><b>Qué pasa:</b> transición y mantenimiento; aprendes a leer tus datos y a tomar decisiones.<br><b>Qué haces tú:</b> decides con criterio y sabes qué mirar antes de tocar nada.</p></div>
+  </div>
+  <p class="soft"><b style="color:#fff">3 no negociables:</b> revisión semanal completa (peso, medidas, fotos, vídeo) · cargas registradas en cada sesión · peso diario en ayunas y pasos.</p>
+  <div class="say">"Pasé de 60 a 82 kg en 4 meses comiendo de todo, y de ahí a definiciones que me dejaban flaco. Años así. Lo que me cambió no fue otra rutina: fue dejar de improvisar." — Sebastián</div>
+</section>
+
+
+<section class="sec" id="kpi">
+  <header><span class="label">KPIs diarios · lo que se te exige</span><h2>Los números <em>no se negocian</em></h2><p class="soft">Apúntalos cada noche en tu reporte. Si una semana no cierras, mira primero esta tabla, no el precio.</p></header>
+  <div class="card tblwrap"><table class="tbl">
+    <thead><tr><th>Acción</th><th>Cada día</th><th>Canal</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td>Mensajes en frío nuevos a EE. UU.</td><td><b>50</b></td><td>2</td><td>En bloques de 10–15, repartidos en el día</td></tr>
+      <tr><td>Conversaciones que abres tú</td><td><b>20+</b></td><td>3</td><td>Respuestas a historias, comentarios, seguidores activos</td></tr>
+      <tr><td>Bienvenidas manuales</td><td><b>Todos los nuevos</b></td><td>3</td><td>Antes de 24 h desde que te siguen</td></tr>
+      <tr><td>Antiguos clientes (semanas 1–2)</td><td><b>10</b></td><td>1</td><td>Personalizados, nada de copiar y pegar</td></tr>
+      <tr><td>Seguimientos (días 2, 7, 14)</td><td><b>Todos los que tocan</b></td><td>2·3</td><td>Míralos en el CRM cada mañana</td></tr>
+      <tr><td>Piezas publicadas</td><td><b>2</b></td><td>5</td><td>+ 1 YouTube a la semana</td></tr>
+      <tr><td>Diagnósticos por DM</td><td><b>3–5</b></td><td>—</td><td>Conversaciones que llegan a "cuéntame tu caso"</td></tr>
+      <tr><td>Llamadas agendadas</td><td><b>1</b></td><td>—</td><td>5–7 por semana</td></tr>
+      <tr><td>Anuncios</td><td><b>3–5 USD</b></td><td>4</td><td>Revisa USD por seguidor cada día</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="sec" id="c1">
+  <header><span class="label">Canal 1 · Primera tirada · semanas 1 y 2</span><h2>Francotirador a <em>antiguos clientes</em></h2><p class="soft">La oferta y los 3 toques están en la página de Oferta. Aquí, el cómo.</p></header>
+  <div class="g3">
+    <div class="card"><span class="n">1</span><h3>Día 1: lista en el CRM</h3><p class="soft">Mete a los 35 antiguos clientes con buena relación y a los 16 de tu Tarea 4. Etiqueta cada uno con su segmento (A, B, C o D) y una nota real de su proceso. Excluye a los 2 con mala relación.</p></div>
+    <div class="card"><span class="n">2</span><h3>10 al día, por orden</h3><p class="soft">Primero A (Martín, Manuel, Alonso, Cecilia): testimonio y referidos. Después D (los que ya dijeron "sí"), luego B y C. Toque 1 hoy, toque 2 a los 3 días, toque 3 a los 7.</p></div>
+    <div class="card"><span class="n">3</span><h3>Objetivo de las 2 semanas</h3><p class="soft"><b>4 vueltas cerradas, 4 testimonios con fotos y 3 referidos</b>. Los testimonios van directos al destacado RESULTADOS y a los fijados.</p></div>
+  </div>
+  <div class="card warn"><span class="label">Lo que cambia respecto a cómo lo hacías</span><p class="soft">Hasta ahora a todos les decías "cuando quieras, partimos". Eso no es una oferta, es una despedida. A partir de hoy cada conversación termina con una pregunta concreta: <b>"¿Te reviso cómo estás esta semana y lo vemos?"</b> Y si dicen que no, se cierra con cariño y se pasa al siguiente.</p></div>
+</section>
+
+<section class="sec" id="c2">
+  <header><span class="label">Canal 2 · 50 mensajes en frío al día · Estados Unidos</span><h2>Donde están los latinos que <em>ya entrenan</em></h2><p class="soft">Además de las conversaciones que abras tú solo. No es spam: es buscar a tu cliente donde ya está y hablarle de algo suyo.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Dónde buscarlos</span><ol class="l">
+      <li><b>Comentarios en cuentas de entrenadores latinos de EE. UU.</b> que hablan en español: el que comenta "¿y si llevo años y no avanzo?" es tuyo.</li>
+      <li><b>Ubicaciones de gimnasios</b> de cadenas grandes en ciudades con mucha población latina: Miami, Houston, Dallas, San Antonio, Los Ángeles, Phoenix, Chicago, Nueva York, Orlando.</li>
+      <li><b>Hashtags en español + ciudad:</b> #gymmiami, #fitnesslatino, #gymhouston, #latinosfit, #culturismonatural.</li>
+      <li><b>Seguidores de gimnasios latinos</b> y boxes de esas ciudades.</li>
+      <li><b>Ligas de fútbol amateur latino</b> y sus jugadores que también van al gimnasio.</li>
+      <li><b>Cuentas de suplementos o tiendas fitness latinas</b> en EE. UU.: mira quién comenta y etiqueta.</li>
+    </ol></div>
+    <div class="card"><span class="badge">Criterios · todos deben cumplirse</span><ul class="l">
+      <li>Hombre, aproximadamente 20–35.</li>
+      <li>Escribe o habla en español (bio, comentarios o historias).</li>
+      <li>Vive en EE. UU. (ubicación, ciudad en la bio, contenido).</li>
+      <li>Entrena: fotos o historias en el gimnasio.</li>
+      <li>Activo en los últimos 7 días, perfil público.</li>
+      <li><b>No es coach</b> ni vende planes.</li>
+      <li>Nada de química a la vista (si la hay, fuera).</li>
+    </ul></div>
+    <div class="card"><span class="badge">Cómo no quemar la cuenta</span><ul class="l">
+      <li>Antes de escribir: <b>sígue, dale like a 2 publicaciones y responde una historia</b>. El DM llega como conversación, no a solicitudes.</li>
+      <li>50 al día repartidos en 4 bloques (mañana, mediodía, tarde, noche), nunca 50 seguidos.</li>
+      <li>Varía los 7 mensajes y personaliza la primera frase con algo de su perfil.</li>
+      <li>Ningún link en el primer mensaje.</li>
+      <li>Semana 1: empieza en 25/día y sube a 50 en la semana 2.</li>
+    </ul></div>
+  </div>
+  <div class="card"><span class="label">7 mensajes de apertura · nunca vendas en el primero</span><div class="g2" id="openers" style="margin-top:6px"></div></div>
+  <div class="card"><span class="label">El camino de la conversación</span>
+    <div class="path" style="margin-top:6px"><span>1 · Algo suyo</span><i>→</i><span>2 · Cuánto lleva entrenando</span><i>→</i><span>3 · Qué le frustra</span><i>→</i><span>4 · Qué ha probado</span><i>→</i><span>5 · "¿Te muestro cómo lo vería yo?"</span><i>→</i><span>Landing / llamada</span></div>
+    <p class="soft">Paso 5 en una frase: <i>"Por lo que me cuentas, no te falta información, te falta dirección. Si quieres, rellena esto (2 min) y en una llamada de 30 minutos te digo exactamente qué cambiaría en tu caso, sin compromiso: autoridadfisica.cl"</i></p></div>
+  <div class="g3" id="seguimientos"></div>
+</section>
+
+<section class="sec" id="c3">
+  <header><span class="label">Canal 3 · Tus conversaciones y bienvenidas manuales</span><h2>Fuera ManyChat. <em>Entra Sebastián</em></h2><p class="soft">Un cliente que paga por cercanía nota cuando le responde un bot. Las bienvenidas, las palabras clave y las respuestas a historias pasan a ser tuyas.</p></header>
+  <div class="g2">
+    <div class="card dark"><span class="label">Cómo apagarlo esta semana</span><ol class="l">
+      <li>Desactiva en ManyChat todos los flujos de bienvenida y de palabras clave (deja la cuenta, pero sin automatizaciones activas).</li>
+      <li>En Instagram, quita las respuestas rápidas automáticas que dependan de ManyChat.</li>
+      <li>Cambia los CTA de tus piezas: "Escríbeme MÉTODO y te respondo yo".</li>
+      <li>Crea en Instagram <b>respuestas guardadas</b> (atajos) con los textos de abajo para escribir rápido, pero siempre con el nombre y una frase personal.</li>
+      <li>Revisa "Solicitudes de mensajes" 2 veces al día.</li>
+    </ol></div>
+    <div class="card"><span class="label">Fuentes de conversación propias · 20+ al día</span><ul class="l">
+      <li><b>Nuevos seguidores:</b> bienvenida a todos, antes de 24 h.</li>
+      <li><b>Respuestas a historias</b> y encuestas: responde con una pregunta, no con un emoji.</li>
+      <li><b>Comentarios en tus reels:</b> responde en público y abre DM.</li>
+      <li><b>Quien ve todas tus historias</b> y nunca escribió (como Gaspar Galarce): pregunta abierta.</li>
+      <li><b>Palabra clave MÉTODO</b> en tus piezas: respuesta manual.</li>
+    </ul></div>
+  </div>
+  <div class="g3" id="welcomes"></div>
+</section>
+
+<section class="sec" id="c4">
+  <header><span class="label">Canal 4 · Anuncios de seguidores con voz en off · EE. UU.</span><h2>Muy poco dinero, <em>muy bien apuntado</em></h2><p class="soft">El objetivo no es vender con el anuncio: es que latinos de Estados Unidos que entrenan te sigan, vean tu escaparate y entren en tus canales 3 y 2.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">La pieza</span><ul class="l"><li>Reel de 30–45 s, <b>voz en off tuya</b> sobre clips tuyos entrenando, cocinando, revisando datos.</li><li>Un solo ángulo de tu banco por anuncio.</li><li>Gancho en los 3 primeros segundos, 3 versiones.</li><li>Cierre: <b>"Sígueme para…"</b>. Subtítulos siempre.</li><li>Promociona la voz en off orgánica que mejor haya funcionado.</li></ul></div>
+    <div class="card"><span class="badge">Configuración</span><ul class="l"><li>Desde el reel: Promocionar → <b>Más visitas al perfil</b>.</li><li><b>3–10 USD/día</b> por anuncio (empieza abajo y sube si funciona), 1 anuncio a la vez al principio. <b>A los 2 días se valora.</b></li><li>Público: <b>Estados Unidos</b>, idioma <b>español</b>, hombres 20–35, intereses fitness / culturismo / gimnasio. O Advantage+ con idioma español.</li><li>Excluye Chile en este anuncio: allí ya creces orgánico.</li></ul></div>
+    <div class="card"><span class="badge">Semáforo (USD por seguidor)</span><ul class="l"><li><b style="color:#157a3b">Menos de 1 USD:</b> se mantiene y se escala (sube el presupuesto hasta 10 USD/día).</li><li><b style="color:#9a6b00">Entre 1 y 1,5 USD:</b> cambia el gancho, mismo cuerpo.</li><li><b style="color:#b42318">Más de 1,5 USD a los 2 días:</b> se corta.</li><li>Apunta cada anuncio en tu reporte: días, gasto, seguidores.</li></ul></div>
+  </div>
+  <div class="card warn"><span class="label">Normas de Meta</span><p class="soft">Nada de decirle a quien lo ve lo que le pasa a su cuerpo: <b>"¿tienes grasa abdominal?" o "¿estás gordo?" está prohibido</b>. Habla en primera persona ("yo hice volúmenes que me tapaban") o con "la mayoría". Sin antes/después, sin "X kilos en Y semanas" y sin prometer resultados.</p></div>
+  <div class="g3" id="ads"></div>
+</section>
+
+<section class="sec" id="c5">
+  <header><span class="label">Canal 5 · Contenido</span><h2>2 piezas al día + <em>1 YouTube a la semana</em></h2><p class="soft">El detalle está en tu plan de contenido. Aquí, solo cómo alimenta el embudo.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Rol entrenador</span><p class="soft">Corriges técnica, lees la revisión de un cliente, decides un ajuste en voz alta. Es lo que convence a un cliente que ya sabe. Mínimo 1 de cada 2 piezas.</p></div>
+    <div class="card"><span class="badge">Casos</span><p class="soft">1 de cada 3 piezas del grid. Salen del francotirador y del sistema de testimonios.</p></div>
+    <div class="card"><span class="badge">CTA único</span><p class="soft">"Escríbeme MÉTODO" en el contenido orgánico; "Sígueme para…" en los anuncios. Las historias de martes y viernes con caja de preguntas para abrir conversación.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="cierre">
+  <header><span class="label">Conversión · de la conversación al pago</span><h2>Landing → llamada → <em>WhatsApp</em></h2></header>
+  <div class="g4">
+    <div class="card"><span class="n">1</span><h3>Diagnóstico por DM</h3><p class="soft">Pasos 1–4 de la conversación. Si encaja (criterios del nicho), le mandas a la landing.</p></div>
+    <div class="card"><span class="n">2</span><h3>Formulario en la landing</h3><p class="soft">autoridadfisica.cl con <b>utm por canal</b>: ?utm_source=dm_frio, dm_propio, ex_cliente, anuncio. Así sabes qué canal vende.</p></div>
+    <div class="card"><span class="n">3</span><h3>WhatsApp en 1 hora</h3><p class="soft">En cuanto llega el formulario, le escribes tú por WhatsApp para agendar. Recordatorio el día antes y 1 h antes, con la hora en su zona horaria.</p></div>
+    <div class="card"><span class="n">4</span><h3>Llamada de 30 min</h3><p class="soft">Con tu guion de cierre. Precio, silencio, link de pago. Onboarding y bonus el mismo día.</p></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">WhatsApp tras el formulario</span><button class="cp" data-copy="waForm">Copiar</button></div>
+<div class="say" id="waForm">Hola [nombre], soy Sebastián de Autoridad Física. Vi tu formulario: [frase de lo que escribió]. Me gustaría verlo contigo en una llamada de 30 minutos. ¿Te va mejor [día] a las [hora de su zona] o [día] a las [hora]? (Te escribo la hora en tu horario de [ciudad].)</div></div>
+    <div class="card"><span class="badge">Estados de WhatsApp · por bloques</span><ul class="l"><li><b>Lunes:</b> caso de cliente (con permiso).</li><li><b>Miércoles:</b> revisión real con datos tapados: "esto es lo que miro cada semana".</li><li><b>Viernes:</b> plazas del mes + "escríbeme MÉTODO".</li><li>Guarda como contacto a cada lead para que vea tus estados.</li></ul></div>
+  </div>
+</section>
+
+<section class="sec" id="dia">
+  <header><span class="label">Tu día · hora de Chile</span><h2>El sistema cabe en <em>3 horas</em></h2><p class="soft">EE. UU. Este va 1–2 h por detrás de Chile y el Pacífico 4–5 h. Tus bloques de tarde y noche pillan a Estados Unidos despierto.</p></header>
+  <div class="card tblwrap"><table class="tbl">
+    <thead><tr><th>Bloque</th><th>Qué haces</th><th>Tiempo</th></tr></thead>
+    <tbody>
+      <tr><td>Mañana</td><td>CRM: seguimientos del día · bienvenidas pendientes · 10 antiguos clientes (semanas 1–2) · publicar pieza 1</td><td>45 min</td></tr>
+      <tr><td>Mediodía</td><td>Bloque frío 1 (15) · responder conversaciones</td><td>30 min</td></tr>
+      <tr><td>Tarde</td><td>Bloque frío 2 (15) · publicar pieza 2 · revisar anuncio (USD/seguidor)</td><td>40 min</td></tr>
+      <tr><td>Noche</td><td>Bloque frío 3 (20) · llamadas con EE. UU. · bienvenidas · reporte del día</td><td>60 min</td></tr>
+    </tbody>
+  </table></div>
+  <div class="card dark"><span class="label">Semana 1, día por día</span><ul class="l">
+    <li><b>Lunes:</b> apagar ManyChat, cargar CRM con antiguos clientes y Tarea 4, elegir bio. Primeros 10 toques.</li>
+    <li><b>Martes:</b> 25 en frío, 10 toques, pedir los primeros testimonios al segmento A.</li>
+    <li><b>Miércoles:</b> grabar 3 voces en off para anuncios; lanzar la mejor a 3 USD/día.</li>
+    <li><b>Jueves–viernes:</b> 25 en frío, toque 2 a los del lunes, primeras llamadas.</li>
+    <li><b>Sábado:</b> montar destacado RESULTADOS con lo que llegue.</li>
+    <li><b>Domingo:</b> reporte semanal a Alberto. La semana 2 subes a 50 en frío.</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  var uid = 0;
+  function copyCard(parent, badge, text, extraCls, note) {
+    var c = el("div", "card" + (extraCls ? " " + extraCls : ""));
+    var r = el("div", "row"); r.appendChild(el("span", "badge", badge));
+    var id = "c" + (uid++);
+    var b = el("button", "cp", "Copiar"); b.setAttribute("data-copy", id); r.appendChild(b); c.appendChild(r);
+    var s = el("div", "say", text); s.id = id; c.appendChild(s);
+    if (note) { var p = el("p", "soft", note); p.style.fontSize = "14px"; c.appendChild(p); }
+    parent.appendChild(c); return c;
+  }
+
+  var OP = [
+    ["1 · Historia", "Hey [nombre], vi tu [ejercicio / progreso] en la historia, se nota que llevas tiempo. ¿Cuántos años llevas entrenando?"],
+    ["2 · Comentario", "Vi tu comentario en lo de [cuenta] sobre [tema]. Me pasó igual durante años. ¿Tú qué estás haciendo ahora, volumen o definición?"],
+    ["3 · Gimnasio", "¿Entrenas en [gimnasio/ciudad]? Te pregunto porque hablo con mucho latino de allá que entrena fuerte y siente que no avanza. ¿Cómo lo llevas tú?"],
+    ["4 · Pregunta directa", "Pregunta rápida de entrenador a alguien que entrena: ¿qué te cuesta más ahora mismo, ganar masa sin taparte o definir sin quedarte flaco?"],
+    ["5 · Identificación", "Te escribo porque tu feed me recordó a mí hace unos años: entrenando bien, sabiendo bastante y viéndome igual. ¿Te ha pasado o vas avanzando bien?"],
+    ["6 · Latino en EE. UU.", "¡Qué bueno ver latinos entrenando así en [ciudad]! Yo soy nutricionista y preparador en Chile y trabajo online con gente de allá. ¿Cómo haces para comer bien con el ritmo de trabajo de allá?"],
+    ["7 · Técnica", "Vi tu vídeo de [ejercicio]. Muy buen trabajo. Un detalle que suele frenar ese ejercicio es [punto técnico]. ¿Lo sientes más en [músculo] o en [otro]?"]
+  ];
+  var op = document.getElementById("openers");
+  OP.forEach(function (o) { copyCard(op, o[0], o[1], "chip"); });
+
+  var SG = [
+    ["Día 2 · si no respondió", "[Nombre], ¿pudiste ver lo que te pregunté? Sin apuro, me quedé con curiosidad de cómo vas con el entreno."],
+    ["Día 7 · valor", "Hoy publiqué algo que me hizo pensar en ti: [tema de la pieza]. Si te sirve, te cuento cómo lo aplicaría en tu caso."],
+    ["Día 14 · cierre", "Te escribo por última vez para no molestar. Si en algún momento quieres que miremos por qué no avanzas como deberías, escríbeme MÉTODO y lo vemos. ¡Fuerza con el entreno!"]
+  ];
+  var sg = document.getElementById("seguimientos");
+  SG.forEach(function (s) { copyCard(sg, s[0], s[1]); });
+
+  var WL = [
+    ["Bienvenida · seguidor nuevo", "¡Hey [nombre], gracias por seguirme! Una pregunta para saber qué contenido te sirve más: ¿ahora mismo estás buscando ganar masa, definir o no tienes claro qué toca?"],
+    ["Bienvenida · desde anuncio", "¡Bienvenido, [nombre]! Vi que llegaste por el vídeo de [tema]. ¿Te sentiste identificado con eso o te dio curiosidad? Cuéntame cuánto llevas entrenando."],
+    ["Palabra clave MÉTODO", "¡Buenísimo que escribas, [nombre]! Antes de contarte cómo trabajo, cuéntame tú: ¿cuánto llevas entrenando y qué es lo que más te frustra ahora mismo?"]
+  ];
+  var wl = document.getElementById("welcomes");
+  WL.forEach(function (w) { copyCard(wl, w[0], w[1]); });
+
+  var AD = [
+    { t: "Anuncio 1 · El volumen que me tapó", hooks: ["\"Mi primer volumen: de 60 a 82 kilos en 4 meses. Casi todo grasa.\"", "\"Durante años creí que para crecer había que comer de todo.\"", "\"Cada volumen que hice me dejaba tapado. Hasta que entendí esto.\""],
+      body: "Yo medía 1,80 y pesaba 60 kilos. Me dijeron que para crecer había que comer mucho, y lo hice: en 4 meses subí más de 20 kilos y la mayoría era grasa. Después venía la definición, pasaba hambre y terminaba más flaco. Años así. Lo que me sacó de ese ciclo no fue comer más ni menos: fue un superávit pequeño, medido cada semana y ajustado con datos.",
+      cta: "Sígueme si quieres hacer tu próximo volumen sin taparte.",
+      txt: "60 → 82 kg en 4 meses · casi todo grasa · lo que cambié", clips: "Tú cocinando y pesando comida · tu planilla de cargas · plano de espalda entrenando · tú a cámara en el cierre" },
+    { t: "Anuncio 2 · Sabía de todo y no avanzaba", hooks: ["\"Sabía lo que era el RIR, el déficit y la tensión mecánica… y me veía igual.\"", "\"Soy nutricionista y aun así me costó dirigir mi propio físico.\"", "\"La mayoría que lleva años entrenando no necesita más información.\""],
+      body: "Me formé, me certifiqué, estudié nutrición. Y aun así, conmigo mismo cambiaba la rutina cada vez que veía algo nuevo y cuestionaba todo en una mala semana. La mayoría que lleva años entrenando está igual: sabe mucho, consume mucho contenido y no tiene una dirección para su caso. Lo que me funcionó fue menos información y más estrategia: ejecutar, medir y decidir.",
+      cta: "Sígueme para dejar de improvisar con tu físico.",
+      txt: "Sabía mucho · avanzaba poco · menos info, más dirección", clips: "Tú leyendo un estudio o libro · revisando una planilla · ejecución lenta de un ejercicio · tú a cámara" },
+    { t: "Anuncio 3 · La balanza no bajó", hooks: ["\"La balanza no bajó en 3 días y casi lo dejo.\"", "\"Por qué yo nunca miro el peso de un solo día.\"", "\"Durante años recorté calorías cada vez que la balanza no se movía.\""],
+      body: "Antes, si la balanza no bajaba en tres días, recortaba calorías. Terminaba con hambre, sin energía y entrenando peor. Hoy miro la tendencia de la semana, las medidas y las cargas. Muchas veces el peso no se mueve y aun así estás progresando: más fuerza, menos cintura, mejor foto. Si cambias el plan cada vez que el número no te gusta, nunca le das tiempo a funcionar.",
+      cta: "Sígueme para aprender a leer tus datos como entrenador.",
+      txt: "Peso del día ≠ progreso · tendencia · medidas · cargas", clips: "Tú pesándote · gráfico de tendencia en pantalla · cinta métrica · barra cargada · tú a cámara" }
+  ];
+  var ad = document.getElementById("ads");
+  AD.forEach(function (a, i) {
+    var c = el("div", "card" + (i === 0 ? " dark" : ""));
+    c.appendChild(el("h3", null, a.t));
+    c.appendChild(el("span", "label", "3 ganchos (0–3 s) · uno por versión"));
+    var ul = el("ul", "l"); a.hooks.forEach(function (h) { ul.appendChild(el("li", null, h)); }); c.appendChild(ul);
+    c.appendChild(el("span", "label", "Voz en off (3–35 s)"));
+    var id = "ad" + i; var s = el("div", "say", a.body + "\n\n" + a.cta); s.id = id; c.appendChild(s);
+    var b = el("button", "cp", "Copiar guion"); b.setAttribute("data-copy", id); b.style.width = "fit-content"; c.appendChild(b);
+    c.appendChild(el("span", "label", "Texto en pantalla"));
+    c.appendChild(el("p", "soft", a.txt));
+    c.appendChild(el("span", "label", "Clips"));
+    c.appendChild(el("p", "soft", a.clips));
+    ad.appendChild(c);
+  });
+
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    var t = document.getElementById(b.getAttribute("data-copy")); if (!t) return;
+    try { navigator.clipboard.writeText(t.textContent.trim()).then(function () { show("Copiado"); }, function () { show("No se pudo copiar"); }); }
+    catch (err) { show("No se pudo copiar"); }
+  });
+})();
+</script>

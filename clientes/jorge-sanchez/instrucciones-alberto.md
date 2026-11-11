@@ -1,0 +1,9 @@
+# Jorge Sánchez (@jorgesdiez) — instrucciones de Alberto
+Sin documento de historia; capturas de perfil y grid. Vive con Adrián Domínguez (cliente anterior; se pueden ayudar).
+- Bio actual: "Para hombres que llevan tiempo entrenando y esperaban más de su físico. Consigue más con el esfuerzo que ya haces. Cuéntame tu caso" + jotform 243216586760057. Destacados EQUIPO, LIFESTYLE, SOBRE MÍ. Posts: 74→89 kg, Jornada +10 horas, 27 años, ¿Semana imposible?, "Llevo 3 años entrenando y me sigo viendo igual", ¿Se notan 624 entrenos?, "Llevas años comiendo para ponerte fuerte y cada vez te ves menos definido", Entrenar tras 9 horas de trabajo, No te comas la nevera (delgados que quieren ganar músculo).
+- Nicho a afinar: experto en recomposición corporal/transformación; el MÚSCULO como tejido metabólico y herramienta principal para perder grasa; vida activa: aprender a entrenar, aplicar bien la intensidad, muchos pasos.
+- Oferta: desde 300 € trimestre (lleva tiempo) → equivalentes 500 semestre / 850 año, escalera +20 %.
+- Perfil: mucho escaparate, mucho rol entrenador, muchos casos de éxito. Historias activo pero sin centrarse solo en eso (ahora las ve muy poca gente).
+- Conversaciones: repartir mensajes durante el día (más frecuencia, menos volumen por tanda); usar la cuenta secundaria que dejamos aparcada cuando la principal llegue al límite; buscar herramienta para extraer correos y prospectar en frío a empresas (B2B: bienestar para empleados) — revisar legalidad (RGPD: solo emails profesionales públicos, con opción de baja).
+- Landing boceto, pautas de anuncios (regla general España +25, 5–10 €/día, 2 días).
+- Contenido con mucha caña: YouTube 3–5/semana; voice overs con todas las variantes de Claude (trial reels); yapping 1–2/día; carruseles 3–5/semana; editar con Claude reels en tendencia para meter tráfico. Organizarse 2 días fuertes de grabación por semana y el resto edición y trabajo.

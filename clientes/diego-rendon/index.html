@@ -1,0 +1,518 @@
+<title>DR TEAM Diego Rendón</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Diego Rendón · DR TEAM. Para hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual y quieren verse los abdominales: el físico que buscas sin pasar hambre, sin dietas restrictivas y disfrutando del proceso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<!--
+  PENDIENTE / PROVISIONAL (no se ve en la página):
+  - Casos: recortes de capturas de sus historias destacadas "Resultados". Sustituir por las fotos originales con permiso firmado de cada cliente.
+    Faltan datos de: Guille, "hecho un toro", "hombros", "misma persona" (nombre/edad/tiempo). No inventar.
+  - Historia: faltan fotos de Diego (16 años, 20 tras perder 10 kg, 95 kg en volumen, prime físico actual). Huecos marcados "Foto · pendiente".
+  - Vídeo de ventas (VSL) y vídeos testimonio: huecos comentados abajo.
+  - WhatsApp: número desconocido. Cuando lo tenga, añadir botón flotante y secundario como en la landing de Adrián.
+  - Formulario: Typeform incrustado solo cuando la página esté en su dominio; en el visor de Claude queda el botón.
+-->
+<style>
+/* Layout: carta de venta larga en una columna. Hero oscuro con casos reales; muro de casos; historia con línea de tiempo y huecos de foto. Marca DR TEAM: grafito, papel frío y naranja quemado. */
+:root {
+  --paper: #f1f1ef;
+  --white: #ffffff;
+  --ink: #1d2027;
+  --soft: #5c6068;
+  --line: #d9d9d5;
+  --chip: #ebebe8;
+  --accent: #c2471b;
+  --accent-text: #a83c14;
+  --accent-dark: #e8703f;
+  --on-dark: #c6c8cd;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2b2f38; }
+.btn-a { background: var(--accent); color: var(--white); }
+.btn-a:hover { background: #a93d16; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 800 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 800 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 800 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 800 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 800 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 800 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 800 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* Historia */
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c3c3be; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 800 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 800 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; text-align: center; font: 800 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a9da3; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #f6e2d9; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 800 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(241, 241, 239, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+</style>
+
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/diego-avatar.jpg" alt="" width="320" height="320"><div>DR TEAM<small>Diego Rendón · Coach online</small></div></div>
+      <a class="btn btn-a js-form" href="https://form.typeform.com/to/ebYjCTcl" target="_blank" rel="noopener">Analizo tu caso</a>
+    </header>
+
+    <div class="hero">
+      <!-- 1 · Atención: llamar al cliente ideal -->
+      <div class="label">Para hombres de 25 a 35 que llevan años entrenando 5–6 días y siguen igual</div>
+      <!-- 2 · Titular -->
+      <h1>El físico que buscas, <em>sin pasar hambre</em>.</h1>
+      <!-- 3 · Mecanismo -->
+      <p class="lede">Llevas años entrenando 5–6 días, con curro y estrés, y los abdominales no aparecen. No te falta esfuerzo: te falta estructura. Con el Método DR entrenas mejor, no más; descansas para rendir; y bajas grasa sin pasar hambre, comiendo lo que te gusta.</p>
+      <!-- VSL PENDIENTE: cuando Diego grabe el vídeo, sustituir este comentario por
+           <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
+      <div class="ctas">
+        <a class="btn btn-a js-form" href="https://form.typeform.com/to/ebYjCTcl" target="_blank" rel="noopener">Analizo tu caso</a>
+        <a class="btn btn-dark-ghost" href="https://www.instagram.com/drr_fit/" target="_blank" rel="noopener">Escríbeme PLAN en Instagram</a>
+        <!-- WHATSAPP PENDIENTE: añadir botón "Escríbeme por WhatsApp" cuando tengamos su número -->
+      </div>
+      <p class="cta-note">El formulario son 2 minutos. Lo reviso yo y te digo qué haría en tu caso.</p>
+
+      <a class="proof-strip" href="#casos" aria-label="Ver casos de clientes">
+        <figure><img src="casos/juanca.jpg" alt="Juanca, semana 1 y semana 12: menos 5 kilos" width="900" height="520"><figcaption><b>Juanca</b> · −5 kg en 12 semanas</figcaption></figure>
+        <figure><img src="casos/jose.jpg" alt="Jose antes y después, con muy poco tiempo por su trabajo" width="900" height="669"><figcaption><b>Jose</b> · poco tiempo, cambio récord</figcaption></figure>
+        <figure><img src="casos/toro.jpg" alt="Cliente antes y después: más músculo y menos grasa" width="900" height="508"><figcaption><b>"Hecho un toro"</b> · + músculo − grasa</figcaption></figure>
+      </a>
+
+      <div class="facts">
+        <div class="fact"><b>1:1</b><span>Plan hecho para ti, no una plantilla</span></div>
+        <div class="fact"><b>Cada semana</b><span>Reviso tu progreso y ajusto</span></div>
+        <div class="fact"><b>Sin hambre</b><span>Nada de dietas restrictivas</span></div>
+        <div class="fact"><b>Poco tiempo</b><span>4 días pueden ser suficientes</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 · El problema, con sus palabras -->
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>Años entrenando. Mismo cuerpo.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Entreno más que nadie y no avanzo."</div>
+      <div class="sign">"Llevo años yendo al gimnasio y me veo igual."</div>
+      <div class="sign">"Si me como una pizza, la semana a la basura."</div>
+      <div class="sign">"Los abdominales no son para mí, nunca los he tenido."</div>
+      <div class="sign">"No me da la vida."</div>
+      <div class="sign">"Empiezo con todo el lunes y el jueves ya lo he dejado."</div>
+    </div>
+    <p class="turn">No es tu genética. <em>Es que entrenas sin estructura.</em></p>
+  </div>
+</section>
+
+<!-- 5 · Método -->
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método DR</div>
+      <h2>Desbloquear. Construir. Revelar.</h2>
+      <p class="lede">3 pilares, 3 fases y 3 no negociables. Un orden claro para dejar de dar vueltas entre volumen y definición.</p>
+    </div>
+    <div class="layers" style="margin-bottom:12px">
+      <article class="layer"><span class="n">Pilar 1</span><h3>Entrenar mejor, no más</h3><p>Estructura e intensidad por encima del volumen. Fuera las series basura: cada serie cuenta y queda apuntada. <em>Por qué: entrené 5–6 días durante años y tardé 5 o 6 años en verme los abdominales.</em></p></article>
+      <article class="layer"><span class="n">Pilar 2</span><h3>Descanso que te deja rendir</h3><p>Duermes y recuperas para llegar a cada sesión con fuerza. Sin descanso, la intensidad no existe. <em>Por qué: con lesiones de hombro y lumbar y durmiendo mal, cada definición acababa en sabotaje.</em></p></article>
+      <article class="layer"><span class="n">Pilar 3</span><h3>Déficit sin pasar hambre</h3><p>Comes lo que te gusta, dentro y fuera de casa, también el finde. Si pasas hambre, lo dejas. <em>Por qué: en mis definiciones de hambre y sin verdura acababa en atracones.</em></p></article>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Desbloquear</h3><p><b>Qué pasa:</b> 4 sesiones con intensidad real y un déficit sin hambre; bajan los primeros kilos de grasa. <b>Qué haces tú:</b> cumplir y apuntar las 4 sesiones, dormir 7 horas y mandar tu revisión.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Construir</h3><p><b>Qué pasa:</b> subimos cargas con la tabla de progresión; ganas músculo mientras sigues bajando grasa. <b>Qué haces tú:</b> progresar en cada sesión y cumplir tus comidas el 80 % de la semana.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Revelar y mantener</h3><p><b>Qué pasa:</b> afinamos hasta que se ven los abdominales y aprendes a mantenerlos comiendo de todo. <b>Qué haces tú:</b> aplicar lo aprendido y mantener las 4 sesiones.</p></article>
+      <article class="layer"><span class="n">3 no negociables</span><h3>Lo único que te pido</h3><p>4 sesiones a la semana con tabla de progresión, dormir 7 horas y una revisión semanal conmigo, sin fallar.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Adaptado a tu vida real</span>
+      <h3>Un plan que se adapta a ti, no al revés.</h3>
+      <p>Trabajo, horarios, comidas fuera y estrés: el plan se construye alrededor de tu semana. Jose lo hizo con 4 días (2 en el gimnasio y 2 en casa) y un plan de comida flexible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Prueba social -->
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Resultados DR TEAM</div>
+      <h2>Ya entrenaban. Les faltaba el plan.</h2>
+      <p class="lede">Clientes reales, con su antes y su después.</p>
+    </div>
+    <!-- VÍDEOS DE TESTIMONIO PENDIENTES: añadir antes del muro cuando Diego los pase. -->
+    <div class="wall">
+      <article class="case">
+        <img src="casos/juanca.jpg" alt="Juanca en la semana 1 y en la semana 12" loading="lazy" width="900" height="520">
+        <div class="big">−5 kg en 12 semanas</div>
+        <p>Con muchas complicaciones por una lesión, y aun así menos grasa y más músculo. Renovó 6 meses. Su objetivo: verse los abdominales.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Juanca</b><span>Semana 1 → semana 12</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/jose.jpg" alt="Jose antes y después" loading="lazy" width="900" height="669">
+        <div class="big">Cambio en tiempo récord</div>
+        <p>Muy limitado por su trabajo. 4 días de entrenamiento (2 en el gimnasio y 2 en casa), plan de alimentación flexible y 12.000–15.000 pasos al día.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jose</b><span>Poco tiempo por su trabajo</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/toro.jpg" alt="Cliente antes y después: más músculo y menos grasa" loading="lazy" width="900" height="508">
+        <div class="big">"Hecho un toro"</div>
+        <p>Cumplió y puso el trabajo: más músculo y menos grasa. Su respuesta en la revisión: "Físicamente hecho un toro, menos flotadores. Mentalmente más agresivo".</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente DR TEAM</b><span>Más músculo, menos grasa</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/juan.jpg" alt="Juan antes y después" loading="lazy" width="900" height="444">
+        <div class="big">Pequeños ajustes</div>
+        <p>Toda la vida haciendo deporte: ciclismo, tenis, pádel y ahora gimnasio. Lo tenía todo; con unos ajustes en su alimentación, un cambio brutal en unos meses.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Juan</b><span>Deportista de siempre</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/hombros.jpg" alt="Cliente antes y después: más masa muscular manteniendo la grasa" loading="lazy" width="900" height="408">
+        <div class="big">Hombros una locura</div>
+        <p>Manteniendo el porcentaje de grasa y con más masa muscular en general.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente DR TEAM</b><span>Músculo limpio</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/guille.jpg" alt="Espalda de Guille antes y después" loading="lazy" width="900" height="545">
+        <div class="big">La espalda de Guille</div>
+        <p>Ganando masa muscular de la forma más limpia posible, sin aumentar el porcentaje de grasa.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">G</span><div><b>Guille</b><span>Volumen limpio</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/habitos.jpg" alt="Misma persona antes y después, con hábitos diferentes" loading="lazy" width="900" height="488">
+        <div class="big">Misma persona, otros hábitos</div>
+        <p>Cuando logras equilibrio en tu vida, los resultados llegan solos.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente DR TEAM</b><span>Equilibrio</span></div></div>
+      </article>
+    </div>
+
+    <div class="quotes">
+      <div class="q"><blockquote>Físicamente hecho un toro, menos flotadores. Mentalmente más agresivo.</blockquote><span>Cliente DR TEAM · revisión semanal</span></div>
+      <div class="q"><blockquote>Ya no tengo como entrenar una "obligación", ahora lo veo como algo que disfruto. Mi experiencia contigo como siempre un 10.</blockquote><span>Cliente DR TEAM · revisión semanal</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Historia -->
+<section id="historia">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Mi historia</div>
+      <h2>He estado gordo, flaco y definido.</h2>
+    </div>
+    <div class="me">
+      <img src="casos/diego-avatar.jpg" alt="Diego Rendón" width="320" height="320" loading="lazy">
+      <p>Tardé 5 o 6 años en verme los abdominales. No me faltaba esfuerzo: me faltaba estructura.</p>
+    </div>
+    <div class="timeline">
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>16 años</b><span>1,81 m y unos 75 kg. No me quitaba la camiseta en la playa.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>20 años</b><span>Dieta muy restrictiva y mucho cardio: −10 kg, muy delgado y sin abdominales.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>Volumen</b><span>Hasta 95 kg: mucha fuerza y tamaño, con mucha grasa.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>Hoy</b><span>Mi "prime físico": por fin abdominales, comiendo de todo.</span></figcaption></figure>
+    </div>
+    <div class="read stack">
+      <p>Entrené durante años con una rutina Weider, <strong>5 o 6 días a la semana</strong>, convencido de que más era mejor. Con una dieta de unas 1.500 kcal perdí 10 kg y me quedé flaco, pero sin abdominales: me faltaba músculo. Después recuperé esos 10 kg por mi cuenta.</p>
+      <p>Hice volúmenes sin control y llegué a los 95 kg. Y luego entré en lo que yo llamo <strong>un ciclo de definición interminable</strong>: tenía tanto miedo a verme delgado que me saboteaba cada vez que empezaba a bajar.</p>
+      <p>Lo que me cambió fue dejar de hacerlo solo: un plan con estructura, menos días y más intensidad, descanso de verdad y una dieta sin restricciones absurdas. Así llegué a mi mejor forma física, y así trabajo hoy con cada cliente.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>Más no es mejor</b><span>Entrenar 5–6 días sin intensidad ni registro. <em>Lo que funciona:</em> menos días, más calidad y progresión.</span></div>
+      <div class="err"><b>Definir sin músculo</b><span>Comer muy poco y mucho cardio: flaco, con hambre y con atracones. <em>Lo que funciona:</em> construir primero.</span></div>
+      <div class="err"><b>Miedo a verte flaco</b><span>Abandonar cada definición a medias. <em>Lo que funciona:</em> un plan por fases y alguien que te lleve hasta el final.</span></div>
+    </div>
+    <p class="quote">"Un plan que se adapte a ti, no que tú tengas que adaptarte al plan."</p>
+  </div>
+</section>
+
+<!-- 8 · Garantía -->
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label">Garantía</div>
+      <h2 style="margin-top:10px">Si cumples y no ves cambios en la fase 1, sigo contigo gratis.</h2>
+      <ul>
+        <li>Sigues el plan y me envías tus revisiones semanales.</li>
+        <li>Si aun así no hay cambios, seguimos trabajando sin coste hasta que lleguen.</li>
+        <li>Todo queda por escrito en el contrato antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · Para quién -->
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes entre 25 y 35 años y llevas tiempo entrenando sin ver cambios.</li>
+          <li>Quieres más músculo y menos grasa, no solo bajar de peso.</li>
+          <li>Tienes poco tiempo, estrés o un trabajo que te limita.</li>
+          <li>Estás harto del arroz con pollo y de las dietas que no aguantas.</li>
+          <li>Vas a seguir el plan y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio en 15 días o un atajo.</li>
+          <li>Quieres una plantilla genérica para hacer por tu cuenta.</li>
+          <li>No vas a mandar tus revisiones ni contarme cómo vas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Cómo empezar -->
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Me cuentas tu caso</h3><p>2 minutos en el formulario: cuánto llevas entrenando, cómo comes y qué has probado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Lo analizamos</h3><p>Si encajamos, hablamos y te digo exactamente qué está frenando tu progreso.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas tu plan</h3><p>Tu fase 1 hecha para ti y la primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Analizo tu caso.</h2>
+      <p class="lede">Lo reviso yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn btn-a js-form" id="formBtn" href="https://form.typeform.com/to/ebYjCTcl" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · Preguntas frecuentes -->
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Llevo años entrenando. ¿Qué vas a cambiar?</summary><p>Casi siempre lo mismo que me pasó a mí: demasiado volumen sin intensidad, poco descanso y una dieta que no aguantas. Ordenamos eso y progresas de nuevo.</p></details>
+      <details><summary>Tengo muy poco tiempo. ¿Me sirve?</summary><p>Sí. El plan se adapta a tus horarios. Jose, muy limitado por su trabajo, lo hizo con 4 días: 2 en el gimnasio y 2 en casa.</p></details>
+      <details><summary>¿Voy a pasar hambre?</summary><p>No. Nada de dietas restrictivas ni de vivir a pollo y arroz. Comes de todo, con un plan flexible que encaja en tu semana.</p></details>
+      <details><summary>Tengo miedo a quedarme flaco si defino.</summary><p>Es el miedo más habitual, y yo lo viví. Por eso va por fases: primero construimos y después revelamos, sin perder lo que has ganado.</p></details>
+      <details><summary>Tengo una lesión o molestias.</summary><p>Se adapta el entrenamiento. Juanca consiguió su cambio con muchas complicaciones por una lesión. Si algo necesita valoración médica, te lo digo.</p></details>
+      <details><summary>¿Tengo que dejar de salir o de comer fuera?</summary><p>No. Aprendes a encajarlo sin romper el plan. La clave es saber cuándo ser flexible y cuándo ser estricto.</p></details>
+      <details><summary>¿Y si no veo resultados?</summary><p>Si cumples el plan y envías tus revisiones y en la fase 1 no ves cambios, seguimos trabajando gratis hasta que lleguen. Queda por escrito en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Rellena el formulario y te lo explico cuando hablemos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · Llamada a la acción -->
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Deja de entrenar a ciegas.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-form" href="https://form.typeform.com/to/ebYjCTcl" target="_blank" rel="noopener">Analizo tu caso</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/drr_fit/" target="_blank" rel="noopener">Escríbeme PLAN en Instagram</a>
+    </div>
+    <p class="cta-note">O escríbeme <b>PLAN</b> por privado en <a href="https://www.instagram.com/drr_fit/" target="_blank" rel="noopener">@drr_fit</a> y te contesto yo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 DR TEAM · Diego Rendón</span><span><a href="https://www.instagram.com/drr_fit/" target="_blank" rel="noopener">@drr_fit</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-form" href="https://form.typeform.com/to/ebYjCTcl" target="_blank" rel="noopener">Analizo tu caso</a></div>
+
+<script>
+(function () {
+  var FORM = "https://form.typeform.com/to/ebYjCTcl?utm_source=landing&utm_medium=web";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // En su dominio el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de Diego Rendón"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

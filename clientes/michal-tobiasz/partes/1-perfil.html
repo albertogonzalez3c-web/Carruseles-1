@@ -1,0 +1,308 @@
+<title>Michał Profile</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f1f0ec;
+  --white: #ffffff;
+  --ink: #0b0d12;
+  --soft: #545a66;
+  --line: #d8d6cf;
+  --chip: #e8e6df;
+  --gold: #c9992b;
+  --gold-text: #7f5d0e;
+  --blue: #8a6514;
+  --dark2: #171a22;
+  --f-head: "Anton", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1; }
+h1 em, h2 em { font-style: normal; color: var(--gold-text); }
+h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.05; }
+h3 { font-size: 20px; line-height: 1.15; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--gold); }
+.card.dark .label { color: var(--gold); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #c4c8d0; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.blue { background: var(--blue); color: #fff; box-shadow: none; }
+.card.blue h2, .card.blue h3 { color: #fff; }
+.card.blue .label { color: #f3e6c4; }
+.card.blue ul.l, .card.blue ol.l, .card.blue .soft { color: #f3e6c4; }
+.card.blue ul.l b { color: #fff; }
+.card.warn { background: #fff4d9; box-shadow: inset 0 0 0 1px #ecd391; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--gold); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; }
+.card.dark .say { background: var(--dark2); color: var(--white); }
+.card.blue .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--gold-text); }
+.card.dark .badge { background: var(--dark2); color: var(--gold); }
+.card.blue .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbf1d4; }
+.tbl td b { color: var(--ink); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.card.dark .cp { background: var(--dark2); color: #fff; box-shadow: inset 0 0 0 1px #333a48; }
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--ink); color: var(--gold); display: grid; place-items: center; font: 400 18px/1 var(--f-head); flex: none; }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--gold-text); font-weight: 800; }
+.big { font: 400 clamp(56px, 10vw, 100px)/.9 var(--f-head); color: var(--gold); }
+.nicho { font: 400 clamp(24px, 3.2vw, 34px)/1.12 var(--f-head); text-transform: uppercase; color: var(--white); }
+.nicho em { font-style: normal; color: var(--gold); }
+.fases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.fases > div { background: var(--dark2); border-radius: 6px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.fases b { color: #fff; }
+.fases p { color: #c4c8d0; font-size: 14.5px; }
+.fases .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--gold); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 4px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .fases { grid-template-columns: 1fr; } .card { padding: 16px; } }
+.say.pl { background: #fbf3df; border-left-color: #8a6514; font-weight: 500; }
+code { font: 500 13px/1.3 var(--f-mono); background: var(--chip); padding: 2px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+.lang { font: 500 10.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+</style>
+<main class="wrap">
+<header class="head">
+  <span class="label">Michał Tobiasz · BodyLAB · Part 1</span>
+  <h1>Profile: almost perfect. <em>Five small tweaks</em></h1>
+  <p class="soft">Your photo is perfect, the account is verified and the black-and-gold look already reads like a brand. We don't rebuild anything. We align the bio with the new message (busy people 30+ and their one unpaid debt), reorder the highlights, fix the pinned posts and turn your 7-reel story into a series. <b>Copy is in English; the bio also comes in Polish, ready to paste.</b></p>
+  <nav class="toc"><a href="#nicho">Niche</a><a href="#why">Why</a><a href="#diag">Diagnosis</a><a href="#bios">Bios</a><a href="#grid">Pinned &amp; grid</a><a href="#destacados">Highlights</a><a href="#plantillas">Case templates</a><a href="#testimonios">Testimonials</a><a href="#confirmar">Confirm</a></nav>
+</header>
+
+<section class="card dark" id="nicho">
+  <span class="label">Your niche in one sentence · Your method in 30 seconds</span>
+  <p class="nicho">I help <em>busy professionals and business owners over 30</em> settle the one debt they keep postponing — <em>their body and their energy</em> — with a plan read from their own bloodwork that fits a full calendar.</p>
+  <p class="soft"><b style="color:#fff">BodyLAB Reset · hormonal-metabolic reset</b> (PL: <i>reset hormonalno-metaboliczny</i>): we read your labs and body composition first, then fix leptin, cortisol, testosterone, estradiol and insulin with food, training, sleep and — when the labs call for it — targeted support. Leaner, sharper at work, more energy. No camp, no chaos.</p>
+  <div class="g3">
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pillar 1 · Read</span><p class="soft">Bloodwork + body composition before any plan. Testosterone, SHBG, estradiol, cortisol, insulin/HOMA-IR, leptin, thyroid. Your numbers, not the mirror, decide.<br><i style="opacity:.8">Why: as a bodybuilder I pushed my body with extremes — olive oil by the glass, doping as a tool. I learned the hard way what hormones do when you ignore them. Today I read the labs before I touch anything.</i></p></div>
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pillar 2 · Fit</span><p class="soft">The plan fits your calendar: 3 sessions of 45–60 min, normal food (steak, pizza, business lunch), travel and late meetings included.<br><i style="opacity:.8">Why: I ate 5–6 forced meals a day "until I threw up". It worked for the stage and wrecked my life. Now I run a coaching business and a supplement store — my own plan has to fit a full day too.</i></p></div>
+    <div class="card" style="background:var(--dark2);box-shadow:none"><span class="label">Pillar 3 · System</span><p class="soft">A system that works on the days motivation doesn't: weekly check-in, sleep window, a default week you can run on autopilot.<br><i style="opacity:.8">Why: for years I said "tomorrow for sure" and didn't go. At the end of 2022 a lot fell apart at once. I didn't come back with motivation — I came back with routine: sleep, food, training, step by step.</i></p></div>
+  </div>
+  <div class="fases">
+    <div><span class="lbl">Phase 1 · Weeks 1–3</span><b>Audit</b><p><b>What happens:</b> full bloodwork panel, body composition, sleep/stress/calendar audit; baseline energy and focus scores.<br><b>What you do:</b> get the labs done, send photos and 7 days of your real routine.</p></div>
+    <div><span class="lbl">Phase 2 · Weeks 4–12</span><b>Reset</b><p><b>What happens:</b> nutrition for insulin and leptin, 3 sessions/week, cortisol and sleep protocol, targeted supplementation; peptides/TRT discussed only if labs show a reason. Retest at week 10–12.<br><b>What you do:</b> run the default week and report every Sunday.</p></div>
+    <div><span class="lbl">Phase 3 · Months 4–6</span><b>Optimize</b><p><b>What happens:</b> body-composition push, cognitive performance at work, a maintenance system you can run alone; second retest.<br><b>What you do:</b> own the system — and decide if you stay on maintenance.</p></div>
+  </div>
+  <p class="soft"><b style="color:#fff">3 non-negotiables:</b> bloodwork at the start and a retest (no labs, no plan) · weekly check-in (weight trend, photos, energy/focus/sleep 1–10) · 3 training sessions a week and a protected sleep window.</p>
+  <div class="say">"I was 64 kg at 180 cm when I was 12. I became a bodybuilder with medals. Today I put my business and my life first — and I still look and feel better than ever. If a guy who lived on extremes can run this on a full calendar, so can you." — Michał</div>
+</section>
+
+<section class="sec" id="why">
+  <header><span class="label">Why this niche</span><h2>Same Michał, <em>clearer message</em></h2><p class="soft">Your current bio ("Pomagam osobom 30+ optymalizować sylwetkę i zdrowie") is already close. We sharpen three things.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">1 · Out of the stage</span><h3>Competitions confused people</h3><p class="soft">A follower who sees medals thinks "this is for bodybuilders, not for me". Your client has a company, a team and two kids' schedules. The medals stay as <b>proof in the background</b> ("you're hearing this from someone who was a bodybuilder") — never as the message.</p></div>
+    <div class="card"><span class="badge">2 · The one unpaid debt</span><h3>They've fixed everything else</h3><p class="soft">Busy people over 30 have paid off the career, the company, the flat. The one debt they keep postponing is their own body and energy. That frame is respectful (no shaming), easy to say in one line and it speaks the language of people who think in priorities and returns.</p></div>
+    <div class="card"><span class="badge">3 · Technical, not fluffy</span><h3>Bloodwork as the entry point</h3><p class="soft">Your "Niski testosteron? Sprawdź objawy" carousel is the right direction. A business owner trusts numbers: labs, hormones, body composition, focus at work. That makes you different from every "eat less, move more" coach in Poland — and it's where your store and your bodybuilding past give you real authority.</p></div>
+  </div>
+  <div class="card warn"><span class="label">What we leave out on purpose</span><p class="soft">Competitors and people who want a stage. Teenagers and students. "Quick summer shred" buyers. You don't reject them if they write, but <b>you don't talk to them in your content</b>. Women 30+ who are busy professionals fit the method too (your Sukcesy collage shows many) — the content just speaks to "busy people 30+" and the cases show both.</p></div>
+</section>
+
+<section class="sec" id="diag">
+  <header><span class="label">Current profile diagnosis</span><h2>What stays and <em>what we fine-tune</em></h2></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Stays</span><ul class="l">
+      <li><b>Profile photo:</b> perfect. Black tee, confident, face clear. Don't touch it.</li>
+      <li><b>Verified badge + "500+ metamorfoz | 10+ lat doświadczenia":</b> strongest proof you have. Keep both numbers.</li>
+      <li><b>Black + gold BodyLAB look</b> and the "PORADNIK" carousel template: consistent and premium.</li>
+      <li><b>"Sukcesy podopiecznych" collage:</b> instant proof for anyone who lands on the profile.</li>
+      <li><b>Link to bodylabcoaching.eu/pl:</b> no landing needed, it's already there.</li>
+    </ul></div>
+    <div class="card"><span class="badge">Fine-tune</span><ul class="l">
+      <li><b>Bio:</b> says "30+" but not "busy / business owners" and not how (bloodwork). One line change (see 5 bios).</li>
+      <li><b>Two "Sukcesy" posts pinned:</b> the same message twice. Keep the best one, swap the other for your story (reel 7) and pin "How BodyLAB Reset works".</li>
+      <li><b>Highlights:</b> "Bucharest" first-time visitors read as "competition guy". Move it to the end inside a new "Moja historia". Add "Reset" and "Badania".</li>
+      <li><b>Name field:</b> add a searchable word. "Michał Tobiasz · Forma i energia 30+" instead of "- Online Coach 🌍" (the name field is searchable).</li>
+      <li><b>Links ("and 2 more"):</b> bodylabcoaching.eu/pl first, with a tag to measure it: <code>?utm_source=ig_bio</code>.</li>
+      <li><b>666 following:</b> optional — unfollow inactive accounts slowly over a few weeks; a cleaner ratio reads as more authority.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="bios">
+  <header><span class="label">5 bios · Polish version is the one you paste (max 150 characters)</span><h2>Pick one and <em>leave it for 60 days</em></h2><p class="soft">I recommend #1. The counter counts the Polish text. The <b>@kopalnia.supli_</b> mention moves to the second link and a "Sklep" highlight, so the bio space goes to the message (if you want to keep it in the bio, use bio #4, which has room).</p></header>
+  <div class="g2" id="bioList"></div>
+</section>
+
+<section class="sec" id="grid">
+  <header><span class="label">Pinned posts and grid</span><h2>Rule: <em>1 in 3 posts is proof</em></h2><p class="soft">Whoever lands on the profile should see who you help, a story and results in 5 seconds. This is how your top 9 should look in 3–4 weeks.</p></header>
+  <div class="card">
+    <div id="gridMock" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;max-width:520px"></div>
+    <p class="soft" style="font-size:14px">📌 = pinned. Gold = client result. Grey = bloodwork / education. Black = your story or yapping.</p>
+  </div>
+  <div class="g3">
+    <div class="card dark"><span class="label">Pin 1 · Story</span><h3>Reel 7 · "Who I do all this for"</h3><p class="soft">The closing reel of "Moja historia": from the skinny 12-year-old to the guy who now coaches busy people. It carries the only hard CTA of the series (DM RESET). Until reel 7 is out, pin reel 1.</p></div>
+    <div class="card dark"><span class="label">Pin 2 · Proof</span><h3>"Sukcesy podopiecznych" (keep one)</h3><p class="soft">Keep the collage with more faces visible and better light. Change the first slide's subtitle to the new niche: "500+ metamorfoz · zapracowani 30+".</p></div>
+    <div class="card dark"><span class="label">Pin 3 · Method</span><h3>"How BodyLAB Reset works"</h3><p class="soft">Carousel in your PORADNIK template: Audit → Reset → Optimize, the 5 hormones we read, what a week looks like, "DM RESET". It answers "what do you actually do?" before anyone asks.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="destacados">
+  <header><span class="label">Highlights</span><h2>Reorder, add two, <em>retire one</em></h2><p class="soft">Left to right. Same covers style (black + gold). Each highlight with its story-by-story list.</p></header>
+  <div class="g3" id="hlList"></div>
+</section>
+
+<section class="sec" id="plantillas">
+  <header><span class="label">Client result templates</span><h2>500+ transformations. <em>Each one is five posts</em></h2><p class="soft">Every client with permission gives you a carousel, a reel, a highlight photo, a chat story and a "coach at work" piece. Fill the [brackets] with real data only; if a number doesn't exist, it doesn't go in. Lab values only anonymised and with written consent.</p></header>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Case carousel · 7 slides</span><button class="cp" data-copy="tplCar">Copy</button></div>
+<div class="say" id="tplCar">1 · [Before | After] + headline: "[Name], [age], [job]: [main result] in [weeks] — with a full calendar"
+2 · Starting point: "[Hours a week at work]. [Their own sentence at the start]."
+3 · What the labs showed: "[e.g. low free testosterone / high fasting insulin / poor sleep]" (anonymised, with consent)
+4 · What we changed: "3 sessions a week, [nutrition change], [sleep / stress change]."
+5 · The numbers: weight [start → end], waist [cm], [lab marker start → retest], energy [x/10 → y/10].
+6 · Their words: "[Literal testimonial]".
+7 · CTA: "See yourself in slide 2? DM me RESET."</div></div>
+    <div class="card"><div class="row"><span class="badge">Case reel · 20–30 s</span><button class="cp" data-copy="tplReel">Copy</button></div>
+<div class="say" id="tplReel">0–2 s · On-screen text: "Runs a company. Had no time. This is him [x] weeks later."
+2–6 s · Before photo, voice: "[Name] had everything under control except one thing: his own energy."
+6–15 s · 3 things we changed, one per shot, each with a number.
+15–22 s · Transition to after + "[result] in [weeks]".
+22–30 s · You to camera: "You've paid every other debt. DM me RESET."</div></div>
+    <div class="card"><div class="row"><span class="badge">Before/after photo · text</span><button class="cp" data-copy="tplFoto">Copy</button></div>
+<div class="say" id="tplFoto">Top: "[WEEK 0] · [WEEK 16]"
+Bottom (pick one):
+· "Same job. Same calendar. Different system."
+· "He didn't find more time. He used it better."
+· "The last debt — paid."
+Corner: BodyLAB logo + "Real result · shared with permission"</div></div>
+    <div class="card"><div class="row"><span class="badge">Chat story · highlights</span><button class="cp" data-copy="tplChat">Copy</button></div>
+<div class="say" id="tplChat">Screenshot of the client's message (name hidden if they ask) + text sticker:
+"This is what happens when the plan fits the calendar: [6-word summary]"
+Example structure: "[client]: I made it through 3 days of meetings and still trained 3 times" → "Week 6. Consistency is progress."</div></div>
+  </div>
+  <div class="card blue"><span class="label">Coach at work with cases</span><h3>Read a (anonymised) lab panel on screen</h3><p class="soft">Green screen with the blurred lab result behind you: "This is a 41-year-old business owner. Look at this line: SHBG. Here's why his testosterone looked 'normal' but he felt flat — and what we changed." It's a case and authority at the same time, and nobody in your Polish niche does it well.</p></div>
+</section>
+
+<section class="sec" id="testimonios">
+  <header><span class="label">Testimonial system</span><h2>500+ transformations. <em>How many are on the profile?</em></h2><p class="soft">Your biggest asset is your client history. This system turns it into posts, starting with former clients (see reactivation in Offer and Funnel).</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">When</span><ul class="l"><li><b>Week 4:</b> first comparison photo + one sentence ("what feels different?").</li><li><b>Week 12 (after retest):</b> full before/after + energy/focus score + 30-second video if they want.</li><li><b>At the end or renewal:</b> long testimonial and final permission.</li><li><b>Former clients:</b> this week.</li></ul></div>
+    <div class="card"><span class="badge">Questions (always the same)</span><ol class="l"><li>How were you before we started (body, energy, work)?</li><li>What had you tried and why didn't it work?</li><li>What helped most?</li><li>What changed at work and at home, beyond the body?</li><li>Who would you recommend it to?</li></ol></div>
+    <div class="card"><span class="badge">Rules</span><ul class="l"><li>Nothing invented or "rounded up". No data, no number.</li><li>Written permission saved (screenshot).</li><li>Lab values: anonymised, never with a name or face.</li><li>No face? Crop from the neck down or blur.</li><li>In ads, never before/after (Meta rules).</li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Message to ask for the testimonial · EN</span><button class="cp" data-copy="msgTestEn">Copy</button></div>
+<div class="say" id="msgTestEn">Hi [name], I'm putting together the results section on my profile and your process is one I'm proud of. Can I use your before/after photos and would you answer 5 short questions? Without your face if you prefer. As a thank-you: [a free lab-read call / one month of maintenance].</div>
+<div class="row"><span class="badge">PL · to paste</span><button class="cp" data-copy="msgTestPl">Copy PL</button></div>
+<div class="say pl" id="msgTestPl">Cześć [imię], przygotowuję sekcję z efektami podopiecznych na profilu i Twój proces jest jednym z tych, z których jestem najbardziej dumny. Czy mogę wykorzystać Twoje zdjęcia przed/po i poprosić o odpowiedź na 5 krótkich pytań? Jeśli wolisz, bez twarzy. W podziękowaniu: [darmowa konsultacja wyników badań / miesiąc prowadzenia w ramach utrzymania].</div></div>
+    <div class="card"><div class="row"><span class="badge">Permission text · EN</span><button class="cp" data-copy="msgPermEn">Copy</button></div>
+<div class="say" id="msgPermEn">I authorise Michał Tobiasz (BodyLAB) to publish my progress photos and testimonial on his social media and website, [with / without] my face and [with / without] my name. My lab results may only be shown anonymised. I can ask for removal at any time. — [Name], [date]</div>
+<div class="row"><span class="badge">PL · to paste</span><button class="cp" data-copy="msgPermPl">Copy PL</button></div>
+<div class="say pl" id="msgPermPl">Wyrażam zgodę na publikację przez Michała Tobiasza (BodyLAB) moich zdjęć postępów i opinii w jego mediach społecznościowych i na stronie internetowej, [z twarzą / bez twarzy] oraz [z imieniem / bez imienia]. Moje wyniki badań mogą być pokazywane wyłącznie anonimowo. Mogę w każdej chwili poprosić o ich usunięcie. — [Imię i nazwisko], [data]</div></div>
+  </div>
+</section>
+
+<section class="sec" id="confirmar">
+  <header><span class="label">Confirm with Michał</span><h2>Before <em>touching the profile</em></h2></header>
+  <div class="card"><ul class="l">
+    <li>Which bio (recommended #1) and whether <b>@kopalnia.supli_</b> stays in the bio text or moves to a link + highlight.</li>
+    <li>Which "Sukcesy" collage stays pinned, and 3–5 star cases with <b>names, numbers and written permission</b> (none are invented here).</li>
+    <li>What "Bucharest" is exactly (competition, medal, trip) and which medals he has, for the "Moja historia" highlight.</li>
+    <li>DM keyword: <b>RESET</b> (proposed, one word everywhere) or <b>START</b> (from his storyboard).</li>
+    <li>What the other 2 bio links are, and if the store is his own (affects store discounts and referral vouchers).</li>
+    <li>If he works with a lab or doctor for bloodwork panels (for the "Badania" highlight and the Lab+ offer).</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copied</div>
+<script>
+(function () {
+  var BIOS = [
+    { t: "Recommended", b: "Pomagam zapracowanym 30+ i przedsiębiorcom\nForma i energia na bazie Twoich badań\n500+ metamorfoz · ex-kulturysta\n↓ Napisz RESET", en: "I help busy people 30+ and business owners / Body and energy built on your bloodwork / 500+ transformations · ex-bodybuilder / ↓ DM RESET", w: "Says who (busy 30+), how (bloodwork), proof (500+) and the bodybuilder past as background. Sends people to DM, not to a cold link." },
+    { t: "The debt", b: "Firmę ogarnąłeś. Zostało ciało i energia.\nReset hormonalno-metaboliczny 30+\n500+ metamorfoz | 10+ lat\n↓ Napisz RESET", en: "You've sorted the business. Body and energy are left. / Hormonal-metabolic reset 30+ / 500+ transformations | 10+ years / ↓ DM RESET", w: "The most emotional one: the unpaid-debt frame in the first line. Great for traffic from Follow Me Ads." },
+    { t: "Bloodwork first", b: "Najpierw Twoje badania, potem plan\nTestosteron · kortyzol · insulina · sylwetka\nDla zapracowanych 30+\n↓ Napisz RESET", en: "Your labs first, then the plan / Testosterone · cortisol · insulin · physique / For busy people 30+ / ↓ DM RESET", w: "The most technical. Use it once the bloodwork content (green screens, Badania highlight) is running." },
+    { t: "Minimal change", b: "@kopalnia.supli_\nPomagam zapracowanym 30+ odzyskać formę i energię\n500+ metamorfoz | 10+ lat\n↓ Napisz RESET", en: "@kopalnia.supli_ / I help busy people 30+ get their shape and energy back / 500+ transformations | 10+ years / ↓ DM RESET", w: "Closest to your current bio: keeps the store mention and only adds 'zapracowanym' and the keyword." },
+    { t: "Ex-bodybuilder", b: "Byłem kulturystą. Dziś stawiam na biznes i życie.\nForma dla zapracowanych 30+\n500+ metamorfoz\n↓ Napisz RESET", en: "I was a bodybuilder. Today business and life come first. / Shape for busy people 30+ / 500+ transformations / ↓ DM RESET", w: "Puts the story in the bio. Use it while the 'Moja historia' series is being published." }
+  ];
+  function len(s) { return Array.from(s).length; }
+  var bl = document.getElementById("bioList");
+  BIOS.forEach(function (o, i) {
+    var c = document.createElement("div"); c.className = "card" + (i === 0 ? " dark" : "");
+    var n = len(o.b);
+    c.innerHTML = '<div class="row"><span class="badge">' + (i + 1) + ' · ' + o.t + '</span><span class="badge">' + n + '/150</span></div>';
+    var s = document.createElement("div"); s.className = "say"; s.id = "bio" + i; s.textContent = o.b; c.appendChild(s);
+    var e = document.createElement("p"); e.className = "soft"; e.style.fontSize = "13.5px"; e.textContent = "EN: " + o.en; c.appendChild(e);
+    var p = document.createElement("p"); p.className = "soft"; p.style.fontSize = "14.5px"; p.textContent = o.w; c.appendChild(p);
+    var bt = document.createElement("button"); bt.className = "cp"; bt.textContent = "Copy bio (PL)"; bt.setAttribute("data-copy", "bio" + i); bt.style.width = "fit-content"; c.appendChild(bt);
+    bl.appendChild(c);
+  });
+
+  var G = [
+    ["📌 Story · reel 7", "#0b0d12", "#fff"], ["📌 Sukcesy podopiecznych", "#c9992b", "#0b0d12"], ["📌 How BodyLAB Reset works", "#3a3d45", "#fff"],
+    ["Case: CEO, 44", "#c9992b", "#0b0d12"], ["Green screen: his labs", "#3a3d45", "#fff"], ["Yapping: the unpaid debt", "#0b0d12", "#fff"],
+    ["Case: manager, 38", "#c9992b", "#0b0d12"], ["Ranking: supplements", "#3a3d45", "#fff"], ["Story reel 4", "#0b0d12", "#fff"]
+  ];
+  var gm = document.getElementById("gridMock");
+  G.forEach(function (g) {
+    var d = document.createElement("div");
+    d.style.cssText = "aspect-ratio:4/5;background:" + g[1] + ";color:" + g[2] + ";display:grid;place-items:center;text-align:center;padding:6px;font:400 clamp(11px,2.6vw,15px)/1.15 var(--f-head);text-transform:uppercase;border-radius:3px;overflow-wrap:anywhere";
+    d.textContent = g[0]; gm.appendChild(d);
+  });
+
+  var HL = [
+    { n: "Wasze sukcesy (stays 1st)", s: ["Cover: \"500+ metamorfoz\"", "1 story per client: before/after + 1 number", "Separators: ZAPRACOWANI 30+ · PRZEDSIĘBIORCY · KOBIETY 30+", "Client chats celebrating (names hidden if asked)", "New results go here first, every week", "Close: \"You could be next → DM RESET\""] },
+    { n: "Moja historia (new)", s: ["64 kg at 180 cm, age 12: the photo", "Home bench, bar, dumbbells", "The bodybuilding years + medals (Bucharest goes here)", "\"More and harder\" — the lesson", "End of 2022: \"I almost lost everything\" (as much as you want to share)", "Back to routine: sleep, food, training", "Today: business, store, clients 30+", "Sticker: \"Sound familiar?\" → DM"] },
+    { n: "Reset (new)", s: ["What BodyLAB Reset is in one sentence", "Phase 1 · Audit (weeks 1–3)", "Phase 2 · Reset (weeks 4–12)", "Phase 3 · Optimize (months 4–6)", "The 3 non-negotiables", "What a default week looks like (3 × 45–60 min)", "\"Who it's not for\"", "How to start: DM RESET"] },
+    { n: "Badania (new)", s: ["Which panel we order and why", "Testosterone total/free + SHBG", "Estradiol: why men should care", "Cortisol and your calendar", "Insulin / HOMA-IR and the afternoon crash", "Leptin and why diets stall", "An anonymised before/retest example", "\"Your labs, not my opinion, decide\""] },
+    { n: "Jak trenuję", s: ["Keep as is", "Add: \"my 45-minute session on a busy day\"", "Add: training in the store / before a meeting"] },
+    { n: "Lifestyle", s: ["Keep as is", "More: work days, the store, business lunches, travel", "Show the steak/pizza with macros (story reel 6)"] },
+    { n: "Sklep · Kopalnia (new)", s: ["@kopalnia.supli_ tag", "What I actually take (and what I don't)", "Supplement ranking reels", "\"Ask me in the store\" — come for a 15-min chat", "Client discount (if confirmed)"] },
+    { n: "Wasze treningi", s: ["Keep, move to the end", "Rename covers to match the gold style if needed"] }
+  ];
+  var hl = document.getElementById("hlList");
+  HL.forEach(function (h, i) {
+    var c = document.createElement("div"); c.className = "card";
+    var head = document.createElement("div"); head.className = "row";
+    head.innerHTML = '<span class="badge">' + (i + 1) + '</span>';
+    var t = document.createElement("h3"); t.textContent = h.n; head.prepend(t);
+    c.appendChild(head);
+    var ol = document.createElement("ol"); ol.className = "l";
+    h.s.forEach(function (x) { var li = document.createElement("li"); li.textContent = x; ol.appendChild(li); });
+    c.appendChild(ol); hl.appendChild(c);
+  });
+
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    var el = document.getElementById(b.getAttribute("data-copy")); if (!el) return;
+    var txt = el.textContent.trim();
+    try { navigator.clipboard.writeText(txt).then(function () { show("Copied"); }, function () { show("Couldn't copy"); }); }
+    catch (err) { show("Couldn't copy"); }
+  });
+})();
+</script>

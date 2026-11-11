@@ -1,0 +1,331 @@
+<title>CAMSFIT Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: resumen arriba (totales y cliente), ángulos en tarjetas, y un bloque por tipo de contenido con navegación fija. Colores de la app CAMSFIT. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --sand: #ddd9ce;
+  --sand-line: #cbbf98;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --gold: #7f6114;
+  --gold-text: #7a6225;
+  --chip: #edebe6;
+  --rust: #9a4b2f;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.4vw, 56px)/1.03 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 clamp(24px, 3.2vw, 32px)/1.12 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: var(--gold-text); font-weight: 700; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+header { padding-block: clamp(30px, 5vw, 56px) 20px; display: grid; gap: 12px; }
+header .lede { font-size: 18px; color: var(--soft); max-width: 64ch; }
+
+/* Totales */
+.totals { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.tot { background: var(--white); border-radius: 16px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.tot b { font: 800 40px/1 var(--f-body); letter-spacing: -.04em; color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.tot span { font-weight: 800; font-size: 15px; }
+.tot small { color: var(--soft); font-size: 13px; line-height: 1.35; }
+.tot.main { background: var(--gold); }
+.tot.main b, .tot.main span, .tot.main small { color: var(--white); }
+
+nav.toc { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(232, 230, 225, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); margin-top: 26px; }
+nav.toc .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+nav.toc a { flex: none; text-decoration: none; color: var(--ink); background: var(--white); border-radius: 999px; padding: 8px 13px; font-size: 13.5px; font-weight: 700; }
+nav.toc a:hover { background: var(--sand); }
+
+section { padding-block: clamp(36px, 6vw, 60px); border-top: 1px solid var(--sand); scroll-margin-top: 60px; }
+.sec-head { display: grid; gap: 10px; margin-bottom: 22px; max-width: 760px; }
+.pill { display: inline-block; width: fit-content; background: var(--gold); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.g5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 5px; color: var(--soft); font-size: 15px; }
+ul.l b { color: var(--ink); }
+
+/* Día del cliente */
+.moment { display: grid; gap: 8px; }
+.moment .t { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); }
+.moment b { font-size: 15px; line-height: 1.35; }
+.moment q { color: var(--soft); font-size: 14px; font-style: italic; quotes: "“" "”"; }
+
+/* Ángulos */
+.angle { display: grid; gap: 10px; border-top: 3px solid var(--gold); }
+.angle .think { font-size: 14.5px; color: var(--soft); }
+.angle .think b, .angle .say b { color: var(--ink); }
+.angle .say { font-size: 14.5px; color: var(--soft); }
+.hook { background: var(--chip); border-radius: 12px; padding: 10px 12px; font-weight: 700; font-size: 14.5px; line-height: 1.4; }
+.rule { margin-top: 12px; }
+
+/* Tablas */
+.tbl-wrap { overflow-x: auto; }
+table.t { width: 100%; min-width: 640px; border-collapse: separate; border-spacing: 0 6px; }
+.t th { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); text-align: left; padding: 6px 12px; }
+.t td { background: var(--white); padding: 12px 14px; font-size: 14.5px; vertical-align: top; }
+.t td:first-child { border-radius: 12px 0 0 12px; font-weight: 800; }
+.t td:last-child { border-radius: 0 12px 12px 0; }
+.tag { display: inline-block; font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; background: var(--chip); color: var(--gold-text); padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+
+/* YouTube */
+.ramp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ramp .card b { font: 800 34px/1 var(--f-body); letter-spacing: -.03em; }
+.bar { display: flex; height: 44px; border-radius: 12px; overflow: hidden; margin-top: 4px; }
+.bar div { display: grid; place-items: center; font-weight: 800; font-size: 13px; color: var(--white); text-align: center; padding: 0 6px; min-width: 0; }
+.yt-type { display: grid; gap: 8px; }
+.yt-type .pct { font: 800 30px/1 var(--f-body); color: var(--gold-text); letter-spacing: -.03em; }
+.yt-type ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+.warn { border-left: 3px solid var(--rust); }
+footer { padding-block: 28px 44px; color: var(--soft); font-size: 13.5px; border-top: 1px solid var(--sand); }
+
+@media (max-width: 900px) {
+  .totals, .g5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .g4 { grid-template-columns: 1fr 1fr; }
+  .g3, .ramp { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .totals, .g5, .g4, .g3, .g2, .ramp { grid-template-columns: 1fr; }
+  .totals { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="label">Plan CAMSFIT · Parte 3 de 6</span>
+    <h1>Contenido: todo dentro de su nicho.</h1>
+    <p class="lede">Reprogramación metabólica para hombres de +30 con trabajo sedentario y poco tiempo. Cada pieza habla a ese hombre, en un momento de su día y desde un ángulo concreto.</p>
+    <div class="totals">
+      <div class="tot main"><b>18</b><span>Publicaciones a la semana</span><small>+ variantes como reels de prueba</small></div>
+      <div class="tot"><b>7</b><span>Yapping</span><small>1 al día, a cámara</small></div>
+      <div class="tot"><b>5</b><span>Voz en off</span><small>3 ganchos cada una + "sígueme"</small></div>
+      <div class="tot"><b>3</b><span>Trends</span><small>Ranking, situaciones, réplica</small></div>
+      <div class="tot"><b>3</b><span>Carruseles</span><small>60 % conexión · 30 % valor · 10 % prueba</small></div>
+    </div>
+  </header>
+</div>
+
+<nav class="toc" aria-label="Secciones">
+  <div class="wrap">
+    <a href="#cliente">Su cliente</a>
+    <a href="#angulos">Ángulos</a>
+    <a href="#yapping">Yapping</a>
+    <a href="#vozenoff">Voz en off</a>
+    <a href="#trends">Trends</a>
+    <a href="#carruseles">Carruseles</a>
+    <a href="#historias">Historias</a>
+    <a href="#youtube">YouTube</a>
+    <a href="#sostener">Cómo sostenerlo</a>
+  </div>
+</nav>
+
+<section id="cliente">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">1 · Su cliente, en su día a día</span>
+      <h2>Cada pieza cae en uno de estos momentos.</h2>
+      <p class="soft">Así el cliente piensa "esto me pasa a mí".</p>
+    </div>
+    <div class="g5">
+      <div class="card moment"><span class="t">Mañana</span><b>Se levanta cansado aunque haya dormido</b><q>Antes no era así</q></div>
+      <div class="card moment"><span class="t">Trabajo</span><b>8–10 h sentado, café y picoteo</b><q>No me muevo nada</q></div>
+      <div class="card moment"><span class="t">Comida familiar</span><b>Come lo que hay o hace "dieta" aparte</b><q>No quiero ser el raro de la mesa</q></div>
+      <div class="card moment"><span class="t">Noche</span><b>Nevera, hambre y picoteo viendo la tele</b><q>Mañana empiezo</q></div>
+      <div class="card moment"><span class="t">Fin de semana</span><b>Comidas fuera, cervezas, la ropa aprieta</b><q>Lo he vuelto a estropear</q></div>
+    </div>
+  </div>
+</section>
+
+<section id="angulos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">2 · Ángulos de comunicación</span>
+      <h2>Ocho formas de hablarle al mismo hombre.</h2>
+    </div>
+    <div class="g4">
+      <article class="card angle"><h3>Dolor</h3><p class="think"><b>Piensa:</b> "Tengo barriga y no se va".</p><p class="say"><b>Sergio:</b> te entiendo y tiene explicación.</p><p class="hook">"Si tienes +30 y la barriga no baja aunque comas bien, escucha esto"</p></article>
+      <article class="card angle"><h3>Rebote</h3><p class="think"><b>Piensa:</b> "Ya perdí 10 kg y los recuperé".</p><p class="say"><b>Sergio:</b> no fallaste tú, falló el método.</p><p class="hook">"No recuperaste el peso por falta de voluntad"</p></article>
+      <article class="card angle"><h3>Tiempo</h3><p class="think"><b>Piensa:</b> "No tengo tiempo para esto".</p><p class="say"><b>Sergio:</b> está pensado para tu agenda.</p><p class="hook">"Trabajo 10 horas sentado y estoy así. Te cuento cómo"</p></article>
+      <article class="card angle"><h3>Familia y comida</h3><p class="think"><b>Piensa:</b> "No quiero comer distinto".</p><p class="say"><b>Sergio:</b> come lo de casa.</p><p class="hook">"Come lo mismo que tu familia y pierde grasa"</p></article>
+      <article class="card angle"><h3>Mecanismo</h3><p class="think"><b>Piensa:</b> "No entiendo qué me pasa".</p><p class="say"><b>Sergio:</b> tu cuerpo se puede reprogramar.</p><p class="hook">"Tu cuerpo no está roto, está desajustado"</p></article>
+      <article class="card angle"><h3>Enemigo común</h3><p class="think"><b>Piensa:</b> "Hice cardio y dieta y nada".</p><p class="say"><b>Sergio:</b> eso es justo lo que no funciona.</p><p class="hook">"El cardio no te va a quitar la barriga"</p></article>
+      <article class="card angle"><h3>Identidad</h3><p class="think"><b>Piensa:</b> "Ya no soy el de antes".</p><p class="say"><b>Sergio:</b> puedes volver a serlo.</p><p class="hook">"Un trabajo sedentario no significa un cuerpo sedentario"</p></article>
+      <article class="card angle"><h3>Prueba</h3><p class="think"><b>Piensa:</b> "¿Esto funciona con gente como yo?".</p><p class="say"><b>Sergio:</b> mira a este.</p><p class="hook">"42 años, oficina, dos hijos: −14 kg"</p></article>
+    </div>
+    <div class="card sand rule">
+      <h3>Regla semanal</h3>
+      <p class="soft">Al menos un yapping de cada ángulo. Semanas para conseguir contactos: más dolor y prueba. Semanas para crecer en seguidores: más mecanismo y enemigo común.</p>
+    </div>
+  </div>
+</section>
+
+<section id="yapping">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">7 a la semana · 1 al día</span>
+      <span class="label">3 · Yapping</span>
+      <h2>Sergio a cámara. Un ángulo por día.</h2>
+      <p class="soft">30–60 segundos, un solo mensaje. Cierra con "sígueme si…" o una palabra clave para escribirle por mensaje.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Día</th><th>Ángulo</th><th>Idea</th></tr></thead>
+        <tbody>
+          <tr><td>Lun</td><td><span class="tag">Rebote</span></td><td>Por qué recuperas la grasa después de una dieta (leptina)</td></tr>
+          <tr><td>Mar</td><td><span class="tag">Mecanismo</span></td><td>Lo que le pasa a tu insulina tras 8 horas sentado</td></tr>
+          <tr><td>Mié</td><td><span class="tag">Dolor</span></td><td>La grasa que no ves: grasa visceral</td></tr>
+          <tr><td>Jue</td><td><span class="tag">Enemigo común</span></td><td>Por qué el cardio no te quita la barriga</td></tr>
+          <tr><td>Vie</td><td><span class="tag">Tiempo</span></td><td>Mi semana de entreno en 3 horas</td></tr>
+          <tr><td>Sáb</td><td><span class="tag">Familia y comida</span></td><td>Cómo comer lo mismo que tu familia y perder grasa</td></tr>
+          <tr><td>Dom</td><td><span class="tag">Identidad</span></td><td>Un trabajo sedentario no significa un cuerpo sedentario</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="vozenoff">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">5 a la semana</span>
+      <span class="label">4 · Voz en off</span>
+      <h2>Su día en imágenes, su voz encima.</h2>
+      <p class="soft">Estructura: gancho (3 versiones) → mensaje → "sígueme si…". Se publica con el mejor gancho; los otros dos van como reels de prueba. El que más seguidores traiga se convierte en anuncio "sígueme".</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="t">
+        <thead><tr><th>Escena</th><th>Gancho 1</th><th>Gancho 2</th><th>Gancho 3</th></tr></thead>
+        <tbody>
+          <tr><td>En el ordenador</td><td>"Paso 10 horas al día sentado…"</td><td>"Si trabajas en oficina, esto te interesa"</td><td>"Esto es lo que hago para no engordar sentado"</td></tr>
+          <tr><td>Comida de casa</td><td>"Esto es lo que como para perder grasa"</td><td>"No como pollo con arroz"</td><td>"Lo mismo que mi familia, otra cantidad"</td></tr>
+          <tr><td>Entrenando</td><td>"45 minutos, 3 días"</td><td>"No necesitas vivir en el gimnasio"</td><td>"Lo que hago para que la grasa no vuelva"</td></tr>
+          <tr><td>Revisando la app</td><td>"Así reviso cada semana a mis clientes"</td><td>"Por qué tu plan tiene que cambiar"</td><td>"Lo que nadie ajusta y te hace estancarte"</td></tr>
+          <tr><td>Caminando</td><td>"Lo que haría si tuviera +30 y barriga"</td><td>"3 errores que cometía yo"</td><td>"Lo que me hubiera gustado saber antes"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="trends">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">3 a la semana</span>
+      <span class="label">5 · Trends</span>
+      <h2>Formatos que ya funcionan, llevados a su nicho.</h2>
+    </div>
+    <div class="g3">
+      <article class="card"><span class="label">Ranking</span><h3>De peor a mejor</h3><ul class="l"><li>Desayunos para tu insulina</li><li>Hábitos que disparan el cortisol</li><li>Cenas para no tener hambre de noche</li></ul><a href="https://www.instagram.com/reel/DexXEdNJdOU/" target="_blank" rel="noopener">Referencia ↗</a></article>
+      <article class="card"><span class="label">Grasa visceral</span><h3>La grasa que no ves</h3><ul class="l"><li>Por qué importa más que la que ves</li><li>Cómo saber si la tienes</li></ul><a href="https://www.instagram.com/reel/De6ciAtiT7C/" target="_blank" rel="noopener">Referencia ↗</a></article>
+      <article class="card"><span class="label">Réplica literal</span><h3>Tal cual</h3><ul class="l"><li>Mismo formato, mismo ritmo</li><li>Solo cambia el contexto a su nicho</li></ul><a href="https://www.instagram.com/reel/DeYwTsahcyw/" target="_blank" rel="noopener">Referencia ↗</a></article>
+      <article class="card"><span class="label">Por etapas</span><h3>No es lineal</h3><ul class="l"><li>Fase 1, fase 2, fase 3</li><li>Por qué siempre hay que ajustar</li><li>Explica la reprogramación metabólica</li></ul><a href="https://www.instagram.com/reel/DeDzckJOisA/" target="_blank" rel="noopener">Referencia ↗</a></article>
+      <article class="card sand" style="grid-column: span 2"><span class="label">Situaciones</span><h3>Escenas en las que el cliente se reconoce</h3><ul class="l"><li>El <b>raro de la mesa</b> pesando la comida</li><li>La <b>nevera a las 23:00</b> con hambre</li><li>Pedir <b>"sin hidratos"</b> algo que no tiene sentido</li><li>O al revés, el <b>bocadillo gigante</b></li><li>Y después, Sergio con la versión sensata</li></ul><a href="https://www.instagram.com/reel/DdlzPPWtNoT/" target="_blank" rel="noopener">Referencia ↗</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="carruseles">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">3 a la semana · 12 al mes</span>
+      <span class="label">6 · Carruseles</span>
+      <h2>60 % conexión, 30 % valor, 10 % prueba.</h2>
+    </div>
+    <div class="bar" role="img" aria-label="Reparto de carruseles: 60 % conexión, 30 % valor, 10 % prueba social">
+      <div style="flex:6;background:var(--gold)">Conexión 60 %</div>
+      <div style="flex:3;background:#a88a3a">Valor 30 %</div>
+      <div style="flex:1;background:var(--ink)">10 %</div>
+    </div>
+    <div class="g3" style="margin-top:12px">
+      <article class="card"><span class="label">Conexión · ~7 al mes</span><h3>Que le conozcan y confíen</h3><ul class="l"><li>Mi historia: del ordenador al físico de hoy</li><li>Lo que nadie ve de ser entrenador online</li><li>Lo que como un día cualquiera</li><li>Errores que cometí yo</li></ul></article>
+      <article class="card"><span class="label">Valor · ~4 al mes</span><h3>Explicar fácil</h3><ul class="l"><li>5 señales de grasa visceral</li><li>La insulina en 6 slides</li><li>Las 3 fases de la reprogramación</li><li>Comer fuera sin romper el plan</li></ul></article>
+      <article class="card sand"><span class="label">Prueba social · ~1 al mes</span><h3>Un caso de +30</h3><ul class="l"><li>Antes y después</li><li>Plazo</li><li>Qué se ajustó en cada fase</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="historias">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="pill">3 bloques al día</span>
+      <span class="label">7 · Historias</span>
+      <h2>Mañana, mediodía y tarde.</h2>
+    </div>
+    <div class="g3">
+      <article class="card"><span class="label">Mañana · Conexión</span><h3>Su rutina</h3><ul class="l"><li>Desayuno de casa</li><li>Primer café en el ordenador</li><li>"Hoy entreno a las 19:00"</li></ul></article>
+      <article class="card"><span class="label">Mediodía · Valor</span><h3>Un consejo</h3><ul class="l"><li>Encuesta: "¿comes distinto que tu familia?"</li><li>Un truco para la tarde</li><li>"Esto me preguntáis mucho"</li></ul></article>
+      <article class="card sand"><span class="label">Tarde · Prueba social</span><h3>Su papel de entrenador</h3><ul class="l"><li>Revisando clientes en la app</li><li>Mensaje de un cliente</li><li>"Escríbeme INFO"</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="youtube">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">8 · YouTube</span>
+      <h2>Donde el cliente pasa de seguirle a confiar en él.</h2>
+      <p class="soft">En Instagram le conoce en 30 segundos. En YouTube le escucha 10 minutos explicar su método. Es el contenido que más acerca a una llamada.</p>
+    </div>
+    <div class="ramp">
+      <div class="card"><span class="label">Semana 1</span><b>3</b><span class="soft">vídeos · L, X, V</span></div>
+      <div class="card"><span class="label">Semana 2</span><b>5</b><span class="soft">vídeos · de lunes a viernes</span></div>
+      <div class="card sand"><span class="label">Semana 3 en adelante</span><b>1 al día</b><span class="soft">7 a la semana</span></div>
+    </div>
+    <div class="bar" style="margin-top:14px" role="img" aria-label="Reparto de YouTube: 60 % VSL encubierto, 20 % experimentos metabólicos, 10 % casos analizados, 10 % preguntas y respuestas">
+      <div style="flex:6;background:var(--gold)">VSL encubierto 60 %</div>
+      <div style="flex:2;background:#a88a3a">Experimentos 20 %</div>
+      <div style="flex:1;background:var(--ink)">10 %</div>
+      <div style="flex:1;background:#4a4740">10 %</div>
+    </div>
+    <div class="g4" style="margin-top:12px">
+      <article class="card yt-type"><span class="pct">60 %</span><h3>VSL encubierto</h3><p class="soft" style="font-size:14px">5–10 min sobre un tema del nicho que acaba explicando cómo trabaja y lleva al enlace.</p><ul><li>Por qué no bajas la barriga a partir de los 30</li><li>Por qué rebotas tras una dieta</li><li>Insulina y trabajo de oficina</li><li>Grasa visceral</li><li>Perder grasa comiendo lo de casa</li></ul></article>
+      <article class="card yt-type sand"><span class="pct">20 %</span><h3>Experimentos metabólicos</h3><p class="soft" style="font-size:14px">En lugar de "mírame": Sergio prueba algo en su propio cuerpo durante días y lo mide.</p><ul><li>Mido mi glucosa con 3 desayunos típicos</li><li>7 días sentado 10 h: con 8.000 pasos y sin ellos</li><li>14 días comiendo lo de mi familia: cintura y peso</li><li>Mi hambre durmiendo 5 h frente a 8 h</li></ul></article>
+      <article class="card yt-type"><span class="pct">10 %</span><h3>Casos analizados</h3><p class="soft" style="font-size:14px">Desglose de un cliente: de dónde partía, qué se ajustó en cada fase y resultado.</p><ul><li>"Hombre de 42 con oficina: sus 3 fases" (con permiso)</li></ul></article>
+      <article class="card yt-type"><span class="pct">10 %</span><h3>Preguntas y respuestas</h3><p class="soft" style="font-size:14px">Dudas reales de seguidores y clientes.</p><ul><li>"Respondo vuestras dudas sobre metabolismo"</li></ul></article>
+    </div>
+    <div class="g2" style="margin-top:12px">
+      <div class="card"><h3>Cómo se aprovecha cada vídeo</h3><ul class="l"><li><b>3 clips</b> para Shorts y reels de prueba.</li><li>Descripción y comentario fijado con enlace a la landing.</li><li>Los temas salen de los yapping que mejor funcionan.</li></ul></div>
+      <div class="card warn"><h3>Experimento de la glucosa</h3><p class="soft">Necesita un medidor continuo de glucosa, de los que se pegan en el brazo (unos 60–70 € por 14 días). Es el que más impacto tiene; si no se compra, se quita.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="sostener">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">9 · Cómo sostenerlo</span>
+      <h2>Grabar por lotes o se quema.</h2>
+    </div>
+    <div class="g3">
+      <div class="card"><span class="label">1 día a la semana</span><h3>Sesión de grabación</h3><p class="soft">Los 7 yapping y los YouTube de la semana.</p></div>
+      <div class="card"><span class="label">Cada día</span><h3>Tomas sueltas</h3><p class="soft">Imágenes para las voces en off mientras vive su día. La voz se graba después.</p></div>
+      <div class="card warn"><span class="label">Sin editor</span><h3>Empezar con unas 12</h3><p class="soft">18 publicaciones más YouTube diario sin editor no se aguantan más de dos semanas. Subir cuando haya ayuda.</p></div>
+    </div>
+    <div class="card sand" style="margin-top:12px">
+      <h3>Qué mirar cada semana</h3>
+      <ul class="l"><li><b>Reels:</b> cuáles traen más seguidores nuevos. Esos ganchos se repiten.</li><li><b>Carruseles:</b> guardados y compartidos.</li><li><b>Historias:</b> respuestas a "INFO".</li><li><b>YouTube:</b> retención en el minuto 1 y clics al enlace.</li></ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Plan CAMSFIT · Parte 3 · Contenido divulgativo: explicar y orientar, sin diagnosticar ni prometer resultados médicos.</div>
+</footer>

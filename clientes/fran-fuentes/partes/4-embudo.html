@@ -1,0 +1,295 @@
+<title>Fran Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f5f5f3;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5b5b5b;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #c2410c;
+  --accent-text: #a6380a;
+  --accent-dark: #fb7a3c;
+  --f-head: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffe3d4; }
+.card.accent ul.l, .card.accent ol.l { color: #ffefe6; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fdeee6; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: el motor son 100 conversaciones al día: objetivo, lo que se te exige, dónde encontrarlos, mensajes, camino de la conversación, WhatsApp, rutina, seguimiento y apoyo de contenido. */
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: var(--white); display: grid; place-items: center; font: 800 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 800 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 800 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: #cfcfcf; font-size: 14px; }
+@media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+.msgs { display: grid; gap: 10px; }
+.msgs .m { background: var(--white); border-radius: 6px; padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 0 0 0 1px var(--line); }
+.msgs .m .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msgs .m p { font-weight: 600; font-size: 15.5px; }
+
+/* Marca Fran Fuentes: Montserrat es más ancha que una condensada → titulares sin mayúsculas y algo más pequeños. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #c2410c); --nm-at: var(--accent-text, #a6380a); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+/* Anuncios de seguidores (voz en off) */
+.ads { display: grid; gap: 14px; }
+.ads .ads-traffic { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ads .ads-traffic > div { border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; font-size: 14.5px; line-height: 1.45; }
+.ads .ads-traffic b { font-size: 15px; }
+.ads .t-g { background: #e3ecdd; color: #2f5a2a; } .ads .t-y { background: #f6ecd0; color: #6e520c; } .ads .t-r { background: #f3e0d8; color: #8a3326; }
+.ads .ads-ad { background: var(--white, #fff); border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; min-width: 0; box-shadow: inset 0 0 0 1.5px var(--ads-a); }
+.ads .ads-ad h3 { margin: 0; }
+.ads .ads-tag { font: 600 11.5px/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--ads-a); }
+.ads .ads-ad ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.ads .ads-ad p { margin: 0; }
+.ads .ads-k { font-weight: 800; }
+.ads .ads-say { border-left: 4px solid var(--ads-a); padding: 4px 0 4px 12px; }
+.ads .ads-ots { display: inline-block; background: #111; color: #fff; font-weight: 800; font-size: 13px; letter-spacing: .02em; padding: 6px 10px; border-radius: 6px; max-width: 100%; }
+.ads .ads-policy { border-radius: 10px; padding: 12px 14px; background: #f4f1ec; font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 760px) { .ads .ads-traffic { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Fran Fuentes · Parte 4 · Embudo</span>
+    <h1>Con 173 seguidores no te falta contenido. Te faltan <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">Dos motores: 5–10 € al día en anuncios de seguidores con voz en off, para que te siga gente de España de +25 que encaja contigo, y abrir conversaciones con ellos todos los días, sin excepción. Tu físico atrae; las conversaciones cierran. Esto empiezas mañana.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Hombres de 40 a 50 que llevan años sin cuidarse, se ven con barriga y creen que ya es tarde, y quieren recuperar el físico y la energía —sin sufrir— para seguir disfrutando de su deporte.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Segunda Juventud</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Fuerza sin sufrir</b><span>Progresiva, 3–4 sesiones a la semana. Empiezas suave y subes cada semana.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer sin pasar hambre</b><span>Mi error a los 42: bajé a 59–60 kg pasando hambre y perdí músculo. Tú comes bien y saciado.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Fuerza + tu deporte</b><span>Lo combinamos con tu fútbol, running o pádel para que rindas más y te lesiones menos.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Arrancar sin sufrir</b><p><em>Qué pasa:</em> Pierdes la primera barriga, duermes mejor y recuperas energía sin pasar hambre.</p><p><em>Qué haces tú:</em> 3 sesiones de fuerza, proteína en cada comida y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Construir</b><p><em>Qué pasa:</em> Ganas músculo y fuerza, la ropa te sienta distinta y rindes más en tu deporte.</p><p><em>Qué haces tú:</em> Subes a 3–4 sesiones con progresión y lo combinas con tu deporte.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Mejor que nunca</b><p><em>Qué pasa:</em> Consolidas el físico y la energía, y aprendes a mantenerlo sin sufrir.</p><p><em>Qué haces tú:</em> Ajustas la comida para mantener y sigues entrenando con autonomía.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>3–4 sesiones de fuerza a la semana</span><span>Proteína y saciedad en cada comida</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: "Empecé tarde y a los 43 estoy mejor que nunca."</p></section>
+
+  <section class="card dark" aria-label="Tu objetivo diario">
+    <span class="label">Tu objetivo, cada día</span>
+    <div class="big">100</div>
+    <h2>conversaciones al día, en 2 rondas de 50.</h2>
+    <div class="kpis">
+      <div><b>50</b><span>Ronda 1 · mañana</span></div>
+      <div><b>50</b><span>Ronda 2 · tarde</span></div>
+      <div><b>700</b><span>A la semana</span></div>
+      <div><b>5–10 €/día</b><span>Por anuncio de seguidores, a menos de 1 € por seguidor</span></div>
+    </div>
+    <p class="soft">Esto es lo que Alberto mira en tu reporte cada día: conversaciones abiertas, respuestas, llamadas agendadas y cierres. Sin excusas de "hoy no he podido".</p>
+  </section>
+
+  <section class="sec ads" aria-labelledby="h-ads" style="--ads-a:var(--accent, #c2410c)">
+    <header>
+      <span class="label">Motor 1 · Anuncios de seguidores con voz en off</span>
+      <h2 id="h-ads">5–10 € al día por anuncio. A los 2 días: si el seguidor sale por menos de 1 €, se queda y escalas.</h2>
+      <p class="soft">No es "hacer publicidad": es poner tu mejor voz en off delante de gente de España de +25 años y medir cuánto te cuesta cada seguidor. Cada seguidor nuevo es una conversación posible: bienvenida el mismo día.</p>
+    </header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>La pieza</h3><ul class="l"><li><b>Reel de 30–45 s</b> con voz en off sobre clips tuyos: entrenando y en tu día a día.</li><li><b>Un solo ángulo</b> de tu banco por anuncio (Parte 3). Nada de mezclar tres ideas.</li><li><b>Gancho en los 3 primeros segundos</b>, con texto en pantalla.</li><li><b>Acaba con "Sígueme para…"</b>: el objetivo es que te sigan, no venderles.</li><li>La mejor voz en off orgánica de la semana es la que se promociona.</li></ul></div>
+      <div class="card"><span class="n">2</span><h3>La configuración</h3><ul class="l"><li><b>5–10 € al día por anuncio</b>. A los 2 días valoras.</li><li><b>3 variantes de gancho por anuncio</b>: mismo cuerpo, 3 primeros segundos distintos.</li><li><b>Objetivo:</b> visitas al perfil (o seguidores, si te lo ofrece).</li><li><b>Público:</b> España, +25 años. Nada más.</li></ul></div>
+      <div class="card"><span class="n">3</span><h3>La medida</h3><ul class="l"><li><b>€ por seguidor</b> = gasto ÷ seguidores nuevos de esos días.</li><li>Apúntalo en tu reporte semanal, en <b>"Anuncios de seguidores (voz en off)"</b>: anuncio, ángulo, días, gasto y seguidores. El € por seguidor sale solo.</li><li><b>Bienvenida a cada seguidor nuevo</b> el mismo día: son los más calientes que vas a tener.</li></ul></div>
+    </div>
+    <div class="ads-traffic">
+      <div class="t-g"><b>Menos de 1 € por seguidor</b><span>Mantener. Haz más voces en off con ese mismo ángulo y gancho.</span></div>
+      <div class="t-y"><b>Entre 1 € y 1,5 €</b><span>Cambia el gancho de los 3 primeros segundos. Revisa bio y fijados: si entran y no siguen, falla el perfil.</span></div>
+      <div class="t-r"><b>Más de 1,5 € a los 2 días</b><span>Cortar. No esperes a que "despegue": prueba el siguiente anuncio.</span></div>
+    </div>
+    <p class="ads-policy"><b>Normas de Meta:</b> nunca preguntes ni des por hecho algo personal de quien lo ve ("¿tienes barriga?", "¿estás gorda?", "tu sobrepeso"). Habla <b>en primera persona</b> ("yo llegué a…") o en general ("la mayoría de hombres de…"). Sin antes/después de terceros ni promesas de kilos en plazos.</p>
+    <header><span class="label">3 anuncios listos para grabar</span><h2>Graba el cuerpo una vez y prueba los 3 ganchos.</h2></header>
+    <div class="g3">
+      <article class="ads-ad"><span class="ads-tag">Anuncio 1 · Ángulo: No llegas tarde <span style="opacity:.75">(familia «No llegas tarde»)</span></span>
+        <h3>Empecé tarde. A los 43 estoy mejor que nunca.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>Empecé tarde. A los 43 estoy mejor que nunca.</li><li>Con 1,69 m llegué a casi 80 kilos. Esto es lo que cambié.</li><li>La mayoría de hombres de 45 cree que ya es tarde. Yo también lo creía.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Llevaba años sin cuidarme y me veía la barriga en cada foto. No hice nada raro: fuerza 3 o 4 días a la semana, progresiva y sin acabar destrozado, y comer sin pasar hambre. A los 43 estoy mejor que nunca y sigo disfrutando de mi deporte.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para ver cómo se recupera el físico a los 40 sin sufrir.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">EMPECÉ TARDE → 43 AÑOS, MEJOR QUE NUNCA</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú entrenando fuerza (sentadilla, remo), tu físico de ahora en el espejo, tú jugando o corriendo, cerrando con un plano tuyo mirando a cámara.</p></div>
+      </article>
+      <article class="ads-ad"><span class="ads-tag">Anuncio 2 · Ángulo: Pilar 2 · Comer sin pasar hambre <span style="opacity:.75">(familia «Método Segunda Juventud»)</span></span>
+        <h3>A los 42 bajé a 59 kilos pasando hambre. Fue mi mayor error.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>A los 42 bajé a 59 kilos pasando hambre. Fue mi mayor error.</li><li>Dejé de pasar hambre y empecé a verme mejor.</li><li>La mayoría de hombres de 40 hace dieta así… y pierde músculo.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Comía poquísimo, bajé a 59–60 kilos y me veía peor: había perdido músculo y energía. Ahora como más y mejor: proteína en cada comida, platos que sacian y sin contar cada caloría. Con la fuerza, el músculo se queda y el cuerpo responde.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para aprender a comer sin pasar hambre y recuperar tu físico.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">PASAR HAMBRE = PERDER MÚSCULO</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú preparando la comida, tu plato del día, tú entrenando, un momento normal de tu día (trabajo, coche, casa).</p></div>
+      </article>
+      <article class="ads-ad"><span class="ads-tag">Anuncio 3 · Ángulo: Pilar 3 · La fuerza con tu deporte <span style="opacity:.75">(familia «Método Segunda Juventud»)</span></span>
+        <h3>Lo que hago para seguir disfrutando del deporte a los 43.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>Lo que hago para seguir disfrutando del deporte a los 43.</li><li>El error de la mayoría de hombres de 40 que juegan al fútbol o al pádel.</li><li>El deporte solo no te pone en forma a los 40. La fuerza sí.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">La mayoría de hombres de 40 piensa que con su partido o su carrera del fin de semana basta. Pero sin fuerza se pierde músculo cada año. 3 o 4 sesiones de fuerza a la semana, combinadas con tu deporte, y llegas a los 50 jugando mejor y con más energía.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para combinar la fuerza con tu deporte y llegar a los 50 mejor que nunca.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">FUERZA + TU DEPORTE = SEGUNDA JUVENTUD</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú entrenando fuerza, tú con balón, pala o zapatillas de correr, un plano en la pista o el campo, cierre en el gimnasio.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fuentes">
+    <header><span class="label">Dónde encontrarlos</span><h2 id="h-fuentes">Hombres de 40 a 50 que llevan años sin cuidarse.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Nuevos seguidores</h3><p class="soft">Bienvenida a todos, el mismo día. Son los más calientes.</p></div>
+      <div class="card"><span class="n">2</span><h3>Quien ve tus historias</h3><p class="soft">Los que repiten cada día te tienen en el radar. Escríbeles.</p></div>
+      <div class="card"><span class="n">3</span><h3>Cuentas fitness +40</h3><p class="soft">Seguidores y comentarios de perfiles que hablan a hombres adultos.</p></div>
+      <div class="card"><span class="n">4</span><h3>Fútbol veterano, running y pádel</h3><p class="soft">Clubes, ligas de veteranos, carreras populares y pistas de tu zona.</p></div>
+      <div class="card"><span class="n">5</span><h3>Comentarios en virales</h3><p class="soft">Vídeos de "a los 40…", "barriga después de los 40", "volver al gimnasio".</p></div>
+      <div class="card"><span class="n">6</span><h3>Padres</h3><p class="soft">Cuentas de paternidad y deporte: el que quiere tener energía para sus hijos.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msgs">
+    <header><span class="label">Mensajes de apertura · cópialos y rótalos</span><h2 id="h-msgs">Corto, de tú a tú y sin vender en el primer mensaje.</h2><p class="soft">Cambia {n} por su nombre. Nunca mandes un enlace en el primer mensaje.</p></header>
+    <div class="msgs"><div class="m"><div class="row"><span class="badge">Bienvenida a nuevo seguidor</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Gracias por seguirme. Por curiosidad: ¿entrenas ahora o llevas un tiempo parado?">Copiar</button></div><p>"¡Buenas, {n}! Gracias por seguirme. Por curiosidad: ¿entrenas ahora o llevas un tiempo parado?"</p></div><div class="m"><div class="row"><span class="badge">Respuesta a historia</span><button class="cp" type="button" data-cp="Te ha llamado la atención, ¿eh? 😄 ¿Te ves reflejado o te pilla lejos?">Copiar</button></div><p>"Te ha llamado la atención, ¿eh? 😄 ¿Te ves reflejado o te pilla lejos?"</p></div><div class="m"><div class="row"><span class="badge">Hombre +40 de una cuenta fitness</span><button class="cp" type="button" data-cp="Ey, {n}, te he visto por aquí. Pregunta rápida: ¿estás entrenando o estás con el famoso &quot;mañana empiezo&quot;?">Copiar</button></div><p>"Ey, {n}, te he visto por aquí. Pregunta rápida: ¿estás entrenando o estás con el famoso "mañana empiezo"?"</p></div><div class="m"><div class="row"><span class="badge">Fútbol o running</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Vi que juegas al fútbol. Yo también, a los 43. ¿Te cuidas fuera del campo o solo el partido?">Copiar</button></div><p>"¡Buenas, {n}! Vi que juegas al fútbol. Yo también, a los 43. ¿Te cuidas fuera del campo o solo el partido?"</p></div><div class="m"><div class="row"><span class="badge">Comentario en un vídeo de +40</span><button class="cp" type="button" data-cp="Muy buen comentario. ¿Tú cómo lo llevas? ¿Te ves como quieres o crees que ya llegas tarde?">Copiar</button></div><p>"Muy buen comentario. ¿Tú cómo lo llevas? ¿Te ves como quieres o crees que ya llegas tarde?"</p></div><div class="m"><div class="row"><span class="badge">Con tu historia</span><button class="cp" type="button" data-cp="Te escribo porque hace unos años yo estaba con casi 80 kg y barriga, y nunca me lo creí posible. ¿Tú en qué punto estás ahora?">Copiar</button></div><p>"Te escribo porque hace unos años yo estaba con casi 80 kg y barriga, y nunca me lo creí posible. ¿Tú en qué punto estás ahora?"</p></div><div class="m"><div class="row"><span class="badge">Reactivar a alguien que ya habló contigo</span><button class="cp" type="button" data-cp="¡{n}! ¿Cómo va eso? La última vez me dijiste que querías empezar. ¿Sigue en pie o lo hemos dejado para &quot;el lunes&quot;? 😉">Copiar</button></div><p>"¡{n}! ¿Cómo va eso? La última vez me dijiste que querías empezar. ¿Sigue en pie o lo hemos dejado para "el lunes"? 😉"</p></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-path">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-path">De "hola" a llamada en 5 pasos.</h2></header>
+    <div class="path"><span>1 · Abrir</span><i>→</i><span>2 · Conectar</span><i>→</i><span>3 · Detectar el dolor</span><i>→</i><span>4 · Pasar a WhatsApp</span><i>→</i><span>5 · Llamada o formulario</span></div>
+    <div class="g2">
+      <div class="card"><h3>Preguntas que funcionan</h3><ul class="l"><li>"¿Cuánto tiempo llevas sin cuidarte?"</li><li>"¿Qué has probado ya? ¿Qué pasó?"</li><li>"¿Te pasa lo del 'mañana empiezo'?"</li><li>"Del 1 al 10, ¿cuánto te importa cambiar esto ya?"</li></ul></div>
+      <div class="card"><h3>La invitación</h3><div class="say">"Por lo que me cuentas, estás justo donde estaba yo. Si quieres, te mando por WhatsApp un audio con lo que haría en tu caso y lo vemos en una llamada de 20 minutos. ¿Te va bien mañana o pasado?"</div><p class="soft">Siempre dos opciones de día, como máximo a 2–3 días vista.</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="WhatsApp">
+    <div class="card accent">
+      <span class="label">WhatsApp · tu segundo canal</span>
+      <h3>Quien te da el teléfono te ve cada día.</h3>
+      <ul class="l">
+        <li><b>WhatsApp Business</b> con tu foto, tu frase "No llegas tarde" y el enlace al formulario.</li>
+        <li><b>Guarda cada contacto</b> y pídele que te guarde: si no, no ve tus Estados.</li>
+        <li><b>3–5 Estados al día:</b> tu entreno, un plato, un consejo y, martes y viernes, "abro 2 plazas, respóndeme 40".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Seguimiento si no responde</span>
+      <ul class="l">
+        <li><b>Día 2:</b> "¿Sigue en pie lo de empezar este mes o lo dejamos para más adelante?"</li>
+        <li><b>Día 7:</b> un audio corto o un caso parecido al suyo.</li>
+        <li><b>Día 14:</b> "Entiendo que ahora no es el momento. Cuando lo sea, aquí estoy. No llegas tarde."</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Cinco bloques. Todos los días.</h2></header>
+    <div class="routine">
+      <div><small>Mañana</small><b>Ronda 1</b><span>50 conversaciones nuevas.</span></div>
+      <div><small>Mediodía</small><b>Contenido</b><span>Publicar lo que toca e historias.</span></div>
+      <div><small>Tarde</small><b>Ronda 2</b><span>Otras 50.</span></div>
+      <div><small>Noche</small><b>Seguimiento</b><span>Responder, días 2/7/14, WhatsApp.</span></div>
+      <div><small>Antes de dormir</small><b>Apuntar</b><span>CRM y reporte para Alberto.</span></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Avisos y contenido de apoyo">
+    <div class="card chip">
+      <span class="label">Ojo con los límites de Instagram</span>
+      <ul class="l">
+        <li>Instagram puede limitar temporalmente cuentas que mandan muchos mensajes iguales seguidos.</li>
+        <li>Rota los 7 mensajes, personaliza con su nombre o algo de su perfil y deja pausas entre envíos.</li>
+        <li>Prioriza a quien ya ha interactuado contigo. El objetivo de 100 no baja: se reparte bien.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">El contenido que lo apoya</span>
+      <ul class="l">
+        <li><b>Una sola palabra clave:</b> "40". En historias, reels y carruseles: "escríbeme 40".</li>
+        <li><b>Historias:</b> secuencia de CTA fuerte martes y viernes.</li>
+        <li><b>YouTube:</b> 1 vídeo a la semana, con el formulario en la descripción: forms.gle/j58sMkUxyYB8hWm</li>
+        <li><b>Anuncios de seguidores:</b> traen gente nueva; las ventas siguen saliendo de tus conversaciones.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll("[data-cp]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-cp"), o = b.textContent;
+      var done = function (m) { b.textContent = m; setTimeout(function () { b.textContent = o; }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+      else done("Selecciona");
+    });
+  });
+})();
+</script>

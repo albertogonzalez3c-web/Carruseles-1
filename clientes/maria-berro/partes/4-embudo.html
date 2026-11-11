@@ -1,0 +1,319 @@
+<title>María Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #faf6f3;
+  --white: #ffffff;
+  --ink: #1a1414;
+  --soft: #6d6363;
+  --line: #ecdcd6;
+  --chip: #f6ece8;
+  --coral: #c8433f;
+  --coral-soft: #f4a7a1;
+  --coral-text: #b23a36;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(32px, 5.2vw, 54px)/1.04 var(--f-body); letter-spacing: -.035em; }
+h1 em, h2 em { font-style: normal; color: var(--coral-text); }
+h2 { font: 800 clamp(22px, 3vw, 30px)/1.15 var(--f-body); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 780px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 780px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .label { color: var(--coral-soft); }
+.card.dark .soft, .card.dark ul.l { color: #cdbfbc; }
+.card.dark ul.l b { color: var(--white); }
+.card.coral { background: var(--coral); color: var(--white); box-shadow: none; }
+.card.coral .label { color: #ffe1dd; }
+.card.coral ul.l { color: #ffe9e6; }
+.card.coral ul.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 12px; padding: 12px 14px; font-weight: 600; font-size: 15px; }
+.card.dark .say { background: #2c2222; color: var(--white); }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 999px; background: var(--chip); color: var(--coral-text); }
+.card.dark .badge { background: #3a2a2a; color: var(--coral-soft); }
+.card.coral .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 800; white-space: nowrap; }
+.tbl tr.now td { background: #fff1ee; }
+.tbl td b { color: var(--ink); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: dos motores, anuncios de seguidores con voz en off (5–10 €/día) y abrir conversaciones: dónde encontrarlas, mensajes, camino de la conversación, rutina diaria, seguimiento y apoyo de contenido. */
+.n { width: 32px; height: 32px; border-radius: 50%; background: var(--coral); color: var(--white); display: grid; place-items: center; font-weight: 800; }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 800; }
+.path span { background: var(--white); border-radius: 999px; padding: 9px 14px; font-size: 14.5px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--coral-text); }
+.big { font: 800 clamp(44px, 8vw, 72px)/1 var(--f-body); letter-spacing: -.04em; color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 12px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15px; }
+.routine span { color: var(--soft); font-size: 13.5px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--coral-text); }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 10px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 900px) { .routine { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--coral, #c8433f); --nm-at: var(--coral-text, #b23a36); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+/* Anuncios de seguidores (voz en off) */
+.ads { display: grid; gap: 14px; }
+.ads .ads-traffic { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ads .ads-traffic > div { border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; font-size: 14.5px; line-height: 1.45; }
+.ads .ads-traffic b { font-size: 15px; }
+.ads .t-g { background: #e3ecdd; color: #2f5a2a; } .ads .t-y { background: #f6ecd0; color: #6e520c; } .ads .t-r { background: #f3e0d8; color: #8a3326; }
+.ads .ads-ad { background: var(--white, #fff); border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; min-width: 0; box-shadow: inset 0 0 0 1.5px var(--ads-a); }
+.ads .ads-ad h3 { margin: 0; }
+.ads .ads-tag { font: 600 11.5px/1.2 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--ads-a); }
+.ads .ads-ad ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.ads .ads-ad p { margin: 0; }
+.ads .ads-k { font-weight: 800; }
+.ads .ads-say { border-left: 4px solid var(--ads-a); padding: 4px 0 4px 12px; }
+.ads .ads-ots { display: inline-block; background: #111; color: #fff; font-weight: 800; font-size: 13px; letter-spacing: .02em; padding: 6px 10px; border-radius: 6px; max-width: 100%; }
+.ads .ads-policy { border-radius: 10px; padding: 12px 14px; background: #f4f1ec; font-size: 14.5px; line-height: 1.5; }
+@media (max-width: 760px) { .ads .ads-traffic { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">María Berro · Parte 4 · Embudo</span>
+    <h1>Anuncios de seguidores. Y <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">Dos motores: 5–10 € al día en anuncios de seguidores con voz en off, para que te siga gente de España de +25 que encaja contigo, y abrir conversaciones con ellas cada día, con cariño y sin vender en el primer mensaje.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Mujeres de 30 a 45 que se cuidan a medias, han probado dietas que no les duran y quieren verse mejor que nunca —y mantenerlo— sin dietas extremas ni vivir en el gimnasio.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Mejor Que Nunca</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Nutrición de dietista</b><span>Con la comida de casa y de tu familia, los findes y las cenas. Nada de pollo con arroz todo el día. <em>Por qué: el arroz con pollo día y noche me llevó a un atracón cada finde.</em></span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Fuerza con buena técnica</b><span>Para glúteo y tono, a tu medida. Las pesas no te ponen grande: te ponen firme. <em>Por qué: entrené 6 días sin intensidad y el glúteo no creció hasta que entrené menos y mejor.</em></span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Seguimiento semanal cercano</b><span>Revisión cada semana y WhatsApp conmigo. No vas sola. <em>Por qué: lo hice sola 4 años sin rumbo; con alguien revisándome, en 2023 cambié.</em></span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Activar</b><p><em>Qué pasa:</em> Pierdes la primera grasa, te deshinchas y el hábito se queda.</p><p><em>Qué haces tú:</em> 3 días de fuerza aprendiendo la técnica, comida real de casa y tu foto y revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Esculpir</b><p><em>Qué pasa:</em> Glúteo, cintura y tono: tu cuerpo cambia de forma, no solo de peso.</p><p><em>Qué haces tú:</em> Subes cargas con buena técnica y mantienes la comida real cada día.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><em>Qué pasa:</em> Consolidas lo conseguido y aprendes a mantenerlo comiendo con normalidad.</p><p><em>Qué haces tú:</em> Subimos calorías poco a poco y aprendes a gestionar cenas, findes y vacaciones.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>3 días de fuerza</span><span>Proteína y comida real cada día</span><span>Foto y revisión semanal</span></div></div><p class="nm-proof">Prueba: "A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca."</p></section>
+
+  <section class="card coral" aria-label="El objetivo diario">
+    <span class="label">Tu objetivo diario</span>
+    <p class="big">100</p>
+    <h2 style="color:#fff">conversaciones al día, en 2 rondas de 50.</h2>
+    <ul class="l">
+      <li><b>Ronda 1, por la mañana:</b> 50 mensajes.</li>
+      <li><b>Ronda 2, por la tarde:</b> 50 mensajes.</li>
+      <li><b>Todas las que responden, al CRM,</b> con su seguimiento.</li>
+      <li><b>La primera semana, poco a poco:</b> 2 rondas de 25 y subes a 2 de 50 la segunda semana.</li>
+    </ul>
+  </section>
+
+  <section class="sec ads" aria-labelledby="h-ads" style="--ads-a:var(--coral, #c8433f)">
+    <header>
+      <span class="label">Motor 1 · Anuncios de seguidores con voz en off</span>
+      <h2 id="h-ads">5–10 € al día por anuncio. A los 2 días: si el seguidor sale por menos de 1 €, se queda y escalas.</h2>
+      <p class="soft">No es "hacer publicidad": es poner tu mejor voz en off delante de gente de España de +25 años y medir cuánto te cuesta cada seguidor. Cada seguidor nuevo es una conversación posible: bienvenida el mismo día.</p>
+    </header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>La pieza</h3><ul class="l"><li><b>Reel de 30–45 s</b> con voz en off sobre clips tuyos: entrenando y en tu día a día.</li><li><b>Un solo ángulo</b> de tu banco por anuncio (Parte 3). Nada de mezclar tres ideas.</li><li><b>Gancho en los 3 primeros segundos</b>, con texto en pantalla.</li><li><b>Acaba con "Sígueme para…"</b>: el objetivo es que te sigan, no venderles.</li><li>La mejor voz en off orgánica de la semana es la que se promociona.</li></ul></div>
+      <div class="card"><span class="n">2</span><h3>La configuración</h3><ul class="l"><li><b>5–10 € al día por anuncio</b>. A los 2 días valoras.</li><li><b>3 variantes de gancho por anuncio</b>: mismo cuerpo, 3 primeros segundos distintos.</li><li><b>Objetivo:</b> visitas al perfil (o seguidores, si te lo ofrece).</li><li><b>Público:</b> España, +25 años. Nada más.</li></ul></div>
+      <div class="card"><span class="n">3</span><h3>La medida</h3><ul class="l"><li><b>€ por seguidor</b> = gasto ÷ seguidores nuevos de esos días.</li><li>Apúntalo en tu reporte semanal, en <b>"Anuncios de seguidores (voz en off)"</b>: anuncio, ángulo, días, gasto y seguidores. El € por seguidor sale solo.</li><li><b>Bienvenida a cada seguidor nuevo</b> el mismo día: son los más calientes que vas a tener.</li></ul></div>
+    </div>
+    <div class="ads-traffic">
+      <div class="t-g"><b>Menos de 1 € por seguidor</b><span>Mantener. Haz más voces en off con ese mismo ángulo y gancho.</span></div>
+      <div class="t-y"><b>Entre 1 € y 1,5 €</b><span>Cambia el gancho de los 3 primeros segundos. Revisa bio y fijados: si entran y no siguen, falla el perfil.</span></div>
+      <div class="t-r"><b>Más de 1,5 € a los 2 días</b><span>Cortar. No esperes a que "despegue": prueba el siguiente anuncio.</span></div>
+    </div>
+    <p class="ads-policy"><b>Normas de Meta:</b> nunca preguntes ni des por hecho algo personal de quien lo ve ("¿tienes barriga?", "¿estás gorda?", "tu sobrepeso"). Habla <b>en primera persona</b> ("yo llegué a…") o en general ("la mayoría de mujeres de…"). Sin antes/después de terceros ni promesas de kilos en plazos.</p>
+    <header><span class="label">3 anuncios listos para grabar</span><h2>Graba el cuerpo una vez y prueba los 3 ganchos.</h2></header>
+    <div class="g3">
+      <article class="ads-ad"><span class="ads-tag">Anuncio 1 · Ángulo: Mejor a los 34 que a los 23 <span style="opacity:.75">(familia «Mi historia»)</span></span>
+        <h3>A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca.</li><li>Mi mejor cuerpo no llegó a los 20. Llegó a los 34.</li><li>La mayoría de mujeres cree que a partir de los 30 todo va cuesta abajo. Yo también lo creía.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Probé dietas que no me duraban y entrenaba sin saber muy bien qué hacía. Lo que cambió: comer bien con la comida de casa, fuerza con buena técnica 3 días a la semana y constancia. Sin dietas extremas y sin vivir en el gimnasio. Y lo mantengo.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para verte mejor que nunca y mantenerlo.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">23 AÑOS: ME ODIABA → 34: MEJOR QUE NUNCA</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú entrenando glúteo, tú cocinando en casa, tu día a día (trabajo, paseo, café), cierre en el espejo o mirando a cámara.</p></div>
+      </article>
+      <article class="ads-ad"><span class="ads-tag">Anuncio 2 · Ángulo: Pilar 2 · Fuerza con buena técnica <span style="opacity:.75">(familia «Método Mejor Que Nunca»)</span></span>
+        <h3>Tenía miedo a las pesas. Ahora son lo que más me ha cambiado el cuerpo.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>Tenía miedo a las pesas. Ahora son lo que más me ha cambiado el cuerpo.</li><li>Las pesas no te ponen grande. Te ponen firme.</li><li>La mayoría de mujeres de 30 hace horas de cardio. Esto funciona mejor.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Para glúteo y tono, lo que cambia el cuerpo es la fuerza con buena técnica: 3 días a la semana, cargas que suben poco a poco y cada ejercicio bien hecho. No necesitas vivir en el gimnasio ni hacer clases que no te cambian nada.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para aprender a entrenar glúteo y tono con buena técnica.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">LAS PESAS NO TE PONEN GRANDE: TE PONEN FIRME</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Hip thrust, sentadilla búlgara y peso muerto rumano con buena técnica, un plano corrigiendo la postura, cierre con tu glúteo/piernas de perfil.</p></div>
+      </article>
+      <article class="ads-ad"><span class="ads-tag">Anuncio 3 · Ángulo: Pilar 1 · Nutrición con la comida de tu casa <span style="opacity:.75">(familia «Método Mejor Que Nunca»)</span></span>
+        <h3>Soy dietista y no hago dietas.</h3>
+        <div><p class="ads-k">Gancho (3 primeros segundos) · 3 variantes para probar</p><ol><li>Soy dietista y no hago dietas.</li><li>Como lo mismo que en casa y me mantengo así.</li><li>La mayoría de dietas no duran porque te obligan a comer aparte.</li></ol></div>
+        <div><p class="ads-k">Cuerpo (voz en off, 20–35 s)</p><p class="ads-say">Como dietista veo siempre lo mismo: dietas que no se aguantan más de un mes. Lo que sí funciona es la comida de casa bien ajustada, proteína y comida real cada día y sin prohibirte lo que te gusta. Así no vuelves a empezar cada lunes.</p></div>
+        <div><p class="ads-k">Cierre</p><p class="ads-say"><b>Sígueme para comer bien con la comida de casa y mantenerlo para siempre.</b></p></div>
+        <div><p class="ads-k">Texto en pantalla</p><span class="ads-ots">DIETISTA · SIN DIETAS · PARA SIEMPRE</span></div>
+        <div><p class="ads-k">Clips</p><p class="soft">Tú haciendo la compra, cocinando un plato de diario, tu táper o tu plato servido, cierre comiendo tranquila.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-donde">
+    <header><span class="label">Dónde encontrarlas</span><h2 id="h-donde">Mujeres de 30 a 45 que ya están cerca de ti.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Nuevas seguidoras</h3><p class="soft">Bienvenida a cada una. Son las más calientes.</p></div>
+      <div class="card"><span class="n">2</span><h3>Historias</h3><p class="soft">Quien ve, reacciona o responde a tus historias.</p></div>
+      <div class="card"><span class="n">3</span><h3>Comentarios</h3><p class="soft">Quien comenta tus publicaciones y tus reels.</p></div>
+      <div class="card"><span class="n">4</span><h3>Cuentas parecidas</h3><p class="soft">Seguidoras de cuentas de fitness y nutrición para mujeres y de mamás fit.</p></div>
+      <div class="card"><span class="n">5</span><h3>Hashtags y ubicaciones</h3><p class="soft">#mamafit, #fitness30, tu ciudad, gimnasios de tu zona.</p></div>
+      <div class="card"><span class="n">6</span><h3>Posts virales del nicho</h3><p class="soft">Mujeres que comentan en publicaciones virales sobre pérdida de grasa, glúteo o "a los 40".</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msg">
+    <header>
+      <span class="label">Primeros mensajes</span>
+      <h2 id="h-msg">Cercanos, personales y sin vender.</h2>
+      <p class="soft">Sin enlaces en el primer mensaje. Cambia siempre un detalle (su nombre, algo de su perfil) para que no sean todos iguales.</p>
+    </header>
+    <div class="g2" id="msgs"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-camino">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-camino">De "hola" a una llamada, en 5 pasos.</h2></header>
+    <div class="path"><span>1. Abrir</span><i>→</i><span>2. Conectar</span><i>→</i><span>3. Detectar lo que le preocupa</span><i>→</i><span>4. Pasar a WhatsApp</span><i>→</i><span>5. Invitar a llamada o al formulario</span></div>
+    <div class="g2">
+      <div class="card">
+        <h3>Preguntas que funcionan</h3>
+        <ul class="l">
+          <li>"¿Y tú ahora mismo en qué punto estás con el entreno y la comida?"</li>
+          <li>"¿Qué es lo que más te gustaría cambiar de cómo te ves?"</li>
+          <li>"¿Qué has probado hasta ahora? ¿Qué pasó?"</li>
+          <li>"¿Por qué ahora? ¿Ha pasado algo?"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>La invitación</h3>
+        <p class="say">"Por lo que me cuentas, creo que te puedo ayudar a verte mejor que nunca y que te dure. ¿Te parece si lo vemos en una llamada de 20 minutos y te explico cómo lo haríamos?"</p>
+        <p class="soft" style="font-size:14.5px">Si prefiere escribir: "Te dejo el formulario, me cuentas tu caso y te digo si encajas": <b>form.typeform.com/to/WVDO4Lmy</b></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-wa">
+    <header><span class="label">WhatsApp · el segundo canal</span><h2 id="h-wa">Instagram abre la conversación. WhatsApp la calienta.</h2></header>
+    <div class="path"><span>Conversación en Instagram</span><i>→</i><span>Pasar a WhatsApp</span><i>→</i><span>Contacto guardado + lista</span><i>→</i><span>Estados cada día</span><i>→</i><span>Llamada</span></div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cuándo y cómo pedir el número</h3>
+        <ul class="l">
+          <li><b>Cuando detectes interés</b> (te ha contado qué le preocupa), no antes.</li>
+          <li class="say" style="list-style:none;margin-left:-18px">"Si quieres, te mando por WhatsApp un audio con cómo lo haría en tu caso. ¿Me pasas tu número?"</li>
+          <li><b>Guarda el contacto</b> con su nombre y "IG" y añádelo a la lista de difusión de "interesadas".</li>
+          <li><b>Pídele que te guarde:</b> "guárdame para ver mis consejos diarios en los Estados".</li>
+          <li><b>Apúntala en el CRM</b> con el número.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>El seguimiento por WhatsApp</h3>
+        <ul class="l">
+          <li><b>Audio de 30–60 s</b> con su caso: qué le pasa, por qué y cómo lo plantearías. Acaba con "¿lo vemos en una llamada de 20 minutos?".</li>
+          <li><b>Si no responde en 2 días:</b> un caso parecido (captura de feedback o tu historia).</li>
+          <li><b>Mientras tanto,</b> te ve cada día en los Estados: consejos, tu día a día y, martes y viernes, "abro 2 plazas, respóndeme MEJOR".</li>
+          <li><b>El plan completo de Estados</b> está en tu página de Contenido.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Una hora y media repartida. Siempre en el mismo orden.</h2></header>
+    <div class="routine">
+      <div><small>Mañana</small><b>Ronda 1</b><span>50 mensajes nuevos.</span></div>
+      <div><small>Mediodía</small><b>Contenido</b><span>Publica lo del día y sube historias.</span></div>
+      <div><small>Tarde</small><b>Ronda 2</b><span>50 mensajes nuevos.</span></div>
+      <div><small>Tarde</small><b>Seguimiento</b><span>Contesta a las que respondieron (Instagram y WhatsApp) y sube tus Estados.</span></div>
+      <div><small>Noche</small><b>Apuntar</b><span>Cada respuesta al CRM y tu reporte del día.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-seg">
+    <header><span class="label">Si no responde o se enfría</span><h2 id="h-seg">Seguimiento en 3 toques. Sin agobiar.</h2></header>
+    <div class="week">
+      <div class="card"><span class="badge">Día 2</span><p class="say">"¡Hola [nombre]! Te lo vuelvo a subir por aquí por si se te pasó 😊"</p></div>
+      <div class="card"><span class="badge">Día 7</span><p class="say">"Me he acordado de ti: una clienta de tu edad acaba de conseguir [resultado]. ¿Sigues queriendo ponerte con ello?"</p></div>
+      <div class="card"><span class="badge">Día 14</span><p class="say">"Entiendo que ahora no es el momento. Si cambia, aquí estoy. ¡Un abrazo! 💗"</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Cuidado y contenido">
+    <article class="card dark">
+      <span class="label">Para que Instagram no te limite</span>
+      <ul class="l">
+        <li><b>Instagram puede limitar temporalmente</b> las cuentas que mandan muchos mensajes parecidos.</li>
+        <li><b>Varía los mensajes:</b> rota los 7 y cambia algo en cada uno.</li>
+        <li><b>Primero las que ya interactuaron</b> (seguidoras, historias, comentarios), después las frías.</li>
+        <li><b>Separa las rondas:</b> mañana y tarde, no todo seguido.</li>
+        <li><b>Empieza con 2×25</b> la primera semana y sube a 2×50.</li>
+      </ul>
+    </article>
+    <article class="card">
+      <span class="label">El contenido que ayuda a convertir</span>
+      <ul class="l">
+        <li><b>Historias:</b> tu día a día y, 2 veces por semana, una llamada fuerte: "Escríbeme MEJOR y te cuento cómo trabajo".</li>
+        <li><b>YouTube:</b> en la descripción, siempre el enlace al formulario.</li>
+        <li><b>En las publicaciones:</b> "Sígueme" o "Escríbeme por privado".</li>
+      </ul>
+    </article>
+  </section>
+</div>
+
+<script>
+(function () {
+  var M = [
+    ["Nueva seguidora", "¡Hola [nombre]! Muchas gracias por seguirme 💗 Cuéntame, ¿qué es lo que te ha traído por aquí?"],
+    ["Ha reaccionado a una historia", "¡Jajaja, me ha encantado tu reacción! ¿Tú también estás en ese momento de querer ponerte a tope con tu cuerpo?"],
+    ["Ha comentado", "¡Gracias por tu comentario, [nombre]! Me ha hecho ilusión. ¿Tú ahora mismo estás entrenando o te lo estás planteando?"],
+    ["Seguidora de cuentas parecidas", "¡Hola [nombre]! He visto que te interesa el fitness y me ha gustado tu perfil. ¿Tú estás ahora en algún plan o vas por libre?"],
+    ["Mujer de 30–45 de tu zona", "¡Hola [nombre]! Soy María, dietista y entrenadora aquí cerca. Ayudo a mujeres de 30 y 40 a verse mejor que nunca. ¿Tú cómo lo llevas ahora mismo?"],
+    ["Ha reaccionado a tu historia personal", "¡Gracias por escribirme, [nombre]! Yo también me veía así a los 30: hinchada y sin reconocerme. ¿Tú en qué punto estás ahora?"],
+    ["Te cuenta que lo ha probado todo", "Te entiendo muchísimo. Yo estuve años entrenando 6 días, quitando carbohidratos y dándome atracones los findes. ¿Qué es lo que más te ha frustrado a ti?"]
+  ];
+  var box = document.getElementById("msgs");
+  box.innerHTML = M.map(function (m) {
+    var t = m[1].replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+    return '<div class="card msg"><div class="row"><span class="badge">' + m[0] + '</span><button type="button" class="cp" data-cp="' + t + '">Copiar</button></div><p class="say">' + t + '</p></div>';
+  }).join("");
+  box.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var done = function (x) { b.textContent = x; setTimeout(function () { b.textContent = "Copiar"; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+})();
+</script>

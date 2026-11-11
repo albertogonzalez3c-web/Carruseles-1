@@ -1,0 +1,502 @@
+<title>Fran Seguí Metabolismo +40</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+
+<style>
+
+:root {
+  --paper: #f6f3ee;
+  --white: #ffffff;
+  --ink: #1b1a17;
+  --soft: #615d55;
+  --line: #e1dbd0;
+  --chip: #efe9df;
+  --accent: #b5531a;
+  --accent-text: #9a4514;
+  --accent-dark: #f08a4b;
+  --on-dark: #cfc8bc;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2c2a25; }
+.btn-a { background: var(--accent); color: var(--white); }
+.btn-a:hover { background: #9a4514; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 800 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 800 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 800 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 800 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 800 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 800 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 800 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* Historia */
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c3c3be; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 800 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 800 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; text-align: center; font: 800 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a9da3; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #f6e2d9; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 800 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(241, 241, 239, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+/* Marca Fran Seguí: editorial y culta. Titulares en DM Serif Display (sin mayúsculas), texto en Inter, naranja tostado y oliva. */
+:root { --olive: #55663a; --f-head: "DM Serif Display", Georgia, "Times New Roman", serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; }
+h1, h2, h3 { text-transform: none !important; font-weight: 400 !important; letter-spacing: -.01em !important; font-family: var(--f-head) !important; }
+h1 { line-height: 1.04 !important; } h2 { line-height: 1.08 !important; }
+h3 { font-size: 21px !important; line-height: 1.2 !important; }
+h1 em, h2 em { font-style: italic; }
+.olive { color: var(--olive); }
+
+.hero h1, h2, .turn, .layer h3, .base h3, .case .big, .me p, .err b, .quote, .step h3, .fact b, .final h2, .brand, .seal { font-weight: 400 !important; text-transform: none !important; font-family: var(--f-head) !important; letter-spacing: -.01em !important; }
+.brand small, .seal small { font-family: var(--f-mono) !important; }
+.hero h1 { line-height: 1 !important; max-width: 16ch !important; }
+.hero h1 em, .turn em { font-style: italic !important; }
+.compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.compare > div { border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; }
+.compare .then { background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.18); }
+.compare .now { background: rgba(240,138,75,.12); box-shadow: inset 0 0 0 1px rgba(240,138,75,.5); }
+.compare b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.compare ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--on-dark); font-size: 16px; }
+.split50 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.split50 div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: grid; gap: 4px; }
+.split50 b { font: 400 46px/1 var(--f-head); color: var(--accent-text); }
+.split50 span { color: var(--soft); font-size: 15.5px; }
+.case.noimg { border-top: 4px solid var(--olive); }
+.consent { font: 500 12px/1.4 var(--f-mono); color: var(--olive); letter-spacing: .04em; padding-inline: 6px; }
+@media (max-width: 620px) { .compare, .split50 { grid-template-columns: 1fr; } }
+
+</style>
+
+<!--
+  PENDIENTE / PROVISIONAL (no se ve en la página):
+  - FORMULARIO: el enlace es un marcador (https://docs.google.com/forms/). Sustituir FORM en el script por la URL completa de su Google Form
+    (la de la bio: docs.google.com/forms/d/e/1FAIpQLSewPw…/viewform). El formulario solo se incrusta si la URL contiene "/viewform".
+  - Casos sin fotos: Esther y Merche (oposiciones) y Cristina (solo con consentimiento por escrito: datos de salud). Pedir fotos, datos y permiso.
+  - Historia: faltan edad y peso de 2012 y 2026, etapa adulta, formación como dietista y cómo empezó a entrenar a gente. Huecos "Foto · pendiente".
+  - Es padre: lo dice Alberto, no su documento. Confirmar con Fran antes de publicar.
+  - Compatibilidad con su otro trabajo: confirmar antes de dar visibilidad a la landing y a los anuncios.
+  - VSL y testimonios en vídeo: huecos comentados. WhatsApp: número desconocido (sin botón).
+-->
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/fran-avatar.jpg" alt="" width="320" height="320"><div>Fran Seguí<small>Dietista y entrenador · +40</small></div></div>
+      <a class="btn btn-a js-form" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Empieza aquí</a>
+    </header>
+
+    <div class="hero">
+      <div class="label">Para personas de +40 que comen «sano» y ya no pierden grasa como antes</div>
+      <h1>No es la edad: <em>es tu metabolismo</em>.</h1>
+      <p class="lede">Hinchazón, barriga y cansancio aunque comas 'sano'. No es la edad: tu cuerpo está inflamado y tu metabolismo juega en contra. Método Desinflama: comida real antiinflamatoria, metabolismo y hormonas a tu favor, y fuerza 3 horas a la semana. Sin vivir a dieta.</p>
+      <!-- VSL PENDIENTE: <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
+      <div class="ctas">
+        <a class="btn btn-a js-form" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Quiero empezar</a>
+        <a class="btn btn-dark-ghost" href="https://www.instagram.com/francisco_segui_pro/" target="_blank" rel="noopener">Escríbeme DESINFLAMA en Instagram</a>
+      </div>
+      <p class="cta-note">El formulario son 2 minutos. Lo leo yo y te digo por dónde empezaría contigo.</p>
+
+      <div class="compare" aria-label="Cómo se comía antes y cómo se come ahora">
+        <div class="then"><b>Cómo se comía antes</b><ul><li>La comida de olla de los abuelos.</li><li>Pan, fiambre y bocata gigante a las 11.</li><li>Galletas, magdalenas y Colacao para desayunar.</li></ul></div>
+        <div class="now"><b>Cómo comemos ahora</b><ul><li>La olla sigue: es comida real.</li><li>Fuera ultraprocesados y bollería.</li><li>Proteína en cada comida, verdura y aceite de oliva.</li></ul></div>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><b>Dietista</b><span>y entrenador: comida y entreno, en un mismo plan</span></div>
+        <div class="fact"><b>3 h/semana</b><span>de fuerza son suficientes</span></div>
+        <div class="fact"><b>Comida real</b><span>la de tu casa y tu familia</span></div>
+        <div class="fact"><b>Cada semana</b><span>reviso tu progreso y ajusto</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>Haces lo mismo que antes. Tu cuerpo ya no responde igual.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Como poquísimo y no bajo."</div>
+      <div class="sign">"La barriga no se va con nada."</div>
+      <div class="sign">"Me hincho después de comer y a media tarde."</div>
+      <div class="sign">"Me levanto cansado y llego reventado a la noche."</div>
+      <div class="sign">"Antes con dejar el pan bastaba."</div>
+      <div class="sign">"Será la edad."</div>
+    </div>
+    <p class="turn">No es la edad. <em>Es inflamación, sueño y estrés.</em></p>
+    <div class="split50" aria-label="Lo que de verdad pesa">
+      <div><b>50 %</b><span>descanso, sueño y vida sin estrés</span></div>
+      <div><b>30 %</b><span>comida real</span></div>
+      <div><b>20 %</b><span>entreno de fuerza</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método Desinflama</div>
+      <h2>Desinflamar. Recomponer. Mantener.</h2>
+      <p class="lede"><b>3 pilares:</b> Comida real antiinflamatoria (Como se comía antes, pero bien: la olla, el pescado, el aceite de oliva. La comida de tu casa) · Metabolismo y hormonas a tu favor (Sueño, estrés e insulina en su sitio para que tu cuerpo deje de guardar grasa) · Fuerza 3 horas a la semana (Más no es mejor: mejor es mejor. Fuerza adaptada a tu horario y a tus molestias).</p>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Desinflamar</h3><p><b>Qué pasa:</b> Baja la hinchazón, mejoran la digestión y el sueño, y empieza a irse la primera grasa: la barriga se nota menos.</p><p><b>Qué haces tú:</b> Comes comida real con la comida de casa, priorizas sueño y estrés y haces tus 3 sesiones de fuerza.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Recomponer</h3><p><b>Qué pasa:</b> Pierdes grasa y ganas músculo. Más energía y la ropa empieza a cambiar.</p><p><b>Qué haces tú:</b> Progresas en la fuerza, mantienes la regla 50/30/20 y mandas tu revisión cada semana.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Mantener</h3><p><b>Qué pasa:</b> Comes más y mantienes. Aprendes a comer como antes, pero bien, para siempre.</p><p><b>Qué haces tú:</b> Aplicas lo aprendido fuera de casa y en familia, y haces tu analítica de control con tu médico.</p></article>
+      <article class="layer"><span class="n">No negociables</span><h3>Lo que te pido</h3><p>La regla 50/30/20: 50 % descanso, 30 % comida, 20 % entreno. 3 sesiones de fuerza a la semana. Analítica de control con tu médico (yo te la explico, no diagnostico). Cada semana reviso cómo vas y ajusto el plan contigo.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Comida de verdad</span>
+      <h3>Comer como antes, pero bien.</h3>
+      <p>No necesitas batidos ni comer aparte de tu familia. Necesitas ordenar lo que ya comes: la olla, el pescado, el aceite de oliva. Más no es mejor: mejor es mejor.</p>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Personas reales</div>
+      <h2>Ya lo habían intentado. Les faltaba alguien encima.</h2>
+      <p class="lede">"Todos pasaban un poco de ellas. Yo estaba muy encima."</p>
+    </div>
+    <!-- TESTIMONIOS EN VÍDEO PENDIENTES -->
+    <div class="wall">
+      <article class="case noimg">
+        <div class="big">Pruebas físicas aprobadas</div>
+        <p>Dos hermanas de 33 y 38 años, con trabajos muy estresantes, prepararon conmigo las pruebas físicas de su oposición y las aprobaron.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">E</span><div><b>Esther y Merche</b><span>Oposición a policía local</span></div></div>
+      </article>
+      <article class="case noimg">
+        <div class="big">Unos 10 kg menos en 1 año</div>
+        <p>A los 48 años, después de haber recuperado el peso que perdió, ganó músculo, bajó unos 10 kg y mejoró su dolor de rodilla.</p>
+        <p class="consent">Publicar solo con su permiso por escrito.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cristina, 48 años</b><span>1 año de trabajo</span></div></div>
+      </article>
+      <article class="case noimg">
+        <div class="big">Tu caso, aquí</div>
+        <p>Pronto, más resultados de personas de +40 con su antes y su después.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">+</span><div><b>Próximo caso</b><span>Foto · pendiente</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Mi historia</div>
+      <h2>Fui el gordito de la clase.</h2>
+    </div>
+    <div class="me">
+      <img src="casos/fran-avatar.jpg" alt="Fran Seguí" width="320" height="320" loading="lazy">
+      <p>"Más no es mejor: mejor es mejor."</p>
+    </div>
+    <div class="timeline">
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>9–14 años</b><span>Más gordo de la cuenta. El kárate (cinturón marrón) y el fútbol me cambiaron.</span></figcaption></figure>
+      <figure><div class="ph">Foto · pendiente</div><figcaption><b>15 años</b><span>1,70 m y unos 65 kg: mi primer gimnasio.</span></figcaption></figure>
+      <figure><div class="ph">Foto 2012 · pendiente</div><figcaption><b>2012</b><span>[Edad y peso pendientes]</span></figcaption></figure>
+      <figure><div class="ph">Foto 2026 · pendiente</div><figcaption><b>Hoy</b><span>Dietista y entrenador. Como con mi familia y entreno unas 3 horas a la semana.</span></figcaption></figure>
+    </div>
+    <div class="read stack">
+      <p>De los 9 a los 14 años estuve más gordo de la cuenta. Crecí con <strong>la comida de olla de mis abuelos</strong>… y con galletas, Colacao y bocatas gigantes. Mi abuelo era muy panero.</p>
+      <p>Mi referente era mi tío Julio, bombero: le veía subir la cuerda como alma que se lleva el diablo. Con 15 años pisé mi primer gimnasio queriendo no pasar desapercibido.</p>
+      <p>Hoy sé que esto es <strong>un 50 % descanso y vida sin estrés, un 30 % comida y un 20 % entreno</strong>. Y que el cuerpo no te cambia en 3 meses: te cambia cuando lo haces bien y con constancia.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>Más no es mejor</b><span>Comer menos y hacer más cardio. <em>Lo que funciona:</em> desinflamar, dormir y entrenar fuerza.</span></div>
+      <div class="err"><b>Retos de 30 días</b><span>Prometen lo imposible. <em>Lo que funciona:</em> un plan por fases que puedas mantener.</span></div>
+      <div class="err"><b>Polvitos</b><span>Suplementos sin evidencia. <em>Lo que funciona:</em> comida real y solo lo que tiene respaldo.</span></div>
+    </div>
+    <p class="quote">"No quiero venderte humo. Quiero que tu cuerpo vuelva a responder."</p>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label">Garantía</div>
+      <h2 style="margin-top:10px">Si cumples y no notas cambios en la fase 1, sigo contigo gratis.</h2>
+      <ul>
+        <li>Sigues el plan y me envías tus revisiones semanales.</li>
+        <li>Si aun así no hay cambios, seguimos trabajando sin coste hasta que lleguen.</li>
+        <li>Todo queda por escrito en el contrato antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes más de 40 y ya no pierdes grasa como antes.</li>
+          <li>Te hinchas, duermes mal o vas cansado todo el día.</li>
+          <li>Quieres comer comida normal, la de tu casa, no batidos.</li>
+          <li>Puedes entrenar fuerza unas 3 horas a la semana.</li>
+          <li>Vas a seguir el plan y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas perder 10 kg en un mes.</li>
+          <li>Quieres un suplemento milagro.</li>
+          <li>No vas a contarme cómo comes, duermes y entrenas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Me cuentas tu caso</h3><p>2 minutos en el formulario: edad, cómo comes, cómo duermes y qué has probado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te digo qué está frenando a tu metabolismo y por dónde empezaría.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas a desinflamar</h3><p>Tu fase 1 hecha para ti y la primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso.</h2>
+      <p class="lede">Lo leo yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn btn-a js-form" id="formBtn" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Tengo más de 40. ¿Todavía estoy a tiempo?</summary><p>Sí. A partir de los 40 el cuerpo responde distinto, no peor. Por eso empezamos desinflamando y cuidando sueño y estrés antes de apretar.</p></details>
+      <details><summary>¿Tengo que comer aparte de mi familia?</summary><p>No. Trabajamos con la comida de tu casa: la olla, el pescado, el aceite de oliva. Se ordena, no se sustituye.</p></details>
+      <details><summary>¿Cuánto tengo que entrenar?</summary><p>Unas 3 horas de fuerza a la semana. Más no es mejor: mejor es mejor.</p></details>
+      <details><summary>¿Vas a mirar mis analíticas?</summary><p>Te ayudo a entenderlas y a mejorar tus hábitos. No diagnostico ni receto: si algo necesita valoración médica, te lo digo para que vayas a tu médico.</p></details>
+      <details><summary>¿Tengo que tomar suplementos?</summary><p>Solo los que tienen evidencia y si los necesitas. Nada de polvitos milagro.</p></details>
+      <details><summary>Me duele la rodilla o la espalda.</summary><p>Se adapta el entrenamiento. Cristina, con dolor de rodilla, mejoró trabajando la fuerza bien hecha.</p></details>
+      <details><summary>¿Y si no veo resultados?</summary><p>Si cumples el plan y envías tus revisiones y en la fase 1 no notas cambios, seguimos trabajando gratis hasta que lleguen. Queda por escrito en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Rellena el formulario y te lo explico cuando hablemos.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Que tu cuerpo vuelva a responder.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-form" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Quiero empezar</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/francisco_segui_pro/" target="_blank" rel="noopener">Escríbeme DESINFLAMA en Instagram</a>
+    </div>
+    <p class="cta-note">O escríbeme <b>DESINFLAMA</b> por privado en <a href="https://www.instagram.com/francisco_segui_pro/" target="_blank" rel="noopener">@francisco_segui_pro</a> y te contesto yo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Fran Seguí · Dietista y entrenador</span><span><a href="https://www.instagram.com/francisco_segui_pro/" target="_blank" rel="noopener">@francisco_segui_pro</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-form" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Quiero empezar</a></div>
+
+<script>
+(function () {
+  // Sustituir por la URL completa del Google Form (…/viewform). Solo se incrusta si contiene "/viewform".
+  var BASE = "https://docs.google.com/forms/";
+  var FORM = BASE + (BASE.indexOf("?") > -1 ? "&" : "?") + "utm_source=landing&utm_medium=web";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  if (fe && fb && window.self === window.top && BASE.indexOf("/viewform") > -1) {
+    var f = document.createElement("iframe");
+    f.src = BASE + (BASE.indexOf("?") > -1 ? "&" : "?") + "embedded=true"; f.title = "Formulario de Fran Seguí"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

@@ -1,0 +1,479 @@
+<title>Adrián Reportes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: dos reportes lado a lado (diario y anuncios), guardados en la base de datos compartida por fecha; debajo los historiales y la guía de avisos. Paleta neutra con acento dorado. */
+:root {
+  --paper: #ecebe7;
+  --white: #fbfaf8;
+  --sand: #e2dfd6;
+  --sand-line: #cdc6ae;
+  --ink: #141414;
+  --soft: #66635d;
+  --gold: #8a6a00;
+  --gold-text: #7a5e00;
+  --chip: #efede8;
+  --rust: #9a4b2f;
+  --green: #4f6b3a;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 22px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(30px, 5vw, 50px)/1.05 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 22px/1.2 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 780px; }
+.bar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.bar label { display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: 15px; }
+.bar input[type=date] { font: 700 15px/1 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); }
+.status { font: 500 12.5px/1.4 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--rust); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.col { display: grid; gap: 12px; min-width: 0; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.when { display: inline-block; width: fit-content; background: var(--gold); color: var(--white); font: 500 11.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 7px 10px; border-radius: 999px; }
+
+.report { gap: 10px; }
+.report > label { display: grid; grid-template-columns: minmax(0, 1fr) 130px; gap: 12px; align-items: center; font-size: 15px; font-weight: 600; }
+.report input, .report select { font: 600 16px/1 var(--f-body); padding: 10px 12px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; font-variant-numeric: tabular-nums; }
+.report input:focus, .report select:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
+.calc { display: grid; gap: 10px; }
+.calc div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; border-bottom: 1px solid var(--sand-line); padding-bottom: 8px; }
+.calc div:last-child { border-bottom: 0; padding-bottom: 0; }
+.calc span { color: var(--soft); font-size: 14.5px; }
+.calc b { font: 800 22px/1 var(--f-body); color: var(--gold-text); font-variant-numeric: tabular-nums; }
+pre.copy { margin: 0; white-space: pre-wrap; word-break: break-word; font: 500 14.5px/1.55 var(--f-body); background: var(--chip); border-radius: 12px; padding: 14px 16px; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { font: 700 15px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 13px 18px; cursor: pointer; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.note { font-size: 13.5px; color: var(--soft); min-height: 1.2em; }
+.saved { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+
+.closed-q { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; flex-wrap: wrap; }
+.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; }
+.seg button { all: unset; cursor: pointer; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 14px; color: var(--soft); }
+.seg button[aria-pressed="true"] { background: var(--gold); color: var(--white); }
+.seg button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.closes { display: grid; gap: 10px; background: var(--chip); border-radius: 14px; padding: 14px; }
+.row { display: grid; gap: 8px; background: var(--white); border-radius: 12px; padding: 12px; }
+.row .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.row b { font-size: 14.5px; }
+.rm { all: unset; cursor: pointer; color: var(--soft); font-size: 13px; font-weight: 700; }
+.rm:focus-visible { outline: 2px solid var(--ink); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; color: var(--soft); }
+.fields input, .fields select { font: 600 15px/1.2 var(--f-body); padding: 9px 10px; }
+.fields .full { grid-column: 1 / -1; }
+.camps { display: grid; gap: 8px; }
+.res { font-size: 13.5px; color: var(--gold-text); font-weight: 700; }
+.cname { font: 700 14.5px/1.2 var(--f-body) !important; border: 0 !important; background: transparent !important; padding: 0 !important; color: var(--ink); min-width: 0; flex: 1; }
+
+.hist-wrap { overflow-x: auto; }
+table.hist { width: 100%; min-width: 640px; border-collapse: collapse; background: var(--white); }
+.hist th, .hist td { padding: 10px 12px; border-top: 1px solid var(--sand); text-align: right; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.hist th:first-child, .hist td:first-child { text-align: left; }
+.hist thead th { border-top: 0; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); background: var(--chip); }
+.hist tfoot td { font-weight: 800; background: var(--sand); }
+.hist tr.sel td { background: #f6efd9; }
+.empty { color: var(--soft); text-align: center !important; padding: 22px !important; }
+table.alerts { width: 100%; border-collapse: collapse; }
+.alerts td, .alerts th { padding: 10px 12px; border-top: 1px solid var(--sand-line); text-align: left; font-size: 14.5px; vertical-align: top; }
+.alerts thead th { border-top: 0; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); }
+.alerts td:first-child { font-weight: 700; }
+
+@media (max-width: 860px) { .g2 { grid-template-columns: 1fr; } }
+@media (max-width: 420px) {
+  .report > label { grid-template-columns: minmax(0, 1fr) 100px; }
+  .fields { grid-template-columns: 1fr; }
+  .card { padding: 16px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Adrián Domínguez · Reportes de métricas</span>
+    <h1>Ventas cada noche. Anuncios y facturación, lunes y jueves.</h1>
+    <p class="soft">Elige el día y rellena. Todo se guarda solo en la base de datos y Alberto lo ve en directo desde cualquier dispositivo. El mensaje para WhatsApp se genera solo.</p>
+    <div class="bar">
+      <label for="fecha">Día del reporte <input type="date" id="fecha"></label>
+      <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
+    </div>
+  </header>
+
+  <div class="g2">
+    <div class="col">
+      <form class="card report" id="formDia" autocomplete="off">
+        <span class="when">Cada noche</span>
+        <h2 id="h-dia">Ventas del día</h2>
+        <label for="d-conv">Conversaciones abiertas<input id="d-conv" data-d="conversaciones" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-tel">Teléfonos conseguidos<input id="d-tel" data-d="telefonos" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-agend">Llamadas agendadas próximos días<input id="d-agend" data-d="agendadas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <label for="d-hechas">Llamadas realizadas hoy<input id="d-hechas" data-d="llamadasHoy" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+        <div class="closed-q">
+          <span>¿Se ha cerrado algo hoy?</span>
+          <div class="seg" role="group" aria-label="¿Se ha cerrado algo hoy?">
+            <button type="button" id="closedNo" aria-pressed="false">No</button>
+            <button type="button" id="closedYes" aria-pressed="false">Sí</button>
+          </div>
+        </div>
+        <div id="closesBox" class="closes" hidden>
+          <span class="label">Cierres del día</span>
+          <div id="closesList" style="display:grid;gap:10px"></div>
+          <button type="button" class="btn ghost" id="addClose">+ Añadir otro cierre</button>
+        </div>
+        <span class="saved" id="sv-dia"></span>
+      </form>
+      <div class="card sand">
+        <div class="calc">
+          <div><span>Teléfono por conversación</span><b id="o-tel">—</b></div>
+          <div><span>Cierre (cierres ÷ llamadas)</span><b id="o-close">—</b></div>
+          <div><span>Facturado hoy</span><b id="o-fact">—</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Mensaje diario</span>
+        <pre class="copy" id="m-dia"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-dia" data-note="n-dia">Copiar mensaje</button></div>
+        <p class="note" id="n-dia" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <div class="col">
+      <form class="card report" id="formAds" autocomplete="off">
+        <span class="when">Lunes y jueves</span>
+        <h2>Anuncios y facturación</h2>
+        <label for="a-fact">Facturación total del mes (€)<input id="a-fact" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label>
+        <span class="label" style="margin-top:6px">Anuncios "sígueme" · gasto desde el último reporte</span>
+        <div class="camps" id="camps-sigueme"></div>
+        <button type="button" class="btn ghost" data-add="sigueme">+ Añadir campaña "sígueme"</button>
+        <span class="label" style="margin-top:6px">Anuncios de formulario · gasto desde el último reporte</span>
+        <div class="camps" id="camps-formulario"></div>
+        <button type="button" class="btn ghost" data-add="formulario">+ Añadir campaña de formulario</button>
+        <span class="saved" id="sv-ads"></span>
+      </form>
+      <div class="card sand">
+        <div class="calc">
+          <div><span>Coste por seguidor (todas)</span><b id="o-cps">—</b></div>
+          <div><span>Coste por lead (todas)</span><b id="o-cpl">—</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <span class="label">Mensaje de lunes y jueves</span>
+        <pre class="copy" id="m-ads"></pre>
+        <div class="btns"><button type="button" class="btn" data-copy="m-ads" data-note="n-ads">Copiar mensaje</button></div>
+        <p class="note" id="n-ads" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+
+  <section class="card" aria-labelledby="h-hist">
+    <span class="label">Historial de ventas · últimos 14 días con datos</span>
+    <h2 id="h-hist">Cómo va la semana</h2>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Día</th><th>Conversaciones</th><th>Teléfonos</th><th>Agendadas</th><th>Llamadas</th><th>Cierres</th><th>Facturado</th></tr></thead>
+        <tbody id="histBody"><tr><td class="empty" colspan="7">Todavía no hay días con datos.</td></tr></tbody>
+        <tfoot id="histFoot" hidden><tr><td>Últimos 7 días</td><td id="s-conv"></td><td id="s-tel"></td><td id="s-agend"></td><td id="s-hechas"></td><td id="s-cierres"></td><td id="s-fact"></td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-adsh">
+    <span class="label">Historial de anuncios · últimos 8 reportes</span>
+    <h2 id="h-adsh">Cómo evolucionan los costes</h2>
+    <div class="hist-wrap">
+      <table class="hist">
+        <thead><tr><th>Reporte</th><th>Facturación mes</th><th>Gasto sígueme</th><th>Seguidores</th><th>€ / seguidor</th><th>Gasto formulario</th><th>Leads</th><th>€ / lead</th></tr></thead>
+        <tbody id="adsBody"><tr><td class="empty" colspan="8">Todavía no hay reportes de anuncios.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card sand" aria-labelledby="h-alerts">
+    <span class="label">Cuándo hay que actuar</span>
+    <h2 id="h-alerts">Se arregla un solo cuello de botella cada vez.</h2>
+    <div style="overflow-x:auto">
+      <table class="alerts">
+        <thead><tr><th>Si pasa esto</th><th>El problema está en</th><th>Qué se revisa</th></tr></thead>
+        <tbody>
+          <tr><td>Muchas conversaciones, pocos teléfonos</td><td>La conversación</td><td>El guion de cualificación</td></tr>
+          <tr><td>Muchas agendadas, pocas realizadas</td><td>La confirmación</td><td>El flujo antes de la llamada</td></tr>
+          <tr><td>Muchas llamadas, pocos cierres</td><td>La llamada o la oferta</td><td>El guion de venta y el precio</td></tr>
+          <tr><td>Coste por seguidor que sube 3 reportes seguidos</td><td>El anuncio "sígueme"</td><td>Cambiar el gancho o el vídeo</td></tr>
+          <tr><td>Coste por lead alto y leads que no responden</td><td>El anuncio de formulario</td><td>Las preguntas del formulario o el anuncio</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var DAYF = [["d-conv", "conversaciones"], ["d-tel", "telefonos"], ["d-agend", "agendadas"], ["d-hechas", "llamadasHoy"]];
+  var PLANES = ["Año", "Año a plazos", "Semestre", "Semestre en 2 pagos", "Trimestre", "Mantenimiento", "Renovación", "Otro"];
+  var PAGOS = ["Pago único", "2 pagos", "Klarna / Sequra", "Mensual", "Otro"];
+  var ORIGENES = ["Comenta CAMBIO", "Instagram orgánico", "Anuncio sígueme", "Anuncio formulario", "YouTube", "Historias", "Recomendación", "Otro"];
+
+  var db = null, diarioMap = {}, adsMap = {}, fetched = {};
+  var day = null, ads = null;            // estado editable del día elegido
+  var timers = {}, chains = {}, dirty = {}, rowOf = new WeakMap();
+
+  function el(id) { return document.getElementById(id); }
+  function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
+  function eur(n) { return n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €"; }
+  function pct(n) { return n.toLocaleString("es-ES", { maximumFractionDigits: 0 }) + " %"; }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function isoToday() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function nice(iso, long) { return new Date(iso + "T12:00:00").toLocaleDateString("es-ES", long ? { weekday: "long", day: "numeric", month: "long" } : { weekday: "short", day: "numeric", month: "short" }); }
+  function setStatus(t, err) { var s = el("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+
+  function blankDay(f) { return { fecha: f, conversaciones: "", telefonos: "", agendadas: "", llamadasHoy: "", cerrado: null, cierres: [] }; }
+  function lastCampNames() {
+    var keys = Object.keys(adsMap).sort().reverse();
+    for (var i = 0; i < keys.length; i++) { var c = adsMap[keys[i]].campanas; if (c && c.length) return c.map(function (x) { return { tipo: x.tipo, nombre: x.nombre, gasto: "", resultados: "" }; }); }
+    return [{ tipo: "sigueme", nombre: "Sígueme 1", gasto: "", resultados: "" }, { tipo: "formulario", nombre: "Formulario 1", gasto: "", resultados: "" }];
+  }
+  function blankAds(f) { return { fecha: f, facturacionMes: "", campanas: lastCampNames() }; }
+
+  /* ---------- Escritura: una a la vez por documento, solo si cambia ---------- */
+  function key(col, id) { return col + "/" + id; }
+  function schedule(col, id, getData, svId) {
+    var k = key(col, id); dirty[k] = true;
+    el(svId).textContent = db ? "Guardando…" : "Sin base de datos: no se guarda.";
+    clearTimeout(timers[k]);
+    timers[k] = setTimeout(function () { timers[k] = null; flush(col, id, getData, svId); }, 600);
+  }
+  function flush(col, id, getData, svId) {
+    if (!db) return;
+    var k = key(col, id);
+    var data = Object.assign(clone(getData()), { actualizado: new Date().toISOString() });
+    var prev = chains[k] || Promise.resolve();
+    chains[k] = prev.then(function () {
+      dirty[k] = false;
+      return db.collection(col).doc(id).set(data).then(function () {
+        if (!dirty[k]) el(svId).textContent = "Guardado " + new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" });
+      }, function (e) {
+        dirty[k] = false;
+        el(svId).textContent = e && e.code === "invalid_argument" ? "No tienes permiso para guardar en esta página." : (e && e.code === "quota_exceeded" ? "La base de datos está llena." : "No se ha podido guardar. Vuelve a intentarlo.");
+      });
+    });
+  }
+  function saveDay() { var f = day.fecha; schedule("diario", f, function () { return day.fecha === f ? day : diarioMap[f]; }, "sv-dia"); diarioMap[f] = clone(day); renderHist(); }
+  function saveAds() { var f = ads.fecha; schedule("ads", f, function () { return ads.fecha === f ? ads : adsMap[f]; }, "sv-ads"); adsMap[f] = clone(ads); renderAdsHist(); }
+
+  /* ---------- Render del día ---------- */
+  function fillDay() {
+    DAYF.forEach(function (p) { var i = el(p[0]); if (document.activeElement !== i) i.value = day[p[1]] === undefined ? "" : day[p[1]]; });
+    renderCloses();
+  }
+  function renderCloses() {
+    el("closedYes").setAttribute("aria-pressed", day.cerrado === true ? "true" : "false");
+    el("closedNo").setAttribute("aria-pressed", day.cerrado === false ? "true" : "false");
+    el("closesBox").hidden = day.cerrado !== true;
+    var list = el("closesList"); list.innerHTML = "";
+    (day.cierres || []).forEach(function (c, i) {
+      var row = document.createElement("div"); row.className = "row";
+      var opt = function (arr, v) { return arr.map(function (o) { return "<option" + (o === v ? " selected" : "") + ">" + esc(o) + "</option>"; }).join(""); };
+      row.innerHTML = '<div class="top"><b>Cierre ' + (i + 1) + '</b>' + (day.cierres.length > 1 ? '<button type="button" class="rm">Quitar</button>' : '') + '</div>' +
+        '<div class="fields">' +
+        '<label>Cliente<input data-k="cliente" value="' + esc(c.cliente) + '" placeholder="Nombre"></label>' +
+        '<label>Importe cobrado hoy (€)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
+        '<label>Plan<select data-k="plan">' + opt(PLANES, c.plan) + '</select></label>' +
+        '<label>Pago<select data-k="pago">' + opt(PAGOS, c.pago) + '</select></label>' +
+        '<label>De dónde vino<select data-k="origen">' + opt(ORIGENES, c.origen) + '</select></label>' +
+        '<label>Valor total del contrato (€)<input data-k="valorTotal" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.valorTotal) + '" placeholder="0"></label>' +
+        '<label class="full">Cómo fue (objeción principal, qué le convenció)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: dudaba por el tiempo; le convenció el caso de Jorge"></label>' +
+        '</div>';
+      row.querySelectorAll("select").forEach(function (s) { if (!c[s.dataset.k]) c[s.dataset.k] = s.value; });
+      row.querySelectorAll("[data-k]").forEach(function (inp) {
+        var h = function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveDay(); update(); };
+        inp.addEventListener("input", h); inp.addEventListener("change", h);
+      });
+      var rm = row.querySelector(".rm");
+      if (rm) rm.addEventListener("click", function () { day.cierres.splice(i, 1); saveDay(); renderCloses(); update(); });
+      list.appendChild(row);
+    });
+  }
+  el("closedYes").addEventListener("click", function () { if (day.cerrado === true) return; day.cerrado = true; if (!day.cierres.length) day.cierres.push({}); saveDay(); renderCloses(); update(); });
+  el("closedNo").addEventListener("click", function () { if (day.cerrado === false) return; day.cerrado = false; saveDay(); renderCloses(); update(); });
+  el("addClose").addEventListener("click", function () { day.cierres.push({}); saveDay(); renderCloses(); update(); });
+  DAYF.forEach(function (p) {
+    el(p[0]).addEventListener("input", function () { var v = el(p[0]).value; if (day[p[1]] === v) return; day[p[1]] = v; saveDay(); update(); });
+  });
+
+  /* ---------- Render de anuncios ---------- */
+  function fillAds() {
+    var af = el("a-fact"); if (document.activeElement !== af) af.value = ads.facturacionMes || "";
+    renderCamps("sigueme"); renderCamps("formulario");
+  }
+  function renderCamps(t) {
+    var box = el("camps-" + t); box.innerHTML = "";
+    var unit = t === "sigueme" ? "Seguidores nuevos" : "Leads";
+    var mine = ads.campanas.filter(function (c) { return c.tipo === t; });
+    mine.forEach(function (c) {
+      var row = document.createElement("div"); row.className = "row";
+      row.innerHTML = '<div class="top"><input class="cname" data-k="nombre" value="' + esc(c.nombre) + '" aria-label="Nombre de la campaña">' +
+        (mine.length > 1 ? '<button type="button" class="rm">Quitar</button>' : '') + '</div>' +
+        '<div class="fields"><label>Gasto (€)<input data-k="gasto" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.gasto) + '" placeholder="0"></label>' +
+        '<label>' + unit + '<input data-k="resultados" type="number" min="0" inputmode="numeric" value="' + esc(c.resultados) + '" placeholder="0"></label></div>' +
+        '<span class="res"></span>';
+      row.querySelectorAll("[data-k]").forEach(function (inp) {
+        inp.addEventListener("input", function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveAds(); update(); });
+      });
+      var rm = row.querySelector(".rm");
+      if (rm) rm.addEventListener("click", function () { ads.campanas.splice(ads.campanas.indexOf(c), 1); saveAds(); renderCamps(t); update(); });
+      rowOf.set(c, row);
+      box.appendChild(row);
+    });
+  }
+  document.querySelectorAll("[data-add]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.dataset.add, n = ads.campanas.filter(function (c) { return c.tipo === t; }).length + 1;
+      ads.campanas.push({ tipo: t, nombre: (t === "sigueme" ? "Sígueme " : "Formulario ") + n, gasto: "", resultados: "" });
+      saveAds(); renderCamps(t); update();
+    });
+  });
+  el("a-fact").addEventListener("input", function () { var v = el("a-fact").value; if (ads.facturacionMes === v) return; ads.facturacionMes = v; saveAds(); update(); });
+
+  function campTotals(list, t) {
+    var g = 0, r = 0, lines = [];
+    (list || []).filter(function (c) { return c.tipo === t; }).forEach(function (c) {
+      var cg = num(c.gasto), cr = num(c.resultados); g += cg; r += cr;
+      var cost = cr > 0 ? eur(cg / cr) : "—";
+      var rw = rowOf.get(c); if (rw) rw.querySelector(".res").textContent = cost + " por " + (t === "sigueme" ? "seguidor" : "lead");
+      if (cg || cr) lines.push("· " + (c.nombre || t) + ": " + eur(cg) + " → " + cr + " " + (t === "sigueme" ? "seguidores" : "leads") + " · " + cost);
+    });
+    return { g: g, r: r, lines: lines, cost: r > 0 ? eur(g / r) : "—" };
+  }
+  function cierresOf(d) { return d && d.cerrado === true ? (d.cierres || []).length : 0; }
+  function factOf(d) { return d && d.cerrado === true ? (d.cierres || []).reduce(function (a, c) { return a + num(c.importe); }, 0) : 0; }
+
+  function update() {
+    var hechas = num(day.llamadasHoy), cierres = cierresOf(day), fact = factOf(day);
+    var tel = num(day.conversaciones) > 0 ? pct(num(day.telefonos) / num(day.conversaciones) * 100) : "—";
+    var close = hechas > 0 ? pct(cierres / hechas * 100) : "—";
+    el("o-tel").textContent = tel; el("o-close").textContent = close; el("o-fact").textContent = eur(fact);
+    var det = day.cerrado === true ? day.cierres.map(function (c, i) {
+      return "  " + (i + 1) + ". " + (c.cliente || "Cliente") + " · " + eur(num(c.importe)) + " hoy" + (num(c.valorTotal) ? " (contrato " + eur(num(c.valorTotal)) + ")" : "") + " · " + (c.plan || "") + " · " + (c.pago || "") + " · " + (c.origen || "") + (c.como ? "\n     " + c.como : "");
+    }).join("\n") : "";
+    el("h-dia").textContent = day.fecha === isoToday() ? "Ventas de hoy" : "Ventas del " + nice(day.fecha);
+    el("m-dia").textContent = "📈 Ventas Adrián · " + nice(day.fecha, true) + "\n\n" +
+      "Conversaciones abiertas: " + num(day.conversaciones) + "\n" +
+      "Teléfonos conseguidos: " + num(day.telefonos) + "\n" +
+      "Llamadas agendadas próximos días: " + num(day.agendadas) + "\n" +
+      "Llamadas hoy: " + hechas + " · Cierres: " + cierres + " (" + close + ")\n" +
+      "Facturado hoy: " + eur(fact) + (det ? "\n" + det : "");
+    var F = campTotals(ads.campanas, "sigueme"), L = campTotals(ads.campanas, "formulario");
+    el("o-cps").textContent = F.cost; el("o-cpl").textContent = L.cost;
+    el("m-ads").textContent = "📊 Anuncios y facturación Adrián · " + nice(ads.fecha, true) + "\n\n" +
+      "Facturación total del mes: " + eur(num(ads.facturacionMes)) + "\n\n" +
+      "Anuncios sígueme: " + eur(F.g) + " → " + F.r + " seguidores · " + F.cost + " por seguidor" + (F.lines.length > 1 ? "\n" + F.lines.join("\n") : "") + "\n" +
+      "Anuncios formulario: " + eur(L.g) + " → " + L.r + " leads · " + L.cost + " por lead" + (L.lines.length > 1 ? "\n" + L.lines.join("\n") : "");
+  }
+
+  /* ---------- Historiales ---------- */
+  function hasData(d) { return d && (num(d.conversaciones) || num(d.telefonos) || num(d.agendadas) || num(d.llamadasHoy) || d.cerrado === true); }
+  function renderHist() {
+    var rows = Object.keys(diarioMap).sort().reverse().map(function (k) { return diarioMap[k]; }).filter(hasData);
+    var body = el("histBody"), foot = el("histFoot");
+    if (!rows.length) { body.innerHTML = '<tr><td class="empty" colspan="7">Todavía no hay días con datos.</td></tr>'; foot.hidden = true; return; }
+    body.innerHTML = "";
+    rows.slice(0, 14).forEach(function (h) {
+      var tr = document.createElement("tr"); if (h.fecha === day.fecha) tr.className = "sel";
+      [nice(h.fecha), num(h.conversaciones), num(h.telefonos), num(h.agendadas), num(h.llamadasHoy), cierresOf(h), eur(factOf(h))].forEach(function (c) { var td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    var l7 = rows.slice(0, 7), sum = function (f) { return l7.reduce(function (a, h) { return a + f(h); }, 0); };
+    el("s-conv").textContent = sum(function (h) { return num(h.conversaciones); });
+    el("s-tel").textContent = sum(function (h) { return num(h.telefonos); });
+    el("s-agend").textContent = sum(function (h) { return num(h.agendadas); });
+    el("s-hechas").textContent = sum(function (h) { return num(h.llamadasHoy); });
+    el("s-cierres").textContent = sum(cierresOf);
+    el("s-fact").textContent = eur(sum(factOf)); foot.hidden = false;
+  }
+  function renderAdsHist() {
+    var rows = Object.keys(adsMap).sort().reverse().map(function (k) { return adsMap[k]; })
+      .filter(function (a) { return num(a.facturacionMes) || (a.campanas || []).some(function (c) { return num(c.gasto) || num(c.resultados); }); });
+    var body = el("adsBody");
+    if (!rows.length) { body.innerHTML = '<tr><td class="empty" colspan="8">Todavía no hay reportes de anuncios.</td></tr>'; return; }
+    body.innerHTML = "";
+    rows.slice(0, 8).forEach(function (a) {
+      var F = campTotals(a.campanas, "sigueme"), L = campTotals(a.campanas, "formulario");
+      var tr = document.createElement("tr"); if (a.fecha === ads.fecha) tr.className = "sel";
+      [nice(a.fecha), eur(num(a.facturacionMes)), eur(F.g), F.r, F.cost, eur(L.g), L.r, L.cost].forEach(function (c) { var td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    campTotals(ads.campanas, "sigueme"); campTotals(ads.campanas, "formulario");
+  }
+
+  /* ---------- Cambio de fecha ---------- */
+  function loadDate(f) {
+    day = diarioMap[f] ? clone(diarioMap[f]) : blankDay(f);
+    ads = adsMap[f] ? clone(adsMap[f]) : blankAds(f);
+    day.fecha = f; ads.fecha = f;
+    el("sv-dia").textContent = ""; el("sv-ads").textContent = "";
+    fillDay(); fillAds(); update(); renderHist(); renderAdsHist();
+    if (db && !fetched[f] && (!diarioMap[f] || !adsMap[f])) {
+      fetched[f] = true;
+      Promise.all([db.collection("diario").doc(f).get(), db.collection("ads").doc(f).get()]).then(function (r) {
+        if (r[0].exists && !diarioMap[f]) diarioMap[f] = Object.assign(blankDay(f), r[0].data());
+        if (r[1].exists && !adsMap[f]) adsMap[f] = Object.assign(blankAds(f), r[1].data());
+        if (el("fecha").value === f) applyRemote();
+      }, function () {});
+    }
+  }
+  function applyRemote() {
+    var f = el("fecha").value;
+    if (diarioMap[f] && !dirty[key("diario", f)] && !focusedIn("formDia")) { day = clone(diarioMap[f]); day.fecha = f; fillDay(); }
+    if (adsMap[f] && !dirty[key("ads", f)] && !focusedIn("formAds")) { ads = clone(adsMap[f]); ads.fecha = f; fillAds(); }
+    update(); renderHist(); renderAdsHist();
+  }
+  function focusedIn(formId) { var a = document.activeElement; return !!(a && el(formId).contains(a) && (a.tagName === "INPUT" || a.tagName === "SELECT")); }
+  el("fecha").value = isoToday();
+  el("fecha").addEventListener("change", function () { if (el("fecha").value) loadDate(el("fecha").value); });
+
+  document.querySelectorAll("form.report").forEach(function (f) { f.addEventListener("submit", function (e) { e.preventDefault(); }); });
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var box = el(btn.dataset.copy), note = el(btn.dataset.note);
+      function fb() { var r = document.createRange(); r.selectNodeContents(box); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); note.textContent = "Texto seleccionado: cópialo con Ctrl+C o mantén pulsado."; }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(box.textContent).then(function () { note.textContent = "Copiado."; }, fb); else fb();
+    });
+  });
+
+  loadDate(isoToday());
+
+  /* ---------- Conexión ---------- */
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) { setStatus("Sin base de datos en esta vista: se puede rellenar y copiar el mensaje, pero no se guarda. Abre la página desde claude.ai con tu cuenta.", true); return; }
+    db = c;
+    var got = { diario: false, ads: false };
+    var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
+    function ready(which) { got[which] = true; if (got.diario && got.ads) { clearTimeout(timer); setStatus("Guardado en directo · se ve desde cualquier dispositivo"); } }
+    function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); }
+    db.collection("diario").orderBy("fecha", "desc").limit(30).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha) diarioMap[x.fecha] = Object.assign(blankDay(x.fecha), x); });
+      if (!snap.metadata.fromCache) ready("diario");
+      applyRemote();
+    }, onErr);
+    db.collection("ads").orderBy("fecha", "desc").limit(30).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha) adsMap[x.fecha] = Object.assign(blankAds(x.fecha), x); });
+      if (!snap.metadata.fromCache) ready("ads");
+      applyRemote();
+    }, onErr);
+  })();
+})();
+</script>

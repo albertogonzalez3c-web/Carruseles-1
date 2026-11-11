@@ -1,0 +1,477 @@
+<title>María Berro Fit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="María Berro, dietista y entrenadora: para mujeres de 30 y 40 que quieren verse mejor que nunca y mantenerlo para siempre, sin dietas extremas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: carta de venta en una columna. Hero claro con titular serif y prueba en 3 antes/ahora; historia de María como núcleo; método por fases; casos; garantía oscura; FAQ; formulario. Marca MB: coral sobre papel cálido. */
+:root {
+  --paper: #faf6f3;
+  --white: #ffffff;
+  --ink: #1a1414;
+  --soft: #6d6363;
+  --line: #ecdcd6;
+  --chip: #f6ece8;
+  --coral: #c8433f;
+  --coral-soft: #f4a7a1;
+  --coral-text: #b23a36;
+  --on-dark: #d9cfcc;
+  --f-head: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 600 clamp(32px, 5vw, 54px)/1.06 var(--f-head); letter-spacing: -.02em; }
+h3 { font: 700 20px/1.3 var(--f-body); letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--coral-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+em.c { font-style: italic; color: var(--coral-text); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--coral); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; text-align: center; }
+.btn:hover { transform: translateY(-1px); background: #b23a36; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-ghost { background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn-ghost:hover { background: var(--chip); }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Cabecera y hero */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.mark { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--white); display: grid; place-items: center; font: 800 15px/1 var(--f-body); letter-spacing: -.02em; flex: none; }
+.mark b { color: var(--coral-soft); }
+.brand span { font: 800 16px/1.1 var(--f-body); }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral-text); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 56px) clamp(56px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hero-copy { display: grid; gap: 22px; }
+.hero h1 { font: 600 clamp(42px, 6.6vw, 84px)/1.0 var(--f-head); letter-spacing: -.03em; }
+.hero h1 em { font-style: italic; color: var(--coral-text); }
+.hero .lede { font-size: clamp(18px, 2vw, 21px); }
+.hero-proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; text-decoration: none; }
+.hero-proof figure { margin: 0; display: grid; gap: 8px; }
+.hero-proof img { display: block; width: 100%; height: auto; aspect-ratio: 699 / 793; object-fit: cover; border-radius: 14px; background: var(--chip); }
+.hero-proof figcaption { font: 500 11.5px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.fact { padding: 14px 14px 0 0; display: grid; gap: 2px; }
+.fact b { font: 600 22px/1.15 var(--f-head); }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* ¿Te suena? */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--coral-soft); margin-top: 3px; }
+.turn { margin-top: 28px; font: 600 clamp(28px, 4vw, 44px)/1.1 var(--f-head); letter-spacing: -.02em; }
+.turn em { font-style: italic; color: var(--coral-text); }
+
+/* Historia */
+.story-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; margin-bottom: 30px; }
+.story-head img { width: clamp(84px, 11vw, 120px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--white), 0 0 0 7px var(--coral-soft); }
+.big-quote { font: 600 clamp(28px, 4.2vw, 46px)/1.12 var(--f-head); letter-spacing: -.02em; }
+.big-quote em { font-style: italic; color: var(--coral-text); }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.tl { display: grid; gap: 10px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 14px; border: 1.5px dashed var(--coral-soft); background: var(--chip); display: grid; place-items: center; text-align: center; padding: 12px; font: 500 11.5px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--coral-text); }
+.tl b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral-text); }
+.tl span { font-size: 15px; color: var(--soft); line-height: 1.45; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; }
+.err .was { font: 500 11.5px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.err b { font-size: 17px; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.err .fix { color: var(--ink); }
+.err .fix::before { content: "Tu atajo: "; font-weight: 800; color: var(--coral-text); }
+
+/* Método */
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.phase { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+.phase .n { font: 600 46px/1 var(--f-head); color: var(--coral-soft); }
+.phase .when { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--coral-text); }
+.phase p { color: var(--soft); font-size: 16px; }
+.incl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.inc { background: var(--chip); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; }
+.inc p { color: var(--soft); font-size: 15.5px; }
+
+/* Casos */
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 12px 12px 18px; display: grid; gap: 12px; align-content: start; }
+.case img { display: block; width: 100%; height: auto; aspect-ratio: 699 / 793; object-fit: cover; border-radius: 12px; }
+.case .tag { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--coral-text); padding-inline: 6px; }
+.case p { font-size: 15.5px; line-height: 1.55; color: var(--soft); padding-inline: 6px; }
+.case0 { background: var(--ink); color: var(--white); border-radius: 16px; padding: clamp(22px, 3.4vw, 36px); display: grid; gap: 12px; margin-top: 14px; }
+.case0 .label { color: var(--coral-soft); }
+.case0 h3 { font: 600 clamp(24px, 3.2vw, 34px)/1.12 var(--f-head); }
+.case0 p { color: var(--on-dark); max-width: 66ch; font-size: 17px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; border-radius: 50%; background: var(--coral); color: var(--white); display: grid; place-items: center; text-align: center; font: 600 clamp(20px, 2.4vw, 26px)/1.05 var(--f-head); padding: 12px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee h2 { color: var(--white); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--coral-soft); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #a8a09d; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--chip); color: var(--coral-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos y formulario */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--coral); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--coral-text); }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 640px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); color: var(--coral-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--coral-soft); }
+.final h2 { font-size: clamp(38px, 6.2vw, 76px); max-width: 16ch; }
+.final h2 em { font-style: italic; color: var(--coral-soft); }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(250, 246, 243, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .hero-proof { gap: 8px; }
+  .hero-proof figcaption { font-size: 10px; }
+  .signs, .phases, .incl, .fit, .steps, .errors, .cases, .quotes { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr 1fr 1fr; }
+  .fact b { font-size: 18px; }
+  .fact span { font-size: 12.5px; }
+  .story-head { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--coral, #c8433f); --nm-at: var(--coral-text, #b23a36); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+</style>
+
+<!--
+  NOTA PARA ALBERTO / MARÍA (no se ve en la página)
+  - casos/caso-1.jpg … caso-3.jpg están recortados de una captura del perfil (baja resolución).
+    Sustituir por las imágenes originales de los antes/ahora fijados, y SOLO con permiso firmado de cada clienta.
+  - Cuando haya datos reales (nombre o inicial, edad, tiempo, cambio), añadirlos al texto de cada caso. No inventar cifras.
+  - Fotos de la historia (2019, 2021, 2023, 2025): sustituir los recuadros "pendiente" por sus fotos.
+  - WhatsApp: cuando María pase su número, añadir botón flotante y botón secundario como en la landing de Adrián.
+-->
+
+<div class="wrap top">
+  <a class="brand" href="#" aria-label="María Berro Fit">
+    <span class="mark" aria-hidden="true">M<b>B</b></span>
+    <span>María Berro Fit<small>Dietista y entrenadora</small></span>
+  </a>
+  <a class="btn js-form" href="https://form.typeform.com/to/WVDO4Lmy" target="_blank" rel="noopener">Solicitar información</a>
+</div>
+
+<header class="wrap hero">
+  <div class="hero-copy">
+    <div class="label">Para mujeres de 30 a 45 que se cuidan a medias y quieren verse mejor que nunca</div>
+    <h1>Mejor que nunca a los 30 y a los 40. <em>Y para siempre.</em></h1>
+    <p class="lede">Si te cuidas a medias y has probado dietas que no te duran: vamos a hacer que te veas mejor que nunca <b>y que lo mantengas</b>, sin dietas extremas ni vivir en el gimnasio. Comiendo lo mismo que tu familia, con fuerza a tu medida y revisión cada semana. A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca.</p>
+    <!-- VSL PENDIENTE: cuando María grabe su vídeo de presentación (60–120 s), insertarlo aquí:
+         <div class="vsl"><video controls playsinline preload="none" poster="casos/vsl-poster.jpg" src="casos/vsl.mp4"></video></div> -->
+    <div class="ctas">
+      <a class="btn js-form" href="https://form.typeform.com/to/WVDO4Lmy" target="_blank" rel="noopener">Solicitar información</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/mariaberrofit/" target="_blank" rel="noopener">Escríbeme MEJOR en Instagram</a>
+    </div>
+    <p class="cta-note">El formulario son 2 minutos y lo leo yo personalmente.</p>
+    <div class="facts">
+      <div class="fact"><b>Dietista</b><span>y entrenadora</span></div>
+      <div class="fact"><b>3 fases</b><span>para que no vuelva</span></div>
+      <div class="fact"><b>No vas sola</b><span>revisión semanal y WhatsApp</span></div>
+    </div>
+  </div>
+  <a class="hero-proof" href="#casos" aria-label="Ver los cambios de mis clientas">
+    <figure><img src="casos/caso-1.jpg" alt="Antes y ahora de una clienta, de perfil" width="699" height="793"><figcaption>Antes · Ahora</figcaption></figure>
+    <figure><img src="casos/caso-2.jpg" alt="Antes y ahora de una clienta, de perfil" width="699" height="793"><figcaption>Antes · Ahora</figcaption></figure>
+    <figure><img src="casos/caso-3.jpg" alt="Antes y ahora de una clienta, de frente" width="700" height="793"><figcaption>Antes · Ahora</figcaption></figure>
+  </a>
+</header>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:22px">
+      <div class="label">¿Te suena?</div>
+      <h2>Haces de todo y tu cuerpo no responde como antes.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">La ropa no te queda como te gustaría y ya ni te pruebas lo que te encantaba.</div>
+      <div class="sign">Evitas las fotos, o las borras antes de que nadie las vea.</div>
+      <div class="sign">Te sientes hinchada casi todos los días, aunque comas "sano".</div>
+      <div class="sign">Entrenas, haces dieta, cardio… y el espejo sigue igual.</div>
+      <div class="sign">Entre semana lo haces todo bien y el fin de semana se te va de las manos.</div>
+      <div class="sign">Te has convencido de que "es tu genética" y de que esto no es para ti.</div>
+    </div>
+    <p class="turn">No es tu genética. <em>Es que nadie te ha dado un plan para ti.</em></p>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="story-head">
+      <img src="casos/maria-avatar.jpg" alt="María Berro" width="320" height="320" loading="lazy">
+      <div class="stack">
+        <div class="label">Mi historia</div>
+        <p class="big-quote">A los 23 pesaba 54 kg y odiaba mi cuerpo. <em>A los 34 me he visto mejor que nunca.</em></p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl"><div class="ph">Foto 2019<br>· pendiente ·</div><b>23 años</b><span>Muy delgada, la ropa me quedaba vacía y evitaba la playa y las fotos. Pensaba que el gimnasio no era para mí.</span></div>
+      <div class="tl"><div class="ph">Foto 2021<br>· pendiente ·</div><b>29–31 años</b><span>Volumen sin control, atracones los findes y "hinchada y retenida". A los 30 no me reconocía.</span></div>
+      <div class="tl"><div class="ph">Foto 2023<br>· pendiente ·</div><b>2023 · El cambio</b><span>Me puse en manos de un profesional: dejé de entrenar 6 días, prioricé el descanso y dejé de compensar.</span></div>
+      <div class="tl"><div class="ph">Foto 2025<br>· pendiente ·</div><b>34 años</b><span>El año en el que mejor me he visto. Y lo mantengo sin vivir a dieta.</span></div>
+    </div>
+    <div class="read stack" style="margin-bottom:22px">
+      <p>Tardé <strong>7 años</strong> en entenderlo. Copié rutinas de Instagram, quité los carbohidratos, compensé cada "fallo" con más cardio y hice volumen y definición sin ninguna estrategia. Mi glúteo no crecía por mucho que lo entrenara, y me repetía lo que seguramente te repites tú: <strong>"es mi genética, no sirvo para esto"</strong>.</p>
+      <p>Hoy soy <strong>dietista y entrenadora</strong>, y mi trabajo es que tú no pierdas esos 7 años. Estos fueron mis tres grandes errores, y cómo te los ahorras:</p>
+    </div>
+    <div class="errors">
+      <div class="err"><span class="was">Error 1</span><b>"Sola, sin estructura, lo voy a conseguir."</b><span>Cambiaba de rutina cada poco y no sabía qué hacía.</span><span class="fix">un plan hecho para ti desde el primer día.</span></div>
+      <div class="err"><span class="was">Error 2</span><b>"Con unos meses haciéndolo bien es suficiente."</b><span>Cuando no veía cambios rápidos, me frustraba y lo dejaba.</span><span class="fix">un método por fases, con objetivos claros en cada una.</span></div>
+      <div class="err"><span class="was">Error 3</span><b>"Un volumen y una definición, y listo."</b><span>Subía y bajaba sin rumbo, y nunca llegaba al físico que quería.</span><span class="fix">una última fase para mantenerlo para siempre.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:26px">
+      <div class="label">Método Mejor Que Nunca</div>
+      <h2>Tres fases. Una por objetivo.</h2>
+      <p class="lede">Primero activamos tu cuerpo, luego lo esculpimos y al final te enseño a mantenerlo sin depender de nadie.</p>
+    </div>
+    <section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Para quién es</span><p class="nm-big">Mujeres de 30 a 45 que se cuidan a medias, han probado dietas que no les duran y quieren verse mejor que nunca —y mantenerlo— sin dietas extremas ni vivir en el gimnasio.</p></div><div class="nm-meth"><span class="nm-lab">Método Mejor Que Nunca en 30 segundos</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Nutrición de dietista</b><span>Con la comida de casa y de tu familia, los findes y las cenas. Nada de pollo con arroz todo el día. <em>Por qué: el arroz con pollo día y noche me llevó a un atracón cada finde.</em></span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Fuerza con buena técnica</b><span>Para glúteo y tono, a tu medida. Las pesas no te ponen grande: te ponen firme. <em>Por qué: entrené 6 días sin intensidad y el glúteo no creció hasta que entrené menos y mejor.</em></span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Seguimiento semanal cercano</b><span>Revisión cada semana y WhatsApp conmigo. No vas sola. <em>Por qué: lo hice sola 4 años sin rumbo; con alguien revisándome, en 2023 cambié.</em></span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Activar</b><p><em>Qué pasa:</em> Pierdes la primera grasa, te deshinchas y el hábito se queda.</p><p><em>Qué haces tú:</em> 3 días de fuerza aprendiendo la técnica, comida real de casa y tu foto y revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Esculpir</b><p><em>Qué pasa:</em> Glúteo, cintura y tono: tu cuerpo cambia de forma, no solo de peso.</p><p><em>Qué haces tú:</em> Subes cargas con buena técnica y mantienes la comida real cada día.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><em>Qué pasa:</em> Consolidas lo conseguido y aprendes a mantenerlo comiendo con normalidad.</p><p><em>Qué haces tú:</em> Subimos calorías poco a poco y aprendes a gestionar cenas, findes y vacaciones.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>3 días de fuerza</span><span>Proteína y comida real cada día</span><span>Foto y revisión semanal</span></div></div><p class="nm-proof">Prueba: "A los 23 odiaba mi cuerpo. A los 34 me he visto mejor que nunca."</p></section>
+    <div class="phases">
+      <article class="phase"><span class="n">01</span><span class="when">Meses 1–2</span><h3>Activar</h3><p>Pierdes la primera grasa, te deshinchas y el hábito se queda. Tú: 3 días de fuerza aprendiendo la técnica, comida real de casa y tu foto y revisión semanal.</p></article>
+      <article class="phase"><span class="n">02</span><span class="when">Meses 3–4</span><h3>Esculpir</h3><p>Glúteo, cintura y tono: tu cuerpo cambia de forma, no solo de peso. Tú: subes cargas con buena técnica y mantienes la comida real cada día.</p></article>
+      <article class="phase"><span class="n">03</span><span class="when">Meses 5–6</span><h3>Para siempre</h3><p>Consolidas lo conseguido y aprendes a mantenerlo comiendo con normalidad. Tú: subimos calorías poco a poco y aprendes a gestionar cenas, findes y vacaciones.</p></article>
+    </div>
+    <div class="incl">
+      <div class="inc"><h3>Nutrición de dietista</h3><p>Con la comida de tu casa y de tu familia, los findes y las cenas fuera. Nada de pollo con arroz todo el día.</p></div>
+      <div class="inc"><h3>Entreno de fuerza a tu medida</h3><p>Adaptado a tu tiempo. Glúteo, piernas y tren superior. Las pesas no te ponen grande: te ponen firme.</p></div>
+      <div class="inc"><h3>Corrección de técnica</h3><p>Me mandas tus vídeos y te corrijo para que entrenes seguro y avances más rápido.</p></div>
+      <div class="inc"><h3>No vas sola</h3><p>Revisión cada semana y WhatsApp conmigo para tus dudas del día a día.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:26px">
+      <div class="label">Antes y ahora</div>
+      <h2>Ellas también pensaban que no podían.</h2>
+    </div>
+    <!-- CASOS: imágenes recortadas de la captura del perfil (baja resolución). Sustituir por originales con permiso firmado y añadir datos reales (inicial, edad, tiempo). No inventar cifras. -->
+    <div class="cases">
+      <figure class="case"><img src="casos/caso-1.jpg" alt="Antes y ahora de una clienta, de perfil" width="699" height="793" loading="lazy"><span class="tag">Clienta · Antes / Ahora</span><p>Cambio con el Método Mejor Que Nunca.</p></figure>
+      <figure class="case"><img src="casos/caso-2.jpg" alt="Antes y ahora de una clienta, de perfil" width="699" height="793" loading="lazy"><span class="tag">Clienta · Antes / Ahora</span><p>Cambio con el Método Mejor Que Nunca.</p></figure>
+      <figure class="case"><img src="casos/caso-3.jpg" alt="Antes y ahora de una clienta, de frente" width="700" height="793" loading="lazy"><span class="tag">Clienta · Antes / Ahora</span><p>Cambio con el Método Mejor Que Nunca.</p></figure>
+    </div>
+    <div class="case0">
+      <div class="label">Caso 0 · Yo</div>
+      <h3>De odiar mi cuerpo a los 23 a verme mejor que nunca a los 34.</h3>
+      <p>Pasé por todo lo que seguramente estás viviendo: comparaciones, atracones, hinchazón, dietas que no duraban y años sin ver cambios. Lo que me cambió no fue entrenar más, sino entrenar y comer con un plan. Es lo mismo que hago hoy contigo.</p>
+    </div>
+    <!-- TESTIMONIOS PENDIENTES: cuando haya mensajes o vídeos de clientas (con permiso), quitar "hidden" y rellenar. -->
+    <div class="quotes" hidden>
+      <figure class="case"><p>"[Testimonio literal de la clienta]"</p><span class="tag">[Inicial] · [edad] · [tiempo]</span></figure>
+      <figure class="case"><p>"[Testimonio literal de la clienta]"</p><span class="tag">[Inicial] · [edad] · [tiempo]</span></figure>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label" style="color:var(--coral-soft)">Garantía</div>
+      <h2>Si cumples y no ves cambios en la fase 1, sigo contigo gratis.</h2>
+      <ul>
+        <li>Sigues el plan y me mandas tus revisiones semanales.</li>
+        <li>Si aun así no hay cambios en la fase 1, seguimos trabajando sin coste hasta que los veas.</li>
+        <li>Todo queda por escrito antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes 30 o 40 y quieres verte mejor que nunca, no "como antes".</li>
+          <li>Quieres perder grasa y ganar fuerza, no solo bajar de peso.</li>
+          <li>Tienes poco tiempo entre el trabajo, la casa o los hijos.</li>
+          <li>Quieres comer con tu familia y seguir saliendo a cenar.</li>
+          <li>Estás dispuesta a seguir un plan y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio en 15 días o una dieta milagro.</li>
+          <li>Quieres una plantilla genérica para seguir por tu cuenta.</li>
+          <li>No vas a mandar tus revisiones ni contarme cómo vas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Rellenas el formulario</h3><p>2 minutos. Me cuentas tu situación, tu objetivo y lo que has probado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te llamo para ver tu caso y explicarte cómo trabajaríamos juntas.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas tu fase 1</h3><p>Tu plan hecho para ti y tu primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso en 2 minutos.</h2>
+      <p class="lede">Lo leo yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn js-form" id="formBtn" href="https://form.typeform.com/to/WVDO4Lmy" target="_blank" rel="noopener">Solicitar información ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Tengo muy poco tiempo entre el trabajo y los hijos. ¿Me sirve?</summary><p>Sí. El plan se adapta a tu semana real: los días y el tiempo que tienes. Prefiero 3 entrenos que hagas siempre a 6 que dejes a la semana.</p></details>
+      <details><summary>Tengo 40 o más. ¿Notaré los cambios hormonales?</summary><p>Tu cuerpo cambia a los 30 y a los 40, y el plan se ajusta a tu etapa. Si algo necesita valoración médica, te lo digo y lo vemos con tu médico.</p></details>
+      <details><summary>Me da miedo ponerme grande con las pesas.</summary><p>Es el mito más común. La fuerza es lo que te da un cuerpo firme y un glúteo con forma. Ponerse "grande" lleva años de trabajo muy específico.</p></details>
+      <details><summary>¿Tengo que comer distinto que mi familia?</summary><p>No. Como dietista, adapto tu plan a lo que se cocina en tu casa, a los findes y a las cenas fuera.</p></details>
+      <details><summary>Nunca he entrenado. ¿Puedo empezar?</summary><p>Sí. La fase 1 está pensada para aprender a entrenar con buena técnica, y me mandas vídeos para corregirte.</p></details>
+      <details><summary>¿Funciona online?</summary><p>Sí. Tienes tu plan, tu revisión cada semana y WhatsApp conmigo para el día a día. No vas sola en ningún momento.</p></details>
+      <details><summary>¿Y si no veo cambios?</summary><p>Si cumples el plan y envías tus revisiones y en la fase 1 no ves cambios, seguimos trabajando gratis hasta que lleguen. Queda por escrito en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Rellena el formulario y te lo explico en la llamada.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Este puede ser el año en que <em>mejor te veas.</em></h2>
+    <div class="ctas">
+      <a class="btn js-form" href="https://form.typeform.com/to/WVDO4Lmy" target="_blank" rel="noopener">Solicitar información</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/mariaberrofit/" target="_blank" rel="noopener">Escríbeme MEJOR en Instagram</a>
+    </div>
+    <p class="cta-note">Contesto yo personalmente a cada mensaje.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 María Berro Fit · Dietista y entrenadora</span><span><a href="https://www.instagram.com/mariaberrofit/" target="_blank" rel="noopener">@mariaberrofit</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn js-form" href="https://form.typeform.com/to/WVDO4Lmy" target="_blank" rel="noopener">Solicitar información</a></div>
+
+<script>
+(function () {
+  var FORM = "https://form.typeform.com/to/WVDO4Lmy?utm_source=landing&utm_medium=web";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Alojada en su dominio, el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de María Berro"; f.loading = "lazy";
+    f.allow = "camera; microphone; autoplay; encrypted-media; fullscreen";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

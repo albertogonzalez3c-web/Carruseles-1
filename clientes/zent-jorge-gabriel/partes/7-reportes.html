@@ -1,0 +1,348 @@
+<title>Zent Reporte</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: reporte diario de Zent para Alberto. Formulario del día (contenido, crecimiento, 100 conversaciones por canal en 2 rondas, tests, llamadas, cierres en USD, anuncios opcionales con semáforo), resumen de 7 y 30 días, mensaje para copiar e histórico. Colección diario (un documento por fecha) + lectura de config/precios (nivel de la escalera). */
+:root {
+  --paper: #f3f2fa; --white: #fff; --sand: #e6e4f3; --line: #d9d8ea; --ink: #10112e; --soft: #555a78;
+  --red: #5b2bb5; --red-text: #4a2296; --chip: #eae9f6; --green: #2f6b4a; --alert: #b3261e;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-head: "Russo One", "Arial Black", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(28px, 4.5vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+h2 { font: 400 20px/1.15 var(--f-head); text-transform: uppercase; }
+h3 { font: 800 15px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.note { font-size: 13px; color: var(--soft); }
+header.top { padding-block: 20px 6px; display: grid; gap: 8px; }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--red-text); }
+main { padding-block: 12px 60px; display: grid; gap: 16px; }
+main > * { min-width: 0; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); }
+.btn { font: 700 14px/1 var(--f-body); background: var(--red); color: #fff; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+.btn.ghost { background: var(--white); color: var(--red-text); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn[aria-pressed="true"] { background: var(--ink); color: #fff; box-shadow: none; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+input, select, textarea { font: 600 14.5px/1.3 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 60px; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--red); outline-offset: 1px; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); min-width: 0; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.full { grid-column: 1 / -1; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.close { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1fr) auto; gap: 8px; align-items: end; background: var(--chip); border-radius: 12px; padding: 10px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.kpi { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; min-width: 0; }
+.kpi b { font: 400 24px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12.5px; color: var(--soft); font-weight: 600; }
+pre.msg { white-space: pre-wrap; font: 500 14px/1.55 var(--f-body); margin: 0; background: var(--chip); border-radius: 12px; padding: 12px 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--sand); white-space: nowrap; }
+th { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.tscroll { overflow-x: auto; }
+.saved { font: 500 12px/1 var(--f-mono); color: var(--green); }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.light { display: inline-block; padding: 6px 10px; border-radius: 999px; font: 700 13px/1.2 var(--f-body); background: var(--chip); }
+.light.ok { background: #dff1e6; color: var(--green); }
+.light.mid { background: #fff0d6; color: #9a5200; }
+.light.bad { background: #fbe1df; color: var(--alert); }
+.prog { height: 10px; border-radius: 99px; background: var(--chip); overflow: hidden; }
+.prog i { display: block; height: 100%; background: var(--red); border-radius: 99px; }
+@media (max-width: 760px) {
+  .g4, .kpis, .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .close { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .close .del { grid-column: 1 / -1; justify-self: start; }
+}
+</style>
+
+<header class="wrap top">
+  <span class="label">Zent · Plan KAME · Parte 7 · Para Alberto</span>
+  <h1>Reporte diario</h1>
+  <p class="soft">3 minutos cada noche. Lo que no se mide no mejora. Meta diaria: <b>100 conversaciones en 2 rondas de 50</b> y 3 piezas publicadas. Manda el mensaje de abajo a Alberto por WhatsApp cada domingo (o a diario las primeras 2 semanas).</p>
+  <span class="status" id="status" role="status">Conectando…</span>
+</header>
+
+<main class="wrap">
+  <div class="card">
+    <div class="row" style="justify-content:space-between">
+      <h2>El día</h2>
+      <label class="f" style="width:180px">Fecha<input type="date" id="fecha"></label>
+    </div>
+    <span class="label">Contenido publicado (meta: 3 piezas al día)</span>
+    <div class="g4">
+      <label class="f">Reels (yapping, green screen, voz en off…)<input id="d-reels" inputmode="numeric"></label>
+      <label class="f">Trial reels<input id="d-trials" inputmode="numeric"></label>
+      <label class="f">Carruseles<input id="d-carruseles" inputmode="numeric"></label>
+      <label class="f">YouTube<input id="d-youtube" inputmode="numeric"></label>
+      <label class="f">Historias de Instagram<input id="d-historias" inputmode="numeric"></label>
+      <label class="f">Estados de WhatsApp<input id="d-estados" inputmode="numeric"></label>
+    </div>
+    <span class="label">Crecimiento</span>
+    <div class="g4">
+      <label class="f">Views del día (todas las piezas)<input id="d-views" inputmode="numeric"></label>
+      <label class="f">Seguidores totales hoy<input id="d-seguidores" inputmode="numeric"></label>
+      <label class="f">Mejor pieza (views)<input id="d-mejorViews" inputmode="numeric"></label>
+      <label class="f">Mejor pieza (tema/gancho)<input id="d-mejor" maxlength="140"></label>
+    </div>
+    <span class="label">Conversaciones (meta: 100 = 2 rondas de 50)</span>
+    <div class="g4">
+      <label class="f">Ronda 1 (total)<input id="d-ronda1" inputmode="numeric"></label>
+      <label class="f">Ronda 2 (total)<input id="d-ronda2" inputmode="numeric"></label>
+      <label class="f">De ellas: frío Instagram<input id="d-frio" inputmode="numeric"></label>
+      <label class="f">De ellas: seguimientos<input id="d-seguim" inputmode="numeric"></label>
+      <label class="f">De ellas: antiguos clientes / conocidos<input id="d-antiguos" inputmode="numeric"></label>
+      <label class="f">De ellas: grupos de WhatsApp / Facebook<input id="d-grupos" inputmode="numeric"></label>
+      <label class="f">De ellas: Estados de WhatsApp<input id="d-estadosConv" inputmode="numeric"></label>
+      <label class="f">Te escribieron a ti (KAME, respuestas)<input id="d-dms" inputmode="numeric"></label>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="progBar" style="width:0%"></i></div>
+    <span class="note" id="progTxt"></span>
+    <span class="label">Ventas</span>
+    <div class="g4">
+      <label class="f">Diagnósticos por DM<input id="d-diag" inputmode="numeric"></label>
+      <label class="f">Tests completados<input id="d-tests" inputmode="numeric"></label>
+      <label class="f">Llamadas agendadas<input id="d-agendadas" inputmode="numeric"></label>
+      <label class="f">Llamadas hechas<input id="d-llamadas" inputmode="numeric"></label>
+    </div>
+    <span class="label">Anuncios (solo si los pusiste hoy)</span>
+    <div class="g3">
+      <label class="f">Gasto del día (USD)<input id="d-adsGasto" inputmode="decimal" placeholder="0.00"></label>
+      <label class="f">Seguidores que trajo<input id="d-adsSeg" inputmode="numeric"></label>
+      <label class="f">Reel promocionado<input id="d-adsReel" maxlength="120"></label>
+    </div>
+    <div class="row"><b>¿Cerraste hoy?</b><button class="btn small ghost" id="closedNo" aria-pressed="true">No</button><button class="btn small ghost" id="closedYes" aria-pressed="false">Sí</button></div>
+    <div id="closesWrap" hidden style="display:grid;gap:8px">
+      <div id="closesList" style="display:grid;gap:8px"></div>
+      <button class="btn small ghost" id="addClose" style="justify-self:start">+ Otro cierre</button>
+    </div>
+    <label class="f full">Qué aprendí hoy / qué me frenó<textarea id="d-notas" maxlength="1500"></textarea></label>
+    <span class="saved" id="sv"></span>
+  </div>
+
+  <div class="card sand">
+    <div class="row" style="justify-content:space-between"><h2>Últimos 7 días</h2><span class="note" id="rangeTxt"></span></div>
+    <div class="kpis" id="k7"></div>
+    <div class="row"><span class="light" id="adsLight">Anuncios: sin datos</span><span class="note" id="nivelTxt">Nivel de precios: —</span></div>
+    <h3>Mensaje para Alberto</h3>
+    <pre class="msg" id="msg"></pre>
+    <button class="btn small" id="copyMsg" style="justify-self:start">Copiar mensaje</button>
+  </div>
+
+  <div class="card">
+    <h2>Últimos 30 días</h2>
+    <div class="kpis" id="k30"></div>
+  </div>
+
+  <div class="card">
+    <h2>Histórico</h2>
+    <div class="tscroll"><table>
+      <thead><tr><th>Fecha</th><th>Reels</th><th>Carr.</th><th>YT</th><th>Views</th><th>Seguid.</th><th>Conv.</th><th>Le escriben</th><th>Tests</th><th>Agend.</th><th>Llam.</th><th>Cierres</th><th>Facturado</th></tr></thead>
+      <tbody id="histBody"></tbody>
+      <tfoot id="histFoot"></tfoot>
+    </table></div>
+  </div>
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function addDays(s, n) { var p = s.split("-"); var d = new Date(+p[0], +p[1] - 1, +p[2]); d.setDate(d.getDate() + n); return ymd(d); }
+  function fdate(s) { var p = s.split("-"); return p[1] + "/" + p[2]; }
+  function num(v) { var n = Number(String(v == null ? "" : v).replace(/[^\d.,-]/g, "").replace(",", ".")); return isFinite(n) ? n : 0; }
+  function usd(n) { var r = Math.round((Number(n) || 0) * 100) / 100, a = Math.abs(r), s = Math.floor(a).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), dec = Math.round(a * 100) % 100; return (r < 0 ? "-" : "") + "$" + s + (dec ? "." + pad(dec) : ""); }
+  function usd2(n) { var r = Math.round((Number(n) || 0) * 100) / 100; return "$" + r.toFixed(2); }
+  function fnum(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+  var FIELDS = ["reels", "trials", "carruseles", "youtube", "historias", "estados", "views", "seguidores", "mejorViews", "mejor", "ronda1", "ronda2", "frio", "seguim", "antiguos", "grupos", "estadosConv", "dms", "diag", "tests", "agendadas", "llamadas", "adsGasto", "adsSeg", "adsReel", "notas"];
+  var SUMF = ["reels", "trials", "carruseles", "youtube", "historias", "estados", "views", "ronda1", "ronda2", "frio", "seguim", "antiguos", "grupos", "estadosConv", "dms", "diag", "tests", "agendadas", "llamadas", "adsGasto", "adsSeg"];
+  var PLANS = ["6 meses", "1 año", "3 meses", "Regreso KAME (6 meses)", "Mantenimiento"];
+  var LADDER6 = [500, 600, 720, 860];
+  var days = {}, db = null, local = false, fecha = ymd(new Date()), cerrado = false, cierres = [], precios = null;
+  $("fecha").value = fecha;
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.classList.toggle("err", !!err); }
+
+  /* ---------- Formulario ---------- */
+  function load() {
+    var d = days[fecha] || {};
+    FIELDS.forEach(function (k) { var el = $("d-" + k); if (document.activeElement !== el) el.value = d[k] == null ? "" : d[k]; });
+    prog();
+    if ($("closesWrap").contains(document.activeElement)) return;
+    cerrado = !!d.cerrado; cierres = (d.cierres || []).map(function (c) { return Object.assign({}, c); });
+    renderCloses();
+  }
+  function prog() {
+    var c = num($("d-ronda1").value) + num($("d-ronda2").value);
+    $("progBar").style.width = Math.min(100, c) + "%";
+    $("progTxt").textContent = "Hoy: " + fnum(c) + " de 100 conversaciones" + (c >= 100 ? " · ¡meta cumplida!" : "");
+  }
+  function renderCloses() {
+    $("closedYes").setAttribute("aria-pressed", cerrado ? "true" : "false");
+    $("closedNo").setAttribute("aria-pressed", cerrado ? "false" : "true");
+    $("closesWrap").hidden = !cerrado;
+    $("closesList").innerHTML = cierres.map(function (c, i) {
+      return '<div class="close" data-i="' + i + '"><label class="f">Cliente<input data-k="cliente" maxlength="80" value="' + esc(c.cliente || "") + '"></label>' +
+        '<label class="f">Plan<select data-k="plan">' + PLANS.map(function (p) { return '<option' + (p === c.plan ? " selected" : "") + '>' + p + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Importe (USD)<input data-k="importe" inputmode="decimal" value="' + esc(c.importe == null ? "" : c.importe) + '"></label>' +
+        '<button class="btn small ghost del" data-del="' + i + '">Quitar</button></div>';
+    }).join("");
+  }
+  function collect() {
+    var d = { fecha: fecha };
+    FIELDS.forEach(function (k) { d[k] = $("d-" + k).value.trim(); });
+    d.cerrado = cerrado;
+    d.cierres = cerrado ? cierres.map(function (c) { return { cliente: String(c.cliente || "").trim(), plan: c.plan || PLANS[0], importe: String(c.importe == null ? "" : c.importe).trim() }; }) : [];
+    return d;
+  }
+  var saveT = null, chain = Promise.resolve();
+  function schedule() { $("sv").textContent = "Guardando…"; prog(); clearTimeout(saveT); saveT = setTimeout(save, 600); }
+  function save() {
+    saveT = null;
+    var d = collect(), f = fecha;
+    d.actualizado = new Date().toISOString();
+    days[f] = d; renderSummary();
+    if (local) { $("sv").textContent = "Sin base de datos: no se guarda"; return; }
+    chain = chain.then(function () { return db.collection("diario").doc(f).set(d); }).then(function () {
+      $("sv").textContent = "Guardado ✓";
+    }, function (e) {
+      var c = e && e.code;
+      $("sv").textContent = "";
+      setStatus(c === "invalid_argument" ? "No tienes permiso para guardar" : c === "quota_exceeded" ? "La base de datos está llena" : c === "revoked" ? "Acceso retirado" : "No se ha podido guardar", true);
+    });
+  }
+  FIELDS.forEach(function (k) { $("d-" + k).addEventListener("input", schedule); });
+  $("closedYes").addEventListener("click", function () { cerrado = true; if (!cierres.length) cierres.push({ cliente: "", plan: PLANS[0], importe: "" }); renderCloses(); schedule(); });
+  $("closedNo").addEventListener("click", function () { cerrado = false; renderCloses(); schedule(); });
+  $("addClose").addEventListener("click", function () { cierres.push({ cliente: "", plan: PLANS[0], importe: "" }); renderCloses(); schedule(); });
+  $("closesList").addEventListener("input", function (e) { var k = e.target.dataset.k; if (!k) return; var i = Number(e.target.closest(".close").dataset.i); cierres[i][k] = e.target.value; schedule(); });
+  $("closesList").addEventListener("change", function (e) { var k = e.target.dataset.k; if (!k) return; var i = Number(e.target.closest(".close").dataset.i); cierres[i][k] = e.target.value; schedule(); });
+  $("closesList").addEventListener("click", function (e) { var b = e.target.closest("[data-del]"); if (!b) return; cierres.splice(Number(b.dataset.del), 1); if (!cierres.length) cerrado = false; renderCloses(); schedule(); });
+  $("fecha").addEventListener("change", function () {
+    if (!this.value) return;
+    if (saveT) { clearTimeout(saveT); save(); }
+    fecha = this.value; $("sv").textContent = ""; load();
+  });
+
+  /* ---------- Resumen ---------- */
+  function agg(from, to) {
+    var a = { ventas: 0, fact: 0, segIni: null, segFin: null, mejor: null, dias: 0 };
+    SUMF.forEach(function (f) { a[f] = 0; });
+    Object.keys(days).sort().forEach(function (k) {
+      if (k < from || k > to) return;
+      var d = days[k]; a.dias++;
+      SUMF.forEach(function (f) { a[f] += num(d[f]); });
+      (d.cierres || []).forEach(function (c) { a.ventas++; a.fact += num(c.importe); });
+      var s = num(d.seguidores); if (s > 0) { if (a.segIni === null) a.segIni = s; a.segFin = s; }
+      var mv = num(d.mejorViews); if (mv > 0 && (!a.mejor || mv > a.mejor.v)) a.mejor = { v: mv, t: d.mejor || "", f: k };
+    });
+    a.conv = a.ronda1 + a.ronda2;
+    return a;
+  }
+  function segGain(a, from) {
+    if (a.segFin === null) return null;
+    var prev = null; Object.keys(days).sort().forEach(function (k) { if (k < from && num(days[k].seguidores) > 0) prev = num(days[k].seguidores); });
+    return a.segFin - (prev !== null ? prev : a.segIni);
+  }
+  function sinLlamada(a) { return Math.max(0, a.ventas - a.llamadas); }
+  function cierreTxt(a) { if (!a.llamadas) return "—"; return Math.round(Math.min(a.ventas, a.llamadas) / a.llamadas * 100) + " %"; }
+  function cps(a) { return a.adsSeg > 0 ? a.adsGasto / a.adsSeg : null; }
+  function semaforo(a) {
+    if (!a.adsGasto) return { c: "", t: "Anuncios: sin datos" };
+    var v = cps(a);
+    if (v === null) return { c: "bad", t: "Anuncios: " + usd2(a.adsGasto) + " sin seguidores → cortar" };
+    if (v < 1) return { c: "ok", t: "Anuncios: " + usd2(v) + " por seguidor → mantener y escalar" };
+    if (v <= 1.5) return { c: "mid", t: "Anuncios: " + usd2(v) + " por seguidor → cambiar el gancho" };
+    return { c: "bad", t: "Anuncios: " + usd2(v) + " por seguidor → cortar" };
+  }
+  function kpis(a, g, dias) {
+    return [
+      [fnum(a.reels + a.trials) + " · " + fnum(a.carruseles), "Reels (" + fnum(a.trials) + " trial) · carruseles"],
+      [fnum(a.youtube) + " · " + fnum(a.estados), "YouTube · Estados WA"],
+      [fnum(a.views), "Views"], [g === null ? "—" : (g >= 0 ? "+" : "") + fnum(g), "Seguidores" + (a.segFin !== null ? " (" + fnum(a.segFin) + ")" : "")],
+      [fnum(a.conv) + " / " + fnum(dias * 100), "Conversaciones / meta"], [fnum(a.frio), "En frío"],
+      [fnum(a.dms), "Te escribieron"], [fnum(a.tests), "Tests completados"],
+      [fnum(a.llamadas) + " / " + fnum(a.agendadas), "Llamadas hechas / agendadas"], [cierreTxt(a), "Cierre en llamada"],
+      [fnum(a.ventas) + " · " + usd(a.fact), "Ventas · facturado"], [fnum(sinLlamada(a)), "Ventas sin llamada"]
+    ].map(function (k) { return '<div class="kpi"><b>' + esc(k[0]) + '</b><span>' + esc(k[1]) + '</span></div>'; }).join("");
+  }
+  function nivelTxt() {
+    if (!precios) return "Nivel de precios: —";
+    var n = Math.max(0, Math.min(3, Number(precios.nivel) || 0));
+    return "Nivel de precios (CRM): " + n + " de 3 · 6 meses " + usd(LADDER6[n]);
+  }
+  function renderSummary() {
+    var to = fecha, f7 = addDays(to, -6), f30 = addDays(to, -29);
+    var a7 = agg(f7, to), g7 = segGain(a7, f7), a30 = agg(f30, to), g30 = segGain(a30, f30);
+    $("rangeTxt").textContent = fdate(f7) + " – " + fdate(to);
+    $("k7").innerHTML = kpis(a7, g7, 7);
+    $("k30").innerHTML = kpis(a30, g30, 30);
+    var sm = semaforo(a7); $("adsLight").className = "light" + (sm.c ? " " + sm.c : ""); $("adsLight").textContent = sm.t;
+    $("nivelTxt").textContent = nivelTxt();
+    var sl = sinLlamada(a7), hoy = days[to] || {};
+    $("msg").textContent =
+      "Reporte Zent · " + fdate(f7) + "–" + fdate(to) + "\n" +
+      "📱 Contenido: " + fnum(a7.reels) + " reels + " + fnum(a7.trials) + " trial · " + fnum(a7.carruseles) + " carruseles · " + fnum(a7.youtube) + " YouTube · " + fnum(a7.estados) + " Estados WA\n" +
+      "👀 Views: " + fnum(a7.views) + " · Seguidores: " + (g7 === null ? "—" : (g7 >= 0 ? "+" : "") + fnum(g7)) + (a7.segFin !== null ? " (total " + fnum(a7.segFin) + ")" : "") + "\n" +
+      "🔥 Mejor pieza: " + (a7.mejor ? fnum(a7.mejor.v) + " views · " + (a7.mejor.t || "sin tema") : "—") + "\n" +
+      "💬 Conversaciones: " + fnum(a7.conv) + " de " + fnum(700) + " (frío " + fnum(a7.frio) + " · seguim. " + fnum(a7.seguim) + " · antiguos " + fnum(a7.antiguos) + " · grupos " + fnum(a7.grupos) + " · Estados " + fnum(a7.estadosConv) + ") · Te escribieron: " + fnum(a7.dms) + "\n" +
+      "🧪 Diagnósticos: " + fnum(a7.diag) + " · Tests: " + fnum(a7.tests) + "\n" +
+      "📞 Llamadas: " + fnum(a7.llamadas) + " hechas / " + fnum(a7.agendadas) + " agendadas · Cierre: " + cierreTxt(a7) + (sl ? " · Ventas sin llamada: " + fnum(sl) : "") + "\n" +
+      "💵 Ventas: " + fnum(a7.ventas) + " · " + usd(a7.fact) + " · " + nivelTxt().replace("Nivel de precios (CRM): ", "nivel ") + "\n" +
+      (a7.adsGasto ? "📣 " + sm.t + " (" + usd2(a7.adsGasto) + " · " + fnum(a7.adsSeg) + " seguidores)\n" : "") +
+      "🧠 Hoy: " + (hoy.notas ? hoy.notas : "—");
+    var keys = Object.keys(days).sort().reverse();
+    $("histBody").innerHTML = keys.length ? keys.map(function (k) {
+      var d = days[k], cs = d.cierres || [], fa = cs.reduce(function (s, c) { return s + num(c.importe); }, 0);
+      return "<tr><td>" + fdate(k) + "</td><td>" + fnum(num(d.reels) + num(d.trials)) + "</td><td>" + fnum(num(d.carruseles)) + "</td><td>" + fnum(num(d.youtube)) + "</td><td>" + fnum(num(d.views)) + "</td><td>" + (num(d.seguidores) ? fnum(num(d.seguidores)) : "—") + "</td><td>" + fnum(num(d.ronda1) + num(d.ronda2)) + "</td><td>" + fnum(num(d.dms)) + "</td><td>" + fnum(num(d.tests)) + "</td><td>" + fnum(num(d.agendadas)) + "</td><td>" + fnum(num(d.llamadas)) + "</td><td>" + cs.length + "</td><td>" + usd(fa) + "</td></tr>";
+    }).join("") : '<tr><td colspan="13" class="note">Aún no hay días guardados.</td></tr>';
+    var all = agg("0000-00-00", "9999-99-99");
+    $("histFoot").innerHTML = keys.length ? "<tr><th>Total</th><th>" + fnum(all.reels + all.trials) + "</th><th>" + fnum(all.carruseles) + "</th><th>" + fnum(all.youtube) + "</th><th>" + fnum(all.views) + "</th><th></th><th>" + fnum(all.conv) + "</th><th>" + fnum(all.dms) + "</th><th>" + fnum(all.tests) + "</th><th>" + fnum(all.agendadas) + "</th><th>" + fnum(all.llamadas) + "</th><th>" + all.ventas + "</th><th>" + usd(all.fact) + "</th></tr>" : "";
+  }
+  $("copyMsg").addEventListener("click", function () {
+    var b = this, t = $("msg").textContent;
+    function ok() { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar mensaje"; }, 1400); }
+    function fb() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (x) { b.textContent = "Cópialo a mano"; } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+  });
+
+  load(); renderSummary();
+
+  /* ---------- Base de datos ---------- */
+  (async function () {
+    var c = null;
+    try { c = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch (e) { c = null; }
+    if (!c) { local = true; setStatus("Sin base de datos: modo prueba, no se guarda nada", true); return; }
+    db = c; var got = false;
+    var timer = setTimeout(function () { if (!got) setStatus("La base de datos tarda en responder…", true); }, 10000);
+    db.collection("diario").onSnapshot(function (snap) {
+      got = true; clearTimeout(timer);
+      var nd = {}; snap.docs.forEach(function (d) { nd[d.id] = d.data(); });
+      if (saveT && days[fecha]) nd[fecha] = days[fecha];
+      days = nd;
+      setStatus("Guardado en la nube · " + Object.keys(days).length + " días");
+      if (!saveT) load();
+      renderSummary();
+    }, function (err) { clearTimeout(timer); setStatus(err && err.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); });
+    db.collection("config").onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { if (d.id === "precios") precios = d.data(); });
+      renderSummary();
+    }, function () {});
+  })();
+})();
+</script>

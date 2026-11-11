@@ -1,0 +1,784 @@
+<title>Gerard Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #d6d6d3;
+  --chip: #ededeb;
+  --accent: #f5c400;
+  --accent-soft: #f5c400;
+  --accent-text: #7a5c00;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 800 clamp(38px, 6.4vw, 66px)/.95 var(--f-head); text-transform: uppercase; letter-spacing: -.01em; }
+h2 { font: 800 clamp(26px, 3.6vw, 36px)/1.02 var(--f-head); text-transform: uppercase; }
+h3 { font: 700 21px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 68ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(247, 247, 245, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 6px; padding: 9px 14px; font: 700 15px/1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible, .cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 32px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 800px; }
+.card { background: var(--white); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.dark .label { color: var(--accent-soft); }
+.card.acc { background: var(--accent); color: #111111; box-shadow: none; }
+.card.acc .label { color: #3a2e00; }
+.card.acc ul.l, .card.acc ol.l { color: #1a1a1a; }
+.card.acc ul.l b, .card.acc ol.l b { color: var(--white); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 4px; background: var(--chip); color: var(--ink); }
+.tag.a { background: var(--accent); color: #111111; }
+.fmt { display: grid; gap: 8px; }
+.fmt .ico { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font: 800 16px/1 var(--f-head); color: var(--white); }
+.fmt.big { box-shadow: inset 0 0 0 2px var(--accent); }
+
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.stage-h .big { font: 800 36px/1 var(--f-head); color: var(--accent-text); }
+.stage-h .pct { font: 500 11.5px/1 var(--f-mono); background: var(--ink); color: var(--white); padding: 6px 8px; border-radius: 4px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 8px; padding: 10px; display: grid; gap: 5px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font: 700 16px/1 var(--f-head); text-transform: uppercase; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 6px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.2; color: var(--white); }
+.k-vo { background: #7a5c00; }
+.k-yap { background: #6a4a9c; }
+.k-trend { background: #1f6f6b; }
+.k-gs { background: #2c2c2c; }
+.k-rol { background: #111111; box-shadow: inset 3px 0 0 #f5c400; }
+.k-car { background: #5a5a5a; }
+.k-gs { background: #9a3b2f !important; }
+.k-carc { background: #8a5a14; }
+.k-carv { background: #ffffff; color: #111111 !important; box-shadow: inset 0 0 0 2px #111111; }
+.legend i.k-carv { box-shadow: inset 0 0 0 2px #111111; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 10px 8px 0; }
+.tbl td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.tblwrap { overflow-x: auto; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 4px; white-space: nowrap; }
+.ti .n.first { background: var(--accent); color: #111111; }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: #111111; font: 800 18px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--accent-soft); color: var(--ink); }
+
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 8px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; min-width: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 6px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .line:first-of-type { border-top: 0; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--accent-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.variants { display: grid; gap: 6px; background: var(--chip); border-radius: 8px; padding: 10px 12px; }
+.variants b { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check { padding-left: 0; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
+@media (max-width: 900px) {
+  .g3 { grid-template-columns: 1fr 1fr; }
+  .g5 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .g2, .g3, .g5 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .script .line { grid-template-columns: 1fr; gap: 2px; }
+}
+
+
+.nm { display: grid; gap: 14px; border-radius: 14px; padding: 20px; background: var(--ink); color: #fff; margin-block: 6px 4px; }
+.nm-lbl { font: 500 11.5px/1.2 var(--f-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-dark, #f5c400); display: block; margin-bottom: 6px; }
+.nm-big { font: 700 clamp(19px, 2.6vw, 25px)/1.3 var(--f-body, inherit); margin: 0; color: #fff; text-wrap: pretty; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nm-c { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.nm-c b { font-size: 15.5px; color: #fff; }
+.nm-c span, .nm-c p { font-size: 14px; color: #d8d6d0; margin: 0; line-height: 1.45; }
+.nm-c .nm-n { font: 500 11px/1 var(--f-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark, #f5c400); }
+.nm-c p b { font-size: 13.5px; color: #fff; }
+.nm-no { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.nm-no li { background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 700; }
+.nm-proof { margin: 0; font-size: 15px; color: #fff; border-left: 3px solid var(--accent-dark, #f5c400); padding-left: 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } .nm { padding: 16px; } }
+
+.carr { background: #ffffff; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); padding: 14px; display: grid; gap: 6px; }
+.carr .brandl { font: 600 10px/1.2 var(--f-body); color: var(--soft); border-left: 3px solid var(--accent); padding-left: 6px; }
+.carr .big { font: 800 20px/1.1 var(--f-head); }
+.carr .big em { font-style: normal; color: var(--accent); }
+
+
+
+h1, h2, h3, .brand b, .cs h3.ph, .tab, .day .dn { text-transform: none !important; }
+h1 { letter-spacing: -.025em !important; }
+
+
+.ed-g { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ed-list { display: grid; gap: 12px; }
+.ed-pr { gap: 10px; }
+.ed-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.ed-top b { flex: 1 1 180px; min-width: 0; }
+.ed-txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--soft); background: rgba(127,127,127,.08); border-radius: 10px; padding: 12px; margin: 0; max-height: 320px; overflow: auto; }
+@media (max-width: 900px) { .ed-g { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ed-g { grid-template-columns: 1fr; } }
+
+
+.cc-code { display: block; font: 500 13px/1.45 ui-monospace, Menlo, Consolas, monospace; background: rgba(127,127,127,.12); border-radius: 8px; padding: 8px 10px; margin: 6px 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+li .cc-code, p .cc-code { display: inline; padding: 1px 6px; margin: 0; }
+
+/* Marca Gerard · GPC: negro + amarillo (como sus carruseles). Sobre amarillo, siempre texto negro. */
+.card.accent, .card.acc { color: #111; }
+.card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b, .card.acc ul.l b, .card.acc ol.l b, .card.acc h3, .card.acc b, .card.acc p { color: #111; }
+.card.accent .label, .card.acc .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l, .card.acc ul.l, .card.acc ol.l { color: #1a1a1a; }
+.card.accent .say { background: rgba(0,0,0,.08); border-left-color: #111; color: #111; }
+.card.accent .badge { background: rgba(0,0,0,.12); color: #111; }
+h1 { text-transform: uppercase !important; letter-spacing: -.01em !important; }
+h1 em { background: #f5c400; color: #111 !important; padding: 0 .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.k-carc { background: #3d6b4f; }
+.carr { border-top: 6px solid #f5c400; background: #111; color: #fff; box-shadow: none; }
+.carr .brandl { color: #cfcfcf; }
+.carr .big em { color: #f5c400; }
+.carr .soft { color: #bdbdbd; }
+</style>
+<header class="top wrap">
+  <span class="label">Gerard · GPC · Método Cuadrante · Parte 3 · Contenido</span>
+  <h1>Tu turno cambia. Tu plan también. Enséñalo cada día.</h1>
+  <p class="lede">Para hombres de 20 a 40 que trabajan a turnos. Tu mensaje: <b>"Si trabajas conmigo, lo que vas a dejar de hacer es perder el tiempo y jugar a la ruleta rusa con tu alimentación y tu entreno."</b> Mínimo 1–3 reels al día y 3–5 carruseles a la semana alternando conexión y valor; subes a 3–5 reels diarios cuando domines las variantes de gancho. YouTube, 1 vídeo a la semana. Mucho rol de entrenador y tus casos. Y tu mejor voz en off orgánica, cada semana, a anuncio de 5–10 € al día. Tu palabra clave: <b>CUADRANTE</b>.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ed">Claude Code editor</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="El plan">
+  <section class="nm" aria-label="Tu nicho y tu método">
+    <div><span class="nm-lbl">Tu nicho en una frase</span><p class="nm-big">Ayudo a hombres de 20 a 40 que trabajan a turnos —de noche, rotativos o con horarios que cambian cada semana— a perder grasa y ponerse en forma de verdad, fuertes y con fondo, con un plan que se adapta a su cuadrante y no al revés.</p></div>
+    <div><span class="nm-lbl">Tu método en 30 segundos · Método Cuadrante · 3 pilares</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Pilar 1</span><b>Tu turno manda</b><span>3–4 sesiones de 45–60 minutos con versión de mañana, de tarde y de noche. Si cambia tu cuadrante, cambia el plan; no se rompe.</span></div><div class="nm-c"><span class="nm-n">Pilar 2</span><b>Comer a tu hora, sin vivir de arroz con pollo</b><span>Comidas según tu turno y un tupper que aguanta la noche. Nada de dietas extremas que acaban en atracón el fin de semana.</span></div><div class="nm-c"><span class="nm-n">Pilar 3</span><b>Fuerte y con fondo</b><span>Fuerza, resistencia y pasos. La fuerza no lo es todo: de nada sirve estar fuerte si te ahogas subiendo una escalera.</span></div></div></div>
+    <div><span class="nm-lbl">3 fases · un trimestre</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Encajar</b><p><b>Qué pasa:</b> Montamos el plan sobre tu cuadrante real y dejas de empezar de cero cada vez que cambias de turno.</p><p><b>Qué haces tú:</b> Me mandas tu cuadrante, haces tus 3 sesiones mínimas y llegas a tus pasos.</p></div><div class="nm-c"><span class="nm-n">Fase 2 · Semanas 5–9</span><b>Apretar</b><p><b>Qué pasa:</b> Baja la grasa (o sube el músculo si ese es tu objetivo), suben las cargas y aguantas más corriendo o subiendo escaleras.</p><p><b>Qué haces tú:</b> Subes cargas cada semana, metes el trabajo de fondo y ajustamos la comida en cada revisión.</p></div><div class="nm-c"><span class="nm-n">Fase 3 · Semanas 10–12</span><b>Sostener</b><p><b>Qué pasa:</b> Aprendes a ajustar tú solo entreno y comida cuando cambia el turno, encadenas noches o llegan las vacaciones.</p><p><b>Qué haces tú:</b> Te quedas con tus plantillas por tipo de turno y tu plan para los 3 meses siguientes.</p></div></div></div>
+    <div><span class="nm-lbl">3 no negociables</span><ul class="nm-no"><li>Cuadrante y revisión cada semana</li><li>Mínimo 3 sesiones, caiga el turno que caiga</li><li>Pasos diarios mínimos</li></ul></div>
+    <p class="nm-proof">"Me preparé para competir trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. Hoy hago planes para gente con turnos imposibles." · Felipe, vigilante de seguridad: −17 kg (de 111,2 a 94,2). Javi: de camarero a Policía Nacional. Juanjo, vigilante: de 95,4 a 88,4 kg.</p>
+  </section>
+
+    <div class="sec">
+      <div class="head"><span class="label">Tus 6 formatos</span><h2>Cinco formatos de reel, carruseles y uno que pesa más que todos: el rol de entrenador.</h2><p class="soft">Tus casos ya atraen. Lo que falta es que te vean trabajar: montando la semana de un vigilante, preparando el tupper de la noche, corrigiendo una sentadilla. Desde la semana 3, al menos 4 de cada 10 reels son de rol entrenador.</p></div>
+      <div class="g3">
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Tus clips (entreno, tupper, reloj a las 4:00) y tu voz encima. Cada guion se graba una vez y sale con 3 ganchos como reels de prueba. La que gane en orgánico es la que se convierte en anuncio.</p></article>
+        <article class="card fmt"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">Tú a cámara, una idea, 30–60 segundos. Como Pepe Jiménez: hablando claro, de tú a tú, como a un compañero de turno.</p></article>
+        <article class="card fmt"><span class="ico k-trend">TR</span><h3>Tendencia</h3><p class="soft">Audio o formato que se esté moviendo, adaptado al que sale de un turno de noche o al que le cambian el cuadrante. Para llegar a gente nueva.</p></article>
+        <article class="card fmt"><span class="ico k-gs">GS</span><h3>Green screen</h3><p class="soft">Tú delante de una dieta de 800 calorías, un "corre en ayunas para quemar grasa" o un físico de catálogo, desmontándolo en 30 segundos.</p></article>
+        <article class="card fmt"><span class="ico k-car">CA</span><h3>Carruseles</h3><p class="soft">Mínimo 3 a la semana, alternando <b>conexión</b> (tu historia, tus casos) y <b>valor</b> ("qué comer en el turno de noche", "la fuerza no lo es todo"). Tu formato con franjas amarillas ya funciona: mantenlo.</p></article>
+        <article class="card fmt big"><span class="ico k-rol">RE</span><h3>Rol entrenador</h3><p class="soft">"Si fueras mi cliente y trabajaras de noche…", montando una semana rotativa, revisando el tupper de un seguidor, corrigiendo técnica. Tu formato más importante.</p></article>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La rampa</span><h2>De 1–2 reels al día a 3–5, más 3–5 carruseles a la semana.</h2><p class="soft">Pasas de etapa cuando la anterior te sale entera dos semanas seguidas y ya sacas los 3 ganchos de cada voz en off sin pensar. No grabas a diario: grabas en lote (en "Grabar bien" te digo cómo). El % de rol entrenador se calcula sobre los reels.</p></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:28px"></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voz en off · Reels de prueba</span><h2>Un guion, tres ganchos, gana el que mejor rinde.</h2><p class="soft">Instagram te deja publicar un reel <b>como prueba</b>: solo lo ve gente que no te sigue y no aparece en tu perfil. Que decidan los datos, no tu intuición.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">El sistema</span>
+          <div class="steps">
+            <div><p><b>Graba el cuerpo del vídeo una vez:</b> tus clips + tu voz con la idea principal.</p></div>
+            <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C (texto en pantalla y frase de voz).</p></div>
+            <div><p><b>Publica las 3 como reel de prueba</b> el mismo día, con unas horas de diferencia (una por la mañana, cuando salen los del turno de noche).</p></div>
+            <div><p><b>A las 24–72 h compara:</b> visualizaciones, % que lo ve entero, compartidos y guardados.</p></div>
+            <div><p><b>La ganadora la compartes en tu perfil.</b> Las otras dos se quedan como prueba.</p></div>
+            <div><p><b>Apúntalo en tu reporte:</b> qué tipo de gancho ganó. La mejor voz en off orgánica de la semana es la que promocionas (abajo).</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tu registro de pruebas</h3>
+          <div class="tblwrap">
+            <table class="tbl">
+              <thead><tr><th>Guion</th><th>Gancho</th><th>Vistas</th><th>% entero</th><th>Gana</th></tr></thead>
+              <tbody>
+                <tr><td>Ej.: qué comer en el turno de noche</td><td>A · pregunta</td><td>900</td><td>17 %</td><td></td></tr>
+                <tr><td></td><td>B · Felipe −17 kg</td><td>2.400</td><td>30 %</td><td>✓</td></tr>
+                <tr><td></td><td>C · "las 4 de la mañana"</td><td>1.500</td><td>22 %</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="soft" style="font-size:13.5px">Los números del ejemplo son ilustrativos. Apunta cada guion en tu reporte semanal. <b>La voz en off ganadora es la que cuenta como reel del día.</b></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Anuncios de seguidores · voz en off "sígueme" · 5–10 € al día</span><h2>Tu mejor voz en off orgánica, a anuncio. Solo si sale a menos de 1 € por seguidor.</h2><p class="soft">No se promociona cualquier cosa: se promociona la voz en off que <b>ya ganó en orgánico</b> (más % visto entero y más seguidores desde el reel) y que acaba con "sígueme". Objetivo del anuncio: <b>visitas al perfil</b>. Meta: <b>menos de 1 € por seguidor</b>.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">Cómo se hace</span>
+          <div class="steps">
+            <div><p><b>Elige la ganadora de la semana:</b> la voz en off con mejor % visto entero y que más seguidores te ha traído en orgánico. Que su cierre sea "sígueme".</p></div>
+            <div><p><b>Promociónala con 5–10 € al día</b> con el objetivo "visitas al perfil", a España, +25 años.</p></div>
+            <div><p><b>Déjala 2 días</b> sin tocarla y entonces decides. No juzgues el primer día.</p></div>
+            <div><p><b>Calcula:</b> gasto ÷ seguidores nuevos. Tu reporte lo hace solo, en "Anuncios de seguidores".</p></div>
+            <div><p><b>Menos de 1 €: se queda</b> y escalas hacia 10 € al día. <b>Entre 1 y 1,5 €:</b> cambia el gancho (usa el B o el C de la prueba). <b>Más de 1,5 € a los 2 días: se corta</b> y entra la ganadora de la semana siguiente.</p></div>
+            <div><p><b>Normas de Meta:</b> nunca "¿trabajas de noche?" ni "¿tienes barriga?". Primera persona ("yo trabajaba…") o "la mayoría de vigilantes que entreno…". Sin antes/después.</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Las que más posibilidades tienen</h3>
+          <ul class="l">
+            <li><b>"Perdía el progreso cada vez que el trabajo apretaba":</b> tu historia, en 30 segundos.</li>
+            <li><b>"Esto es lo que les pongo de comer a mis clientes en el turno de noche":</b> rol entrenador puro.</li>
+            <li><b>"90 kilos y me ahogaba subiendo escaleras":</b> la fuerza no lo es todo.</li>
+            <li><b>"Mi primer cliente era camarero. Hoy es Policía Nacional":</b> tu caso más potente.</li>
+          </ul>
+          <p class="soft" style="font-size:13.5px">Cada seguidor nuevo que llegue por anuncio recibe bienvenida por DM ese mismo día ("¿trabajas a turnos o tienes horario fijo?") y, si responde, entra al CRM con origen "Anuncio de seguidores".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Rol entrenador · tu formato estrella</span><h2>Que te vean trabajando de entrenador, no hablando de entrenar.</h2><p class="soft">Tu cliente no sabe cómo encajar el gimnasio en una semana de noches. Cada pieza de rol le demuestra que tú sí, y que se lo puedes hacer fácil.</p></div>
+      <div class="g3">
+        <div class="card"><h3>"Si fueras mi cliente y trabajaras de noche…"</h3><p class="soft">"…esta sería tu semana": qué días entrenas, a qué hora comes y qué te llevas en el tupper. En 40 segundos, con un cuadrante real en pantalla.</p></div>
+        <div class="card"><h3>Monto una semana rotativa en directo</h3><p class="soft">Cuadrante de mañana-tarde-noche en una pizarra o en la pantalla y le encajas las 3 sesiones y los pasos.</p></div>
+        <div class="card"><h3>Reviso el tupper de un seguidor</h3><p class="soft">Te manda foto de lo que se lleva al turno (con permiso). Le dices qué cambiar para no llegar a casa arrasando.</p></div>
+        <div class="card"><h3>Corrección de técnica</h3><p class="soft">Un seguidor te manda su sentadilla o su peso muerto. Paras, corriges dos cosas y enseñas cómo se hace.</p></div>
+        <div class="card"><h3>Sesión de 45 minutos antes del turno</h3><p class="soft">Fuerza + fondo en 45 minutos, para el día que entras a las 22:00. Se hace contigo en pantalla.</p></div>
+        <div class="card"><h3>Respuesta a DM como coach</h3><p class="soft">Captura sin nombre ("cuanto menos como, más peso pierdo", "salgo a correr y nada") y la respondes como a un cliente.</p></div>
+        <div class="card"><h3>Preparando unas pruebas físicas</h3><p class="soft">Lo que harías con alguien que, como Javi, tiene que rendir y no solo verse bien. Sin dar marcas oficiales que no sepas seguro.</p></div>
+        <div class="card"><h3>La revisión del lunes</h3><p class="soft">Cómo es una revisión semanal (sin datos del cliente): fotos, peso, cuadrante nuevo y qué ajustas. Enseña el "alguien pendiente".</p></div>
+        <div class="card acc"><span class="label">Regla</span><p><b>Permiso siempre y por escrito.</b> Sin caras ni nombres si no te lo autorizan. Nada de datos personales ni de salud de clientes en público. Un "con permiso de mi cliente" en pantalla te da todavía más autoridad.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Carruseles: 3/semana alternando conexión y valor</span><h2>Mínimo 3 carruseles a la semana: uno te acerca, el siguiente te da autoridad.</h2><p class="soft">Regla de Alberto: <b>mínimo 3 por semana</b> (4 en semanas 3–4 y 5 desde el mes 2), <b>alternando CONEXIÓN</b> (tu historia, tus casos, tu día a día, tus creencias) <b>y VALOR</b> (turnos, comida, entreno, errores, método). En el calendario de arriba van marcados como "Carrusel conexión" y "Carrusel valor". Portada con una frase que pique en las 3 primeras palabras (que no se corte en la parrilla), 6–8 slides y cierre con "Escríbeme CUADRANTE".</p></div>
+      <div class="g2">
+        <div class="card"><span class="tag" style="background:#3d6b4f;color:#fff">Conexión · 12 ideas</span><h3>Que sientan que eres como ellos</h3><ol class="l">
+          <li><b>Perdía el progreso cada vez que el trabajo apretaba</b><br><span style="font-size:13.5px">Portada: la frase + foto de obra o campo · 2: quería competir · 3: albañil y campo, de pie todo el día · 4: la dieta que me mandaban · 5: cada cambio de trabajo, vuelta a empezar · 6: lo que entendí (no era disciplina, era el plan) · 7: hoy hago planes para turnos · 8: "Escríbeme CUADRANTE"</span></li>
+          <li><b>3 versiones de mí: 2015, 2019 y hoy</b><br><span style="font-size:13.5px">Ya lo tienes: repítelo con otra portada · 2: 2015, 1,70 y 70 kg · 3: 2017–2018, 90 kg y powerlifting · 4: 2019, definición fallida · 5: los años de obra y campo · 6: hoy, fuerte y con fondo · 7: CTA</span></li>
+          <li><b>El día que dejé el fútbol</b><br><span style="font-size:13.5px">Portada: foto de pequeño con el balón · 2: fútbol y BMX cada día · 3: la lesión · 4: quedarme sin rutina · 5: un vecino me llevó al gimnasio · 6: volví a tener algo mío · 7: CTA</span></li>
+          <li><b>Mi dieta de culturismo trabajando de albañil</b><br><span style="font-size:13.5px">Portada: foto de un tupper de arroz con pollo · 2: lo que comía · 3: lo que trabajaba · 4: los fines de semana · 5: por qué no funciona · 6: lo que hago hoy con mis clientes · 7: CTA</span></li>
+          <li><b>De 70 a 90 kg: lo que nadie te cuenta</b><br><span style="font-size:13.5px">Portada: "Llegué a 90 kg" · 2: la ropa ya no me valía · 3: me sentía en una nube · 4: pero me ahogaba corriendo · 5: la fuerza no lo es todo · 6: hoy · 7: CTA</span></li>
+          <li><b>Lo que descubrí de los "naturales" que tenía cerca</b><br><span style="font-size:13.5px">Portada: "Me decían que era todo natural" · 2: me comparaba · 3: lo que descubrí (sin nombres) · 4: cómo me frustró · 5: por qué no te compares · 6: lo natural tiene más mérito · 7: CTA</span></li>
+          <li><b>Cobraba 30 € al mes</b><br><span style="font-size:13.5px">Portada: la frase · 2: entrenaba gratis por favores · 3: me desplazaba a casa de la gente · 4: perdía tiempo y dinero, pero disfrutaba · 5: qué cambió en 2023 · 6: por qué hoy es online · 7: CTA</span></li>
+          <li><b>Mi primer cliente: un camarero que quería ser Policía Nacional</b><br><span style="font-size:13.5px">Portada: antes/después de Javi (con permiso) · 2: su objetivo · 3: no cogía peso ni condición · 4: cómo lo planteamos · 5: lo consiguió · 6: y pagando · 7: CTA</span></li>
+          <li><b>Por qué mis clientes que se van, vuelven</b><br><span style="font-size:13.5px">Portada: "Se fue y volvió" · 2: Pipe consiguió su cambio · 3: lo intentó solo · 4: qué le faltaba (alguien pendiente) · 5: la revisión semanal · 6: CTA (con permiso)</span></li>
+          <li><b>Un día mío de verdad</b><br><span style="font-size:13.5px">Portada: "Un martes cualquiera" · 2: desayuno · 3: entreno · 4: revisiones de clientes · 5: comidas · 6: algo de fondo (correr, bici, montaña) · 7: cierre personal + CTA</span></li>
+          <li><b>El seminario de 2023 que me cambió</b><br><span style="font-size:13.5px">Portada: la frase · 2: dónde estaba · 3: lo que escuché · 4: "tengo que dar el máximo y dedicarme a esto" · 5: lo que dejé · 6: hoy · 7: CTA</span></li>
+          <li><b>"Eres un aburrido"</b><br><span style="font-size:13.5px">Portada: lo que me decían por no salir de fiesta · 2: cocinarme y pagarme mi comida · 3: los que no lo entendían · 4: los que me apoyaron · 5: lo que gané · 6: "es todo posible y tiene mucho más mérito" · 7: CTA</span></li>
+        </ol></div>
+        <div class="card"><span class="tag a">Valor · 12 ideas</span><h3>Que vean que sabes lo que haces</h3><ol class="l">
+          <li><b>Qué comer en el turno de noche</b><br><span style="font-size:13.5px">Portada · 2: el error (no comer y arrasar al llegar) · 3: antes del turno · 4: a mitad de turno · 5: al salir · 6: ejemplo de tupper · 7: "Guárdalo" + CTA</span></li>
+          <li><b>Cómo entrenar si tu turno cambia cada semana</b><br><span style="font-size:13.5px">Portada · 2: por qué fallan las rutinas de lunes a viernes · 3: semana de mañanas · 4: semana de tardes · 5: semana de noches · 6: el mínimo de 3 sesiones · 7: CTA</span></li>
+          <li><b>"Cuanto menos como, más peso pierdo": falso</b><br><span style="font-size:13.5px">Portada con la frase literal · 2: qué pasa al principio · 3: el hambre del fin de semana · 4: el músculo que se va · 5: lo que funciona · 6: CTA</span></li>
+          <li><b>Correr para quemar grasa: lo que sí y lo que no</b><br><span style="font-size:13.5px">Portada · 2: correr ayuda · 3: pero solo correr no te pone fuerte · 4: la mezcla que uso · 5: pasos en el día · 6: CTA</span></li>
+          <li><b>Entrenar más días no te hace más fuerte</b><br><span style="font-size:13.5px">Portada · 2: yo entrenaba 6 días · 3: el error de un músculo por día · 4: lo que hago hoy · 5: 3–4 sesiones bien hechas · 6: CTA</span></li>
+          <li><b>La proteína no lo es todo</b><br><span style="font-size:13.5px">Portada con la frase literal · 2: para qué sirve · 3: lo que importa más (comida total, sueño, constancia) · 4: un día ejemplo · 5: CTA</span></li>
+          <li><b>Método Cuadrante: los 3 pilares</b><br><span style="font-size:13.5px">Portada · 2: tu turno manda · 3: comer a tu hora sin vivir de arroz con pollo · 4: fuerte y con fondo · 5: los 3 no negociables · 6: "Escríbeme CUADRANTE"</span></li>
+          <li><b>Tus 12 semanas: Encajar, Apretar, Sostener</b><br><span style="font-size:13.5px">Portada · 2: Encajar (1–4) · 3: Apretar (5–9) · 4: Sostener (10–12) · 5: qué haces tú en cada una · 6: CTA</span></li>
+          <li><b>5 tuppers para la noche que no son arroz con pollo</b><br><span style="font-size:13.5px">Portada · 2–6: un tupper por slide (qué lleva y por qué aguanta) · 7: CTA</span></li>
+          <li><b>Dormir de día sin destrozar el hambre</b><br><span style="font-size:13.5px">Portada · 2: por qué te da más hambre · 3: qué comer antes de dormir · 4: persiana, móvil y horario · 5: si hay problemas de sueño, médico · 6: CTA (consejos generales, nada de diagnósticos)</span></li>
+          <li><b>Fuerte y con fondo: sesión de 45 minutos para día de turno</b><br><span style="font-size:13.5px">Portada · 2: calentamiento · 3–4: bloque de fuerza · 5: bloque de fondo · 6: cuándo hacerla según tu turno · 7: CTA</span></li>
+          <li><b>"Quiero estar como ese": por qué compararte te frena</b><br><span style="font-size:13.5px">Portada con la frase literal · 2: otra genética · 3: otra vida (y no trabaja de noche) · 4: lo que no te enseñan · 5: compárate contigo hace 12 semanas · 6: CTA</span></li>
+        </ol></div>
+      </div>
+      <div class="g3">
+        <div class="carr"><span class="brandl">GPC · Conexión</span><p class="big">Perdía el progreso cada vez que el trabajo <em>apretaba</em>.</p><p class="soft" style="font-size:13px">Tu carrusel fijado.</p></div>
+        <div class="carr"><span class="brandl">GPC · Valor</span><p class="big">Qué comer en el turno de <em>noche</em>.</p><p class="soft" style="font-size:13px">El que más se va a guardar.</p></div>
+        <div class="carr"><span class="brandl">GPC · Conexión</span><p class="big">De camarero a Policía <em>Nacional</em>.</p><p class="soft" style="font-size:13px">Ya lo tienes: repítelo con su testimonio.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">YouTube</span><h2>1 vídeo a la semana. Ni uno más.</h2><p class="soft">Vídeos de 10 a 15 minutos, grabados en tu sesión de lote. De cada vídeo salen 3–4 clips para Instagram. En la descripción, siempre tu WhatsApp o formulario [confirmar].</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>8 títulos para tus primeros 2 meses</h3>
+          <div id="yt"></div>
+        </div>
+        <div class="card dark">
+          <span class="label">En cada vídeo</span>
+          <ul class="l">
+            <li><b>Primeros 30 segundos:</b> "si trabajas a turnos y no hay manera de que te dure un plan, este vídeo es para ti".</li>
+            <li><b>Tu físico y tu cuadrante en pantalla:</b> que se vea que lo que cuentas lo haces.</li>
+            <li><b>A mitad:</b> "Si quieres que mire tu caso, escríbeme CUADRANTE."</li>
+            <li><b>Al final:</b> "Escríbeme CUADRANTE por Instagram."</li>
+            <li><b>Siempre el mismo día</b> y sin fallar ni una semana.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Bloque de historias · todos los días</span><h2>Entre 6 y 10 historias al día, en 4 momentos.</h2><p class="soft">Los reels y los anuncios te traen gente nueva. Las historias hacen que confíen en ti y te escriban. Tu cliente las ve a horas raras: sube algo a primera hora, que es cuando salen los del turno de noche.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Tu día en historias</h3>
+          <ul class="l">
+            <li><b>Primera hora (2–3) · Tú:</b> tu desayuno, tu entreno, tu tupper. Que vean que haces lo que predicas.</li>
+            <li><b>Mediodía (2–3) · Rol entrenador:</b> una corrección, un consejo de 15 segundos, cómo montas un tupper de noche.</li>
+            <li><b>Tarde (1–2) · Prueba:</b> el mensaje de un cliente (con permiso), un antes/después de tus casos, tus 3 versiones.</li>
+            <li><b>Noche (1–2) · Conversación:</b> encuesta o caja de preguntas. Cada respuesta es una conversación que abres.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Un tema para cada día</h3>
+          <ul class="l">
+            <li><b>Lunes:</b> "¿Qué turno te toca esta semana?" + encuesta (mañana / tarde / noche / rotativo).</li>
+            <li><b>Martes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Miércoles:</b> tu historia por etapas: el fútbol, 70 kg, 90 kg, la obra, hoy.</li>
+            <li><b>Jueves:</b> caja de preguntas: "pregúntame lo que quieras sobre entrenar y comer a turnos".</li>
+            <li><b>Viernes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Sábado:</b> algo de fondo: correr, bici, montaña. "La fuerza no lo es todo."</li>
+            <li><b>Domingo:</b> preparar los tuppers de la semana según el cuadrante.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Martes y viernes · Secuencia CTA en 5 historias</span>
+        <ol class="l">
+          <li><b>El problema:</b> "Si trabajas a turnos y cada vez que te cambian el cuadrante se te va todo al traste…"</li>
+          <li><b>Por qué pasa:</b> "No te falta disciplina: tu plan está pensado para alguien que trabaja de 9 a 5."</li>
+          <li><b>La prueba:</b> Felipe (−17 kg, vigilante) o Javi (de camarero a Policía Nacional), con permiso.</li>
+          <li><b>La oferta:</b> "Esta semana abro plazas para hombres que trabajan a turnos y quieren ponerse en forma de verdad."</li>
+          <li><b>La acción:</b> "Escríbeme <b>CUADRANTE</b> por privado y te digo si encajas." + caja de preguntas.</li>
+        </ol>
+        <p style="font-size:14px">Cada "CUADRANTE" entra al CRM y se contesta ese mismo día.</p>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Stickers que más conversaciones abren</h3>
+          <ul class="l">
+            <li><b>Encuesta:</b> "¿Comes algo en el turno de noche? Sí / Llego a casa y arraso". A quien vote lo segundo, le escribes.</li>
+            <li><b>Caja de preguntas:</b> "¿Qué es lo que más te cuesta con tu turno?".</li>
+            <li><b>Deslizador:</b> "¿Cuánto te ahogas subiendo 3 pisos?".</li>
+            <li><b>Quiz:</b> "¿Qué quema más grasa: correr en ayunas o comer bien a tu hora?". Enseña y engancha.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Reglas</h3>
+          <ul class="l">
+            <li><b>Habla a cámara</b> en al menos 2 historias al día.</li>
+            <li><b>Subtítulos siempre.</b></li>
+            <li><b>Responde en menos de 1 hora</b> a todo lo que te llegue de historias.</li>
+            <li><b>Destacadas:</b> cada semana guarda lo mejor en "Resultados", "Turnos", "Método Cuadrante" y "Mi historia".</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Serie "Mi historia"</span><h2>Del chaval que dejó el fútbol al entrenador de gente con turnos.</h2><p class="soft">Tu historia es la de tu cliente: un trabajo que te rompe el plan cada pocas semanas. Grábala en las 2 primeras semanas y fija el carrusel.</p></div>
+      <div class="g2">
+        <div class="card">
+          <ul class="l">
+            <li><b>Carrusel fijado:</b> "Perdía el progreso cada vez que el trabajo apretaba. Por eso hoy hago planes para gente con turnos imposibles."</li>
+            <li><b>Reel 1 · El fútbol:</b> "Con 16 años dejé el fútbol por una lesión y me quedé sin mi rutina. Un vecino me llevó al gimnasio."</li>
+            <li><b>Reel 2 · Los 90 kg:</b> "Llegué a 90 kilos y a competir en powerlifting. Y me ahogaba corriendo."</li>
+            <li><b>Reel 3 · La obra:</b> "Arroz blanco, pollo recalentado y tubos de pavo, trabajando de albañil. Los fines de semana, atracón."</li>
+            <li><b>Reel 4 · El plan que encaja:</b> "Cuando tuve un plan que encajaba en mi trabajo, por fin me vi cómodo: fuerte y corriendo sin ahogarme."</li>
+            <li><b>Reel 5 · Hoy:</b> "Mi primer cliente era camarero y hoy es Policía Nacional. Después llegaron vigilantes. Todos con turnos."</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <span class="label">Antes de grabarla</span>
+          <p>Busca fotos de cada etapa: el fútbol, 2015, los 90 kg, el campeonato, la obra o el campo, hoy. Una foto vale más que todo el guion.</p>
+          <p style="font-size:14px">Ojo con las cifras: usa siempre las mismas (2015, 1,70 m y 70 kg; 90 kg en 2017–2018). Que nadie te pille un número que no cuadra.</p>
+          <p style="font-size:14px">Tu historia se cuenta sin temas familiares, sin el accidente y sin nombres de terceros. Lo que vende es el trabajo que te rompía el plan y cómo lo resolviste.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Estados de WhatsApp · todos los días</span><h2>Quien te da su número te ve cada día sin que le escribas.</h2><p class="soft">Es la forma más barata de calentar a quien todavía no se decide. Y tu cliente mira el móvil en los descansos del turno.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Prepáralo una vez</h3>
+          <ul class="l">
+            <li><b>WhatsApp Business</b> con tu foto de perfil de Instagram.</li>
+            <li><b>Descripción:</b> "Tu turno cambia. Tu plan también. · Método Cuadrante".</li>
+            <li><b>Catálogo:</b> tu asesoría con una foto y 3 líneas.</li>
+            <li><b>Mensaje de bienvenida</b> y <b>respuestas rápidas</b> (cómo funciona, precio, cuándo empezar).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Que te vean: guárdalos y que te guarden</h3>
+          <ul class="l">
+            <li><b>Los Estados solo los ve quien tiene tu número guardado.</b> Al pasar a WhatsApp: "guárdame, que subo consejos para turnos cada día".</li>
+            <li><b>Listas de difusión:</b> clientes · interesados · fríos.</li>
+            <li><b>Etiquetas:</b> nuevo, interesado, llamada agendada, cliente.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Rutina diaria · 3 a 5 Estados</span>
+        <ul class="l">
+          <li><b>Recicla 2–3 historias de Instagram.</b></li>
+          <li><b>1 exclusivo:</b> tu tupper de hoy, un consejo o una encuesta "responde 1 o 2" ("¿qué te frena? 1 mi turno, 2 la comida").</li>
+          <li><b>Martes y viernes, CTA:</b> "Esta semana tengo 2 plazas. Respóndeme CUADRANTE."</li>
+          <li><b>Mide:</b> apunta cada día cuántos te responden. Cada respuesta va al CRM.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁNGULOS -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos de comunicación">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Tu banco de ideas</span>
+        <h2>Todo lo que le puedes decir al hombre que trabaja a turnos y no consigue que le dure un plan.</h2>
+        <p class="soft">Las frases entre comillas son las de tus clientes, tal cual ("cuanto menos como, más peso pierdo", "quiero estar como ese"): úsalas literal en ganchos y mensajes. Cuando no sepas qué grabar, abre esto, filtra por formato (por ejemplo "Carrusel conexión" o "Carrusel valor") y copia.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Cómo usarlo</span>
+        <ul class="l">
+          <li><b>Rota las familias:</b> cada semana, al menos 4 distintas, y rol entrenador siempre.</li>
+          <li><b>De 1 ángulo salen 3 piezas:</b> una voz en off con 3 ganchos de prueba, un carrusel o yapping, y una historia.</li>
+          <li><b>Repite tu frase:</b> "Tu turno cambia. Tu plan también."</li>
+          <li><b>Límite:</b> nada de "pierde X kilos en Y semanas". Tus números son tuyos; los de clientes, solo reales y con permiso. En anuncios, normas de Meta.</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar (p. ej. noche, tupper, correr, vigilante, policía, arroz…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- GUIONES -->
+  <section class="view" id="v-gui" hidden aria-label="Guiones listos">
+    <div class="sec">
+      <div class="head"><span class="label">Para grabar esta semana</span><h2>Cinco guiones. Esta semana están grabados.</h2><p class="soft">Las dos voces en off llevan 3 ganchos cada una para publicarlas como reels de prueba, y acaban en "sígueme": la que gane es tu anuncio de la semana. Dilo con tus palabras, pero no cambies la estructura.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- GRABAR -->
+  <section class="view" id="v-rec" hidden aria-label="Grabar bien">
+    <div class="sec">
+      <div class="head"><span class="label">Grabar bien</span><h2>Tu marca es negra y amarilla. Tus vídeos también tienen que parecerlo.</h2><p class="soft">Tus carruseles ya se reconocen. Los reels tienen que estar a la altura: buena luz, buen audio y los mismos colores. Esto se arregla en una tarde.</p></div>
+      <div class="g2">
+        <div class="card acc">
+          <span class="label">Planos para tus voces en off</span>
+          <ul class="l">
+            <li><b>Plano general:</b> el ejercicio entero, de cuerpo completo.</li>
+            <li><b>Plano medio:</b> de cintura para arriba, última repetición. Camiseta ajustada o tirantes.</li>
+            <li><b>Detalle de turno:</b> tupper abriéndose, reloj o móvil a las 4:00, mochila, unas botas de trabajo (sin logos ni caras de terceros).</li>
+            <li><b>Fondo:</b> corriendo, escaleras, bici, montaña. "La fuerza no lo es todo" se tiene que ver.</li>
+            <li><b>Graba 10–15 clips por sesión</b> y tendrás material para toda la semana.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Luz</span>
+          <ul class="l">
+            <li><b>Nunca de espaldas a una ventana:</b> sales en negro.</li>
+            <li><b>Luz de lado</b> para el físico; de frente para hablar a cámara.</li>
+            <li><b>Si grabas de noche en el gimnasio,</b> lleva una luz LED pequeña. Y aprovéchalo: "entreno a la hora que entrenan mis clientes".</li>
+            <li><b>Graba a la misma hora</b> para que todo tenga el mismo aspecto.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <span class="label">Audio y cámara</span>
+          <ul class="l">
+            <li><b>Micro de solapa inalámbrico</b> para yapping y rol entrenador: en el gym hay ruido.</li>
+            <li><b>La voz en off se graba aparte,</b> en casa y sin eco (un cuarto con muebles).</li>
+            <li><b>Cámara trasera,</b> 1080p o 4K a 30 fps, trípode. Lente limpia.</li>
+            <li><b>Pide permiso</b> en tu gimnasio y a cualquiera que salga en el plano.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Checklist antes de grabar</h3>
+          <ul class="l check">
+            <li>Luz de frente o de lado, nunca detrás.</li>
+            <li>Lente limpia y móvil fijo.</li>
+            <li>Micro puesto y probado.</li>
+            <li>Ropa coherente con tu marca (negro y amarillo).</li>
+            <li>Lista de planos y guiones del día en el móvil.</li>
+            <li>Sabes el gancho de memoria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card dark">
+        <span class="label">Graba en lote</span>
+        <h3>2 sesiones de grabación a la semana. El resto, publicar y vender.</h3>
+        <ul class="l">
+          <li><b>Sesión 1 (2 horas, tu día libre):</b> el YouTube de la semana + clips para todas las voces en off + 2–3 rol entrenador.</li>
+          <li><b>Sesión 2 (45 minutos tras entrenar):</b> yapping, tendencias y green screen.</li>
+          <li><b>Montaje:</b> las 3 versiones de cada voz en off el mismo día que la grabas. Carruseles con tu plantilla de franjas amarillas.</li>
+          <li><b>Los demás días:</b> publicar, revisar el anuncio, historias, Estados y conversaciones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAUDE CODE COMO EDITOR -->
+  <section class="view" id="v-ed" hidden aria-label="Claude Code como editor">
+    <div class="sec">
+      <div class="head"><span class="label">Tu editor de vídeo</span><h2>Claude Code como editor: grabas, sueltas el vídeo y Claude te lo edita.</h2><p class="soft">Claude Code es Claude trabajando en tu ordenador: abre tus vídeos, corta silencios, pone subtítulos, saca versiones de gancho y exporta en 9:16. Lo montas una vez y lo vas educando con cada corrección.</p></div>
+      <div class="card dark"><span class="label">La regla</span><ul class="l">
+        <li><b>Claude edita, tú decides.</b> Revisas cada vídeo antes de publicarlo.</li>
+        <li><b>Nunca inventa cifras, resultados ni testimonios</b> en textos ni subtítulos.</li>
+        <li><b>Nunca toca tus originales:</b> 1-sin-editar/ no se borra jamás.</li>
+      </ul></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 1 · Una sola vez</span><h3>Instala Claude Code y ffmpeg</h3></div>
+      <div class="ed-g">
+        <div class="card"><span class="tag">Mac / Linux</span><b>En la Terminal</b><code class="cc-code">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="cp" data-cp="curl -fsSL https://claude.ai/install.sh | bash">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">brew install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Windows</span><b>En PowerShell</b><code class="cc-code">irm https://claude.ai/install.ps1 | iex</code><button type="button" class="cp" data-cp="irm https://claude.ai/install.ps1 | iex">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">winget install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Sin terminal</span><b>App de escritorio</b><p class="soft">Descarga la app de escritorio de Claude (claude.ai/download) y usa la pestaña <b>Code</b>.</p></div>
+        <div class="card"><span class="tag">Arrancar</span><b>Abre tu carpeta</b><p class="soft">Abre la terminal en la carpeta Contenido-Gerard, escribe <code class="cc-code">claude</code>, inicia sesión con tu cuenta de Claude y acepta el permiso de acceso a la carpeta.</p></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 2</span><h3>Tu carpeta de trabajo</h3></div>
+      <div class="card"><pre class="ed-txt">Contenido-Gerard/
+├─ 1-sin-editar/   ← sueltas aquí lo que grabas (nunca se borra)
+├─ 2-editados/     ← Claude guarda aquí lo terminado
+├─ 3-recursos/     ← música, logo GPC, tipografías, franjas amarillas, b-roll, subtítulos
+├─ 4-referencias/  ← vídeos de creadores que quieres imitar + nota.md
+└─ CLAUDE.md       ← tus instrucciones (abajo)</pre><p class="soft">nota.md en 4-referencias/: una línea por vídeo → &quot;[archivo]: copiar el ritmo de cortes / el estilo de subtítulos / el gancho de los 2 primeros segundos&quot;. Mete ahí vídeos de Pepe Jiménez (cómo habla a cámara) y de Maru (técnica).</p></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 3</span><h3>Instala las skills que te ha pasado Alberto</h3></div>
+      <div class="card"><ol class="l">
+        <li>Copia la carpeta de skills a <code class="cc-code">~/.claude/skills/</code> (para todos tus proyectos) o a <code class="cc-code">.claude/skills/</code> dentro de Contenido-Gerard.</li>
+        <li>Cada skill va en su propia carpeta con su archivo <b>SKILL.md</b> dentro.</li>
+        <li>Abre Claude Code en tu carpeta y escribe <code class="cc-code">/skills</code>: tienen que salir en la lista.</li>
+      </ol></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 4</span><h3>Tu CLAUDE.md: crea este archivo dentro de Contenido-Gerard</h3><p class="soft">Claude lo lee cada vez que lo abres en esa carpeta. Retócalo con tus palabras.</p></div>
+      <div class="card chip ed-pr"><div class="ed-top"><span class="tag">CLAUDE.md</span><b>Cópialo tal cual</b><button type="button" class="cp" id="cpClaude">Copiar</button></div><pre class="ed-txt" id="claudeMd"># Quién soy
+Gerard Pavón (@g.pavon9), entrenador online. Marca GPC: negro y amarillo, franjas tipo obra, letra condensada en mayúsculas.
+
+# A quién le hablo (mi nicho)
+Ayudo a hombres de 20 a 40 que trabajan a turnos —de noche, rotativos o con horarios que cambian cada semana— a perder grasa y ponerse en forma de verdad, fuertes y con fondo, con un plan que se adapta a su cuadrante y no al revés.
+
+# Mi método
+Método Cuadrante. 3 pilares: tu turno manda (sesiones con versión de mañana, tarde y noche); comer a tu hora, sin vivir de arroz con pollo; fuerte y con fondo (fuerza + resistencia + pasos).
+3 fases en 12 semanas: Encajar, Apretar, Sostener. 3 no negociables: cuadrante y revisión cada semana; mínimo 3 sesiones caiga el turno que caiga; pasos diarios mínimos.
+
+# Mi tono
+Cercano y directo, de tú a tú, como a un compañero de turno. Sin postureo. Frases mías: "la fuerza no lo es todo", "tu turno cambia, tu plan también", "deja de jugar a la ruleta rusa con tu comida y tu entreno".
+
+# CTA
+"Escríbeme CUADRANTE" por DM. En anuncios: "Sígueme para…".
+
+# Estilo de edición que quiero
+Directo y dinámico: cortes cada 1–2 s en el gancho, sin silencios ni muletillas, subtítulos grandes en blanco con la palabra clave en amarillo (2–4 palabras por línea), zoom suave en las frases importantes, música baja bajo la voz.
+Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido, y más en el descanso del turno).
+
+# Formatos que hago
+voz en off sobre clips míos, rol entrenador (montando semanas por turnos, tuppers, corrigiendo técnica), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.
+
+# Antes de editar
+- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.
+- Usa recursos de 3-recursos/ (música, logo GPC, tipografías, franjas, b-roll).
+
+# Reglas
+- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.
+- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.
+- No inventes cifras, resultados ni testimonios en textos o subtítulos. Casos reales: Felipe −17 kg (111,2 → 94,2), Juanjo 95,4 → 88,4 kg, Javi de camarero a Policía Nacional. Si falta un dato, pregúntame.
+- En anuncios ("sígueme"): normas de Meta, primera persona o "la mayoría", nunca "¿tienes…?" ni "¿trabajas de noche?" ni nada del cuerpo o la salud de quien lo ve; sin antes/después.
+- Nada de mi familia, de salud ni de nombres de terceros sin permiso.
+- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.
+
+# Lecciones aprendidas (añádelas aquí cada vez que te corrija)
+- </pre></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 5 · Cada semana</span><h3>Educa a tu editor</h3></div>
+      <div class="card"><ol class="l">
+        <li><b>Graba</b> y suelta los vídeos en 1-sin-editar/.</li>
+        <li><b>Pide la edición</b> con una de las órdenes de abajo.</li>
+        <li><b>Corrige con feedback concreto</b> ("subtítulos más arriba", "corta antes", "menos zoom"), nunca "no me gusta".</li>
+        <li><b>Lo que funcione,</b> cópialo a 4-referencias/ como ejemplo bueno.</li>
+        <li><b>Añade la lección a CLAUDE.md</b> (o pídeselo: orden 8). Cada semana edita más a tu gusto.</li>
+      </ol></div>
+      <div class="ed-list" id="edOrders"></div>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML.replace(/"/g, "&quot;"); }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = {
+    rol: { n: "Rol entrenador", c: "k-rol" },
+    vo: { n: "Voz en off", c: "k-vo" },
+    yap: { n: "Yapping", c: "k-yap" },
+    trend: { n: "Tendencia", c: "k-trend" },
+    gs: { n: "Green screen", c: "k-gs" },
+    carc: { n: "Carrusel conexión", c: "k-carc" },
+    carv: { n: "Carrusel valor", c: "k-carv" }
+  };
+  var REEL = ["rol", "vo", "yap", "trend", "gs"];
+
+  /* ---------- Etapas ---------- */
+  var STAGES = [
+    { t: "Semanas 1 y 2 · 1–2 reels al día", s: "Arranque: entre 1 y 2 reels cada día y 3 carruseles (conexión, valor, conexión). Aprendes a montar los 3 ganchos de cada voz en off. Sin fallar ningún día.",
+      plan: [["vo", "carc"], ["yap", "vo"], ["rol", "carv"], ["vo", "trend"], ["gs", "carc"], ["yap", "vo"], ["rol"]] },
+    { t: "Semanas 3 y 4 · 2–3 reels al día", s: "Subes a 2–3 reels diarios y 4 carruseles (2 de conexión y 2 de valor, alternos). Desde aquí, el rol entrenador manda: 4 de cada 10 reels.",
+      plan: [["rol", "vo", "yap"], ["rol", "vo", "carc"], ["rol", "vo", "trend"], ["rol", "gs", "carv"], ["rol", "vo", "yap"], ["rol", "trend", "carc"], ["rol", "vo", "carv"]] },
+    { t: "Mes 2 en adelante · 3–5 reels al día", s: "Cuando las variantes de gancho te salgan solas: 4 reels al día de media (entre 3 y 5) y 5 carruseles por semana, alternando conexión y valor.",
+      plan: [["rol", "rol", "vo", "yap", "carc"], ["rol", "rol", "vo", "trend"], ["rol", "vo", "vo", "gs", "carv"], ["rol", "rol", "vo", "yap", "trend"], ["rol", "vo", "yap", "carc"], ["rol", "rol", "vo", "trend", "carv"], ["rol", "rol", "vo", "yap", "carc"]] }
+  ];
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var cnt = { rol: 0, vo: 0, yap: 0, trend: 0, gs: 0, carc: 0, carv: 0 }, reels = 0;
+    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; if (k.indexOf("car") !== 0) reels++; }); });
+    var days = st.plan.map(function (d, i) {
+      var nr = d.filter(function (k) { return k.indexOf("car") !== 0; }).length;
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + nr + (d.length > nr ? ' + C' : '') + '</small></div>' +
+        d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") + '</div>';
+    }).join("");
+    var desglose = REEL.filter(function (k) { return cnt[k]; }).map(function (k) { return cnt[k] + " " + K[k].n.toLowerCase(); }).join(" · ");
+    var pct = Math.round(cnt.rol / reels * 100);
+    return '<div class="stage"><div class="stage-h"><span class="big" data-reels="' + reels + '" data-car="' + (cnt.carc + cnt.carv) + '" data-carc="' + cnt.carc + '" data-carv="' + cnt.carv + '" data-rol="' + cnt.rol + '">' + reels + ' reels + ' + (cnt.carc + cnt.carv) + ' carruseles/semana (' + cnt.carc + ' conexión · ' + cnt.carv + ' valor)</span><h3>' + esc(st.t) + '</h3><span class="pct">' + pct + ' % rol entrenador</span></div><p class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desglose + ')</p><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- YouTube ---------- */
+  var YT = [["Tu turno cambia, tu plan también: cómo ponerte en forma trabajando a turnos", "El primero: presenta tu mensaje y el Método Cuadrante.", true], ["Perdía el progreso cada vez que el trabajo apretaba: mi historia hasta hoy", "El segundo: tu historia. Tu mejor vídeo de confianza.", true], ["Qué comer en el turno de noche: antes, durante y al salir", "Pilar 2 con tus tuppers reales.", false], ["Si fuera tu entrenador y trabajaras de noche: tu primera semana", "Rol entrenador puro, con un cuadrante en pantalla.", false], ["Cuanto menos como, más peso pierdo: por qué no funciona (y lo que sí)", "La frase literal de tus clientes.", false], ["La fuerza no lo es todo: de 90 kg y powerlifting a correr sin ahogarme", "Pilar 3 y tu creencia de un año.", false], ["De camarero a Policía Nacional: cómo preparamos las físicas de Javi", "Tu caso más potente (con su permiso; si puede, que salga él).", false], ["Turnos rotativos: cómo montar 3 sesiones a la semana cambie lo que cambie", "Para el que dice que con su turno no se puede.", false]];
+  $("yt").innerHTML = YT.map(function (y, i) {
+    return '<div class="ti"><span class="n' + (y[2] ? " first" : "") + '">' + (y[2] ? "Primero" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>';
+  }).join("");
+
+  /* ---------- Ángulos ---------- */
+  var FMTS = ["Voz en off", "Yapping", "Tendencia", "Green screen", "Carrusel conexión", "Carrusel valor", "Rol entrenador", "YouTube", "Historias"];
+  var FAMS = [{"n": "Turno de noche", "d": "Comer, dormir y entrenar cuando el resto duerme."}, {"n": "Turnos rotativos", "d": "El plan que se rompe cada vez que cambia el cuadrante."}, {"n": "Mi historia", "d": "El fútbol, los 90 kg, la obra y el campo, hoy."}, {"n": "La fuerza no lo es todo", "d": "Fuerte y con fondo. Solo ir al gimnasio no es salud."}, {"n": "Cuanto menos como…", "d": "Los mitos de comida que repiten tus clientes."}, {"n": "Correr y entrenar más", "d": "Los mitos de entreno: más días, más correr."}, {"n": "Sin vivir de arroz con pollo", "d": "Comida flexible a tu hora."}, {"n": "Quiero estar como ese", "d": "Comparaciones, genética y lo que nadie cuenta."}, {"n": "Ruleta rusa", "d": "Dejar de perder el tiempo improvisando."}, {"n": "Casos", "d": "Felipe, Juanjo, Javi y Pipe (con permiso)."}, {"n": "Pruebas físicas", "d": "Rendir, no solo verse bien. El caso de Javi."}, {"n": "Alguien pendiente", "d": "La revisión semanal y por qué los que se van vuelven."}, {"n": "Objeciones", "d": "Lo que te dirá antes de empezar, respondido antes."}, {"n": "Rol entrenador", "d": "Montando semanas, tuppers y correcciones."}];
+  var ANG = [[0, "El tupper de las 4 de la mañana", ["Esto es lo que les pongo de comer a mis clientes en el turno de noche.", "Si tu comida de las 4 de la mañana sale de una máquina, mira esto."], ["Voz en off", "Carrusel valor", "Rol entrenador"]], [0, "No comer en toda la noche", ["La mayoría de los que trabajan de noche no comen nada en el turno y llegan a casa arrasando.", "No comer en el turno no te hace adelgazar. Te hace arrasar al llegar."], ["Voz en off", "Yapping"]], [0, "Dormir de día", ["Duermes de día y te levantas con un hambre que no es normal. Te cuento por qué.", "Lo que comes antes de dormir de día cambia todo tu día siguiente."], ["Carrusel valor", "Yapping"]], [0, "Entrenar después de una noche", ["¿Entrenar al salir de una noche o al despertarte? Te digo cuál elijo con mis clientes.", "Sales del turno a las 6. ¿Gimnasio o cama? Depende de esto."], ["Rol entrenador", "Historias"]], [0, "La cena que es desayuno", ["Cuando trabajas de noche, tu cena es mi desayuno. Y se planifica distinto.", "Tu horario está al revés. Tu comida también tiene que estarlo."], ["Tendencia", "Voz en off"]], [1, "El lunes, otra vez de cero", ["Semana de noches: ni gimnasio ni comida. El lunes, otra vez de cero. Se acabó.", "Si cada cambio de turno es empezar de cero, el problema no eres tú."], ["Voz en off", "Carrusel conexión"]], [1, "Rutinas de lunes a viernes", ["Las rutinas de lunes a viernes no están hechas para ti si tu turno cambia.", "Tu rutina dice lunes, miércoles y viernes. Tu cuadrante dice otra cosa."], ["Yapping", "Green screen"]], [1, "3 sesiones mínimas", ["Con turnos rotativos no te pido 6 días. Te pido 3, caiga el turno que caiga.", "La regla de las 3 sesiones: lo que hago con todos mis clientes a turnos."], ["Carrusel valor", "Rol entrenador"]], [1, "Tu cuadrante, cada semana", ["Lo primero que les pido a mis clientes cada semana no es el peso. Es su cuadrante.", "Mándame tu cuadrante y te digo cómo entrenarías esta semana."], ["Rol entrenador", "Historias"]], [1, "Trabajas tantas horas…", ["Trabajas tantas horas que el gimnasio siempre es lo primero que cae. Lo entiendo.", "No necesitas más horas. Necesitas que las que tienes encajen."], ["Voz en off", "Yapping"]], [2, "Perdía el progreso", ["Me preparé para competir trabajando de albañil. Cada vez que el trabajo apretaba, perdía todo.", "No me faltaba disciplina. Me faltaba un plan que encajara en mi trabajo."], ["Voz en off", "Carrusel conexión", "YouTube"]], [2, "Tubos de pavo recalentados", ["Arroz blanco, pollo recalentado y tubos de pavo. Esa era mi dieta trabajando en la obra.", "Mi peor dieta: la de culturismo trabajando de albañil."], ["Carrusel conexión", "Yapping"]], [2, "El día que dejé el fútbol", ["Con 16 años dejé el fútbol por una lesión y me quedé sin nada. Un vecino me llevó al gimnasio.", "El gimnasio me devolvió la rutina que me quitó una lesión."], ["Carrusel conexión", "Historias"]], [2, "3 versiones de mí", ["2015, 2019 y hoy. Tres versiones de mí y lo que aprendí en cada una.", "La versión de 90 kg no era la mejor. Te explico por qué."], ["Carrusel conexión", "Tendencia"]], [2, "Eres un aburrido", ["Me llamaban aburrido por no salir de fiesta. Hoy vivo de lo que me gusta.", "Me cocinaba y me pagaba mi comida con 17 años. Y me llamaban aburrido."], ["Yapping", "Carrusel conexión"]], [3, "90 kg y ahogándome", ["Llegué a 90 kilos y a competir en powerlifting. Y me ahogaba corriendo.", "¿De qué me sirve ser un tío musculado de 90 kg si no me puedo atar ni los cordones?"], ["Voz en off", "Yapping", "YouTube"]], [3, "Solo ir al gimnasio no es salud", ["Solo ir al gimnasio no es salud. Te lo dice alguien que vivía en él.", "Puedes levantar mucho y no aguantar tres pisos de escaleras."], ["Yapping", "Carrusel valor"]], [3, "Los pasos que nadie cuenta", ["El no negociable que más resultados da a mis clientes no es el gimnasio. Son los pasos.", "Si trabajas sentado o de pie quieto toda la noche, esto te interesa."], ["Carrusel valor", "Voz en off"]], [3, "Correr sin ahogarme", ["El día que corrí sin ahogarme me di cuenta de que lo había hecho mal durante años.", "Fuerte y con fondo. No elijas."], ["Carrusel conexión", "Historias"]], [4, "Cuanto menos como, más peso pierdo", ["“Cuanto menos como, más peso pierdo.” Me lo dicen cada semana. Y no.", "Comer poquísimo trabajando a turnos acaba siempre igual: atracón el fin de semana."], ["Voz en off", "Green screen", "Carrusel valor"]], [4, "Solo proteína", ["“Con comer proteína ya está, lo demás da igual.” Ojalá fuera tan fácil.", "La proteína no lo es todo. Esto pesa más."], ["Green screen", "Carrusel valor"]], [4, "Mantengo el músculo comiendo nada", ["Comer casi nada y creer que mantienes el músculo: el error más caro.", "Si bajas muy rápido, no solo pierdes grasa."], ["Yapping", "Voz en off"]], [4, "El atracón del fin de semana", ["Toda la semana a dieta y el sábado te lo comes todo. No es falta de voluntad.", "Yo también tenía atracones los fines de semana. Por esto."], ["Voz en off", "Carrusel conexión"]], [5, "Correr para quemar grasa", ["“Me pongo a correr y así quemo la grasa.” Ayuda, pero no así.", "Si solo corres, no te pones fuerte. Si solo levantas, no tienes fondo."], ["Voz en off", "Green screen"]], [5, "Entrenar más días", ["“Si entreno más días, me pondré más fuerte.” Yo entrenaba 6 y no.", "Un músculo por día, 6 días a la semana: mi primer gran error."], ["Yapping", "Carrusel valor"]], [5, "45 minutos bastan", ["45 minutos antes del turno. Fuerza y fondo. No necesitas más.", "La sesión que hago con mis clientes el día que entran a las 22:00."], ["Rol entrenador", "Voz en off"]], [5, "Trucos para estar marcado", ["Buscas trucos para estar marcado. No hay. Hay esto.", "El único truco que conozco: que el plan no se rompa con tu turno."], ["Tendencia", "Green screen"]], [6, "Más allá del arroz con pollo", ["No hace falta comer solo arroz blanco con pollo para ponerte en forma.", "Si tu dieta solo aguanta dos semanas, no es tu dieta."], ["Voz en off", "Carrusel valor"]], [6, "5 tuppers para la noche", ["5 tuppers que aguantan una noche entera y no son arroz con pollo.", "Lo que llevo yo cuando tengo un día largo."], ["Carrusel valor", "Rol entrenador"]], [6, "Soy de dulce", ["Soy de dulces. Y lo meto en mi plan. Así.", "La merienda que cambiaba de salado a dulce: lo que me enseñó."], ["Yapping", "Historias"]], [6, "Comer fuera con el turno", ["Bocadillo del bar a las 3 de la mañana: cómo elegir sin cargarte la semana.", "Si comes fuera en el turno, esto es lo que pido yo."], ["Rol entrenador", "Tendencia"]], [7, "Quiero estar como ese", ["“Quiero estar como ese.” Ese no trabaja de noche ni tiene tu cuerpo.", "Compárate contigo hace 12 semanas, no con un físico de catálogo."], ["Voz en off", "Carrusel valor"]], [7, "Lo que nadie cuenta", ["Gente a mi alrededor me decía que era todo natural. No lo era.", "Lo natural tarda más. Y tiene mucho más mérito."], ["Yapping", "Carrusel conexión"]], [7, "Genética", ["Otra genética, otra vida y otro horario. Deja de compararte.", "La genética existe. Tu turno también. Y se puede con los dos."], ["Green screen", "Tendencia"]], [8, "La ruleta rusa", ["Si trabajas conmigo, lo primero que vas a dejar de hacer es jugar a la ruleta rusa con tu comida y tu entreno.", "Improvisar cada semana es jugar a la ruleta rusa con tu cuerpo."], ["Yapping", "Voz en off", "Historias"]], [8, "Perder el tiempo", ["Dos años yendo al gimnasio sin plan es perder el tiempo. Lo sé porque lo hice.", "No es cuánto entrenas. Es si sabes para qué."], ["Voz en off", "Carrusel conexión"]], [8, "Rutinas de amigos", ["La rutina de tu amigo está hecha para su horario. No para el tuyo.", "Copiar la rutina del compañero de turno: por qué a él le funciona y a ti no."], ["Yapping", "Green screen"]], [9, "Felipe −17 kg", ["Felipe es vigilante de seguridad. De 111,2 a 94,2 kg.", "−17 kg trabajando de vigilante. Así lo encajamos."], ["Voz en off", "Carrusel conexión", "Historias"]], [9, "Juanjo, vigilante", ["Juanjo, vigilante: de 95,4 a 88,4 kg con un horario distinto cada semana.", "Mismo trabajo que Felipe, otro horario, mismo resultado: bajar."], ["Carrusel conexión", "Voz en off"]], [9, "Mis mejores casos trabajan a turnos", ["Mis tres mejores casos: dos vigilantes y un camarero. No es casualidad.", "Lo que tenían en común mis mejores clientes: confianza al 100 %."], ["Yapping", "Carrusel conexión"]], [9, "El caso del −4,8 kg", ["−4,8 kg. [Nombre y trabajo, con permiso.]", "[Cliente]: lo que cambió en sus primeras semanas."], ["Carrusel conexión", "Historias"]], [10, "De camarero a Policía Nacional", ["Mi primer cliente era camarero. Hoy es Policía Nacional.", "No cogía peso ni condición. Quería ser policía. Lo consiguió."], ["Voz en off", "Carrusel conexión", "YouTube"]], [10, "Rendir, no solo verse bien", ["Para unas pruebas físicas no basta con verte bien. Hay que rendir.", "Lo que cambia cuando el objetivo es aprobar unas físicas."], ["Carrusel valor", "Rol entrenador"]], [10, "Oposiciones y turnos", ["Preparar unas oposiciones trabajando a turnos: cómo lo haría yo.", "Trabajas, estudias y tienes que entrenar. Esto es lo mínimo."], ["Rol entrenador", "Yapping"]], [11, "Pipe se fue y volvió", ["Pipe consiguió su cambio y dejó la asesoría. Pero volvió. Te cuento por qué.", "Lo intentó solo con rutinas de amigos. Volvió por una cosa."], ["Carrusel conexión", "Voz en off"]], [11, "La revisión del lunes", ["Lo que más echan de menos mis clientes cuando lo intentan solos: la revisión.", "Alguien pendiente de ti cada semana cambia más que cualquier rutina."], ["Yapping", "Historias"]], [11, "Sabes que tienes potencial", ["Sabes que tienes potencial. Lo que te falta es alguien que esté pendiente.", "No es falta de ganas. Es que nadie te pide cuentas."], ["Voz en off", "Tendencia"]], [12, "Es mucho dinero", ["¿Cuánto llevas gastado en gimnasio y suplementos sin resultado?", "Lo caro no es un entrenador. Lo caro es otro año igual."], ["Yapping", "Historias"]], [12, "Ya lo hago con ChatGPT", ["ChatGPT te da un plan. No te lo cambia cuando cambias de turno.", "Un plan sin nadie que lo revise es una lista de buenas intenciones."], ["Yapping", "Green screen"]], [12, "Con mi turno no voy a poder", ["“Con mi turno no voy a poder.” Eso me decían Felipe y Juanjo.", "Si tu turno es el problema, el plan tiene que empezar por tu turno."], ["Voz en off", "Carrusel valor"]], [12, "¿Es presencial?", ["¿Por qué online? Porque con tu turno no vas a cuadrar una hora conmigo en el gimnasio.", "Antes me desplazaba a casa de cada cliente. Por qué ya no."], ["Yapping", "Historias"]], [13, "Si fueras mi cliente y trabajaras de noche", ["Si fueras mi cliente y trabajaras de noche, esta sería tu semana.", "Turno de 22:00 a 6:00. Así encajaría tus entrenos y tus comidas."], ["Rol entrenador", "Voz en off", "YouTube"]], [13, "Monto una semana rotativa", ["Te monto en directo una semana de mañana-tarde-noche.", "Cuadrante rotativo: dónde meto las 3 sesiones."], ["Rol entrenador", "Historias"]], [13, "Reviso tu tupper", ["Mándame foto de lo que te llevas al turno y te digo qué cambiar.", "He revisado el tupper de un seguidor. Esto le cambiaría."], ["Rol entrenador", "Historias"]], [13, "Corrijo tu sentadilla", ["Corrijo la sentadilla de un seguidor en 30 segundos.", "Dos cambios en tu peso muerto y dejas de cargar la espalda."], ["Rol entrenador", "Tendencia"]], [13, "Respondo un DM", ["Me han escrito esto: “salgo a correr cada día y no bajo”. Mi respuesta de entrenador.", "Respondo como a un cliente: “cuanto menos como, más pierdo”."], ["Rol entrenador", "Green screen"]]];
+  var fFam = -1, fFmt = "";
+  var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>';
+          }).join("") + '<div class="meta">' + a[3].map(function (m) { return '<span class="tag' + (m === "Rol entrenador" ? " a" : "") + '">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var orig = b.textContent;
+    var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = orig; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+  renderAng();
+
+  /* ---------- Guiones ---------- */
+  var SCRIPTS = [{"k": "vo", "t": "Qué comer en el turno de noche", "clip": "Tus clips: preparando tuppers, abriendo uno a las 4:00 (reloj o móvil en plano), mochila de trabajo, persiana bajada, tú entrenando.", "hooks": ["A · Esto es lo que les pongo de comer a mis clientes en el turno de noche.", "B · Felipe es vigilante y bajó 17 kg. Esto es lo que comía de noche.", "C · Si no comes nada en el turno y llegas a casa arrasando, escucha esto."], "lines": [["3–15 s", "La mayoría de los que trabajan de noche hacen lo mismo: no comen en todo el turno y llegan a casa arrasando con todo. O tiran de máquina.", "Texto: EL ERROR MÁS COMÚN"], ["15–28 s", "Lo que funciona: una comida antes de entrar, un tupper con proteína a mitad de turno y algo ligero al salir para poder dormir. Y con variedad, no solo arroz con pollo.", "Rótulo: ANTES · MITAD · AL SALIR"], ["28–38 s", "Sígueme si tu horario no es de 9 a 5: cada semana te enseño a comer a tu hora.", "Texto: SÍGUEME"]]}, {"k": "vo", "t": "Perdía el progreso cada vez que el trabajo apretaba", "clip": "Planos de obra o campo (manos, casco, botas), tupper recalentado, tú entrenando, tú corriendo al final.", "hooks": ["A · Me preparé para competir trabajando de albañil. Cada vez que el trabajo apretaba, perdía todo.", "B · El problema nunca fue la disciplina. Era mi horario.", "C · Arroz blanco, pollo recalentado y tubos de pavo. Así entrenaba trabajando en la obra."], "lines": [["3–15 s", "Trabajaba de pie todo el día, comía lo que me mandaba mi preparador y los fines de semana acababa con atracones. Cada cambio de trabajo, vuelta a empezar.", "Texto: PERDÍA EL PROGRESO"], ["15–28 s", "No me faltaba disciplina: me faltaba un plan que encajara en mi trabajo. Hoy lo hago al revés: primero miro el cuadrante y luego monto el entreno y la comida.", "Rótulo: PRIMERO EL CUADRANTE"], ["28–38 s", "Sígueme para entrenar y comer bien aunque tu horario cambie cada semana.", "Texto: SÍGUEME"]]}, {"k": "yap", "t": "La fuerza no lo es todo", "clip": "Tú a cámara con buena luz. Si las tienes, una foto tuya con 90 kg al principio.", "lines": [["0–3 s", "La fuerza no lo es todo.", "Texto: LA FUERZA NO LO ES TODO"], ["3–15 s", "Llegué a pesar 90 kilos, hacía powerlifting y competí. Y me ahogaba corriendo.", ""], ["15–28 s", "¿De qué me sirve ser un tío musculado de 90 kilos si no me puedo atar los cordones? Por eso con mis clientes trabajo fuerza, fondo y pasos.", ""], ["28–40 s", "Si trabajas a turnos y quieres estar fuerte y aguantar, escríbeme CUADRANTE.", "Texto: ESCRÍBEME \"CUADRANTE\""]]}, {"k": "rol", "t": "Si fueras mi cliente y trabajaras de noche", "clip": "Tú con una pizarra o el móvil con un cuadrante de noches, y después enseñando la sesión y el tupper.", "lines": [["0–3 s", "Si fueras mi cliente y trabajaras de 22:00 a 6:00, esta sería tu semana.", "Texto: TU SEMANA DE NOCHES"], ["3–15 s", "3 sesiones de 45 minutos: dos antes de entrar y una en tu día libre. Fuerza y un bloque corto de fondo.", "Rótulo: 3 SESIONES · 45 MIN"], ["15–30 s", "Comida antes de entrar, tupper a mitad de turno con proteína y algo ligero al salir. Y tus pasos, aunque sea paseando en la ronda.", ""], ["30–40 s", "¿Quieres que te lo monte con tu cuadrante? Escríbeme CUADRANTE por privado.", "Texto: ESCRÍBEME \"CUADRANTE\""]]}, {"k": "gs", "t": "Desmonto: \"cuanto menos como, más peso pierdo\"", "clip": "Green screen detrás: un post de dieta de 800 calorías o un \"ayuno extremo para perder 10 kg\".", "lines": [["0–3 s", "“Cuanto menos como, más peso pierdo.” Me lo dicen cada semana.", "Detrás: el post"], ["3–15 s", "Al principio baja. Luego llega el hambre, el atracón del fin de semana y pierdes músculo. A mí me pasó con la dieta de culturismo.", ""], ["15–30 s", "Lo que funciona: comer bien a tu hora, con proteína y variedad, y moverte más. Baja igual y no vuelve.", ""], ["30–40 s", "Sígueme: cada semana desmonto algo que te tiene estancado.", "Texto: SÍGUEME"]]}];
+  $("scripts").innerHTML = SCRIPTS.map(function (s) {
+    var hooks = s.hooks ? '<div class="variants"><b>0–3 s · 3 ganchos para reels de prueba</b>' + s.hooks.map(function (h) { return '<div class="hk" style="display:flex;gap:8px;align-items:flex-start"><p style="flex:1;font-weight:700;font-size:14.5px">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h.replace(/^[ABC] · /, "")) + '">Copiar</button></div>'; }).join("") + '</div>' : "";
+    var copyAll = (s.hooks ? s.hooks.join("\n") + "\n" : "") + s.lines.map(function (l) { return l[1]; }).join("\n");
+    return '<article class="card script"><span class="tag a">' + esc(K[s.k].n) + '</span><h3>' + esc(s.t) + '</h3><p class="soft" style="font-size:14px"><b>Qué se ve:</b> ' + esc(s.clip) + '</p>' + hooks +
+      s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+      '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(copyAll) + '">Copiar guion</button></article>';
+  }).join("");
+
+
+  /* ---------- Claude Code: CLAUDE.md y órdenes ---------- */
+  var ORDERS = [["Editar un reel al estilo de una referencia", "Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes en blanco con la palabra clave en amarillo y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo."], ["3 versiones de gancho para trial reels", "Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C."], ["Recortar silencios", "Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después."], ["Exportar en 9:16", "Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/."], ["Voz en off sobre b-roll", "Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/ (entreno, tuppers, reloj de noche), cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre \"Sígueme para…\" en pantalla. 9:16, a 2-editados/."], ["Preparar portada", "Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 en negro y amarillo con las franjas de 3-recursos/ y este título grande: \"[TÍTULO]\". Guárdala como .jpg al lado del vídeo."], ["Subtítulos .srt + revisión", "Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md."], ["Aprender de una corrección", "Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: 'subtítulos más arriba', 'menos zoom', 'cortes más rápidos en el gancho']. Corrígelo y, cuando te diga que está bien, añade la lección a la sección 'Lecciones aprendidas' de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno."]];
+  $("edOrders").innerHTML = ORDERS.map(function (o, i) {
+    return '<div class="card ed-pr"><div class="ed-top"><span class="tag">Orden ' + (i + 1) + '</span><b>' + esc(o[0]) + '</b><button type="button" class="cp" data-cp="' + esc(o[1]) + '">Copiar</button></div><p class="ed-txt">' + esc(o[1]) + '</p></div>';
+  }).join("");
+  $("cpClaude").setAttribute("data-cp", $("claudeMd").textContent);
+
+  /* ---------- Pestañas ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "ang", "gui", "rec", "ed"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>

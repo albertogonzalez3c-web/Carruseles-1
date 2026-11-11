@@ -1,0 +1,318 @@
+<title>Zakaria Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f3f3f1;
+  --white: #ffffff;
+  --ink: #121212;
+  --soft: #5e5e5e;
+  --line: #dadada;
+  --chip: #ececea;
+  --accent: #c8102e;
+  --accent-text: #a50d26;
+  --accent-dark: #ff4d5e;
+  --f-head: "Oswald", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 700; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 700; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffd6dc; }
+.card.accent ul.l, .card.accent ol.l { color: #ffe9ec; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fbe8eb; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: Método 5H en 3 fases, qué incluye, por qué tú, casos, precios en orden de presentación, escalera de subida, garantía y contrato, back-end. */
+.phase .n { font: 700 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 700 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+
+/* Nicho en una frase + método en 30 segundos */
+.nm { display: grid; gap: 14px; border-radius: 14px; padding: 20px; background: var(--ink); color: #fff; margin-block: 6px 4px; }
+.nm-lbl { font: 500 11.5px/1.2 var(--f-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-dark, #f5b8a8); display: block; margin-bottom: 6px; }
+.nm-big { font: 700 clamp(19px, 2.6vw, 25px)/1.3 var(--f-body, inherit); margin: 0; color: #fff; text-wrap: pretty; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nm-c { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.nm-c b { font-size: 15.5px; color: #fff; }
+.nm-c span, .nm-c p { font-size: 14px; color: #d8d6d0; margin: 0; line-height: 1.45; }
+.nm-c .nm-n { font: 500 11px/1 var(--f-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark, #f5b8a8); }
+.nm-c p b { font-size: 13.5px; color: #fff; }
+.nm-no { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.nm-no li { background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 700; }
+.nm-proof { margin: 0; font-size: 15px; color: #fff; border-left: 3px solid var(--accent-dark, #f5b8a8); padding-left: 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } .nm { padding: 16px; } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <span class="label">Zakaria Cheggari · Parte 2 · Oferta</span>
+    <h1>Método <em>5H</em>: tu físico, en menos de 5 horas a la semana.</h1>
+    <p class="soft" style="font-size:18px">Para personas de +30 con trabajo, hijos y cero tiempo, que han perdido la confianza delante del espejo. Una oferta que tienes que poder explicar en 2 minutos, mirando a los ojos y sin pedir perdón por el precio.</p>
+  </header>
+
+  <section class="nm" aria-label="Tu nicho y tu método">
+    <div><span class="nm-lbl">Tu nicho en una frase</span><p class="nm-big">Personas de +30 con jornada completa y casi sin tiempo que han perdido la confianza frente al espejo y quieren transformar su físico entrenando menos de 5 horas a la semana.</p></div>
+    <div><span class="nm-lbl">Tu método en 30 segundos · Método 5H · 3 pilares</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Pilar 1</span><b>4 sesiones cortas</b><span>Máximo 70 minutos cada una, con ciclos de 12 semanas. Nada de cambiar de rutina cada mes. <em>Por qué: mi mayor error fue cambiar de rutina cada mes; con bloques de 12 semanas por fin cambié.</em></span></div><div class="nm-c"><span class="nm-n">Pilar 2</span><b>Comida simple que encaja en tu jornada</b><span>Lo que puedes comer un día de trabajo real. Sin dietas de Instagram. <em>Por qué: a los 20 me dijeron "come de todo y entrena" y gran parte de lo que subí fue grasa.</em></span></div><div class="nm-c"><span class="nm-n">Pilar 3</span><b>Hábitos mínimos innegociables</b><span>Pocos, claros y diarios. Los que sostienen todo lo demás. <em>Por qué: trabajo a jornada completa y lo que me sostiene no es la motivación, son estos mínimos.</em></span></div></div></div>
+    <div><span class="nm-lbl">3 fases</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Base</b><p><b>Qué pasa:</b> Tu cuerpo aprende a entrenar 4 días sin que tu vida se resienta. Primera grasa fuera y más energía.</p><p><b>Qué haces tú:</b> Agendas las 4 sesiones, proteína en cada comida, tus hábitos mínimos y tu revisión semanal.</p></div><div class="nm-c"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Transformación</b><p><b>Qué pasa:</b> Completas tu primer ciclo de 12 semanas: sube la fuerza y cambian el espejo y la ropa.</p><p><b>Qué haces tú:</b> Progresas cargas siguiendo tu tabla, mantienes la comida simple y no cambias de rutina.</p></div><div class="nm-c"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Para siempre</b><p><b>Qué pasa:</b> Consolidas el físico y la confianza. Tienes un plan para las semanas imposibles: viajes, turnos, vacaciones.</p><p><b>Qué haces tú:</b> Usas tu plan B de 2–3 sesiones cuando la semana se complica y aprendes a ajustarte solo.</p></div></div></div>
+    <div><span class="nm-lbl">3 no negociables</span><ul class="nm-no"><li>Las 4 sesiones agendadas como reuniones</li><li>Proteína en cada comida</li><li>Revisión semanal</li></ul></div>
+    <p class="nm-proof">Yo trabajo a jornada completa fuera del fitness y entreno 4 días: si yo puedo, tú también.</p>
+  </section>
+
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">3 fases, 6 meses. Base, transformación y para siempre.</h2></header>
+    <div class="g3">
+      <article class="card phase">
+        <span class="n">01</span>
+        <h3>Base · meses 1 y 2</h3>
+        <ul class="l"><li><b>3–4 sesiones cortas</b> (45–70 min): menos de 5 horas a la semana en total.</li><li><b>3 hábitos mínimos:</b> proteína en cada comida, pasos diarios y dormir mejor.</li><li><b>La primera grasa fuera</b> y técnica limpia en los básicos.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">02</span>
+        <h3>Transformación · meses 3 y 4</h3>
+        <ul class="l"><li><b>Ciclos de 12 semanas</b> con progresión de cargas: nada de cambiar de rutina cada mes.</li><li><b>Recomposición:</b> menos grasa y más músculo donde lo quiere (glúteo, hombro, abdomen).</li><li><b>Comida flexible</b> que encaja con su familia y su trabajo.</li></ul>
+      </article>
+      <article class="card phase">
+        <span class="n">03</span>
+        <h3>Para siempre · meses 5 y 6</h3>
+        <ul class="l"><li><b>Mantener sin depender de ti:</b> sabe qué hacer en semanas imposibles.</li><li><b>Plan para vacaciones, turnos y viajes</b> sin perder lo conseguido.</li><li><b>Autonomía:</b> la confianza que vuelve cuando tienes un plan que sí sigues.</li></ul>
+      </article>
+    </div>
+    <p class="say">"No te pido más tiempo. Te pido que las horas que ya tienes sirvan para algo. Primero la base, luego la transformación y después que dure para siempre."</p>
+    <div class="g2">
+      <div class="card">
+        <span class="label">Qué incluye</span>
+        <ul class="l">
+          <li><b>Plan de entreno de menos de 5 h a la semana,</b> en gimnasio o en casa, según su horario.</li>
+          <li><b>Plan de alimentación flexible,</b> sin dietas de Instagram ni apps de calorías sin criterio.</li>
+          <li><b>Revisión semanal</b> con ajuste del plan.</li>
+          <li><b>Corrección de técnica</b> por vídeo.</li>
+          <li><b>Soporte por WhatsApp</b> en un horario fijo de respuesta.</li>
+        </ul>
+      </div>
+      <div class="card dark">
+        <span class="label">Lo que nunca prometes</span>
+        <ul class="l">
+          <li><b>Kilos en un plazo:</b> nada de "−10 kg en 2 meses". Promete el proceso y enseña casos.</li>
+          <li><b>"Sin esfuerzo":</b> es poco tiempo, no cero trabajo. El que no se compromete no es tu cliente.</li>
+          <li><b>Estar disponible siempre:</b> tienes un trabajo. Promete un horario de respuesta que puedas cumplir y cúmplelo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-yo">
+    <header><span class="label">Por qué tú</span><h2 id="h-yo">Tu cliente no tiene tiempo. Tú tampoco, y lo haces.</h2></header>
+    <div class="g2">
+      <article class="card dark">
+        <span class="label">Tu historia en 6 líneas · para la llamada y la landing</span>
+        <ul class="l">
+          <li>Siempre fui muy delgado; a los 20 pesaba 56 kg.</li>
+          <li>Empecé a entrenar en serio para despejar la cabeza en un momento duro.</li>
+          <li>"Come de todo y entrena": subí 13–14 kg en 6–7 meses, mucha de ella grasa.</li>
+          <li>Cambiaba de rutina cada mes. Cuando aprendí a hacer ciclos de 12 semanas, empecé a mejorar de verdad.</li>
+          <li>Me formé: TAFAD y licenciado en Ciencias del Deporte. 11 años entrenando.</li>
+          <li><b>Hoy trabajo a jornada completa y entreno 4 días en menos de 5 horas. Si yo puedo sin tiempo, tú también.</b></li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="label">Por qué el método va por fases</span>
+        <p class="soft">Los errores que cometiste son los mismos que tiene tu cliente hoy. Cada fase lo saca de uno:</p>
+        <ul class="l">
+          <li><b>"Copio dietas y rutinas de Instagram y lo dejo a las semanas"</b> → <b>Base:</b> pocas cosas, bien hechas, que caben en su día.</li>
+          <li><b>"Cambio de rutina cada mes buscando algo que funcione"</b> → <b>Transformación:</b> ciclos de 12 semanas con progresión.</li>
+          <li><b>"Cada verano, cada viaje o cada pico de trabajo lo tiro todo"</b> → <b>Para siempre:</b> un plan para las semanas imposibles.</li>
+        </ul>
+        <p class="say" style="margin:0">"No necesitas más horas. Necesitas un plan que quepa en tu semana."</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-casos">
+    <header><span class="label">Tus casos · sin cifras inventadas</span><h2 id="h-casos">Tienes casos. Te faltan los datos.</h2><p class="soft">Ahora mismo no tienes kilos, tiempos ni fotos publicables de casi nadie. Esta semana escribe a cada cliente y pídele: tiempo trabajando contigo, cambio en kilos o medidas, edad y permiso por escrito. Sin eso, en la llamada solo cuentas la historia.</p></header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Caso</th><th>Qué consiguió</th><th>Úsalo cuando el lead…</th></tr></thead>
+        <tbody>
+          <tr><td>Anas</td><td>Desde Francia, a distancia. Partía de estar muy delgado, como tú: con una rutina de volumen cogió peso y mejoró notablemente.</td><td>Es muy delgado, "come mucho y no engorda" o duda de que funcione online.</td></tr>
+          <tr><td>Miriam</td><td>Sevilla. Llegó por recomendación de un compañero del gimnasio. Buen cambio; <b>autoriza fotos con la cara tapada</b>.</td><td>Es mujer de +30 y quiere ver a alguien como ella.</td></tr>
+          <tr><td>Clienta (cintura y glúteos)</td><td>Quería mejorar cintura y glúteos y lo consiguió, con antes y después. <b>No publiques sus fotos ni su nombre:</b> solo cuéntalo de palabra.</td><td>Quiere mejorar zonas concretas.</td></tr>
+          <tr><td>Mark</td><td>Desde Suiza, recomposición: buen cambio, pero lo dejó a medias y se estancó.</td><td>Duda entre 3 o 6 meses: la lección es que la continuidad es lo que da el resultado.</td></tr>
+          <tr><td>Tu hermano</td><td>Nunca había pisado un gimnasio: básicos primero, luego analíticos. Hoy tiene buen físico.</td><td>Empieza de cero y tiene miedo de no saber.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header>
+      <span class="label">Precios · propuesta, confírmala con Alberto</span>
+      <h2 id="h-precios">El que vendes es el <em>semestre</em>.</h2>
+      <p class="soft">Tus mejores casos tienen algo en común: pagaron y tuvieron seguimiento sostenido. Mark lo dejó a medias y se estancó. Por eso el producto son las 3 fases, no un mes suelto.</p>
+    </header>
+    <div class="g4">
+      <article class="card dark">
+        <span class="badge">1 · El que ofreces primero</span>
+        <h3>Semestre</h3>
+        <p class="price">400 €</p>
+        <ul class="l"><li>Las 3 fases completas.</li><li>El estándar.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">2 · El que más le compensa</span>
+        <h3>Año completo</h3>
+        <p class="price">700 €</p>
+        <ul class="l"><li>Las 3 fases más 6 meses de progreso y mantenimiento.</li><li>Solo 300 € más que el semestre.</li></ul>
+      </article>
+      <article class="card">
+        <span class="badge">3 · Si no llega</span>
+        <h3>Semestre en 2 pagos</h3>
+        <p class="price">210 € <small>+ 210 €</small></p>
+        <ul class="l"><li>Total 420 €: paga algo más por fraccionar.</li><li>Sigue comprometido 6 meses.</li></ul>
+      </article>
+      <article class="card chip">
+        <span class="badge">4 · Último recurso</span>
+        <h3>Trimestre</h3>
+        <p class="price">250 €</p>
+        <ul class="l"><li>Solo la fase 1.</li><li>Nunca lo dices primero.</li></ul>
+      </article>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <h3>Cómo lo dices en la llamada</h3>
+        <p class="say">"Lo que te recomiendo son los 6 meses: 400 €. Si quieres el año completo, son 700 € y te quedas también con el mantenimiento."</p>
+        <p class="soft" style="font-size:14.5px">Lo dices una vez y te callas. El trimestre solo sale si el "no" es por dinero y tampoco le encajan los 2 pagos. Nunca rebajas el precio: cambias la forma de pago.</p>
+      </div>
+      <div class="card accent">
+        <h3>Tu precio y tu vergüenza</h3>
+        <ul class="l">
+          <li><b>Lo escribiste tú:</b> "si no tienes la seguridad de que lo que aportas vale un precio alto, no se lo vas a transmitir al cliente".</li>
+          <li><b>Dejar la vergüenza empieza aquí:</b> dices el precio sin bajar la voz, sin justificarte y sin "bueno, si te parece mucho…".</li>
+          <li><b>Eres licenciado y llevas 11 años.</b> 400 € por 6 meses es barato. Lo raro sería cobrar menos.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Reglas</h3>
+      <ul class="l">
+        <li><b>El precio no va en el perfil ni en la landing:</b> se dice en la llamada.</li>
+        <li><b>Un downsell cada vez,</b> solo si el "no" es por dinero.</li>
+        <li><b>Pago único con descuento, nunca recargo:</b> si usas pago a plazos (Klarna o similar), el precio de base es el de plazos y el pago único lleva descuento.</li>
+        <li><b>Nada gratis:</b> lo escribiste tú, "cuando es gratis, la constancia falla". Ni a amigos del barrio.</li>
+        <li><b>Todo con contrato.</b> Sin contrato no empieza nadie.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-sube">
+    <header>
+      <span class="label">Cómo vas subiendo</span>
+      <h2 id="h-sube">Cada venta, un 20 % más. Hasta el año a 1.200 €.</h2>
+      <p class="soft">Cada vez que cierras una venta, subes de nivel. Nunca se baja, aunque te digan que no tres veces seguidas.</p>
+    </header>
+    <div class="card tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Cuándo</th><th>Trimestre</th><th>Semestre</th><th>Año</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>Ahora</td><td>250 €</td><td><b>400 €</b></td><td>700 €</td></tr>
+          <tr><td>Nivel 1</td><td>Tras tu próxima venta</td><td>300 €</td><td><b>480 €</b></td><td>840 €</td></tr>
+          <tr><td>Nivel 2</td><td>Tras la siguiente</td><td>360 €</td><td><b>580 €</b></td><td>1.000 €</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>Tras la siguiente</td><td>400 €</td><td><b>690 €</b></td><td>1.200 €</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="steps">
+      <div><b>1. Cierras una venta</b><span>Al siguiente lead ya le das el precio del nivel siguiente.</span></div>
+      <div><b>2. Nunca bajas</b><span>Si alguien dice que no por precio, cambias la forma de pago, no el precio.</span></div>
+      <div><b>3. El techo</b><span>Trimestre 400 €, semestre 690 € y año 1.200 €. Ahí te quedas.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-gar">
+    <header><span class="label">Garantía y contrato</span><h2 id="h-gar">Riesgo cero para el que cumple.</h2></header>
+    <div class="g2">
+      <article class="card accent">
+        <span class="label">Garantía</span>
+        <p style="font-size:20px;font-weight:700;line-height:1.4">"Si sigues el plan, me mandas tus revisiones y en la fase 1 no ves cambios, sigo contigo gratis hasta que los veas."</p>
+        <ul class="l"><li><b>Condición medible:</b> 80 % de cumplimiento o más y todas las revisiones enviadas.</li><li><b>No hay devolución de dinero:</b> la garantía protege al que trabaja, no al "que paga por pagar".</li></ul>
+      </article>
+      <article class="card">
+        <span class="label">Contrato · firma digital antes de empezar</span>
+        <ul class="l">
+          <li>Qué incluye, cuánto dura y cómo se paga.</li>
+          <li>Horario de respuesta por WhatsApp, por escrito.</li>
+          <li>Las condiciones de la garantía.</li>
+          <li>Consentimiento de datos de salud y, si quiere, de imagen (con o sin cara) para usar su antes y después.</li>
+          <li><b>Los 14 días para desistir:</b> pide empezar ya y acepta pagar la parte del servicio ya hecha si se echa atrás.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header>
+      <span class="label">Después de la venta</span>
+      <h2 id="h-back">Tu mejor cliente es el que ya está contigo.</h2>
+      <p class="soft">Se lo ofreces en su momento dulce: cuando ve un cambio claro en una foto, sube marcas o te escribe "me vuelvo a gustar". Es justo lo que le faltó a Mark: alguien que le propusiera seguir.</p>
+    </header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><ul class="l"><li><b>Trimestre → semestre:</b> paga la diferencia.</li><li><b>Semestre → año:</b> paga la diferencia.</li></ul></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Renovar antes de acabar</h3><ul class="l"><li>En la semana 10–12, nunca el último día.</li><li>Con fecha límite: precio congelado o un mes de regalo.</li></ul></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Mantenimiento mensual</h3><ul class="l"><li>Revisión al mes y plan para semanas imposibles.</li><li>Precio a decidir con Alberto.</li></ul></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a alguien</h3><ul class="l"><li>Si entra, un mes gratis para los dos.</li><li>Miriam llegó por recomendación: pide referidos a cada cliente contento.</li></ul></article>
+    </div>
+    <p class="say">"Mira dónde estabas hace 10 semanas y dónde estás hoy, con la misma falta de tiempo. Si renuevas esta semana, te mantengo el precio de ahora."</p>
+  </section>
+</div>

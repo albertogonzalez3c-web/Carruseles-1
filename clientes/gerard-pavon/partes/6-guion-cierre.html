@@ -1,0 +1,349 @@
+<title>Gerard Guion Cierre</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --sand: #ebebe8;
+  --sand-line: #d6d6d3;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --gold: #f5c400;
+  --gold-text: #7a5c00;
+  --chip: #ededeb;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: clamp(28px, 5vw, 52px) max(16px, env(safe-area-inset-right, 0px)) 70px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 18px; }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.5vw, 54px)/1 var(--f-head); letter-spacing: 0; text-transform: uppercase; }
+h2 { font: 700 26px/1.12 var(--f-head); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: space-between; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: #111111; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: #fff; }
+.card.dark .label { color: #f5c400; }
+.card.dark ul.l, .card.dark ul.l b { color: #e2e2e2; }
+.cs { padding: 22px clamp(18px, 3vw, 28px); gap: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 4px solid var(--gold); border-radius: 10px; padding: 11px 14px; font-size: 15px; font-weight: 600; }
+.say.placeholder { border: 1.5px dashed var(--gold); border-left-width: 4px; }
+.say .cpy { all: unset; cursor: pointer; float: right; margin: -2px -4px 4px 10px; font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .04em; padding: 6px 8px; border-radius: 8px; background: var(--white); box-shadow: inset 0 0 0 1px var(--sand-line); color: var(--ink); }
+.say .cpy:focus-visible { outline: 3px solid var(--ink); }
+.cs h3.ph { font: 700 25px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--sand-line); }
+.cs h4 { margin: 4px 0 0; font: 700 15.5px/1.3 var(--f-body); color: var(--gold-text); }
+.tw { overflow-x: auto; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+.ctab th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 8px 10px; background: var(--chip); }
+.ctab td { padding: 9px 10px; border-top: 1px solid var(--sand-line); vertical-align: top; }
+.note { background: var(--white); border: 1.5px dashed var(--sand-line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; font-size: 14px; }
+.check-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14.5px; }
+.objs { display: grid; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; margin-top: 10px; font-size: 14.5px; }
+.obj > b { font-size: 15px; }
+.obj .say { display: block; margin: 0 0 6px; }
+@media (max-width: 640px) { .grid2, .obj { grid-template-columns: 1fr; } }
+@media print {
+  @page { margin: 14mm 12mm; }
+  body { background: #fff; font-size: 11.5pt; }
+  .wrap { padding: 0; max-width: none; gap: 10px; }
+  .noprint, .say .cpy { display: none !important; }
+  .card, .cs { padding: 0; border-radius: 0; background: #fff !important; }
+  .card.sand, .card.dark, .note { background: #fff !important; color: #000 !important; border: 1px solid #bbb; padding: 10px 12px; border-radius: 6px; }
+  .card.dark .label, .card.dark ul.l { color: #000 !important; }
+  .say { background: #fff; border: 1px solid #c9c9c6; border-left: 4px solid #f5c400; break-inside: avoid; }
+  .cs h3.ph { break-after: avoid; }
+  h4 { break-after: avoid; }
+  .obj, table, .grid2 > * { break-inside: avoid; }
+  .tw { overflow: visible; }
+  .ctab { min-width: 0; }
+  a { color: #000; }
+}
+
+
+h1, h2, h3, .brand b, .cs h3.ph, .tab, .day .dn { text-transform: none !important; }
+h1 { letter-spacing: -.025em !important; }
+
+/* Marca Gerard · GPC: negro + amarillo (como sus carruseles). Sobre amarillo, siempre texto negro. */
+.card.accent, .card.acc { color: #111; }
+.card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b, .card.acc ul.l b, .card.acc ol.l b, .card.acc h3, .card.acc b, .card.acc p { color: #111; }
+.card.accent .label, .card.acc .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l, .card.acc ul.l, .card.acc ol.l { color: #1a1a1a; }
+.card.accent .say { background: rgba(0,0,0,.08); border-left-color: #111; color: #111; }
+.card.accent .badge { background: rgba(0,0,0,.12); color: #111; }
+h1 { text-transform: uppercase !important; letter-spacing: -.01em !important; }
+h1 em { background: #f5c400; color: #111 !important; padding: 0 .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+</style>
+
+<main class="wrap">
+  <header class="top">
+    <div style="display:grid;gap:8px">
+      <span class="label">Gerard · GPC · Método Cuadrante · Material de mentoría</span>
+      <h1>Guion de llamada de cierre</h1>
+      <p class="soft">Para hombres de 20 a 40 que trabajan a turnos. Lo primero que van a dejar de hacer contigo es perder el tiempo y jugar a la ruleta rusa con su comida y su entreno.</p>
+    </div>
+    <button type="button" class="btn noprint" id="printBtn">Imprimir o guardar en PDF</button>
+  </header>
+      <article class="card cs" id="cierre">
+        <span class="label">Llamada de cierre · 35–40 min</span>
+        <h2>Guion de cierre: conectas, escuchas, resumes, propones y cierras.</h2>
+        <p class="soft">Orden fijo. Adaptas el tono a cada persona, nunca el orden. Hablas tú el 30 % del tiempo como mucho. Las frases en recuadro son casi literales: dilas con tus palabras, pero no te saltes ninguna. Le hablas como a un compañero de turno que sabe que tú has pasado por lo mismo, no como un vendedor.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Fase</th><th>Objetivo</th><th>Tiempo</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Conexión + Autoridad</td><td>Bajar defensas y liderar la llamada</td><td>5 min</td></tr>
+            <tr><td>2 · Descubrimiento</td><td>Turno, dolor, intentos, riesgo y objetivo</td><td>20 min</td></tr>
+            <tr><td>2.5 · Resumen + Validación</td><td>Que se sienta entendido</td><td>2 min</td></tr>
+            <tr><td>3 · Propuesta + Precio</td><td>Solo lo que le importa a él</td><td>5 min</td></tr>
+            <tr><td>4 · Objeciones + Cierre</td><td>Aclarar, aislar, solucionar y cobrar</td><td>10 min</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="card sand">
+          <h3>Antes de la llamada (5 min de preparación, obligatorio)</h3>
+          <ul class="check-l">
+            <li>☐ Repasa su ficha del CRM: <b>qué turno tiene</b> (noche, rotativo, fines de semana), su trabajo, qué ha probado y qué quiere.</li>
+            <li>☐ Marca su fase: <b>frío, tibio o caliente</b>, y apunta <b>una frase literal suya</b> para el resumen ("cuanto menos como, más pierdo", "me pongo a correr", "quiero estar como ese"…).</li>
+            <li>☐ Ten preparado <b>el caso que más se le parezca</b>: Felipe o Juanjo si es vigilante, Javi si es hostelería o prepara unas físicas.</li>
+            <li>☐ ¿Es conocido o antiguo cliente? Decide antes si le corresponde el <b>trimestre de conocido</b>.</li>
+            <li>☐ Mira tu <b>nivel de precios actual</b> en la pestaña Clientes del CRM.</li>
+            <li>☐ Ten abierto el <b>enlace de pago</b>.</li>
+            <li>☐ Hora que no le pille durmiendo tras una noche. Cámara a la altura de los ojos, buena luz, móvil en silencio.</li>
+          </ul>
+        </div>
+
+        <h3 class="ph">Fase 1 · Conexión + Autoridad (5 min)</h3>
+        <p class="soft">Que se relaje y entienda que tú llevas la llamada. Dos minutos de charla como mucho y entras al marco.</p>
+        <h4>Small talk (elige una o dos)</h4>
+        <ul class="l">
+          <li>"¿Qué tal, vienes de turno o hoy libras?"</li>
+          <li>"¿Esta semana te toca de noche o de mañana?"</li>
+          <li>"¿Has podido dormir algo? Que sé lo que es salir de una noche."</li>
+          <li>"Vi que me escribiste CUADRANTE por el reel de [tema], ¿qué fue lo que te hizo clic?"</li>
+        </ul>
+        <p class="soft">La última es la mejor si sabes de dónde viene: te da contexto y abre directamente el dolor.</p>
+        <h4>Marco de autoridad (obligatorio, casi literal)</h4>
+        <p class="say">"Bueno, te cuento cómo va a ir esto. Te voy a hacer unas cuantas preguntas para entender bien tu turno, dónde estás y qué te está pasando. Si veo que te puedo ayudar de verdad, te explico cómo trabajo y vemos si tiene sentido. Y si veo que no es para ti, te lo digo igual. ¿Te parece bien?"</p>
+        <p class="soft">Espera el sí: es el primer compromiso de la llamada. <b>Errores a evitar:</b> hablar de ti antes de saber nada de él, alargar el small talk más de 3 minutos o empezar a explicar el programa.</p>
+
+        <h3 class="ph">Fase 2 · Descubrimiento profundo (20 min)</h3>
+        <p class="soft">Aquí se gana o se pierde la venta. Preguntas, escuchas, apuntas sus palabras literales y aguantas los silencios. Todavía no das soluciones.</p>
+
+        <h4>2.1 Turno y dolor</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"Para empezar, ¿por qué has decidido coger esta llamada ahora y no hace seis meses?"</p>
+        <p class="soft">Profundiza:</p>
+        <ul class="l">
+          <li>¿Qué turno tienes? ¿Cada cuánto te cambia? ¿Cuántas noches seguidas?</li>
+          <li>¿Qué es lo que más te molesta ahora mismo de tu cuerpo o de cómo te sientes? (la barriga, el cansancio, ahogarte, la ropa del uniforme…)</li>
+          <li>Ponme un ejemplo reciente en el que lo notaras: una foto, el verano, subir unas escaleras, una prueba física.</li>
+          <li>¿Qué comes en un día de turno de noche, de verdad?</li>
+          <li>¿Qué pasa con tu plan cuando te cambian el turno?</li>
+        </ul>
+        <p class="soft">Silencio de 5 a 7 segundos después de cada respuesta. Si contesta en superficie ("nada, quiero bajar unos kilos"):</p>
+        <p class="say">"Te lo pregunto porque cuanto mejor entienda lo que te pasa, mejor te voy a poder ayudar. Tómate tu tiempo."</p>
+        <p class="soft">Si sigue en superficie, usa tu historia:</p>
+        <p class="say">"Te cuento por qué te lo pregunto. Yo me intenté preparar para competir trabajando de albañil y en el campo. Mi dieta era arroz blanco, pollo recalentado y tubos de pavo, y los fines de semana acababa con atracones. Cada vez que el trabajo apretaba, perdía todo el progreso. Tardé en entender que no me faltaba disciplina: me faltaba un plan que encajara en mi trabajo. ¿Cuál dirías que ha sido tu momento, el que te ha hecho escribirme?"</p>
+        <p class="soft">Cuéntalo en menos de 30 segundos y con tus palabras. Funciona porque es verdad. Nada de temas familiares, de salud ni de otros clientes.</p>
+        <p class="soft">Quédate con <b>un dolor principal</b> y apúntalo en el CRM con <b>sus</b> palabras.</p>
+
+        <h4>2.2 Intentos</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"Seguro que ya lo has intentado. Cuéntame uno o dos intentos serios que hayas hecho y qué no te funcionó en cada uno."</p>
+        <ul class="l">
+          <li>¿Y qué fue lo que falló ahí exactamente?</li>
+          <li>¿Cuánto te duró? ¿Coincidió con un cambio de turno?</li>
+          <li>¿Por qué lo dejaste?</li>
+        </ul>
+        <p class="soft">Enfócate en lo que falló (comer poquísimo, salir a correr y nada más, entrenar 6 días hasta reventar, rutinas de amigos, ChatGPT, solo proteína). Todavía no le digas cómo lo harías tú.</p>
+        <p class="soft">Escucha en qué fase de <b>tu historia</b> está: <b>sin rutina</b> (lo ha dejado todo y no encuentra cómo volver), <b>no le gusta lo que ve en el espejo</b> (y prueba a lo loco) o <b>sabe que tiene potencial</b> pero el turno le rompe la constancia.</p>
+
+        <h4>2.3 Frenos y riesgo</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"Imagínate que hoy empiezas con un entrenador, no hace falta que sea yo. ¿Qué miedo o qué duda te vendría a la cabeza?"</p>
+        <p class="soft">Si no sale nada:</p>
+        <ul class="l">
+          <li>¿Has tenido entrenador antes? ¿Qué tal te fue?</li>
+          <li>¿Qué crees que te podría hacer dejarlo a mitad?</li>
+        </ul>
+        <p class="soft">Apunta el miedo literal ("con mi turno no voy a poder", "no sé cocinar para la noche", "lo dejo siempre", "no sé si me lo puedo permitir"). Lo resuelves en la fase 3.</p>
+
+        <h4>2.4 Deseo y servicio ideal</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"¿Qué tendría que pasar en 12 semanas para que digas: vale, esto está funcionando?"</p>
+        <p class="soft">Profundiza en el deseo real, que casi nunca es el número de la báscula:</p>
+        <ul class="l">
+          <li>Y cuando lo consigas, ¿qué cambia? (verte bien en una foto, que el uniforme te quede bien, no ahogarte, aprobar unas físicas, estar orgulloso de tu físico…)</li>
+          <li>¿Por qué ahora es importante para ti?</li>
+          <li>Del 1 al 10, ¿cómo de importante es solucionar esto ya?</li>
+        </ul>
+        <p class="soft">Si dice "quiero estar como ese", sé honesto: otra genética, otra vida y a veces cosas que nadie cuenta. Lo que sí le prometes es su mejor versión con su turno.</p>
+        <p class="soft">Cierra con el servicio ideal:</p>
+        <p class="say">"Si fueras a contratar a alguien para esto, ¿a qué una o dos cosas le darías más importancia?"</p>
+        <p class="soft">¿Por qué eso es tan importante para ti? Si el 1–10 da menos de 7: "¿Qué haría falta para que fuera un 9?". Si no hay urgencia real, no fuerces el cierre.</p>
+
+        <h3 class="ph">Fase 2.5 · Resumen + Validación (2 min)</h3>
+        <p class="soft">Si se siente entendido, la propuesta entra sola. Usa sus palabras exactas, no las tuyas.</p>
+        <h4>Resumen</h4>
+        <p class="say">"A ver si lo he pillado bien. Trabajas [turno] y cada vez que cambias de turno se te rompe el plan. Has probado [intento] y no te funcionó porque [motivo]. Lo que quieres de verdad es [deseo] y lo que más te preocupa es [miedo]. ¿Me dejo algo importante?"</p>
+        <p class="soft">Si corrige algo, escuchas y lo ajustas en voz alta.</p>
+        <h4>Validación</h4>
+        <p class="say">"Te voy a ser sincero. Sí creo que te puedo ayudar, y lo que te pasa es lo más normal del mundo trabajando a turnos: es exactamente lo que me pasaba a mí y a casi todos mis clientes. No te falta disciplina, te falta un plan que se adapte a tu cuadrante. Te explico cómo lo haríamos en tres minutos y luego me dices qué dudas te quedan, ¿vale?"</p>
+        <p class="soft">Si ves que <b>no</b> es para ti (busca trucos para estar marcado en un mes, desde el principio pone pegas para no hacer nada, o necesita un especialista por un tema médico), díselo aquí.</p>
+
+        <h3 class="ph">Fase 3 · Propuesta + Precio (5 min)</h3>
+        <p class="soft">No explicas todo el servicio. Explicas solo lo que resuelve SU dolor y SU miedo.</p>
+        <h4>Qué es (20 segundos)</h4>
+        <p class="say">"Ayudo a hombres de 20 a 40 que trabajan a turnos —de noche, rotativos o con horarios que cambian cada semana— a perder grasa y ponerse en forma de verdad, fuertes y con fondo, con un plan que se adapta a su cuadrante y no al revés. Me preparé para competir trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. Por eso mis mejores casos trabajan a turnos: vigilantes de seguridad y un camarero que hoy es Policía Nacional."</p>
+        <h4>Método en 2 minutos · Método Cuadrante</h4>
+        <p class="soft">Empieza siempre por el pilar que más le importa a él (lo dijo en la 2.4).</p>
+        <ul class="l">
+          <li><b>Pilar 1 · Tu turno manda:</b> "Cada sesión tiene versión de mañana, tarde y noche. Me pasas tu cuadrante cada semana y te lo encajo. En tu caso, con [su turno], lo plantearíamos así: [ejemplo concreto]."</li>
+          <li><b>Pilar 2 · Comer a tu hora, sin vivir de arroz con pollo:</b> "Comidas según tu turno y un tupper que aguanta la noche. Nada de comer poquísimo: yo lo hice y acabé con atracones los fines de semana."</li>
+          <li><b>Pilar 3 · Fuerte y con fondo:</b> "Fuerza, resistencia y moverte más. La fuerza no lo es todo: quiero que estés fuerte y que no te ahogues subiendo una escalera."</li>
+        </ul>
+        <p class="soft"><b>Las 3 fases (12 semanas):</b> 1 · Encajar (semanas 1–4): el plan sobre tu cuadrante real, dejas de empezar de cero en cada cambio de turno. 2 · Apretar (5–9): baja la grasa, suben las cargas y el fondo. 3 · Sostener (10–12): aprendes a ajustarlo tú solo cuando cambia el turno. <b>3 no negociables:</b> cuadrante y revisión cada semana, mínimo 3 sesiones caiga el turno que caiga, pasos diarios mínimos.</p>
+        <h4>Resuelve el miedo de la 2.3</h4>
+        <p class="say">"Antes me dijiste que te daba miedo [miedo literal]. Justo por eso lo planteamos así: [solución concreta]."</p>
+        <h4>Caso parecido</h4>
+        <p class="soft">Elige el que más se parezca a él. Los recuadros con borde discontinuo son para rellenar con <b>números reales</b> y permiso por escrito antes de usarlos.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Caso</th><th>Qué contar</th><th>Úsalo cuando el lead…</th></tr></thead>
+          <tbody>
+            <tr><td>Felipe, vigilante</td><td>−17 kg: de 111,2 a 94,2 kg trabajando de vigilante de seguridad.</td><td>Es vigilante o tiene mucho peso que perder.</td></tr>
+            <tr><td>Javi, camarero</td><td>No conseguía coger peso ni condición; quería ser Policía Nacional y lo logró. Tu primer cliente.</td><td>Trabaja en hostelería o prepara unas pruebas físicas.</td></tr>
+            <tr><td>Juanjo, vigilante</td><td>De 95,4 a 88,4 kg. Mismo trabajo que Felipe, distinto horario.</td><td>Dice que su turno es "peor" que el de los demás.</td></tr>
+            <tr><td>Pipe, se fue y volvió</td><td>Consiguió su cambio, lo dejó, probó solo con rutinas de amigos y volvió: le faltaba alguien pendiente.</td><td>Dice "esto ya lo hago yo solo" o "con ChatGPT".</td></tr>
+            <tr><td>Tu propia historia</td><td>De 70 a 90 kg, powerlifting, dieta extrema trabajando de albañil, atracones y perder el progreso. Hoy fuerte y corriendo sin ahogarte.</td><td>Cree que comer menos y entrenar más es la solución.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="say placeholder">"[Felipe o Pipe, con permiso]: trabajaba [turno]. Empezó con 111,2 kg y en [semanas] semanas llegó a 94,2. Lo que más le costó fue [x]."</p>
+        <p class="say placeholder">"[Cliente del −4,8 kg]: [trabajo y turno]. En [semanas] semanas bajó 4,8 kg y ahora está en 101,8."</p>
+
+        <h4>El precio: así se presenta</h4>
+        <p class="soft">Siempre en este orden. Mira tu nivel actual en la pestaña Clientes del CRM. Precios en <b>propuesta</b>: valídalos con Alberto antes de la primera llamada.</p>
+        <ol class="l">
+          <li><b>Primero el trimestre</b>, como la entrada normal: "Lo normal para empezar es el trimestre: las 12 semanas del método."</li>
+          <li><b>El semestre, como lo que recomiendas:</b> "Si quieres asegurarte de sostenerlo pasando por todos tus turnos y por el verano, el semestre te sale mejor que dos trimestres."</li>
+          <li><b>El año, como mejor valor</b>, si ves que va en serio.</li>
+          <li><b>Trimestre de conocido</b> solo si es antiguo cliente, amigo o conocido. No lo ofrezcas a nuevos.</li>
+        </ol>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Nivel</th><th>Trimestre</th><th>Trimestre conocido</th><th>Semestre</th><th>Año</th><th>Semestre en 2 pagos</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>300 €</td><td>250 €</td><td>500 €</td><td>850 €</td><td>265 + 265 €</td></tr>
+            <tr><td>1</td><td>360 €</td><td>300 €</td><td>600 €</td><td>1.020 €</td><td>315 + 315 €</td></tr>
+            <tr><td>2</td><td>430 €</td><td>360 €</td><td>720 €</td><td>1.225 €</td><td>380 + 380 €</td></tr>
+            <tr><td>3</td><td>520 €</td><td>430 €</td><td>865 €</td><td>1.470 €</td><td>455 + 455 €</td></tr>
+          </tbody>
+        </table></div>
+        <p class="say">"Las 12 semanas son [precio del trimestre]. Si quieres el semestre, son [precio del semestre], o dos pagos de [cuota]. ¿Cuál encaja contigo?"</p>
+        <p class="soft"><b>Dilo una vez y calla.</b> No lo justifiques ni lo rebajes. Cada venta cerrada, subes un nivel en el CRM.</p>
+        <h4>Cierre de bloque</h4>
+        <p class="say">"Hasta aquí lo importante. Ahora dime tú: ¿qué dudas te quedan, sobre cómo funciona, el pago o cuándo empezar?"</p>
+        <p class="soft">Y te callas. El primero que habla después de esta pregunta, pierde.</p>
+
+        <h3 class="ph">Fase 4 · Objeciones + Cierre (10 min)</h3>
+        <p class="soft">Nunca discutes ni te justificas. Preguntas. Cada objeción pasa por tres pasos:</p>
+        <ol class="l">
+          <li><b>Aclarar:</b> "¿A qué te refieres exactamente?"</li>
+          <li><b>Aislar:</b> "Quitando eso, ¿hay algo más que te frene para empezar hoy?"</li>
+          <li><b>Solucionar:</b> validas lo que siente y le das una salida concreta.</li>
+        </ol>
+        <div class="objs">
+          <div class="obj"><b>"Es mucho dinero"</b><span><span class="say">"¿Es que ahora mismo no lo tienes o que no tienes claro que valga lo que cuesta?"</span>Si es liquidez: "El precio no lo toco, pero el semestre lo puedes pagar en dos pagos." Si es valor: "¿Cuánto llevas gastado en gimnasio, suplementos y comida a deshoras sin resultado? Son [precio ÷ 12] € a la semana (25 € en el nivel 0) por un plan que no se rompe con tu turno y alguien pendiente cada semana." Nunca bajes el precio. Es la objeción que más te han puesto: llévala preparada.</span></div>
+          <div class="obj"><b>"Con mi turno no voy a poder"</b><span><span class="say">"¿Qué turno es el que más te cuesta?"</span>"Justo para eso está hecho: cada sesión tiene versión para antes del turno, después o día libre. Te pido 3 sesiones mínimas a la semana, no 6. Felipe y Juanjo eran vigilantes con horarios distintos y les funcionó a los dos."</span></div>
+          <div class="obj"><b>"Lo hago yo con ChatGPT o con rutinas de internet"</b><span><span class="say">"¿Cuánto tiempo llevas así? ¿Y qué tal te ha ido?"</span>"ChatGPT te da un plan, y está bien. Lo que no hace es revisarte cada semana ni cambiártelo cuando te cambian el turno. Pipe lo intentó solo con rutinas de amigos y volvió: le faltaba alguien pendiente."</span></div>
+          <div class="obj"><b>"Si como menos, ya adelgazo"</b><span><span class="say">"¿Cuántas veces lo has hecho? ¿Y qué pasó después?"</span>"Comer poquísimo trabajando a turnos acaba en hambre, en atracón el fin de semana y en perder músculo. A mí me pasó con la dieta de culturismo. Comerás a tu hora y bien, y bajará igual."</span></div>
+          <div class="obj"><b>"Me lo pienso"</b><span><span class="say">"Normal, es una decisión. ¿Qué es exactamente lo que tienes que pensar? Así lo vemos ahora juntos."</span>Casi siempre esconde precio, pareja o miedo a dejarlo otra vez. Aclara y aísla. Si sigue: "Cada cuadrante que pasa pensándolo es otro mes igual. Deja de jugar a la ruleta rusa con tu comida y tu entreno."</span></div>
+          <div class="obj"><b>"Lo tengo que hablar con mi pareja"</b><span>1. Valida: "Tiene todo el sentido." 2. Pregunta: "¿Es por el dinero o porque quieres que te apoye?" 3. Excluye: "Quitando eso un momento, ¿tú lo tienes claro?" 4. Ofrece un audio tuyo explicando el plan para que lo escuchen juntos y cierra día y hora concretos para la respuesta.</span></div>
+          <div class="obj"><b>"¿Es presencial?"</b><span>"Es online: el plan, las revisiones y el seguimiento. Precisamente por tus turnos: no dependes de cuadrar una hora conmigo en el gimnasio." [Confirmar si ofreces alguna sesión presencial.]</span></div>
+          <div class="obj"><b>"Lo dejo siempre"</b><span>"Por eso hay revisión cada semana y 3 no negociables. Si una semana de noches te sale mal, la ajustamos el lunes; no empiezas de cero."</span></div>
+        </div>
+        <h4>Señales de compra</h4>
+        <p class="soft">Si dice "¿cómo se paga?", "¿cuándo empiezo?" o "¿qué pasa si me cambian el turno a mitad?", deja de vender y pasa al cobro.</p>
+
+        <h4>Cobro</h4>
+        <p class="say">"Perfecto. Te paso ahora el enlace y nos quedamos un minuto hasta que te llegue la confirmación, ¿vale?"</p>
+        <p class="soft">No cuelgas hasta ver el pago confirmado.</p>
+
+        <div class="grid2">
+          <div class="card sand">
+            <h3>Si no se presenta</h3>
+            <ul class="l">
+              <li><b>A los 5 minutos:</b> "Buenas [nombre], te estoy esperando en la llamada. ¿Te ha liado el turno?"</li>
+              <li>Si responde, reagenda <b>una sola vez</b>, dentro de 1–2 días y a una hora que no le pille durmiendo.</li>
+              <li>Si no responde o falla otra vez, a seguimiento por DM (día 2, 7 y 14).</li>
+            </ul>
+          </div>
+          <div class="card sand">
+            <h3>Si no cierra en la llamada</h3>
+            <ul class="l">
+              <li><b>24 h:</b> audio por WhatsApp recordando su objetivo con sus palabras.</li>
+              <li><b>48 h:</b> el caso que más se le parece (Felipe, Javi o Juanjo): "esto es lo que te decía".</li>
+              <li><b>Día 5:</b> último mensaje con una fecha concreta para decidir.</li>
+              <li>Déjalo en el CRM como "Llamada hecha", con nota de su dolor y su objeción literal.</li>
+              <li>Guárdalo en contactos y en tu lista de difusión: verá tus Estados de WhatsApp a diario.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Post-cierre (las primeras 24 h marcan si llega motivado o con dudas)</h3>
+          <ul class="check-l">
+            <li>☐ Mensaje de bienvenida por WhatsApp el mismo día (mejor en audio).</li>
+            <li>☐ Guardado en contactos + añadido a tu lista de difusión.</li>
+            <li>☐ Checklist de inicio: <b>cuadrante de las próximas 2 semanas</b>, fotos, peso, qué come en cada turno, lesiones.</li>
+            <li>☐ Pedir <b>permiso por escrito</b> para usar sus fotos y su caso más adelante.</li>
+            <li>☐ Agendar la primera revisión semanal (día fijo).</li>
+            <li>☐ Pasarlo a <b>"Cliente"</b> en el CRM y <b>subir el nivel de precios</b>.</li>
+          </ul>
+        </div>
+
+        <div class="card dark">
+          <span class="label">Antes de cada llamada, recuerda</span>
+          <ul class="l">
+            <li>El silencio trabaja por ti.</li>
+            <li>El orden no se rompe.</li>
+            <li>No tienes que convencer a nadie. Si es para él, lo verá solo.</li>
+            <li>Habla como a un compañero de turno, no como un vendedor.</li>
+            <li>Tú perdiste el progreso por tu trabajo mil veces. Eso vale más que cualquier argumento.</li>
+          </ul>
+        </div>
+      </article>
+
+</main>
+
+<script>
+(function () {
+  function copy(text, btn) {
+    function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = "Copiar"; }, 1400); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  }
+  document.querySelectorAll(".say").forEach(function (p) {
+    var txt = p.textContent.trim();
+    var b = document.createElement("button"); b.type = "button"; b.className = "cpy"; b.textContent = "Copiar";
+    b.addEventListener("click", function () { copy(txt, b); });
+    p.insertBefore(b, p.firstChild);
+  });
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+})();
+</script>

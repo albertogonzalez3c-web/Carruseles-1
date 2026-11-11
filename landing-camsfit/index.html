@@ -1,0 +1,516 @@
+<title>CAMSFIT Sergio Cámara</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Sergio Cámara (CAMSFIT), experto en reprogramación metabólica: pierde grasa y mantenlo, con la comida de tu casa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: carta de venta larga en una columna; pruebas, app y oferta a ancho completo. Colores de la app CAMSFIT: piedra, arena y oro oliva. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --line: #dcd8ce;
+  --green: #7f6114;
+  --green-soft: #ddd9ce;
+  --yellow: #ddd9ce;
+  --chip: #edebe6;
+  --sand-line: #cbbf98;
+  --gold-text: #7a6225;
+  --f-display: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(34px, 5vw, 56px)/1.03 var(--f-display); font-stretch: 78%; letter-spacing: -.01em; }
+h3 { font: 700 20px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.label { font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--green); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+mark { background: linear-gradient(transparent 60%, var(--yellow) 60%); color: inherit; padding: 0 .04em; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--green); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-1px); background: #6b5110; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-ghost:hover { background: var(--white); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14px; }
+
+/* Cabecera */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { font: 900 17px/1 var(--f-display); font-stretch: 85%; letter-spacing: .05em; text-transform: uppercase; }
+.brand span { color: var(--green); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(28px, 5vw, 64px) clamp(48px, 7vw, 80px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(44px, 8vw, 100px)/.96 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; max-width: 14ch; }
+.hero .lede { color: var(--ink); font-size: clamp(19px, 2.2vw, 22px); max-width: 56ch; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { font: 500 13px/1 var(--f-mono); padding: 9px 12px; border-radius: 999px; background: var(--green-soft); color: #7a6225; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); text-decoration: none; color: inherit; }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--ink); margin-top: 3px; }
+.turn { margin-top: 28px; font: 800 clamp(28px, 4vw, 44px)/1.08 var(--f-display); font-stretch: 78%; }
+.turn em { font-style: normal; color: var(--green); }
+
+/* Mecanismo */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--green); letter-spacing: .1em; }
+.layer p { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.result-bar { margin-top: 12px; border-radius: 14px; background: var(--ink); color: var(--white); padding: 22px 24px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; justify-content: space-between; }
+.result-bar b { font: 800 26px/1.1 var(--f-display); font-stretch: 80%; }
+.result-bar span { color: #b9c2bc; font-size: 15px; }
+
+.base { background: var(--ink); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-bottom: 24px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); }
+.base h3 { font: 800 clamp(28px, 3.6vw, 40px)/1.05 var(--f-display); font-stretch: 78%; }
+.base p { color: #c9d1cc; max-width: 62ch; font-size: 17px; }
+.layers-head { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; margin-bottom: 12px; }
+.layers-head .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+.layers-head p { color: var(--soft); font-size: 16px; }
+
+.hero-grid { display: grid; gap: 32px; }
+.hero-photo { width: clamp(150px, 20vw, 240px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--white); box-shadow: 0 0 0 2px var(--green); }
+.case img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.about { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: start; }
+.about img { width: clamp(120px, 16vw, 180px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; object-fit: cover; }
+@media (max-width: 680px) { .hero-grid, .about { grid-template-columns: 1fr; } .hero-photo { grid-row: 1; } }
+
+h1, h2 { letter-spacing: -.025em !important; }
+mark { background: none; color: var(--gold-text); }
+.pills span { background: var(--chip); color: var(--gold-text); }
+.label { color: var(--gold-text); }
+.btn-ghost { background: var(--white); border: 0; color: var(--gold-text); }
+.btn-ghost:hover { background: var(--chip); }
+.offer-main { background: var(--green-soft); color: var(--ink); border: 1.5px solid var(--sand-line); }
+.offer-main .label { color: var(--gold-text); }
+.inc div { border-top: 1.5px solid var(--sand-line); }
+.inc span { color: var(--soft); }
+.result-bar { background: var(--green-soft); color: var(--ink); border: 1.5px solid var(--sand-line); }
+.result-bar span { color: var(--soft); }
+.day.key { background: var(--green-soft); color: var(--ink); border: 1.5px solid var(--sand-line); }
+.day.key .d, .day.key small { color: var(--gold-text); }
+.facts { border-top-color: var(--sand-line); }
+.sign::before { border-color: var(--sand-line); }
+.turn em { color: var(--gold-text); }
+.avatar { background: var(--chip); color: var(--gold-text); }
+.sticky-cta { background: rgba(232, 230, 225, .95); }
+.app-sec { background: var(--paper); }
+.collage { columns: 3 260px; column-gap: 22px; }
+.phone { break-inside: avoid; margin: 0 0 22px; display: grid; gap: 10px; }
+.collage .phone:nth-child(3) { margin-top: 72px; }
+.phone .screen { border-radius: 34px; border: 9px solid var(--ink); overflow: hidden; background: var(--paper); box-shadow: 0 18px 40px -22px rgba(28, 26, 23, .45); }
+.phone img { display: block; width: 100%; height: auto; }
+.phone figcaption { display: grid; gap: 2px; padding: 0 6px; }
+.phone figcaption b { font-size: 16px; }
+.phone figcaption span { color: var(--soft); font-size: 14.5px; line-height: 1.45; }
+@media (max-width: 680px) {
+  .collage { columns: auto; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; }
+  .phone { flex: 0 0 78%; margin: 0; scroll-snap-align: center; }
+  .collage .phone:nth-child(3) { margin-top: 0; }
+}
+
+.vsl { border-radius: 18px; overflow: hidden; background: var(--ink); aspect-ratio: 16 / 9; max-width: 100%; }
+.vsl video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cases-block .wall { columns: 4 230px; }
+section.cases-block + section, section + section.cases-block { border-top: 0; }
+
+.me-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: clamp(240px, 30vw, 360px); max-width: 100%; }
+.me-ba figure { margin: 0; display: grid; gap: 6px; }
+.me-ba img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; border-radius: 14px; max-width: 100%; }
+.me-ba figcaption { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); text-align: center; }
+.about .me-ba img { width: 100%; aspect-ratio: 3 / 4; border-radius: 14px; object-fit: cover; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 12px; }
+.case .big { font: 800 28px/1.05 var(--f-display); font-stretch: 78%; }
+.case blockquote { margin: 0; font-size: 16px; line-height: 1.6; }
+.case a.src { font: 500 12px/1 var(--f-mono); color: var(--soft); text-decoration: none; letter-spacing: .06em; text-transform: uppercase; }
+.case a.src:hover { color: var(--green); }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green-soft); color: #7a6225; display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.show-all { display: flex; justify-content: center; margin-top: 8px; }
+.show-all button { border: 0; cursor: pointer; font-family: inherit; }
+.jump { display: flex; justify-content: center; padding-block: 0 48px; }
+.jump a { padding: 14px 22px; border-radius: 999px; border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; background: var(--white); font-size: 16px; }
+.jump a:hover { background: var(--green-soft); }
+
+/* Oferta */
+.offer { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; }
+.offer-main { background: var(--green); color: var(--white); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 22px; align-content: start; }
+.offer-main .label { color: #cbbf98; }
+.offer-main h3 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--f-display); font-stretch: 78%; }
+.inc { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.inc div { display: grid; gap: 4px; border-top: 2px solid rgba(255,255,255,.55); padding-top: 12px; }
+.inc b { font-size: 17px; }
+.inc span { font-size: 15px; line-height: 1.5; color: #6b6862; }
+.week { display: grid; gap: 8px; align-content: start; }
+.day { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; align-items: center; }
+.day .d { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.day b { font-size: 15.5px; }
+.day small { display: block; color: var(--soft); font-size: 14px; }
+.day.key { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.day.key .d, .day.key small { color: #b9c2bc; }
+
+/* Comparativa */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+table { width: 100%; border-collapse: collapse; min-width: 600px; }
+th, td { text-align: left; padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
+thead th { border-top: 0; font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+thead th.us { color: #7a6225; background: var(--green-soft); }
+tbody th { font-weight: 700; width: 22%; }
+td { color: var(--soft); }
+td.us { color: var(--ink); font-weight: 600; background: var(--green-soft); }
+
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; text-align: center; font: 800 clamp(22px, 2.6vw, 28px)/1 var(--f-display); font-stretch: 75%; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: #d6ddd8; font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--yellow); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9aa59e; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--green-soft); color: #7a6225; }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+.step p { color: var(--soft); font-size: 16px; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final h2 { font-size: clamp(40px, 7vw, 84px); font-stretch: 72%; max-width: 15ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(248, 250, 248, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .offer { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .signs, .layers, .inc, .fit, .steps { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">CAMS<span>FIT</span></div>
+    <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+  </header>
+
+<div class="hero">
+    <!-- PASO 1 · Atención: llamar al cliente ideal -->
+    <div class="label">Para hombres de 30 a 50 con trabajos sedentarios y poco tiempo</div>
+    <!-- PASO 2 · Titular: avatar + resultado + plazo + sin sacrificio -->
+    <h1>Pierde grasa y <mark>mantenla</mark> en 3–4 meses, sin dejar de comer lo de casa.</h1>
+    <!-- PASO 3 · Subtitular: el mecanismo -->
+    <p class="lede">Lo hacemos con la reprogramación metabólica: un plan por fases que adapta tu cuerpo a nuevos hábitos para que el resultado no rebote. Pensado para vidas ocupadas.</p>
+    <!-- PASO 4 · VSL PENDIENTE: cuando Sergio grabe el vídeo, sustituir este comentario por
+         <div class="vsl"><video controls playsinline preload="metadata" poster="casos/vsl.jpg"><source src="casos/vsl.mp4" type="video/mp4"></video></div> -->
+    <div class="ctas">
+      <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg><span>Escríbeme por WhatsApp</span></a>
+      <a class="btn btn-ghost" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+    <p class="cta-note">El formulario son 2 minutos. Te respondo yo personalmente.</p>
+  </div>
+</div>
+
+<!-- PASO 5 · Cómo se consiguen los resultados -->
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Reprogramación metabólica</div>
+      <h2>Perder 20 kg de golpe no sirve si tu cuerpo no está preparado.</h2>
+    </div>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1</span><h3>Pierdes grasa sin rebote</h3><p>Con hábitos que puedes mantener y la comida que ya se hace en tu casa.</p></article>
+      <article class="layer"><span class="n">Fase 2</span><h3>Ganas fuerza y músculo</h3><p>El tejido que más energía gasta: tu cuerpo quema más incluso en reposo.</p></article>
+      <article class="layer"><span class="n">Fase 3</span><h3>Consolidas</h3><p>Tu cuerpo se adapta a los nuevos hábitos y el resultado se mantiene.</p></article>
+      <article class="layer"><span class="n">Cada semana</span><h3>Revisión en mi app</h3><p>Me mandas tu revisión y ajusto el plan a la fase en la que estás.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="app" class="app-sec">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:32px">
+      <div class="label">Mi app</div>
+      <h2>Todo tu plan, en tu bolsillo.</h2>
+      <p class="lede">Tienes tu propia app conmigo. Ahí ves qué entrenar y qué comer cada día, registras tu progreso y me mandas tu revisión semanal.</p>
+    </div>
+    <div class="collage">
+      <figure class="phone"><div class="screen"><img src="casos/app-1-inicio.jpg" alt="Pantalla de la app: Tu día" loading="lazy" width="600" height="1140"></div><figcaption><b>Tu día</b><span>Peso, pasos y el entreno que te toca hoy.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-2-entreno.jpg" alt="Pantalla de la app: Entreno guiado" loading="lazy" width="600" height="1140"></div><figcaption><b>Entreno guiado</b><span>Cada ejercicio con su técnica. Anotas peso, repeticiones y RIR.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-3-nutricion.jpg" alt="Pantalla de la app: Nutrición flexible" loading="lazy" width="600" height="1140"></div><figcaption><b>Nutrición flexible</b><span>Varias opciones por comida, con pesos en crudo o cocinado.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-4-revision.jpg" alt="Pantalla de la app: Revisión semanal" loading="lazy" width="600" height="1140"></div><figcaption><b>Revisión semanal</b><span>Me la mandas desde la app y ajusto tu plan.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-5-bienestar.jpg" alt="Pantalla de la app: Cómo te sientes" loading="lazy" width="600" height="1140"></div><figcaption><b>Cómo te sientes</b><span>Sueño, hambre, energía, estrés, digestión, motivación y fatiga.</span></figcaption></figure>
+      <figure class="phone"><div class="screen"><img src="casos/app-7-equivalencias.jpg" alt="Pantalla de la app: Equivalencias" loading="lazy" width="600" height="984"></div><figcaption><b>Equivalencias</b><span>Cambia un alimento por otro sin descuadrar el plan.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 6 · Prueba social: vídeos de casos (pendientes) y capturas de testimonios -->
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Casos de éxito</div>
+      <h2>Resultados de clientes.</h2>
+      <p class="lede">Más de 500 personas. Estos son algunos.</p>
+    </div>
+    <div class="wall">
+      <article class="case">
+        <img src="casos/alexander.jpg" alt="Alexander antes y después: de 100,8 a 80,4 kg" loading="lazy" width="719" height="812">
+        <div class="big">De 100,8 a 80,4 kg</div>
+        <p>Me escribió el 9 de febrero: “Peso 100 kg y quiero bajar la barriga y tener abdominales”. El 30 de septiembre pesaba 80,4 kg. Y esto es solo el principio.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Alexander</b><span>−20,4 kg en menos de 8 meses</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/unai-118-90.jpg" alt="Unai antes y después: de 118 kg a 90 kg" loading="lazy" width="430" height="304">
+        <div class="big">De 118 a 90 kg</div>
+        <p>De la cama de un hospital al mejor físico de su vida. Lo tenía complicado, pero es un guerrero.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">U</span><div><b>Unai</b><span>−28 kg</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/marc.jpg" alt="Marc antes y después tras perder 17 kg" loading="lazy" width="800" height="542">
+        <div class="big">−17 kg</div>
+        <p>Vino harto de no poder bajar de peso y de fallar. Hoy llevamos 17 kg menos y todo lo que ha aprendido por el camino.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">M</span><div><b>Marc</b><span>@tartaroviking</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/pablo.jpg" alt="Pablo antes y después: de 108 a 94,8 kg" loading="lazy" width="784" height="629">
+        <div class="big">−13 kg</div>
+        <p>De 108 a 94,8 kg, adaptando el plan cada semana a su vida. “Me lo estoy notando sobre todo en la ropa.”</p>
+        <div class="who"><span class="avatar" aria-hidden="true">P</span><div><b>Pablo</b><span>Cliente de CAMSFIT</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/nico.jpg" alt="Nico antes y después en 3 meses" loading="lazy" width="724" height="721">
+        <div class="big">Abdominales en 3 meses</div>
+        <p>“Yo es que no tengo tiempo y muchas responsabilidades.” Luego está Nico, que lo consiguió en 3 meses.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">N</span><div><b>Nico</b><span>Hombre con responsabilidades</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/denis.jpg" alt="Denis antes y después tras 4 meses" loading="lazy" width="800" height="800">
+        <div class="big">4 meses con Denis</div>
+        <p>No solo ha mejorado físicamente: ahora tiene la autoestima para ponerse tirantes. No hay mayor éxito que sentirse bien con uno mismo.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">D</span><div><b>Denis</b><span>4 meses de trabajo</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/jose.jpg" alt="José antes y después de frente, perfil y espalda" loading="lazy" width="800" height="788">
+        <div class="big">Otra persona en 3 meses</div>
+        <p>Malos hábitos, mala alimentación y entreno casi nulo. En 3 meses logramos el objetivo y tuvo que cambiar todo el armario.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>José</b><span>@legitcj_</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/toni.jpg" alt="Toni antes y después: de 108 kg el 10/01/24 a 95,15 kg el 24/05/24" loading="lazy" width="800" height="731">
+        <div class="big">De 108 a 95,15 kg</div>
+        <p>Estudiante de Marketing. Quería llegar a su objetivo para junio o julio. Lo cumplió en mayo.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">T</span><div><b>Toni</b><span>En 4 meses y medio</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/jean-alejandro-xavi.jpg" alt="Jean, Alejandro y Xavi antes y después tras 2 meses, 1 mes y 1 mes" loading="lazy" width="724" height="781">
+        <div class="big">2 meses, 1 mes y 1 mes</div>
+        <p>Los tres con un objetivo parecido y planes completamente distintos. Cada plan, hecho para cada uno.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jean, Alejandro y Xavi</b><span>Clientes de CAMSFIT</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/angel.jpg" alt="Ángel antes y después de perfil" loading="lazy" width="800" height="781">
+        <div class="big">El cambio de Ángel</div>
+        <p>Poco se habla del cambio físico de Ángel. Y no solo del corte de pelo.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">Á</span><div><b>Ángel</b><span>Cliente de CAMSFIT</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/eric.jpg" alt="Eric antes y después" loading="lazy" width="800" height="475">
+        <div class="big">Listo para la playa</div>
+        <p>Vaya trabajazo el de Eric. ¿Listo para la playa?</p>
+        <div class="who"><span class="avatar" aria-hidden="true">E</span><div><b>Eric</b><span>Cliente de CAMSFIT</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/atracones.jpg" alt="Pareja antes y después: comíamos bien pero había atracones" loading="lazy" width="439" height="321">
+        <div class="big">Adiós a los atracones</div>
+        <p>“Comíamos bien, pero había atracones. No sabíamos qué hacer para mejorar.” Ahora lo saben, y se nota.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Clientes de CAMSFIT</b><span>Cambio en pareja</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/comer-fuera.jpg" alt="Cliente antes y después tras la fase de déficit" loading="lazy" width="800" height="439">
+        <div class="big">Comer fuera sin miedo</div>
+        <p>Sale a comer con su pareja y aplica lo que ha aprendido. Terminó su déficit y ya empieza el volumen.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Del déficit al volumen</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/jorge.jpg" alt="Jorge antes y después de prepararse para competir" loading="lazy" width="800" height="799">
+        <div class="big">De volumen a la tarima</div>
+        <p>Empezó con un simple mensaje, con el sueño de competir y verse en tarima. Y está a punto de cumplirlo.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">J</span><div><b>Jorge</b><span>@jorgedenys_fitness</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/masa-muscular.jpg" alt="Cliente en fase de ganar masa muscular: de 81,8 a 87,1 kg" loading="lazy" width="800" height="1028">
+        <div class="big">+5,3 kg de músculo</div>
+        <p>Objetivo: ganar masa muscular. De 81,8 a 87,1 kg.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Fase de volumen</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/cambio-1.jpg" alt="Cliente antes y después" loading="lazy" width="585" height="583">
+        <div class="big">Cambio físico</div>
+        <p>Vive en una residencia con pensión completa y tenía molestias de hombro. Plan adaptado a su realidad.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Estudiante</span></div></div>
+      </article>
+      <article class="case">
+        <img src="casos/cambio-2.jpg" alt="Cliente antes y después" loading="lazy" width="800" height="390">
+        <div class="big">Cambio físico</div>
+        <p>Otro cambio de la destacada “Cambios físicos”.</p>
+        <div class="who"><span class="avatar" aria-hidden="true">C</span><div><b>Cliente de CAMSFIT</b><span>Cambio físico</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 7 · Historia y cómo descubrió el mecanismo -->
+<section id="quien-soy">
+  <div class="wrap about">
+    <div class="me-ba">
+      <figure><img src="casos/sergio-antes.jpg" alt="Sergio antes, cuando era sedentario" width="430" height="522" loading="lazy"><figcaption>Antes</figcaption></figure>
+      <figure><img src="casos/sergio-hoy.jpg" alt="Sergio Cámara hoy" width="430" height="522" loading="lazy"><figcaption>Hoy</figcaption></figure>
+    </div>
+    <div class="read stack">
+      <div class="label">Mi historia</div>
+      <h2>Soy Sergio Cámara, de CAMSFIT.</h2>
+      <p>Llevo más de 15 años entrenando y casi una década en el sector. En este tiempo he ayudado a <strong>más de 500 personas</strong>.</p>
+      <p>Soy experto en <strong>reprogramación metabólica</strong>: perder grasa y que el cuerpo se adapte para mantenerlo.</p>
+      <p>Elegí este enfoque por mi propia historia. Hubo una época en la que pasaba horas jugando al ordenador y era muy sedentario. Hoy, como entrenador online, sigo pasando 8 o 10 horas al día con el móvil y el ordenador, y me mantengo en forma gracias a esto. <strong>Un trabajo sedentario no tiene por qué significar un cuerpo sedentario.</strong></p>
+      <p>Hay muchísima información y casi toda se contradice. Mi trabajo es darte claridad y soluciones, con la máxima cercanía y desde lo humano: conozco a cada persona con la que trabajo y adapto el plan a su vida.</p>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso en 2 minutos.</h2>
+      <p class="lede">Rellena el formulario y lo reviso yo personalmente. Si encajamos, te escribo para empezar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn" id="formBtn" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 8 · Preguntas frecuentes -->
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Qué es la reprogramación metabólica?</summary><p>Adaptar tu cuerpo a nuevos hábitos por fases: primero perder grasa, después ganar fuerza y músculo y, por último, consolidar. Así el resultado se mantiene en el tiempo.</p></details>
+      <details><summary>Tengo muy poco tiempo. ¿Me sirve?</summary><p>Está pensado para eso. El plan se adapta a tu agenda y a un trabajo sedentario.</p></details>
+      <details><summary>¿Tengo que comer distinto que mi familia?</summary><p>No. Comes lo que se come en tu casa con las cantidades ajustadas, y tienes equivalencias en la app para los cambios.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso. Escríbeme por WhatsApp o rellena el formulario y te lo cuento.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 9 · Llamada a la acción -->
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Tu cambio empieza con una conversación.</h2>
+    <div class="ctas">
+      <a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2s.2-1.1.1-1.2-.2-.2-.5-.3Z"/></svg><span>Escríbeme por WhatsApp</span></a>
+      <a class="btn btn-ghost" href="https://form.jotform.com/243035338855056?utm_source=web&utm_medium=landing" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Sergio Cámara · CAMSFIT</span><span><a href="https://instagram.com/sergio_camsfit" target="_blank" rel="noopener">@sergio_camsfit</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn" href="https://wa.me/34697604268?text=Hola%20Sergio%2C%20vengo%20de%20tu%20web.%20Quiero%20informaci%C3%B3n%20sobre%20la%20asesor%C3%ADa." target="_blank" rel="noopener">Escríbeme por WhatsApp</a></div>
+
+<script>
+(function () {
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Alojada en su dominio, el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = fb.href; f.title = fb.textContent; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+  var extras = document.querySelectorAll(".wall .extra");
+  var b = document.getElementById("showAll");
+  if (b) {
+    if (!extras.length) b.parentNode.hidden = true;
+    else {
+      b.textContent = b.dataset.label + " (+" + extras.length + ")";
+      b.addEventListener("click", function () { extras.forEach(function (el) { el.hidden = false; }); b.parentNode.hidden = true; });
+    }
+  }
+})();
+</script>

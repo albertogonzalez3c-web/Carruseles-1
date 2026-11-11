@@ -1,0 +1,341 @@
+<title>Xavier Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f4f6fa;
+  --white: #ffffff;
+  --ink: #0f1d33;
+  --soft: #4f5b6e;
+  --line: #d6dce7;
+  --chip: #e8edf5;
+  --navy: #15315b;
+  --accent: #1f56c9;
+  --accent-text: #1a47a8;
+  --accent-dark: #f6c945;
+  --yellow: #f6c945;
+  --on-dark: #cfd8e6;
+  --f-head: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 700; font-size: clamp(34px, 5.4vw, 60px); line-height: 1.02; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 700; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.08; }
+h3 { font-weight: 600; font-size: 19px; line-height: 1.15; letter-spacing: .01em; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 8px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--navy); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--yellow); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: var(--on-dark); }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #fff2c7; }
+.card.accent ul.l, .card.accent ol.l, .card.accent .soft { color: #eaf0ff; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+.card.yel { background: #fff6d6; box-shadow: inset 0 0 0 1px #ecd27a; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: rgba(255,255,255,.08); color: var(--white); border-left-color: var(--yellow); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: var(--yellow); color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: rgba(255,255,255,.1); color: var(--yellow); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tbc { background: #fff1b8; color: #6b5200; border-radius: 3px; padding: 0 4px; font-weight: 700; font-size: .92em; }
+.card.dark .tbc, .card.accent .tbc { background: var(--yellow); color: var(--navy); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #e5edfc; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent); --nm-at: var(--accent-text); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(21,49,91,.05); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .88; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--navy); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-nn span:first-of-type { background: var(--yellow); color: var(--navy); }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--yellow); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+/* Layout: el embudo del plan de Alberto (contenido → atención → confianza → conversaciones → WhatsApp → llamadas → clientes): objetivo diario, landing a WhatsApp, Follow Me Ads, las 4 fuentes de conversaciones (prospección, círculo cercano, Estados, historias), mensajes, camino a la llamada, seguimiento y rutina. */
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: var(--white); display: grid; place-items: center; font: 700 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path span.hot { background: var(--yellow); box-shadow: none; color: var(--navy); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 700 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--yellow); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 700 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: var(--on-dark); font-size: 14px; }
+.msgs { display: grid; gap: 10px; }
+.msgs .m { background: var(--white); border-radius: 6px; padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 0 0 0 1px var(--line); }
+.msgs .m .row, .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msgs .m p { font-weight: 600; font-size: 15.5px; }
+.ad { display: grid; gap: 10px; }
+.ad .beat { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ad .beat small { font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.ad .beat p { font-size: 15px; }
+.ad .beat p + p { margin-top: 4px; color: var(--soft); font-size: 14px; }
+.ad .hooks { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rules div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.rules b { font: 700 24px/1.1 var(--f-head); }
+.rules span { color: var(--soft); font-size: 14px; }
+.yesno { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.yes { box-shadow: inset 0 0 0 2px #2f7a46 !important; }
+.no { box-shadow: inset 0 0 0 2px #b3261e !important; }
+.yes .label { color: #2f7a46; } .no .label { color: #b3261e; }
+.refs { display: grid; gap: 8px; }
+.refs .r { display: grid; grid-template-columns: 34px minmax(0, 1fr) minmax(0, 1fr); gap: 12px; align-items: start; background: var(--white); border-radius: 6px; padding: 12px 14px; box-shadow: inset 0 0 0 1px var(--line); }
+.refs .r p { font-size: 14.5px; color: var(--soft); }
+.refs .r b { color: var(--ink); }
+@media (max-width: 900px) { .routine, .kpis, .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .rules, .yesno { grid-template-columns: 1fr; } .ad .beat { grid-template-columns: 1fr; gap: 4px; } .refs .r { grid-template-columns: 34px minmax(0, 1fr); } .refs .r p:last-child { grid-column: 2; } }
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Xavier García · JAVIFITTRAINER · Parte 4 · Embudo</span>
+    <h1>Menos contenido improvisado. Más <em>conversaciones de calidad</em>.</h1>
+    <p class="soft" style="font-size:18px">El objetivo del plan: que cada pieza de contenido acabe en una conversación, cada conversación buena en WhatsApp y cada WhatsApp bueno en una llamada. Tú abres las conversaciones; Claude supervisa la captación, monta la landing y las creatividades y revisa los números cada semana.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Ayudo a hombres +40 y padres de familia a recuperar su físico, energía y confianza sin dejar de lado su trabajo ni su familia.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Reconstrucción Física y Metabólica +40</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Fuerza adaptada</b><span>2–3 sesiones de fuerza de 45–60 min, ajustadas a su edad, sus molestias y su agenda. Nace de "tenía dolores al levantarme".</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer sin vivir a dieta</b><span>Comida normal, ordenada y con proteína en cada plato, compatible con las comidas en familia. Nace de "engordé".</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Energía y hábitos con seguimiento</b><span>Sueño, pasos, estrés y una revisión cada semana conmigo. Nace de "perdí energía" y "volví a sentirme vivo, más presente".</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Mes 1</span><b>Reactivar</b><p><em>Qué pasa:</em> El cuerpo deja de doler al levantarse, vuelve la rutina y la energía empieza a subir.</p><p><em>Qué haces tú:</em> 2–3 sesiones de fuerza, proteína en cada comida y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 2–3</span><b>Reconstruir</b><p><em>Qué pasa:</em> Baja la barriga, se recupera músculo y fuerza, y se nota en la ropa y en el espejo.</p><p><em>Qué haces tú:</em> Subes cargas cada semana y ajustas comida y descanso a tus resultados.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Consolidar</b><p><em>Qué pasa:</em> Mantienes lo conseguido sin depender de nadie y te conviertes en el ejemplo en casa.</p><p><em>Qué haces tú:</em> Haces tuyo el sistema para llegar a los 50 y a los 60 en tu mejor versión.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>2–3 sesiones de fuerza a la semana</span><span>Proteína en cada comida</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: "Engordé, perdí energía, tenía dolores al levantarme y mi confianza se fue al suelo." Hoy, con 48 años: "Volví a sentirme vivo. Más fuerte. Más sano. Más presente. Orgulloso del ejemplo que doy en casa."</p><p class="nm-line">Cumplir 40 o 50 no significa resignarse a perder el físico, la fuerza o la vitalidad.</p></section>
+
+
+  <section class="sec" aria-labelledby="h-flow">
+    <header><span class="label">El recorrido completo</span><h2 id="h-flow">De un reel a un cliente, en 7 pasos.</h2></header>
+    <div class="path"><span>Contenido</span><i>→</i><span>Atención</span><i>→</i><span>Confianza</span><i>→</i><span class="hot">Conversaciones</span><i>→</i><span class="hot">WhatsApp</span><i>→</i><span class="hot">Llamadas</span><i>→</i><span>Clientes</span></div>
+  </section>
+
+  <section class="card dark" aria-label="Tu objetivo diario">
+    <span class="label">Tu objetivo, cada día</span>
+    <div class="big">100</div>
+    <h2>conversaciones al día, en 2 rondas de 50. Una a una y personalizadas.</h2>
+    <div class="kpis">
+      <div><b>50</b><span>Ronda 1 · mañana o pausa</span></div>
+      <div><b>50</b><span>Ronda 2 · tarde, antes de llegar a casa</span></div>
+      <div><b>700</b><span>A la semana</span></div>
+      <div><b>5–10 €</b><span>Al día por anuncio de seguidores</span></div>
+    </div>
+    <p class="soft">Nada de mensajes masivos ni invasivos: cada mensaje lleva su nombre o algo de su perfil. Claude mira cada semana en el reporte: conversaciones iniciadas, respuestas, cualificados, seguimientos, llamadas agendadas, ventas y coste por seguidor.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-wa">
+    <header><span class="label">Landing → WhatsApp</span><h2 id="h-wa">La landing hace una sola cosa: que te escriba por WhatsApp.</h2><p class="soft">Enlace de la bio, de Facebook, de los Estados y de la descripción de YouTube: siempre la misma landing. El botón abre WhatsApp con el mensaje ya escrito. Número <span class="tbc">[pendiente]</span>.</p></header>
+    <div class="g2">
+      <div class="card">
+        <div class="row"><span class="label">Mensaje predefinido del botón</span><button class="cp" type="button" data-cp="Hola Xavier, vengo de tu web. Quiero recuperar mi mejor versión. Tengo __ años, hijos y poco tiempo. ¿Me cuentas cómo funciona?">Copiar</button></div>
+        <div class="say">"Hola Xavier, vengo de tu web. Quiero recuperar mi mejor versión. Tengo __ años, hijos y poco tiempo. ¿Me cuentas cómo funciona?"</div>
+        <div class="row"><span class="label">Respuesta automática de WhatsApp Business</span><button class="cp" type="button" data-cp="¡Hola! Soy Xavier. Gracias por escribirme. Te contesto yo personalmente en cuanto pueda (normalmente el mismo día). Mientras, cuéntame: ¿cuántos años tienes y qué es lo que más te gustaría cambiar: energía, barriga, fuerza…?">Copiar</button></div>
+        <div class="say">"¡Hola! Soy Xavier. Gracias por escribirme. Te contesto yo personalmente en cuanto pueda (normalmente el mismo día). Mientras, cuéntame: ¿cuántos años tienes y qué es lo que más te gustaría cambiar: energía, barriga, fuerza…?"</div>
+      </div>
+      <div class="card accent">
+        <span class="label">Cuando entra un WhatsApp</span>
+        <ul class="l">
+          <li><b>Respuesta tuya el mismo día</b>, mejor en audio de 30–60 segundos: cercanía de padre a padre.</li>
+          <li><b>Al CRM</b> con origen "Landing / WhatsApp".</li>
+          <li><b>Cualificas</b> con 3–5 preguntas (abajo) e <b>invitas a la llamada</b> con dos opciones de día.</li>
+          <li><b>Le pides que te guarde</b> el número: así ve tus Estados.</li>
+          <li><b>Claude comprueba cada semana</b> que el botón funciona en móvil y que el mensaje llega bien.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ads">
+    <header><span class="label">Follow Me Ads · anuncios de seguidores con tus mejores vídeos</span><h2 id="h-ads">No buscamos seguidores por número: buscamos padres que puedan ser clientes.</h2><p class="soft">Claude elige los vídeos con <b>dolor concreto, identificación inmediata, tu imagen y tu autoridad, y llamada a seguir</b>. Se promocionan como Reels con objetivo visitas al perfil. Se sube la inversión poco a poco según el coste por seguidor cualificado, las conversaciones y las oportunidades que traen.</p></header>
+    <div class="rules">
+      <div><b>5–10 €/día</b><span>Por anuncio. A los 2 días valoras.</span></div>
+      <div><b>&lt; 1 €</b><span>Por seguidor: se queda y escalas hacia 10 €/día.</span></div>
+      <div><b>1–1,5 €</b><span>Cambias el gancho (usa los 3 de cada guion).</span></div>
+      <div><b>&gt; 1,5 €</b><span>A los 2 días: lo cortas.</span></div>
+      <div><b>España · +25 años</b><span>Hombres y mujeres no se filtran por defecto: deja que el vídeo filtre al padre +40 <span class="tbc">[confirmar con Alberto si se segmenta a hombres]</span>.</span></div>
+      <div><b>Normas de Meta</b><span>Nunca "¿Tienes más de 40…?" ni "tu barriga": primera persona o "la mayoría de padres que entreno…". En la landing sí puede ir la pregunta.</span></div>
+    </div>
+    <div class="card chip"><span class="label">Además del coste por seguidor, Claude mira cada semana</span><ul class="l"><li><b>Seguidores cualificados:</b> de los nuevos, cuántos son hombres +35 con pinta de padre/profesional (revisión rápida de 20 perfiles).</li><li><b>Conversaciones</b> abiertas con seguidores que llegaron por el anuncio y cuántas pasan a WhatsApp.</li><li><b>Oportunidades:</b> llamadas agendadas con origen "Anuncio de seguidores" en el CRM.</li><li>Se sube la inversión solo en el anuncio que trae conversaciones, no en el que trae más seguidores baratos.</li></ul></div>
+    <div class="msgs">
+      <article class="card ad"><span class="badge">Anuncio 1 · "Así estaba antes"</span><p class="soft">Tu historia: el ángulo más fuerte.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Engordé, perdí energía y me levantaba con dolores. Y era padre."</p><p>Texto: ASÍ ESTABA ANTES · Clip: tu foto de antes en el espejo, corte a ti entrenando hoy.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Mi confianza se fue al suelo. Lo arreglé sin dejar de lado a mi familia ni mi trabajo: fuerza dos o tres días a la semana, comer normal y dormir mejor. Hoy, con 48 años, estoy más fuerte, más sano y más presente. Y orgulloso del ejemplo que doy en casa."</p><p>Texto: 2–3 DÍAS DE FUERZA · COMER NORMAL · DORMIR → 48 AÑOS · Clips: entreno pesado, cocinando, caminando, tú mirando a cámara.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme si quieres recuperar tu físico y tu energía siendo padre."</p><p>Texto: SÍGUEME · @javifitrainer</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"No siempre estuve así. Te cuento qué hice a los cuarenta y tantos."</li><li>"Lo que más me dolía no era la barriga: era llegar a casa sin energía."</li><li>"Tengo 48 años y estoy mejor que a los 35. Esto es lo que cambié."</li></ol></div></article>
+      <article class="card ad"><span class="badge">Anuncio 2 · "El error de entrenar como a los 20"</span><p class="soft">Indignación controlada con el error del sector.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "El mayor error que veo en padres de más de 40: entrenar como si tuvieran 20."</p><p>Texto: EL ERROR · Clip: alguien haciendo un circuito caótico (o tú, exagerado), corte a ti con técnica limpia.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Seis días, al fallo, sin dormir y a dieta de hambre. Dura tres semanas y te deja más cansado. Lo que funciona a esta edad es más inteligente: fuerza dos o tres días, progresando poco a poco, proteína en cada comida y dormir. Menos horas, mejores resultados."</p><p>Texto: 6 DÍAS AL FALLO ✕ → 2–3 DÍAS CON CABEZA ✓ · Clips: sentadilla controlada, libreta, plato con proteína.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para entrenar con cabeza después de los 40."</p><p>Texto: SÍGUEME · @javifitrainer</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"A los 45 no necesitas entrenar más. Necesitas entrenar mejor."</li><li>"Me indigna que a un padre de 45 le vendan la rutina de uno de 20."</li><li>"La mayoría de padres que entreno venían de hacer esto mal."</li></ol></div></article>
+      <article class="card ad"><span class="badge">Anuncio 3 · "El ejemplo en casa"</span><p class="soft">Tu diferencia: la familia como motor.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Mis hijos no hacen lo que les digo. Hacen lo que me ven hacer."</p><p>Texto: EL EJEMPLO EN CASA · Clip: tú atándote las zapatillas en casa por la mañana (sin enseñar a los niños).</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Durante años me dejé para el final. Trabajo, casa, todos antes que yo. Hasta que entendí que cuidarme también era cuidar de ellos. No hace falta vivir en el gimnasio: dos o tres sesiones de fuerza, comer normal y dormir. Hoy llego a casa con energía."</p><p>Texto: TODOS ANTES QUE YO ✕ → 2–3 DÍAS PARA MÍ ✓ · Clips: entreno corto, caminando, cocinando, llegando a casa.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme si eres padre y quieres volver a sentirte fuerte."</p><p>Texto: SÍGUEME · @javifitrainer</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Cuidarme también es cuidar de mi familia. Tardé años en entenderlo."</li><li>"Ser padre no significa abandonar tu físico."</li><li>"Llegaba a casa agotado. Hoy llego con energía. Esto cambió."</li></ol></div></article>
+    </div>
+    <p class="soft" style="font-size:14px">Subtítulos siempre. Antes y después: en anuncios de Meta se evita comparar cuerpos; la foto de antes va solo en el gancho orgánico o se sustituye por tu clip de hoy si Meta lo rechaza.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-pros">
+    <header><span class="label">A · Prospección en frío · 5 perfiles de referencia</span><h2 id="h-pros">Donde ya está tu cliente comentando.</h2><p class="soft">En la semana 1, Claude y tú elegís 5 cuentas (una por tipo). Analizáis su audiencia y sus comentarios y abrís conversaciones individuales y personalizadas con quien encaja. Sin masivos, sin copiar y pegar a ciegas.</p></header>
+    <div class="refs">
+      <div class="r"><span class="n">1</span><p><b>Hombres +40</b><br>Cuentas de entrenamiento o estilo de vida para hombres de 40 a 55. <span class="tbc">[cuenta a elegir]</span></p><p>Busca: comentarios tipo "a mi edad ya cuesta", "yo con 45 igual".</p></div>
+      <div class="r"><span class="n">2</span><p><b>Padres</b><br>Cuentas de paternidad, conciliación o "papás" con audiencia masculina. <span class="tbc">[cuenta a elegir]</span></p><p>Busca: padres que hablan de cansancio, falta de tiempo, "no llego a todo".</p></div>
+      <div class="r"><span class="n">3</span><p><b>Transformaciones masculinas</b><br>Cuentas que publican antes/después de hombres adultos. <span class="tbc">[cuenta a elegir]</span></p><p>Busca: "ojalá yo", "¿cuánto tardaste?", "yo tengo que empezar".</p></div>
+      <div class="r"><span class="n">4</span><p><b>Fitness para hombres ocupados</b><br>Rutinas cortas, entrenar en casa, "30 minutos". <span class="tbc">[cuenta a elegir]</span></p><p>Busca: quien pregunta por rutinas cortas o dice que no tiene tiempo.</p></div>
+      <div class="r"><span class="n">5</span><p><b>Salud y composición corporal en adultos</b><br>Divulgación seria de salud, metabolismo, grasa abdominal. <span class="tbc">[cuenta a elegir]</span></p><p>Busca: dudas sobre barriga, metabolismo, "a los 40 no adelgazo".</p></div>
+    </div>
+    <div class="g2">
+      <div class="card"><h3>Cómo analizar cada cuenta (20 minutos, una vez)</h3><ul class="l"><li>Mira sus 10 últimas publicaciones con más comentarios.</li><li>Apunta las frases que se repiten en los comentarios: son tus ganchos.</li><li>Abre 10 perfiles de quienes comentan: ¿hombre +35, padre, perfil real? Esos son tu público.</li><li>Guarda las 5 cuentas en una colección y vuelve a ellas cada día en la ronda.</li></ul></div>
+      <div class="card"><h3>Cómo escribir</h3><ul class="l"><li>Primero interactúa: un like y un comentario con aportación en su comentario o en su perfil.</li><li>Después, un mensaje que mencione lo que dijo: "Vi tu comentario en el vídeo de X sobre que a los 45 ya cuesta…"</li><li>Pregunta, no vendas. Nunca un enlace en el primer mensaje.</li><li>Si no responde, una vez más a los 2 días y lo dejas.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-circ">
+    <header><span class="label">B · Círculo cercano, ayuntamiento y carreras</span><h2 id="h-circ">Tu red de confianza, sin cruzar ninguna línea.</h2><p class="soft">Contactos, conocidos, relaciones personales, profesionales y deportivas. Tu vínculo con el ayuntamiento y las carreras te da visibilidad y colaboraciones, nunca datos.</p></header>
+    <div class="yesno">
+      <div class="card yes"><span class="label">Sí</span><ul class="l"><li><b>Tus contactos personales</b> del móvil, amigos, padres del colegio, compañeros de tu deporte: mensaje personal contando lo que haces ahora.</li><li><b>Colaboraciones con la organización de carreras</b> acordadas por escrito: charla o calentamiento antes de la salida, stand, sorteo de una valoración gratuita para quien se acerque.</li><li><b>Eventos y visibilidad:</b> fotos y vídeos tuyos en las carreras (con permiso de quien salga) para tus redes.</li><li><b>Pedir recomendaciones:</b> "¿Conoces a algún padre de 40 y tantos que quiera ponerse en forma? Le regalo una primera llamada."</li></ul></div>
+      <div class="card no"><span class="label">No, nunca</span><ul class="l"><li><b>Bases de datos municipales,</b> listados de vecinos o de servicios.</li><li><b>Correos o teléfonos obtenidos por tu cargo</b> en el ayuntamiento.</li><li><b>Listados de inscritos en carreras</b> para escribirles por privado.</li><li><b>Datos personales sin base legal</b> (sin consentimiento o sin relación previa).</li><li><b>Promocionar tu servicio desde canales oficiales</b> o en tu papel público. Comprueba si tu cargo tiene incompatibilidades <span class="tbc">[confirmar]</span>.</li></ul></div>
+    </div>
+    <div class="msgs">
+      <div class="m"><div class="row"><span class="badge">Mensaje a un contacto personal</span><button class="cp" type="button" data-cp="¡Hola {n}! Te escribo porque igual no lo sabes: ahora ayudo a padres de más de 40 a recuperar su físico y su energía sin dejar de lado trabajo ni familia. Si conoces a alguien al que le pueda venir bien (o eres tú 😄), le regalo una primera llamada para ver su caso.">Copiar</button></div><p>"¡Hola {n}! Te escribo porque igual no lo sabes: ahora ayudo a padres de más de 40 a recuperar su físico y su energía sin dejar de lado trabajo ni familia. Si conoces a alguien al que le pueda venir bien (o eres tú 😄), le regalo una primera llamada para ver su caso."</p></div>
+      <div class="m"><div class="row"><span class="badge">A quien se acerca en una carrera o evento</span><button class="cp" type="button" data-cp="Encantado de conocerte, {n}. Si quieres, te escribo por WhatsApp y te paso la rutina de 20 minutos que te comentaba. ¿Me das tu número o me escribes tú a este?">Copiar</button></div><p>"Encantado de conocerte, {n}. Si quieres, te escribo por WhatsApp y te paso la rutina de 20 minutos que te comentaba. ¿Me das tu número o me escribes tú a este?" (él decide; nunca tomas su número de un listado).</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Estados de WhatsApp e historias">
+    <div class="card accent">
+      <span class="label">C · Estados de WhatsApp · todos los días</span>
+      <h3>Todo lo relevante, adaptado a Estados. Y conversación con quien muestra interés.</h3>
+      <ul class="l">
+        <li><b>3–5 Estados al día:</b> reels, transformaciones, historias, entrenos, reflexiones, testimonios (con permiso) y un CTA.</li>
+        <li><b>CTA dos veces por semana:</b> "Esta semana abro 2 plazas para padres +40. Respóndeme PLAN."</li>
+        <li><b>Solo conversas con quien responde, reacciona o pregunta.</b> Ver un Estado no es consentir publicidad: no escribas en frío a todo el que lo ve.</li>
+        <li><b>Listas de difusión</b> solo con quien te ha dado su número y ha aceptado recibir tus mensajes; quien pida no recibir más, fuera de la lista.</li>
+        <li>Cada respuesta a un Estado entra al CRM con origen "Estado de WhatsApp".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">D · Historias de Instagram · todos los días (6–10)</span>
+      <ul class="l">
+        <li><b>Mañana · vida personal y familiar:</b> tu desayuno, salir a entrenar, tu día (sin enseñar a tus hijos sin permiso).</li>
+        <li><b>Mediodía · entreno y autoridad:</b> un ejercicio, una corrección, un dato educativo de 15 segundos.</li>
+        <li><b>Tarde · historia y prueba:</b> tu antes y después, un testimonio con permiso.</li>
+        <li><b>Noche · conversación:</b> encuesta o caja de preguntas ("¿qué te cuesta más: tiempo, energía o comer?").</li>
+        <li><b>Martes y viernes · CTA:</b> secuencia de 5 historias que acaba en "escríbeme PLAN".</li>
+        <li><b>Responder a todos</b> y llevar a WhatsApp o a la llamada a los cualificados.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msgs">
+    <header><span class="label">Mensajes de apertura · cópialos y personalízalos</span><h2 id="h-msgs">De padre a padre, corto y sin vender en el primer mensaje.</h2><p class="soft">Cambia {n} por su nombre y añade algo de su perfil. Habla como entrenador: preguntas concretas, no "¿qué tal?".</p></header>
+    <div class="msgs">
+      <div class="m"><div class="row"><span class="badge">Bienvenida a nuevo seguidor</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿ahora mismo estás entrenando o es de esas épocas en las que el trabajo y la familia no dejan hueco?">Copiar</button></div><p>"¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿ahora mismo estás entrenando o es de esas épocas en las que el trabajo y la familia no dejan hueco?"</p></div>
+      <div class="m"><div class="row"><span class="badge">Respuesta a historia o Estado</span><button class="cp" type="button" data-cp="Te ha tocado, ¿eh? 😄 ¿A ti te pasa también o lo tienes controlado?">Copiar</button></div><p>"Te ha tocado, ¿eh? 😄 ¿A ti te pasa también o lo tienes controlado?"</p></div>
+      <div class="m"><div class="row"><span class="badge">Comentario en un perfil de referencia</span><button class="cp" type="button" data-cp="Hola {n}, vi tu comentario en [cuenta] sobre que a partir de los 40 cuesta más. Totalmente. ¿Tú ahora mismo entrenas algo o lo tienes aparcado?">Copiar</button></div><p>"Hola {n}, vi tu comentario en [cuenta] sobre que a partir de los 40 cuesta más. Totalmente. ¿Tú ahora mismo entrenas algo o lo tienes aparcado?"</p></div>
+      <div class="m"><div class="row"><span class="badge">Energía</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Por curiosidad: de lo que más le cuesta a la mayoría de padres que entreno (energía, barriga o encontrar tiempo), ¿qué es lo que más te pesa a ti?">Copiar</button></div><p>"¡Buenas, {n}! Por curiosidad: de lo que más le cuesta a la mayoría de padres que entreno (energía, barriga o encontrar tiempo), ¿qué es lo que más te pesa a ti?"</p></div>
+      <div class="m"><div class="row"><span class="badge">Con tu historia</span><button class="cp" type="button" data-cp="Te escribo porque hace unos años yo engordé, perdí energía y me levantaba con dolores, con trabajo y familia. Hoy, con 48, estoy mejor que nunca. ¿Tú en qué punto estás?">Copiar</button></div><p>"Te escribo porque hace unos años yo engordé, perdí energía y me levantaba con dolores, con trabajo y familia. Hoy, con 48, estoy mejor que nunca. ¿Tú en qué punto estás?"</p></div>
+      <div class="m"><div class="row"><span class="badge">Rutina 20 (gancho)</span><button class="cp" type="button" data-cp="¡Hola {n}! Tengo una rutina de 20 minutos pensada para padres que no tienen tiempo. Si te la paso, ¿la harías esta semana?">Copiar</button></div><p>"¡Hola {n}! Tengo una rutina de 20 minutos pensada para padres que no tienen tiempo. Si te la paso, ¿la harías esta semana?"</p></div>
+      <div class="m"><div class="row"><span class="badge">Reactivar a quien ya habló contigo</span><button class="cp" type="button" data-cp="¡{n}! ¿Cómo va? Me dijiste que en cuanto pasara [lo que fuera] te ponías. ¿Sigue en pie o lo dejamos para después de Navidad, como todos los años? 😉">Copiar</button></div><p>"¡{n}! ¿Cómo va? Me dijiste que en cuanto pasara [lo que fuera] te ponías. ¿Sigue en pie o lo dejamos para después de Navidad, como todos los años? 😉"</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-path">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-path">De "hola" a llamada en 5 pasos.</h2></header>
+    <div class="path"><span>1 · Abrir</span><i>→</i><span>2 · Conectar</span><i>→</i><span>3 · Cualificar</span><i>→</i><span class="hot">4 · Pasar a WhatsApp</span><i>→</i><span class="hot">5 · Llamada</span></div>
+    <div class="g2">
+      <div class="card"><h3>Preguntas para cualificar (3–5)</h3><ul class="l"><li>"¿Cuántos años tienes y a qué te dedicas?"</li><li>"¿Tienes hijos? ¿Cómo es tu semana: a qué hora sales de trabajar?"</li><li>"¿Qué es lo que más te gustaría cambiar: energía, barriga, fuerza, dolores?"</li><li>"¿Has intentado algo antes? ¿Qué pasó?"</li><li>"Del 1 al 10, ¿cuánto te importa cambiarlo ya?"</li><li>Si pregunta "¿cuánto cobras?": "Depende de tu caso. Te lo explico en una llamada de 20–30 minutos y te digo qué haría contigo."</li></ul></div>
+      <div class="card"><h3>La invitación</h3><div class="say">"Por lo que me cuentas, estás justo donde estaba yo: trabajo, familia y tú el último de la lista. Si quieres, seguimos por WhatsApp y lo vemos en una llamada de 30 minutos: te digo qué haría en tu caso. ¿Te va mejor mañana o pasado?"</div><p class="soft">Siempre dos opciones, como máximo a 2–3 días vista. Cualificado = +35, quiere cambiar ya (7 o más sobre 10) y puede invertir. Si no encaja, se le da la Rutina 20 y se queda en Estados.</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Seguimiento y registro">
+    <div class="card">
+      <span class="label">E · Seguimiento si no responde</span>
+      <ul class="l">
+        <li><b>Día 2:</b> "¿Sigue en pie lo de ponerte en serio o lo dejamos para 'cuando tenga tiempo'?"</li>
+        <li><b>Día 7:</b> un audio corto con un consejo concreto para su caso o tu historia.</li>
+        <li><b>Día 14:</b> "Entiendo que ahora no es el momento. Cuando quieras, aquí estoy. Cumplir 40 no es resignarse."</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <span class="label">Registro comercial · en el CRM, cada día</span>
+      <ul class="l">
+        <li><b>Conversaciones iniciadas</b> (total del día, en el reporte) y cada persona que responde, al CRM.</li>
+        <li><b>Respuestas → Cualificados → Llamadas agendadas → Llamadas hechas → Ventas:</b> son las etapas del CRM.</li>
+        <li><b>Seguimientos</b> de los días 2/7/14 marcados en cada ficha.</li>
+        <li>Lo que no está en el CRM, no existe. Claude lo revisa el domingo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Cinco bloques. Todos los días.</h2></header>
+    <div class="routine">
+      <div><small>Mañana</small><b>Ronda 1</b><span>50 conversaciones: nuevos seguidores, historias, perfiles de referencia.</span></div>
+      <div><small>Mediodía</small><b>Contenido</b><span>Publicar lo que Claude ha dejado listo + historias.</span></div>
+      <div><small>Tarde</small><b>Ronda 2</b><span>Otras 50, empezando por quien respondió a Estados.</span></div>
+      <div><small>Noche</small><b>WhatsApp</b><span>Responder, cualificar, seguimientos 2/7/14.</span></div>
+      <div><small>Antes de dormir</small><b>Apuntar</b><span>CRM y reporte del día (5 minutos).</span></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Avisos">
+    <div class="card chip">
+      <span class="label">Ojo con los límites de Instagram</span>
+      <ul class="l">
+        <li>Instagram limita cuentas que mandan muchos mensajes iguales seguidos.</li>
+        <li>Rota los mensajes, personaliza y deja pausas entre envíos.</li>
+        <li>Prioriza a quien ya ha interactuado contigo. El objetivo de 100 no baja: se reparte bien.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Datos personales</span>
+      <ul class="l">
+        <li>En el CRM solo lo necesario para atenderle (nombre, @, teléfono si te lo da, lo que te cuenta).</li>
+        <li>Datos de salud (lesiones, medicación) solo de clientes y con su consentimiento por escrito.</li>
+        <li>Si alguien pide que borres sus datos o no le escribas más, se hace ese mismo día.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script>
+(function () {
+  document.querySelectorAll("[data-cp]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-cp"), o = b.textContent;
+      var done = function (m) { b.textContent = m; setTimeout(function () { b.textContent = o; }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+      else done("Selecciona");
+    });
+  });
+})();
+</script>

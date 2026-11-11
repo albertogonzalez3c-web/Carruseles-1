@@ -1,0 +1,208 @@
+<title>Mapa CAMSFIT</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: ficha visual del cliente ideal; la persona en el centro, su día en una barra de 24 h y los cuadrantes alrededor. Colores de la app CAMSFIT. */
+:root {
+  --paper: #e8e6e1;
+  --white: #fbfaf8;
+  --sand: #ddd9ce;
+  --sand-line: #cbbf98;
+  --ink: #1c1a17;
+  --soft: #6b6862;
+  --gold: #7f6114;
+  --gold-text: #7a6225;
+  --chip: #edebe6;
+  --rust: #9a4b2f;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); padding-block: clamp(32px, 6vw, 64px); display: grid; gap: 16px; }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(36px, 6vw, 64px)/1 var(--f-body); letter-spacing: -.035em; }
+h2 { font: 800 22px/1.2 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.card { background: var(--white); border-radius: 18px; padding: 20px 22px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+ul.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+ul.list li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 10px; font-size: 15.5px; }
+ul.list li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin-top: 8px; }
+.pain li::before { background: var(--rust); }
+.top { display: grid; gap: 10px; margin-bottom: 8px; }
+.top p { color: var(--soft); max-width: 60ch; }
+
+/* Persona */
+.persona { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; }
+.face { width: clamp(96px, 14vw, 132px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--sand); border: 2px solid var(--sand-line); display: grid; place-items: center; }
+.face svg { width: 62%; height: 62%; color: var(--gold); }
+.persona h2 { font-size: clamp(26px, 3.6vw, 36px); }
+.persona .sub { color: var(--soft); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { background: var(--chip); color: var(--ink); font-size: 14px; font-weight: 600; padding: 7px 12px; border-radius: 999px; }
+.chips span b { color: var(--gold-text); font-weight: 700; }
+
+/* Día */
+.day-bar { display: flex; height: 56px; border-radius: 12px; overflow: hidden; }
+.day-bar div { display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--ink); text-align: center; line-height: 1.15; padding: 0 4px; min-width: 0; }
+.seg-sleep { background: #cfc9b8; }
+.seg-work { background: var(--rust); color: var(--white) !important; }
+.seg-commute { background: #b9ae8e; }
+.seg-home { background: var(--sand); }
+.seg-free { background: var(--gold); color: var(--white) !important; }
+.day-scale { display: flex; justify-content: space-between; font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.day-note { color: var(--soft); font-size: 15px; }
+.day-note b { color: var(--ink); }
+
+/* Cuadrantes */
+.quad { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+blockquote { margin: 0; font-weight: 700; font-size: 16px; line-height: 1.4; }
+.says { display: grid; gap: 12px; }
+.says div { display: grid; gap: 2px; padding-left: 14px; border-left: 2px solid var(--sand-line); }
+.says span { color: var(--soft); font-size: 13.5px; }
+
+/* Dolor → respuesta */
+.map { display: grid; gap: 8px; }
+.map .row { display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--white); border-radius: 14px; padding: 14px 18px; }
+.map .row b { font-size: 15.5px; }
+.map .arrow { color: var(--gold); font-weight: 800; text-align: center; }
+.map .ans { color: var(--soft); font-size: 15px; }
+.map .ph { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; background: var(--gold); color: var(--white); padding: 6px 9px; border-radius: 999px; white-space: nowrap; }
+
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.check li::before { content: "?"; width: auto; height: auto; background: none; color: var(--gold-text); font-weight: 800; margin-top: 0; }
+
+@media (max-width: 820px) {
+  .quad, .three { grid-template-columns: 1fr; }
+  .map .row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .map .arrow { text-align: left; }
+  .day-bar div { font-size: 11px; }
+}
+@media (max-width: 520px) {
+  .persona { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="label">CAMSFIT · Mapa interno</span>
+    <h1>El cliente ideal de Sergio.</h1>
+    <p>Perfil construido a partir de sus casos reales y de su posicionamiento. Edad confirmada por Sergio; el peso es una hipótesis para validar con él.</p>
+  </header>
+
+  <section class="card persona" aria-label="Perfil tipo">
+    <div class="face"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+    <div style="display:grid;gap:10px">
+      <span class="label">Perfil tipo</span>
+      <h2>Hombre ocupado con trabajo sedentario que ya ha rebotado.</h2>
+      <p class="sub">Sabe lo que es hacer dieta. Lo que no sabe es mantenerla con su vida real.</p>
+      <div class="chips">
+        <span><b>Edad</b> 30–50</span>
+        <span><b>Peso</b> 85–110 kg</span>
+        <span><b>Trabajo</b> oficina, ordenador o negocio propio</span>
+        <span><b>Sentado</b> 8–10 h al día</span>
+        <span><b>Vida</b> pareja, familia o mucha carga</span>
+        <span><b>Come</b> en casa y fuera con su gente</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Su día en 24 horas">
+    <span class="label">Su día en 24 h</span>
+    <div class="day-bar" role="img" aria-label="Sueño 7 h, trabajo sentado 9 h, desplazamientos 1 h, casa y familia 5 h, libre 2 h">
+      <div class="seg-sleep" style="flex:7">Sueño 7 h</div>
+      <div class="seg-work" style="flex:9">Sentado trabajando 9 h</div>
+      <div class="seg-commute" style="flex:1">1 h</div>
+      <div class="seg-home" style="flex:5">Casa, familia, comidas 5 h</div>
+      <div class="seg-free" style="flex:2">Libre 2 h</div>
+    </div>
+    <div class="day-scale"><span>0 h</span><span>6 h</span><span>12 h</span><span>18 h</span><span>24 h</span></div>
+    <p class="day-note">El plan tiene que caber en <b>esas 2 horas libres</b> y en <b>las comidas que ya hace en casa</b>. Es el mismo día que vive Sergio, con 8–10 h de pantalla, y por eso le cree.</p>
+  </section>
+
+  <div class="quad">
+    <section class="card">
+      <span class="label">Lo que le duele</span>
+      <ul class="list pain">
+        <li>Ha perdido peso otras veces y lo ha recuperado.</li>
+        <li>La barriga no baja aunque “coma bien”.</li>
+        <li>Atracones el fin de semana o cuando sale.</li>
+        <li>Se ve peor que hace unos años y lo nota en la ropa.</li>
+        <li>No tiene tiempo para planes de 2 horas de gimnasio.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">Lo que quiere</span>
+      <ul class="list">
+        <li>Bajar la barriga y ver abdominales.</li>
+        <li>Verse bien sin vivir a dieta.</li>
+        <li>Comer lo de casa y salir con su gente sin culpa.</li>
+        <li>Que el cambio dure esta vez.</li>
+        <li>Alguien que le diga exactamente qué hacer.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">Lo que dice (frases reales de clientes de Sergio)</span>
+      <div class="says">
+        <div><blockquote>“Yo es que no tengo tiempo y muchas responsabilidades.”</blockquote><span>La objeción que Sergio desmonta con Nico</span></div>
+        <div><blockquote>“Comíamos bien, pero había atracones. No sabíamos qué hacer.”</blockquote><span>Pareja de clientes</span></div>
+        <div><blockquote>“Peso 100 kg y quiero bajar la barriga y tener abdominales.”</blockquote><span>Alexander, primer mensaje</span></div>
+        <div><blockquote>“Vino harto de no poder bajar de peso y de fallar.”</blockquote><span>Marc, según Sergio</span></div>
+      </div>
+    </section>
+    <section class="card">
+      <span class="label">Lo que le frena</span>
+      <ul class="list pain">
+        <li>“Ya lo he intentado y no me funciona.”</li>
+        <li>“No quiero comer distinto que mi familia.”</li>
+        <li>“No tengo tiempo.”</li>
+        <li>“Seguro que es otra dieta más.”</li>
+        <li>Desconfía de tanta información contradictoria.</li>
+      </ul>
+    </section>
+  </div>
+
+  <section aria-label="De su dolor a la respuesta de CAMSFIT" style="display:grid;gap:10px;margin-top:6px">
+    <span class="label">Cada dolor, su respuesta en el método</span>
+    <div class="map">
+      <div class="row"><b>Pierde y rebota</b><span class="arrow">→</span><span class="ans">Pérdida gradual con hábitos que puede mantener</span><span class="ph">Fase 1</span></div>
+      <div class="row"><b>Atracones y “comer distinto”</b><span class="arrow">→</span><span class="ans">Comida de casa, opciones y equivalencias en la app</span><span class="ph">Fase 1</span></div>
+      <div class="row"><b>Cuerpo sedentario que gasta poco</b><span class="arrow">→</span><span class="ans">Fuerza y músculo para quemar más en reposo</span><span class="ph">Fase 2</span></div>
+      <div class="row"><b>“Esta vez tiene que durar”</b><span class="arrow">→</span><span class="ans">El cuerpo se adapta y aprende a mantenerlo solo</span><span class="ph">Fase 3</span></div>
+      <div class="row"><b>No sabe qué hacer</b><span class="arrow">→</span><span class="ans">Revisión semanal: Sergio ajusta el plan</span><span class="ph">Cada semana</span></div>
+    </div>
+  </section>
+
+  <div class="three">
+    <section class="card sand">
+      <span class="label">Cuándo decide comprar</span>
+      <ul class="list">
+        <li>Se ve en una foto o la ropa no le entra.</li>
+        <li>Se acerca el verano o un evento.</li>
+        <li>Ve el cambio de alguien como él.</li>
+        <li>Otro rebote más tras una dieta.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">No es su cliente</span>
+      <ul class="list pain">
+        <li>Busca un cambio milagro en semanas.</li>
+        <li>Quiere un PDF y no hablar con nadie.</li>
+        <li>No está dispuesto a cambiar hábitos.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <span class="label">Por validar con Sergio</span>
+      <ul class="list check">
+        <li>Solo hombres, o también mujeres.</li>
+        <li>Solo pérdida de grasa, o también volumen y competición.</li>
+        <li>Precio y duración mínima.</li>
+      </ul>
+    </section>
+  </div>
+</div>

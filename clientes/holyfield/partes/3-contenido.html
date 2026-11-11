@@ -1,0 +1,755 @@
+<title>Holyfield Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: cabecera + pestañas fijas (Plan, Ángulos, Guiones, Grabar bien). Nicho y método HAZLO arriba; rampa de 1–2 a 3–5 reels al día + 3–5 carruseles a la semana, YouTube 1/semana, reels de prueba, anuncio de seguidores con la mejor voz en off orgánica y mucho rol entrenador. Paleta blanca, negra y azul de Holyfield. */
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #d6d6d3;
+  --chip: #ededeb;
+  --accent: #1f4fd1;
+  --accent-soft: #8fa8f5;
+  --accent-text: #1a3fae;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 800 clamp(38px, 6.4vw, 66px)/.95 var(--f-head); text-transform: uppercase; letter-spacing: -.01em; }
+h2 { font: 800 clamp(26px, 3.6vw, 36px)/1.02 var(--f-head); text-transform: uppercase; }
+h3 { font: 700 21px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+p { margin: 0; }
+.label { font: 500 11.5px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+header.top { padding-block: clamp(28px, 5vw, 52px) 18px; display: grid; gap: 12px; }
+header.top .lede { font-size: 18px; color: var(--soft); max-width: 68ch; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(247, 247, 245, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; }
+.tab { all: unset; flex: none; cursor: pointer; background: var(--white); border-radius: 6px; padding: 9px 14px; font: 700 15px/1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.tab:focus-visible, .chips button:focus-visible, .cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+main { padding-block: 26px 70px; }
+.view { display: grid; gap: 32px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 8px; max-width: 800px; }
+.card { background: var(--white); border-radius: 10px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.dark .label { color: var(--accent-soft); }
+.card.acc { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.acc .label { color: #dbe4ff; }
+.card.acc ul.l, .card.acc ol.l { color: #eef2ff; }
+.card.acc ul.l b, .card.acc ol.l b { color: var(--white); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.hook { background: var(--chip); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.tag { display: inline-block; width: fit-content; font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 6px 8px; border-radius: 4px; background: var(--chip); color: var(--ink); }
+.tag.a { background: var(--accent); color: var(--white); }
+.fmt { display: grid; gap: 8px; }
+.fmt .ico { width: 38px; height: 38px; border-radius: 8px; display: grid; place-items: center; font: 800 16px/1 var(--f-head); color: var(--white); }
+.fmt.big { box-shadow: inset 0 0 0 2px var(--accent); }
+/* Etapas */
+.stage { display: grid; gap: 12px; }
+.stage-h { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.stage-h .big { font: 800 36px/1 var(--f-head); color: var(--accent-text); }
+.stage-h .pct { font: 500 11.5px/1 var(--f-mono); background: var(--ink); color: var(--white); padding: 6px 8px; border-radius: 4px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 8px; padding: 10px; display: grid; gap: 5px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
+.day .dn { display: flex; justify-content: space-between; align-items: baseline; font: 700 16px/1 var(--f-head); text-transform: uppercase; }
+.day .dn small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 6px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.2; color: var(--white); }
+.k-vo { background: #1f4fd1; }
+.k-yap { background: #6a4a9c; }
+.k-trend { background: #1f6f6b; }
+.k-gs { background: #2c4f9e; }
+.k-rol { background: #111111; box-shadow: inset 3px 0 0 #8fa8f5; }
+.k-car { background: #5a5a5a; }
+.k-gs { background: #9a3b2f !important; }
+.k-carc { background: #8a5a14; }
+.k-carv { background: #ffffff; color: #111111 !important; box-shadow: inset 0 0 0 2px #111111; }
+.legend i.k-carv { box-shadow: inset 0 0 0 2px #111111; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 10px 8px 0; }
+.tbl td { padding: 10px 10px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.tblwrap { overflow-x: auto; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 10px 0; border-top: 1px solid var(--line); }
+.ti:first-child { border-top: 0; }
+.ti .n { font: 500 11px/1 var(--f-mono); background: var(--chip); padding: 6px 8px; border-radius: 4px; white-space: nowrap; }
+.ti .n.first { background: var(--accent); color: var(--white); }
+.ti small { display: block; color: var(--soft); font-size: 13.5px; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 6px; background: var(--accent); color: var(--white); font: 800 18px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--accent-soft); color: var(--ink); }
+/* Ángulos */
+.ang-tools { display: grid; gap: 10px; }
+.ang-tools input { font: 600 15px/1.3 var(--f-body); padding: 11px 14px; border-radius: 8px; border: 0; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); width: 100%; color: var(--ink); }
+.ang-tools input:focus { outline: 3px solid var(--accent); outline-offset: 1px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.fam { display: grid; gap: 10px; }
+.fam > .fh { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.fam > .fh small { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.angc .hk { display: flex; gap: 8px; align-items: flex-start; }
+.angc .hk .hook { flex: 1; min-width: 0; }
+.cp { all: unset; cursor: pointer; flex: none; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 9px; border-radius: 6px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.angc .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.ang-empty { color: var(--soft); text-align: center; padding: 24px; }
+/* Guiones */
+.script { display: grid; gap: 8px; }
+.script .line { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.script .line:first-of-type { border-top: 0; }
+.script .t { font: 500 11.5px/1.6 var(--f-mono); color: var(--accent-text); }
+.script .line p small { display: block; color: var(--soft); font-size: 13px; margin-top: 2px; }
+.variants { display: grid; gap: 6px; background: var(--chip); border-radius: 8px; padding: 10px 12px; }
+.variants b { font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.check li { list-style: none; position: relative; padding-left: 26px; }
+.check { padding-left: 0; }
+.check li::before { content: ""; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 4px; box-shadow: inset 0 0 0 2px var(--accent); }
+@media (max-width: 900px) {
+  .g3 { grid-template-columns: 1fr 1fr; }
+  .g5 { grid-template-columns: 1fr 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .g2, .g3, .g5 { grid-template-columns: 1fr; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .script .line { grid-template-columns: 1fr; gap: 2px; }
+}
+
+/* Nicho en una frase + método en 30 segundos */
+.nm { display: grid; gap: 14px; border-radius: 14px; padding: 20px; background: var(--ink); color: #fff; margin-block: 6px 4px; }
+.nm-lbl { font: 500 11.5px/1.2 var(--f-mono, ui-monospace, monospace); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-dark, #9db4f7); display: block; margin-bottom: 6px; }
+.nm-big { font: 700 clamp(19px, 2.6vw, 25px)/1.3 var(--f-body, inherit); margin: 0; color: #fff; text-wrap: pretty; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.nm-c { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
+.nm-c b { font-size: 15.5px; color: #fff; }
+.nm-c span, .nm-c p { font-size: 14px; color: #d8d6d0; margin: 0; line-height: 1.45; }
+.nm-c .nm-n { font: 500 11px/1 var(--f-mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-dark, #9db4f7); }
+.nm-c p b { font-size: 13.5px; color: #fff; }
+.nm-no { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.nm-no li { background: #fff; color: var(--ink); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 700; }
+.nm-proof { margin: 0; font-size: 15px; color: #fff; border-left: 3px solid var(--accent-dark, #9db4f7); padding-left: 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } .nm { padding: 16px; } }
+
+.carr { background: #ffffff; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--line); padding: 14px; display: grid; gap: 6px; }
+.carr .brandl { font: 600 10px/1.2 var(--f-body); color: var(--soft); border-left: 3px solid var(--accent); padding-left: 6px; }
+.carr .big { font: 800 20px/1.1 var(--f-head); }
+.carr .big em { font-style: normal; color: var(--accent); }
+
+
+/* Holyfield: Inter Tight, sin mayúsculas forzadas */
+h1, h2, h3, .brand b, .cs h3.ph, .tab, .day .dn { text-transform: none !important; }
+h1 { letter-spacing: -.025em !important; }
+
+/* Claude como editor */
+.ed-g { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ed-list { display: grid; gap: 12px; }
+.ed-pr { gap: 10px; }
+.ed-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.ed-top b { flex: 1 1 180px; min-width: 0; }
+.ed-txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--soft); background: rgba(127,127,127,.08); border-radius: 10px; padding: 12px; margin: 0; max-height: 320px; overflow: auto; }
+@media (max-width: 900px) { .ed-g { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ed-g { grid-template-columns: 1fr; } }
+
+/* Claude Code editor */
+.cc-code { display: block; font: 500 13px/1.45 ui-monospace, Menlo, Consolas, monospace; background: rgba(127,127,127,.12); border-radius: 8px; padding: 8px 10px; margin: 6px 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+li .cc-code, p .cc-code { display: inline; padding: 1px 6px; margin: 0; }
+</style>
+<header class="top wrap">
+  <span class="label">Holyfield · Para los que creen que es imposible · Parte 3 · Contenido</span>
+  <h1>Con 15 años creías que era imposible. Ahora te preguntan cómo entrenas. Enséñalo cada día.</h1>
+  <p class="lede">Para adultos de más de 25, con poco tiempo, que siempre han sido el flaco o el gordo. Tu mensaje: <b>"Para los que creen que es imposible: es hora de tener ya el cuerpo de adulto, no el del niño de siempre."</b> Mínimo 1–3 reels al día y 3–5 carruseles a la semana; subes a 3–5 reels diarios cuando domines las variantes de gancho. YouTube, 1 vídeo a la semana. Mucho rol de entrenador. Y tu mejor voz en off orgánica, cada semana, a anuncio de 5–10 € al día. Tu palabra clave: <b>HAZLO</b>.</p>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones listos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar bien</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ed">Claude Code editor</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <!-- PLAN -->
+  <section class="view" id="v-plan" aria-label="El plan">
+  <section class="nm" aria-label="Tu nicho y tu método">
+    <div><span class="nm-lbl">Tu nicho en una frase</span><p class="nm-big">Adultos de más de 25, con poco tiempo, que siempre han sido el flaco o el gordo y creen que cambiar su cuerpo es imposible.</p></div>
+    <div><span class="nm-lbl">Tu método en 30 segundos · Método HAZLO («Para de pensar y hazlo») · 3 pilares</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Pilar 1</span><b>No eres el niño de siempre</b><span>Yo era el de 52 kg «sin hombros» que iba con sudadera en verano. El cuerpo que tenías de niño es tu punto de partida, no tu destino.</span></div><div class="nm-c"><span class="nm-n">Pilar 2</span><b>Un hábito que cabe en tu agenda</b><span>Yo trabajaba más de 40 horas, estudiaba y entrenaba a las 00:30. Tú no: 3 sesiones de fuerza agendadas como una reunión y pasos cada día.</span></div><div class="nm-c"><span class="nm-n">Pilar 3</span><b>Fuerza y comida para tu caso</b><span>Yo comía 2–3 veces al día, una de cereales, y no crecía. El flaco come para construir; el gordo baja grasa sin perder músculo. Sin 14 suplementos.</span></div></div></div>
+    <div><span class="nm-lbl">3 fases</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Instalar</b><p><b>Qué pasa:</b> El entreno deja de ser «otra vez»: 3 sesiones fijas en tu semana, técnica y comida base. Las primeras semanas que no lo dejas.</p><p><b>Qué haces tú:</b> 3 sesiones de fuerza, proteína en cada comida, pasos diarios y tu revisión semanal.</p></div><div class="nm-c"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Recomponer</b><p><b>Qué pasa:</b> El flaco gana músculo y peso; el que siempre fue el gordo baja grasa manteniendo la fuerza. Se nota en la ropa y en el espejo.</p><p><b>Qué haces tú:</b> Subes cargas cada semana y ajustamos la comida a tu punto de partida.</p></div><div class="nm-c"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Consolidar</b><p><b>Qué pasa:</b> Dejas de verte como el flaco o el gordo de siempre y sabes mantenerlo sin depender de nadie.</p><p><b>Qué haces tú:</b> Te quedas con tu propio sistema para semanas malas, viajes y épocas de mucho trabajo.</p></div></div></div>
+    <div><span class="nm-lbl">3 no negociables</span><div class="nm-grid"><div class="nm-c"><span class="nm-n">No negociable 1</span><b>3 sesiones de fuerza en la agenda</b><p><b>Por qué:</b> El músculo solo cambia con fuerza progresiva, y lo que está en el calendario se hace.</p></div><div class="nm-c"><span class="nm-n">No negociable 2</span><b>Proteína en cada comida</b><p><b>Por qué:</b> Sin ella el flaco no construye y el gordo pierde músculo al bajar grasa.</p></div><div class="nm-c"><span class="nm-n">No negociable 3</span><b>Revisión semanal</b><p><b>Por qué:</b> Lo que se revisa no se deja: es lo que rompe el «otra vez».</p></div></div></div>
+    <p class="nm-proof">«Con 15 años pesaba 52 kg, medía casi 1,84 y me decían que no tenía hombros. Ahora esos mismos me preguntan cómo los entreno.» · Para los que creen que es imposible: es hora de tener el cuerpo de adulto, no el del niño de siempre. Y tres de mis clientes acabaron siendo entrenadores.</p>
+  </section>
+
+    <div class="sec">
+      <div class="head"><span class="label">Tus 6 formatos</span><h2>Cinco formatos de reel, carruseles y uno que pesa más que todos: el rol de entrenador.</h2><p class="soft">Con 989 seguidores no te compran por lo que dices, sino por lo que te ven hacer: entrenar, corregir y planificar como alguien que lleva entrenando a gente desde 2017. Desde la semana 3, al menos 4 de cada 10 reels son de rol entrenador.</p></div>
+      <div class="g3">
+        <article class="card fmt"><span class="ico k-vo">VO</span><h3>Voz en off</h3><p class="soft">Tus clips entrenando y tu voz encima. Cada guion se graba una vez y sale con 3 ganchos como reels de prueba. La que gane en orgánico es la que se convierte en anuncio.</p></article>
+        <article class="card fmt"><span class="ico k-yap">YA</span><h3>Yapping</h3><p class="soft">Tú a cámara, una idea, 30–60 segundos. Como se lo dirías a un amigo que lleva años diciendo "yo es que soy así": "para de pensar y hazlo".</p></article>
+        <article class="card fmt"><span class="ico k-trend">TR</span><h3>Tendencia</h3><p class="soft">Audio o formato que se esté moviendo, adaptado al flaco o al gordo de siempre, o al que se ha ido dejando. Para llegar a gente nueva.</p></article>
+        <article class="card fmt"><span class="ico k-gs">GS</span><h3>Green screen</h3><p class="soft">Tú delante de un "yo es que soy de constitución así", una dieta milagro o un batido milagro, desmontándolo en 30 segundos.</p></article>
+        <article class="card fmt"><span class="ico k-car">CA</span><h3>Carruseles</h3><p class="soft">Mínimo 3 a la semana, alternando <b>conexión</b> (tu historia, la etiqueta de "el flaco" o "el gordo") y <b>valor</b> (recomposición, Método HAZLO, hábitos con poco tiempo).</p></article>
+        <article class="card fmt big"><span class="ico k-rol">RE</span><h3>Rol entrenador</h3><p class="soft">Corrigiendo técnica, "si fueras mi cliente con 32 años, siempre el flaco y 3 días libres", revisando la semana de un seguidor. Tu formato más importante.</p></article>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">La rampa</span><h2>De 1–2 reels al día a 3–5, más 3–5 carruseles a la semana.</h2><p class="soft">Pasas de etapa cuando la anterior te sale entera dos semanas seguidas y ya sacas los 3 ganchos de cada voz en off sin pensar. No grabas a diario: grabas en lote (en "Grabar bien" te digo cómo). El % de rol entrenador se calcula sobre los reels.</p></div>
+      <div class="legend" id="legend"></div>
+      <div id="stages" style="display:grid;gap:28px"></div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Voz en off · Reels de prueba</span><h2>Un guion, tres ganchos, gana el que mejor rinde.</h2><p class="soft">Instagram te deja publicar un reel <b>como prueba</b>: solo lo ve gente que no te sigue y no aparece en tu perfil. Que decidan los datos, no tu intuición.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">El sistema</span>
+          <div class="steps">
+            <div><p><b>Graba el cuerpo del vídeo una vez:</b> clips entrenando + tu voz con la idea principal.</p></div>
+            <div><p><b>Monta 3 versiones</b> cambiando solo los 3 primeros segundos: gancho A, B y C (texto en pantalla y frase de voz).</p></div>
+            <div><p><b>Publica las 3 como reel de prueba</b> el mismo día, con unas horas de diferencia.</p></div>
+            <div><p><b>A las 24–72 h compara:</b> visualizaciones, % que lo ve entero, compartidos y guardados.</p></div>
+            <div><p><b>La ganadora la compartes en tu perfil.</b> Las otras dos se quedan como prueba.</p></div>
+            <div><p><b>Apúntalo en tu reporte:</b> qué tipo de gancho ganó. La mejor voz en off orgánica de la semana es la que promocionas (abajo).</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tu registro de pruebas</h3>
+          <div class="tblwrap">
+            <table class="tbl">
+              <thead><tr><th>Guion</th><th>Gancho</th><th>Vistas</th><th>% entero</th><th>Gana</th></tr></thead>
+              <tbody>
+                <tr><td>Ej.: Siempre fui el flaco</td><td>A · identidad</td><td>900</td><td>17 %</td><td></td></tr>
+                <tr><td></td><td>B · 52 kg con 15</td><td>2.400</td><td>30 %</td><td>✓</td></tr>
+                <tr><td></td><td>C · "imposible"</td><td>1.500</td><td>22 %</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="soft" style="font-size:13.5px">Los números del ejemplo son ilustrativos. Apunta cada guion en tu reporte semanal. <b>La voz en off ganadora es la que cuenta como reel del día.</b></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Anuncios de seguidores · voz en off "sígueme" · 5–10 € al día</span><h2>Tu mejor voz en off orgánica, a anuncio. Solo si sale a menos de 1 € por seguidor.</h2><p class="soft">No se promociona cualquier cosa: se promociona la voz en off que <b>ya ganó en orgánico</b> (más % visto entero y más seguidores desde el reel) y que acaba con "sígueme". El objetivo es <b>menos de 1 € por seguidor</b>.</p></div>
+      <div class="g2">
+        <div class="card dark">
+          <span class="label">Cómo se hace</span>
+          <div class="steps">
+            <div><p><b>Elige la ganadora de la semana:</b> la voz en off con mejor % visto entero y que más seguidores te ha traído en orgánico. Que su cierre sea "sígueme".</p></div>
+            <div><p><b>Promociónala con 5–10 € al día</b> con el objetivo "visitas al perfil" o "seguidores", a España, +25 años: es justo tu nicho.</p></div>
+            <div><p><b>Déjala 2 días</b> sin tocarla y entonces decides. No juzgues el primer día.</p></div>
+            <div><p><b>Calcula:</b> gasto ÷ seguidores nuevos. Tu reporte lo hace solo, en "Anuncios de seguidores".</p></div>
+            <div><p><b>Menos de 1 €: se queda</b> y escalas hacia 10 € al día. <b>Entre 1 y 1,5 €:</b> cambia el gancho (usa el B o el C de la prueba). <b>Más de 1,5 € a los 2 días: se corta</b> y entra la ganadora de la semana siguiente.</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Las que más posibilidades tienen</h3>
+          <ul class="l">
+            <li><b>"Con 15 años pesaba 52 kg y creía que era imposible":</b> tu historia, en 30 segundos.</li>
+            <li><b>"La mayoría se queda con la etiqueta del colegio":</b> el flaco o el gordo de siempre, sin señalar a nadie.</li>
+            <li><b>"Entrenaba a las 00:30":</b> instalar el hábito con poco tiempo.</li>
+            <li><b>"No hay atajos, eso es perder tiempo":</b> tu mensaje, directo.</li>
+          </ul>
+          <p class="soft" style="font-size:13.5px"><b>Normas de Meta:</b> en anuncios, primera persona o "la mayoría". Nunca "¿tienes…?", ni "si eres flaco/gordo", ni nada de salud (insulina incluida). Los ángulos de "Insulina y hábitos" son solo orgánicos.</p>
+          <p class="soft" style="font-size:13.5px">Cada seguidor nuevo que llegue por anuncio recibe bienvenida por DM ese mismo día y, si responde, entra al CRM con origen "Anuncio de seguidores".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Rol entrenador · tu formato estrella</span><h2>Que te vean trabajando de entrenador, no hablando de entrenar.</h2><p class="soft">Tu cliente no sabe qué hacer en el gym. Cada pieza de rol le demuestra que tú sí, y que se lo puedes hacer simple.</p></div>
+      <div class="g3">
+        <div class="card"><h3>Corrección de técnica</h3><p class="soft">Un seguidor te manda su press, su remo o su sentadilla (con permiso). Paras, corriges dos cosas y enseñas cómo se hace.</p></div>
+        <div class="card"><h3>"Si fueras mi cliente con 32 años…"</h3><p class="soft">"…siempre hubieras sido el flaco (o el gordo) y tuvieras 3 huecos a la semana, esto es lo que haríamos las 4 primeras semanas." Entreno y comida, en 40 segundos.</p></div>
+        <div class="card"><h3>Reviso la semana de un seguidor</h3><p class="soft">Te pasa su rutina de 5–6 días que nunca cumple. La dejas en 3 sesiones que le caben y le explicas por qué.</p></div>
+        <div class="card"><h3>Comida para el flaco y para el gordo</h3><p class="soft">El mismo día de comidas, dos versiones: una para construir y otra para bajar grasa. Proteína en cada comida, sin pasarte el día cocinando.</p></div>
+        <div class="card"><h3>Respuesta a DM como coach</h3><p class="soft">Captura sin nombre ("Yo es que soy de constitución así", "Siempre he sido gordo") y la respondes como a un cliente.</p></div>
+        <div class="card"><h3>"¿Es imposible en mi caso?"</h3><p class="soft">Respuesta honesta de entrenador: qué sí se puede en 6 meses haciendo las cosas bien, y qué es mentira de Instagram.</p></div>
+        <div class="card"><h3>3 sesiones con 40 horas de trabajo</h3><p class="soft">Cómo encajas 3 entrenos de fuerza y los pasos en la semana de alguien que trabaja (oficina, turnos, viajes). Tú lo hiciste entrenando a las 00:30.</p></div>
+        <div class="card"><h3>Volver tras una lesión</h3><p class="soft">"3/4 meses parado por lesión": las 2 primeras semanas de vuelta, siempre con el OK de su fisio. Tú pasaste por una operación de rodilla.</p></div>
+        <div class="card acc"><span class="label">Regla</span><p><b>Permiso siempre y por escrito.</b> Sin caras ni nombres si no te lo autorizan. Nada de datos personales de clientes en público. Un "con permiso de mi cliente" en pantalla te da todavía más autoridad.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Carruseles: 3/semana alternando conexión y valor</span><h2>Mínimo 3 carruseles a la semana: uno te acerca, el siguiente te da autoridad.</h2><p class="soft">Regla de Alberto: <b>mínimo 3 por semana</b> (4 en semanas 3–4 y 5 desde el mes 2), <b>alternando CONEXIÓN</b> (tu historia, vulnerabilidad, día a día, creencias) <b>y VALOR</b> (educativo, método, errores, guías). En el calendario de arriba van marcados como "Carrusel conexión" y "Carrusel valor". Portada con una frase que pique, 5–7 slides y cierre con "Escríbeme HAZLO". Los de insulina y hábitos, siempre educativos y sin diagnosticar.</p></div>
+      <div class="g2">
+        <div class="card"><span class="tag" style="background:#8a5a14;color:#fff">Conexión · 12 ideas</span><h3>Que sientan que tú también fuiste «el de siempre»</h3><ol class="l"><li><b>Con 15 años pesaba 52 kg y me decían que no tenía hombros</b><br><span style="font-size:13.5px">Portada: la frase + foto tuya con 15 años · 2: las sudaderas de varias capas en verano · 3: «veía casi imposible subir de peso» · 4: las mancuernas en casa y el parque · 5: lo que cambió (empezar a comer) · 6: hoy · 7: &quot;Si crees que es imposible, escríbeme HAZLO&quot;</span></li><li><b>Siempre fui «el flaco»</b><br><span style="font-size:13.5px">Portada: &quot;Siempre fui el flaco del grupo&quot; · 2: el apodo · 3: lo que me hizo creer (que mi cuerpo era así) · 4: cómo me escondía · 5: el día que dejé de creérmelo · 6: hoy · 7: CTA</span></li><li><b>El apodo del colegio que te sigue a los 30</b><br><span style="font-size:13.5px">Portada: &quot;El flaco. El gordo. El de siempre.&quot; · 2: por qué se queda pegado · 3: lo que escucho a adultos de 30 y 35 · 4: mi apodo («sin hombros») · 5: tu cuerpo de niño no decide tu cuerpo de adulto · 6: CTA</span></li><li><b>Sudaderas y camisetas anchas: la misma vergüenza</b><br><span style="font-size:13.5px">Portada: &quot;Yo me tapaba por flaco. Otros se tapan por lo contrario.&quot; · 2: mis sudaderas en verano · 3: la camiseta ancha del de más peso · 4: lo que tienen en común · 5: el primer verano sin taparme · 6: CTA</span></li><li><b>Creía que era imposible</b><br><span style="font-size:13.5px">Portada: &quot;Veía casi imposible subir de peso&quot; · 2: entrenaba y no cambiaba · 3: lo que me decía a mí mismo · 4: el error real (comer 2–3 veces, sin plan) · 5: el cambio · 6: &quot;Para los que creen que es imposible&quot; + CTA</span></li><li><b>Lo que nadie ve de entrenar a las 00:30</b><br><span style="font-size:13.5px">Portada: foto del gym de noche · 2: 40 horas de trabajo + estudios · 3: cómo me organizaba · 4: lo que me costó · 5: lo que aprendí (constancia &gt; motivación) · 6: no te pido medianoche, te pido 3 sesiones en tu agenda · 7: CTA</span></li><li><b>La rodilla que usé como excusa</b><br><span style="font-size:13.5px">Portada: foto de la rodilla · 2: la lesión · 3: el miedo a volver · 4: cuánto tiempo la usé de excusa · 5: el día que paré de pensar · 6: hoy · 7: &quot;¿Cuál es la tuya?&quot; + CTA</span></li><li><b>«¿Cómo puedes levantar tanto peso con ese cuerpo?»</b><br><span style="font-size:13.5px">Portada: la frase de aquel compañero · 2: era fuerte pero seguía flaco · 3: comía 2–3 veces al día · 4: lo que sentí · 5: el cambio vino comiendo · 6: lo que te digo a ti · 7: CTA</span></li><li><b>Me fui a Londres con casi 18</b><br><span style="font-size:13.5px">Portada: foto de Londres · 2: llegar y empezar de cero · 3: aprender a comer por mi cuenta · 4: pasar de los 70 kg · 5: lo que me enseñó esa etapa · 6: hoy entreno a otros · 7: CTA</span></li><li><b>Mi primer cliente tenía casi 50 años</b><br><span style="font-size:13.5px">Portada: la frase · 2: por qué me eligió · 3: lo que aprendí de él · 4: si con casi 50 se puede empezar… · 5: …con 30 no llegas tarde · 6: CTA</span></li><li><b>Tres de mis clientes acabaron siendo entrenadores</b><br><span style="font-size:13.5px">Portada: la frase · 2: cómo llegaron · 3: qué les cambió · 4: por qué me llena más que cualquier resultado · 5: lo que tú puedes aprender de ellos · 6: CTA (con permiso; sin datos personales)</span></li><li><b>Callar bocas no basta</b><br><span style="font-size:13.5px">Portada: &quot;Empecé a entrenar para callar bocas&quot; · 2: los comentarios · 3: lo que me dio fuerza al principio · 4: por qué no te sostiene años · 5: entrenar por ti, de adulto · 6: &quot;Para de pensar y hazlo&quot; + CTA</span></li></ol></div>
+        <div class="card"><span class="tag a">Valor · 12 ideas</span><h3>Que vean que sabes lo que haces</h3><ol class="l"><li><b>Recomposición: ganar músculo y perder grasa a la vez</b><br><span style="font-size:13.5px">Portada · 2: qué es · 3: para quién funciona (empezar de cero con más de 25) · 4: fuerza 3 días · 5: proteína en cada comida · 6: cómo medirlo (cintura, fotos, fuerza) · 7: &quot;Guárdalo&quot; + CTA HAZLO</span></li><li><b>Método HAZLO: los 3 pilares</b><br><span style="font-size:13.5px">Portada · 2: No eres el niño de siempre · 3: Un hábito que cabe en tu agenda · 4: Fuerza y comida para tu caso · 5: de qué parte de mi historia sale cada uno · 6: &quot;Escríbeme HAZLO&quot;</span></li><li><b>Tus primeros 6 meses: Instalar, Recomponer, Consolidar</b><br><span style="font-size:13.5px">Portada · 2: Instalar (meses 1–2) · 3: Recomponer (3–4) · 4: Consolidar (5–6) · 5: qué haces tú en cada una · 6: CTA</span></li><li><b>Los 3 no negociables y su porqué</b><br><span style="font-size:13.5px">Portada · 2: 3 sesiones de fuerza en la agenda (lo que está en el calendario se hace) · 3: proteína en cada comida (sin ella no construyes ni mantienes músculo) · 4: revisión semanal (lo que se revisa no se deja) · 5: resumen · 6: CTA</span></li><li><b>3 sesiones de fuerza con un trabajo de 40 horas</b><br><span style="font-size:13.5px">Portada · 2: por qué 3 y no 5 · 3: cómo las agendo como reuniones · 4: sesión tipo de 45–60 min · 5: qué hacer si una semana falla · 6: CTA</span></li><li><b>Si siempre fuiste el flaco: 5 errores que no te dejan ganar</b><br><span style="font-size:13.5px">Portada · 2–6: un error por slide (comer 2–3 veces, cambiar de rutina, sin progresión, sin piernas, creer que es tu constitución) · 7: &quot;¿Cuál cometías?&quot; + CTA</span></li><li><b>Si siempre fuiste el gordo: por qué empezar por fuerza y no por correr</b><br><span style="font-size:13.5px">Portada · 2: el error de vivir a base de cardio · 3: lo que da la fuerza (forma, músculo) · 4: pasos diarios · 5: proteína y plato ordenado · 6: sin dietas milagro · 7: CTA</span></li><li><b>No necesitas 14 suplementos. Necesitas comer</b><br><span style="font-size:13.5px">Portada · 2: el error (gastar en botes y comer mal) · 3: lo que sí importa (comida total y proteína) · 4–5: un día de comidas para el flaco y para el gordo · 6: cuándo sí tiene sentido la creatina · 7: CTA</span></li><li><b>Hábitos que ayudan a tu cuerpo a gestionar mejor la comida</b><br><span style="font-size:13.5px">Educativo, sin diagnósticos · Portada · 2: fuerza · 3: caminar después de comer · 4: dormir · 5: plato ordenado · 6: &quot;Si tienes dudas de salud, tu médico&quot; · 7: CTA (solo orgánico, nunca anuncio)</span></li><li><b>La báscula miente: cómo medir tu progreso</b><br><span style="font-size:13.5px">Portada · 2: por qué en recomposición la báscula casi no se mueve · 3: cintura · 4: fotos con la misma luz · 5: fuerza en tu libreta · 6: cada cuánto mirar · 7: CTA</span></li><li><b>Cómo instalar un hábito cuando te has ido dejando</b><br><span style="font-size:13.5px">Portada: &quot;No te dejas de golpe. Te vas dejando.&quot; · 2: quitar decisiones · 3: el mismo hueco cada semana · 4: el mínimo para semanas malas · 5: la revisión · 6: CTA</span></li><li><b>Tu primera semana en el gym con más de 25 (sin vergüenza)</b><br><span style="font-size:13.5px">Portada · 2: &quot;me están mirando&quot; (no) · 3: lleva tu plan escrito · 4: los 4 ejercicios del día 1 · 5: cómo pedir una máquina · 6: &quot;todos empezamos de alguna manera&quot; · 7: CTA</span></li></ol></div>
+      </div>
+      <div class="g3">
+        <div class="carr"><span class="brandl">Holyfield · Conexión</span><p class="big">Con 15 años pesaba 52 kg y no tenía <em>hombros</em>.</p><p class="soft" style="font-size:13px">Tu carrusel fijado.</p></div>
+        <div class="carr"><span class="brandl">Holyfield · Conexión</span><p class="big">El flaco. El gordo. <em>El de siempre</em>.</p><p class="soft" style="font-size:13px">Tu eje: la identidad. Fíjalo.</p></div>
+        <div class="carr"><span class="brandl">Holyfield · Valor</span><p class="big">Instalar. Recomponer. <em>Consolidar</em>.</p><p class="soft" style="font-size:13px">El Método HAZLO en 6 slides.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">YouTube</span><h2>1 vídeo a la semana. Ni uno más.</h2><p class="soft">Vídeos de 10 a 15 minutos, grabados en tu sesión de lote. De cada vídeo salen 3–4 clips para Instagram. En la descripción, siempre tu formulario.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>8 títulos para tus primeros 2 meses</h3>
+          <div id="yt"></div>
+        </div>
+        <div class="card dark">
+          <span class="label">En cada vídeo</span>
+          <ul class="l">
+            <li><b>Primeros 30 segundos:</b> "si siempre has sido el flaco o el gordo y crees que es imposible, este vídeo es para ti".</li>
+            <li><b>Tu físico en pantalla:</b> que se vea que lo que cuentas lo haces.</li>
+            <li><b>A mitad:</b> "Si quieres que revise tu caso, tienes el formulario en la descripción."</li>
+            <li><b>Al final:</b> "Escríbeme HAZLO por Instagram" y el formulario.</li>
+            <li><b>Siempre el mismo día</b> (por ejemplo, el domingo) y sin fallar ni una semana.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Bloque de historias · todos los días</span><h2>Entre 6 y 10 historias al día, en 4 momentos.</h2><p class="soft">Los reels y los anuncios te traen gente nueva. Las historias hacen que confíen en ti y te escriban. Sin historias diarias, no hay conversaciones.</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Tu día en historias</h3>
+          <ul class="l">
+            <li><b>Mañana (2–3) · Tú:</b> tu desayuno, tu entreno, tus apuntes de nutrición. Que vean que haces lo que predicas.</li>
+            <li><b>Mediodía (2–3) · Rol entrenador:</b> una corrección, un consejo de 15 segundos, cómo montas un plato para ganar.</li>
+            <li><b>Tarde (1–2) · Prueba:</b> el mensaje de un cliente (con permiso), una marca nueva, tus fotos de los 15 años contra hoy.</li>
+            <li><b>Noche (1–2) · Conversación:</b> encuesta o caja de preguntas. Cada respuesta es una conversación que abres.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Un tema para cada día</h3>
+          <ul class="l">
+            <li><b>Lunes:</b> encuesta "De pequeño eras: el flaco / el gordo / ninguno".</li>
+            <li><b>Martes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Miércoles:</b> tu historia por etapas: 52 kg, el parque, Londres, la rodilla, hoy.</li>
+            <li><b>Jueves:</b> caja de preguntas: "¿qué crees que es imposible en tu caso?".</li>
+            <li><b>Viernes:</b> <b>secuencia CTA fuerte</b>.</li>
+            <li><b>Sábado:</b> comer fuera o un plan social sin cargarte la semana.</li>
+            <li><b>Domingo:</b> preparar la semana: tus 3 huecos en la agenda, compra, comidas y el vídeo de YouTube.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Martes y viernes · Secuencia CTA en 5 historias</span>
+        <ol class="l">
+          <li><b>El problema:</b> "Si siempre has sido el flaco o el gordo y crees que en tu caso es imposible…"</li>
+          <li><b>Por qué pasa:</b> "No es tu cuerpo: es que nunca lo has hecho con un plan que te quepa en la semana."</li>
+          <li><b>La prueba:</b> tu cambio (52 kg con 15, sin hombros y «imposible» → hoy) o el mensaje de un cliente con permiso.</li>
+          <li><b>La oferta:</b> "Esta semana abro plazas para adultos de más de 25 con poco tiempo que creen que es imposible."</li>
+          <li><b>La acción:</b> "Escríbeme <b>HAZLO</b> por privado y te digo si encajas." + caja de preguntas.</li>
+        </ol>
+        <p style="font-size:14px">Cada "HAZLO" entra al CRM y se contesta ese mismo día.</p>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <h3>Stickers que más conversaciones abren</h3>
+          <ul class="l">
+            <li><b>Encuesta:</b> "De pequeño eras: el flaco / el gordo". A todo el que vote, le escribes.</li>
+            <li><b>Caja de preguntas:</b> "¿Qué te dices cuando piensas en cambiar tu cuerpo?".</li>
+            <li><b>Deslizador:</b> "¿Cuánto te identificas con el 'yo es que soy así'?".</li>
+            <li><b>Quiz:</b> "¿Cuántos días a la semana hacen falta para cambiar? 3 / 5 / 6". Enseña y engancha.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Reglas</h3>
+          <ul class="l">
+            <li><b>Habla a cámara</b> en al menos 2 historias al día.</li>
+            <li><b>Subtítulos siempre.</b></li>
+            <li><b>Responde en menos de 1 hora</b> a todo lo que te llegue de historias.</li>
+            <li><b>Destacadas:</b> cada semana guarda lo mejor en "Resultados" (casos de adultos, el flaco y el gordo de siempre), "Cómo trabajo" y "Mi historia". Los casos de clientas van en su propia destacada, "Mujeres".</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Serie "Mi historia"</span><h2>De 52 kilos y sudaderas en verano a que te pregunten cómo entrenas los hombros.</h2><p class="soft">Tu historia es la del flaco de siempre que creía que era imposible. Al gordo de siempre le hablas desde el método, nunca con una historia que no es tuya. Grábala en las 2 primeras semanas y fija el carrusel.</p></div>
+      <div class="g2">
+        <div class="card">
+          <ul class="l">
+            <li><b>Carrusel fijado:</b> "Con 15 años pesaba 52 kg, medía casi 1,84 y me decían que no tenía hombros. Ahora esos mismos me preguntan cómo los entreno."</li>
+            <li><b>Reel 1 · Las sudaderas:</b> "Llevaba sudaderas de varias capas en pleno verano para parecer más grande. No iba ni a la piscina."</li>
+            <li><b>Reel 2 · El parque:</b> "No podía pagar un gimnasio. Empecé en casa con unas mancuernas y haciendo calistenia en un parque."</li>
+            <li><b>Reel 3 · Fuerte pero flaco:</b> "Un compañero me dijo: '¿cómo puedes levantar tanto peso con ese cuerpo?'. Comía dos o tres veces al día."</li>
+            <li><b>Reel 4 · Londres:</b> "Con casi 18 me fui a Londres, empecé a comer de verdad y pasé de los 70 kg. El cambio no fue entrenar más: fue comer."</li>
+            <li><b>Reel 5 · La rodilla:</b> "Me lesioné, me operaron y lo usé como excusa. Hasta que paré de pensar y lo hice."</li>
+          </ul>
+        </div>
+        <div class="card dark">
+          <span class="label">Antes de grabarla</span>
+          <p>Busca fotos de cada etapa: los 15 años, las sudaderas, el parque, Londres, hoy. Una foto vale más que todo el guion.</p>
+          <p style="font-size:14px">Ojo con las cifras: usa siempre las mismas (52 kg con 15 años, más de 70 kg en Londres, el volumen de 75 a 81 kg). Que nadie te pille un número que no cuadra.</p>
+          <p style="font-size:14px">Tu historia se cuenta sin conflictos familiares ni nada personal de tus clientes. Lo que vende es el flaco que creía que era imposible, el plan y "para de pensar y hazlo".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="head"><span class="label">Estados de WhatsApp · todos los días</span><h2>Quien te da su número te ve cada día sin que le escribas.</h2><p class="soft">Es la forma más barata de calentar a quien todavía no se decide (o se lo está pensando con su pareja).</p></div>
+      <div class="g2">
+        <div class="card">
+          <h3>Prepáralo una vez</h3>
+          <ul class="l">
+            <li><b>WhatsApp Business</b> con tu foto de perfil de Instagram.</li>
+            <li><b>Descripción:</b> "Para los que creen que es imposible · Recomposición +25 con poco tiempo".</li>
+            <li><b>Catálogo:</b> tu asesoría con una foto y 3 líneas.</li>
+            <li><b>Mensaje de bienvenida</b> y <b>respuestas rápidas</b> (cómo funciona, precio, cuándo empezar).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Que te vean: guárdalos y que te guarden</h3>
+          <ul class="l">
+            <li><b>Los Estados solo los ve quien tiene tu número guardado.</b> Al pasar a WhatsApp: "guárdame, que subo consejos cada día".</li>
+            <li><b>Listas de difusión:</b> clientes · interesados · fríos.</li>
+            <li><b>Etiquetas:</b> nuevo, interesado, llamada agendada, cliente.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card acc">
+        <span class="label">Rutina diaria · 3 a 5 Estados</span>
+        <ul class="l">
+          <li><b>Recicla 2–3 historias de Instagram.</b></li>
+          <li><b>1 exclusivo:</b> tu entreno, un consejo o una encuesta "responde 1 o 2" ("¿qué te frena? 1 creo que en mi caso es imposible, 2 no tengo tiempo").</li>
+          <li><b>Martes y viernes, CTA:</b> "Esta semana tengo 2 plazas. Respóndeme HAZLO."</li>
+          <li><b>Mide:</b> apunta cada día cuántos te responden. Cada respuesta va al CRM.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁNGULOS -->
+  <section class="view" id="v-ang" hidden aria-label="Ángulos de comunicación">
+    <div class="sec">
+      <div class="head">
+        <span class="label">Tu banco de ideas</span>
+        <h2>Todo lo que le puedes decir al que cree que es imposible.</h2>
+        <p class="soft">Las frases entre comillas son las que vas a oír ("yo es que soy de constitución así", "siempre he sido gordo", "otra vez"): úsalas literal en ganchos y mensajes. Cuando no sepas qué grabar, abre esto, elige y copia.</p>
+      </div>
+      <div class="card dark">
+        <span class="label">Cómo usarlo</span>
+        <ul class="l">
+          <li><b>Rota las familias:</b> cada semana, al menos 4 distintas, y rol entrenador siempre.</li>
+          <li><b>De 1 ángulo salen 3 piezas:</b> una voz en off con 3 ganchos de prueba, un carrusel o yapping, y una historia.</li>
+          <li><b>Repite tu frase:</b> "Para de pensar y hazlo."</li>
+          <li><b>Límite:</b> nada de "gana X kilos en Y semanas". Tus números son tuyos; los de clientes, solo reales y con permiso. Tú fuiste el flaco: al gordo le hablas desde el método, sin inventarte su historia.</li>
+          <li><b>Insulina y hábitos:</b> educativo, prudente y solo orgánico. Ni diagnosticas ni prometes; nunca en anuncios.</li>
+        </ul>
+      </div>
+      <div class="ang-tools">
+        <input type="search" id="ang-q" placeholder="Buscar (p. ej. imposible, flaco, gordo, tiempo, insulina, constitución…)" aria-label="Buscar ángulo">
+        <div class="chips" id="ang-fams" role="group" aria-label="Familias"></div>
+        <div class="chips" id="ang-fmts" role="group" aria-label="Formatos"></div>
+        <p class="soft" id="ang-count" aria-live="polite" style="font-size:13.5px"></p>
+      </div>
+      <div id="ang-list" style="display:grid;gap:22px"></div>
+    </div>
+  </section>
+
+  <!-- GUIONES -->
+  <section class="view" id="v-gui" hidden aria-label="Guiones listos">
+    <div class="sec">
+      <div class="head"><span class="label">Para grabar esta semana</span><h2>Cinco guiones. Esta semana están grabados.</h2><p class="soft">Las dos voces en off llevan 3 ganchos cada una para publicarlas como reels de prueba, y acaban en "sígueme": la que gane es tu anuncio de la semana. Dilo con tus palabras, pero no cambies la estructura.</p></div>
+      <div class="g2" id="scripts"></div>
+    </div>
+  </section>
+
+  <!-- GRABAR -->
+  <section class="view" id="v-rec" hidden aria-label="Grabar bien">
+    <div class="sec">
+      <div class="head"><span class="label">Grabar bien</span><h2>Tus hombros tienen que verse. Con mala luz, no se ve nada.</h2><p class="soft">Tu físico es la prueba: si el vídeo es oscuro o con eco, la prueba se pierde. Esto se arregla en una tarde.</p></div>
+      <div class="g2">
+        <div class="card acc">
+          <span class="label">Planos para tus voces en off</span>
+          <ul class="l">
+            <li><b>Plano general:</b> el ejercicio entero, de cuerpo completo.</li>
+            <li><b>Plano medio:</b> de cintura para arriba, última repetición. Camiseta ajustada o tirantes: que se vean hombros y espalda.</li>
+            <li><b>Detalle:</b> manos en la barra, discos, el plato de comida, la libreta con las cargas.</li>
+            <li><b>Tu vida:</b> Londres, el parque donde empezaste, la cocina. Es tu historia en imágenes.</li>
+            <li><b>Graba 10–15 clips por sesión</b> y tendrás material para toda la semana.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Luz</span>
+          <ul class="l">
+            <li><b>Nunca de espaldas a una ventana:</b> sales en negro.</li>
+            <li><b>Luz de lado</b> para el físico: marca el músculo. De frente para hablar a cámara.</li>
+            <li><b>Si entrenas de noche,</b> lleva una luz LED pequeña: el gym a las 00:30 no ilumina nada.</li>
+            <li><b>Graba a la misma hora</b> para que todo tenga el mismo aspecto.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <span class="label">Audio y cámara</span>
+          <ul class="l">
+            <li><b>Micro de solapa inalámbrico</b> para yapping y rol entrenador: en el gym hay ruido.</li>
+            <li><b>La voz en off se graba aparte,</b> en casa y sin eco (un cuarto con muebles).</li>
+            <li><b>Cámara trasera,</b> 1080p o 4K a 30 fps, trípode. Lente limpia.</li>
+            <li><b>Pide permiso</b> en tu gimnasio y a cualquiera que salga en el plano.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Checklist antes de grabar</h3>
+          <ul class="l check">
+            <li>Luz de frente o de lado, nunca detrás.</li>
+            <li>Lente limpia y móvil fijo.</li>
+            <li>Micro puesto y probado.</li>
+            <li>Ropa coherente con tu marca (negro, blanco, azul).</li>
+            <li>Lista de planos y guiones del día en el móvil.</li>
+            <li>Sabes el gancho de memoria.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card dark">
+        <span class="label">Graba en lote</span>
+        <h3>2 sesiones de grabación a la semana. El resto, publicar y vender.</h3>
+        <ul class="l">
+          <li><b>Sesión 1 (fin de semana, 2 horas):</b> el YouTube de la semana + clips para todas las voces en off + 2–3 rol entrenador.</li>
+          <li><b>Sesión 2 (entre semana, 45 minutos tras entrenar):</b> yapping, tendencias y green screen.</li>
+          <li><b>Montaje:</b> las 3 versiones de cada voz en off el mismo día que la grabas. Carruseles en Canva con tu plantilla de siempre.</li>
+          <li><b>Los demás días:</b> publicar, revisar el anuncio, historias, Estados y conversaciones.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAUDE CODE COMO EDITOR -->
+  <section class="view" id="v-ed" hidden aria-label="Claude Code como editor">
+    <div class="sec">
+      <div class="head"><span class="label">Tu editor de vídeo</span><h2>Claude Code como editor: grabas, sueltas el vídeo y Claude te lo edita.</h2><p class="soft">Claude Code es Claude trabajando en tu ordenador: abre tus vídeos, corta silencios, pone subtítulos, saca versiones de gancho y exporta en 9:16. Lo montas una vez y lo vas educando con cada corrección.</p></div>
+      <div class="card dark"><span class="label">La regla</span><ul class="l">
+        <li><b>Claude edita, tú decides.</b> Revisas cada vídeo antes de publicarlo.</li>
+        <li><b>Nunca inventa cifras, resultados ni testimonios</b> en textos ni subtítulos.</li>
+        <li><b>Nunca toca tus originales:</b> 1-sin-editar/ no se borra jamás.</li>
+      </ul></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 1 · Una sola vez</span><h3>Instala Claude Code y ffmpeg</h3></div>
+      <div class="ed-g">
+        <div class="card"><span class="tag">Mac / Linux</span><b>En la Terminal</b><code class="cc-code">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="cp" data-cp="curl -fsSL https://claude.ai/install.sh | bash">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">brew install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Windows</span><b>En PowerShell</b><code class="cc-code">irm https://claude.ai/install.ps1 | iex</code><button type="button" class="cp" data-cp="irm https://claude.ai/install.ps1 | iex">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">winget install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Sin terminal</span><b>App de escritorio</b><p class="soft">Descarga la app de escritorio de Claude (claude.ai/download) y usa la pestaña <b>Code</b>.</p></div>
+        <div class="card"><span class="tag">Arrancar</span><b>Abre tu carpeta</b><p class="soft">Abre la terminal en la carpeta Contenido-Holyfield, escribe <code class="cc-code">claude</code>, inicia sesión con tu cuenta de Claude y acepta el permiso de acceso a la carpeta.</p></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 2</span><h3>Tu carpeta de trabajo</h3></div>
+      <div class="card"><pre class="ed-txt">Contenido-Holyfield/
+├─ 1-sin-editar/   ← sueltas aquí lo que grabas (nunca se borra)
+├─ 2-editados/     ← Claude guarda aquí lo terminado
+├─ 3-recursos/     ← música, logos, tipografías, b-roll, subtítulos
+├─ 4-referencias/  ← vídeos de creadores que quieres imitar + nota.md
+└─ CLAUDE.md       ← tus instrucciones (abajo)</pre><p class="soft">nota.md en 4-referencias/: una línea por vídeo → &quot;[archivo]: copiar el ritmo de cortes / el estilo de subtítulos / el gancho de los 2 primeros segundos&quot;.</p></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 3</span><h3>Instala las skills que te ha pasado Alberto</h3></div>
+      <div class="card"><ol class="l">
+        <li>Copia la carpeta de skills a <code class="cc-code">~/.claude/skills/</code> (para todos tus proyectos) o a <code class="cc-code">.claude/skills/</code> dentro de Contenido-Holyfield.</li>
+        <li>Cada skill va en su propia carpeta con su archivo <b>SKILL.md</b> dentro.</li>
+        <li>Abre Claude Code en tu carpeta y escribe <code class="cc-code">/skills</code>: tienen que salir en la lista.</li>
+      </ol></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 4</span><h3>Tu CLAUDE.md: crea este archivo dentro de Contenido-Holyfield</h3><p class="soft">Claude lo lee cada vez que lo abres en esa carpeta. Retócalo con tus palabras.</p></div>
+      <div class="card chip ed-pr"><div class="ed-top"><span class="tag">CLAUDE.md</span><b>Cópialo tal cual</b><button type="button" class="cp" data-cp="# Quién soy&#10;Holyfield, entrenador.&#10;&#10;# A quién le hablo (mi nicho)&#10;Adultos de más de 25, con poco tiempo, que siempre han sido el flaco o el gordo y creen que cambiar su cuerpo es imposible.&#10;&#10;# Mi método&#10;Método HAZLO («Para de pensar y hazlo»). 3 pilares: no eres el niño de siempre; un hábito que cabe en tu agenda; fuerza y comida para tu caso. 3 fases: instalar, recomponer, consolidar. Mensaje central: para los que creen que es imposible.&#10;&#10;# Mi tono&#10;Cercano, directo y profesional, de adulto a adulto, sin postureo. Frase marca: para de pensar y hazlo.&#10;&#10;# CTA&#10;&quot;Escríbeme HAZLO&quot; por DM. En anuncios: &quot;Sígueme para…&quot;.&#10;&#10;# Estilo de edición que quiero&#10;Directo y dinámico: cortes cada 1–2 s en el gancho, sin silencios ni muletillas, subtítulos grandes y legibles (2–4 palabras por línea, palabra clave resaltada), zoom suave en las frases importantes, música baja bajo la voz.&#10;Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido).&#10;&#10;# Formatos que hago&#10;voz en off sobre clips míos, rol entrenador (corrigiendo y explicando), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.&#10;&#10;# Antes de editar&#10;- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.&#10;- Usa recursos de 3-recursos/ (música, logos, tipografías, b-roll).&#10;&#10;# Reglas&#10;- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.&#10;- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.&#10;- No inventes cifras, resultados ni testimonios en textos o subtítulos. Si falta un dato, pregúntame.&#10;- Insulina y salud: solo educativo (hábitos), sin diagnosticar ni prometer, y nunca en anuncios.&#10;- En anuncios (&quot;sígueme&quot;): normas de Meta, primera persona o &quot;la mayoría&quot;, nunca &quot;¿tienes…?&quot; ni nada del cuerpo o la salud de quien lo ve; sin antes/después.&#10;- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.&#10;&#10;# Lecciones aprendidas (añádelas aquí cada vez que te corrija)&#10;- ">Copiar</button></div><pre class="ed-txt"># Quién soy
+Holyfield, entrenador.
+
+# A quién le hablo (mi nicho)
+Adultos de más de 25, con poco tiempo, que siempre han sido el flaco o el gordo y creen que cambiar su cuerpo es imposible.
+
+# Mi método
+Método HAZLO («Para de pensar y hazlo»). 3 pilares: no eres el niño de siempre; un hábito que cabe en tu agenda; fuerza y comida para tu caso. 3 fases: instalar, recomponer, consolidar. Mensaje central: para los que creen que es imposible.
+
+# Mi tono
+Cercano, directo y profesional, de adulto a adulto, sin postureo. Frase marca: para de pensar y hazlo.
+
+# CTA
+&quot;Escríbeme HAZLO&quot; por DM. En anuncios: &quot;Sígueme para…&quot;.
+
+# Estilo de edición que quiero
+Directo y dinámico: cortes cada 1–2 s en el gancho, sin silencios ni muletillas, subtítulos grandes y legibles (2–4 palabras por línea, palabra clave resaltada), zoom suave en las frases importantes, música baja bajo la voz.
+Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido).
+
+# Formatos que hago
+voz en off sobre clips míos, rol entrenador (corrigiendo y explicando), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.
+
+# Antes de editar
+- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.
+- Usa recursos de 3-recursos/ (música, logos, tipografías, b-roll).
+
+# Reglas
+- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.
+- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.
+- No inventes cifras, resultados ni testimonios en textos o subtítulos. Si falta un dato, pregúntame.
+- Insulina y salud: solo educativo (hábitos), sin diagnosticar ni prometer, y nunca en anuncios.
+- En anuncios (&quot;sígueme&quot;): normas de Meta, primera persona o &quot;la mayoría&quot;, nunca &quot;¿tienes…?&quot; ni nada del cuerpo o la salud de quien lo ve; sin antes/después.
+- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.
+
+# Lecciones aprendidas (añádelas aquí cada vez que te corrija)
+- </pre></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 5 · Cada semana</span><h3>Educa a tu editor</h3></div>
+      <div class="card"><ol class="l">
+        <li><b>Graba</b> y suelta los vídeos en 1-sin-editar/.</li>
+        <li><b>Pide la edición</b> con una de las órdenes de abajo.</li>
+        <li><b>Corrige con feedback concreto</b> ("subtítulos más arriba", "corta antes", "menos zoom"), nunca "no me gusta".</li>
+        <li><b>Lo que funcione,</b> cópialo a 4-referencias/ como ejemplo bueno.</li>
+        <li><b>Añade la lección a CLAUDE.md</b> (o pídeselo: orden 8). Cada semana edita más a tu gusto.</li>
+      </ol></div>
+      <div class="ed-list"><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 1</span><b>Editar un reel al estilo de una referencia</b><button type="button" class="cp" data-cp="Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes quemados con la palabra clave resaltada y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo.">Copiar</button></div><p class="ed-txt">Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes quemados con la palabra clave resaltada y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 2</span><b>3 versiones de gancho para trial reels</b><button type="button" class="cp" data-cp="Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C.">Copiar</button></div><p class="ed-txt">Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 3</span><b>Recortar silencios</b><button type="button" class="cp" data-cp="Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después.">Copiar</button></div><p class="ed-txt">Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 4</span><b>Exportar en 9:16</b><button type="button" class="cp" data-cp="Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/.">Copiar</button></div><p class="ed-txt">Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 5</span><b>Voz en off sobre b-roll</b><button type="button" class="cp" data-cp="Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/, cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre &quot;Sígueme para…&quot; en pantalla. 9:16, a 2-editados/.">Copiar</button></div><p class="ed-txt">Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/, cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre &quot;Sígueme para…&quot; en pantalla. 9:16, a 2-editados/.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 6</span><b>Preparar portada</b><button type="button" class="cp" data-cp="Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 con este título grande: &quot;[TÍTULO]&quot;, usando la tipografía de 3-recursos/tipografias/. Guárdala como .jpg al lado del vídeo.">Copiar</button></div><p class="ed-txt">Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 con este título grande: &quot;[TÍTULO]&quot;, usando la tipografía de 3-recursos/tipografias/. Guárdala como .jpg al lado del vídeo.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 7</span><b>Subtítulos .srt + revisión</b><button type="button" class="cp" data-cp="Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md.">Copiar</button></div><p class="ed-txt">Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 8</span><b>Aprender de una corrección</b><button type="button" class="cp" data-cp="Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: &#x27;subtítulos más arriba&#x27;, &#x27;menos zoom&#x27;, &#x27;cortes más rápidos en el gancho&#x27;]. Corrígelo y, cuando te diga que está bien, añade la lección a la sección &#x27;Lecciones aprendidas&#x27; de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno.">Copiar</button></div><p class="ed-txt">Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: &#x27;subtítulos más arriba&#x27;, &#x27;menos zoom&#x27;, &#x27;cortes más rápidos en el gancho&#x27;]. Corrígelo y, cuando te diga que está bien, añade la lección a la sección &#x27;Lecciones aprendidas&#x27; de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno.</p></div></div>
+    </div>
+  </section>
+</main>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = {
+    rol: { n: "Rol entrenador", c: "k-rol" },
+    vo: { n: "Voz en off", c: "k-vo" },
+    yap: { n: "Yapping", c: "k-yap" },
+    trend: { n: "Tendencia", c: "k-trend" },
+    gs: { n: "Green screen", c: "k-gs" },
+    carc: { n: "Carrusel conexión", c: "k-carc" },
+    carv: { n: "Carrusel valor", c: "k-carv" }
+  };
+  var REEL = ["rol", "vo", "yap", "trend", "gs"];
+
+  /* ---------- Etapas ---------- */
+  var STAGES = [
+    { t: "Semanas 1 y 2 · 1–2 reels al día", s: "Arranque: entre 1 y 2 reels cada día y 3 carruseles (conexión, valor, conexión). Aprendes a montar los 3 ganchos de cada voz en off. Sin fallar ningún día.",
+      plan: [["vo", "carc"], ["yap", "vo"], ["rol", "carv"], ["vo", "trend"], ["gs", "carc"], ["yap", "vo"], ["rol"]] },
+    { t: "Semanas 3 y 4 · 2–3 reels al día", s: "Subes a 2–3 reels diarios y 4 carruseles (2 de conexión y 2 de valor, alternos). Desde aquí, el rol entrenador manda: 4 de cada 10 reels.",
+      plan: [["rol", "vo", "yap"], ["rol", "vo", "carc"], ["rol", "vo", "trend"], ["rol", "gs", "carv"], ["rol", "vo", "yap"], ["rol", "trend", "carc"], ["rol", "vo", "carv"]] },
+    { t: "Mes 2 en adelante · 3–5 reels al día", s: "Cuando las variantes de gancho te salgan solas: 4 reels al día de media (entre 3 y 5) y 5 carruseles por semana, alternando conexión y valor.",
+      plan: [["rol", "rol", "vo", "yap", "carc"], ["rol", "rol", "vo", "trend"], ["rol", "vo", "vo", "gs", "carv"], ["rol", "rol", "vo", "yap", "trend"], ["rol", "vo", "yap", "carc"], ["rol", "rol", "vo", "trend", "carv"], ["rol", "rol", "vo", "yap", "carc"]] }
+  ];
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var cnt = { rol: 0, vo: 0, yap: 0, trend: 0, gs: 0, carc: 0, carv: 0 }, reels = 0;
+    st.plan.forEach(function (d) { d.forEach(function (k) { cnt[k]++; if (k.indexOf("car") !== 0) reels++; }); });
+    var days = st.plan.map(function (d, i) {
+      var nr = d.filter(function (k) { return k.indexOf("car") !== 0; }).length;
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + nr + (d.length > nr ? ' + C' : '') + '</small></div>' +
+        d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") + '</div>';
+    }).join("");
+    var desglose = REEL.filter(function (k) { return cnt[k]; }).map(function (k) { return cnt[k] + " " + K[k].n.toLowerCase(); }).join(" · ");
+    var pct = Math.round(cnt.rol / reels * 100);
+    return '<div class="stage"><div class="stage-h"><span class="big" data-reels="' + reels + '" data-car="' + (cnt.carc + cnt.carv) + '" data-carc="' + cnt.carc + '" data-carv="' + cnt.carv + '" data-rol="' + cnt.rol + '">' + reels + ' reels + ' + (cnt.carc + cnt.carv) + ' carruseles/semana (' + cnt.carc + ' conexión · ' + cnt.carv + ' valor)</span><h3>' + esc(st.t) + '</h3><span class="pct">' + pct + ' % rol entrenador</span></div><p class="soft" style="font-size:14px">' + esc(st.s) + ' (' + desglose + ')</p><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- YouTube ---------- */
+  var YT = [["Para los que creen que es imposible: cómo dejé de ser el flaco de siempre", "El primero: presenta tu mensaje y tu método HAZLO.", true],
+    ["Con 15 años pesaba 52 kg y no tenía hombros: mi historia hasta hoy", "El segundo: tu historia. Tu mejor vídeo de confianza.", true],
+    ["Recomposición después de los 25: ganar músculo y perder grasa a la vez", "Fase 2 del método, explicada con calma.", false],
+    ["Siempre he sido gordo: por dónde empezaría yo (sin dietas milagro)", "Para el otro lado de tu nicho. Fuerza, pasos y comida.", false],
+    ["Si fuera tu entrenador: 32 años, siempre el flaco y 3 días libres", "Rol entrenador puro.", false],
+    ["Cómo entrenar 3 días trabajando 40 horas (yo entrenaba a las 00:30)", "Para el que dice que no tiene tiempo.", false],
+    ["Hábitos que ayudan a tu cuerpo con la comida: fuerza, pasos y sueño", "Educativo sobre insulina y hábitos, sin diagnosticar.", false],
+    ["«Yo es que soy de constitución así»: lo que de verdad pesa la genética", "Responde la objeción nº 1 del flaco de siempre.", false]];
+  $("yt").innerHTML = YT.map(function (y, i) {
+    return '<div class="ti"><span class="n' + (y[2] ? " first" : "") + '">' + (y[2] ? "Primero" : "#" + (i + 1)) + '</span><div><b>' + esc(y[0]) + '</b><small>' + esc(y[1]) + '</small></div></div>';
+  }).join("");
+
+  /* ---------- Ángulos ---------- */
+  var FMTS = ["Voz en off", "Yapping", "Tendencia", "Green screen", "Carrusel conexión", "Carrusel valor", "Rol entrenador", "YouTube", "Historias"];
+  var FAMS = [
+    { n: "Siempre fui el flaco", d: "52 kg, sin hombros, sudaderas en verano. Tu historia es la suya." },
+    { n: "Siempre fui el gordo", d: "Años arrastrando la etiqueta. Le hablas desde el método, sin inventar historias." },
+    { n: "El niño que llevas dentro", d: "La identidad: el cuerpo de niño no decide el cuerpo de adulto." },
+    { n: "Para los que creen que es imposible", d: "Tu mensaje central y tu frase: para de pensar y hazlo." },
+    { n: "Instalar el hábito con poco tiempo", d: "Trabajo, agenda y los que se van dejando." },
+    { n: "Recomposición", d: "Ganar músculo y perder grasa: el flaco y el gordo, mismo método." },
+    { n: "Insulina y hábitos (educativo)", d: "Fuerza, pasos, sueño y comida. Sin diagnosticar ni prometer. Solo orgánico." },
+    { n: "Método HAZLO", d: "Cada pilar, cada fase y los no negociables con su porqué." },
+    { n: "Mi historia", d: "El parque, el fútbol, Londres, la rodilla." },
+    { n: "Objeciones", d: "Lo que te dirá antes de empezar, respondido antes." },
+    { n: "Rol entrenador", d: "Corrigiendo, planificando y revisando." },
+    { n: "Clientes", d: "Tres acabaron siendo entrenadores. Ellas, como prueba secundaria." }
+  ];
+  var ANG = [[0, "52 kg y sin hombros", ["Con 15 años pesaba 52 kg, medía casi 1,84 y me decían que no tenía hombros.", "Ahora esos mismos me preguntan cómo entreno los hombros."], ["Voz en off", "Carrusel conexión", "YouTube"]], [0, "Sudaderas en verano", ["Llevaba sudaderas de varias capas en pleno verano para parecer más grande.", "Pasé años sin ir a la piscina para no quitarme la camiseta."], ["Voz en off", "Yapping"]], [0, "«Soy de constitución así»", ["«Yo es que soy de constitución delgada.» Yo también lo decía. Comía 2–3 veces al día.", "Tu constitución marca de dónde partes, no hasta dónde llegas. Yo era de 52 kg con casi 1,84."], ["Green screen", "Yapping"]], [0, "Fuerte pero flaco", ["«¿Cómo puedes levantar tanto peso con ese cuerpo?» Me lo dijeron a mí.", "Ser fuerte y seguir flaco tiene una explicación, y no es la genética."], ["Voz en off", "Yapping"]], [0, "El flaco de 30 años", ["Mucha gente lleva desde el instituto siendo «el flaco del grupo». A los 30 sigue igual porque nadie le enseñó a comer para construir.", "Ser el flaco a los 15 tiene un pase. A los 30 se puede cambiar."], ["Voz en off", "Carrusel valor"]], [0, "Comer para construir", ["Yo comía 2–3 veces al día y una era un bol de cereales. Así no se construye nada.", "Antes de decir que es imposible, cuenta cuántas comidas con proteína haces."], ["Rol entrenador", "Carrusel valor"]], [1, "El gordo de la clase", ["La mayoría de los que fueron «el gordo de la clase» se siguen viendo así a los 35, aunque su cuerpo haya cambiado.", "El apodo del colegio no tiene por qué ser tu cuerpo de adulto."], ["Yapping", "Carrusel conexión"]], [1, "«Siempre he sido gordo»", ["«Siempre he sido gordo.» Lo escucho mucho. Ese «siempre» es lo que has hecho hasta ahora, no tu destino.", "Llevar 20 años así no significa que vayas a estar 20 más."], ["Voz en off", "Yapping"]], [1, "Perder peso no es cambiar tu cuerpo", ["Perder peso no es lo mismo que cambiar tu cuerpo. La diferencia es la fuerza.", "Muchos que han hecho mil dietas nunca han entrenado fuerza en serio."], ["Carrusel valor", "Voz en off"]], [1, "La camiseta ancha", ["Yo me tapaba con sudaderas por flaco. Mucha gente se tapa con camisetas anchas por lo contrario. Es la misma vergüenza.", "Flaco o gordo, taparse es lo mismo: no querer que te vean."], ["Carrusel conexión", "Yapping"]], [1, "No empiezas corriendo", ["Con kilos de más, lo primero no es correr: es fuerza, pasos y comida ordenada.", "Mi orden para quien empieza con peso de más: fuerza 3 días, caminar cada día y proteína."], ["Rol entrenador", "Carrusel valor"]], [2, "Sigues viéndote como el niño", ["Tienes 30 años y te sigues viendo como el niño flaco (o gordo) de 12.", "El cuerpo que tenías de niño no es el que tienes que tener de adulto."], ["Voz en off", "Yapping"]], [2, "El apodo", ["Hay apodos del colegio que se quedan pegados 20 años. El mío era «sin hombros».", "Lo que te llamaban de pequeño no decide cómo vas a estar a los 35."], ["Carrusel conexión", "Yapping"]], [2, "Callar bocas", ["Empecé a entrenar con 15 años para callar bocas. Hoy entreno por mí.", "Callar bocas te hace empezar. Lo que te hace seguir es otra cosa."], ["Voz en off", "Historias"]], [2, "El cuerpo de adulto", ["Es hora de tener ya el cuerpo que soñabas de adulto, no el del niño de siempre.", "No quieres el cuerpo de un modelo. Quieres dejar de ser el de siempre."], ["Yapping", "Carrusel conexión", "Tendencia"]], [3, "Creía que era imposible", ["Veía casi imposible subir de peso. Pensaba que mi cuerpo, sencillamente, no podía.", "Si crees que para ti es imposible, yo pensaba lo mismo con 52 kg."], ["Voz en off", "YouTube"]], [3, "Imposible no: sin plan", ["No es imposible: es que nunca lo has hecho con un plan.", "La mayoría de los «para mí es imposible» son «nunca lo hice bien»."], ["Yapping", "Tendencia"]], [3, "Para de pensar y hazlo", ["Para de pensar y hazlo.", "Mi cabeza le daba vueltas a todo, siempre de noche. Lo que me cambió fue actuar."], ["Yapping", "Historias"]], [3, "No hay atajos", ["No hay atajos, eso es perder tiempo.", "Lo que llevas años buscando no es un truco. Es constancia con un plan."], ["Voz en off", "Carrusel conexión"]], [3, "«En mi familia somos así»", ["«En mi familia somos todos así.» La genética pesa menos que lo que haces cada semana.", "Lo que se hereda de verdad muchas veces son los hábitos."], ["Green screen", "Yapping"]], [4, "Entrenar a las 00:30", ["Trabajaba más de 40 horas y estudiaba. Entrenaba a las 00:30.", "No te pido medianoche. Te pido 3 sesiones en tu agenda."], ["Voz en off", "Historias"]], [4, "3 sesiones como una reunión", ["Mis clientes apuntan sus 3 entrenos en la agenda como una reunión de trabajo. Por eso no los saltan.", "Si tu entreno no está en el calendario, no existe."], ["Rol entrenador", "Carrusel valor"]], [4, "No de lunes a viernes", ["No tienes que entrenar de lunes a viernes. Adaptarse al tiempo que uno tiene.", "3 días bien hechos ganan a 5 días a medias."], ["Yapping", "Tendencia"]], [4, "Los que se van dejando", ["Nadie se deja de golpe. Te vas dejando: un entreno menos, una cena más, un año más.", "Instalar el hábito no es motivación: es quitar decisiones."], ["Voz en off", "Carrusel conexión"]], [4, "«El mes que viene empiezo otra vez»", ["«El mes que viene ya empiezo el gimnasio otra vez.» La frase que más escucho.", "Que esta sea la última vez que empiezas."], ["Voz en off", "Yapping"]], [5, "Ni volumen ni definición", ["«Quiero hacer volumen, mantenimiento y definición.» Si empiezas de cero con más de 25, hay otra opción: recomposición.", "Ganar músculo y perder grasa a la vez: cuándo se puede."], ["Carrusel valor", "YouTube"]], [5, "La báscula miente", ["En recomposición la báscula se mueve poco y el espejo mucho.", "Mide cintura, fotos y fuerza. La báscula, sola, engaña."], ["Rol entrenador", "Carrusel valor"]], [5, "El flaco y el gordo hacen lo mismo", ["El flaco y el gordo de siempre necesitan casi lo mismo: fuerza, proteína y constancia. Cambia la cantidad de comida.", "Mismo método, dos puntos de partida."], ["Voz en off", "Carrusel valor"]], [5, "Mi volumen de 75 a 81", ["De 75 a 81 kg en volumen y después quité grasa. Me veía mejor que nunca.", "Mi primera vez por fases: lo que hice bien y lo que haría distinto."], ["Carrusel conexión", "Yapping"]], [5, "No necesitas 14 suplementos", ["No necesitas 14 suplementos. Necesitas comer.", "Antes de comprar creatina, cuenta cuántas comidas con proteína haces."], ["Green screen", "Carrusel valor"]], [6, "Caminar después de comer", ["Un hábito que recomiendo a todos mis clientes: caminar 10–15 minutos después de comer.", "El paseo de después de comer: simple, gratis y suma."], ["Carrusel valor", "Historias"]], [6, "La fuerza y la comida", ["Lo que la mayoría no sabe: entrenar fuerza ayuda a tu cuerpo a gestionar mejor lo que comes.", "Por qué pongo fuerza antes que cardio a casi todos mis clientes."], ["Carrusel valor", "Yapping"]], [6, "Antes de hablar de insulina", ["Se habla mucho de la insulina. Antes de buscar dietas raras: fuerza, pasos, sueño y comida ordenada.", "No diagnostico nada: las dudas de salud, a tu médico. Lo que sí trabajo son los hábitos."], ["Yapping", "Carrusel valor"]], [6, "El plato ordenado", ["Así monto un plato: proteína, verdura y el hidrato que toque. Sin prohibir nada.", "Comer ordenado gana a cualquier dieta milagro."], ["Rol entrenador", "Carrusel valor"]], [6, "Dormir también cuenta", ["Dormir poco hace que todo cueste más: el hambre, el entreno y la constancia.", "Antes de cambiar la dieta, mira cuánto duermes."], ["Yapping", "Historias"]], [7, "Pilar 1 · No eres el niño de siempre", ["Mi método tiene 3 pilares. El primero: dejar de tratarte como el flaco o el gordo de siempre.", "Tu cuerpo de niño es tu punto de partida, no tu destino."], ["Yapping", "Carrusel valor"]], [7, "Pilar 2 · Un hábito que cabe en tu agenda", ["Pilar 2 del método HAZLO: 3 sesiones de fuerza en la agenda y pasos cada día.", "Por qué mis clientes no entrenan de lunes a viernes."], ["Voz en off", "Carrusel valor"]], [7, "Pilar 3 · Fuerza y comida para tu caso", ["Pilar 3: el flaco come para construir; el gordo baja grasa sin perder músculo.", "Mismo método, distinta comida."], ["Yapping", "Carrusel valor"]], [7, "Las 3 fases", ["Instalar, recomponer, consolidar. Así son 6 meses conmigo.", "Por qué los 2 primeros meses son de instalar el hábito, no de cambiar el cuerpo."], ["Carrusel valor", "YouTube"]], [7, "Los 3 no negociables y su porqué", ["3 sesiones de fuerza en la agenda, proteína en cada comida y revisión semanal. Y por qué cada una.", "Si cumples estas 3 cosas, cambias. Si no, da igual el plan."], ["Voz en off", "Carrusel valor"]], [8, "Calistenia en el parque", ["No podía pagar un gimnasio. Empecé en un parque y con las mancuernas de casa.", "No necesitas el gimnasio perfecto para empezar."], ["Voz en off", "Tendencia"]], [8, "Sin piernas por el fútbol", ["Mi primer año: full body de lunes a viernes, sin piernas, porque «ya jugaba al fútbol».", "El error que me tuvo un año igual de flaco."], ["Yapping", "Tendencia"]], [8, "Londres con casi 18", ["Con casi 18 me fui a Londres, empecé a comer de verdad y pasé de los 70 kg.", "El cambio no llegó entrenando más. Llegó comiendo."], ["Voz en off", "YouTube"]], [8, "La rodilla", ["Me lesioné la rodilla, me operaron y la usé como excusa.", "Una lesión no es el final. Usarla de excusa, sí."], ["Yapping", "Voz en off"]], [9, "«No tengo tiempo»", ["«El trabajo no me deja.» Con 3 sesiones de fuerza de una hora es suficiente.", "Trabajas 40 horas. Así meto 3 entrenos en tu semana."], ["Rol entrenador", "Yapping"]], [9, "«Ya lo intenté»", ["«Ya lo intenté y lo dejé.» Normal: nadie te enseñó a instalar el hábito.", "Lo que falla no eres tú. Es empezar sin plan y sin nadie que te revise."], ["Yapping", "Historias"]], [9, "«A mi edad ya es tarde»", ["Mi primer cliente tenía casi 50 años. Con 30 no llegas tarde.", "Con más de 25 tienes algo que de joven no tenías: saber por qué lo haces."], ["Voz en off", "Carrusel conexión"]], [9, "«Lo hago yo con YouTube»", ["«Lo hago yo con YouTube.» ¿Cuántos años llevas haciéndolo? ¿Qué tal te va?", "YouTube te da información. No te revisa cada semana."], ["Yapping", "Green screen"]], [10, "Si fueras mi cliente: 32 y siempre el flaco", ["Si fueras mi cliente, con 32 años, siempre el flaco y 3 días libres, esto haríamos el primer mes.", "32 años, 1,80 y 62 kg de toda la vida: tus 4 primeras semanas."], ["Rol entrenador", "YouTube"]], [10, "Si fueras mi cliente: 35 y siempre el gordo", ["Si fueras mi cliente, con 35 años, toda la vida siendo el gordo y poco tiempo, por aquí empezaríamos.", "Fuerza 3 días, pasos y proteína: tu primer mes sin dieta milagro."], ["Rol entrenador", "Carrusel valor"]], [10, "Corrección de técnica", ["Me ha mandado su sentadilla. Le cambio 2 cosas.", "Si haces el remo así, no te crece la espalda."], ["Rol entrenador", "Voz en off"]], [10, "Reviso la semana de un seguidor", ["Un seguidor me manda su rutina de 6 días que nunca cumple. Se la dejo en 3.", "Reviso tu semana: lo que sobra y lo que falta."], ["Rol entrenador", "Historias"]], [10, "Respondo tu DM", ["Me escriben «soy de constitución delgada» y lo respondo como si ya fuera mi cliente.", "«Siempre he sido gordo, ¿por dónde empiezo?» Respuesta de entrenador en 30 segundos."], ["Rol entrenador", "Historias"]], [11, "Tres clientes, ahora entrenadores", ["Tres de mis clientes acabaron siendo entrenadores.", "No solo cambiaron su físico: cambiaron de profesión."], ["Yapping", "Carrusel conexión"]], [11, "Mi primer cliente: casi 50", ["Mi primer cliente tenía casi 50 años.", "Si con casi 50 se puede empezar, con 30 no tienes excusa."], ["Voz en off", "Historias"]], [11, "¿Entrenas mujeres? Sí", ["«¿Entrenas mujeres?» Sí. Y ellas también recomponen.", "Sus resultados van en la destacada \"Mujeres\", con permiso. Prueba secundaria: tu foco son los adultos que creen que es imposible."], ["Historias"]]];
+  var fFam = -1, fFmt = "";
+  var norm = function (t) { return String(t).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); };
+  function renderAng() {
+    var q = norm($("ang-q").value || "");
+    var list = ANG.filter(function (a) {
+      if (fFam >= 0 && a[0] !== fFam) return false;
+      if (fFmt && a[3].indexOf(fFmt) < 0) return false;
+      if (q && norm(a[1] + " " + a[2].join(" ") + " " + FAMS[a[0]].n).indexOf(q) < 0) return false;
+      return true;
+    });
+    $("ang-count").textContent = list.length + " de " + ANG.length + " ángulos";
+    if (!list.length) { $("ang-list").innerHTML = '<p class="ang-empty">Ningún ángulo coincide.</p>'; return; }
+    var html = "";
+    FAMS.forEach(function (f, i) {
+      var items = list.filter(function (a) { return a[0] === i; });
+      if (!items.length) return;
+      html += '<div class="fam"><div class="fh"><h3>' + (i + 1) + '. ' + esc(f.n) + '</h3><small>' + items.length + '</small><span class="soft" style="font-size:14px">' + esc(f.d) + '</span></div><div class="g2">' +
+        items.map(function (a) {
+          return '<article class="card angc"><h3>' + esc(a[1]) + '</h3>' + a[2].map(function (h) {
+            return '<div class="hk"><p class="hook">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h) + '">Copiar</button></div>';
+          }).join("") + '<div class="meta">' + a[3].map(function (m) { return '<span class="tag' + (m === "Rol entrenador" ? " a" : "") + '">' + esc(m) + '</span>'; }).join("") + '</div></article>';
+        }).join("") + '</div></div>';
+    });
+    $("ang-list").innerHTML = html;
+  }
+  $("ang-fams").innerHTML = '<button type="button" data-fam="-1" aria-pressed="true">Todas</button>' + FAMS.map(function (f, i) { return '<button type="button" data-fam="' + i + '" aria-pressed="false">' + esc(f.n) + '</button>'; }).join("");
+  $("ang-fmts").innerHTML = '<button type="button" data-fmt="" aria-pressed="true">Todos los formatos</button>' + FMTS.map(function (m) { return '<button type="button" data-fmt="' + esc(m) + '" aria-pressed="false">' + esc(m) + '</button>'; }).join("");
+  $("ang-fams").addEventListener("click", function (e) { var b = e.target.closest("[data-fam]"); if (!b) return; fFam = +b.dataset.fam; $("ang-fams").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-fmts").addEventListener("click", function (e) { var b = e.target.closest("[data-fmt]"); if (!b) return; fFmt = b.dataset.fmt; $("ang-fmts").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); renderAng(); });
+  $("ang-q").addEventListener("input", renderAng);
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var orig = b.textContent;
+    var done = function (t) { b.textContent = t; setTimeout(function () { b.textContent = orig; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.cp).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+  renderAng();
+
+  /* ---------- Guiones ---------- */
+  var SCRIPTS = [{"k": "vo", "t": "Creía que era imposible", "clip": "Tus clips entrenando: press militar, última repetición, tu plato de comida, tú de espaldas marcando hombros al final. Si la tienes, una foto tuya con 15 años.", "hooks": ["A · Con 15 años pesaba 52 kg y creía que ganar músculo era imposible para mí.", "B · Siempre fui el flaco del grupo. Creía que era para siempre.", "C · Me decían que no tenía hombros. Ahora me preguntan cómo los entreno."], "lines": [["3–15 s", "Entrenaba de lunes a viernes, sin piernas, y comía dos o tres veces al día, una de ellas un bol de cereales. Veía casi imposible subir de peso. Pensaba que era mi constitución.", "Texto: «ES MI CONSTITUCIÓN» ✕"], ["15–28 s", "Cuando empecé a entrenar fuerza con un orden, a comer proteína en cada comida y a cumplir aunque no tuviera ganas, pasé de los 70 kg. No era imposible: nunca lo había hecho bien.", ""], ["28–38 s", "Sígueme: cada día cuento cómo se pasa de imposible a hecho.", "Texto: SÍGUEME"]]}, {"k": "vo", "t": "El niño de siempre", "clip": "Tú caminando hacia el gimnasio, libreta con cargas, plato con proteína, serie de remo, mirada a cámara al final.", "hooks": ["A · La mayoría de los adultos que fueron el flaco o el gordo de la clase se siguen viendo así a los 30.", "B · El apodo del colegio no tiene por qué ser tu cuerpo de adulto.", "C · Fui «el de los 52 kilos y sin hombros». Esto es lo que aprendí."], "lines": [["3–15 s", "Lo veo mucho: el que siempre fue el delgado cree que no puede ganar, y el que siempre fue el de más peso cree que no puede perder. Yo era el primero.", "Texto: EL FLACO · EL GORDO"], ["15–28 s", "No es tu cuerpo. Es que nadie te enseñó a entrenar fuerza, a comer para tu caso y a hacerlo con el tiempo que tiene un adulto: tres sesiones en la agenda, pasos y proteína.", "Texto: 3 SESIONES · PASOS · PROTEÍNA"], ["28–38 s", "Sígueme: cada día cuento cómo se deja atrás la etiqueta del colegio.", "Texto: SÍGUEME"]]}, {"k": "yap", "t": "Para los que creen que es imposible", "clip": "Tú a cámara con buena luz. Si las tienes, una foto tuya con 15 años al principio.", "lines": [["0–3 s", "Esto es para los que creen que es imposible.", "Texto: PARA LOS QUE CREEN QUE ES IMPOSIBLE"], ["3–15 s", "Con 15 años pesaba 52 kilos, medía casi 1,84 y me decían que no tenía hombros. Llevaba sudaderas en verano para parecer más grande y veía imposible subir de peso.", ""], ["15–28 s", "Si siempre has sido el flaco o el gordo, no te falta genética: te falta hacerlo con un plan que te quepa en la semana. Tres sesiones de fuerza, proteína en cada comida y alguien que te revise.", ""], ["28–40 s", "Es hora de tener ya tu cuerpo de adulto. Para de pensar y hazlo: escríbeme HAZLO.", "Texto: ESCRÍBEME \"HAZLO\""]]}, {"k": "rol", "t": "Si fueras mi cliente: 32 años y poco tiempo", "clip": "Tú en el gimnasio con una libreta o pizarra, y después enseñando los ejercicios.", "lines": [["0–3 s", "Si fueras mi cliente, tuvieras 32 años, trabajaras 9 horas y llevaras toda la vida siendo el flaco o el gordo, esto es lo que haríamos el primer mes.", "Texto: TU PRIMER MES CONMIGO"], ["3–15 s", "Tres sesiones de fuerza a la semana, apuntadas en tu agenda como una reunión. Pocos ejercicios, los básicos, y cada semana una repetición más o un poco más de peso.", "Rótulo: 3 SESIONES · PROGRESIÓN"], ["15–30 s", "Si eres el flaco, comer para construir. Si eres el gordo, bajar grasa sin perder músculo. En los dos casos, proteína en cada comida y caminar cada día.", ""], ["30–40 s", "¿Quieres que te lo prepare a ti? Escríbeme HAZLO por privado.", "Texto: ESCRÍBEME \"HAZLO\""]]}, {"k": "gs", "t": "Desmonto: \"yo es que soy de constitución así\"", "clip": "Green screen detrás: un comentario o post tipo «soy ectomorfo, no puedo ganar» o «en mi familia somos todos gordos».", "lines": [["0–3 s", "«Yo es que soy de constitución así.» Lo leo cada semana.", "Detrás: el comentario"], ["3–15 s", "Yo pesaba 52 kilos con casi 1,84 y decía lo mismo. Comía dos o tres veces al día y entrenaba sin plan.", ""], ["15–30 s", "Tu constitución marca de dónde partes, no hasta dónde llegas. Fuerza con progresión, comida para tu caso y meses de constancia: eso es lo que nunca has probado.", ""], ["30–40 s", "Sígueme: cada semana desmonto una frase que te tiene en el «es imposible».", "Texto: SÍGUEME"]]}];
+  $("scripts").innerHTML = SCRIPTS.map(function (s) {
+    var hooks = s.hooks ? '<div class="variants"><b>0–3 s · 3 ganchos para reels de prueba</b>' + s.hooks.map(function (h) { return '<div class="hk" style="display:flex;gap:8px;align-items:flex-start"><p style="flex:1;font-weight:700;font-size:14.5px">' + esc(h) + '</p><button type="button" class="cp" data-cp="' + esc(h.replace(/^[ABC] · /, "")) + '">Copiar</button></div>'; }).join("") + '</div>' : "";
+    var copyAll = (s.hooks ? s.hooks.join("\n") + "\n" : "") + s.lines.map(function (l) { return l[1]; }).join("\n");
+    return '<article class="card script"><span class="tag a">' + esc(K[s.k].n) + '</span><h3>' + esc(s.t) + '</h3><p class="soft" style="font-size:14px"><b>Qué se ve:</b> ' + esc(s.clip) + '</p>' + hooks +
+      s.lines.map(function (l) { return '<div class="line"><span class="t">' + esc(l[0]) + '</span><p>' + esc(l[1]) + (l[2] ? '<small>' + esc(l[2]) + '</small>' : '') + '</p></div>'; }).join("") +
+      '<button type="button" class="cp" style="justify-self:start" data-cp="' + esc(copyAll) + '">Copiar guion</button></article>';
+  }).join("");
+
+  /* ---------- Pestañas ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["plan", "ang", "gui", "rec", "ed"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+      window.scrollTo({ top: Math.min(window.scrollY, document.querySelector("nav.tabs").offsetTop), behavior: "auto" });
+    });
+  });
+})();
+</script>

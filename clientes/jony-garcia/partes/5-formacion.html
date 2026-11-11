@@ -1,0 +1,322 @@
+<title>Jony Formación</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root {
+  --paper: #f4f2ef;
+  --white: #ffffff;
+  --ink: #141414;
+  --soft: #5c5853;
+  --line: #e0dbd4;
+  --chip: #ebe6df;
+  --accent: #c4232b;
+  --accent-text: #a81d24;
+  --accent-dark: #ff6a6f;
+  --purple: #5b3fd1;
+  --ok: #1f7a4d;
+  --f-head: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(28px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em, h3 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+a { color: var(--accent-text); }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.small { font-size: 14.5px; }
+.head { display: grid; gap: 12px; max-width: 820px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 820px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h3 em { color: var(--accent-dark); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac3; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #ffd9db; }
+.card.accent ul.l, .card.accent ol.l, .card.accent .soft { color: #ffeaea; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+.card.warn { background: #fff6e5; box-shadow: inset 0 0 0 1px #f0d9a8; }
+.card.warn .label { color: #8a5a00; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; overflow-wrap: anywhere; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.12); border-left-color: #fff; }
+.tag { display: inline-block; font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 8px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.tag.red { background: var(--accent); color: #fff; }
+.tag.ok { background: #e1f2e8; color: var(--ok); }
+.tag.pur { background: #ebe6ff; color: var(--purple); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.note { font-size: 14.5px; color: var(--soft); border-top: 1px dashed var(--line); padding-top: 10px; }
+.big { font-family: var(--f-head); font-weight: 800; font-size: clamp(40px, 7vw, 64px); line-height: .95; color: var(--accent-text); }
+.card.dark .big { color: var(--accent-dark); }
+.row { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); background: var(--white); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); background: var(--chip); }
+tr:last-child td { border-bottom: 0; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.step { position: relative; padding-left: 46px; }
+.step::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; font: 700 16px/32px var(--f-head); text-align: center; }
+.copy { appearance: none; border: 0; background: var(--ink); color: #fff; font: 600 13px/1 var(--f-body); padding: 9px 12px; border-radius: 4px; cursor: pointer; justify-self: start; min-height: 36px; }
+.copy:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.copy.done { background: var(--ok); }
+.topnav { display: flex; gap: 8px; flex-wrap: wrap; font: 500 12px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
+.topnav span { padding: 7px 9px; border-radius: 3px; background: var(--chip); color: var(--soft); }
+.topnav span.on { background: var(--ink); color: #fff; }
+.foot { font-size: 13.5px; color: var(--soft); border-top: 1px solid var(--line); padding-top: 16px; }
+img { max-width: 100%; display: block; }
+@media (max-width: 860px) {
+  .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .g2, .g4 { grid-template-columns: minmax(0, 1fr); }
+  .card { padding: 16px; }
+  body { font-size: 16px; }
+}
+
+.prog { position: sticky; top: 0; z-index: 5; background: var(--paper); padding: 10px 0; display: grid; gap: 6px; border-bottom: 1px solid var(--line); }
+.prog-row { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.prog-bar { height: 10px; background: var(--chip); border-radius: 5px; overflow: hidden; }
+.prog-bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .25s; }
+.pct { font-family: var(--f-head); font-weight: 800; font-size: 26px; line-height: 1; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filters button { appearance: none; border: 0; background: var(--chip); color: var(--ink); font: 600 13.5px/1 var(--f-body); padding: 9px 12px; border-radius: 4px; cursor: pointer; min-height: 36px; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.weeks { display: grid; gap: 12px; }
+.wk { background: var(--white); border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); display: grid; grid-template-columns: 120px minmax(0, 1fr); overflow: hidden; }
+.wk.done { box-shadow: inset 0 0 0 2px var(--ok); }
+.wk-side { background: var(--ink); color: #fff; padding: 16px 14px; display: grid; gap: 6px; align-content: start; }
+.wk-side .n { font-family: var(--f-head); font-weight: 800; font-size: 44px; line-height: .9; }
+.wk-side .bk { font: 500 10.5px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: #cfcac3; }
+.wk-side.nut { background: #2c2357; }
+.wk-side.mix { background: var(--accent); }
+.wk-side.mix .bk { color: #ffe1e2; }
+.wk-main { padding: 16px 18px; display: grid; gap: 12px; min-width: 0; }
+.wk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.wk-grid > div { background: var(--chip); border-radius: 4px; padding: 10px 12px; display: grid; gap: 4px; align-content: start; font-size: 14.5px; }
+.wk-grid ul { margin: 0; padding-left: 16px; display: grid; gap: 3px; }
+.ticks { display: flex; flex-wrap: wrap; gap: 8px; }
+.ticks label { display: inline-flex; align-items: center; gap: 8px; background: var(--paper); border-radius: 4px; padding: 8px 10px; font-size: 14px; font-weight: 600; cursor: pointer; min-height: 40px; box-shadow: inset 0 0 0 1px var(--line); }
+.ticks input { width: 18px; height: 18px; accent-color: var(--ok); margin: 0; }
+.ticks label.on { background: #e1f2e8; box-shadow: inset 0 0 0 1px #b8dfc8; }
+.reset { appearance: none; border: 0; background: none; color: var(--soft); text-decoration: underline; font: 500 13px/1 var(--f-body); cursor: pointer; padding: 6px 0; }
+@media (max-width: 860px) {
+  .wk-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .wk { grid-template-columns: minmax(0, 1fr); }
+  .wk-side { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 4px 12px; padding: 12px 14px; }
+  .wk-side .n { font-size: 34px; grid-row: span 2; }
+  .wk-main { padding: 14px; }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="head">
+    <span class="label">Sistema Jony · Parte 5 de 8 · Formación</span>
+    <h1>12 semanas con <em>las pirámides</em>.</h1>
+    <p class="soft">Plan de estudio con los dos libros de Eric Helms, <b>The Muscle &amp; Strength Pyramid: Training</b> y <b>Nutrition</b>. Cada semana tiene cuatro tareas: leer, aplicarlo en sí mismo, preparar cómo usarlo con clientes y convertirlo en contenido. Así estudiar alimenta también sus videos.</p>
+    <div class="tags"><span class="tag red">30–45 min al día</span><span class="tag pur">Training</span><span class="tag" style="background:#e6e1f7;color:#2c2357">Nutrition</span><span class="tag">El progreso se guarda en este dispositivo</span></div>
+  </header>
+
+  <section class="sec" aria-labelledby="h-como">
+    <header>
+      <span class="label">01 · Cómo estudiar trabajando en la obra</span>
+      <h2 id="h-como">No es leer por leer: <em>cada capítulo, tres videos</em>.</h2>
+    </header>
+    <div class="g3">
+      <div class="card"><span class="label">Cuándo</span><ul class="l"><li>30–45 min al día: hora de comida en la obra o antes de dormir.</li><li>5–6 días a la semana. Un día de repaso.</li><li>Si un día no puede, 10 minutos. Nunca cero (su propia regla: "tengas ganas o no").</li></ul></div>
+      <div class="card"><span class="label">Cómo</span><ul class="l"><li>Notas en el celular: <b>resumen de 5 líneas con sus palabras</b> por capítulo.</li><li>Una pregunta por capítulo: "¿cómo se lo explicaría a Cristian?".</li><li>Dudas a Alberto en la llamada semanal.</li></ul></div>
+      <div class="card dark"><span class="label">Regla de contenido</span><p class="small">Lo que aprende el lunes lo explica el jueves en un video de 30 segundos. Enseñar es la mejor forma de aprender, y le da contenido sin pensar.</p><p class="soft small">Nunca leer el libro a cámara ni copiar frases: se explica con sus palabras y sus ejemplos (la obra, el súper, sus errores).</p></div>
+    </div>
+    <div class="card warn">
+      <span class="label">Antes de empezar</span>
+      <ul class="l">
+        <li>Comprar los dos libros (2.ª edición) en la web oficial de los autores. Los nombres de los capítulos pueden cambiar según la edición: <b>se sigue el índice del libro</b>, y este plan marca el orden y el enfoque.</li>
+        <li>Los rangos que aparecen abajo son <b>orientativos y generales</b>. Los números finos y los matices los da el libro: si no coinciden, manda el libro.</li>
+        <li>Más adelante, con clientes ya en marcha: una certificación reconocida en EE. UU. (NASM, ACE, ISSA…) le da credibilidad y facilita contratar un seguro de responsabilidad. No hace falta para empezar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-plan">
+    <header>
+      <span class="label">02 · El plan semana a semana</span>
+      <h2 id="h-plan">Primero la base de la pirámide. <em>Luego</em> los detalles.</h2>
+      <p class="soft">El orden es el del método: constancia y comida primero (es donde fallan sus clientes), luego volumen, intensidad y progresión, y al final ejercicios, descansos y tempo.</p>
+    </header>
+
+    <div class="prog" aria-live="polite">
+      <div class="prog-row"><span class="label">Progreso total</span><span><span class="pct" id="pct">0 %</span> <span class="soft small" id="cnt">0 / 0 tareas</span></span></div>
+      <div class="prog-bar"><i id="bar"></i></div>
+      <div class="prog-row">
+        <div class="filters" role="group" aria-label="Filtrar semanas">
+          <button type="button" data-f="all" aria-pressed="true">Todas</button>
+          <button type="button" data-f="pend" aria-pressed="false">Pendientes</button>
+          <button type="button" data-f="done" aria-pressed="false">Hechas</button>
+        </div>
+        <button type="button" class="reset" id="reset">Reiniciar progreso</button>
+      </div>
+    </div>
+
+    <div class="weeks" id="weeks"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fin">
+    <header>
+      <span class="label">03 · Examen final (semana 12)</span>
+      <h2 id="h-fin">Sabe que lo domina cuando puede hacer <em>esto</em>.</h2>
+    </header>
+    <div class="g2">
+      <div class="card dark">
+        <span class="label">Pruebas prácticas</span>
+        <ul class="l">
+          <li>Explicar la pirámide completa (entreno y comida) en <b>60 segundos a cámara</b>, sin notas.</li>
+          <li>Calcular calorías y proteína de un cliente inventado (20 años, 180 lb, trabaja en construcción) en 5 minutos.</li>
+          <li>Escribir un programa de 3 días full body y uno de 4 días torso/pierna, con progresión.</li>
+          <li>Responder 10 dudas típicas de DM sin decir ningún mito.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="label">Entregables para Alberto</span>
+        <ul class="l">
+          <li>12 resúmenes de 5 líneas (uno por semana).</li>
+          <li>Su propio plan del siguiente bloque (entreno y comida).</li>
+          <li>3 plantillas de programa para clientes y la plantilla de check-in semanal.</li>
+          <li>36 piezas de contenido salidas del estudio (3 por semana): eso es más de un mes de videos.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Sistema Jony · Escuela AGLEZ · Parte 5: Formación. Resúmenes y enfoque propios. No sustituye la lectura de los libros, que son la fuente.</p>
+</div>
+
+<script>
+(function () {
+  var KEY = 'jony-formacion-v1';
+  var W = [
+    { n: 1, side: 'mix', bk: 'Training + Nutrition', t: 'Nivel 1 · Constancia (adherencia)', lee: 'Introducción de los dos libros y el capítulo de adherencia de cada uno.',
+      ti: ['¿Tu plan actual lo aguantarías un año? Si no, ¿qué cambias?', 'Apunta qué días y horas reales tienes después de la obra.'],
+      cl: ['En la evaluación inicial, preguntar días reales, horario de trabajo y la comida que no quieren dejar.', 'Plan realista, que les guste y flexible: si no se cumple, no sirve.'],
+      co: ['"La rutina perfecta que no aguantas no sirve de nada."', '"Por qué dejé de entrenar 6 días (y crecí más)."', '"Mi plan se adapta a la obra, no al revés."'] },
+    { n: 2, side: 'nut', bk: 'Nutrition', t: 'Calorías y balance energético', lee: 'Capítulo de calorías: mantenimiento, déficit, superávit y ritmo de cambio.',
+      ti: ['Pésate cada mañana 2 semanas y saca la media semanal.', 'Estima tus calorías de mantenimiento con esa media y lo que comes.'],
+      cl: ['Ajustar calorías según la media semanal de peso, no el peso de un día.', 'Orientativo: para perder grasa, bajar alrededor de un 0,5–1 % del peso por semana; el volumen va mucho más lento.'],
+      co: ['"Comí 4.000 calorías al día y esto me pasó."', '"Por qué la báscula sube un día y no importa."', '"Cuánto deberías bajar por semana."'] },
+    { n: 3, side: 'nut', bk: 'Nutrition', t: 'Macros: proteína, grasas y carbos', lee: 'Capítulo de macronutrientes.',
+      ti: ['Arma tus macros: proteína primero, luego grasas y luego carbos.', 'Repite tus 5 comidas más comunes ya calculadas.'],
+      cl: ['Orientativo: proteína de unos 1,6–2,2 g/kg (aprox. 0,7–1 g por libra); en déficit, hacia la parte alta.', 'Plantilla con comida latina: tortillas, arroz, frijoles, huevo, pollo y carne en porciones.'],
+      co: ['"Los carbos de noche no engordan."', '"Cuánta proteína necesitas de verdad."', '"Cómo como tortillas y aun así defino."'] },
+    { n: 4, side: 'nut', bk: 'Nutrition', t: 'Micros, agua, timing y suplementos', lee: 'Capítulos de micronutrientes e hidratación, horario y frecuencia de comidas, y suplementos.',
+      ti: ['Revisa qué suplementos compraste que no servían (el mass gainer…).', 'Fruta, verdura y fibra a diario. Agua en la obra: lleva un galón.'],
+      cl: ['Lista de "sí sirve / no hace falta": creatina, proteína en polvo por comodidad, cafeína… y poco más.', 'Comer 3–5 veces al día según su horario; el batido post-entreno no es urgente.'],
+      co: ['"Mi primera compra fit fue proteína y pensé que era magia."', '"Creatina: lo que sí hace y lo que no."', '"Lo que llevo a la obra para comer."'] },
+    { n: 5, side: '', bk: 'Training', t: 'Nivel 2 · Volumen', lee: 'Capítulo de volumen, intensidad y frecuencia (parte de volumen).',
+      ti: ['Cuenta tus series duras por músculo a la semana. Compáralo con tu primer año.', 'Ajusta para que todo esté en un rango que recuperes.'],
+      cl: ['Principiantes que trabajan físico: empezar con poco volumen y subir si recuperan.', 'Orientativo: muchos progresan con unas 10–20 series duras por músculo a la semana; el libro da los matices.'],
+      co: ['"Entrenaba demasiado y crecía menos."', '"Cuántas series necesitas por músculo."', '"Más no es mejor."'] },
+    { n: 6, side: '', bk: 'Training', t: 'Nivel 2 · Intensidad y frecuencia', lee: 'Mismo capítulo: carga, esfuerzo (RPE/RIR) y frecuencia.',
+      ti: ['Apunta el RIR (repeticiones en reserva) de cada serie dos semanas.', 'Prueba a entrenar cada músculo unas 2 veces por semana.'],
+      cl: ['Explicar el RIR fácil: "deja 1–3 reps en el tanque".', 'Full body de 3 días o torso/pierna de 4, según su jornada.'],
+      co: ['"Qué es dejar reps en reserva (y por qué no vas al fallo siempre)."', '"Full body de 3 días para gente que trabaja."', '"Por qué entrenar cada músculo 2 veces."'] },
+    { n: 7, side: '', bk: 'Training', t: 'Nivel 3 · Progresión', lee: 'Capítulo de progresión: principiante, intermedio, descargas.',
+      ti: ['Aplica la doble progresión: primero más reps y luego más peso.', 'Planifica una descarga si llevas semanas estancado.'],
+      cl: ['Hoja de progresión para cada cliente (peso × reps × RIR).', 'Principiantes: progresar casi cada sesión; luego, cada semana.'],
+      co: ['"Egolifting o progresar: no es lo mismo."', '"Doble progresión explicada con mancuernas."', '"Qué hago cuando dejo de progresar."'] },
+    { n: 8, side: '', bk: 'Training', t: 'Nivel 4 · Selección de ejercicios', lee: 'Capítulo de selección de ejercicios.',
+      ti: ['Arma tu selección: básicos y accesorios. Pierna, sí o sí (era tu error).', 'Revisa la técnica de tus básicos grabándote.'],
+      cl: ['Alternativas para gym lleno, gym chico o casa.', 'Elegir ejercicios que el cliente haga bien y le gusten.'],
+      co: ['"Mi error: no hacía pierna."', '"3 ejercicios de espalda que sí funcionan."', '"Peso muerto de 465 lb: los 3 puntos de técnica."'] },
+    { n: 9, side: '', bk: 'Training', t: 'Niveles 5 y 6 · Descanso y tempo', lee: 'Capítulos de descanso entre series y tempo.',
+      ti: ['Cronometra tus descansos una semana.', 'Controla la bajada sin hacer el tempo exageradamente lento.'],
+      cl: ['Descansar lo suficiente en los básicos (varios minutos) y menos en los accesorios.', 'Sesiones de 60 min para quien sale tarde de trabajar.'],
+      co: ['"Descansas poco y por eso no progresas."', '"El tempo lento no es magia."', '"Mi entreno de 60 min después de la obra."'] },
+    { n: 10, side: '', bk: 'Training', t: 'Diseño de programas y periodización', lee: 'Capítulos de organización del programa y los programas de ejemplo.',
+      ti: ['Escribe tu próximo bloque de 8–12 semanas.', 'Compáralo con lo que hacías tu primer año.'],
+      cl: ['3 plantillas: principiante full body 3 días, torso/pierna 4 días e intermedio.', 'Cómo ajustar la plantilla a cada horario.'],
+      co: ['"Te enseño mi rutina actual (y por qué)."', '"Rutina para trabajadores de construcción."', '"Así armo el plan de un cliente."'] },
+    { n: 11, side: 'nut', bk: 'Nutrition', t: 'Fases: definición, volumen y mantenimiento', lee: 'Capítulos sobre fases, descansos de dieta, refeeds y mantenimiento.',
+      ti: ['Planifica tu siguiente fase: volumen limpio, con ritmo controlado.', 'Repasa qué te llevaba a los atracones (extremos, prohibiciones) y cómo lo evitas.'],
+      cl: ['Fines de semana: comidas planificadas, no "día libre" sin control.', 'Recomposición en principiantes con exceso de grasa.'],
+      co: ['"Bulk sucio o volumen limpio."', '"Por qué fallaba los fines de semana (y cómo lo arreglé)."', '"Recomposición: bajar grasa y ganar músculo a la vez."'] },
+    { n: 12, side: 'mix', bk: 'Training + Nutrition', t: 'Integración y examen', lee: 'Repaso de los dos libros y de tus 11 resúmenes.',
+      ti: ['Pasa el examen práctico de abajo.', 'Revisa tu propio plan con todo lo aprendido.'],
+      cl: ['Plantilla de evaluación inicial y de check-in semanal (peso medio, cintura, fotos, fuerza y adherencia).', 'Reglas de ajuste: qué cambiar si baja, se estanca o sube.'],
+      co: ['"La pirámide en 60 segundos."', '"Lo que aprendí en 12 semanas estudiando."', '"El error de principiante que más veo en el gym."'] }
+  ];
+  var TASKS = [['lee', 'Leído'], ['res', 'Resumen de 5 líneas'], ['ap', 'Aplicado en mí'], ['co', '3 piezas publicadas']];
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  var filter = 'all';
+  var root = document.getElementById('weeks');
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function li(a) { return '<ul>' + a.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'; }
+  function weekDone(w) { return TASKS.every(function (t) { return state[w.n + '-' + t[0]]; }); }
+  function render() {
+    var html = '';
+    W.forEach(function (w) {
+      var d = weekDone(w);
+      if (filter === 'pend' && d) return;
+      if (filter === 'done' && !d) return;
+      html += '<article class="wk' + (d ? ' done' : '') + '">' +
+        '<div class="wk-side ' + w.side + '"><span class="n">' + w.n + '</span><span class="bk">Semana ' + w.n + ' · ' + esc(w.bk) + '</span></div>' +
+        '<div class="wk-main"><h3>' + esc(w.t) + '</h3><p class="soft small"><b>Leer:</b> ' + esc(w.lee) + '</p>' +
+        '<div class="wk-grid"><div><span class="label">Aplicar en ti</span>' + li(w.ti) + '</div><div><span class="label">Con clientes</span>' + li(w.cl) + '</div><div><span class="label">Contenido (3 piezas)</span>' + li(w.co) + '</div></div>' +
+        '<div class="ticks">' + TASKS.map(function (t) { var k = w.n + '-' + t[0], on = !!state[k]; return '<label class="' + (on ? 'on' : '') + '"><input type="checkbox" data-k="' + k + '"' + (on ? ' checked' : '') + '>' + t[1] + '</label>'; }).join('') + '</div>' +
+        '</div></article>';
+    });
+    root.innerHTML = html || '<p class="soft">No hay semanas en este filtro.</p>';
+    var total = W.length * TASKS.length, c = 0;
+    W.forEach(function (w) { TASKS.forEach(function (t) { if (state[w.n + '-' + t[0]]) c++; }); });
+    var p = Math.round(c / total * 100);
+    document.getElementById('pct').textContent = p + ' %';
+    document.getElementById('cnt').textContent = c + ' / ' + total + ' tareas';
+    document.getElementById('bar').style.width = p + '%';
+  }
+  root.addEventListener('change', function (e) {
+    var k = e.target.getAttribute && e.target.getAttribute('data-k');
+    if (!k) return;
+    if (e.target.checked) state[k] = 1; else delete state[k];
+    save(); render();
+  });
+  document.querySelectorAll('[data-f]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      filter = b.getAttribute('data-f');
+      document.querySelectorAll('[data-f]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      render();
+    });
+  });
+  var rb = document.getElementById('reset'), armed = null;
+  rb.addEventListener('click', function () {
+    if (!armed) { rb.textContent = '¿Seguro? Toca otra vez para borrar'; armed = setTimeout(function () { armed = null; rb.textContent = 'Reiniciar progreso'; }, 4000); return; }
+    clearTimeout(armed); armed = null; rb.textContent = 'Reiniciar progreso'; state = {}; save(); render();
+  });
+  render();
+})();
+</script>

@@ -1,0 +1,756 @@
+<title>Mentoría AGLEZ Academy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mentoría 1:1 en bloques de 3 meses para entrenadores que quieren convertir su asesoría online en una empresa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: página clara de una columna; el 1:1 se lleva el bloque más grande, el resto acompaña. Un solo look claro: blanco papel, tinta y amarillo AGLEZ como relleno. */
+:root {
+  --paper: #fafaf8;
+  --white: #ffffff;
+  --ink: #141413;
+  --soft: #5f5e58;
+  --line: #e3e2dc;
+  --yellow: #ffd21f;
+  --yellow-soft: #fff6cc;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+section { padding-block: clamp(64px, 9vw, 112px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(34px, 5vw, 56px)/1.02 var(--f-display); font-stretch: 78%; letter-spacing: -.01em; }
+h3 { font: 700 20px/1.3 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.label { font: 500 12px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--soft); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 18px; }
+mark { background: linear-gradient(transparent 58%, var(--yellow) 58%); color: inherit; padding: 0 .05em; }
+.sec-head { display: grid; gap: 16px; margin-bottom: clamp(36px, 5vw, 56px); max-width: 780px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--white);
+  font: 700 16px/1 var(--f-body); text-decoration: none;
+  padding: 18px 26px; border-radius: 999px;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-1px); background: #000; }
+.btn svg { width: 18px; height: 18px; }
+.btn-yellow { background: var(--yellow); color: var(--ink); }
+.btn-yellow:hover { background: #ffc800; }
+.link { font-weight: 700; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: var(--yellow); }
+
+/* Cabecera */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 20px; }
+.brand { font: 900 18px/1 var(--f-display); font-stretch: 85%; letter-spacing: .06em; }
+.brand span { background: var(--yellow); padding: 3px 6px; margin-left: 4px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+
+/* Hero */
+.hero { padding-block: clamp(36px, 6vw, 72px) clamp(48px, 7vw, 88px); display: grid; gap: 26px; }
+.hero h1 { font: 800 clamp(46px, 8.4vw, 104px)/.96 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; max-width: 13ch; }
+.hero .lede { font-size: clamp(18px, 2.1vw, 21px); color: var(--ink); max-width: 58ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); margin-top: 12px; }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; }
+.fact b { font: 800 22px/1.1 var(--f-display); font-stretch: 80%; }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* Casos */
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 16px; align-content: start; min-width: 0; text-decoration: none; }
+a.case { transition: border-color .15s ease, transform .15s ease; }
+a.case:hover { border-color: var(--ink); transform: translateY(-2px); }
+.case.wide { grid-column: span 2; }
+.case .result { font: 800 26px/1.1 var(--f-display); font-stretch: 80%; }
+.case blockquote { margin: 0; font-size: 17px; line-height: 1.6; }
+.case blockquote p + p { margin-top: 12px; }
+.who { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; font: 800 17px/1 var(--f-display); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.case .src { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.case .play { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--white); display: grid; place-items: center; flex: none; }
+.case .play svg { width: 14px; height: 14px; margin-left: 2px; }
+.case .t { font-weight: 700; }
+.cases-note { margin-top: 20px; color: var(--soft); font-size: 14px; }
+
+.proof-label { margin-top: 8px; }
+.vids { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.vid { margin: 0; background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; min-width: 0; }
+.vid video { display: block; width: 100%; max-width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; }
+.vid figcaption { padding: 12px 16px; font-size: 14px; color: var(--soft); }
+.vid figcaption b { color: var(--ink); }
+.wall { margin-top: 16px; columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.shot { background: var(--white); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: block; }
+.shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+.shot figcaption { padding: 16px 18px 18px; display: grid; gap: 6px; font-size: 15px; color: var(--soft); line-height: 1.5; }
+.shot figcaption b { color: var(--ink); font: 800 24px/1.1 var(--f-display); font-stretch: 80%; }
+.shot.text { padding: 22px; display: grid; gap: 14px; }
+.shot.text .big { font: 800 30px/1.05 var(--f-display); font-stretch: 78%; }
+.shot.text blockquote { margin: 0; font-size: 16px; line-height: 1.6; }
+.more { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; font-size: 15px; }
+.more a { font-weight: 700; text-underline-offset: 4px; text-decoration-color: var(--yellow); text-decoration-thickness: 2px; }
+
+/* Historia */
+.story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.story-copy { display: grid; gap: 18px; }
+.story-copy p { color: var(--soft); max-width: 54ch; }
+.story-copy p strong { color: var(--ink); }
+.story-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+.story-imgs figure { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+.story-imgs img { display: block; width: 100%; height: auto; }
+.story-imgs figcaption { padding: 10px 12px; font: 500 11px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.callout { margin-top: 16px; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
+.callout img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
+.callout blockquote { margin: 0; font: 800 clamp(30px, 4vw, 46px)/1.05 var(--f-display); font-stretch: 78%; }
+.callout p { margin-top: 14px; color: var(--soft); max-width: 50ch; }
+
+/* YouTube */
+.yt { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.yt a { display: grid; gap: 14px; padding: 22px; border-radius: 14px; background: var(--ink); color: var(--white); text-decoration: none; transition: transform .15s ease; }
+.yt a:hover { transform: translateY(-2px); }
+.yt .play { width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; }
+.yt .play svg { width: 16px; height: 16px; margin-left: 2px; }
+.yt span { font-weight: 700; }
+.yt small { color: #c9c7bf; font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; }
+
+.team { margin: 0 0 16px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+.team img { display: block; width: 100%; height: auto; }
+.team figcaption { padding: 12px 16px; font-size: 14px; color: var(--soft); }
+
+.jump { display: flex; justify-content: center; padding-block: 8px 40px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.jump a { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 999px; border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; background: var(--white); transition: background .15s ease; }
+.jump a:hover { background: var(--yellow); }
+.show-all { display: flex; justify-content: center; margin: 8px 0 28px; }
+.show-all .btn { border: 0; cursor: pointer; font-family: inherit; }
+.facts { text-decoration: none; color: inherit; }
+a.facts:hover .fact b { text-decoration: underline; text-decoration-color: var(--yellow); text-decoration-thickness: 3px; }
+
+.star { margin-bottom: 16px; background: var(--yellow); border-radius: 14px; padding: clamp(24px, 4vw, 44px); display: grid; gap: 14px; }
+.star .label { color: var(--ink); }
+.star-num { font: 800 clamp(52px, 10vw, 120px)/.9 var(--f-display); font-stretch: 72%; letter-spacing: -.02em; }
+.star-num span { display: block; font-size: .32em; letter-spacing: 0; margin-top: 8px; }
+.star p { font-size: 19px; font-weight: 500; max-width: 50ch; }
+.star .avatar { background: var(--ink); color: var(--yellow); }
+.star .who span { color: var(--ink); opacity: .75; }
+
+/* Hobby vs empresa */
+.versus { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--white); }
+.versus > div { padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.versus .after { background: var(--ink); color: var(--white); }
+.versus .after .label { color: var(--yellow); }
+.versus ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.versus li { padding: 12px 0; border-top: 1px solid var(--line); font-size: 16px; }
+.versus .before li { color: var(--soft); text-decoration: line-through; text-decoration-color: #c9c7bf; }
+.versus .after li { border-top-color: #34332f; }
+
+/* Cómo trabajamos */
+.system { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; }
+.core { background: var(--yellow); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 22px; align-content: start; }
+.core h3 { font: 800 clamp(28px, 3.4vw, 38px)/1.05 var(--f-display); font-stretch: 78%; }
+.core-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+.core-list div { display: grid; gap: 4px; border-top: 2px solid var(--ink); padding-top: 12px; }
+.core-list b { font-size: 17px; }
+.core-list span { font-size: 15px; line-height: 1.5; }
+.side { display: grid; gap: 16px; align-content: start; }
+.side article { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: grid; gap: 12px; }
+.side ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 15px; display: grid; gap: 6px; }
+
+/* Semana */
+.week { margin-top: 16px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.day { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 14px 12px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.day .d { font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+.day b { font-size: 14.5px; line-height: 1.3; }
+.day span { font-size: 13px; color: var(--soft); line-height: 1.4; }
+.day.key { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.day.key .d, .day.key span { color: #c9c7bf; }
+.day.start { border-color: var(--ink); }
+.week-cap { margin-top: 12px; color: var(--soft); font-size: 14px; }
+
+/* Comparativa */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--white); }
+table { width: 100%; border-collapse: collapse; min-width: 620px; }
+th, td { text-align: left; padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; font-size: 15.5px; }
+thead th { border-top: 0; font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); }
+thead th.us { color: var(--ink); background: var(--yellow-soft); }
+tbody th { font-weight: 700; width: 22%; }
+td { color: var(--soft); }
+td.us { color: var(--ink); font-weight: 600; background: var(--yellow-soft); }
+
+/* 3 meses */
+.three { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.three-copy { display: grid; gap: 18px; }
+.three-copy p { color: var(--soft); max-width: 54ch; }
+.three-copy p strong { color: var(--ink); }
+.timeline { display: grid; gap: 10px; }
+.phase { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 16px; align-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.phase .m { font: 800 26px/1 var(--f-display); font-stretch: 78%; }
+.phase .m small { display: block; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); margin-top: 4px; }
+.phase p { font-size: 15px; color: var(--soft); }
+.phase p b { color: var(--ink); }
+.phase.next { border-style: dashed; background: transparent; }
+
+.why { display: grid; gap: 12px; }
+.why div { display: grid; gap: 2px; padding-left: 16px; border-left: 3px solid var(--yellow); }
+.why b { font-size: 17px; }
+.why span { color: var(--soft); font-size: 15.5px; }
+
+/* Vídeo */
+.player { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1072 / 576; background: #000; border-radius: 14px; overflow: hidden; }
+.player video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; }
+.chapters { margin-top: 14px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.chapters button { all: unset; cursor: pointer; display: grid; gap: 4px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); transition: border-color .15s ease; }
+.chapters button:hover, .chapters button.on { border-color: var(--ink); }
+.chapters button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.chapters time { font: 500 12px/1 var(--f-mono); color: var(--soft); font-variant-numeric: tabular-nums; }
+.chapters span { font-weight: 700; font-size: 14px; line-height: 1.3; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--yellow); color: var(--ink); display: grid; place-items: center; text-align: center; font: 800 clamp(30px, 3.6vw, 40px)/.95 var(--f-display); font-stretch: 75%; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee p { margin-top: 14px; font-size: 18px; color: #c9c7bf; max-width: 58ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--yellow); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--ink); padding-top: 18px; }
+.step p { color: var(--soft); font-size: 15.5px; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+/* Cierre */
+.final .wrap { display: grid; gap: 24px; justify-items: start; }
+.final h2 { font-size: clamp(42px, 7vw, 84px); font-stretch: 72%; max-width: 15ch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none;
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(250, 250, 248, .94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line);
+}
+.sticky-cta .btn { width: 100%; justify-content: center; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .system, .three, .story { grid-template-columns: 1fr; }
+  .yt { grid-template-columns: 1fr; }
+  .week { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .chapters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .cases, .versus, .fit, .steps, .core-list { grid-template-columns: 1fr; }
+  .case.wide { grid-column: auto; }
+  .week { grid-template-columns: 1fr 1fr; }
+  .chapters { grid-template-columns: 1fr 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .vids { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 72%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+  .vid { scroll-snap-align: start; }
+  .callout { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">AGLEZ<span>ACADEMY</span></div>
+    <a class="btn" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">Agendar llamada</a>
+  </header>
+
+  <div class="hero">
+    <div class="label">Mentoría 1:1 · Solo bloques de 3 meses · Grupo reducido</div>
+    <h1>Tu asesoría online, gestionada como <mark>una empresa</mark>.</h1>
+    <p class="lede">Mentoría individual para entrenadores que quieren construir un negocio sólido. Cada semana tienes un plan de acción, hablamos por WhatsApp a diario y controlamos tus números como lo haría cualquier empresa que crece.</p>
+    <div class="actions">
+      <a class="btn" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">
+        Agenda tu llamada 1:1
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="link" href="#video">Ver cómo funciona por dentro</a>
+    </div>
+    <div class="label proof-label">Resultados de alumnos</div>
+    <a class="facts" href="#casos" style="margin-top:0">
+      <div class="fact"><b>11.300 € en 1 mes</b><span>Sergio, empezando conmigo desde cero</span></div>
+      <div class="fact"><b>2–3k → 8k €</b><span>Facturación mensual de un alumno en sus 2 primeros meses</span></div>
+      <div class="fact"><b>2.524 → 293K</b><span>Seguidores de Lukas, @polacotrainer</span></div>
+      <div class="fact"><b>211 → 159K</b><span>Seguidores de Car, @fitconcar</span></div>
+    </a>
+  </div>
+</div>
+
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Cómo funciona · Vídeo de 3:20</div>
+      <h2>Te enseño cómo funciona por dentro.</h2>
+      <p class="lede">La academia, el plan 1:1 conmigo, tu espacio de trabajo y la comunidad. Toca un capítulo para ir directo.</p>
+    </div>
+    <div class="player">
+      <video id="vid" controls playsinline preload="metadata" poster="poster.jpg">
+        <source src="mentoria.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este vídeo.
+      </video>
+    </div>
+    <div class="chapters" role="list" aria-label="Capítulos del vídeo">
+      <button type="button" role="listitem" data-t="0"><time>0:00</time><span>La academia</span></button>
+      <button type="button" role="listitem" data-t="75"><time>1:15</time><span>El plan 1:1</span></button>
+      <button type="button" role="listitem" data-t="120"><time>2:00</time><span>Tu espacio de trabajo</span></button>
+      <button type="button" role="listitem" data-t="163"><time>2:43</time><span>La formación</span></button>
+      <button type="button" role="listitem" data-t="180"><time>3:00</time><span>La comunidad</span></button>
+    </div>
+  </div>
+</section>
+
+<section id="tres-meses">
+  <div class="wrap three">
+    <div class="three-copy">
+      <div class="label">Por qué voy de 3 en 3 meses</div>
+      <h2>Nunca más de 3 meses de entrada. A propósito.</h2>
+      <p>No te voy a pedir un año de compromiso el primer día. <strong>Solo ofrezco 3 meses</strong>, y lo hago por tres motivos:</p>
+      <div class="why">
+        <div><b>Para comprobar que congeniamos.</b><span>Trabajamos codo con codo y a diario. Si no hay conexión, no tiene sentido alargarlo.</span></div>
+        <div><b>Porque tu proyecto me importa igual que a ti.</b><span>Es igual de importante por las dos partes. Me comprometo cuando veo que tú también lo haces.</span></div>
+        <div><b>Porque quiero máxima cercanía.</b><span>Llevo un grupo pequeño de personas para poder estar encima de cada una.</span></div>
+      </div>
+      <p>Si todo funciona, el negocio avanza y tiene sentido, <strong>seguimos a largo plazo</strong>. Me gustan las relaciones largas, pero que se ganen.</p>
+    </div>
+    <div class="timeline">
+      <div class="phase"><div class="m">Mes 1<small>La base</small></div><p><b>Estructura.</b> Cliente ideal, oferta clara y el plan de contenido y captación en marcha.</p></div>
+      <div class="phase"><div class="m">Mes 2<small>Captación</small></div><p><b>Sistema.</b> Prospección, contenido con objetivo y tus primeras métricas reales.</p></div>
+      <div class="phase"><div class="m">Mes 3<small>Venta</small></div><p><b>Escala.</b> Vender mejor, procesos de onboarding y soporte, decisiones con datos.</p></div>
+      <div class="phase next"><div class="m">Después<small>Si encaja</small></div><p>Si los dos lo vemos claro, seguimos a largo plazo.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="jump"><a href="#casos">Ver todos los resultados <span aria-hidden="true">↓</span></a></div>
+
+<section id="diferencia">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Por qué 1:1</div>
+      <h2>No es otra mentoría grupal.</h2>
+      <p class="lede">Muchas mentorías se centran en la parte grupal: la misma clase para cientos de alumnos. Funciona para aprender. Para construir tu empresa necesitas a alguien mirando tu negocio, no el de todos.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Mentoría grupal típica</th><th class="us">AGLEZ 1:1</th></tr></thead>
+        <tbody>
+          <tr><th>Plan</th><td>El mismo temario para todos</td><td class="us">Un plan de acción hecho para tu negocio, cada semana</td></tr>
+          <tr><th>Seguimiento</th><td>Una llamada grupal de vez en cuando</td><td class="us">Revisión individual cada domingo y WhatsApp diario</td></tr>
+          <tr><th>Con quién hablas</th><td>Con un equipo de soporte</td><td class="us">Conmigo, directamente</td></tr>
+          <tr><th>Alumnos</th><td>Cientos a la vez</td><td class="us">Un grupo reducido</td></tr>
+          <tr><th>Compromiso</th><td>6 o 12 meses desde el primer día</td><td class="us">3 meses para comprobar que encajamos</td></tr>
+          <tr><th>Objetivo</th><td>Aprender</td><td class="us">Facturar y estructurar tu negocio</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <img src="casos/esto-si-es-un-plan.jpg" alt="Chat de WhatsApp con un alumno que venía de otra mentoría: pfff nada que ver vamos, esto sí que es un plan" loading="lazy" width="900" height="1301">
+      <div>
+        <div class="label">Un alumno que venía de otra mentoría</div>
+        <blockquote style="margin-top:14px">“Nada que ver, vamos. Esto sí que es un plan.”</blockquote>
+        <p>Su respuesta cuando le pregunté si esto era mejor que las llamadas de su anterior mentoría. La diferencia es que aquí el plan se hace sobre tu negocio, con tus fotos, tu rutina y tu día a día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS: vídeos arriba, luego muro. Los 6 primeros del muro se ven; el resto lleva class="extra" y se despliega con el botón. -->
+<section id="casos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Casos de alumnos</div>
+      <h2>Resultados reales. Con números y capturas.</h2>
+      <p class="lede">Entrenadores que dejaron de improvisar y empezaron a llevar su asesoría como una empresa. Escúchalo de ellos.</p>
+    </div>
+
+    <div class="star">
+      <div class="label">Caso destacado</div>
+      <div class="star-num">11.300 € <span>en un solo mes</span></div>
+      <p>Sergio empezó conmigo desde cero. En un mes facturó 11.300 €.</p>
+      <div class="who"><span class="avatar" aria-hidden="true">S</span><div><b>Sergio</b><span>Alumno de la mentoría 1:1</span></div></div>
+    </div>
+
+    <figure class="team">
+      <img src="casos/grupo-alumnos.jpg" alt="Foto de grupo de Alberto con alumnos de la mentoría" width="1320" height="783">
+      <figcaption>Parte de los alumnos de la mentoría, juntos en persona.</figcaption>
+    </figure>
+
+    <div class="vids">
+      <figure class="vid"><video controls playsinline preload="none" poster="casos/testimonio-1.jpg"><source src="casos/testimonio-1.mp4" type="video/mp4"></video><figcaption><b>Testimonio en vídeo</b> · Alumno de la mentoría</figcaption></figure>
+      <figure class="vid"><video controls playsinline preload="none" poster="casos/testimonio-2.jpg"><source src="casos/testimonio-2.mp4" type="video/mp4"></video><figcaption><b>Testimonio en vídeo</b> · Alumno de la mentoría</figcaption></figure>
+      <figure class="vid"><video controls playsinline preload="none" poster="casos/testimonio-3.jpg"><source src="casos/testimonio-3.mp4" type="video/mp4"></video><figcaption><b>Testimonio en vídeo</b> · Alumno de la mentoría</figcaption></figure>
+    </div>
+
+    <div class="wall">
+      <figure class="shot">
+        <img src="casos/ingresos-7k-8k.jpg" alt="Mensaje de un alumno: antes facturaba entre 2.000 y 3.000 euros al mes; primer mes 7.000, segundo mes 8.000" loading="lazy" width="900" height="742">
+        <figcaption><b>De 2–3k a 8.000 €/mes</b>Antes de entrar facturaba entre 2.000 y 3.000 € al mes. Primer mes en la mentoría: 7.000 €. Segundo mes: 8.000 €.</figcaption>
+      </figure>
+
+      <div class="shot text">
+        <div class="big">9.000 € en un mes</div>
+        <blockquote>“Económicamente he llegado a facturar 9k € en un mes y estoy pudiendo ayudar a mi familia: le compré recientemente a mi padre un Volkswagen T-Roc de 150 caballos, y este año invito a mi familia a Roma.”</blockquote>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Alumno de la mentoría</b><span>Vive y trabaja desde Polonia</span></div></div>
+      </div>
+
+      <figure class="shot">
+        <img src="casos/adrian-4670.jpg" alt="Adrian Domínguez: el récord de 3k se ha mejorado en 24 horas, vamos a por 5k. Chat: cerrado, 500 euros más, 4670 euros" loading="lazy" width="900" height="609">
+        <figcaption><b>Récord superado en 24 h</b>Adrián Domínguez mejora su récord de 3.000 € en un día y va a por 5.000 €. Debajo, otro cierre en directo por WhatsApp: 500 € más, 4.670 €.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="casos/chat-4500.jpg" alt="Chat de un alumno: hoy 3 llamadas, estoy dejando los presenciales, 4500 el mes de octubre, entonces cumplí el contrato en un mes" loading="lazy" width="569" height="552">
+        <figcaption><b>4.500 € en octubre</b>Deja los entrenamientos presenciales para dedicarse al online. “Entonces cumplí el contrato. En un mes.”</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="casos/seguidores.jpg" alt="Perfiles de Instagram antes y después: fitconcar de 211 a 159 mil seguidores; polacotrainer de 2.524 a 293 mil" loading="lazy" width="900" height="1701">
+        <figcaption><b>De 211 a 159K seguidores</b>Car, @fitconcar. Y Lukas, @polacotrainer, de 2.524 a 293K. Audiencia construida con estrategia, no con suerte.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <img src="casos/adrian-1350.jpg" alt="Chat de WhatsApp: te vas a hacer en 24 horas como 1200 euros; respuesta: 1350 euros" loading="lazy" width="705" height="793">
+        <figcaption><b>1.350 € en 24 horas</b>Así es el seguimiento por WhatsApp: números del día y revisión de sus llamadas de venta para mejorarlas.</figcaption>
+      </figure>
+
+      <div hidden class="shot extra text">
+        <div class="big">De 1 cliente a vivir de esto</div>
+        <blockquote>“Aposté por él hace poco más de 1 año, empezando totalmente desde cero con literalmente 1 cliente que era amigo mío y no le cobraba nada. He llegado a facturar 3k, me dedico al 100% a esto y dejé mi trabajo antiguo, donde estaba amargado.”</blockquote>
+        <div class="who"><span class="avatar" aria-hidden="true">A</span><div><b>Alumno de la mentoría</b><span>Hoy trabaja viajando</span></div></div>
+      </div>
+
+      <figure hidden class="shot extra">
+        <img src="casos/stripe-24-meses.jpg" alt="Notificaciones de pagos de Stripe y chat: antes costaba vender anuales y ahora acabas de cerrar una venta por 24 meses" loading="lazy" width="900" height="1091">
+        <figcaption><b>Una venta de 24 meses</b>Antes le costaba vender planes anuales. Ahora cierra clientes a 2 años. “Lo que se invierte te viene de vuelta en cuestión de meses.”</figcaption>
+      </figure>
+
+      <figure hidden class="shot extra">
+        <img src="casos/chat-310.jpg" alt="Chat de un alumno: 310 euros le cobraría; si entra ya recuperaría el 100% de la inversión en tu academia; y otros 2 entran la semana que viene" loading="lazy" width="610" height="317">
+        <figcaption><b>Inversión recuperada con un cliente</b>“Si entra, ya recuperaría el 100% de la inversión en tu academia. Y otros 2 entran la semana que viene.”</figcaption>
+      </figure>
+
+      <div hidden class="shot extra text">
+        <div class="big">“No sabía por dónde empezar”</div>
+        <blockquote>“A pesar de que hay mucha información en redes, no sabía por dónde empezar para ofrecer un servicio de la mejor calidad posible a mis futuros clientes (ni cómo llegar a ellos). He decidido confiar en Alberto para trazar la estrategia que necesito para despegar.”</blockquote>
+        <div class="who"><span class="avatar" aria-hidden="true">P</span><div><b>Pablo Suero Arroyo</b><span>@pablosphysique · 19 años</span></div></div>
+      </div>
+    </div>
+
+    <div class="show-all"><button type="button" id="showAll" class="btn">Ver todos los resultados</button></div>
+
+    <div class="more">
+      <span class="label">Más casos en Instagram</span>
+      <a href="https://instagram.com/albertomentor" target="_blank" rel="noopener">@albertomentor</a>
+      <a href="https://www.instagram.com/reel/DPRoWQliTYM/" target="_blank" rel="noopener">Reel 1</a>
+      <a href="https://www.instagram.com/reel/DPRol1AiZGg/" target="_blank" rel="noopener">Reel 2</a>
+      <a href="https://www.instagram.com/reel/DPRnoOtiXV3/" target="_blank" rel="noopener">Reel 3</a>
+      <a href="https://www.instagram.com/p/DOJW3KCAla6/" target="_blank" rel="noopener">Publicación</a>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee" id="garantia">
+  <div class="wrap">
+    <div class="seal" style="font-size:clamp(22px,2.6vw,28px)">Bajo<br>contrato<small>GARANTÍA</small></div>
+    <div>
+      <h2>Si en 3 meses no recuperas la inversión, seguimos trabajando juntos.</h2>
+      <p>No te dejo a medias. Y si el servicio no está a la altura de la calidad que te prometo, te devuelvo tu inversión. Todo queda firmado en contrato desde el primer día.</p>
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Cómo trabajamos</div>
+      <h2>No vendo cursos. Es un servicio 1:1 conmigo.</h2>
+      <p class="lede">La academia es el apoyo. Lo central es tu plan de acción: lo que tienes que hacer en cada momento, preparado por mí para tu negocio, y revisado conmigo cada semana.</p>
+    </div>
+
+    <div class="system">
+      <article class="core">
+        <div class="label" style="color:var(--ink)">Mentoría individual</div>
+        <h3>Tu negocio, revisado conmigo cada semana.</h3>
+        <div class="core-list">
+          <div><b>Plan de acción semanal</b><span>Sabes cada tarea que tienes que hacer y en qué orden: contenido, captación y venta.</span></div>
+          <div><b>WhatsApp directo a diario</b><span>Dudas, revisiones y decisiones en el momento, conmigo.</span></div>
+          <div><b>Revisión cada domingo</b><span>Repasamos lo hecho, los números y preparamos la semana siguiente.</span></div>
+          <div><b>Control de métricas</b><span>Leads, llamadas, cierres y facturación. Lo que no se mide no mejora.</span></div>
+          <div><b>Mentalidad</b><span>Desbloqueamos los limitantes que te frenan a ti antes que a tu negocio.</span></div>
+          <div><b>Jornada productiva</b><span>Organizamos tu día de trabajo para que sea productivo y lógico.</span></div>
+          <div><b>Llamadas de control</b><span>Cuando hay que decidir algo importante, lo hablamos cara a cara.</span></div>
+          <div><b>Todo cubierto</b><span>Redes sociales, estrategia, nutrición y entrenamiento. Y bajo contrato.</span></div>
+        </div>
+      </article>
+
+      <div class="side">
+        <article>
+          <div class="label">En paralelo · Academia</div>
+          <h3>Formación teórico-práctica</h3>
+          <ul>
+            <li>Diseño, oferta y entrega del servicio</li>
+            <li>Análisis de tu servicio</li>
+            <li>Sistemas de captación</li>
+            <li>Cómo vender tu servicio</li>
+          </ul>
+        </article>
+        <article>
+          <div class="label">Extra · Comunidad</div>
+          <h3>Grupo reducido de alumnos</h3>
+          <ul>
+            <li>Llamadas grupales quincenales</li>
+            <li>Recursos compartidos</li>
+            <li>Gente que va a lo mismo que tú</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="week" aria-label="Una semana tipo en la mentoría">
+      <div class="day start"><span class="d">Lun</span><b>Plan de acción</b><span>Tareas de la semana</span></div>
+      <div class="day"><span class="d">Mar</span><b>Ejecutas</b><span>WhatsApp conmigo</span></div>
+      <div class="day"><span class="d">Mié</span><b>Ejecutas</b><span>WhatsApp conmigo</span></div>
+      <div class="day"><span class="d">Jue</span><b>Ejecutas</b><span>WhatsApp conmigo</span></div>
+      <div class="day"><span class="d">Vie</span><b>Ejecutas</b><span>WhatsApp conmigo</span></div>
+      <div class="day"><span class="d">Sáb</span><b>Cierras</b><span>Apuntas tus números</span></div>
+      <div class="day key"><span class="d">Dom</span><b>Revisión</b><span>Métricas y plan nuevo</span></div>
+    </div>
+    <p class="week-cap">Una semana tipo. Se repite durante los 3 meses, ajustada a lo que necesite tu negocio en cada momento.</p>
+  </div>
+</section>
+
+<section id="enfoque">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">El enfoque</div>
+      <h2>Una asesoría no es un hobby.</h2>
+      <p class="lede">La mayoría de entrenadores online trabaja como si fuera algo temporal: publica cuando puede, cobra lo que cobra otro y no sabe cuánto ha facturado este mes. Así no se crece. Aquí construimos un negocio que se respeta a sí mismo.</p>
+    </div>
+    <div class="versus">
+      <div class="before">
+        <div class="label">Asesoría como hobby</div>
+        <ul>
+          <li>Publicas cuando te apetece</li>
+          <li>Los clientes llegan por casualidad</li>
+          <li>No sabes cuánto facturas ni de dónde vienen tus ventas</li>
+          <li>Pones precio mirando lo que cobra otro</li>
+          <li>Todo depende de tu memoria y tu motivación</li>
+        </ul>
+      </div>
+      <div class="after">
+        <div class="label">Asesoría como empresa</div>
+        <ul>
+          <li>Calendario de contenido con un objetivo detrás</li>
+          <li>Un sistema de captación que puedes repetir</li>
+          <li>Métricas cada semana: leads, llamadas, cierres y facturación</li>
+          <li>Una oferta clara, con lo que incluye y en qué te diferencias</li>
+          <li>Procesos: contratos, onboarding, soporte y seguimiento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="jump"><a href="#casos">Ver todos los resultados <span aria-hidden="true">↓</span></a></div>
+
+<section id="historia">
+  <div class="wrap story">
+    <div class="story-copy">
+      <div class="label">Quién soy</div>
+      <h2>Empecé sin plan. Por eso ahora lo doy.</h2>
+      <p>En 2020 estaba a punto de presentar mi trabajo de fin de carrera de Fisioterapia. No lo disfrutaba y el futuro que me esperaba no me gustaba nada. Empecé en el entrenamiento online solo con ilusión, <strong>sin estructura y sin saber que podía dedicarme a esto</strong>.</p>
+      <p>Hoy, más de 5 años después, he hecho <strong>+33.000 € en 23 días</strong>, he construido mi marca en español y en inglés, y lo que más me enorgullece: mi mujer y mi mejor amigo tienen un trabajo con total libertad y escalable gracias a lo que construimos.</p>
+      <p>Todo lo que me costó años aprender a base de errores es lo que te doy ordenado, semana a semana.</p>
+    </div>
+    <div class="story-imgs">
+      <figure><img src="casos/historia-inicio.jpg" alt="Alberto en una charla hace cinco años y medio: empecé sin un plan, no tenía estructura" loading="lazy" width="900" height="1199"><figcaption>Hace 5 años y medio</figcaption></figure>
+      <figure><img src="casos/historia-33k.jpg" alt="Su mujer y su mejor amigo: tienen un trabajo con total libertad; más de 33.000 euros en 23 días" loading="lazy" width="900" height="1002"><figcaption>Hoy</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="youtube">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Antes de agendar</div>
+      <h2>Mira varias horas de mi YouTube primero.</h2>
+      <p class="lede">Te lo recomiendo de verdad antes de contratarme. Así entiendes mi visión, cómo pienso y cómo trabajo. Si después de verlo conectas, hablamos. Si no, te habrás ahorrado una llamada.</p>
+    </div>
+    <div class="yt">
+      <a href="https://youtu.be/dFwV5VBLOco" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Cómo trabajo de cerca con mis alumnos</span></a>
+      <a href="https://youtu.be/FhWKW4vhyFg" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Ver vídeo</span></a>
+      <a href="https://youtu.be/3nnf2uBxCYI" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></span><small>YouTube</small><span>Ver vídeo</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Para quién es</div>
+      <h2>Para empresarios, no para aficionados.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Quieres que tu asesoría sea tu negocio principal, no un extra.</li>
+          <li>Estás dispuesto a medir tus números y decidir con ellos.</li>
+          <li>Quieres a alguien revisando tu negocio cada semana, no otro curso.</li>
+          <li>Ejecutas aunque algunas semanas cueste.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un hobby que te dé algo de dinero extra.</li>
+          <li>Quieres ver vídeos y no aplicar nada.</li>
+          <li>Esperas resultados sin publicar, prospectar ni vender.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="jump"><a href="#casos">Ver todos los resultados <span aria-hidden="true">↓</span></a></div>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Cómo empezar</div>
+      <h2>De la llamada a tu primera semana.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>1. Mira mi YouTube</h3><p>Varias horas, de verdad. Es la mejor forma de saber si compartimos visión antes de hablar.</p></div>
+      <div class="step"><h3>2. Agenda tu llamada</h3><p>Hablamos de dónde está tu negocio y a dónde quieres llevarlo. Si te puedo ayudar, te explico el plan. Si no, te lo digo claro.</p></div>
+      <div class="step"><h3>3. Empezamos por la base</h3><p>Definimos tu cliente ideal, tu oferta y tu primer plan de acción semanal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>¿Por qué solo 3 meses?</summary>
+        <p>Porque quiero asegurarme de que encajamos antes de comprometernos a largo plazo. El proyecto es igual de importante para los dos. Si funciona y tiene sentido, seguimos.</p>
+      </details>
+      <details>
+        <summary>¿Hablo contigo o con un equipo?</summary>
+        <p>Conmigo. El plan, la revisión del domingo y el WhatsApp diario los llevo yo personalmente.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto tiempo necesito a la semana?</summary>
+        <p>Depende de tu punto de partida. Cada semana te marco las tareas concretas y las ajustamos a tu rutina en la revisión del domingo.</p>
+      </details>
+      <details>
+        <summary>¿Y si ya tengo clientes?</summary>
+        <p>Mejor. Partimos de tus números actuales y el plan se centra en lo que te frena ahora: captación, oferta, venta u organización.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si en 3 meses no he recuperado la inversión?</summary>
+        <p>Seguimos trabajando juntos. Y si el servicio no tiene la calidad que te prometo, te devuelvo la inversión. Las dos cosas están en el contrato.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta?</summary>
+        <p>Te lo cuento en la llamada, cuando sepa si encajamos y qué necesita tu negocio.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">Plazas limitadas por cercanía</div>
+    <h2>Empieza a tratar tu asesoría como una empresa.</h2>
+    <a class="btn btn-yellow" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">
+      Agenda tu llamada 1:1
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alberto González · AGLEZ Academy</span>
+    <span><a href="https://instagram.com/albertomentor" target="_blank" rel="noopener">@albertomentor</a> · <a href="https://instagram.com/albertoglez6" target="_blank" rel="noopener">@albertoglez6</a> · <a href="https://instagram.com/albertoglezcoach" target="_blank" rel="noopener">@albertoglezcoach</a></span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a class="btn" href="https://calendly.com/albertoglezfitness/1-1" target="_blank" rel="noopener">Agenda tu llamada 1:1</a>
+</div>
+
+<script>
+(function () {
+  var extras = document.querySelectorAll(".wall .extra");
+  var b = document.getElementById("showAll");
+  if (!extras.length) { b.parentNode.hidden = true; }
+  else {
+    b.textContent = "Ver todos los resultados (+" + extras.length + ")";
+    b.addEventListener("click", function () {
+      extras.forEach(function (el) { el.hidden = false; });
+      b.parentNode.hidden = true;
+    });
+  }
+})();
+(function () {
+  var v = document.getElementById("vid");
+  var btns = Array.prototype.slice.call(document.querySelectorAll(".chapters button"));
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      v.currentTime = Number(b.dataset.t);
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+  });
+  v.addEventListener("timeupdate", function () {
+    var t = v.currentTime, cur = 0;
+    btns.forEach(function (b, i) { if (t >= Number(b.dataset.t)) cur = i; });
+    btns.forEach(function (b, i) { b.classList.toggle("on", i === cur); });
+  });
+})();
+</script>

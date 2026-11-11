@@ -1,0 +1,308 @@
+<title>JAVIFITTRAINER Xavier García</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Xavier García · JAVIFITTRAINER. Reconstrucción Física y Metabólica +40: ayudo a hombres +40 y padres de familia a recuperar su físico, energía y confianza sin dejar de lado su trabajo ni su familia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: landing breve en 6 bloques del plan de Alberto: gancho (hero azul marino), dolor, historia con antes y después, método, prueba social y CTA final, todos con botón a WhatsApp con mensaje predefinido. Marca JAVIFITTRAINER: azul marino, azul eléctrico y amarillo; titulares Oswald en mayúsculas como sus portadas. */
+:root {
+  --navy: #15315b;
+  --navy-2: #0f2442;
+  --blue: #1f56c9;
+  --blue-text: #1a47a8;
+  --yellow: #f6c945;
+  --paper: #f4f6fa;
+  --white: #ffffff;
+  --ink: #0f1d33;
+  --soft: #4f5b6e;
+  --line: #d6dce7;
+  --on-dark: #cfd8e6;
+  --wa: #1f9d55;
+  --f-head: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: clamp(56px, 8vw, 96px); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 { font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; }
+h1 { font-weight: 700; font-size: clamp(36px, 6vw, 66px); line-height: 1.02; }
+h2 { font-weight: 700; font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h3 { font: 700 20px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.kicker { font: 600 13px/1.3 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--blue-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.y { color: var(--yellow); }
+.tbc { background: #fff1b8; color: #6b5200; border-radius: 3px; padding: 0 4px; font-weight: 700; font-size: .85em; }
+
+/* Borrador */
+.draft { background: var(--yellow); color: var(--navy); font: 600 13.5px/1.4 var(--f-body); text-align: center; padding: 8px 16px; }
+
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--yellow); color: var(--navy); font: 700 17px/1.15 var(--f-head); letter-spacing: .04em; text-transform: uppercase; text-decoration: none; padding: 18px 26px; border-radius: 10px; transition: transform .15s ease, box-shadow .15s ease; text-align: center; box-shadow: 0 6px 0 #c99d1f; max-width: 100%; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(3px); box-shadow: 0 3px 0 #c99d1f; }
+.btn svg { flex: none; }
+.btn.wa { background: var(--wa); color: #fff; box-shadow: 0 6px 0 #146b3a; }
+.btn.wa:active { box-shadow: 0 3px 0 #146b3a; }
+.note { font-size: 14px; color: var(--soft); }
+
+/* Cabecera */
+.bar { background: var(--navy); color: #fff; }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+.brand img { width: 52px; height: 43px; object-fit: cover; border-radius: 6px; display: block; }
+.brand b { font: 700 19px/1 var(--f-head); letter-spacing: .06em; white-space: nowrap; }
+.brand small { display: block; font: 500 12px/1.2 var(--f-body); color: var(--on-dark); letter-spacing: 0; margin-top: 3px; }
+.bar a.mini { font: 700 14px/1 var(--f-body); background: var(--wa); color: #fff; text-decoration: none; padding: 10px 14px; border-radius: 999px; white-space: nowrap; }
+
+/* 1 · Hero */
+.hero { background: radial-gradient(1100px 500px at 80% 0%, #2a62d6 0%, rgba(42,98,214,0) 60%), var(--navy); color: #fff; padding-block: clamp(40px, 7vw, 84px); overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.hero .kicker { color: var(--yellow); }
+.hero h1 em { font-style: normal; color: var(--yellow); }
+.hero .sub { color: var(--on-dark); font-size: 20px; max-width: 46ch; }
+.hero .stack { display: grid; gap: 22px; }
+.hero .who { display: flex; align-items: center; gap: 12px; color: var(--on-dark); font-size: 15px; }
+.hero .who b { color: #fff; }
+.hero figure { margin: 0; position: relative; }
+.hero figure img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 0%; border-radius: 18px; display: block; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.hero figure figcaption { position: absolute; left: 14px; bottom: 14px; background: var(--yellow); color: var(--navy); font: 700 15px/1.1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; padding: 9px 12px; border-radius: 8px; }
+
+/* 2 · Dolor */
+.pain .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.pain .item { background: var(--white); border-radius: 14px; padding: 20px 22px; box-shadow: inset 0 0 0 1px var(--line); display: grid; gap: 6px; }
+.pain .item b { font: 600 22px/1.15 var(--f-head); text-transform: uppercase; color: var(--navy); }
+.pain .item p { color: var(--soft); font-size: 17px; }
+.pain .close { margin-top: 26px; font: 600 clamp(22px, 3vw, 30px)/1.25 var(--f-head); text-transform: uppercase; color: var(--navy); max-width: 30ch; }
+.pain .close span { background: linear-gradient(transparent 60%, var(--yellow) 60%); }
+
+/* 3 · Historia */
+.story { background: var(--white); }
+.story .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ba figure { margin: 0; position: relative; }
+.ba img[src*="antes"], .proof .mini-ba img[src*="antes"] { object-position: 50% 85% !important; }
+.ba img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; object-position: 50% 0%; border-radius: 14px; display: block; }
+.ba figcaption { position: absolute; top: 10px; left: 10px; font: 700 14px/1 var(--f-head); text-transform: uppercase; letter-spacing: .06em; padding: 7px 10px; border-radius: 6px; background: var(--navy); color: #fff; }
+.ba figure:last-child figcaption { background: var(--yellow); color: var(--navy); }
+.story .txt { display: grid; gap: 18px; }
+.story .txt p { color: var(--soft); }
+.quote { border-left: 4px solid var(--yellow); padding: 4px 0 4px 16px; font-size: 19px; font-weight: 600; color: var(--ink) !important; }
+
+/* 4 · Método */
+.method .head { display: grid; gap: 14px; max-width: 760px; }
+.method .pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
+.method .p { background: var(--white); border-radius: 14px; padding: 20px; box-shadow: inset 0 0 0 1px var(--line); display: grid; gap: 8px; align-content: start; }
+.method .p i { font-style: normal; width: 44px; height: 44px; border-radius: 10px; background: var(--navy); color: var(--yellow); display: grid; place-items: center; font: 700 20px/1 var(--f-head); }
+.method .p p { color: var(--soft); font-size: 16px; }
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 18px; border-radius: 14px; overflow: hidden; }
+.phases div { background: var(--navy); color: #fff; padding: 18px 20px; display: grid; gap: 4px; }
+.phases div + div { border-left: 1px solid rgba(255,255,255,.15); }
+.phases small { font: 600 12px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--yellow); }
+.phases b { font: 700 24px/1.1 var(--f-head); text-transform: uppercase; }
+.phases span { color: var(--on-dark); font-size: 15.5px; }
+
+/* 5 · Prueba social */
+.proof { background: var(--navy-2); color: #fff; }
+.proof .kicker { color: var(--yellow); }
+.proof .lede { color: var(--on-dark); }
+.proof .grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px; margin-top: 30px; }
+.proof .c { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 20px; display: grid; gap: 10px; align-content: start; }
+.proof .c p { color: var(--on-dark); font-size: 16px; }
+.proof .c h3 { color: #fff; }
+.proof .c.pending { border-style: dashed; border-color: rgba(246,201,69,.6); }
+.proof .stat { font: 700 46px/1 var(--f-head); color: var(--yellow); }
+.proof .mini-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.proof .mini-ba img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 0%; border-radius: 10px; display: block; }
+
+/* 6 · CTA final */
+.final { background: var(--blue); color: #fff; text-align: center; }
+.final .wrap { display: grid; gap: 22px; justify-items: center; }
+.final h2 em { font-style: normal; color: var(--yellow); }
+.final p { color: #e7eeff; max-width: 56ch; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 860px; text-align: left; }
+.steps div { background: rgba(255,255,255,.1); border-radius: 12px; padding: 14px 16px; display: grid; gap: 2px; }
+.steps b { font: 700 18px/1.15 var(--f-head); text-transform: uppercase; color: var(--yellow); }
+.steps span { font-size: 15px; color: #e7eeff; }
+
+footer { background: var(--navy-2); color: var(--on-dark); font-size: 14px; padding-block: 28px calc(28px + 76px); }
+footer .wrap { display: grid; gap: 8px; }
+footer b { color: #fff; }
+
+/* Botón flotante en móvil */
+.float { position: fixed; left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); bottom: max(12px, env(safe-area-inset-bottom, 0px)); z-index: 20; display: none; }
+.float .btn { width: 100%; }
+
+@media (max-width: 900px) {
+  .hero .wrap, .story .wrap { grid-template-columns: 1fr; }
+  .hero figure { max-width: 420px; }
+  .method .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof .grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  body { font-size: 17px; }
+  .pain .grid, .method .pillars, .phases, .steps { grid-template-columns: 1fr; }
+  .phases div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
+  .bar a.mini { display: none; }
+  .float { display: block; }
+  .btn { width: 100%; padding: 17px 18px; font-size: 16px; }
+  .hero .sub { font-size: 18px; }
+}
+</style>
+
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="JAVIFITTRAINER, inicio"><img src="casos/logo-javifittrainer.jpg" alt=""><span><b>JAVIFITTRAINER</b><small>Xavier García · Entrenador de padres +40</small></span></a>
+    <a class="mini" data-wa href="#cta">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <!-- 1 · Gancho -->
+  <section class="hero" id="inicio" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="stack">
+        <span class="kicker">Reconstrucción Física y Metabólica +40</span>
+        <h1 id="h1">¿Tienes más de 40 años y sientes que tu cuerpo <em>ya no responde como antes</em>?</h1>
+        <p class="sub">Recupera tu físico, tu fuerza y tu energía con un sistema pensado para hombres ocupados, con familia y responsabilidades.</p>
+        <div><a class="btn" data-wa href="#cta"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Quiero recuperar mi mejor versión</a></div>
+        <p class="who"><span><b>Xavier García, 48 años.</b> Padre, entrenador y la prueba de que se puede.</span></p>
+      </div>
+      <figure><img src="casos/xavier-resultados.jpg" alt="Xavier García hoy, con 48 años, en buena forma física"><figcaption>Hoy · 48 años</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 2 · Dolor -->
+  <section class="pain" aria-labelledby="h-pain">
+    <div class="wrap">
+      <span class="kicker">¿Te suena?</span>
+      <h2 id="h-pain" style="margin-top:10px">No es que te hayas hecho mayor. Es que te has dejado para el final.</h2>
+      <div class="grid">
+        <div class="item"><b>Antes tenías energía para todo</b><p>Ahora te levantas cansado y llegas agotado a casa, justo cuando tus hijos tienen ganas de jugar.</p></div>
+        <div class="item"><b>La barriga ha aparecido</b><p>Y no se va, por mucho que intentes comer menos o hacer abdominales.</p></div>
+        <div class="item"><b>Entre el trabajo, los hijos y las responsabilidades</b><p>Siempre hay algo más urgente que tú. Te dejas para el final, semana tras semana.</p></div>
+        <div class="item"><b>Ya no te reconoces en el espejo</b><p>Echas de menos sentirte fuerte, seguro y con energía, como hace unos años.</p></div>
+      </div>
+      <p class="close">No quieres volver a tener 20. <span>Quieres volver a sentirte como entonces.</span></p>
+    </div>
+  </section>
+
+  <!-- 3 · Historia -->
+  <section class="story" aria-labelledby="h-story">
+    <div class="wrap">
+      <div class="ba">
+        <figure><img src="casos/xavier-antes.jpg" alt="Xavier antes de su cambio, con sobrepeso"><figcaption>Antes</figcaption></figure>
+        <figure><img src="casos/xavier-resultados.jpg" alt="Xavier hoy, con 48 años"><figcaption>Hoy</figcaption></figure>
+      </div>
+      <div class="txt">
+        <span class="kicker">Mi historia</span>
+        <h2 id="h-story">No siempre estuve así.</h2>
+        <p class="quote">"Engordé, perdí energía, tenía dolores al levantarme y mi confianza se fue al suelo."</p>
+        <p>Como tú, tenía trabajo, familia y mil responsabilidades, y me había dejado para el final. <span class="tbc">[confirmar: cuándo fue, qué pasó y cómo influyó la paternidad]</span></p>
+        <p>No volví a entrenar como a los 20. Cambié la forma de entrenar, de comer y de descansar, sin dejar de lado a mi familia ni mi trabajo. <span class="tbc">[confirmar: cuánto tiempo tardé]</span></p>
+        <p class="quote">"Volví a sentirme vivo. Más fuerte. Más sano. Más presente. Orgulloso del ejemplo que doy en casa."</p>
+        <p>Hoy tengo 48 años y estoy mejor que nunca. Esto no es por el físico: es por la vida que quiero vivir. Y es lo que hago ahora con otros padres.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Método -->
+  <section class="method" aria-labelledby="h-method">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker">El método</span>
+        <h2 id="h-method">Reconstrucción Física y Metabólica +40</h2>
+        <p class="lede">Ayudo a hombres +40 y padres de familia a recuperar su físico, energía y confianza sin dejar de lado su trabajo ni su familia.</p>
+      </div>
+      <div class="pillars">
+        <div class="p"><i>1</i><h3>Entrenamiento adaptado</h3><p>Fuerza 2–3 días a la semana, 45–60 minutos, ajustada a tu edad, tus molestias y tu agenda.</p></div>
+        <div class="p"><i>2</i><h3>Nutrición sin vivir a dieta</h3><p>Comes normal, en familia, con proteína en cada plato. Sin prohibiciones ni menús aparte.</p></div>
+        <div class="p"><i>3</i><h3>Hábitos de energía</h3><p>Sueño, pasos y estrés: lo que de verdad te devuelve la energía al final del día.</p></div>
+        <div class="p"><i>4</i><h3>Seguimiento personalizado</h3><p>Una revisión cada semana conmigo y ajustes según tus resultados. Si una semana se tuerce, no empiezas de cero.</p></div>
+      </div>
+      <div class="phases">
+        <div><small>Fase 1 · Mes 1</small><b>Reactivar</b><span>Se van los dolores, vuelve la rutina y la energía empieza a subir.</span></div>
+        <div><small>Fase 2 · Meses 2–3</small><b>Reconstruir</b><span>Baja la barriga y vuelven el músculo y la fuerza.</span></div>
+        <div><small>Fase 3 · Meses 4–6</small><b>Consolidar</b><span>Lo mantienes solo y te conviertes en el ejemplo en casa.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Prueba social -->
+  <section class="proof" aria-labelledby="h-proof">
+    <div class="wrap">
+      <span class="kicker">Resultados reales</span>
+      <h2 id="h-proof" style="margin-top:10px">Historias reales, no promesas.</h2>
+      <p class="lede" style="margin-top:12px">Solo enseño casos con permiso y con datos que se pueden comprobar.</p>
+      <div class="grid">
+        <div class="c">
+          <div class="mini-ba"><img src="casos/xavier-antes.jpg" alt="Xavier antes"><img src="casos/xavier-resultados.jpg" alt="Xavier hoy"></div>
+          <h3>Mi transformación</h3>
+          <p>De engordar, perder energía y levantarme con dolores a estar en mi mejor forma con 48 años, siendo padre y trabajando.</p>
+        </div>
+        <div class="c pending" data-pendiente="caso-50kg">
+          <span class="stat">~50 kg</span>
+          <h3>Caso de un cliente <span class="tbc">[pendiente de documentar]</span></h3>
+          <p>Con fechas, fotos de evolución y su testimonio, solo cuando tengamos su autorización por escrito. Hasta entonces, este bloque no se publica.</p>
+        </div>
+        <div class="c pending" data-pendiente="testimonios">
+          <span class="stat">+</span>
+          <h3>Nuevos testimonios <span class="tbc">[pendiente]</span></h3>
+          <p>Vídeos o mensajes de clientes padres +40, con su permiso. Experiencia como entrenador: <span class="tbc">[confirmar años y formación]</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · CTA final -->
+  <section class="final" id="cta" aria-labelledby="h-final">
+    <div class="wrap">
+      <h2 id="h-final">Tu mejor versión no tiene por qué <em>quedarse en tus 20 años</em>.</h2>
+      <p>Escríbeme por WhatsApp. Te contesto yo, te hago unas preguntas sobre tu caso y, si encaja, lo vemos en una llamada de 30 minutos. Sin compromiso.</p>
+      <div class="steps">
+        <div><b>1 · Escríbeme</b><span>El mensaje ya va escrito: solo pulsa enviar.</span></div>
+        <div><b>2 · Hablamos</b><span>Una llamada corta para entender tu situación.</span></div>
+        <div><b>3 · Tu plan</b><span>Si encaja, empezamos con tu fase de Reactivar.</span></div>
+      </div>
+      <a class="btn" data-wa href="#cta"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Quiero recuperar mi mejor versión</a>
+      <p class="note" style="color:#e7eeff;margin-top:10px">¿Prefieres un formulario? <a href="https://javifittrainer.com/Fuerteotravez" target="_blank" rel="noopener" style="color:#ffd23f;font-weight:700">Déjame tus datos aquí</a></p>
+      <p class="note" id="waNote" style="color:#e7eeff" hidden>Número de WhatsApp pendiente de confirmar: el botón se activará en cuanto se añada.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>JAVIFITTRAINER</b> · Xavier García · Instagram @javifitrainer</p>
+    <p>Los resultados dependen de cada persona y de su constancia. Si tienes una lesión, una enfermedad o tomas medicación, consulta antes con tu médico.</p>
+    <p>Aviso legal y política de privacidad <span class="tbc">[pendiente]</span></p>
+  </div>
+</footer>
+
+<div class="float"><a class="btn wa" data-wa href="#cta">Escríbeme por WhatsApp</a></div>
+
+<script>
+(function () {
+  /* Número de WhatsApp: pendiente. Formato internacional sin + ni espacios, p. ej. "34600000000". */
+  var WA_NUMBER = "34681005579";
+  var WA_MSG = "Hola Xavier, vengo de tu web. Quiero recuperar mi mejor versión. Tengo __ años, hijos y poco tiempo. ¿Me cuentas cómo funciona?";
+  var links = document.querySelectorAll("[data-wa]");
+  if (WA_NUMBER) {
+    var url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_MSG);
+    links.forEach(function (a) { a.href = url; a.target = "_blank"; a.rel = "noopener"; });
+  } else {
+    var note = document.getElementById("waNote");
+    links.forEach(function (a) { a.addEventListener("click", function () { note.hidden = false; }); });
+  }
+})();
+</script>

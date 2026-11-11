@@ -1,0 +1,374 @@
+<title>Jorge Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #8a5300;
+  --accent-text: #6e4200;
+  --accent-dark: #f2b705;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #fde9b8; }
+.card.accent ul.l, .card.accent ol.l { color: #fff6e0; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fbf0d9; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: 100 conversaciones al día en 5 tandas de 20, cuenta secundaria, fuentes, mensajes, camino de la conversación, WhatsApp, canal B2B por email con RGPD/LSSI y plantillas, rutina, anuncios con voz en off y contenido de apoyo. */
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: var(--white); display: grid; place-items: center; font: 800 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 800 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 800 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: #cfcfcf; font-size: 14px; }
+@media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+.msgs { display: grid; gap: 10px; }
+.msgs .m { background: var(--white); border-radius: 6px; padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 0 0 0 1px var(--line); }
+.msgs .m .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msgs .m p { font-weight: 600; font-size: 15.5px; }
+
+/* Marca Jorge Sánchez: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #8a5300); --nm-at: var(--accent-text, #6e4200); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.ad { display: grid; gap: 10px; }
+.ad .beat { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ad .beat small { font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.ad .beat p { font-size: 15px; }
+.ad .beat p + p { margin-top: 4px; color: var(--soft); font-size: 14px; }
+.ad .hooks { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rules div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.rules b { font: 800 24px/1.1 var(--f-head); letter-spacing: -.02em; }
+.rules span { color: var(--soft); font-size: 14px; }
+@media (max-width: 900px) { .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .rules { grid-template-columns: 1fr; } .ad .beat { grid-template-columns: 1fr; gap: 4px; } }
+
+.mail { display: grid; gap: 8px; }
+.mail .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.mail pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 400 14px/1.55 var(--f-body); background: var(--chip); border-radius: 6px; padding: 12px 14px; color: var(--ink); }
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Jorge Sánchez · Parte 4 · Embudo</span>
+    <h1>Con 724 seguidores no te falta contenido. Te faltan <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">El motor eres tú: 100 conversaciones al día, repartidas en tandas pequeñas a lo largo del día. Los anuncios de seguidores te traen gente nueva de tu nicho para escribirle, y abres un segundo canal: empresas por email. Esto empiezas mañana.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Hombres que llevan tiempo entrenando, con jornadas largas, y esperaban más de su físico: les ayudo a perder grasa construyendo músculo —el músculo es su metabolismo— sacando más del esfuerzo que ya hacen con intensidad bien aplicada y una vida activa.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Motor</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Músculo primero</b><span>El músculo es tu metabolismo: se entrena para construirlo, no para "quemar". Sale de tu post "Llevas años comiendo para ponerte fuerte y cada vez te ves menos definido".</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Intensidad bien aplicada</b><span>Aprender a entrenar: menos series de relleno, cerca del fallo con técnica, registrar y progresar. Sale de "¿Se notan 624 entrenos?" y del ciclo "te frustras → cambias de rutina → empiezas de cero".</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Vida activa</b><span>Muchos pasos y moverte en jornadas largas, aunque la semana sea imposible. Sale de "Jornada +10 horas" y "Entrenar tras 9 horas de trabajo. Eso también cuenta".</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Aprender a entrenar</b><p><em>Qué pasa:</em> Técnica, intensidad real y registro. Por primera vez sabes si progresas o solo vas al gimnasio.</p><p><em>Qué haces tú:</em> Registras cada entreno, cumples tu mínimo de pasos y mandas tu revisión.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Encender el motor</b><p><em>Qué pasa:</em> Cargas que suben, más músculo y la grasa bajando sin vivir a dieta: el motor trabaja por ti.</p><p><em>Qué haces tú:</em> Progresión semanal, subes pasos y ajustas la comida a tu jornada.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Afinar y sostener</b><p><em>Qué pasa:</em> Defines lo construido y te quedas con un sistema que aguanta hasta la semana imposible.</p><p><em>Qué haces tú:</em> Ajustas solo, con mi revisión cada vez más espaciada.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Registrar cada entreno</span><span>Tu mínimo de pasos cada día</span><span>Revisión semanal</span></div></div><p class="nm-proof">Prueba: los casos de tu perfil —74 → 89 kg, "Jornada +10 horas" y "27 años"— [confirmar nombre, tiempo y permiso de cada uno].</p><p class="nm-line">Consigue más con el esfuerzo que ya haces.</p></section>
+
+  <section class="card dark" aria-label="Tu objetivo diario">
+    <span class="label">Tu objetivo, cada día</span>
+    <div class="big">100</div>
+    <h2>conversaciones al día, en 5 tandas de 20.</h2>
+    <div class="kpis">
+      <div><b>5 × 20</b><span>Más frecuencia, menos volumen por tanda</span></div>
+      <div><b>2.ª cuenta</b><span>Solo cuando la principal llega al límite</span></div>
+      <div><b>10</b><span>Emails a empresas al día (B2B)</span></div>
+      <div><b>5–10 €</b><span>Al día por anuncio de seguidores</span></div>
+    </div>
+    <p class="soft">Alberto lo ha pedido así: en vez de 2 rondas grandes, mensajes repartidos durante el día. Instagram tolera mejor 20 mensajes cada pocas horas que 50 seguidos, y tú respondes en caliente. Alberto mira en tu reporte cada día conversaciones (cuenta principal y secundaria), respuestas, llamadas, cierres, emails B2B y coste por seguidor.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-tandas">
+    <header><span class="label">Las 5 tandas</span><h2 id="h-tandas">20 mensajes, 15 minutos, cinco veces al día.</h2><p class="soft">Horas orientativas: ajústalas a tu día de grabación o de trabajo [confirmar tu horario].</p></header>
+    <div class="routine">
+      <div><small>08:30</small><b>Tanda 1</b><span>Nuevos seguidores de la noche y del anuncio.</span></div>
+      <div><small>11:30</small><b>Tanda 2</b><span>Quien ha visto o respondido tus historias.</span></div>
+      <div><small>14:30</small><b>Tanda 3</b><span>Comentarios en virales y cuentas de tu nicho.</span></div>
+      <div><small>18:00</small><b>Tanda 4</b><span>Hombres que salen de trabajar: es su hora.</span></div>
+      <div><small>21:30</small><b>Tanda 5</b><span>Seguimientos del CRM y reactivaciones.</span></div>
+    </div>
+    <div class="g2">
+      <div class="card accent">
+        <span class="label">Cuenta secundaria · cuándo y cómo</span>
+        <ul class="l">
+          <li><b>Primero, la principal.</b> Solo cuando Instagram te avise de límite o te frene los envíos, sigues la tanda desde la secundaria.</li>
+          <li><b>Que sea tuya y se note:</b> nombre tipo "Jorge Sánchez · Equipo", tu foto, tu bio con enlace a @jorgesdiez. Nada que parezca otra persona.</li>
+          <li><b>Caliéntala 2 semanas</b> antes de usarla: 3–4 publicaciones, historias y 5–10 mensajes al día. Luego sube poco a poco.</li>
+          <li><b>Mensaje desde la secundaria:</b> "Te escribo desde mi otra cuenta, la principal es @jorgesdiez" para que no parezca spam.</li>
+          <li><b>Si una cuenta recibe un bloqueo temporal, para ese día.</b> No se fuerza: se reparte mejor al día siguiente.</li>
+        </ul>
+      </div>
+      <div class="card chip">
+        <span class="label">Ojo con los límites de Instagram</span>
+        <ul class="l">
+          <li>Instagram limita temporalmente cuentas que mandan muchos mensajes iguales seguidos.</li>
+          <li>Rota los mensajes, personaliza con su nombre o algo de su perfil y deja pausas entre envíos.</li>
+          <li>Prioriza a quien ya ha interactuado contigo. El objetivo de 100 no baja: se reparte mejor.</li>
+          <li>Apunta en el reporte cuántas van por cada cuenta.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fuentes">
+    <header><span class="label">Dónde encontrarlos</span><h2 id="h-fuentes">Hombres que entrenan, trabajan muchas horas y esperaban más.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Nuevos seguidores</h3><p class="soft">Los del anuncio y los demás. Bienvenida el mismo día: son los más calientes.</p></div>
+      <div class="card"><span class="n">2</span><h3>Quien ve tus historias</h3><p class="soft">Pocos, pero calientes. Los que repiten cada día te tienen en el radar.</p></div>
+      <div class="card"><span class="n">3</span><h3>Cuentas de hipertrofia</h3><p class="soft">Seguidores y comentarios de perfiles de entreno "serio": técnica, rutinas, progresión.</p></div>
+      <div class="card"><span class="n">4</span><h3>Comentarios en virales</h3><p class="soft">"Llevo años y no cambio", "no tengo tiempo", "trabajo 10 horas y no rindo en el gym".</p></div>
+      <div class="card"><span class="n">5</span><h3>YouTube</h3><p class="soft">Comentarios de tus vídeos: respóndelos todos y pásalos a Instagram o al formulario.</p></div>
+      <div class="card"><span class="n">6</span><h3>Su círculo y empresas</h3><p class="soft">Compañeros de trabajo de tus clientes. Y su empresa, por el canal B2B (abajo).</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msgs">
+    <header><span class="label">Mensajes de apertura · cópialos y rótalos</span><h2 id="h-msgs">Corto, de tú a tú y sin vender en el primer mensaje.</h2><p class="soft">Cambia {n} por su nombre. Nunca mandes un enlace en el primer mensaje. Habla como entrenador: preguntas concretas, no "¿qué tal?".</p></header>
+    <div class="msgs"><div class="m"><div class="row"><span class="badge">Bienvenida a nuevo seguidor</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿cuánto llevas entrenando y cómo lo ves, contento con cómo vas o esperabas más?">Copiar</button></div><p>"¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿cuánto llevas entrenando y cómo lo ves, contento con cómo vas o esperabas más?"</p></div><div class="m"><div class="row"><span class="badge">Respuesta a historia</span><button class="cp" type="button" data-cp="Te ha llamado la atención, ¿eh? ¿Te pasa a ti también o lo tienes controlado?">Copiar</button></div><p>"Te ha llamado la atención, ¿eh? ¿Te pasa a ti también o lo tienes controlado?"</p></div><div class="m"><div class="row"><span class="badge">El que entrena y no cambia</span><button class="cp" type="button" data-cp="Ey, {n}, te he visto por aquí. ¿Cuántos días entrenas? ¿Apuntas lo que levantas o vas a sensaciones?">Copiar</button></div><p>"Ey, {n}, te he visto por aquí. ¿Cuántos días entrenas? ¿Apuntas lo que levantas o vas a sensaciones?"</p></div><div class="m"><div class="row"><span class="badge">Jornadas largas</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Curiosidad de entrenador: ¿cuántas horas te come el trabajo al día? Hablo mucho con gente que entrena después de 9 o 10 horas y quiero saber cómo lo haces tú.">Copiar</button></div><p>"¡Buenas, {n}! Curiosidad de entrenador: ¿cuántas horas te come el trabajo al día? Hablo mucho con gente que entrena después de 9 o 10 horas y quiero saber cómo lo haces tú."</p></div><div class="m"><div class="row"><span class="badge">Pasos</span><button class="cp" type="button" data-cp="Pregunta que hago a todos mis clientes, {n}: ¿sabes cuántos pasos das un día normal de trabajo? Casi nadie lo sabe y explica mucho.">Copiar</button></div><p>"Pregunta que hago a todos mis clientes, {n}: ¿sabes cuántos pasos das un día normal de trabajo? Casi nadie lo sabe y explica mucho."</p></div><div class="m"><div class="row"><span class="badge">Comentario en un viral</span><button class="cp" type="button" data-cp="Buen comentario. ¿Tú cómo vas? ¿Sigues el mismo plan hace tiempo o vas cambiando de rutina cada pocas semanas?">Copiar</button></div><p>"Buen comentario. ¿Tú cómo vas? ¿Sigues el mismo plan hace tiempo o vas cambiando de rutina cada pocas semanas?"</p></div><div class="m"><div class="row"><span class="badge">Desde la cuenta secundaria</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Te escribo desde mi otra cuenta (la principal es @jorgesdiez). Vi tu comentario: ¿cuánto llevas entrenando y cómo lo ves?">Copiar</button></div><p>"¡Buenas, {n}! Te escribo desde mi otra cuenta (la principal es @jorgesdiez). Vi tu comentario: ¿cuánto llevas entrenando y cómo lo ves?"</p></div><div class="m"><div class="row"><span class="badge">Reactivar a alguien que ya habló contigo</span><button class="cp" type="button" data-cp="¡{n}! ¿Cómo va? Me dijiste que esta semana era imposible… ¿sigue igual o la próxima la empezamos con plan?">Copiar</button></div><p>"¡{n}! ¿Cómo va? Me dijiste que esta semana era imposible… ¿sigue igual o la próxima la empezamos con plan?"</p></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-path">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-path">De "hola" a llamada en 5 pasos.</h2></header>
+    <div class="path"><span>1 · Abrir</span><i>→</i><span>2 · Conectar</span><i>→</i><span>3 · Detectar el dolor</span><i>→</i><span>4 · Pasar a WhatsApp</span><i>→</i><span>5 · Llamada o formulario</span></div>
+    <div class="g2">
+      <div class="card"><h3>Preguntas de entrenador</h3><ul class="l"><li>"¿Cuánto llevas entrenando? ¿Apuntas cargas y repeticiones?"</li><li>"¿Cuántas horas trabajas y cuántos pasos das un día normal?"</li><li>"¿Cuántas veces has cambiado de rutina este año?"</li><li>"Del 1 al 10, ¿cuánto te importa que por fin se note?"</li><li>Si pregunta "¿cuánto cobras?": "Depende de tu caso. Te lo explico en una llamada de 30 minutos y te digo qué haría contigo."</li></ul></div>
+      <div class="card"><h3>La invitación</h3><div class="say">"Por lo que me cuentas, el esfuerzo ya lo pones: lo que falta es que se note. Si quieres, lo vemos en una llamada de 30 minutos y te digo qué cambiaría en tu caso. ¿Te va mejor mañana o pasado?"</div><p class="soft">Siempre dos opciones de día, como máximo a 2–3 días vista. O el formulario: form.jotform.com/243216586760057.</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="WhatsApp">
+    <div class="card accent">
+      <span class="label">WhatsApp · tu segundo canal</span>
+      <h3>Quien te da el teléfono te ve cada día.</h3>
+      <ul class="l">
+        <li><b>WhatsApp Business</b> con tu foto, "El músculo es tu metabolismo" y el enlace al formulario.</li>
+        <li><b>Guarda cada contacto</b> y pídele que te guarde: si no, no ve tus Estados.</li>
+        <li><b>3–5 Estados al día:</b> tu entreno, tus pasos del día, una corrección y, martes y viernes, "abro 2 plazas, respóndeme MOTOR".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Seguimiento si no responde</span>
+      <ul class="l">
+        <li><b>Día 2:</b> "¿Cómo va la semana? ¿Lo vemos o lo dejamos para cuando baje el trabajo?"</li>
+        <li><b>Día 7:</b> un audio corto con una corrección o un caso parecido al suyo (con permiso).</li>
+        <li><b>Día 14:</b> "Entiendo que ahora no es el momento. Cuando quieras que el esfuerzo se note, aquí estoy."</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-b2b">
+    <header><span class="label">Canal B2B · empresas por email · bienestar para empleados</span><h2 id="h-b2b">10 empresas al día. Sin spam y cumpliendo la ley.</h2><p class="soft">Tu cliente pasa 9 o 10 horas en una empresa. A esa empresa le ofreces la charla, el reto de pasos o plazas 1:1 para su equipo (oferta en la parte 2). 20 minutos al día, después de la tanda 3.</p></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Elige empresas</h3><p class="soft">Pymes y oficinas de 20–300 empleados en tu zona o con teletrabajo: consultoras, tecnológicas, despachos, logística con turnos. Empieza por las que ya tienen "bienestar" en su web o en LinkedIn.</p></div>
+      <div class="card"><span class="n">2</span><h3>Busca a la persona</h3><p class="soft">RR. HH., People, bienestar o gerente (en pymes). Herramientas: <b>Hunter</b> (busca por dominio y verifica), <b>Apollo</b> (filtra por sector, tamaño y cargo) o <b>Snov.io</b> (buscador y verificador). Sus planes gratis dan para empezar [confirmar planes actuales].</p></div>
+      <div class="card"><span class="n">3</span><h3>Escribe a mano</h3><p class="soft">Desde tu correo profesional (no desde una herramienta de envío masivo), máximo 10–20 al día, cada email personalizado. Cada empresa al CRM con origen "Empresa (email B2B)".</p></div>
+    </div>
+    <div class="card dark">
+      <span class="label">Lo legal · RGPD y LSSI · léelo antes del primer email</span>
+      <ul class="l">
+        <li><b>LSSI (art. 21):</b> en España el email comercial que nadie ha pedido está prohibido, <b>también entre empresas</b>: no hay excepción B2B general y la AEPD ha multado envíos así. Por eso el primer email <b>no vende</b>: se presenta y pregunta si puede enviar información y a quién. Volumen bajo y 100 % personalizado.</li>
+        <li><b>Solo emails corporativos publicados</b> (web de la empresa, LinkedIn profesional, notas de prensa) y del cargo que encaja. Nunca personales (gmail, hotmail), nunca bases de datos compradas.</li>
+        <li><b>RGPD · interés legítimo B2B:</b> un email con nombre y apellido es un dato personal. Deja por escrito una ponderación corta (por qué tu interés es legítimo y no pisa el de la persona) y guarda de dónde sacaste cada dirección.</li>
+        <li><b>Identificación clara en cada correo:</b> tu nombre real, quién eres, por qué le escribes, de dónde sacaste su email y un enlace a tu política de privacidad.</li>
+        <li><b>Opción de baja en cada correo</b> ("responde BAJA") y una <b>lista de exclusión</b> que se respeta siempre. Quien no responde tras el último seguimiento sale de la lista y se borra a los 30 días.</li>
+        <li><b>Antes de escalar:</b> que lo revise un asesor legal [confirmar]. Alternativa sin email: invitación y mensaje por LinkedIn, o el formulario de contacto de su web.</li>
+      </ul>
+    </div>
+    <div class="msgs">
+      <article class="card mail"><div class="row"><span class="badge">Email 1 · RR. HH. o People</span><button class="cp" type="button" data-cpsel="#mail1">Copiar</button></div><pre id="mail1">Asunto: Bienestar para un equipo con jornadas largas
+
+Hola, [Nombre]:
+
+Soy Jorge Sánchez, entrenador personal [confirmar formación]. Te escribo porque en [web / LinkedIn de la empresa] apareces como responsable de personas en [Empresa].
+
+Trabajo con gente que hace jornadas de 9 o 10 horas y aun así quiere estar en forma. Mi enfoque es sencillo: el músculo es su metabolismo, intensidad bien aplicada y más vida activa dentro de la jornada.
+
+¿Te parece bien que te envíe una propuesta de una página con una charla de 45 minutos para vuestro equipo? Si no eres la persona adecuada, ¿me dices a quién debería escribir?
+
+Un saludo,
+Jorge Sánchez · Entrenador personal
+@jorgesdiez · [teléfono] · [web]
+
+—
+Te escribo a tu dirección profesional, publicada en [fuente], por un posible interés profesional para [Empresa]. Responsable: Jorge Sánchez [NIF y dirección, confirmar]. Si no quieres recibir más correos, responde BAJA y no volveré a escribirte. Privacidad y tus derechos: [enlace].</pre></article>
+      <article class="card mail"><div class="row"><span class="badge">Email 2 · Reto de pasos (oficinas o turnos)</span><button class="cp" type="button" data-cpsel="#mail2">Copiar</button></div><pre id="mail2">Asunto: Un reto de pasos para [Empresa]
+
+Hola, [Nombre]:
+
+Soy Jorge Sánchez, entrenador personal. He visto en [fuente] que en [Empresa] cuidáis [el bienestar / la conciliación / el teletrabajo] y quería proponerte una idea concreta.
+
+Un reto de 8 semanas por equipos: cada persona con su mínimo de pasos diario, dos sesiones cortas de "aprender a entrenar" y una guía para moverse más en una jornada de oficina. Fácil de organizar y sin material.
+
+¿Te encaja que te mande el detalle en una página? Si lo lleva otra persona, ¿me dices quién?
+
+Gracias,
+Jorge Sánchez · @jorgesdiez · [teléfono]
+
+—
+Te escribo a tu dirección profesional, publicada en [fuente], por un posible interés profesional para [Empresa]. Responsable: Jorge Sánchez [NIF y dirección, confirmar]. Si no quieres recibir más correos, responde BAJA. Privacidad: [enlace].</pre></article>
+      <article class="card mail"><div class="row"><span class="badge">Email 3 · Gerente de pyme</span><button class="cp" type="button" data-cpsel="#mail3">Copiar</button></div><pre id="mail3">Asunto: Pregunta rápida sobre tu equipo
+
+Hola, [Nombre]:
+
+Soy Jorge Sánchez, entrenador personal. Te escribo directamente porque en una empresa del tamaño de [Empresa] estas decisiones suelen pasar por ti.
+
+Ayudo a gente que trabaja muchas horas a estar en forma con poco tiempo: construir músculo, entrenar con intensidad bien aplicada y moverse más durante el día. Para empresas hago una charla de 45 minutos o un reto de 8 semanas para el equipo.
+
+¿Es algo que os interesaría ver? Con un sí o un no me vale.
+
+Un saludo,
+Jorge Sánchez · @jorgesdiez · [teléfono]
+
+—
+Te escribo a tu dirección profesional, publicada en [fuente], por un posible interés profesional para [Empresa]. Responsable: Jorge Sánchez [NIF y dirección, confirmar]. Si no quieres recibir más correos, responde BAJA. Privacidad: [enlace].</pre></article>
+      <article class="card mail"><div class="row"><span class="badge">Seguimiento · día 4</span><button class="cp" type="button" data-cpsel="#mail4">Copiar</button></div><pre id="mail4">Asunto: RE: [asunto del primero]
+
+Hola, [Nombre]:
+
+Te lo subo por si se quedó entre otros correos. ¿Te envío la propuesta de una página o prefieres que no te escriba más?
+
+Gracias,
+Jorge
+
+(Para no recibir más correos, responde BAJA.)</pre></article>
+      <article class="card mail"><div class="row"><span class="badge">Seguimiento · día 10 · último</span><button class="cp" type="button" data-cpsel="#mail5">Copiar</button></div><pre id="mail5">Asunto: Cierro por aquí
+
+Hola, [Nombre]:
+
+No quiero llenarte la bandeja: este es mi último correo. Si más adelante os encaja algo de bienestar para el equipo, aquí me tienes.
+
+Un saludo,
+Jorge Sánchez · @jorgesdiez
+
+(No volveré a escribirte. Si quieres que borre tus datos ya, responde BAJA.)</pre></article>
+    </div>
+    <p class="soft" style="font-size:14px">Si responde que sí: le mandas la propuesta de una página y le pides 15 minutos de llamada. Si responde BAJA: a la lista de exclusión ese mismo día y no vuelves a escribir.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Tandas, contenido, empresas y apuntar. Todos los días.</h2></header>
+    <div class="routine">
+      <div><small>Todo el día</small><b>5 tandas de 20</b><span>Cuenta principal; secundaria solo si llega al límite.</span></div>
+      <div><small>Mañana</small><b>Contenido</b><span>Publicar lo que toca (en días de grabación, grabar).</span></div>
+      <div><small>Tras la tanda 3</small><b>B2B</b><span>10 empresas, 10 emails y seguimientos de día 4 y 10.</span></div>
+      <div><small>Noche</small><b>Seguimiento</b><span>Responder, días 2/7/14, WhatsApp.</span></div>
+      <div><small>Antes de dormir</small><b>Apuntar</b><span>CRM, coste por seguidor y reporte para Alberto.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ads">
+    <header><span class="label">Anuncios de seguidores con voz en off</span><h2 id="h-ads">Reels de 30–45 s: tu voz sobre tus clips entrenando.</h2><p class="soft">Se promociona tu mejor voz en off orgánica de la semana, con objetivo <b>visitas al perfil</b>. Cada anuncio toca <b>un solo ángulo</b>, el gancho va en los 3 primeros segundos y siempre se cierra con "Sígueme para…". Las conversaciones las abres tú después con la bienvenida.</p></header>
+    <div class="rules">
+      <div><b>5–10 €/día</b><span>Por anuncio. A los 2 días valoras.</span></div>
+      <div><b>&lt; 1 €</b><span>Por seguidor: se queda y escalas hacia 10 €/día.</span></div>
+      <div><b>1–1,5 €</b><span>Cambias el gancho (usa los 3 de cada guion).</span></div>
+      <div><b>&gt; 1,5 €</b><span>A los 2 días: lo cortas.</span></div>
+      <div><b>España · +25 años</b><span>Nada más: el gancho ya filtra a tu cliente. Si atrae a otro perfil, se cambia el gancho, no el público.</span></div>
+      <div><b>Política de Meta</b><span>Nunca "¿tienes…?" ni rasgos del que mira ("tu barriga", "tu metabolismo lento"). Primera persona o "la mayoría".</span></div>
+    </div>
+    <div class="msgs"><article class="card ad"><span class="badge">Anuncio 1 · "El músculo es tu metabolismo"</span><p class="soft">Tu idea propia: el ángulo que nadie más tiene.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "La mayoría entrena para quemar grasa. Y por eso no la pierde."</p><p>Texto en pantalla: ENTRENAR PARA QUEMAR ✕ · Clip: cinta de correr a tope, corte seco a ti cargando una barra.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "El músculo es tu metabolismo. Es el tejido que más trabaja por ti, también cuando estás sentado en la oficina. Por eso yo no empiezo quitando comida ni metiendo cardio: empiezo construyendo músculo, con intensidad bien aplicada y muchos pasos durante el día. El motor primero; la grasa baja después."</p><p>Texto: EL MÚSCULO ES TU METABOLISMO · MÚSCULO + INTENSIDAD + PASOS · Clips: serie pesada, libreta con cargas, contador de pasos del móvil, caminando por la calle.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para perder grasa construyendo músculo."</p><p>Texto: SÍGUEME · @jorgesdiez · Clip: tú mirando a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"El músculo es tu metabolismo. Y casi nadie entrena así."</li><li>"Dejé de pensar en quemar calorías y empecé a pensar en construir el motor."</li><li>"La mayoría hace más cardio para perder grasa. Yo hago justo lo contrario."</li></ol></div></article><article class="card ad"><span class="badge">Anuncio 2 · "Después de 9 horas de trabajo"</span><p class="soft">Tu cliente exacto: jornadas largas.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Entrenar después de 9 horas de trabajo también cuenta."</p><p>Texto: TRAS 9 HORAS DE TRABAJO · Clip: portátil cerrándose, mochila, entrada al gimnasio de noche.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "La mayoría de gente con jornadas largas cree que necesita entrenar más días. No: necesita mejores series. Pocas, cerca del fallo y apuntadas, para que el cuerpo tenga un motivo para construir músculo. Y fuera del gimnasio, pasos: el que se mueve durante el día no depende de matarse a cardio."</p><p>Texto: MEJORES SERIES, NO MÁS DÍAS · + PASOS · Clips: serie al fallo con técnica, apuntando en el móvil, escaleras en vez de ascensor.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para conseguir más con el esfuerzo que ya haces."</p><p>Texto: SÍGUEME · @jorgesdiez · Clip: última repetición y mirada a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Jornada de más de 10 horas y aun así un físico que se note. Así."</li><li>"Lo que hago cuando la semana es imposible."</li><li>"No necesitas más días de gimnasio. Necesitas esto."</li></ol></div></article><article class="card ad"><span class="badge">Anuncio 3 · "3 años y me veo igual"</span><p class="soft">El dolor nº 1 de tu bio.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "La mayoría que lleva 3 años entrenando y se ve igual no necesita otra rutina."</p><p>Texto: 3 AÑOS IGUAL · Clip: tú delante del espejo del gimnasio, cara seria.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "El ciclo es siempre el mismo: te frustras, cambias de rutina, empiezas de cero, no mides nada y no ves cambios. Y vuelta a empezar. Lo que lo rompe es aprender a entrenar: la misma base el tiempo suficiente, intensidad de verdad y apuntar cada sesión para saber si avanzas."</p><p>Texto: TE FRUSTRAS → CAMBIAS → EMPIEZAS DE CERO → NO MIDES → NO CAMBIAS · Clips: tu esquema del ciclo, libreta, serie pesada.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para que tus entrenos por fin se noten."</p><p>Texto: SÍGUEME · @jorgesdiez · Clip: tú señalando el botón de seguir.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"¿Se notan 624 entrenos? Depende de esto."</li><li>"Cambiar de rutina cada mes es la forma más rápida de no avanzar."</li><li>"Llevaba años yendo al gimnasio y no medía nada. Error." [solo si es tu caso: confirmar]</li></ol></div></article></div>
+    <p class="soft" style="font-size:14px">Clips: los tuyos entrenando (Adrián te los graba en vuestros días de grabación). Subtítulos siempre: la mayoría lo ve sin sonido. Nada de antes/después en anuncios.</p>
+  </section>
+
+  <section class="card" aria-label="El contenido que lo apoya">
+    <span class="label">El contenido que lo apoya</span>
+    <ul class="l">
+      <li><b>Una sola palabra clave:</b> "MOTOR". En historias, reels, carruseles y YouTube: "escríbeme MOTOR".</li>
+      <li><b>YouTube 3–5 a la semana:</b> en cada descripción, el formulario; en cada vídeo, "escríbeme MOTOR en Instagram".</li>
+      <li><b>Historias:</b> secuencia de CTA martes y viernes, aunque ahora las vea poca gente.</li>
+      <li><b>Formulario</b> en la bio y en cada Estado: form.jotform.com/243216586760057.</li>
+    </ul>
+  </section>
+</div>
+<script>
+(function () {
+  document.querySelectorAll("[data-cp],[data-cpsel]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.hasAttribute("data-cpsel") ? document.querySelector(b.getAttribute("data-cpsel")).textContent : b.getAttribute("data-cp"), o = b.textContent;
+      var done = function (m) { b.textContent = m; setTimeout(function () { b.textContent = o; }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+      else done("Selecciona");
+    });
+  });
+})();
+</script>

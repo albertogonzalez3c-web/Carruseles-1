@@ -1,0 +1,793 @@
+<title>Jony Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: plan de contenido de Jony (@jnyfit._). Pestañas: El plan, Semana, Ángulos, Guiones virales, YouTube, Stories, Grabar y trial reels. Paleta de su perfil: negro gym, rojo y papel claro. */
+:root {
+  --paper: #f4f2ee;
+  --white: #ffffff;
+  --sand: #e9e5de;
+  --line: #d6d0c6;
+  --ink: #141414;
+  --soft: #5d5a55;
+  --red: #c4162a;
+  --red-text: #a3101f;
+  --chip: #eeeae3;
+  --green: #3f6b3a;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(30px, 5vw, 50px)/1 var(--f-head); text-transform: uppercase; letter-spacing: -.01em; }
+h2 { font: 400 23px/1.15 var(--f-head); text-transform: uppercase; }
+h3 { font: 800 16.5px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+header.hero { background: var(--ink); color: var(--white); padding-block: calc(26px + env(safe-area-inset-top, 0px)) 26px; }
+header.hero .label { color: #ff8a95; }
+header.hero p { color: #d8d5cf; max-width: 760px; margin-top: 10px; }
+.pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.pill { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: 13px; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: rgba(244,242,238,.96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+nav.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+nav.tabs .wrap::-webkit-scrollbar { display: none; }
+.tab { all: unset; cursor: pointer; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--white); white-space: nowrap; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); }
+.tab:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+main { padding-block: 22px 70px; }
+section.view { display: grid; gap: 16px; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.dark { background: var(--ink); color: var(--white); }
+.card.dark .soft { color: #c9c5be; }
+.card.warn { background: #fbecee; border: 1.5px solid #efc2c8; }
+.card.sand { background: var(--sand); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+ul.clean { margin: 0; padding-left: 18px; display: grid; gap: 5px; }
+.big { font: 400 34px/1 var(--f-head); color: var(--red-text); }
+.say { background: var(--chip); border-left: 4px solid var(--red); border-radius: 0 12px 12px 0; padding: 10px 14px; font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 8px; border-bottom: 1px solid var(--sand); vertical-align: top; }
+th { font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.tscroll { overflow-x: auto; }
+/* Semana */
+.stage { display: grid; gap: 10px; }
+.week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day { background: var(--white); border-radius: 14px; padding: 10px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.dn { font: 800 14px/1 var(--f-body); display: flex; justify-content: space-between; gap: 4px; }
+.dn small { font: 500 10.5px/1 var(--f-mono); color: var(--soft); }
+.item { border-radius: 8px; padding: 6px 8px; font-size: 12.5px; font-weight: 700; line-height: 1.25; }
+.k-his { background: #f6dfe2; color: #7c0d19; }
+.k-obra { background: #f1e5cf; color: #6b4a12; }
+.k-super { background: #dcebd8; color: #2f5a2a; }
+.k-mito { background: #e3e0f3; color: #3f357a; }
+.k-rol { background: var(--ink); color: var(--white); }
+.k-yap { background: #dbe7f1; color: #1f4c6e; }
+.k-yt { background: var(--red); color: var(--white); }
+.k-cc { background: #fff; color: var(--red-text); border: 1.5px solid var(--red); }
+.k-cv { background: #fff; color: var(--ink); border: 1.5px solid var(--ink); }
+.ctag { font-size: 11.5px; font-weight: 800; border-radius: 999px; padding: 3px 9px; justify-self: start; }
+.ctag.C { color: var(--red-text); border: 1.5px solid var(--red); }
+.ctag.V { color: var(--ink); border: 1.5px solid var(--ink); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.slides { margin: 0; padding-left: 20px; display: grid; gap: 3px; font-size: 14px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px; }
+.legend span { display: inline-flex; gap: 6px; align-items: center; font-size: 12.5px; font-weight: 700; background: var(--white); border-radius: 999px; padding: 5px 10px; }
+.legend i { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+/* Ángulos */
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.fbtn { all: unset; cursor: pointer; background: var(--white); border-radius: 999px; padding: 7px 12px; font-weight: 700; font-size: 13px; }
+.fbtn[aria-pressed="true"] { background: var(--red); color: var(--white); }
+input[type=search] { font: 600 15px/1.3 var(--f-body); padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 12px; width: 100%; background: var(--white); color: var(--ink); }
+input[type=search]:focus { outline: 3px solid var(--red); outline-offset: 1px; }
+.angs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.ang { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.ang .top { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+.ang .fam { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red-text); }
+.ang b { font-size: 15.5px; line-height: 1.35; }
+.ang small { color: var(--soft); font-size: 13.5px; }
+.fmt { font-size: 12px; font-weight: 700; background: var(--chip); border-radius: 999px; padding: 3px 9px; justify-self: start; }
+.copy { all: unset; cursor: pointer; font-size: 12.5px; font-weight: 800; color: var(--red-text); white-space: nowrap; padding: 4px 6px; border-radius: 8px; }
+.copy:hover { background: var(--chip); }
+.count { font: 500 12px/1 var(--f-mono); color: var(--soft); }
+/* Guiones */
+.scripts { display: grid; gap: 12px; }
+details.sc { background: var(--white); border-radius: 16px; padding: 0; overflow: hidden; }
+details.sc summary { cursor: pointer; list-style: none; padding: 14px 16px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; }
+details.sc summary::-webkit-details-marker { display: none; }
+.num { font: 400 22px/1 var(--f-head); color: var(--white); background: var(--red); border-radius: 10px; width: 40px; height: 40px; display: grid; place-items: center; }
+details.sc summary b { display: block; font-size: 15.5px; }
+details.sc summary small { color: var(--soft); font-size: 13px; }
+.scb { padding: 0 16px 16px; display: grid; gap: 8px; }
+.beat { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; font-size: 14.5px; }
+.beat span { font: 500 11px/1.5 var(--f-mono); color: var(--soft); text-transform: uppercase; }
+.osd { background: var(--ink); color: var(--white); border-radius: 8px; padding: 2px 8px; font-weight: 700; display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.ti { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; padding: 8px 0; border-bottom: 1px solid var(--sand); }
+.ti:last-child { border-bottom: 0; }
+.ti .n { font: 500 11px/1.6 var(--f-mono); background: var(--chip); border-radius: 6px; padding: 1px 7px; }
+.ti small { display: block; color: var(--soft); font-size: 13px; }
+.blocks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.blk { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; }
+.blk .t { font: 500 11px/1.2 var(--f-mono); color: var(--red-text); text-transform: uppercase; letter-spacing: .08em; }
+@media (max-width: 900px) {
+  .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .blocks, .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .grid2, .grid3, .angs, .blocks { grid-template-columns: minmax(0, 1fr); }
+  .week { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .beat { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  h2 { font-size: 20px; }
+}
+@media print { nav.tabs { display: none; } section.view[hidden] { display: grid !important; } body::before { display: none; } }
+
+/* Claude Code editor */
+.cc-code { display: block; font: 500 13px/1.45 ui-monospace, Menlo, Consolas, monospace; background: rgba(127,127,127,.12); border-radius: 8px; padding: 8px 10px; margin: 6px 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+li .cc-code, p .cc-code { display: inline; padding: 1px 6px; margin: 0; }
+
+.ed-g { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ed-list { display: grid; gap: 12px; }
+.ed-pr { gap: 10px; }
+.ed-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.ed-top b { flex: 1 1 180px; min-width: 0; }
+.ed-txt { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.5; color: var(--soft); background: rgba(127,127,127,.08); border-radius: 10px; padding: 12px; margin: 0; max-height: 320px; overflow: auto; }
+@media (max-width: 900px) { .ed-g { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .ed-g { grid-template-columns: 1fr; } }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="label">Jony · @jnyfit._ · Material de mentoría</span>
+    <h1 style="margin-top:8px">Plan de contenido</h1>
+    <p><b>Jony · El coach de los latinos.</b> Serie fija: "De la obra al gym". Método OBRA. Contenido corto para viralizar, tu historia sin filtro, tu día en la obra, el súper de aquí y mucho rol de entrenador. Sin anuncios: todo el crecimiento sale de lo que publicas.</p>
+    <div class="pills">
+      <span class="pill">1–3 reels al día → 3–5</span>
+      <span class="pill">1 YouTube por semana (vlog)</span>
+      <span class="pill">3 carruseles/semana (conexión + valor)</span>
+      <span class="pill">Stories por bloques</span>
+      <span class="pill">CTA: escríbeme PLAN</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-v="plan">El plan</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="sem">Semana</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="ang">Ángulos</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="car">Carruseles</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="gui">Guiones virales</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="yt">YouTube</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="sto">Stories</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="rec">Grabar y trial reels</button>
+    <button class="tab" role="tab" aria-selected="false" data-v="cla">Claude Code editor</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ============ EL PLAN ============ -->
+<section class="view" id="v-plan">
+  <div class="card dark">
+    <span class="label" style="color:#ff8a95">Tu posicionamiento</span>
+    <h2>Jony · El coach de los latinos</h2>
+    <p class="soft">Marca personal primero, nicho después. Le hablas sobre todo a chavos de 18 a 25 que empiezan o están estancados (perder grasa o ganar músculo sin taparse de grasa), con trabajos pesados, poco dinero y poco tiempo. Pero tu contenido lo puede ver cualquier latino que trabaja duro y quiere verse mejor. Tú eres la prueba: 19 años, trabajas en construcción y pasaste de 177 a 145 lb sin perder lo ganado.</p>
+    <p class="soft"><b style="color:#fff">Tu nicho en una frase:</b> "Ayudo a latinos de 18 a 25 que trabajan duro en EE. UU. y van empezando o están estancados a ganar músculo sin taparse de grasa —o a perder la panza— con un plan que encaja en su jornada, sin dietas locas ni vivir en el gym."</p>
+    <div class="say" style="background:rgba(255,255,255,.08);color:#fff">"Soy Jony, trabajo en construcción y te enseño a ponerte en forma aunque llegues reventado."</div>
+    <p class="soft"><b style="color:#fff">Método OBRA:</b> Orden · Base · Repeticiones que progresan · Ajustar sin prohibir. Lo vendes como <b style="color:#fff">Programa OBRA de 12 semanas</b> (parte 2). Lema de tu historia: "dejé de buscar atajos". Cada pilar del contenido enseña una letra del método.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card"><span class="label">Objetivo 90 días</span><span class="big">10K</span><p class="soft">seguidores y 1 reel que pase de 100K views. Hoy: 456.</p></div>
+    <div class="card"><span class="label">Objetivo de negocio</span><span class="big">5</span><p class="soft">plazas fundadoras ($250) cerradas por DM en las primeras 4–6 semanas, con testimonio en vídeo y fotos.</p></div>
+    <div class="card"><span class="label">Regla de oro</span><span class="big">1/día</span><p class="soft">Nunca menos de 1 reel al día. Un día sin publicar es un día que no existes.</p></div>
+  </div>
+
+  <div class="card">
+    <span class="label">Los 6 pilares</span>
+    <div class="tscroll"><table>
+      <thead><tr><th>Pilar</th><th>Qué enseñas</th><th>Por qué funciona</th><th>Peso</th></tr></thead>
+      <tbody>
+        <tr><td><b>Rol entrenador</b></td><td>Corriges técnica en el gym, revisas rutinas y comidas de seguidores, explicas el porqué con el método OBRA.</td><td>Te posiciona como coach, no como chavo que entrena. Es lo que vende.</td><td>30 %</td></tr>
+        <tr><td><b>Mi historia</b></td><td>Bulk sucio de 4.000 kcal, mass gainer, de 144 a 177 lb, definición extrema, el punto de inflexión.</td><td>Conecta y genera confianza. Tus errores son los de tu cliente.</td><td>15 %</td></tr>
+        <tr><td><b>Día en la obra</b></td><td>Serie "De la obra al gym": cómo entrenas y comes con jornadas largas, lonche, cansancio, horarios.</td><td>Nadie del fitness enseña esto. Es tu diferencia y tu público se ve reflejado.</td><td>20 %</td></tr>
+        <tr><td><b>Súper de aquí</b></td><td>Compras fit baratas en EE. UU., comida latina adaptada, comida rápida inteligente.</td><td>Muy compartible y guardable. Útil desde el segundo 1.</td><td>15 %</td></tr>
+        <tr><td><b>Mitos que odio</b></td><td>"Los carbos engordan", té verde mágico, la grasa se convierte en músculo…</td><td>Polémica sana: comentarios y compartidos.</td><td>10 %</td></tr>
+        <tr><td><b>Yapping</b></td><td>Hablas a cámara de disciplina, paciencia, familia, ser latino aquí.</td><td>Cuando cojas ritmo, es lo que convierte a seguidores en fans.</td><td>10 %</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <span class="label">Fases</span>
+      <ul class="clean">
+        <li><b>Siempre:</b> 3 carruseles por semana alternando conexión y valor. No son opcionales.</li>
+        <li><b>Semanas 1–2:</b> 1 reel al día + 3 carruseles + stories diarias. Cogiendo soltura delante de la cámara. Vale más publicar que hacerlo perfecto.</li>
+        <li><b>Semanas 3–6:</b> 2 reels al día + 1 YouTube por semana + 3 carruseles.</li>
+        <li><b>Mes 2–3:</b> 3 reels al día. Cuando domines las variantes de gancho en trial reels, sube a 3–5.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Bio y link (sin landing)</span>
+      <ul class="clean">
+        <li><b>Nombre:</b> Jony | Coach de los latinos (usuario sigue siendo @jnyfit._)</li>
+        <li><b>Bio (parte 1):</b> "Coach 🏗️ Trabajo en construcción y entreno igual / 📉 177 → 145 lb sin dietas locas / 💪 Te ayudo a perder la panza o ganar músculo / 📩 Escríbeme "PLAN" por DM / ✝️ God first · 2 Tim 1:7"</li>
+        <li><b>Link:</b> ninguno. Sin landing: todo es "PLAN" por DM. El código de afiliado se va a una destacada "Suple" y a la descripción de los vídeos donde lo uses.</li>
+        <li><b>Destacadas:</b> Mi cambio · Obra→Gym · Súper · Clientes · Gym (+ Suple)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card warn">
+    <span class="label">Líneas rojas</span>
+    <ul class="clean">
+      <li><b>Nada de estatus migratorio, papeles ni temas legales.</b> "Llegar de fuera" es cultura: la comida de tu mamá, el súper de aquí, los horarios, la obra. Nunca tu situación ni la de nadie.</li>
+      <li>Nada de inventar resultados de clientes. Tu prueba es tu cambio de 8 meses y la gente que has ayudado (con su permiso).</li>
+      <li>Atracones y ansiedad por la comida: los cuentas como aprendizaje, sin detalles. Nada de "ayuno extremo" ni retos peligrosos.</li>
+      <li>No grabes a gente de la obra ni del gym sin su permiso. Ni marcas de tu empresa ni de la obra.</li>
+      <li>La fe ("God first") forma parte de ti: úsala cuando te salga natural, nunca como gancho.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SEMANA ============ -->
+<section class="view" id="v-sem" hidden>
+  <div class="card">
+    <h2>Calendario semanal</h2>
+    <p class="soft">Cada casilla es una pieza. Los colores son los pilares. El YouTube va el sábado o el domingo, que es cuando no trabajas. Los 3 carruseles semanales son obligatorios y alternan: una semana conexión–valor–conexión, la siguiente valor–conexión–valor. Hazlos el domingo de una sentada.</p>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div id="stages" style="display:grid;gap:18px"></div>
+  <div class="card sand">
+    <span class="label">Cómo sacarlo con jornada de obra</span>
+    <ul class="clean">
+      <li><b>Domingo (1 h 30):</b> armas los 3 carruseles de la semana en Canva con la plantilla, eliges 7–14 ángulos de la pestaña Ángulos y los apuntas en notas. Grabas 3–4 hablados de una sentada.</li>
+      <li><b>En la obra:</b> 3 clips de 5 s al día (llegada, lunch box, salida). Sin parar de trabajar, en el break.</li>
+      <li><b>En el gym:</b> 1 serie grabada en cada sesión + 1 corrección de técnica. Eso son 2 reels de rol entrenador.</li>
+      <li><b>Por la noche (20 min):</b> editas en CapCut y programas el del día siguiente.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ÁNGULOS ============ -->
+<section class="view" id="v-ang" hidden>
+  <div class="card">
+    <h2>Banco de ángulos</h2>
+    <p class="soft">Cada ángulo es un reel. El gancho es lo que dices o escribes en los 2 primeros segundos. Cópialo, grábalo a tu manera y, si funciona, haz 3 variantes de gancho en trial reels.</p>
+    <input type="search" id="q" placeholder="Busca: obra, súper, creatina, bulk…" aria-label="Buscar ángulos">
+    <div class="filters" id="fams"></div>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="angs" id="angs"></div>
+</section>
+
+<!-- ============ CARRUSELES ============ -->
+<section class="view" id="v-car" hidden>
+  <div class="card dark">
+    <span class="label" style="color:#ff8a95">Carruseles: 3 por semana alternando conexión y valor</span>
+    <h2>Los reels te traen gente. Los carruseles hacen que se queden y te escriban.</h2>
+    <p class="soft">Semana A: conexión – valor – conexión (lunes, miércoles, viernes). Semana B: valor – conexión – valor. 6–9 slides, letra grande, tu foto real en la portada. El último slide siempre: "Escríbeme PLAN".</p>
+  </div>
+  <div class="grid2">
+    <div class="card"><span class="ctag C">Conexión</span><p>Historia, vulnerabilidad, día a día en la obra, creencias. Hace que confíen en ti como persona. Se mide en comentarios y DMs.</p></div>
+    <div class="card"><span class="ctag V">Valor</span><p>Educativo: tu método, mitos, guías de súper y comida. Hace que te vean como coach. Se mide en guardados y compartidos.</p></div>
+  </div>
+  <div class="card sand">
+    <span class="label">Plantilla (Canva)</span>
+    <ul class="clean">
+      <li><b>Slide 1 · Portada:</b> tu foto real + una frase gancho de 6–9 palabras. Es el 80 % del carrusel.</li>
+      <li><b>Slide 2:</b> por qué importa / dónde estabas.</li>
+      <li><b>Slides 3–7:</b> una idea por slide, máximo 25 palabras.</li>
+      <li><b>Penúltimo:</b> resumen o lección en una frase (lo que guardan).</li>
+      <li><b>Último:</b> "Si quieres tu plan, escríbeme PLAN" + tu foto.</li>
+      <li>Descripción: amplía la historia en 4–6 líneas y repite el CTA.</li>
+    </ul>
+  </div>
+  <div class="card"><h2>12 ideas de conexión</h2></div>
+  <div class="angs" id="carC"></div>
+  <div class="card"><h2>12 ideas de valor</h2></div>
+  <div class="angs" id="carV"></div>
+</section>
+
+<!-- ============ GUIONES ============ -->
+<section class="view" id="v-gui" hidden>
+  <div class="card">
+    <h2>10 guiones virales completos</h2>
+    <p class="soft">Duración 7–25 s. El texto en negro es lo que va escrito en pantalla. Graba en vertical, primer plano en el segundo 0, sin "hola chicos". Todos cierran igual: escríbeme PLAN.</p>
+  </div>
+  <div class="scripts" id="scripts"></div>
+</section>
+
+<!-- ============ YOUTUBE ============ -->
+<section class="view" id="v-yt" hidden>
+  <div class="card dark">
+    <span class="label" style="color:#ff8a95">YouTube · 1 a la semana</span>
+    <h2>Serie "De la obra al gym": un día entrenando + consejos</h2>
+    <p class="soft">8–15 minutos. No tiene que ser de cine: tiene que ser real y útil. Un vlog te da material para 5–8 reels cortos de la semana siguiente.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <span class="label">Plantilla del vlog</span>
+      <div class="tscroll"><table>
+        <thead><tr><th>Min</th><th>Bloque</th><th>Qué grabas</th></tr></thead>
+        <tbody>
+          <tr><td>0:00</td><td><b>Gancho</b></td><td>El momento más fuerte del día en 15 s ("465 lb de peso muerto después de 10 horas en la obra").</td></tr>
+          <tr><td>0:20</td><td><b>Promesa</b></td><td>"Hoy te enseño qué como, cómo entreno y el error que me tuvo estancado un año."</td></tr>
+          <tr><td>1:00</td><td><b>Mañana</b></td><td>Despertador, desayuno, preparar el lunch box (explicas cantidades a ojo).</td></tr>
+          <tr><td>3:00</td><td><b>Obra</b></td><td>Breaks, qué comes, cómo aguantas el cansancio. Sin grabar a compañeros ni la empresa.</td></tr>
+          <tr><td>5:00</td><td><b>Gym</b></td><td>La sesión con 2–3 consejos de técnica. Aquí va el rol entrenador.</td></tr>
+          <tr><td>10:00</td><td><b>Cena y reflexión</b></td><td>Lo que aprendiste hoy o esta semana. Tu historia en 1 minuto.</td></tr>
+          <tr><td>12:00</td><td><b>CTA</b></td><td>"Si quieres que te arme el plan, escríbeme PLAN por DM en Instagram (@jnyfit._)."</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <span class="label">Títulos para las primeras 12 semanas</span>
+      <div id="ytlist"></div>
+    </div>
+  </div>
+  <div class="card sand">
+    <span class="label">Miniatura y subida</span>
+    <ul class="clean">
+      <li>Tu cara + 3 palabras máximo ("10 HORAS OBRA", "MI PEOR ERROR", "$50 DE SÚPER").</li>
+      <li>Descripción con el link a tu Instagram y "escríbeme PLAN".</li>
+      <li>Corta 5–8 clips del vlog para los reels de la semana siguiente: así un vídeo te da media semana de contenido.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ STORIES ============ -->
+<section class="view" id="v-sto" hidden>
+  <div class="card">
+    <h2>Stories por bloques</h2>
+    <p class="soft">4 bloques al día, 2–4 stories cada uno. Las stories no son para crecer: son para que quien ya te sigue confíe en ti y te escriba. Una caja de preguntas o una encuesta al día, mínimo.</p>
+  </div>
+  <div class="blocks">
+    <div class="blk"><span class="t">Bloque 1 · Mañana</span><b>Arranque</b><small class="soft">Despertador temprano, desayuno, el lunch box listo. Texto: "5:00 am. Hoy toca pierna después de la obra."</small></div>
+    <div class="blk"><span class="t">Bloque 2 · Mediodía</span><b>El break</b><small class="soft">Lo que comes en la obra y por qué. Encuesta: "¿Tú qué comes en el trabajo?"</small></div>
+    <div class="blk"><span class="t">Bloque 3 · Tarde</span><b>Gym</b><small class="soft">Una serie, un consejo de técnica, una corrección. "Esto lo hacía mal un año entero."</small></div>
+    <div class="blk"><span class="t">Bloque 4 · Noche</span><b>Conversación</b><small class="soft">Caja de preguntas, respuesta a un DM (con permiso, sin nombre) o reflexión. CTA suave: "Si quieres tu plan, escríbeme PLAN."</small></div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <span class="label">Secuencia de venta (1 vez por semana)</span>
+      <ol style="margin:0;padding-left:18px;display:grid;gap:5px">
+        <li>Encuesta: "¿Te cuesta más perder grasa o ganar músculo?"</li>
+        <li>Respuesta: el error más común de cada opción.</li>
+        <li>Tu antes y después de 8 meses: "Lo que cambió fue tener un plan, no entrenar más."</li>
+        <li>"Me quedan X plazas fundadoras del Programa OBRA. Tú pones las ganas, yo el plan."</li>
+        <li>"Escríbeme PLAN y te cuento cómo funciona." + sticker de mensaje.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <span class="label">Ideas para cajas y encuestas</span>
+      <ul class="clean">
+        <li>"Mándame tu rutina y te digo qué cambiaría."</li>
+        <li>"¿Qué comes en el trabajo? Te digo si te ayuda o te frena."</li>
+        <li>"¿Bulk o definición? ¿En qué estás tú?"</li>
+        <li>"Pregúntame lo que quieras de suplementos."</li>
+        <li>"¿Cuánto gastas en el súper a la semana?"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GRABAR Y TRIAL REELS ============ -->
+<section class="view" id="v-rec" hidden>
+  <div class="grid2">
+    <div class="card">
+      <span class="label">Formato tipo cuenta en inglés de Alberto</span>
+      <h3>Clips de vida real + texto encima</h3>
+      <ul class="clean">
+        <li>3–6 clips de 1–3 s: obra, comida, gym, carro, súper.</li>
+        <li>Una frase en pantalla que cuenta la historia: "Trabajo 10 horas en construcción y aun así entreno 5 días. Así lo hago:"</li>
+        <li>Música en tendencia bajita. Sin voz al principio: cuando cojas ritmo, pasas al yapping.</li>
+        <li>Es el formato más fácil de grabar con tu horario. Empieza por aquí.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Yapping (cuando cojas ritmo)</span>
+      <h3>Tú a cámara contando algo</h3>
+      <ul class="clean">
+        <li>En el carro estacionado después de la obra, o en el gym entre series.</li>
+        <li>Empiezas por el final: "Bajé de 177 a 145 libras y lo que más me costó no fue la comida."</li>
+        <li>30–60 s. Una idea. Sin leer.</li>
+        <li>Temas: ser latino aquí, la comida de tu mamá, disciplina sin ganas, paciencia, tu tío, tu fe.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card dark">
+    <span class="label" style="color:#ff8a95">Trial reels: cómo pasar de 1–3 a 3–5 reels al día</span>
+    <ol style="margin:0;padding-left:18px;display:grid;gap:6px">
+      <li>Cada domingo eliges el reel con más retención o compartidos de la semana.</li>
+      <li>Grabas 3–5 ganchos nuevos para el mismo cuerpo del vídeo (solo cambian los 2 primeros segundos y el texto en pantalla).</li>
+      <li>Los publicas como <b>trial reel</b>: solo lo ven no seguidores, no ensucia tu perfil.</li>
+      <li>A las 24–48 h: el que pase el 60 % de retención a los 3 s lo compartes en tu perfil. Los otros, fuera.</li>
+      <li>Apuntas en el reporte qué tipo de gancho ganó (pregunta, número, polémica, historia). En un mes sabrás qué funciona con tu gente.</li>
+    </ol>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="label">Gancho número</span><p>"De 144 a 177 libras en 6 meses. Y no era músculo."</p></div>
+    <div class="card"><span class="label">Gancho polémica</span><p>"La proteína en polvo no te hace ganar músculo."</p></div>
+    <div class="card"><span class="label">Gancho identidad</span><p>"Si trabajas en construcción y quieres verte mamado, mira esto."</p></div>
+  </div>
+  <div class="card sand">
+    <span class="label">Checklist antes de publicar</span>
+    <ul class="clean">
+      <li>¿Se entiende sin sonido? (texto en pantalla siempre)</li>
+      <li>¿Pasa algo en el segundo 0? (movimiento, peso, cara, comida)</li>
+      <li>¿Una sola idea?</li>
+      <li>¿CTA al final o en la descripción? "Escríbeme PLAN"</li>
+      <li>¿Sale alguien sin permiso o algo de la empresa? Fuera.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CLAUDE CODE ============ -->
+<section class="view" id="v-cla" hidden aria-label="Claude Code como editor">
+    <div class="sec">
+      <div class="head"><span class="label">Tu editor de vídeo</span><h2>Claude Code como editor: grabas, sueltas el vídeo y Claude te lo edita.</h2><p class="soft">Claude Code es Claude trabajando en tu ordenador: abre tus vídeos, corta silencios, pone subtítulos, saca versiones de gancho y exporta en 9:16. Lo montas una vez y lo vas educando con cada corrección.</p></div>
+      <div class="card dark"><span class="label">La regla</span><ul class="l">
+        <li><b>Claude edita, tú decides.</b> Revisas cada vídeo antes de publicarlo.</li>
+        <li><b>Nunca inventa cifras, resultados ni testimonios</b> en textos ni subtítulos.</li>
+        <li><b>Nunca toca tus originales:</b> 1-sin-editar/ no se borra jamás.</li>
+      </ul></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 1 · Una sola vez</span><h3>Instala Claude Code y ffmpeg</h3></div>
+      <div class="ed-g">
+        <div class="card"><span class="tag">Mac / Linux</span><b>En la Terminal</b><code class="cc-code">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="copy cc-cp" data-cc="curl -fsSL https://claude.ai/install.sh | bash">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">brew install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Windows</span><b>En PowerShell</b><code class="cc-code">irm https://claude.ai/install.ps1 | iex</code><button type="button" class="copy cc-cp" data-cc="irm https://claude.ai/install.ps1 | iex">Copiar</button><p class="soft">Y ffmpeg: <code class="cc-code">winget install ffmpeg</code></p></div>
+        <div class="card"><span class="tag">Sin terminal</span><b>App de escritorio</b><p class="soft">Descarga la app de escritorio de Claude (claude.ai/download) y usa la pestaña <b>Code</b>.</p></div>
+        <div class="card"><span class="tag">Arrancar</span><b>Abre tu carpeta</b><p class="soft">Abre la terminal en la carpeta Contenido-Jony, escribe <code class="cc-code">claude</code>, inicia sesión con tu cuenta de Claude y acepta el permiso de acceso a la carpeta.</p></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 2</span><h3>Tu carpeta de trabajo</h3></div>
+      <div class="card"><pre class="ed-txt">Contenido-Jony/
+├─ 1-sin-editar/   ← sueltas aquí lo que grabas (nunca se borra)
+├─ 2-editados/     ← Claude guarda aquí lo terminado
+├─ 3-recursos/     ← música, logos, tipografías, b-roll, subtítulos
+├─ 4-referencias/  ← vídeos de creadores que quieres imitar + nota.md
+└─ CLAUDE.md       ← tus instrucciones (abajo)</pre><p class="soft">nota.md en 4-referencias/: una línea por vídeo → &quot;[archivo]: copiar el ritmo de cortes / el estilo de subtítulos / el gancho de los 2 primeros segundos&quot;.</p></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 3</span><h3>Instala las skills que te ha pasado Alberto</h3></div>
+      <div class="card"><ol class="l">
+        <li>Copia la carpeta de skills a <code class="cc-code">~/.claude/skills/</code> (para todos tus proyectos) o a <code class="cc-code">.claude/skills/</code> dentro de Contenido-Jony.</li>
+        <li>Cada skill va en su propia carpeta con su archivo <b>SKILL.md</b> dentro.</li>
+        <li>Abre Claude Code en tu carpeta y escribe <code class="cc-code">/skills</code>: tienen que salir en la lista.</li>
+      </ol></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 4</span><h3>Tu CLAUDE.md: crea este archivo dentro de Contenido-Jony</h3><p class="soft">Claude lo lee cada vez que lo abres en esa carpeta. Retócalo con tus palabras.</p></div>
+      <div class="card chip ed-pr"><div class="ed-top"><span class="tag">CLAUDE.md</span><b>Cópialo tal cual</b><button type="button" class="copy cc-cp" data-cc="# Quién soy&#10;Jony (Jonathan García, @jnyfit._), 19 años, Los Ángeles, trabajo en construcción. &quot;Jony · El coach de los latinos&quot;; serie fija &quot;De la obra al gym&quot;.&#10;&#10;# A quién le hablo (mi nicho)&#10;Ayudo a latinos de 18 a 25 que trabajan duro en EE. UU. y van empezando o están estancados a ganar músculo sin taparse de grasa —o a perder la panza— con un plan que encaja en su jornada, sin dietas locas ni vivir en el gym.&#10;&#10;# Mi método&#10;Método OBRA: Orden, Base, Repeticiones que progresan, Ajustar sin prohibir. Programa OBRA de 12 semanas.&#10;&#10;# Mi tono&#10;Español latino neutro, directo, como con un compa del gym. Frases cortas. Libras y dólares.&#10;&#10;# CTA&#10;&quot;Escríbeme PLAN&quot; por DM.&#10;&#10;# Estilo de edición que quiero&#10;Vida real, rápido y crudo: clips de la obra, el gym y el súper con texto encima; cortes cada 1 s en el gancho; subtítulos grandes en mayúsculas; música de tendencia baja bajo la voz.&#10;Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido).&#10;&#10;# Formatos que hago&#10;voz en off sobre clips míos, rol entrenador (corrigiendo y explicando), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.&#10;&#10;# Antes de editar&#10;- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.&#10;- Usa recursos de 3-recursos/ (música, logos, tipografías, b-roll).&#10;&#10;# Reglas&#10;- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.&#10;- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.&#10;- No inventes cifras, resultados ni testimonios en textos o subtítulos. Si falta un dato, pregúntame.&#10;- No hago anuncios.&#10;- Nunca hables de estatus migratorio, papeles ni temas legales. &quot;Llegar de fuera&quot; = cultura, comida, horarios.&#10;- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.&#10;&#10;# Lecciones aprendidas (añádelas aquí cada vez que te corrija)&#10;- ">Copiar</button></div><pre class="ed-txt"># Quién soy
+Jony (Jonathan García, @jnyfit._), 19 años, Los Ángeles, trabajo en construcción. &quot;Jony · El coach de los latinos&quot;; serie fija &quot;De la obra al gym&quot;.
+
+# A quién le hablo (mi nicho)
+Ayudo a latinos de 18 a 25 que trabajan duro en EE. UU. y van empezando o están estancados a ganar músculo sin taparse de grasa —o a perder la panza— con un plan que encaja en su jornada, sin dietas locas ni vivir en el gym.
+
+# Mi método
+Método OBRA: Orden, Base, Repeticiones que progresan, Ajustar sin prohibir. Programa OBRA de 12 semanas.
+
+# Mi tono
+Español latino neutro, directo, como con un compa del gym. Frases cortas. Libras y dólares.
+
+# CTA
+&quot;Escríbeme PLAN&quot; por DM.
+
+# Estilo de edición que quiero
+Vida real, rápido y crudo: clips de la obra, el gym y el súper con texto encima; cortes cada 1 s en el gancho; subtítulos grandes en mayúsculas; música de tendencia baja bajo la voz.
+Formato vertical 9:16, 1080x1920. Subtítulos siempre (mucha gente lo ve sin sonido).
+
+# Formatos que hago
+voz en off sobre clips míos, rol entrenador (corrigiendo y explicando), casos de clientes con permiso, yapping a cámara, green screen, y carruseles 3 por semana alternando conexión y valor.
+
+# Antes de editar
+- Mira la carpeta 4-referencias/ y su nota: copia ritmo, cortes, subtítulos y ganchos de ahí.
+- Usa recursos de 3-recursos/ (música, logos, tipografías, b-roll).
+
+# Reglas
+- NUNCA borres ni sobrescribas nada de 1-sin-editar/. Trabaja siempre sobre copias.
+- Guarda cada vídeo terminado en 2-editados/ con el nombre AAAA-MM-DD_formato_angulo.mp4.
+- No inventes cifras, resultados ni testimonios en textos o subtítulos. Si falta un dato, pregúntame.
+- No hago anuncios.
+- Nunca hables de estatus migratorio, papeles ni temas legales. &quot;Llegar de fuera&quot; = cultura, comida, horarios.
+- Antes de exportar, dime qué vas a hacer en 3–5 líneas. Si algo no está claro, pregunta.
+
+# Lecciones aprendidas (añádelas aquí cada vez que te corrija)
+- </pre></div>
+    </div>
+    <div class="sec">
+      <div class="head"><span class="label">Paso 5 · Cada semana</span><h3>Educa a tu editor</h3></div>
+      <div class="card"><ol class="l">
+        <li><b>Graba</b> y suelta los vídeos en 1-sin-editar/.</li>
+        <li><b>Pide la edición</b> con una de las órdenes de abajo.</li>
+        <li><b>Corrige con feedback concreto</b> ("subtítulos más arriba", "corta antes", "menos zoom"), nunca "no me gusta".</li>
+        <li><b>Lo que funcione,</b> cópialo a 4-referencias/ como ejemplo bueno.</li>
+        <li><b>Añade la lección a CLAUDE.md</b> (o pídeselo: orden 8). Cada semana edita más a tu gusto.</li>
+      </ol></div>
+      <div class="ed-list"><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 1</span><b>Editar un reel al estilo de una referencia</b><button type="button" class="copy cc-cp" data-cc="Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes quemados con la palabra clave resaltada y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo.">Copiar</button></div><p class="ed-txt">Edita 1-sin-editar/[ARCHIVO].mp4 como reel 9:16 al estilo de 4-referencias/[REFERENCIA].mp4: corta silencios y muletillas, cortes cada 1–2 s en los primeros 3 segundos, subtítulos grandes quemados con la palabra clave resaltada y la música más baja de 3-recursos/musica/. Guárdalo en 2-editados/ con el nombre fecha_formato_angulo.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 2</span><b>3 versiones de gancho para trial reels</b><button type="button" class="copy cc-cp" data-cc="Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C.">Copiar</button></div><p class="ed-txt">Del vídeo 1-sin-editar/[ARCHIVO].mp4 saca 3 versiones que solo cambien los 3 primeros segundos: 1) empezando por la frase más fuerte, 2) con un texto en pantalla tipo pregunta, 3) empezando por la imagen con más movimiento. Mismo cuerpo y cierre. Expórtalas a 2-editados/ como _gancho-A, _gancho-B y _gancho-C.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 3</span><b>Recortar silencios</b><button type="button" class="copy cc-cp" data-cc="Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después.">Copiar</button></div><p class="ed-txt">Recorta todos los silencios de más de 0,4 s y las muletillas (eh, em, vale) de 1-sin-editar/[ARCHIVO].mp4 sin que se note el corte. Dame la duración antes y después.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 4</span><b>Exportar en 9:16</b><button type="button" class="copy cc-cp" data-cc="Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/.">Copiar</button></div><p class="ed-txt">Convierte 1-sin-editar/[ARCHIVO].mov a 9:16 1080x1920 centrando mi cara, a buena calidad y que pese menos de 100 MB. Guárdalo en 2-editados/.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 5</span><b>Voz en off sobre b-roll</b><button type="button" class="copy cc-cp" data-cc="Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/, cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre &quot;Escríbeme PLAN&quot; en pantalla. 9:16, a 2-editados/.">Copiar</button></div><p class="ed-txt">Monta mi audio 1-sin-editar/[AUDIO].m4a como voz en off sobre clips de 3-recursos/b-roll/, cambiando de clip cada 2–3 s, con subtítulos grandes y el cierre &quot;Escríbeme PLAN&quot; en pantalla. 9:16, a 2-editados/.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 6</span><b>Preparar portada</b><button type="button" class="copy cc-cp" data-cc="Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 con este título grande: &quot;[TÍTULO]&quot;, usando la tipografía de 3-recursos/tipografias/. Guárdala como .jpg al lado del vídeo.">Copiar</button></div><p class="ed-txt">Saca 3 fotogramas de 2-editados/[ARCHIVO].mp4 donde salga con buena cara y buena luz, y monta una portada 1080x1920 con este título grande: &quot;[TÍTULO]&quot;, usando la tipografía de 3-recursos/tipografias/. Guárdala como .jpg al lado del vídeo.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 7</span><b>Subtítulos .srt + revisión</b><button type="button" class="copy cc-cp" data-cc="Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md.">Copiar</button></div><p class="ed-txt">Genera los subtítulos de 2-editados/[ARCHIVO].mp4 en un .srt, revísalos para que respeten mis palabras exactas y no inventen nada, y quémalos en el vídeo con el estilo de CLAUDE.md.</p></div><div class="card ed-pr"><div class="ed-top"><span class="tag">Orden 8</span><b>Aprender de una corrección</b><button type="button" class="copy cc-cp" data-cc="Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: &#x27;subtítulos más arriba&#x27;, &#x27;menos zoom&#x27;, &#x27;cortes más rápidos en el gancho&#x27;]. Corrígelo y, cuando te diga que está bien, añade la lección a la sección &#x27;Lecciones aprendidas&#x27; de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno.">Copiar</button></div><p class="ed-txt">Esto no me ha gustado de la última edición: [QUÉ CAMBIAR, concreto: &#x27;subtítulos más arriba&#x27;, &#x27;menos zoom&#x27;, &#x27;cortes más rápidos en el gancho&#x27;]. Corrígelo y, cuando te diga que está bien, añade la lección a la sección &#x27;Lecciones aprendidas&#x27; de CLAUDE.md y copia el resultado a 4-referencias/ como ejemplo bueno.</p></div></div>
+    </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+
+  /* ---------- Tabs ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      document.querySelectorAll("section.view").forEach(function (s) { s.hidden = s.id !== "v-" + t.dataset.v; });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  /* ---------- Semana ---------- */
+  var DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
+  var K = {
+    rol: { n: "Rol entrenador", c: "k-rol" }, his: { n: "Mi historia", c: "k-his" }, obra: { n: "Día en la obra", c: "k-obra" },
+    super: { n: "Súper de aquí", c: "k-super" }, mito: { n: "Mito", c: "k-mito" }, yap: { n: "Yapping", c: "k-yap" },
+    yt: { n: "YouTube vlog", c: "k-yt" }, cc: { n: "Carrusel conexión", c: "k-cc" }, cv: { n: "Carrusel valor", c: "k-cv" }
+  };
+  var STAGES = [
+    { t: "Semanas 1–2 · 1 reel al día + 3 carruseles", s: "Arranque. Formato clips + texto. Aún sin YouTube: primero suelta la cámara.",
+      plan: [["rol", "cc"], ["obra"], ["his", "cv"], ["super"], ["rol", "cc"], ["mito"], ["obra"]] },
+    { t: "Semanas 3–6 · 2 reels al día + YouTube + 3 carruseles", s: "Entra el vlog semanal. Esta semana los carruseles van valor–conexión–valor; la siguiente, al revés.",
+      plan: [["rol", "obra", "cv"], ["his", "super"], ["rol", "mito", "cc"], ["obra", "rol"], ["super", "his", "cv"], ["rol", "yap", "yt"], ["obra", "mito"]] },
+    { t: "Mes 2–3 · 3 reels al día (→ 3–5 con trial reels) + 3 carruseles", s: "Cuando ya sacas 3 ganchos de cada vídeo sin pensar, súmale 1–2 trial reels diarios.",
+      plan: [["rol", "obra", "mito", "cc"], ["rol", "his", "super"], ["rol", "obra", "yap", "cv"], ["rol", "super", "mito"], ["rol", "his", "obra", "cc"], ["rol", "yap", "super", "yt"], ["rol", "obra", "his"]] }
+  ];
+  $("legend").innerHTML = Object.keys(K).map(function (k) { return '<span><i class="' + K[k].c + '"></i>' + K[k].n + '</span>'; }).join("");
+  $("stages").innerHTML = STAGES.map(function (st) {
+    var reels = 0, car = 0, yt = 0, rol = 0;
+    st.plan.forEach(function (d) { d.forEach(function (k) { if (k === "cc" || k === "cv") car++; else if (k === "yt") yt++; else { reels++; if (k === "rol") rol++; } }); });
+    var days = st.plan.map(function (d, i) {
+      var r = d.filter(function (k) { return k !== "cc" && k !== "cv" && k !== "yt"; }).length;
+      return '<div class="day"><div class="dn">' + DAYS[i] + '<small>' + r + ' reel' + (r === 1 ? '' : 's') + '</small></div>' +
+        d.map(function (k) { return '<div class="item ' + K[k].c + '">' + K[k].n + '</div>'; }).join("") + '</div>';
+    }).join("");
+    return '<div class="stage"><div class="card"><span class="label">' + reels + ' reels' + (yt ? ' + 1 YouTube' : '') + (car ? ' + ' + car + ' carruseles' : '') + ' por semana · ' + Math.round(rol / reels * 100) + ' % rol entrenador</span><h3>' + esc(st.t) + '</h3><p class="soft" style="font-size:14px">' + esc(st.s) + '</p></div><div class="week">' + days + '</div></div>';
+  }).join("");
+
+  /* ---------- YouTube ---------- */
+  var YT = [
+    "De la obra al gym #1: 10 horas en construcción y luego gym",
+    "Lo que como en un día trabajando en la obra (con lunch box)",
+    "Mi cambio físico en 8 meses: todo lo que hice mal y lo que me funcionó",
+    "Compra fit con $50 en el súper de aquí para toda la semana",
+    "Le armo la rutina a un compa del gym que lleva 1 año estancado",
+    "Bulk sucio vs bulk limpio: lo que me pasó comiendo 4.000 calorías",
+    "Cómo entreno cuando llego muerto del trabajo",
+    "La comida de mi mamá también te pone en forma: así la adapto",
+    "Comer fast food sin arruinar tu progreso: mi orden en 5 lugares",
+    "Mi rutina de 5 días explicada ejercicio por ejercicio",
+    "Método OBRA explicado: cómo armo tus 12 semanas (lo que aprendí de la pirámide)",
+    "Respondo a sus preguntas mientras entreno pierna"
+  ];
+  $("ytlist").innerHTML = YT.map(function (y, i) { return '<div class="ti"><span class="n">S' + (i + 1) + '</span><div><b>' + esc(y) + '</b></div></div>'; }).join("");
+
+  /* ---------- Ángulos ---------- */
+  var FAMS = ["Mi historia", "Día en la obra", "Súper de aquí", "Mitos que odio", "Rol entrenador", "Errores de novato", "Mentalidad", "Latino aquí"];
+  var A = [
+    // Mi historia
+    [0, "De 144 a 177 libras en 6 meses. Y no era músculo.", "Bulk sucio: lo que comía y cómo terminé más gordo que fuerte.", "Antes/después"],
+    [0, "Me compré un mass gainer pensando que era magia.", "Tu primera compra fit y lo que aprendiste.", "Clips + texto"],
+    [0, "Mi primer día en el gym hasta las mancuernas de 5 libras me pesaban.", "Vergüenza de novato y por qué no importa.", "Clips + texto"],
+    [0, "Bajé de 177 a 145 libras y lo que más me costó no fue la comida.", "La paciencia y dejar de buscar atajos.", "Yapping"],
+    [0, "Entrené un año entero sin hacer pierna.", "Tus errores del primer año en 3 puntos.", "Lista"],
+    [0, "Empecé haciendo flexiones en mi cuarto con 15 años.", "De dónde vienes: cuarto, películas, tu tío.", "Clips + texto"],
+    [0, "Un día me dijeron: estás obsesionado. Tenían razón.", "El punto de inflexión: me gusta esto, voy a ser paciente.", "Yapping"],
+    [0, "Mi cambio sin filtros: de 177 a 145 libras.", "Fotos reales y qué cambió en cada etapa.", "Antes/después"],
+    [0, "Lo que me hubiera gustado saber a los 17.", "3 cosas que te habrían ahorrado un año.", "Lista"],
+    [0, "Me comparaba con los físicos de redes cada vez que me veía al espejo.", "Comparación, paciencia y tu propio ritmo.", "Yapping"],
+    // Obra
+    [1, "Trabajo en construcción y aun así entreno 5 días.", "Cómo organizas el día. Clips de obra + gym.", "Clips + texto"],
+    [1, "Lo que llevo en mi lunch box para la obra.", "Abrir el lonche y explicar cada cosa.", "POV"],
+    [1, "Llego muerto del trabajo. Así entreno igual.", "Rutina corta para días pesados.", "Clips + texto"],
+    [1, "Así empieza mi día antes de la obra.", "Día en la vida acelerado: desayuno, lonche y botas.", "Día en la vida"],
+    [1, "En la obra y en casa me miran raro por mi comida.", "Cómo manejar los comentarios sin dejar el plan.", "Yapping"],
+    [1, "El error de los que trabajan en construcción y quieren ganar músculo.", "No comen lo suficiente o comen mal en el break.", "Rol entrenador"],
+    [1, "Un compañero de la obra me pidió que lo llevara al gym.", "De alumno a entrenador: su primer día.", "Historia"],
+    [1, "Cómo cuido la espalda trabajando pesado y levantando pesado.", "Técnica, calentamiento y descanso (sin dar consejo médico).", "Rol entrenador"],
+    // Súper
+    [2, "Compra fit con $50 para toda la semana.", "Recorrido por el súper con precios.", "Súper"],
+    [2, "Las 5 proteínas más baratas del súper de aquí.", "Huevos, pollo, atún, frijoles, yogur griego.", "Lista"],
+    [2, "La comida de mi mamá no engorda. Las porciones sí.", "Arroz, frijoles, tortillas: cómo adaptarlo.", "Yapping"],
+    [2, "Lo que pido en Chipotle cuando estoy en definición.", "Comida rápida inteligente.", "POV"],
+    [2, "Tacos en definición: sí se puede.", "Cuántos, de qué y con qué.", "Clips + texto"],
+    [2, "Cuando llegas aquí, la comida es otra cosa.", "Porciones gigantes, todo frito, refrescos: cómo te adaptas.", "Yapping"],
+    // Mitos
+    [3, "Los carbohidratos no engordan. Esto sí.", "Calorías totales vs miedo al arroz.", "Mito"],
+    [3, "La proteína en polvo no te hace ganar músculo.", "Es comida, no magia.", "Mito"],
+    [3, "La grasa no se convierte en músculo.", "Qué pasa realmente en una recomposición.", "Mito"],
+    [3, "Cuanto más sudas, más grasa quemas. Falso.", "El sudor es agua.", "Mito"],
+    [3, "No puedes quemar grasa solo de la panza.", "Grasa localizada y abdominales.", "Mito"],
+    [3, "Comer carbos en la noche no engorda.", "Horario vs total del día.", "Mito"],
+    [3, "Este té verde no te va a hacer bajar de peso.", "Fórmulas mágicas y quién gana con ellas.", "Green screen"],
+    [3, "La creatina no te hace ganar músculo sola.", "Qué hace y qué no.", "Mito"],
+    [3, "La rutina de tu influencer favorito no te va a poner así.", "Genética, años y un plan para ti.", "Yapping"],
+    [3, "Entrenar todos los días no te hace crecer más rápido.", "Volumen, descanso y recuperación (pirámide).", "Mito"],
+    [3, "Un compa del gym lo dejó por aburrirse de arroz con pollo.", "No tienes que comer lo mismo toda la semana: variedad y comida que te gusta.", "Clips + texto"],
+    // Rol entrenador
+    [4, "Estás haciendo mal el peso muerto si haces esto.", "3 fallos comunes con tus 465 lb como prueba.", "Corrección"],
+    [4, "Corrijo la sentadilla de un compa del gym.", "Antes/después de la corrección (con permiso).", "Corrección"],
+    [4, "Si llevas 6 meses sin subir peso, revisa esto.", "Progresión, RPE, descanso.", "Lista"],
+    [4, "Así calculo tus calorías en 30 segundos.", "Cuenta rápida en pantalla.", "Rol entrenador"],
+    [4, "Mi rutina de 5 días explicada en 30 segundos.", "Torso/pierna con el porqué.", "Lista"],
+    [4, "Qué haría si empezara hoy desde cero.", "Las 4 letras del método OBRA aplicadas a un novato.", "Yapping"],
+    [4, "465 libras de peso muerto con 19 años: lo que me costó llegar.", "Técnica, progresión y cero atajos (método OBRA: R).", "Clips + texto"],
+    // Novato
+    [5, "Lunes a viernes perfecto y el fin de semana te lo comes todo.", "Por qué la perfección te hace abandonar.", "Yapping"],
+    [5, "Subir peso sin técnica te frena más que no subir.", "Ego lifting.", "Corrección"],
+    [5, "Estás en definición comiendo tan poco que ya no rindes.", "Déficit moderado vs extremo.", "Rol entrenador"],
+    [5, "Si tienes 18 años y estás flaco, no compres un mass gainer.", "Qué comer en su lugar.", "Rol entrenador"],
+    [5, "Tu rutina de YouTube no es mala. Te falta esto.", "Progresión y constancia.", "Yapping"],
+    [5, "El libro que me ordenó la cabeza: la pirámide del entrenamiento.", "Qué va primero: adherencia, volumen, progresión. Lo que aprendí.", "Rol entrenador"],
+    // Mentalidad
+    [6, "La disciplina es hacerlo aunque no tengas ganas.", "Ejemplo: gym después de la obra.", "Yapping"],
+    [6, "Lejos del físico que quiero, pero lejos del que tenía.", "Progreso, no perfección.", "Antes/después"],
+    [6, "Si en 2 años sigues igual, no es tu genética.", "Constancia vs motivación.", "Yapping"],
+    [6, "Lo primero que vas a dejar si entrenas conmigo: las excusas.", "Tu forma de trabajar.", "Yapping"],
+    [6, "God first. Luego todo lo demás.", "Fe, disciplina y propósito (solo si te sale natural).", "Yapping"],
+    [6, "Tengo 19 años y ya sé lo que quiero.", "Futuro bodybuilder: tu meta.", "Clips + texto"],
+    // Latino aquí
+    [7, "Si eres latino y quieres ponerte en forma aquí, esto es para ti.", "Presentación de tu cuenta.", "Yapping"],
+    [7, "La comida latina no es el problema. Te explico.", "Platos de casa con porciones adaptadas.", "Rol entrenador"],
+    [7, "Mi tío levantaba pesas de joven y me dijo: ¿por qué no empiezas?", "Tus referentes.", "Historia"],
+    [7, "Cosas que todo latino que entrena ha escuchado.", "\"Te vas a poner muy grande\", \"come más, estás flaco\".", "Humor"],
+    [7, "Trabajar duro lo traemos de casa. Úsalo en el gym.", "Ética de trabajo latina.", "Yapping"],
+    [7, "Fiesta familiar en definición: así sobrevivo.", "Carne asada, pastel, refrescos.", "Clips + texto"]
+  ];
+  var CARC = [0,  3,  6,  7,  8,  9,  10,  11,  14,  16,  48,  49,  51,  53,  54,  55,  57,  58];
+  var CARV = [4,  15,  17,  18,  19,  20,  24,  25,  26,  27,  28,  30,  33,  34,  37,  38,  39,  40,  42,  44,  45,  46,  47];
+  function ctype(i) { return CARC.indexOf(i) >= 0 ? "C" : (CARV.indexOf(i) >= 0 ? "V" : ""); }
+  var cur = -1;
+  $("fams").innerHTML = '<button class="fbtn" aria-pressed="true" data-f="-1">Todas</button><button class="fbtn" aria-pressed="false" data-f="-2">Carrusel conexión</button><button class="fbtn" aria-pressed="false" data-f="-3">Carrusel valor</button>' + FAMS.map(function (f, i) { return '<button class="fbtn" aria-pressed="false" data-f="' + i + '">' + esc(f) + '</button>'; }).join("");
+  function renderA() {
+    var q = $("q").value.trim().toLowerCase();
+    var list = A.filter(function (a) { var i = A.indexOf(a); return (cur === -1 || (cur === -2 && ctype(i) === "C") || (cur === -3 && ctype(i) === "V") || a[0] === cur) && (!q || (a[1] + " " + a[2] + " " + a[3] + " " + FAMS[a[0]]).toLowerCase().indexOf(q) >= 0); });
+    $("count").textContent = list.length + " de " + A.length + " ángulos";
+    $("angs").innerHTML = list.length ? list.map(function (a) {
+      var i = A.indexOf(a);
+      return '<div class="ang"><div class="top"><span class="fam">' + esc(FAMS[a[0]]) + '</span><button class="copy" data-i="' + i + '">Copiar</button></div><b>' + esc(a[1]) + '</b><small>' + esc(a[2]) + '</small><div class="tags"><span class="fmt">' + esc(a[3]) + '</span>' + (ctype(i) ? '<span class="ctag ' + ctype(i) + '">Carrusel ' + (ctype(i) === "C" ? "conexión" : "valor") + '</span>' : '') + '</div></div>';
+    }).join("") : '<div class="card"><p class="soft">Nada con ese filtro.</p></div>';
+  }
+  $("fams").addEventListener("click", function (e) {
+    var b = e.target.closest(".fbtn"); if (!b) return;
+    cur = Number(b.dataset.f);
+    document.querySelectorAll(".fbtn").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    renderA();
+  });
+  $("q").addEventListener("input", renderA);
+  function copyText(t, btn) {
+    function ok() { var o = btn.textContent; btn.textContent = "Copiado"; setTimeout(function () { btn.textContent = o; }, 1400); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fallback); else fallback();
+    function fallback() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) { btn.textContent = "Cópialo a mano"; } document.body.removeChild(ta); }
+  }
+  $("angs").addEventListener("click", function (e) {
+    var b = e.target.closest(".copy"); if (!b) return;
+    var a = A[Number(b.dataset.i)];
+    copyText(a[1] + "\n" + a[2] + " (" + a[3] + ")", b);
+  });
+  renderA();
+
+  /* ---------- Carruseles ---------- */
+  var CC = [
+    ["De 144 a 177 libras: el año que me equivoqué en todo", ["Portada: foto a 177 lb + frase", "Tenía 18 años y quería crecer rápido", "4.000 calorías de lo que fuera", "Mass gainer y comida rápida todos los días", "6 meses después: más grasa que músculo", "Lo que haría distinto hoy", "Escríbeme PLAN"]],
+    ["Un día mío: 10 horas en la obra y luego gym", ["Portada: tú con casco o botas", "5:00 am: desayuno y lonche", "La obra: lo que como en el break", "17:00: directo al gym, sin pasar por casa", "La cena y a dormir temprano", "No es motivación: es organización", "Escríbeme PLAN"]],
+    ["Un día me dijeron que estaba obsesionado. Tenían razón.", ["Portada: foto en definición extrema", "Comía casi nada y entrenaba diario", "Hambre, sin energía, atracones el finde", "Me veía más plano, no mejor", "El día que dije: voy a ser paciente", "Lo que cambió desde entonces", "Escríbeme PLAN"]],
+    ["Mi primer día en el gym (y la vergüenza que pasé)", ["Portada: foto antigua", "Fui solo, con 17 años", "Hasta las mancuernas de 5 lb pesaban", "Me daba vergüenza preguntar", "Mi rutina salió de YouTube", "Si estás ahí: todos empezamos así", "Escríbeme PLAN"]],
+    ["Lejos del físico que quiero, pero lejos del que tenía", ["Portada: antes/después 8 meses", "Mes 1–2: aprender a comer", "Mes 3–4: orden en la rutina", "Mes 5–6: progresión y técnica", "Mes 7–8: paciencia", "Lo que sigue: futuro bodybuilder", "Escríbeme PLAN"]],
+    ["Por qué ayudo a latinos que trabajan duro", ["Portada: tú en la obra", "Porque soy uno de ellos", "Nadie en el fitness habla de trabajar 10 horas", "Ni de comer la comida de casa", "Ni de entrenar cansado", "Eso es lo que te enseño", "Escríbeme PLAN"]],
+    ["Mi tío, las películas y unas flexiones en mi cuarto", ["Portada: foto de chavo", "Con 15 años: flexiones y dominadas en el cuarto", "Veía a los musculosos de las películas", "Mi tío me dijo: ¿por qué no empiezas?", "Lo dejé por la escuela y el trabajo", "Y volví. Esta vez para quedarme", "Escríbeme PLAN"]],
+    ["Cosas que mi mamá dice de mi comida", ["Portada: tú en la cocina", "\"Otra vez pollo\"", "\"Estás muy flaco, come más\"", "\"Tanto huevo te va a hacer daño\"", "Lo que aprendí: la comida de casa sí sirve", "Solo cambian las porciones", "Escríbeme PLAN"]],
+    ["Lo que nadie ve cuando entreno a las 9 de la noche", ["Portada: gym casi vacío", "Llegué cansado", "No tenía ganas", "Fui igual", "La disciplina es eso", "Nadie aplaude esto, y está bien", "Escríbeme PLAN"]],
+    ["Un compañero de la obra me pidió que lo llevara al gym", ["Portada: (con permiso) o foto tuya", "Me preguntó cómo bajé de peso", "Lo llevé y le enseñé las máquinas", "Sus primeros cambios", "Ahí supe que quería ser coach", "Ahora te puedo ayudar a ti", "Escríbeme PLAN"]],
+    ["God first: lo que me mantiene constante", ["Portada: foto tranquila", "No entreno solo por el físico", "Disciplina, propósito y paciencia", "2 Timoteo 1:7", "Cuando no hay ganas, hay razones", "Tu razón, ¿cuál es?", "Escríbeme PLAN"]],
+    ["Tengo 19 años y esto es lo que quiero", ["Portada: tú en el gym", "Trabajo en construcción", "Me formo cada semana en entrenamiento y nutrición", "Quiero competir algún día", "Y ayudar a gente como yo", "Esto apenas empieza", "Escríbeme PLAN"]]
+  ];
+  var CV = [
+    ["5 proteínas baratas del súper de aquí", ["Portada: carrito del súper", "Huevos: precio y proteína", "Pechuga de pollo", "Atún en lata", "Frijoles", "Yogur griego", "Guárdalo para tu próxima compra", "Escríbeme PLAN"]],
+    ["Compra fit de $50 para toda la semana", ["Portada: ticket del súper", "Proteínas", "Carbohidratos", "Fruta y verdura", "Lo que no compro", "Cómo lo reparto en 7 días", "Escríbeme PLAN"]],
+    ["3 errores que me tuvieron estancado un año", ["Portada: \"Mis 3 errores\"", "1. Demasiado volumen y sin orden", "2. Sin pierna y sin descanso", "3. Subir peso sin técnica", "Qué hacer en su lugar", "Resumen", "Escríbeme PLAN"]],
+    ["Los carbohidratos no engordan: esto sí", ["Portada: plato de arroz", "El mito", "Lo que de verdad cuenta: el total", "Las calorías líquidas", "Los extras: salsas, refrescos, tortillas de más", "Cómo comer arroz y bajar grasa", "Escríbeme PLAN"]],
+    ["Tu lunch box para la obra (o el trabajo)", ["Portada: hielera abierta", "Proteína", "Carbo", "Fruta", "Snack de break", "Agua y electrolitos", "Escríbeme PLAN"]],
+    ["Cómo comer en fast food sin arruinar tu progreso", ["Portada: bolsa de comida rápida", "Chipotle", "Subway", "McDonald's", "Taquería", "La regla: proteína primero, bebida sin azúcar", "Escríbeme PLAN"]],
+    ["Bulk sucio vs bulk controlado", ["Portada: antes/después de tu bulk", "Bulk sucio: lo que hice yo", "Resultado: grasa", "Bulk controlado: +200–300 kcal", "Cuánto subir al mes", "Cómo saber si vas bien", "Escríbeme PLAN"]],
+    ["4 mitos que tienes que olvidar ya", ["Portada", "Cuanto más sudas, más quemas", "Se puede quemar grasa solo de la panza", "La grasa se convierte en músculo", "La creatina sola te pone grande", "Lo que sí funciona", "Escríbeme PLAN"]],
+    ["Peso muerto: 3 errores y cómo arreglarlos", ["Portada: tus 465 lb", "Barra lejos de las piernas", "Tirar con la espalda", "No controlar la bajada", "Checklist antes de cada serie", "Guárdalo", "Escríbeme PLAN"]],
+    ["Cuántas series necesitas para crecer", ["Portada", "Lo que yo hacía: demasiadas", "Rango por músculo a la semana", "Cómo repartirlo en 4–5 días", "Progresión", "Cuándo descansar", "Escríbeme PLAN"]],
+    ["La comida latina en tu plan: cómo servirte", ["Portada: plato casero", "Mitad proteína y verdura", "Un puño de arroz", "Dos tortillas", "Frijoles: carbo y proteína", "Antojos 1–2 veces por semana", "Escríbeme PLAN"]],
+    ["Método OBRA: cómo empezaría hoy desde cero", ["Portada: foto de antes", "O · Orden: un plan que cabe en tu jornada", "B · Base: calorías, proteína, sueño y pasos", "R · Repeticiones que progresan cada semana", "A · Ajustar sin prohibir: carne asada y fiestas incluidas", "12 semanas, de los cimientos a la entrega", "Escríbeme PLAN"]]
+  ];
+  function carHTML(list, t) {
+    return list.map(function (c) { return '<div class="ang"><span class="ctag ' + t + '">' + (t === "C" ? "Conexión" : "Valor") + '</span><b>' + esc(c[0]) + '</b><ol class="slides">' + c[1].map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("") + '</ol></div>'; }).join("");
+  }
+  $("carC").innerHTML = carHTML(CC, "C");
+  $("carV").innerHTML = carHTML(CV, "V");
+
+  /* ---------- Claude Code ---------- */
+  $("v-cla").addEventListener("click", function (e) { var b = e.target.closest("[data-cc]"); if (b) copyText(b.getAttribute("data-cc"), b); });
+
+  /* ---------- Guiones ---------- */
+  var S = [
+    { t: "De 144 a 177 libras. Y no era músculo.", f: "Antes/después · 12–15 s", b: [
+      ["0–2 s", "Foto de antes (flaco). <span class=osd>Tenía 144 libras y quería crecer rápido</span>"],
+      ["2–5 s", "Clips de comida rápida, mass gainer. <span class=osd>Comía 4.000 calorías al día. Lo que fuera.</span>"],
+      ["5–8 s", "Foto a 177. <span class=osd>6 meses después: 177 libras… y más grasa que músculo</span>"],
+      ["8–12 s", "Físico actual, espalda. <span class=osd>Hoy: 145 libras, más músculo y sin atajos</span>"],
+      ["Cierre", "<span class=osd>Si quieres hacerlo bien desde el principio, escríbeme PLAN</span>"] ] },
+    { t: "Trabajo 10 horas en construcción y entreno 5 días", f: "Clips + texto · 15–20 s", b: [
+      ["0–2 s", "Casco/botas, amanecer. <span class=osd>Trabajo 10 horas en construcción y aun así entreno 5 días. Así:</span>"],
+      ["2–6 s", "Lunch box abierto. <span class=osd>1. La comida va hecha desde la noche anterior</span>"],
+      ["6–10 s", "Break, comiendo. <span class=osd>2. Como en el break aunque no tenga hambre</span>"],
+      ["10–14 s", "Bolsa del gym en el carro. <span class=osd>3. La mochila del gym va en el carro. Directo, sin pasar por casa</span>"],
+      ["14–18 s", "Serie pesada. <span class=osd>4. Si llego fundido, hago la versión corta. Pero voy.</span>"],
+      ["Cierre", "<span class=osd>¿Trabajas pesado y quieres verte así? Escríbeme PLAN</span>"] ] },
+    { t: "Compra fit con $50 para toda la semana", f: "Súper · 20–25 s", b: [
+      ["0–2 s", "Ticket del súper en la mano. <span class=osd>$50 de súper para toda la semana en forma</span>"],
+      ["2–16 s", "Cada producto en cámara con precio: huevos, pollo, arroz, frijoles, avena, plátanos, yogur griego, verduras congeladas. Texto con precio en cada uno."],
+      ["16–20 s", "Todo en la mesa. <span class=osd>Proteína para 7 días y nada raro</span>"],
+      ["Cierre", "<span class=osd>¿Quieres saber cuánto comer de cada cosa? Escríbeme PLAN</span>"] ] },
+    { t: "La proteína en polvo no te hace ganar músculo", f: "Mito · 10–15 s", b: [
+      ["0–2 s", "Tú con el bote en la mano. <span class=osd>La proteína en polvo NO te hace ganar músculo</span>"],
+      ["2–7 s", "Voz: \"Es comida. Igual que un pollo. Si ya comes suficiente proteína, no hace nada extra.\""],
+      ["7–11 s", "Voz: \"Lo que te hace crecer: entrenar con progresión, comer suficiente y dormir. El bote solo te ayuda a llegar.\""],
+      ["Cierre", "<span class=osd>Yo me compré el bote pensando que era magia. Escríbeme PLAN y te ahorro el año que perdí</span>"] ] },
+    { t: "Estás haciendo mal el peso muerto si…", f: "Rol entrenador · 15 s", b: [
+      ["0–2 s", "Clip de tus 465 lb. <span class=osd>465 libras. Estos 3 errores me frenaron un año</span>"],
+      ["2–6 s", "Demostración mala/buena. <span class=osd>1. La barra lejos de las piernas</span>"],
+      ["6–10 s", "<span class=osd>2. Tirar con la espalda en vez de empujar el piso</span>"],
+      ["10–13 s", "<span class=osd>3. Subir peso sin controlar la bajada</span>"],
+      ["Cierre", "<span class=osd>Mándame tu video y te lo corrijo. Escríbeme PLAN</span>"] ] },
+    { t: "Lo que llevo en mi lunch box para la obra", f: "POV · 12–15 s", b: [
+      ["0–2 s", "Abres la hielera. <span class=osd>POV: trabajas en construcción y estás en definición</span>"],
+      ["2–10 s", "Cada táper con texto: arroz + pollo + salsa, tortillas, fruta, yogur, agua. Calorías aproximadas encima."],
+      ["10–13 s", "<span class=osd>Comida de verdad. Nada de pasar hambre en la obra</span>"],
+      ["Cierre", "<span class=osd>Si quieres el tuyo armado a tu medida: escríbeme PLAN</span>"] ] },
+    { t: "La comida de mi mamá no engorda. Las porciones sí.", f: "Yapping · 20–30 s", b: [
+      ["0–2 s", "A cámara, en la cocina. <span class=osd>La comida latina no es el problema</span>"],
+      ["2–12 s", "\"Arroz, frijoles, tortillas, carne… todo eso cabe en tu plan. Lo que te saca de forma son las tres tortillas de más, el refresco y repetir plato.\""],
+      ["12–22 s", "Plato montado bien. \"Así me sirvo yo: mitad proteína y verdura, un puño de arroz, dos tortillas. Y como con mi familia.\""],
+      ["Cierre", "<span class=osd>No tienes que dejar de comer como en casa. Escríbeme PLAN</span>"] ] },
+    { t: "Lunes a viernes perfecto y el finde te lo comes todo", f: "Yapping · 20–25 s", b: [
+      ["0–2 s", "En el carro estacionado. <span class=osd>Si haces todo perfecto de lunes a viernes y el finde lo arruinas…</span>"],
+      ["2–12 s", "\"Me pasó durante meses. Comía tan poco entre semana que el sábado me lo comía todo. No era falta de voluntad: era un plan imposible.\""],
+      ["12–20 s", "\"Ahora meto lo que me gusta una o dos veces por semana, ajusto porciones y no he vuelto a caer.\""],
+      ["Cierre", "<span class=osd>Un plan que puedas aguantar le gana a uno perfecto. Escríbeme PLAN</span>"] ] },
+    { t: "Cosas que todo latino que entrena ha escuchado", f: "Humor · 10–15 s", b: [
+      ["0–2 s", "<span class=osd>Cosas que todo latino que va al gym ha escuchado en casa:</span>"],
+      ["2–4 s", "Tú imitando a la tía: \"Mijo, estás muy flaco, come más\""],
+      ["4–6 s", "\"No comas tanto huevo que te da algo\""],
+      ["6–8 s", "\"¿Otra vez pollo?\""],
+      ["8–11 s", "\"Te vas a poner muy grande\" (tú, mirándote al espejo: ojalá)"],
+      ["Cierre", "<span class=osd>¿Cuál te han dicho a ti? Y si quieres tu plan: escríbeme PLAN</span>"] ] },
+    { t: "Mi cambio físico en 8 meses, sin filtros", f: "Antes/después · 10–12 s", b: [
+      ["0–2 s", "Antes. <span class=osd>8 meses. Sin atajos. Trabajando en construcción.</span>"],
+      ["2–6 s", "Transición al después (frente). <span class=osd>Lejos del físico que quiero…</span>"],
+      ["6–9 s", "Espalda doble bíceps. <span class=osd>…pero muy lejos del que tenía</span>"],
+      ["Cierre", "<span class=osd>Me quedan X plazas fundadoras. Escríbeme PLAN</span>"] ] }
+  ];
+  $("scripts").innerHTML = S.map(function (s, i) {
+    return '<details class="sc"' + (i === 0 ? ' open' : '') + '><summary><span class="num">' + (i + 1) + '</span><div><b>' + esc(s.t) + '</b><small>' + esc(s.f) + '</small></div></summary><div class="scb">' +
+      s.b.map(function (b) { return '<div class="beat"><span>' + esc(b[0]) + '</span><div>' + b[1] + '</div></div>'; }).join("") + '</div></details>';
+  }).join("");
+})();
+</script>

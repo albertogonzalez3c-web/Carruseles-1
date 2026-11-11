@@ -1,0 +1,478 @@
+<title>Giorgia De Santis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Giorgia De Santis, entrenadora online 1:1: para mujeres de 25 a 45 con trabajo, turnos o familia que empiezan y lo dejan. Estructura, técnica y comida sin planes cerrados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* LAYOUT */
+:root {
+  --paper: #f7f2ec;
+  --white: #ffffff;
+  --ink: #2a1f1a;
+  --soft: #6b5e55;
+  --line: #e6d9cc;
+  --chip: #efe5da;
+  --acc: #8b5e3c;
+  --acc-soft: #d6bb9f;
+  --acc-text: #7a4f30;
+  --on-dark: #ddd0c4;
+  --f-head: "Playfair Display", Georgia, "Times New Roman", serif;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 600 clamp(32px, 5vw, 54px)/1.06 var(--f-head); letter-spacing: -.02em; }
+h3 { font: 700 20px/1.3 var(--f-body); letter-spacing: -.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--acc); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--acc-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+em.c { font-style: italic; color: var(--acc-text); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--acc); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 999px; transition: transform .15s ease, background .15s ease; text-align: center; }
+.btn:hover { transform: translateY(-1px); background: #7a4f30; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-ghost { background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn-ghost:hover { background: var(--chip); }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Cabecera y hero */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.mark { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--white); display: grid; place-items: center; font: 800 15px/1 var(--f-body); letter-spacing: -.02em; flex: none; }
+.mark b { color: var(--acc-soft); }
+.brand span { font: 800 16px/1.1 var(--f-body); }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--acc-text); }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 56px) clamp(56px, 8vw, 96px); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.hero-copy { display: grid; gap: 22px; }
+.hero h1 { font: 600 clamp(42px, 6.6vw, 84px)/1.0 var(--f-head); letter-spacing: -.03em; }
+.hero h1 em { font-style: italic; color: var(--acc-text); }
+.hero .lede { font-size: clamp(18px, 2vw, 21px); }
+.hero-proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; text-decoration: none; }
+.hero-proof figure { margin: 0; display: grid; gap: 8px; }
+.hero-proof img { display: block; width: 100%; height: auto; aspect-ratio: 699 / 793; object-fit: cover; border-radius: 14px; background: var(--chip); }
+.hero-proof figcaption { font: 500 11.5px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.fact { padding: 14px 14px 0 0; display: grid; gap: 2px; }
+.fact b { font: 600 22px/1.15 var(--f-head); }
+.fact span { color: var(--soft); font-size: 14px; line-height: 1.4; }
+
+/* ¿Te suena? */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; font-size: 16.5px; line-height: 1.45; }
+.sign::before { content: ""; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--acc-soft); margin-top: 3px; }
+.turn { margin-top: 28px; font: 600 clamp(28px, 4vw, 44px)/1.1 var(--f-head); letter-spacing: -.02em; }
+.turn em { font-style: italic; color: var(--acc-text); }
+
+/* Historia */
+.story-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; margin-bottom: 30px; }
+.story-head img { width: clamp(84px, 11vw, 120px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--white), 0 0 0 7px var(--acc-soft); }
+.big-quote { font: 600 clamp(28px, 4.2vw, 46px)/1.12 var(--f-head); letter-spacing: -.02em; }
+.big-quote em { font-style: italic; color: var(--acc-text); }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.tl { display: grid; gap: 10px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 14px; border: 1.5px dashed var(--acc-soft); background: var(--chip); display: grid; place-items: center; text-align: center; padding: 12px; font: 500 11.5px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--acc-text); }
+.tl b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--acc-text); }
+.tl span { font-size: 15px; color: var(--soft); line-height: 1.45; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; }
+.err .was { font: 500 11.5px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.err b { font-size: 17px; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.55; }
+.err .fix { color: var(--ink); }
+.err .fix::before { content: "Tu atajo: "; font-weight: 800; color: var(--acc-text); }
+
+/* Método */
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.phase { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+.phase .n { font: 600 46px/1 var(--f-head); color: var(--acc-soft); }
+.phase .when { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--acc-text); }
+.phase p { color: var(--soft); font-size: 16px; }
+.incl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+.inc { background: var(--chip); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; }
+.inc p { color: var(--soft); font-size: 15.5px; }
+
+/* Casos */
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 12px 12px 18px; display: grid; gap: 12px; align-content: start; }
+.case img { display: block; width: 100%; height: auto; aspect-ratio: 699 / 793; object-fit: cover; border-radius: 12px; }
+.case .tag { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--acc-text); padding-inline: 6px; }
+.case p { font-size: 15.5px; line-height: 1.55; color: var(--soft); padding-inline: 6px; }
+.case0 { background: var(--ink); color: var(--white); border-radius: 16px; padding: clamp(22px, 3.4vw, 36px); display: grid; gap: 12px; margin-top: 14px; }
+.case0 .label { color: var(--acc-soft); }
+.case0 h3 { font: 600 clamp(24px, 3.2vw, 34px)/1.12 var(--f-head); }
+.case0 p { color: var(--on-dark); max-width: 66ch; font-size: 17px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; border-radius: 50%; background: var(--acc); color: var(--white); display: grid; place-items: center; text-align: center; font: 600 clamp(20px, 2.4vw, 26px)/1.05 var(--f-head); padding: 12px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee h2 { color: var(--white); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--acc-soft); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #b3a69b; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: var(--chip); color: var(--acc-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos y formulario */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 2px solid var(--acc); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--acc-text); }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 640px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 17.5px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 15px; font: 400 28px/1 var(--f-body); color: var(--acc-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--acc-soft); }
+.final h2 { font-size: clamp(38px, 6.2vw, 76px); max-width: 16ch; }
+.final h2 em { font-style: italic; color: var(--acc-soft); }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(247, 242, 236, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .hero-proof { gap: 8px; }
+  .hero-proof figcaption { font-size: 10px; }
+  .signs, .phases, .incl, .fit, .steps, .errors, .cases, .quotes { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: 1fr 1fr 1fr; }
+  .fact b { font-size: 18px; }
+  .fact span { font-size: 12.5px; }
+  .story-head { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--acc, #8b5e3c); --nm-at: var(--acc-text, #7a4f30); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.hero-proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.hero-proof img { aspect-ratio: 800 / 895; }
+.case { margin: 0; }
+.case img { aspect-ratio: 4 / 5; object-position: top; }
+.mark { font-size: 12px; }
+</style>
+
+<!--
+  NOTA PARA ALBERTO / GIORGIA (no se ve en la página)
+  - casos/mayo-agosto.jpg y casos/mayo-agosto-lado.jpg: recortados de su carrusel "Su evolución física · Mayo → Agosto" (ya difuminado).
+    Confirmar de qué clienta es y que hay permiso firmado. Sustituir por los originales en mejor resolución.
+  - casos/irene.jpg y casos/valerie.jpg: portadas de sus 2 fijados (baja resolución). Sustituir por originales con permiso.
+  - Datos de Valerie ("entrenaba 5 días", "3 meses") salen del post fijado, no de sus documentos: confirmar.
+  - Su historia: menciona el TCA sin cifras de peso ni conductas. Ella dice que no le da apuro contarlo; si prefiere no nombrarlo, quitar la frase marcada con "TCA" en #historia y la pregunta del FAQ.
+  - Fotos de la historia: sustituir los recuadros "pendiente" por sus fotos (ella dice que puede publicar fotos de pequeña).
+  - WhatsApp: cuando Giorgia pase su número, añadir botón secundario.
+-->
+
+<div class="wrap top">
+  <a class="brand" href="#" aria-label="Giorgia De Santis">
+    <span class="mark" aria-hidden="true">G<b>DS</b></span>
+    <span>Giorgia De Santis<small>Entrenadora online 1:1</small></span>
+  </a>
+  <a class="btn js-form" href="https://form.jotform.com/253543283056356" target="_blank" rel="noopener">Quiero empezar</a>
+</div>
+
+<header class="wrap hero">
+  <div class="hero-copy">
+    <div class="label">Para mujeres de 25 a 45 con trabajo, turnos o familia</div>
+    <h1>No necesitas hacer más. <em>Necesitas dirección.</em></h1>
+    <p class="lede">Ya entrenas, o lo has intentado. Guardas rutinas y recetas, empiezas el lunes con ganas… y cuando la semana se tuerce, lo dejas. No te falta fuerza de voluntad: te falta <b>un plan que se adapte a tu vida</b>, y no al revés. Entreno con estructura y técnica, comida sin planes cerrados y revisión 1:1 cada semana.</p>
+    <!-- VSL PENDIENTE: cuando Giorgia grabe su vídeo de presentación (60–120 s), insertarlo aquí. -->
+    <div class="ctas">
+      <a class="btn js-form" href="https://form.jotform.com/253543283056356" target="_blank" rel="noopener">Quiero empezar</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/giorgiadesantiss_/" target="_blank" rel="noopener">Escríbeme DIRECCIÓN en Instagram</a>
+    </div>
+    <p class="cta-note">El formulario son 2 minutos y lo leo yo personalmente.</p>
+    <div class="facts">
+      <div class="fact"><b>1:1</b><span>seguimiento real y humano</span></div>
+      <div class="fact"><b>100/50</b><span>un plan para cada semana</span></div>
+      <div class="fact"><b>6 meses</b><span>para no depender de nadie</span></div>
+    </div>
+  </div>
+  <a class="hero-proof" href="#casos" aria-label="Ver la evolución de una clienta">
+    <figure><img src="casos/mayo-agosto.jpg" alt="Evolución de una clienta de mayo a agosto, de frente" width="800" height="883"><figcaption>De frente · mayo → agosto</figcaption></figure>
+    <figure><img src="casos/mayo-agosto-lado.jpg" alt="Evolución de una clienta de mayo a agosto, de perfil" width="800" height="906"><figcaption>De perfil · mayo → agosto</figcaption></figure>
+  </a>
+</header>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:22px">
+      <div class="label">¿Te suena?</div>
+      <h2>Empiezas con ganas. Y la semana te gana.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">Vas al gimnasio y no sabes si de verdad estás entrenando bien o progresando.</div>
+      <div class="sign">Empiezas la semana motivada y el trabajo, el cansancio o la casa hacen que vuelvas a dejarte para lo último.</div>
+      <div class="sign">Comes bien toda la semana y sientes que una cena fuera o un finde lo rompe todo.</div>
+      <div class="sign">Guardas rutinas, recetas y consejos, pero tienes tanta información que no sabes qué aplicar.</div>
+      <div class="sign">Eres constante un tiempo y lo vuelves a dejar cuando se va la motivación.</div>
+      <div class="sign">Te repites que si no lo haces perfecto, no sirve.</div>
+    </div>
+    <p class="turn">No te ha faltado intentarlo. <em>Te ha faltado un plan pensado para tu vida real.</em></p>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="story-head">
+      <img src="casos/giorgia-avatar.jpg" alt="Giorgia De Santis" width="300" height="300" loading="lazy">
+      <div class="stack">
+        <div class="label">Mi historia</div>
+        <p class="big-quote">No empecé a entrenar porque amara mi cuerpo, <em>sino porque durante muchos años intenté cambiarlo.</em></p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl"><div class="ph">Foto de pequeña<br>· pendiente ·</div><b>13 años</b><span>La equipación de vóley que a mis compañeras les quedaba bien a mí me quedaba estrecha y corta. Ahí empezó todo.</span></div>
+      <div class="tl"><div class="ph">Foto adolescencia<br>· pendiente ·</div><b>Los años de "nunca es suficiente"</b><span>Dietas, control y una relación muy dura con la comida y con mi cuerpo.</span></div>
+      <div class="tl"><div class="ph">Foto 2020<br>· pendiente ·</div><b>2020 · El cambio</b><span>Empecé a entrenar con estructura. Por primera vez, las voces de mi cabeza empezaron a callarse.</span></div>
+      <div class="tl"><div class="ph">Foto hoy<br>· pendiente ·</div><b>Hoy · 28 años</b><span>Más fuerte que nunca, haciendo dominadas que antes no podía. Y ayudando a otras mujeres a cuidarse sin obsesión.</span></div>
+    </div>
+    <div class="read stack" style="margin-bottom:22px">
+      <!-- TCA: frase siguiente, quitar si Giorgia prefiere no nombrarlo -->
+      <p>Durante años el gimnasio fue para mí una herramienta para adelgazar y compensar. Pasé por un trastorno de la conducta alimentaria y sé lo que es sentir que <strong>nada es suficiente</strong>. Lo que me cambió no fue hacer más: fue <strong>dejar de improvisar</strong>, entender lo que hacía y ser constante incluso sin motivación.</p>
+      <p>Y aun así he tenido semanas malas, como todo el mundo. Entrenamientos al 100 %, al 50 % y días en los que simplemente no podía. <strong>Y no he vuelto al punto de partida.</strong> Eso es lo que te enseño. Estos fueron mis tres grandes errores, y cómo te los ahorras:</p>
+    </div>
+    <div class="errors">
+      <div class="err"><span class="was">Error 1</span><b>"Cuanto menos coma, mejor."</b><span>Comía menos de lo que tocaba y acababa con atracones.</span><span class="fix">comida flexible y suficiente, sin planes cerrados.</span></div>
+      <div class="err"><span class="was">Error 2</span><b>"Si no voy 5 días, no sirve."</b><span>Con motivación iba 5–7 días; sin ella, 2 o ninguno.</span><span class="fix">tu Plan 100/50: una versión para cada tipo de semana.</span></div>
+      <div class="err"><span class="was">Error 3</span><b>"Con rutinas de YouTube me apaño."</b><span>Máquinas al azar, mucho cuádriceps y nada de glúteo.</span><span class="fix">estructura, técnica corregida y cargas que suben.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:26px">
+      <div class="label">Método Dirección</div>
+      <h2>El plan se adapta a ti. No tú al plan.</h2>
+      <p class="lede">Primero ordenamos tu semana, luego progresas aunque la semana se tuerza y al final sabes cuidarte sin tenerme detrás.</p>
+    </div>
+    <section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho</span><p class="nm-big">Mujeres de 25 a 45 con trabajo, turnos o familia que ya entrenan o lo han intentado, pero empiezan y lo dejan cuando la semana se tuerce. Estructura, técnica y comer sin planes cerrados, para que cuidarse deje de depender de la motivación y de hacerlo perfecto.</p></div><div class="nm-meth"><span class="nm-lab">Método Dirección en 30 segundos</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Entreno con estructura y técnica</b><span>Sabes qué haces, por qué y que progresas: cargas apuntadas y técnica corregida por vídeo.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comida flexible, sin planes cerrados</b><span>Comidas base que encajan en tu semana. Una cena fuera o un finde no rompen nada.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Revisión 1:1 que mira tu vida</b><span>Cada semana: entreno, comida y lo que pasa fuera del gimnasio (turnos, cansancio, cabeza).</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Ordenar</b><p><em>Qué pasa:</em> Dejas de improvisar: el plan encaja en tus horarios reales y aprendes la técnica base.</p><p><em>Qué haces tú:</em> Los entrenos que caben en tu semana, 3 comidas base y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Progresar</b><p><em>Qué pasa:</em> Suben las cargas y tu cuerpo cambia de forma. Las semanas malas ya no te sacan del plan.</p><p><em>Qué haces tú:</em> Apuntas cargas y, cuando la semana se tuerce, tiras de tu versión al 50 % en vez de dejarlo.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Sin depender de mí</b><p><em>Qué pasa:</em> Entiendes el porqué y sabes ajustar sola cenas, viajes y semanas caóticas.</p><p><em>Qué haces tú:</em> Ajustas tú con mi supervisión y dejamos listo tu plan para seguir.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Entrenar lo planificado, aunque sea al 50 %</span><span>Proteína en cada comida</span><span>Revisión semanal, también la de la semana mala</span></div><p class="nm-line"><b>Tu sello · Plan 100/50:</b> cada clienta tiene su semana al 100 % y su versión al 50 % para las semanas caóticas. Al 50 % también cuenta.</p></div><p class="nm-proof">Prueba: Irene trabaja en un hospital con turnos que cambian cada semana. En unos seis meses dejó de depender de la motivación.</p></section>
+    <div class="phases">
+      <article class="phase"><span class="n">01</span><span class="when">Meses 1–2</span><h3>Ordenar</h3><p>Dejas de improvisar: tu plan encaja en tus horarios reales (turnos, hostelería, hijos) y aprendes la técnica base. Tú: los entrenos que caben en tu semana, 3 comidas base y tu revisión.</p></article>
+      <article class="phase"><span class="n">02</span><span class="when">Meses 3–4</span><h3>Progresar</h3><p>Suben las cargas y tu cuerpo cambia de forma. Cuando la semana se tuerce, tiras de tu versión al 50 % en vez de dejarlo todo.</p></article>
+      <article class="phase"><span class="n">03</span><span class="when">Meses 5–6</span><h3>Sin depender de mí</h3><p>Entiendes el porqué de cada cosa y sabes ajustar sola cenas, viajes y semanas caóticas. El objetivo es que un día no me necesites.</p></article>
+    </div>
+    <div class="incl">
+      <div class="inc"><h3>Entreno a tu medida</h3><p>En el gimnasio, con la estructura de tu semana real. Cargas apuntadas para que sepas que avanzas.</p></div>
+      <div class="inc"><h3>Corrección de técnica</h3><p>Me mandas tus vídeos y te corrijo: entrenas seguro y cada repetición cuenta.</p></div>
+      <div class="inc"><h3>Comida sin planes cerrados</h3><p>Comidas base, variedad y recetas fáciles. Aprendes a comer, no a seguir un papel.</p></div>
+      <div class="inc"><h3>Revisión 1:1 cada semana</h3><p>Entreno, comida y lo que pasa fuera del gimnasio. Y mis respuestas a tus dudas del día a día.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:26px">
+      <div class="label">Ellas</div>
+      <h2>No les faltaban ganas. Les faltaba dirección.</h2>
+    </div>
+    <!-- CASOS: imágenes de baja resolución recortadas de capturas. Sustituir por originales con permiso firmado. No inventar cifras. -->
+    <div class="cases">
+      <figure class="case"><img src="casos/irene.jpg" alt="Portada del caso de Irene" width="437" height="584" loading="lazy"><span class="tag">Irene · turnos de hospital · unos 6 meses</span><p>Entrenaba de forma irregular y su semana nunca era igual. Su mayor cambio fue mental: pasó de depender de la motivación a tener los hábitos integrados.</p></figure>
+      <figure class="case"><img src="casos/valerie.jpg" alt="Portada del caso de Valerie" width="438" height="584" loading="lazy"><span class="tag">Valerie · ya entrenaba · 3 meses</span><p>Entrenaba 5 días a la semana, pero le faltaba estructura. Una de mis clientas más constantes, y su cambio físico ha sido muy evidente.</p></figure>
+      <figure class="case"><img src="casos/mayo-agosto.jpg" alt="Evolución de una clienta de mayo a agosto" width="800" height="883" loading="lazy"><span class="tag">Clienta · mayo → agosto</span><p>"A veces, el cambio no está en hacer más, sino en darle una dirección a todo ese esfuerzo."</p></figure>
+    </div>
+    <div class="case0">
+      <div class="label">Lo que me dicen</div>
+      <h3>"Le estoy agradecida a mi cuerpo porque tira más y es más fuerte de lo que esperaba."</h3>
+      <p>"Me noto menos pesada tras las comidas, más ligera y con más energía." · "Estás siempre atenta a mí y me ayudas cuando tengo dudas." · "Me adaptas los entrenos cuando lo necesito."</p>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="wrap">
+    <div class="seal">Riesgo cero<small>BAJO CONTRATO</small></div>
+    <div>
+      <div class="label" style="color:var(--acc-soft)">Garantía</div>
+      <h2>Si cumples y en la fase 1 no ves progreso, sigo contigo gratis.</h2>
+      <ul>
+        <li>Haces lo planificado (también la versión al 50 %) y me mandas tus revisiones.</li>
+        <li>Si aun así no progresas en la fase 1, seguimos sin coste hasta que lo hagas.</li>
+        <li>Todo queda por escrito antes de empezar.</li>
+      </ul>
+      <p class="fine">Las condiciones exactas (cumplimiento y revisiones) se detallan en el contrato.</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes entre 25 y 45 años y una vida con responsabilidades: trabajo, turnos, jornadas largas o familia.</li>
+          <li>Ya entrenas o lo has intentado, pero empiezas y lo dejas.</li>
+          <li>Quieres entender el porqué de lo que haces, no solo seguir un papel.</li>
+          <li>Quieres comer bien sin vivir a dieta ni renunciar a tus cenas fuera.</li>
+          <li>Estás dispuesta a contarme cómo vas cada semana, también cuando va mal.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas una dieta cerrada para seguir un mes y ya.</li>
+          <li>Quieres una plantilla genérica para hacerlo por tu cuenta.</li>
+          <li>No vas a mandar tus revisiones ni a comunicarte conmigo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Rellenas el formulario</h3><p>2 minutos. Me cuentas tu semana real, tu objetivo y lo que has probado.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te llamo para ver tu caso y explicarte cómo lo haríamos.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas tu fase 1</h3><p>Tu Plan 100/50 hecho para ti y tu primera revisión fijada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso en 2 minutos.</h2>
+      <p class="lede">Lo leo yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn js-form" id="formBtn" href="https://form.jotform.com/253543283056356" target="_blank" rel="noopener">Rellenar el formulario</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Trabajo a turnos y mi semana nunca es igual. ¿Me sirve?</summary><p>Es justo para ti. El plan se construye sobre tus horarios reales y tienes una versión al 50 % para las semanas imposibles. Un plan rígido no sirve si tu semana nunca es igual.</p></details>
+      <details><summary>Ya entreno. ¿Qué me vas a aportar?</summary><p>Dirección: estructura, técnica corregida y progresión que se apunta. Muchas de mis clientas ya entrenaban 4 o 5 días y no veían el cambio que buscaban.</p></details>
+      <details><summary>¿Me vas a poner una dieta cerrada?</summary><p>No. Trabajamos con comidas base, variedad y recetas fáciles para que aprendas a comer. Una cena fuera o un fin de semana no rompen nada.</p></details>
+      <details><summary>He tenido una mala relación con la comida. ¿Puedo trabajar contigo?</summary><p>Lo entiendo de primera mano, y por eso trabajo desde el respeto y sin obsesión. Si ahora mismo estás pasando por un trastorno de la conducta alimentaria, lo primero es un equipo sanitario especializado; si te acompaña, puedo ayudarte con el entreno en coordinación con ellos.</p></details>
+      <details><summary>¿Funciona online?</summary><p>Sí. Tienes tu plan, tu revisión cada semana, corrección de técnica por vídeo y respuesta a tus dudas. Seguimiento real y humano, 1:1.</p></details>
+      <details><summary>¿Y si no progreso?</summary><p>Si cumples lo planificado y envías tus revisiones y en la fase 1 no progresas, seguimos gratis hasta que lo hagas. Queda por escrito en el contrato.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan que necesites. Rellena el formulario y te lo explico en la llamada.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>No necesitas hacerlo perfecto. <em>Necesitas empezar con dirección.</em></h2>
+    <div class="ctas">
+      <a class="btn js-form" href="https://form.jotform.com/253543283056356" target="_blank" rel="noopener">Quiero empezar</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/giorgiadesantiss_/" target="_blank" rel="noopener">Escríbeme DIRECCIÓN en Instagram</a>
+    </div>
+    <p class="cta-note">Contesto yo personalmente a cada mensaje.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Giorgia De Santis · Entrenadora online</span><span><a href="https://www.instagram.com/giorgiadesantiss_/" target="_blank" rel="noopener">@giorgiadesantiss_</a></span></div>
+    <p>Este acompañamiento no sustituye el consejo, diagnóstico ni tratamiento médico o psicológico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn js-form" href="https://form.jotform.com/253543283056356" target="_blank" rel="noopener">Quiero empezar</a></div>
+
+<script>
+(function () {
+  var FORM = "https://form.jotform.com/253543283056356";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Alojada en su dominio, el formulario se incrusta; dentro del visor de Claude queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de Giorgia De Santis"; f.loading = "lazy";
+    f.allow = "camera; microphone; autoplay; encrypted-media; fullscreen";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

@@ -1,0 +1,495 @@
+<title>Zent CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: CRM de Zent (Plan KAME). Leads de francotirador en frío, antiguos clientes, grupos y Estados de WhatsApp, test y palabra KAME. 4 vistas: Hoy, Embudo, Clientes y Mensajes. Colección leads + escalera de precios en config/precios {nivel, ventasDesdeSubida}. */
+:root {
+  --paper: #f3f2fa; --white: #fff; --sand: #e6e4f3; --line: #d9d8ea; --ink: #10112e; --soft: #555a78;
+  --red: #5b2bb5; --red-text: #4a2296; --chip: #eae9f6; --green: #2f6b4a; --amber: #9a5200; --alert: #b3261e;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-head: "Russo One", "Arial Black", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 400 21px/1.15 var(--f-head); text-transform: uppercase; }
+h3 { font: 800 16px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+button { font-family: inherit; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--red); color: #fff; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+.btn.ghost { background: var(--white); color: var(--red-text); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.dark { background: var(--ink); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn[disabled] { opacity: .45; cursor: default; }
+.btn:focus-visible, .tab:focus-visible, .lcard:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+input, select, textarea { font: 600 14.5px/1.3 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 60px; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--red); outline-offset: 1px; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); min-width: 0; }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: rgba(243,242,250,.96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+header.top .wrap { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding-block: 12px; }
+.brand { display: grid; gap: 2px; }
+.brand b { font: 400 21px/1 var(--f-head); text-transform: uppercase; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { all: unset; cursor: pointer; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--white); }
+.tab[aria-selected="true"] { background: var(--ink); color: #fff; }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--red-text); }
+main { padding-block: 20px 60px; display: grid; gap: 16px; }
+main > * { min-width: 0; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); }
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.kpi { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; min-width: 0; }
+.kpi b { font: 400 26px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12.5px; color: var(--soft); font-weight: 600; }
+.add form { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.add .two { grid-column: span 2; }
+.note { font-size: 13px; color: var(--soft); }
+.tasks { display: grid; gap: 8px; }
+.task { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--white); border-radius: 14px; padding: 12px 14px; }
+.task .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--amber); }
+.task.urgent .dot { background: var(--alert); }
+.task b { display: block; font-size: 15px; }
+.task span { color: var(--soft); font-size: 13.5px; }
+.empty { color: var(--soft); text-align: center; padding: 22px; background: var(--white); border-radius: 14px; }
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 1fr); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: var(--sand); border-radius: 16px; padding: 10px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.col h3 { display: flex; justify-content: space-between; font-size: 14px; padding: 2px 4px; }
+.col h3 small { font: 500 12px/1.4 var(--f-mono); color: var(--soft); }
+.lcard { all: unset; cursor: pointer; background: var(--white); border-radius: 12px; padding: 10px 12px; display: grid; gap: 4px; }
+.lcard b { font-size: 14.5px; }
+.lcard small { color: var(--soft); font-size: 12.5px; }
+.chips { display: flex; gap: 5px; flex-wrap: wrap; }
+.chip { font-size: 11.5px; font-weight: 700; background: var(--chip); border-radius: 999px; padding: 2px 8px; }
+.chip.hot { background: #ece3ff; color: var(--red-text); }
+.chip.warm { background: #f6ead2; color: var(--amber); }
+.chip.late { background: var(--alert); color: #fff; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--sand); vertical-align: top; }
+th { font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.tscroll { overflow-x: auto; }
+.ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.step { background: var(--white); border-radius: 12px; padding: 10px; display: grid; gap: 2px; text-align: center; border: 2px solid transparent; }
+.step.on { border-color: var(--red); }
+.step small { font: 500 10.5px/1.2 var(--f-mono); color: var(--soft); text-transform: uppercase; }
+.step b { font: 400 20px/1.1 var(--f-head); }
+.msgs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.msg { background: var(--white); border-radius: 14px; padding: 14px; display: grid; gap: 8px; align-content: start; }
+.msg pre { white-space: pre-wrap; font: 500 14px/1.5 var(--f-body); margin: 0; background: var(--chip); border-radius: 10px; padding: 10px 12px; }
+dialog { border: 0; border-radius: 18px; padding: 0; width: min(720px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); background: var(--paper); color: var(--ink); }
+dialog::backdrop { background: rgba(16,17,46,.55); }
+.dlg { padding: 18px; display: grid; gap: 12px; }
+.dlg .head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.fgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.fgrid .full { grid-column: 1 / -1; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 900px) {
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .add form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .add .two { grid-column: 1 / -1; }
+  .msgs { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fgrid { grid-template-columns: minmax(0, 1fr); }
+  .ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .board { grid-auto-columns: minmax(78vw, 1fr); }
+  .task { grid-template-columns: 10px minmax(0, 1fr); }
+  .task .btn { grid-column: 2; justify-self: start; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="label">Zent · Plan KAME · CRM</span><b>Conversaciones y clientes</b></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-v="hoy">Hoy</button>
+      <button class="tab" role="tab" aria-selected="false" data-v="emb">Embudo</button>
+      <button class="tab" role="tab" aria-selected="false" data-v="cli">Clientes</button>
+      <button class="tab" role="tab" aria-selected="false" data-v="dm">Mensajes</button>
+    </div>
+    <span class="status" id="status" role="status">Conectando…</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="kpis" id="kpis"></div>
+
+  <div class="card add">
+    <span class="label">Nueva conversación (la abriste tú o te escribieron)</span>
+    <form id="addForm" autocomplete="off">
+      <label class="f two">Nombre *<input id="a-nombre" required maxlength="80"></label>
+      <label class="f">Instagram<input id="a-ig" placeholder="@usuario" maxlength="60"></label>
+      <label class="f">Origen<select id="a-origen"></select></label>
+      <label class="f">Ciudad / zona<select id="a-zona"></select></label>
+      <label class="f">Objetivo<select id="a-objetivo"></select></label>
+      <label class="f two">Qué te dijo (literal)<input id="a-dolor" maxlength="300" placeholder="&quot;Con el trabajo y los niños no encuentro el momento&quot;"></label>
+      <label class="f">WhatsApp<input id="a-tel" inputmode="tel" maxlength="30"></label>
+      <label class="f">Edad<input id="a-edad" inputmode="numeric" maxlength="3"></label>
+      <button class="btn" type="submit" id="addBtn">Añadir</button>
+      <span class="note" id="addNote"></span>
+    </form>
+  </div>
+
+  <!-- HOY -->
+  <section id="v-hoy" class="card">
+    <h2>Lo que toca hoy</h2>
+    <p class="soft">Seguimientos vencidos (días 2, 7 y 14), conversaciones nuevas sin seguir de más de 24 h y llamadas de hoy. Si la lista está vacía: tus 2 rondas de 50 conversaciones.</p>
+    <div class="row" id="todayCount"></div>
+    <div class="tasks" id="tasks"></div>
+  </section>
+
+  <!-- EMBUDO -->
+  <section id="v-emb" hidden>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="v-cli" hidden style="display:grid;gap:16px">
+    <div class="card sand">
+      <span class="label">Plan KAME · escalera de precios en USD (propuesta, confirmar con Zent y Alberto)</span>
+      <h3 id="nivelTxt"></h3>
+      <div class="ladder" id="ladder"></div>
+      <p class="note">Cada venta nueva sube un nivel (+20 %) hasta el nivel 3. Se puede pagar completo o en cuotas con Klarna o Afterpay: el precio es el mismo. "Regreso KAME" (antiguos clientes: 6 meses a $500) y Mantenimiento ($80/mes) no suben la escalera. Quien recibió un precio lo mantiene 72 h. Bajar de nivel solo si Alberto lo decide.</p>
+      <div class="row"><button class="btn small ghost" id="nivDown">− Bajar nivel</button><button class="btn small ghost" id="nivUp">+ Subir nivel</button></div>
+    </div>
+    <div class="card">
+      <h2>Clientes</h2>
+      <div class="tscroll"><table>
+        <thead><tr><th>Cliente</th><th>Plan</th><th>Importe</th><th>Alta</th><th>Termina</th><th></th></tr></thead>
+        <tbody id="cliBody"></tbody>
+        <tfoot id="cliFoot"></tfoot>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- MENSAJES -->
+  <section id="v-dm" hidden style="display:grid;gap:16px">
+    <div class="card">
+      <h2>Mensajes</h2>
+      <p class="soft">Copia, cambia el nombre y personaliza una frase. Nunca mandes el precio por DM: el precio va en la llamada. Tienes las 14 aperturas completas en la página de Embudo.</p>
+    </div>
+    <div class="msgs" id="msgs"></div>
+  </section>
+</main>
+
+<dialog id="dlg" aria-labelledby="dlgName">
+  <div class="dlg" id="dlgBody"></div>
+</dialog>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function ymd(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function today() { return ymd(new Date()); }
+  function now() { return new Date().toISOString(); }
+  function addDays(s, n) { var p = s.split("-"); var d = new Date(+p[0], +p[1] - 1, +p[2]); d.setDate(d.getDate() + n); return ymd(d); }
+  function fdate(s) { if (!s) return "—"; var p = s.slice(0, 10).split("-"); return p[1] + "/" + p[2] + "/" + p[0].slice(2); }
+  function usd(n) { var r = Math.round((Number(n) || 0) * 100) / 100, a = Math.abs(r), s = Math.floor(a).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), dec = Math.round(a * 100) % 100; return (r < 0 ? "-" : "") + "$" + s + (dec ? "." + pad(dec) : ""); }
+
+  var ORIGEN = ["Frío Instagram (francotirador)", "Antiguo cliente", "Grupo de WhatsApp", "Estado de WhatsApp", "Comentario / historia", "Nuevo seguidor", "Palabra KAME", "Test (tally)", "Threads / grupo de Facebook", "Conocido / referido", "YouTube", "Anuncio", "Otro"];
+  var ZONAS = ["EE. UU. · Este", "EE. UU. · Centro", "EE. UU. · Montaña", "EE. UU. · Pacífico", "Canadá", "Otro país"];
+  var OBJ = ["Volver a entrenar", "Bajar grasa", "Ganar fuerza / músculo", "Más energía", "No sabe"];
+  var STAGES = [
+    { k: "nuevo", n: "Conversación abierta" }, { k: "diag", n: "Diagnóstico" }, { k: "test", n: "Test enviado / hecho" },
+    { k: "agend", n: "Llamada agendada" }, { k: "hecha", n: "Llamada hecha" }, { k: "seg", n: "Seguimiento" },
+    { k: "cliente", n: "Cliente" }, { k: "perdido", n: "Perdido" }
+  ];
+  var SN = {}; STAGES.forEach(function (s) { SN[s.k] = s.n; });
+  /* Escalera USD (propuesta): cada venta nueva sube un nivel (+20 %) */
+  var LADDER = { "6 meses": [500, 600, 720, 860], "1 año": [900, 1080, 1300, 1560], "3 meses": [300, 360, 430, 520] };
+  var MAXN = 3;
+  var PLAN_LIST = ["6 meses", "1 año", "3 meses", "Regreso KAME (6 meses)", "Mantenimiento"];
+  var NO_SUBE = { "Regreso KAME (6 meses)": 1, "Mantenimiento": 1 };
+  var DURA = { "6 meses": 182, "1 año": 365, "3 meses": 91, "Regreso KAME (6 meses)": 213 };
+  var PAGOS = ["Completo", "Klarna", "Afterpay", "2 pagos"];
+
+  function opts(list) { return list.map(function (o) { return "<option>" + esc(o) + "</option>"; }).join(""); }
+  $("a-origen").innerHTML = opts(ORIGEN);
+  $("a-zona").innerHTML = opts(ZONAS);
+  $("a-objetivo").innerHTML = opts(OBJ);
+
+  var leads = [], cfg = { nivel: 0, ventasDesdeSubida: 0 }, db = null, local = false;
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.classList.toggle("err", !!err); }
+  function errMsg(e, what) {
+    var c = e && e.code;
+    if (c === "invalid_argument") return "No tienes permiso para " + what;
+    if (c === "quota_exceeded") return "La base de datos está llena: borra leads antiguos";
+    if (c === "revoked") return "Acceso retirado";
+    return "No se ha podido " + what;
+  }
+
+  /* ---------- Escrituras ---------- */
+  var seq = 0;
+  async function addLead(data) {
+    if (local) { data.id = "local" + (++seq); leads.unshift(data); render(); return; }
+    await db.collection("leads").add(data);
+  }
+  var chains = {};
+  function updLead(id, data) {
+    data.actualizado = now();
+    if (local) { var l = byId(id); if (l) Object.assign(l, data); render(); return Promise.resolve(); }
+    chains[id] = (chains[id] || Promise.resolve()).then(function () { return db.collection("leads").doc(id).update(data); })
+      .catch(function (e) { setStatus(errMsg(e, "guardar"), true); });
+    return chains[id];
+  }
+  async function delLead(id) {
+    if (local) { leads = leads.filter(function (l) { return l.id !== id; }); render(); return; }
+    await db.collection("leads").doc(id).delete();
+  }
+  var cfgChain = Promise.resolve();
+  function saveCfg(n, v) {
+    cfg = { nivel: n, ventasDesdeSubida: v };
+    render();
+    if (local) return;
+    cfgChain = cfgChain.then(function () { return db.collection("config").doc("precios").set({ nivel: n, ventasDesdeSubida: v, actualizado: now() }); })
+      .catch(function (e) { setStatus(errMsg(e, "cambiar precios"), true); });
+  }
+  function byId(id) { for (var i = 0; i < leads.length; i++) if (leads[i].id === id) return leads[i]; return null; }
+  function nivelAct() { return Math.max(0, Math.min(cfg.nivel || 0, MAXN)); }
+  function precio(plan) {
+    if (plan === "Regreso KAME (6 meses)") return 500;
+    if (plan === "Mantenimiento") return 80;
+    return (LADDER[plan] || LADDER["6 meses"])[nivelAct()];
+  }
+  function contarVenta() {
+    var n = cfg.nivel || 0, v = cfg.ventasDesdeSubida || 0;
+    if (n < MAXN) { n++; v = 0; } else v++;
+    saveCfg(n, v);
+  }
+
+  /* ---------- Alta ---------- */
+  $("addForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var nombre = $("a-nombre").value.trim(); if (!nombre) return;
+    var data = {
+      nombre: nombre, ig: $("a-ig").value.trim(), tel: $("a-tel").value.trim(), edad: $("a-edad").value.trim(),
+      origen: $("a-origen").value, zona: $("a-zona").value, objetivo: $("a-objetivo").value,
+      dolor: $("a-dolor").value.trim(), etapa: "nuevo", temp: "tibio", objecion: "", proximo: addDays(today(), 2), notas: "",
+      plan: PLAN_LIST[0], importe: 0, pago: "Completo", alta: "", precioSubido: false, creado: now(), actualizado: now()
+    };
+    $("addBtn").disabled = true;
+    try { await addLead(data); $("addForm").reset(); $("addNote").textContent = "Añadido. Seguimiento puesto a 2 días."; }
+    catch (err) { $("addNote").textContent = errMsg(err, "añadir") + "."; }
+    $("addBtn").disabled = false;
+  });
+
+  /* ---------- Tabs ---------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["hoy", "emb", "cli", "dm"].forEach(function (v) { $("v-" + v).hidden = v !== t.dataset.v; });
+    });
+  });
+
+  /* ---------- Render ---------- */
+  function activo(l) { return l.etapa !== "cliente" && l.etapa !== "perdido"; }
+  function render() {
+    var t = today(), wk = addDays(t, -6);
+    var semana = leads.filter(function (l) { return (l.creado || "").slice(0, 10) >= wk; }).length;
+    var hoyN = leads.filter(function (l) { return (l.creado || "").slice(0, 10) === t; }).length;
+    var abiertos = leads.filter(function (l) { return l.etapa === "nuevo" || l.etapa === "diag" || l.etapa === "test" || l.etapa === "seg"; }).length;
+    var agend = leads.filter(function (l) { return l.etapa === "agend"; }).length;
+    var cli = leads.filter(function (l) { return l.etapa === "cliente"; });
+    var hechas = leads.filter(function (l) { return l.etapa === "hecha" || l.etapa === "seg" || l.etapa === "cliente" || (l.etapa === "perdido" && l.llamadaHecha); }).length;
+    var fact = cli.reduce(function (s, l) { return s + (Number(l.importe) || 0); }, 0);
+    $("kpis").innerHTML = [
+      [semana, "Leads nuevos (7 días)"], [abiertos, "Conversaciones vivas"], [agend, "Llamadas agendadas"],
+      [cli.length, "Clientes"], [usd(fact), "Facturado"], [hechas ? Math.round(Math.min(cli.length, hechas) / hechas * 100) + " %" : "—", "Cierre en llamada"]
+    ].map(function (k) { return '<div class="kpi"><b>' + esc(k[0]) + '</b><span>' + esc(k[1]) + '</span></div>'; }).join("");
+    $("todayCount").innerHTML = '<span class="chip">Apuntadas hoy en el CRM: ' + hoyN + '</span><span class="note">Meta: 100 conversaciones al día (2 rondas de 50). Las que no apuntes aquí, apúntalas en el reporte.</span>';
+
+    var tasks = [];
+    leads.forEach(function (l) {
+      if (!activo(l)) return;
+      var hrs = (Date.now() - Date.parse(l.creado || now())) / 36e5;
+      if (l.etapa === "agend" && l.proximo === t) tasks.push({ l: l, u: true, t: "Llamada hoy. Repasa el guion, su test y su zona horaria." });
+      else if (l.proximo && l.proximo < t) tasks.push({ l: l, u: true, t: "Seguimiento vencido (" + fdate(l.proximo) + ") · " + SN[l.etapa] });
+      else if (l.proximo === t) tasks.push({ l: l, u: false, t: "Toca hoy · " + SN[l.etapa] });
+      else if (l.etapa === "nuevo" && hrs > 24 && !l.proximo) tasks.push({ l: l, u: true, t: "Conversación sin seguimiento desde hace " + Math.floor(hrs / 24) + " día(s)" });
+    });
+    tasks.sort(function (a, b) { return (b.u - a.u) || ((a.l.proximo || "") < (b.l.proximo || "") ? -1 : 1); });
+    $("tasks").innerHTML = tasks.length ? tasks.map(function (x) {
+      return '<div class="task' + (x.u ? " urgent" : "") + '"><i class="dot"></i><div><b>' + esc(x.l.nombre) + (x.l.ig ? ' <span>' + esc(x.l.ig) + '</span>' : '') + '</b><span>' + esc(x.t) + '</span></div><button class="btn small dark" data-open="' + esc(x.l.id) + '">Abrir</button></div>';
+    }).join("") : '<div class="empty">Nada pendiente. Publica, responde historias y empieza tu ronda de 50.</div>';
+
+    $("board").innerHTML = STAGES.map(function (s) {
+      var list = leads.filter(function (l) { return l.etapa === s.k; });
+      return '<div class="col"><h3>' + esc(s.n) + '<small>' + list.length + '</small></h3>' + (list.length ? list.map(function (l) {
+        var late = activo(l) && l.proximo && l.proximo < t;
+        return '<button class="lcard" data-open="' + esc(l.id) + '"><b>' + esc(l.nombre) + '</b><small>' + esc([l.ig, l.origen, l.zona].filter(Boolean).join(" · ")) + '</small><span class="chips">' +
+          (l.temp === "caliente" ? '<span class="chip hot">Caliente</span>' : l.temp === "tibio" ? '<span class="chip warm">Tibio</span>' : '<span class="chip">Frío</span>') +
+          (activo(l) && l.proximo ? '<span class="chip' + (late ? " late" : "") + '">' + (late ? "Vencido " : "") + fdate(l.proximo) + '</span>' : '') + '</span></button>';
+      }).join("") : '<p class="note" style="padding:4px">Vacío</p>') + '</div>';
+    }).join("");
+
+    var n = nivelAct();
+    $("nivelTxt").textContent = "Nivel actual: " + n + " de " + MAXN + " · 6 meses " + usd(LADDER["6 meses"][n]) + " · 1 año " + usd(LADDER["1 año"][n]) + " · 3 meses " + usd(LADDER["3 meses"][n]) + (n === MAXN && cfg.ventasDesdeSubida ? " · ventas en el máximo: " + cfg.ventasDesdeSubida : "");
+    $("ladder").innerHTML = [0, 1, 2, 3].map(function (i) { return '<div class="step' + (i === n ? " on" : "") + '"><small>Nivel ' + i + (i === MAXN ? " · máx." : "") + '</small><b>' + usd(LADDER["6 meses"][i]) + '</b><small>6 meses · año ' + usd(LADDER["1 año"][i]) + ' · 3 m ' + usd(LADDER["3 meses"][i]) + '</small></div>'; }).join("");
+    $("cliBody").innerHTML = cli.length ? cli.map(function (l) {
+      var fin = l.alta && DURA[l.plan] ? addDays(l.alta, DURA[l.plan]) : "";
+      var soon = fin && fin <= addDays(t, 21);
+      return '<tr><td><b>' + esc(l.nombre) + '</b><br><span class="note">' + esc(l.ig || "") + '</span></td><td>' + esc(l.plan) + '<br><span class="note">' + esc(l.pago) + '</span></td><td>' + usd(l.importe) + '</td><td>' + fdate(l.alta) + '</td><td>' + (fin ? fdate(fin) + (soon ? ' <span class="chip hot">Ofrecer renovación</span>' : '') : (l.plan === "Mantenimiento" ? "Mes a mes" : "—")) + '</td><td><button class="btn small ghost" data-open="' + esc(l.id) + '">Ficha</button></td></tr>';
+    }).join("") : '<tr><td colspan="6" class="note">Aún sin clientes en el CRM. Apunta a Ingrid (clienta activa) cuando confirmes su plan e importe.</td></tr>';
+    $("cliFoot").innerHTML = cli.length ? '<tr><th colspan="2">Total</th><th>' + usd(fact) + '</th><th colspan="3"></th></tr>' : '';
+    $("nivDown").disabled = n <= 0; $("nivUp").disabled = n >= MAXN;
+
+    if (openId && $("dlg").open) syncDlg();
+  }
+
+  /* ---------- Ficha ---------- */
+  var openId = null;
+  document.addEventListener("click", function (e) { var b = e.target.closest("[data-open]"); if (b) openLead(b.getAttribute("data-open")); });
+  function sel(id, list, val) { return '<select id="' + id + '">' + list.map(function (o) { var v = typeof o === "string" ? o : o.k, nm = typeof o === "string" ? o : o.n; return '<option value="' + esc(v) + '"' + (v === val ? " selected" : "") + '>' + esc(nm) + '</option>'; }).join("") + '</select>'; }
+  function openLead(id) {
+    var l = byId(id); if (!l) return; openId = id;
+    $("dlgBody").innerHTML =
+      '<div class="head"><div><span class="label">Ficha</span><h2 id="dlgName">' + esc(l.nombre) + '</h2><p class="note">Creado ' + fdate(l.creado) + ' · ' + esc(l.origen || "") + '</p></div><button class="btn small ghost" id="dlgClose">Cerrar</button></div>' +
+      '<div class="fgrid">' +
+        '<label class="f">Etapa' + sel("f-etapa", STAGES, l.etapa) + '</label>' +
+        '<label class="f">Temperatura' + sel("f-temp", ["frío", "tibio", "caliente"], l.temp) + '</label>' +
+        '<label class="f">Próximo paso<input type="date" id="f-proximo" value="' + esc(l.proximo || "") + '"></label>' +
+        '<div class="full row"><span class="note">Seguimiento:</span><button type="button" class="btn small ghost" data-seg="2">+2 días</button><button type="button" class="btn small ghost" data-seg="7">+7 días</button><button type="button" class="btn small ghost" data-seg="14">+14 días</button></div>' +
+        '<label class="f">Nombre<input id="f-nombre" maxlength="80" value="' + esc(l.nombre) + '"></label>' +
+        '<label class="f">Instagram<input id="f-ig" maxlength="60" value="' + esc(l.ig || "") + '"></label>' +
+        '<label class="f">WhatsApp<input id="f-tel" maxlength="30" value="' + esc(l.tel || "") + '"></label>' +
+        '<label class="f">Edad<input id="f-edad" maxlength="3" value="' + esc(l.edad || "") + '"></label>' +
+        '<label class="f">Origen' + sel("f-origen", ORIGEN, l.origen) + '</label>' +
+        '<label class="f">Ciudad / zona' + sel("f-zona", ZONAS, l.zona) + '</label>' +
+        '<label class="f">Objetivo' + sel("f-objetivo", OBJ, l.objetivo) + '</label>' +
+        '<label class="f full">Su semana y su dolor (sus palabras)<textarea id="f-dolor" maxlength="600" placeholder="Trabajo, horario, hijos, qué le frena…">' + esc(l.dolor || "") + '</textarea></label>' +
+        '<label class="f full">Objeción<input id="f-objecion" maxlength="200" value="' + esc(l.objecion || "") + '" placeholder="tiempo, dinero, esposa, enero, online…"></label>' +
+        '<label class="f full">Notas<textarea id="f-notas" maxlength="2000">' + esc(l.notas || "") + '</textarea></label>' +
+        '<label class="f">Plan' + sel("f-plan", PLAN_LIST, l.plan) + '</label>' +
+        '<label class="f">Pago' + sel("f-pago", PAGOS, l.pago) + '</label>' +
+        '<label class="f">Importe (USD)<input id="f-importe" inputmode="decimal" value="' + esc(l.importe || "") + '"></label>' +
+        '<label class="f">Fecha de alta<input type="date" id="f-alta" value="' + esc(l.alta || "") + '"></label>' +
+      '</div>' +
+      '<p class="note" id="f-hint"></p>' +
+      '<div class="row"><button class="btn" id="f-win">Cerró: es cliente</button><button class="btn ghost" id="f-wa">Abrir WhatsApp</button><button class="btn ghost" id="f-del">Borrar</button><span class="note" id="f-msg"></span></div>';
+    var d = $("dlg"); if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+    wire(l);
+  }
+  function syncDlg() {
+    var l = byId(openId); if (!l) { closeDlg(); return; }
+    var hint = l.etapa === "cliente" ? "Cliente desde " + fdate(l.alta) + "." : "Precio actual de " + l.plan + ": " + usd(precio(l.plan)) + (l.plan === "Mantenimiento" ? " al mes" : "") + (NO_SUBE[l.plan] ? " (no sube la escalera)" : "") + ". Mismo precio en cuotas con Klarna o Afterpay.";
+    $("f-hint").textContent = hint;
+    ["etapa", "temp", "plan", "pago", "proximo"].forEach(function (k) { var el = $("f-" + k); if (el && document.activeElement !== el && el.value !== (l[k] || "")) el.value = l[k] || ""; });
+  }
+  function closeDlg() { var d = $("dlg"); openId = null; if (d.open) { if (d.close) d.close(); else d.removeAttribute("open"); } }
+  $("dlg").addEventListener("close", function () { openId = null; });
+  $("dlg").addEventListener("click", function (e) { if (e.target === $("dlg")) closeDlg(); });
+  function wire(l) {
+    var id = l.id, timers = {};
+    $("dlgClose").addEventListener("click", closeDlg);
+    ["nombre", "ig", "tel", "edad", "dolor", "objecion", "notas", "importe"].forEach(function (k) {
+      $("f-" + k).addEventListener("input", function () {
+        clearTimeout(timers[k]);
+        var el = this;
+        timers[k] = setTimeout(function () {
+          var v = el.value.trim(); var o = {};
+          if (k === "nombre" && !v) return;
+          o[k] = k === "importe" ? (Math.round((Number(v.replace(",", ".")) || 0) * 100) / 100) : v;
+          updLead(id, o);
+        }, 500);
+      });
+    });
+    ["etapa", "temp", "origen", "zona", "objetivo", "plan", "pago", "proximo", "alta"].forEach(function (k) {
+      $("f-" + k).addEventListener("change", function () {
+        var o = {}; o[k] = this.value;
+        if (k === "etapa" && this.value === "cliente") { win(); return; }
+        if (k === "etapa" && this.value === "hecha") o.llamadaHecha = true;
+        if (k === "plan" && !Number($("f-importe").value.replace(",", "."))) { /* sin importe: se usa el precio vigente al cerrar */ }
+        updLead(id, o);
+      });
+    });
+    document.querySelectorAll("[data-seg]").forEach(function (b) {
+      b.addEventListener("click", function () { var d = addDays(today(), Number(b.dataset.seg)); $("f-proximo").value = d; updLead(id, { proximo: d, etapa: (byId(id) || {}).etapa === "nuevo" ? "seg" : (byId(id) || {}).etapa }); $("f-msg").textContent = "Seguimiento el " + fdate(d) + "."; });
+    });
+    $("f-win").addEventListener("click", win);
+    function win() {
+      var cur = byId(id); if (!cur) return;
+      var plan = $("f-plan").value || cur.plan;
+      var imp = Number($("f-importe").value.replace(",", ".")) || precio(plan);
+      var o = { etapa: "cliente", plan: plan, importe: Math.round(imp * 100) / 100, alta: cur.alta || today(), llamadaHecha: true };
+      var cuenta = !cur.precioSubido && !NO_SUBE[plan];
+      if (cuenta) { o.precioSubido = true; contarVenta(); }
+      updLead(id, o);
+      $("f-importe").value = o.importe; $("f-alta").value = o.alta; $("f-etapa").value = "cliente";
+      $("f-msg").textContent = cuenta ? "Cliente registrado. Venta contada: la escalera sube un nivel." : "Cliente registrado (no sube la escalera).";
+    }
+    $("f-wa").addEventListener("click", function () {
+      var cur = byId(id); var num = String((cur && cur.tel) || "").replace(/[^\d]/g, "");
+      if (!num) { $("f-msg").textContent = "Sin WhatsApp apuntado."; return; }
+      if (num.length === 10) num = "1" + num;
+      window.open("https://wa.me/" + num, "_blank", "noopener");
+    });
+    $("f-del").addEventListener("click", function () {
+      var b = this;
+      if (b.dataset.sure !== "1") { b.dataset.sure = "1"; b.textContent = "¿Seguro? Pulsa otra vez"; return; }
+      delLead(id).then(closeDlg, function (e) { $("f-msg").textContent = errMsg(e, "borrar") + "."; });
+    });
+    syncDlg();
+  }
+
+  $("nivUp").addEventListener("click", function () { var n = cfg.nivel || 0; if (n < MAXN) saveCfg(n + 1, 0); });
+  $("nivDown").addEventListener("click", function () { var n = cfg.nivel || 0; if (n > 0) saveCfg(n - 1, 0); });
+
+  /* ---------- Mensajes ---------- */
+  var MSGS = [
+    ["Apertura · pregunta de diagnóstico", "Pregunta rápida de entrenador, [nombre]: si mañana tuvieras que entrenar, ¿qué hueco tendrías libre? ¿Mañana temprano, en el break o en la noche?"],
+    ["Apertura · respondió a tu historia", "¡Gracias por responder, [nombre]! Me dio curiosidad lo que pusiste: “[su respuesta]”. ¿Qué es lo que más te cuesta ahora, el tiempo o arrancar?"],
+    ["Apertura · nuevo seguidor", "¡Gracias por seguirme, [nombre]! Para saber qué contenido te sirve más: ¿estás buscando volver a entrenar, bajar un poco de peso o tener más energía para el día a día?"],
+    ["Respuesta a KAME", "¡Qué bueno que escribes, [nombre]! 💪 Para decirte por dónde empezar, 3 cosas rápidas:\n1️⃣ ¿A qué te dedicas y qué horario tienes?\n2️⃣ ¿Cuándo fue la última vez que entrenaste en serio?\n3️⃣ ¿Qué te gustaría lograr en los próximos 3 meses?"],
+    ["Mandar el test", "Por lo que me cuentas, no te faltan ganas: te falta un plan que quepa en tu semana. Haz este test de 2 minutos y con eso te digo en una llamada corta cómo lo haría yo en tu caso, sin compromiso: [enlace del test]"],
+    ["Si pregunta el precio por DM", "Te soy directo: depende de lo que necesitas y eso lo vemos en una llamada de 30 min. Lo que sí te adelanto: se puede pagar en cuotas. ¿Te queda mejor [día] o [día]?"],
+    ["WhatsApp tras el test", "Hola, [nombre], soy Jorge (Zent) de SaiyaTrainer. Vi tu test: “[frase]”. ¿Lo vemos en una llamada de 30 minutos? ¿Te va mejor [día] a las [hora de su zona] o [día] a las [hora]?"],
+    ["Seguimiento día 2", "[Nombre], ¿pudiste ver lo que te pregunté? Sin apuro, me quedé con curiosidad de cómo vas con el trabajo y el entreno."],
+    ["Seguimiento día 7", "Hoy publiqué algo que me hizo pensar en ti: [tema]. Si te sirve, te cuento cómo lo aplicaría a tu semana."],
+    ["Seguimiento día 14", "Te escribo por última vez para no molestar. Si en algún momento quieres volver a entrenar con un plan que quepa en tu semana, escríbeme KAME y lo vemos. ¡Fuerza!"],
+    ["Regreso KAME · antiguo cliente", "[Nombre]! ¿Cómo estás? Me acordé de cuando entrenábamos [detalle real]. Estoy abriendo unas plazas solo para quienes ya entrenaron conmigo. Pero primero cuéntame, ¿cómo vas con el entreno?"],
+    ["Permiso para contenido", "Oye, ¿te parece si cuento tu progreso en mi cuenta? Puede ser sin cara y sin nombre, o te dibujo en mi estilo de Zent 😄. Si no, cero problema."]
+  ];
+  $("msgs").innerHTML = MSGS.map(function (m, i) { return '<div class="msg"><h3>' + esc(m[0]) + '</h3><pre>' + esc(m[1]) + '</pre><button class="btn small ghost" data-copy="' + i + '">Copiar</button></div>'; }).join("");
+  $("msgs").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (!b) return;
+    var t = MSGS[Number(b.dataset.copy)][1];
+    function ok() { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1400); }
+    function fb() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (x) { b.textContent = "Cópialo a mano"; } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+  });
+
+  render();
+
+  /* ---------- Base de datos ---------- */
+  (async function () {
+    var c = null;
+    try { c = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch (e) { c = null; }
+    if (!c) { local = true; setStatus("Sin base de datos: modo prueba, no se guarda nada", true); return; }
+    db = c;
+    var got = false;
+    var timer = setTimeout(function () { if (!got) setStatus("La base de datos tarda en responder…", true); }, 10000);
+    db.collection("leads").orderBy("creado", "desc").onSnapshot(function (snap) {
+      got = true; clearTimeout(timer);
+      leads = snap.docs.map(function (d) { var o = d.data(); o.id = d.id; return o; });
+      setStatus("Guardado en la nube · " + leads.length + " leads");
+      render();
+    }, function (err) { clearTimeout(timer); setStatus(err && err.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); });
+    db.collection("config").onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { if (d.id === "precios") { var o = d.data(); cfg = { nivel: Number(o.nivel) || 0, ventasDesdeSubida: Number(o.ventasDesdeSubida) || 0 }; } });
+      render();
+    }, function () {});
+  })();
+})();
+</script>

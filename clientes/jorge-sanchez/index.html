@@ -1,0 +1,491 @@
+<title>Jorge Sánchez Entrenador</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<meta name="description" content="Jorge Sánchez · Para hombres que llevan tiempo entrenando y esperaban más de su físico. Pierde grasa construyendo músculo: el músculo es tu metabolismo.">
+<style>
+/* Layout: boceto de carta de venta en una columna. Hero oscuro con "El músculo es tu metabolismo"; ¿te suena?; la idea; Método Motor; casos (recortes de sus fijados); sobre mí (pendiente); para quién, pasos, Jotform, FAQ. Sin precios. Marca: negro, blanco y ámbar. */
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #8a5300;
+  --accent-text: #6e4200;
+  --accent-dark: #f2b705;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2a2a2a; }
+.btn-a { background: var(--accent); color: var(--white); }
+.btn-a:hover { background: #6e4200; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 800 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 800 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 800 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 800 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 800 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 800 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 800 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* Historia */
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c4c4c0; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 800 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 800 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; text-align: center; font: 800 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a9a9a; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #fbf0d9; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 800 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(247, 247, 245, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+/* Marca Jorge Sánchez: Inter Tight 800 en minúscula con tracking negativo. */
+h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none; letter-spacing: -.025em; }
+.hero h1 { font: 800 clamp(40px, 7vw, 84px)/1 var(--f-head); text-transform: none; letter-spacing: -.035em; max-width: 15ch; }
+.brand { text-transform: none; letter-spacing: -.01em; font-size: 18px; }
+.fact b, .layer h3, .base h3, .case .big, .step h3, .err b, .turn, .me p, .quote, .seal, .final h2 { text-transform: none; letter-spacing: -.02em; }
+.fact b { font-size: 21px; } .layer h3 { font-size: 24px; } .case .big { font-size: 24px; } .step h3 { font-size: 22px; } .err b { font-size: 20px; }
+.turn { font-size: clamp(26px, 3.8vw, 42px); } .me p { font-size: clamp(22px, 3vw, 32px); } .quote { font-size: clamp(24px, 3.4vw, 38px); }
+.seal { font-size: clamp(20px, 2.4vw, 26px); }
+.final h2 { font-size: clamp(38px, 6.5vw, 78px); }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
+.duo figure { margin: 0; display: grid; gap: 8px; }
+.duo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; background: #000; }
+.duo figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); display: block; }
+.duo figcaption span { font-size: 15px; color: var(--soft); }
+.sports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.sport { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 8px; }
+.sport b { font: 800 22px/1.1 var(--f-head); letter-spacing: -.02em; }
+.sport span { color: var(--soft); font-size: 16px; }
+.empty-case { border: 2px dashed #c4c4c0; background: var(--chip); border-radius: 12px; padding: clamp(22px, 3vw, 34px); display: grid; gap: 10px; }
+.empty-case p { color: var(--soft); max-width: 60ch; }
+@media (max-width: 680px) { .duo, .sports { grid-template-columns: 1fr; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #8a5300); --nm-at: var(--accent-text, #6e4200); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.women { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.women figure { margin: 0; display: grid; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 10px 10px 14px; }
+.women img { display: block; width: 100%; height: auto; border-radius: 8px; background: #000; }
+.women figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); display: block; padding-inline: 4px; }
+.women figcaption span { font-size: 15px; color: var(--soft); padding-inline: 4px; display: block; }
+.women .q { align-self: stretch; }
+.trainers { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-bottom: 16px; }
+.trainers b { font: 800 clamp(30px, 4.4vw, 50px)/1 var(--f-head); letter-spacing: -.03em; }
+.trainers b em { font-style: normal; color: var(--accent-dark); }
+.trainers p { color: var(--on-dark); max-width: 62ch; }
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.cases .ph { aspect-ratio: 4 / 5; }
+@media (max-width: 860px) { .women { grid-template-columns: 1fr 1fr; } .women .q { grid-column: 1 / -1; } }
+@media (max-width: 680px) { .women, .cases { grid-template-columns: 1fr; } }
+</style>
+<!--
+  BOCETO · PENDIENTE / PROVISIONAL (no se ve en la página):
+  - Formulario: Jotform 243216586760057 (el de su bio). Se incrusta con iframe fuera del visor de Claude; dentro, queda el botón.
+  - Casos (74 → 89 kg, "Jornada +10 horas", "27 años"): recortes de sus fijados de Instagram. Confirmar nombre, tiempo y permiso por escrito de cada cliente antes de publicar.
+  - Su historia personal: no hay documento. La sección "Sobre mí" lleva solo lo que se ve en su perfil; completar con Jorge.
+  - Formación: en su destacada "SOBRE MÍ" sale graduándose (banda UFV). Confirmar titulación antes de nombrarla.
+  - Sin precios (a propósito). Online o presencial: confirmar.
+-->
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/jorge-avatar.jpg" alt="" width="249" height="250"><div>Jorge Sánchez<small>El músculo es tu metabolismo</small></div></div>
+      <a class="btn btn-a js-form" href="https://form.jotform.com/243216586760057" target="_blank" rel="noopener">Cuéntame tu caso</a>
+    </header>
+
+    <div class="hero">
+      <div class="label">Para hombres que llevan tiempo entrenando y esperaban más de su físico</div>
+      <h1>El músculo es tu <em>metabolismo</em>.</h1>
+      <p class="lede">Si llevas años entrenando, trabajas muchas horas y te sigues viendo igual, no te falta esfuerzo: te falta que construya músculo. Te ayudo a <b>perder grasa construyendo músculo</b>, con intensidad bien aplicada y una vida activa. Consigue más con el esfuerzo que ya haces.</p>
+      <div class="ctas">
+        <a class="btn btn-a js-form" href="https://form.jotform.com/243216586760057" target="_blank" rel="noopener">Cuéntame tu caso</a>
+        <a class="btn btn-dark-ghost" href="https://www.instagram.com/jorgesdiez/" target="_blank" rel="noopener">Escríbeme MOTOR en Instagram</a>
+      </div>
+      <p class="cta-note">El formulario son 2 minutos. Lo leo yo y te digo qué cambiaría en tu caso.</p>
+
+      <div class="facts">
+        <div class="fact"><b>Músculo primero</b><span>Entrenas para construir, no para quemar</span></div>
+        <div class="fact"><b>3 fases</b><span>Aprender, encender el motor, afinar</span></div>
+        <div class="fact"><b>Muchos pasos</b><span>Vida activa dentro de tu jornada</span></div>
+        <div class="fact"><b>Cada semana</b><span>Reviso tu registro y ajusto el plan</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>Entrenas. Te esfuerzas. Y no se nota.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Llevo 3 años entrenando y me sigo viendo igual."</div>
+      <div class="sign">"Cada vez estoy más fuerte y me veo menos definido."</div>
+      <div class="sign">"Trabajo más de 10 horas. Llego al gimnasio sin energía."</div>
+      <div class="sign">"Cambio de rutina cada pocas semanas y vuelvo a empezar."</div>
+      <div class="sign">"Hago cardio, como menos… y la grasa no se va."</div>
+      <div class="sign">"Esta semana es imposible. La próxima empiezo en serio."</div>
+    </div>
+    <p class="turn">No es falta de ganas ni de esfuerzo. <em>Es a dónde va ese esfuerzo.</em></p>
+  </div>
+</section>
+
+<section id="idea">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">La idea</div>
+      <h2>Deja de entrenar para quemar. Entrena para construir el motor.</h2>
+    </div>
+    <div class="read stack">
+      <p>La mayoría entra al gimnasio a "quemar calorías": más cardio, más series, menos comida. Pierdes algo de grasa… y también músculo. Y el músculo es lo que mantiene tu metabolismo trabajando, también las 10 horas que pasas sentado.</p>
+      <p>Por eso con mis clientes no empiezo quitando comida ni metiendo cardio. Empiezo <strong>construyendo músculo</strong>, enseñando a <strong>entrenar con intensidad de verdad</strong> y sumando <strong>pasos durante el día</strong>. El motor primero; la grasa baja después.</p>
+    </div>
+    <div class="errors">
+      <div class="err"><b>Entrenar para quemar</b><span>Más cardio, menos comida y perder músculo por el camino. <em>Lo que funciona:</em> músculo primero.</span></div>
+      <div class="err"><b>Series de relleno</b><span>Mucho volumen, poca intensidad y sin apuntar nada. <em>Lo que funciona:</em> menos series, bien aplicadas y registradas.</span></div>
+      <div class="err"><b>10 horas sentado</b><span>Una hora de gimnasio no compensa un día entero sin moverte. <em>Lo que funciona:</em> tu mínimo de pasos, cada día.</span></div>
+    </div>
+    <p class="quote">"Consigue más con el esfuerzo que ya haces."</p>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método Motor</div>
+      <h2>Aprender. Encender el motor. Afinar.</h2>
+      <p class="lede">Seis meses con un orden claro y un plan hecho para tu jornada.</p>
+    </div>
+    <section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Para quién es</span><p class="nm-big">Hombres que llevan tiempo entrenando, con jornadas largas, y esperaban más de su físico: les ayudo a perder grasa construyendo músculo —el músculo es su metabolismo— sacando más del esfuerzo que ya hacen con intensidad bien aplicada y una vida activa.</p></div><div class="nm-meth"><span class="nm-lab">3 pilares</span><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Músculo primero</b><span>Entrenas para construir músculo, el tejido que más trabaja por ti.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Intensidad bien aplicada</b><span>Aprendes a entrenar: menos series, cerca del fallo, con técnica y registradas.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Vida activa</b><span>Muchos pasos y moverte durante el día, aunque la semana sea imposible.</span></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Registrar cada entreno</span><span>Tu mínimo de pasos cada día</span><span>Revisión semanal</span></div></div></section>
+    <div class="layers">
+      <article class="layer"><span class="n">Fase 1 · Meses 1–2</span><h3>Aprender a entrenar</h3><p>Técnica, intensidad real y registro. Por primera vez sabes si progresas o solo vas al gimnasio.</p></article>
+      <article class="layer"><span class="n">Fase 2 · Meses 3–4</span><h3>Encender el motor</h3><p>Cargas que suben, más músculo y la grasa bajando sin vivir a dieta. Más pasos, poco a poco.</p></article>
+      <article class="layer"><span class="n">Fase 3 · Meses 5–6</span><h3>Afinar y sostener</h3><p>Defines lo construido y te quedas con un sistema que aguanta hasta la semana imposible.</p></article>
+      <article class="layer"><span class="n">Cada semana</span><h3>Revisión 1:1</h3><p>Me mandas tu registro y tus pasos, te corrijo la técnica por vídeo y ajusto el plan. Hablas directamente conmigo.</p></article>
+    </div>
+    <div class="base">
+      <span class="n">Jornadas largas</span>
+      <h3>Entrenar tras 9 horas de trabajo también cuenta.</h3>
+      <p>No te voy a pedir más días ni más horas. Te voy a pedir que las que ya haces sirvan, y que te muevas más dentro de tu jornada. Para la semana imposible, el plan tiene versión corta.</p>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Casos</div>
+      <h2>Hombres que ya se esforzaban. Ahora se nota.</h2>
+    </div>
+    <!-- CASOS: recortes de sus fijados. Confirmar permiso por escrito, nombre y tiempos antes de publicar. No inventar testimonios. -->
+    <div class="women">
+      <figure><img src="casos/caso-74-89kg.jpg" alt="Antes y después de un cliente: de 74 a 89 kg" width="433" height="580" loading="lazy"><figcaption><b>74 → 89 kg</b><span>Más músculo, mismo esfuerzo bien dirigido. [tiempo: confirmar]</span></figcaption></figure>
+      <figure><img src="casos/caso-jornada-10h.jpg" alt="Antes y después de un cliente con jornadas de más de 10 horas" width="434" height="580" loading="lazy"><figcaption><b>Jornada +10 horas</b><span>Trabajando más de 10 horas al día. [tiempo: confirmar]</span></figcaption></figure>
+      <figure><img src="casos/caso-27-anos.jpg" alt="Antes y después de un cliente de 27 años" width="436" height="580" loading="lazy"><figcaption><b>27 años</b><span>De entrenar años a que se note. [tiempo: confirmar]</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Sobre mí</div>
+      <h2>Soy Jorge Sánchez, entrenador personal.</h2>
+    </div>
+    <div class="me">
+      <img src="casos/jorge-avatar.jpg" alt="Jorge Sánchez, entrenador personal" width="249" height="250" loading="lazy">
+      <p>"El músculo es tu metabolismo."</p>
+    </div>
+    <div class="read stack">
+      <p>Trabajo con hombres que ya entrenan, que trabajan muchas horas y que esperaban más de su físico. No les pido más esfuerzo: les enseño a que el que ya hacen construya músculo.</p>
+      <!-- PENDIENTE: su historia (edad, desde cuándo entrena, qué le pasó, formación). No inventar. -->
+      <p>[Mi historia: pendiente de completar con Jorge.]</p>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Llevas tiempo entrenando y esperabas más de tu físico.</li>
+          <li>Trabajas muchas horas y necesitas un plan que quepa en tu semana.</li>
+          <li>Quieres perder grasa sin vivir a dieta ni matarte a cardio.</li>
+          <li>Quieres aprender a entrenar, no seguir otra rutina más.</li>
+          <li>Vas a registrar tus entrenos, cumplir tus pasos y mandar tu revisión cada semana.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas un cambio en 30 días.</li>
+          <li>No vas a apuntar nada.</li>
+          <li>Quieres una dieta de hambre y ya.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Me cuentas tu caso</h3><p>2 minutos en el formulario: cuánto llevas entrenando, tu jornada y qué esperabas ver.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, te llamo y te digo qué cambiaría en tu caso.</p></div>
+      <div class="step"><span class="n">03</span><h3>Empiezas tu fase 1</h3><p>Tu plan hecho para tu jornada y la primera revisión en el calendario.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Cuéntame tu caso.</h2>
+      <p class="lede">Lo leo yo personalmente. Si encajamos, te escribo para hablar.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn btn-a js-form" id="formBtn" href="https://form.jotform.com/243216586760057" target="_blank" rel="noopener">Rellenar el formulario ahora</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Llevo años entrenando. ¿Qué me vas a enseñar?</summary><p>Lo que casi nadie aplica: intensidad bien aplicada, registro y progresión. Saber ejercicios no es lo mismo que saber entrenar.</p></details>
+      <details><summary>Trabajo más de 10 horas. ¿Me da tiempo?</summary><p>Sí. No te pido más días: te pido mejores series y moverte más dentro de tu jornada. Y para la semana imposible, el plan tiene versión corta.</p></details>
+      <details><summary>¿Voy a tener que hacer mucho cardio?</summary><p>No. Empezamos por construir músculo y por los pasos del día. El cardio, si tiene sentido en tu caso, después.</p></details>
+      <details><summary>¿Tengo que vivir a dieta?</summary><p>No. La comida se ajusta a tu vida, con proteína en cada comida, y aguanta comidas fuera.</p></details>
+      <details><summary>Estoy delgado y quiero ganar músculo.</summary><p>También es para ti, pero sin comerte la nevera: ganar músculo con un plan, no ganar grasa sin control.</p></details>
+      <details><summary>¿Cuántos pasos tendré que dar?</summary><p>Depende de dónde partas. Empezamos por tu número actual y subimos poco a poco hasta tu mínimo diario.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y de cuánto tiempo trabajemos juntos. Rellena el formulario y te lo explico cuando hablemos.</p></details>
+      <!-- FAQ PENDIENTE: "¿Es online o presencial?" — confirmar con Jorge. -->
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Consigue más con el esfuerzo que ya haces.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-form" href="https://form.jotform.com/243216586760057" target="_blank" rel="noopener">Cuéntame tu caso</a>
+      <a class="btn btn-dark-ghost" href="https://www.instagram.com/jorgesdiez/" target="_blank" rel="noopener">Escríbeme MOTOR en Instagram</a>
+    </div>
+    <p class="cta-note">O escríbeme <b>MOTOR</b> por privado en <a href="https://www.instagram.com/jorgesdiez/" target="_blank" rel="noopener">@jorgesdiez</a> y te contesto yo.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Jorge Sánchez · Entrenador personal</span><span><a href="https://www.instagram.com/jorgesdiez/" target="_blank" rel="noopener">@jorgesdiez</a></span></div>
+    <p>Esta asesoría no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación. Casos mostrados con permiso de cada cliente.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-form" href="https://form.jotform.com/243216586760057" target="_blank" rel="noopener">Cuéntame tu caso</a></div>
+<script>
+(function () {
+  var FORM = "https://form.jotform.com/243216586760057";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  var fe = document.getElementById("formEmbed"), fb = document.getElementById("formBtn");
+  // Fuera del visor de Claude se incrusta el Jotform; dentro queda el botón.
+  if (fe && fb && window.self === window.top) {
+    var f = document.createElement("iframe");
+    f.src = FORM; f.title = "Formulario de Jorge Sánchez"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

@@ -1,0 +1,259 @@
+<title>Holyfield Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #1f4fd1;
+  --accent-text: #1a3fae;
+  --accent-dark: #6f8fff;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #dbe4ff; }
+.card.accent ul.l, .card.accent ol.l { color: #eef2ff; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #e6ecfb; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: el motor son 100 conversaciones al día y los anuncios de seguidores las alimentan: objetivo, dónde encontrarlos, mensajes, camino de la conversación, WhatsApp, rutina, anuncios con voz en off y contenido de apoyo. */
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: var(--white); display: grid; place-items: center; font: 800 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 800 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 800 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: #cfcfcf; font-size: 14px; }
+@media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+.msgs { display: grid; gap: 10px; }
+.msgs .m { background: var(--white); border-radius: 6px; padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 0 0 0 1px var(--line); }
+.msgs .m .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msgs .m p { font-weight: 600; font-size: 15.5px; }
+
+/* Marca Holyfield: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #1f4fd1); --nm-at: var(--accent-text, #1a3fae); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.ad { display: grid; gap: 10px; }
+.ad .beat { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ad .beat small { font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.ad .beat p { font-size: 15px; }
+.ad .beat p + p { margin-top: 4px; color: var(--soft); font-size: 14px; }
+.ad .hooks { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rules div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.rules b { font: 800 24px/1.1 var(--f-head); letter-spacing: -.02em; }
+.rules span { color: var(--soft); font-size: 14px; }
+@media (max-width: 900px) { .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .rules { grid-template-columns: 1fr; } .ad .beat { grid-template-columns: 1fr; gap: 4px; } }
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Holyfield · Parte 4 · Embudo</span>
+    <h1>Con 989 seguidores no te falta contenido. Te faltan <em>conversaciones</em>.</h1>
+    <p class="soft" style="font-size:18px">El motor eres tú: 100 conversaciones al día, sin excepción. Los anuncios de seguidores te traen cada día adultos de más de 25 que creen que es imposible, para escribirles. Para de pensar y hazlo, también aquí. Esto empiezas mañana.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Adultos de más de 25, con poco tiempo, que siempre han sido el flaco o el gordo y creen que cambiar su cuerpo es imposible.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método HAZLO («Para de pensar y hazlo»)</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>No eres el niño de siempre</b><span>Yo era el de 52 kg «sin hombros» que iba con sudadera en verano. El cuerpo que tenías de niño es tu punto de partida, no tu destino.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Un hábito que cabe en tu agenda</b><span>Yo trabajaba más de 40 horas, estudiaba y entrenaba a las 00:30. Tú no: 3 sesiones de fuerza agendadas como una reunión y pasos cada día.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Fuerza y comida para tu caso</b><span>Yo comía 2–3 veces al día, una de cereales, y no crecía. El flaco come para construir; el gordo baja grasa sin perder músculo. Sin 14 suplementos.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Meses 1–2</span><b>Instalar</b><p><em>Qué pasa:</em> El entreno deja de ser «otra vez»: 3 sesiones fijas en tu semana, técnica y comida base. Las primeras semanas que no lo dejas.</p><p><em>Qué haces tú:</em> 3 sesiones de fuerza, proteína en cada comida, pasos diarios y tu revisión semanal.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Meses 3–4</span><b>Recomponer</b><p><em>Qué pasa:</em> El flaco gana músculo y peso; el que siempre fue el gordo baja grasa manteniendo la fuerza. Se nota en la ropa y en el espejo.</p><p><em>Qué haces tú:</em> Subes cargas cada semana y ajustamos la comida a tu punto de partida.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 5–6</span><b>Consolidar</b><p><em>Qué pasa:</em> Dejas de verte como el flaco o el gordo de siempre y sabes mantenerlo sin depender de nadie.</p><p><em>Qué haces tú:</em> Te quedas con tu propio sistema para semanas malas, viajes y épocas de mucho trabajo.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>3 sesiones de fuerza en la agenda</b><p><em>Por qué:</em> El músculo solo cambia con fuerza progresiva, y lo que está en el calendario se hace.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>Proteína en cada comida</b><p><em>Por qué:</em> Sin ella el flaco no construye y el gordo pierde músculo al bajar grasa.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Revisión semanal</b><p><em>Por qué:</em> Lo que se revisa no se deja: es lo que rompe el «otra vez».</p></div></div></div><p class="nm-proof">Prueba: «Con 15 años pesaba 52 kg, medía casi 1,84 y me decían que no tenía hombros. Ahora esos mismos me preguntan cómo los entreno.»</p><p class="nm-line">Para los que creen que es imposible: es hora de tener el cuerpo de adulto, no el del niño de siempre. Y tres de mis clientes acabaron siendo entrenadores.</p></section>
+
+  <section class="card dark" aria-label="Tu objetivo diario">
+    <span class="label">Tu objetivo, cada día</span>
+    <div class="big">100</div>
+    <h2>conversaciones al día, en 2 rondas de 50.</h2>
+    <div class="kpis">
+      <div><b>50</b><span>Ronda 1 · antes del trabajo o en la pausa</span></div>
+      <div><b>50</b><span>Ronda 2 · tarde</span></div>
+      <div><b>700</b><span>A la semana</span></div>
+      <div><b>5–10 €</b><span>Al día por anuncio de seguidores</span></div>
+    </div>
+    <p class="soft">Trabajas más de 40 horas: por eso son 2 rondas fijas, no "cuando pueda". Alberto mira en tu reporte cada día conversaciones abiertas, respuestas, llamadas agendadas, cierres y coste por seguidor.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fuentes">
+    <header><span class="label">Dónde encontrarlos</span><h2 id="h-fuentes">Adultos de +25 que siempre han sido el flaco o el gordo.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Nuevos seguidores</h3><p class="soft">Los que llegan por los anuncios y los demás. Bienvenida a todos, el mismo día: son los más calientes.</p></div>
+      <div class="card"><span class="n">2</span><h3>Quien ve tus historias</h3><p class="soft">Los que repiten cada día te tienen en el radar. Escríbeles.</p></div>
+      <div class="card"><span class="n">3</span><h3>Cuentas de recomposición</h3><p class="soft">Seguidores y comentarios de perfiles de "ganar peso siendo delgado", "perder grasa después de los 30" y hábitos con poco tiempo.</p></div>
+      <div class="card"><span class="n">4</span><h3>Fútbol amateur y oficinas</h3><p class="soft">Equipos de veteranos, pádel, grupos de empresa: adultos que se han ido dejando.</p></div>
+      <div class="card"><span class="n">5</span><h3>Comentarios en virales</h3><p class="soft">Vídeos de "siempre he sido delgado", "llevo toda la vida a dieta", "no tengo tiempo para entrenar", "volver al gym con 30".</p></div>
+      <div class="card"><span class="n">6</span><h3>Su círculo</h3><p class="soft">Compañeros de trabajo y amigos de tus clientes: el flaco o el gordo de siempre suele tener a otro igual cerca.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msgs">
+    <header><span class="label">Mensajes de apertura · cópialos y rótalos</span><h2 id="h-msgs">Corto, de tú a tú y sin vender en el primer mensaje.</h2><p class="soft">Cambia {n} por su nombre. Nunca mandes un enlace en el primer mensaje. Habla como entrenador: preguntas concretas, no "¿qué tal?".</p></header>
+    <div class="msgs"><div class="m"><div class="row"><span class="badge">Bienvenida a nuevo seguidor</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿estás entrenando ahora o te has ido dejando con el trabajo?">Copiar</button></div><p>"¡Buenas, {n}! Gracias por seguirme. Pregunta rápida: ¿estás entrenando ahora o te has ido dejando con el trabajo?"</p></div><div class="m"><div class="row"><span class="badge">Respuesta a historia</span><button class="cp" type="button" data-cp="Te ha llamado la atención, ¿eh? ¿Te pasa a ti también o lo tienes controlado?">Copiar</button></div><p>"Te ha llamado la atención, ¿eh? ¿Te pasa a ti también o lo tienes controlado?"</p></div><div class="m"><div class="row"><span class="badge">El flaco de siempre</span><button class="cp" type="button" data-cp="Ey, {n}, gracias por pasarte. Yo siempre fui el flaco del grupo: con 15 años, 52 kg. ¿Tú de qué lado estás, del que quiere ganar o del que quiere perder?">Copiar</button></div><p>"Ey, {n}, gracias por pasarte. Yo siempre fui el flaco del grupo: con 15 años, 52 kg. ¿Tú de qué lado estás, del que quiere ganar o del que quiere perder?"</p></div><div class="m"><div class="row"><span class="badge">El gordo de siempre</span><button class="cp" type="button" data-cp="¡Buenas, {n}! Por curiosidad: ahora mismo, ¿buscas ganar músculo, perder la grasa de siempre o las dos cosas?">Copiar</button></div><p>"¡Buenas, {n}! Por curiosidad: ahora mismo, ¿buscas ganar músculo, perder la grasa de siempre o las dos cosas?"</p></div><div class="m"><div class="row"><span class="badge">Poco tiempo</span><button class="cp" type="button" data-cp="Buenas, {n}. Pregunta de entrenador: ¿cuántos días a la semana podrías entrenar de verdad, con tu trabajo, sin engañarte?">Copiar</button></div><p>"Buenas, {n}. Pregunta de entrenador: ¿cuántos días a la semana podrías entrenar de verdad, con tu trabajo, sin engañarte?"</p></div><div class="m"><div class="row"><span class="badge">Con tu historia</span><button class="cp" type="button" data-cp="Te escribo porque con 15 años yo pesaba 52 kg, me decían que no tenía hombros y veía imposible cambiar. ¿Tú en qué punto estás?">Copiar</button></div><p>"Te escribo porque con 15 años yo pesaba 52 kg, me decían que no tenía hombros y veía imposible cambiar. ¿Tú en qué punto estás?"</p></div><div class="m"><div class="row"><span class="badge">Reactivar a alguien que ya habló contigo</span><button class="cp" type="button" data-cp="¡{n}! ¿Cómo va? Me dijiste que empezabas el mes que viene… ¿sigue en pie o lo dejamos para &quot;otra vez&quot;? 😉">Copiar</button></div><p>"¡{n}! ¿Cómo va? Me dijiste que empezabas el mes que viene… ¿sigue en pie o lo dejamos para "otra vez"? 😉"</p></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-path">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-path">De "hola" a llamada en 5 pasos.</h2></header>
+    <div class="path"><span>1 · Abrir</span><i>→</i><span>2 · Conectar</span><i>→</i><span>3 · Detectar el dolor</span><i>→</i><span>4 · Pasar a WhatsApp</span><i>→</i><span>5 · Llamada o formulario</span></div>
+    <div class="g2">
+      <div class="card"><h3>Preguntas de entrenador</h3><ul class="l"><li>"¿Desde cuándo te ves así? ¿Siempre has sido el delgado o el de más peso del grupo?" Aquí sale la identidad.</li><li>"¿Cuántos días a la semana te caben de verdad con tu trabajo?"</li><li>"¿Cuántas comidas haces al día, y cuántas con proteína?"</li><li>"¿Cuántas veces lo has intentado y lo has acabado dejando?"</li><li>"Del 1 al 10, ¿cuánto te importa cambiar esto ya?"</li><li>Si pregunta "¿cuánto cobras?": "Depende de tu caso. Te lo explico en una llamada de 20 minutos y te digo qué haría contigo."</li></ul></div>
+      <div class="card"><h3>La invitación</h3><div class="say">"Por lo que me cuentas, estás justo donde estaba yo: creyendo que tu cuerpo es así y que no se puede cambiar. Si quieres, te paso por WhatsApp un audio con lo que haría en tu caso y lo vemos en una llamada de 20 minutos. ¿Te va mejor mañana o pasado?"</div><p class="soft">Siempre dos opciones de día, como máximo a 2–3 días vista.</p></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="WhatsApp">
+    <div class="card accent">
+      <span class="label">WhatsApp · tu segundo canal</span>
+      <h3>Quien te da el teléfono te ve cada día.</h3>
+      <ul class="l">
+        <li><b>WhatsApp Business</b> con tu foto del gimnasio, "Para los que creen que es imposible" y el enlace al formulario.</li>
+        <li><b>Guarda cada contacto</b> y pídele que te guarde: si no, no ve tus Estados.</li>
+        <li><b>3–5 Estados al día:</b> tu entreno, un plato, una corrección de técnica y, martes y viernes, "abro 2 plazas, respóndeme HAZLO".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Seguimiento si no responde</span>
+      <ul class="l">
+        <li><b>Día 2:</b> "¿Sigue en pie lo de empezar o lo dejamos para 'el mes que viene' otra vez?"</li>
+        <li><b>Día 7:</b> un audio corto con una corrección o un caso parecido al suyo.</li>
+        <li><b>Día 14:</b> "Entiendo que ahora no es el momento. Cuando quieras dejar de ser el de siempre, aquí estoy. Para de pensar y hazlo."</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">Tu rutina diaria</span><h2 id="h-rutina">Cinco bloques. Todos los días.</h2></header>
+    <div class="routine">
+      <div><small>Mañana</small><b>Ronda 1</b><span>50 conversaciones, antes del trabajo o en la pausa.</span></div>
+      <div><small>Mediodía</small><b>Contenido</b><span>Publicar lo que toca e historias.</span></div>
+      <div><small>Tarde</small><b>Ronda 2</b><span>Otras 50, empezando por los nuevos seguidores.</span></div>
+      <div><small>Noche</small><b>Seguimiento</b><span>Responder, días 2/7/14, WhatsApp.</span></div>
+      <div><small>Antes de dormir</small><b>Apuntar</b><span>CRM, coste por seguidor y reporte para Alberto.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ads">
+    <header><span class="label">Anuncios de seguidores con voz en off</span><h2 id="h-ads">Reels de 30–45 s: tu voz sobre tus clips entrenando.</h2><p class="soft">Cada anuncio toca <b>un solo ángulo</b>. El gancho va en los 3 primeros segundos y siempre se cierra con "Sígueme para…". El objetivo es seguidores de tu nicho; las conversaciones las abres tú después con la bienvenida.</p></header>
+    <div class="rules">
+      <div><b>5–10 €/día</b><span>Por anuncio. A los 2 días valoras.</span></div>
+      <div><b>&lt; 1 €</b><span>Por seguidor: se queda y escalas hacia 10 €/día.</span></div>
+      <div><b>1–1,5 €</b><span>Cambias el gancho (usa los 3 de cada guion).</span></div>
+      <div><b>&gt; 1,5 €</b><span>A los 2 días: lo cortas.</span></div>
+      <div><b>España · +25 años</b><span>Nada más. Es justo tu nicho.</span></div>
+      <div><b>Política de Meta</b><span>Nada de atributos personales ni de salud: ni "¿tienes…?", ni "si eres flaco", ni "tu barriga", ni insulina. Habla en primera persona o con "la mayoría".</span></div>
+    </div>
+    <div class="msgs"><article class="card ad"><span class="badge">Anuncio 1 · "Creía que era imposible"</span><p class="soft">Tu historia: el flaco de siempre. El ángulo más fuerte.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Con 15 años pesaba 52 kg, medía casi 1,84 y creía que ganar músculo era imposible para mí."</p><p>Texto en pantalla: 52 KG · "IMPOSIBLE" · Clip: press militar o elevaciones laterales de cerca, se ven los hombros.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Me decían que no tenía hombros. En verano iba con sudadera para parecer más grande. Pensaba que era mi constitución: comía dos o tres veces al día y entrenaba sin plan. Lo que me cambió no fue una rutina mágica: fue entrenar fuerza con un orden, comer para construir y cumplir aunque no tuviera ganas. Ahora los que se reían me preguntan cómo entreno los hombros."</p><p>Texto: SUDADERA EN VERANO · 2–3 COMIDAS → FUERZA + COMIDA + CONSTANCIA · Clips: tu plato, sentadilla, entreno de noche, serie pesada de hombro.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme para ver cómo se pasa de imposible a hecho."</p><p>Texto: SÍGUEME · @holyfield_fitness · Clip: tú mirando a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Me decían que no tenía hombros. Ahora me preguntan cómo los entreno."</li><li>"Siempre fui el flaco del grupo. Creía que era para siempre."</li><li>"Veía casi imposible subir de peso. Esto es lo que cambié."</li></ol></div></article><article class="card ad"><span class="badge">Anuncio 2 · "El niño de siempre"</span><p class="soft">Identidad: el flaco o el gordo que arrastra la etiqueta desde pequeño.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "La mayoría de los adultos que fueron el flaco o el gordo de la clase se siguen viendo así a los 30."</p><p>Texto: ¿EL DE SIEMPRE? · Clip: foto tuya de los 15 (si la tienes) que pasa a ti entrenando hoy.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "Yo fui el flaco: 52 kilos y "sin hombros". Durante años pensé que mi cuerpo era así y punto. Lo veo mucho en el gimnasio: el que siempre fue el delgado cree que no puede ganar, y el que siempre fue el de más peso cree que no puede perder. No es imposible. Es que nadie le enseñó a entrenar fuerza, a comer para su caso y a hacerlo con el tiempo que tiene un adulto."</p><p>Texto: EL FLACO · EL GORDO → NO ES IMPOSIBLE · Clips: libreta con cargas, plato con proteína, tú caminando, serie de remo.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Sígueme: cada día cuento cómo se deja atrás la etiqueta del colegio."</p><p>Texto: SÍGUEME · @holyfield_fitness · Clip: última repetición y mirada a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Tu cuerpo de niño no decide tu cuerpo de adulto."</li><li>"Fui el flaco de la clase hasta los 18. Esto es lo que aprendí."</li><li>"La mayoría se queda con la etiqueta del colegio toda la vida."</li></ol></div></article><article class="card ad"><span class="badge">Anuncio 3 · "Instalar el hábito con poco tiempo"</span><p class="soft">Para el que se ha ido dejando con el trabajo.</p><div class="beat"><small>0–3 s · Gancho</small><div><p>Voz: "Trabajaba más de 40 horas a la semana, estudiaba y entrenaba a las 00:30."</p><p>Texto: 40 H + ESTUDIOS · 00:30 · Clip: reloj del móvil de noche, entras al gimnasio.</p></div></div><div class="beat"><small>3–35 s · Cuerpo</small><div><p>Voz: "No te cuento esto para que entrenes a medianoche. Te lo cuento porque el tiempo casi nunca es el problema. La mayoría no se deja de golpe: se va dejando. Un entreno menos, una cena más, un año más. Lo que funciona es aburrido: tres sesiones de fuerza en la agenda como una reunión, caminar cada día y proteína en cada comida. No hace falta entrenar de lunes a viernes. Hace falta no parar."</p><p>Texto: 3 SESIONES EN LA AGENDA · PASOS · PROTEÍNA · Clips: agenda del móvil con el entreno, tu entreno con técnica limpia, paseo, tu plato.</p></div></div><div class="beat"><small>35–45 s · CTA</small><div><p>Voz: "Para de pensar y hazlo. Sígueme para instalar el hábito con el tiempo que tienes."</p><p>Texto: PARA DE PENSAR Y HAZLO · SÍGUEME · Clip: tú cerrando la libreta y mirando a cámara.</p></div></div><div><b style="font-size:14.5px">3 ganchos para testear</b><ol class="hooks"><li>"Yo entrenaba a las 00:30. Y no te lo recomiendo."</li><li>"No te dejas de golpe. Te vas dejando."</li><li>"Tres días bien hechos ganan a cinco a medias."</li></ol></div></article></div>
+    <p class="soft" style="font-size:14px">Clips: los tuyos entrenando, con camiseta (como tú quieres comunicar). Sin antes/después ni nada de salud (insulina, peso del que mira) en anuncios: eso va solo en orgánico. Subtítulos siempre: la mayoría lo ve sin sonido. Si vendes también presencial en Londres, abre un conjunto aparte para Reino Unido.</p>
+  </section>
+
+  <section class="g2" aria-label="Avisos y contenido de apoyo">
+    <div class="card chip">
+      <span class="label">Ojo con los límites de Instagram</span>
+      <ul class="l">
+        <li>Instagram puede limitar temporalmente cuentas que mandan muchos mensajes iguales seguidos.</li>
+        <li>Rota los 7 mensajes, personaliza con su nombre o algo de su perfil y deja pausas entre envíos.</li>
+        <li>Prioriza a quien ya ha interactuado contigo. El objetivo de 100 no baja: se reparte bien.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">El contenido que lo apoya</span>
+      <ul class="l">
+        <li><b>Una sola palabra clave:</b> "HAZLO". En historias, reels y carruseles: "escríbeme HAZLO".</li>
+        <li><b>Historias:</b> secuencia de CTA fuerte martes y viernes.</li>
+        <li><b>Reels a cámara:</b> 3 a la semana, siendo tú mismo, con los ángulos de tus anuncios que mejor funcionen ("creía que era imposible", "el de siempre", "poco tiempo").</li>
+        <li><b>Formulario</b> en la bio y en cada Estado: docs.google.com/forms/…<!-- PENDIENTE: enlace completo del formulario (en su bio aparece truncado: docs.google.com/forms/d/1mxZsM-2oC0Gwl…) --></li>
+      </ul>
+    </div>
+  </section>
+</div>
+<script>
+(function () {
+  document.querySelectorAll("[data-cp]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-cp"), o = b.textContent;
+      var done = function (m) { b.textContent = m; setTimeout(function () { b.textContent = o; }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+      else done("Selecciona");
+    });
+  });
+})();
+</script>

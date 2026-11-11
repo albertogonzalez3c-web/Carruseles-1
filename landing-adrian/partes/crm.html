@@ -1,0 +1,693 @@
+<title>Adrián CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: herramienta de trabajo con 3 vistas (Hoy, Embudo, Proceso y guion); los leads viven en la base de datos compartida. Paleta neutra con acento dorado de Adrián. */
+:root {
+  --paper: #ecebe7;
+  --white: #fbfaf8;
+  --sand: #e2dfd6;
+  --sand-line: #cdc6ae;
+  --ink: #141414;
+  --soft: #66635d;
+  --gold: #8a6a00;
+  --gold-text: #7a5e00;
+  --chip: #efede8;
+  --rust: #9a4b2f;
+  --green: #4f6b3a;
+  --f-body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(28px, 4vw, 40px)/1.05 var(--f-body); letter-spacing: -.03em; }
+h2 { font: 800 21px/1.2 var(--f-body); }
+h3 { font: 700 16px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+button { font-family: inherit; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: var(--white); border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn:focus-visible, .tab:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+input, select, textarea { font: 600 14.5px/1.3 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; }
+textarea { resize: vertical; min-height: 64px; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 1px; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); }
+
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: rgba(236, 235, 231, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+header.top .wrap { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding-block: 12px; }
+.brand { display: grid; gap: 2px; }
+.brand b { font: 800 18px/1 var(--f-body); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { all: unset; cursor: pointer; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--white); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--rust); }
+
+main { padding-block: 22px 60px; }
+[hidden] { display: none !important; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.kpi { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; }
+.kpi b { font: 800 26px/1 var(--f-body); color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12.5px; color: var(--soft); font-weight: 600; }
+
+/* Alta */
+.add { margin-bottom: 16px; }
+.add form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.add .full { grid-column: 1 / -1; }
+.add .two { grid-column: span 2; }
+.entrada { display: flex; gap: 6px; flex-wrap: wrap; }
+.entrada label { display: flex; gap: 8px; align-items: center; background: var(--chip); border-radius: 999px; padding: 8px 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; }
+.entrada input { width: auto; margin: 0; accent-color: var(--gold); }
+
+/* Hoy */
+.tasks { display: grid; gap: 8px; }
+.task { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--white); border-radius: 14px; padding: 12px 14px; }
+.task .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+.task.urgent .dot { background: var(--rust); }
+.task.done .dot { background: var(--green); }
+.task b { display: block; font-size: 15px; }
+.task span { color: var(--soft); font-size: 13.5px; }
+.empty { color: var(--soft); text-align: center; padding: 26px; background: var(--white); border-radius: 14px; }
+
+/* Embudo */
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 1fr); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: var(--sand); border-radius: 16px; padding: 10px; display: grid; gap: 8px; align-content: start; min-height: 120px; }
+.col-h { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; }
+.col-h b { font-size: 14px; }
+.col-h span { font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.lead { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 12px; padding: 10px 12px; display: grid; gap: 4px; }
+.lead:focus-visible { outline: 3px solid var(--ink); }
+.lead b { font-size: 14.5px; }
+.lead .meta { font-size: 12.5px; color: var(--soft); }
+.lead .next { font-size: 12.5px; font-weight: 700; color: var(--gold-text); }
+.lead.warn .next { color: var(--rust); }
+
+/* Ficha */
+.drawer-bg { position: fixed; inset: 0; background: rgba(28, 26, 23, .35); z-index: 20; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100%); background: var(--paper); z-index: 21; overflow-y: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) 18px; display: grid; gap: 12px; align-content: start; box-shadow: -10px 0 30px rgba(0, 0, 0, .15); }
+.drawer-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields .full { grid-column: 1 / -1; }
+.steps { display: flex; gap: 4px; flex-wrap: wrap; }
+.steps button { all: unset; cursor: pointer; font-size: 12.5px; font-weight: 700; padding: 7px 10px; border-radius: 999px; background: var(--white); color: var(--soft); }
+.steps button[aria-pressed="true"] { background: var(--gold); color: var(--white); }
+.steps button:focus-visible { outline: 3px solid var(--ink); }
+.check { display: grid; gap: 6px; }
+.check label { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; cursor: pointer; background: var(--white); border-radius: 10px; padding: 9px 10px; }
+.check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--gold); }
+.check small { display: block; color: var(--soft); font-size: 12.5px; }
+.msg { background: var(--chip); border-radius: 12px; padding: 10px 12px; display: grid; gap: 8px; }
+.msg p { font-size: 14px; }
+.msg .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.log { display: grid; gap: 4px; font-size: 13px; color: var(--soft); max-height: 160px; overflow-y: auto; }
+.phone-line { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.phone-line code { font: 700 15px/1 var(--f-mono); background: var(--white); padding: 8px 10px; border-radius: 8px; user-select: all; }
+.alert { background: #f4e3dc; color: var(--rust); border-radius: 10px; padding: 9px 12px; font-size: 13.5px; font-weight: 700; }
+
+/* Clientes */
+.crow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center; background: var(--white); border-radius: 12px; padding: 11px 14px; font-size: 14px; width: 100%; }
+.crow:focus-visible { outline: 3px solid var(--ink); }
+.crow.head { cursor: default; background: none; padding-block: 4px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.crow .num { font-variant-numeric: tabular-nums; }
+.crow .mo { display: none; }
+.crow small { display: block; color: var(--soft); font-size: 12.5px; }
+.pill { display: inline-block; width: fit-content; font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: #e3e8dc; color: var(--green); }
+.pill.baja { background: #f4e3dc; color: var(--rust); }
+.pill.warn { background: #f3ead2; color: var(--gold-text); }
+.clist { display: grid; gap: 6px; }
+details.addc > summary { cursor: pointer; font-weight: 800; list-style: none; }
+details.addc > summary::-webkit-details-marker { display: none; }
+.addc form { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: end; margin-top: 12px; }
+.extra { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; border-bottom: 1px solid var(--sand-line); padding-block: 6px; }
+
+/* Guion */
+.guide { display: grid; gap: 14px; }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.flow .card .n { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: var(--white); display: grid; place-items: center; font-weight: 800; }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 5px; color: var(--soft); font-size: 14.5px; }
+ul.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 10px; padding: 9px 12px; font-size: 14px; font-weight: 600; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; font-size: 14px; }
+.obj b { font-size: 14.5px; }
+
+@media (max-width: 980px) {
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .add form { grid-template-columns: 1fr 1fr; }
+  .addc form { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .kpis, .grid2, .flow, .fields { grid-template-columns: 1fr 1fr; }
+  .add form { grid-template-columns: 1fr; }
+  .add .two { grid-column: auto; }
+  .grid2, .flow { grid-template-columns: 1fr; }
+  .obj { grid-template-columns: 1fr; }
+  .addc form { grid-template-columns: 1fr; }
+  .crow { grid-template-columns: minmax(0, 1fr) auto; }
+  .crow .hm { display: none; }
+  .crow .mo { display: inline; }
+  .task { grid-template-columns: 10px minmax(0, 1fr); }
+  .task .btn { grid-column: 2; justify-self: start; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="label">Adrián Domínguez</span><b>CRM de leads</b></div>
+    <nav class="tabs" role="tablist" aria-label="Vistas">
+      <button class="tab" role="tab" id="tab-hoy" aria-selected="true" data-view="hoy">Hoy</button>
+      <button class="tab" role="tab" id="tab-embudo" aria-selected="false" data-view="embudo">Embudo</button>
+      <button class="tab" role="tab" id="tab-clientes" aria-selected="false" data-view="clientes">Clientes</button>
+      <button class="tab" role="tab" id="tab-guion" aria-selected="false" data-view="guion">Proceso y guion</button>
+    </nav>
+    <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card add" id="addCard" aria-labelledby="h-add">
+    <h2 id="h-add">Nuevo lead</h2>
+    <form id="addForm" autocomplete="off">
+      <label class="f">Nombre<input id="n-nombre" required placeholder="Nombre"></label>
+      <label class="f">Teléfono<input id="n-tel" inputmode="tel" placeholder="+34 …"></label>
+      <label class="f">Instagram<input id="n-ig" placeholder="@usuario"></label>
+      <label class="f">Origen<select id="n-origen"><option>Comenta CAMBIO</option><option>Instagram orgánico</option><option>Anuncio sígueme</option><option>Anuncio formulario</option><option>YouTube</option><option>Historias</option><option>Recomendación</option><option>Otro</option></select></label>
+      <div class="f full"><span class="label" style="margin-bottom:4px">¿Cómo llega el teléfono?</span>
+        <div class="entrada" role="radiogroup" aria-label="Cómo llega el teléfono">
+          <label><input type="radio" name="entrada" value="frio" checked> En frío (formulario o anuncio): se le llama y se filtra</label>
+          <label><input type="radio" name="entrada" value="ig"> Desde una conversación de Instagram: se le manda a agendar</label>
+        </div>
+      </div>
+      <label class="f two">Objetivo o lo que contó<input id="n-obj" placeholder="Ej.: 32 años, entrena 2 años y sigue igual"></label>
+      <label class="f">Edad<input id="n-edad" inputmode="numeric" placeholder="Ej.: 42"></label>
+      <button class="btn" type="submit" id="addBtn">Añadir lead</button>
+    </form>
+    <p class="soft" id="addNote" aria-live="polite" style="font-size:13px"></p>
+  </section>
+
+  <section class="view" id="view-hoy" aria-labelledby="h-hoy">
+    <div class="kpis" id="kpis"></div>
+    <h2 id="h-hoy" style="margin-bottom:10px">Qué toca hoy</h2>
+    <div class="tasks" id="todayList"><p class="empty">Cargando…</p></div>
+  </section>
+
+  <section class="view" id="view-embudo" hidden aria-labelledby="h-emb">
+    <h2 id="h-emb" style="margin-bottom:10px">Embudo</h2>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section class="view" id="view-clientes" hidden aria-labelledby="h-cli">
+    <div class="kpis" id="ckpis"></div>
+    <div class="card sand" style="margin-bottom:16px">
+      <details class="addc">
+        <summary>+ Añadir un cliente que ya tenías</summary>
+        <form id="addCli" autocomplete="off">
+          <label class="f">Nombre<input id="c-nombre" required placeholder="Nombre"></label>
+          <label class="f">Teléfono<input id="c-tel" inputmode="tel" placeholder="+34 …"></label>
+          <label class="f">Plan<select id="c-plan"></select></label>
+          <label class="f">Fecha de alta<input id="c-alta" type="date" required></label>
+          <button class="btn" type="submit" id="c-btn">Añadir cliente</button>
+        </form>
+        <p class="soft" id="c-note" aria-live="polite" style="font-size:13px"></p>
+      </details>
+    </div>
+    <h2 id="h-cli" style="margin-bottom:10px">Clientes</h2>
+    <div class="clist" id="clist"></div>
+    <p class="soft" style="font-size:13px;margin-top:12px"><b>Vida media</b> = media del tiempo entre el alta y la baja de los clientes que se han ido. Se recalcula sola cada vez que das de baja a alguien. <b>Facturado por cliente</b> incluye la primera venta y todo el back-end (ascensiones, renovaciones, continuidad).</p>
+  </section>
+
+  <section class="view" id="view-guion" hidden aria-labelledby="h-guion">
+    <div class="guide">
+      <div>
+        <span class="label">Proceso completo</span>
+        <h2 style="margin-top:6px">Desde que pide información hasta que habla con Adrián.</h2>
+      </div>
+      <div class="flow">
+        <article class="card"><span class="n">1</span><h3>Llega el teléfono</h3><ul class="l"><li><b>En frío</b> (formulario o anuncio): llamada en menos de 5 minutos.</li><li><b>Desde Instagram:</b> se le manda directamente a agendar.</li></ul></article>
+        <article class="card"><span class="n">2</span><h3>Llamada de filtro</h3><ul class="l"><li>5–10 minutos, cercana.</li><li>"Has pedido información, quería conocer un poco tu objetivo".</li><li>Si encaja, se agenda la llamada con Adrián.</li></ul></article>
+        <article class="card"><span class="n">3</span><h3>Agendada</h3><ul class="l"><li><b>Máximo 2–3 días vista.</b></li><li>Al agendar: <b>testimonio</b> parecido y <b>vídeo selfie</b> de Adrián dando las gracias.</li></ul></article>
+        <article class="card"><span class="n">4</span><h3>Día de la llamada</h3><ul class="l"><li>Un <b>testimonio similar</b> a su caso.</li><li>Una <b>explicación muy breve</b> del servicio.</li><li>Recordatorio de la hora.</li></ul></article>
+      </div>
+
+      <div class="grid2">
+        <article class="card">
+          <span class="label">Llamada de filtro · 5–10 min</span>
+          <h3>Cercana, rápida, para ver si encaja</h3>
+          <p class="say">"¡Hola [nombre]! Soy [nombre] del equipo de Adrián. Has pedido información y quería conocerte un poco. ¿Tienes 5 minutos?"</p>
+          <ul class="l">
+            <li><b>Situación:</b> edad, trabajo, si entrena y desde cuándo.</li>
+            <li><b>Objetivo:</b> qué quiere cambiar y por qué ahora.</li>
+            <li><b>Intentos:</b> qué ha probado y qué pasó.</li>
+            <li><b>Encaje:</b> si es +25, entrena o lo ha intentado y está estancado → agendar.</li>
+          </ul>
+          <p class="say">"Por lo que me cuentas, encajas en lo que hace Adrián. Te propongo una llamada con él de 30 minutos para ver tu caso. ¿Te viene mejor [día] o [día]?"</p>
+          <p class="soft" style="font-size:13.5px">Ofrecer siempre dos opciones, dentro de 2–3 días.</p>
+        </article>
+        <article class="card sand">
+          <span class="label">Mensajes que se envían</span>
+          <h3>Del agendado a la llamada</h3>
+          <ul class="l">
+            <li><b>Al agendar:</b> confirmación, testimonio de alguien parecido y vídeo selfie de Adrián dando las gracias.</li>
+            <li><b>El día de la llamada:</b> testimonio similar y explicación breve del servicio en 3 líneas.</li>
+            <li><b>1 hora antes:</b> recordatorio con el enlace.</li>
+          </ul>
+          <p class="say">"[Nombre], hoy a las [hora] hablamos. Te dejo el caso de [cliente], que estaba como tú. Lo que hacemos: un plan por fases para perder grasa y ganar músculo a la vez, con revisión semanal y adaptado a tu vida real. ¡Nos vemos!"</p>
+        </article>
+      </div>
+
+      <article class="card">
+        <span class="label">Llamada de venta con Adrián · 30–40 min</span>
+        <h2>Derribar las objeciones antes de que lleguen.</h2>
+        <div class="grid2">
+          <div class="card sand">
+            <h3>1 · Apertura y marco (2 min)</h3>
+            <p class="soft" style="font-size:14px">Se fijan las reglas antes de empezar. Así las objeciones típicas no aparecen al final.</p>
+            <p class="say">"Antes de empezar: ¿eres tú quien toma esta decisión o hay alguien más que debería estar en la llamada?"</p>
+            <p class="say">"Si al final vemos que encajas, ¿estarías en disposición de empezar esta semana?"</p>
+            <p class="say">"Te voy a ser claro: si veo que no te puedo ayudar, te lo digo. ¿Te parece?"</p>
+          </div>
+          <div class="card sand">
+            <h3>2 · Diagnóstico (15 min)</h3>
+            <p class="soft" style="font-size:14px">La persona tiene que ver por sí misma lo mal que lo está haciendo.</p>
+            <ul class="l">
+              <li><b>Situación:</b> "Cuéntame un día normal tuyo".</li>
+              <li><b>Intentos:</b> "¿Qué has probado? ¿Qué pasó?"</li>
+              <li><b>Por qué no funcionó:</b> "¿Por qué crees que tu cuerpo no cambia?"</li>
+              <li><b>Coste de seguir así:</b> "Si sigues igual un año, ¿dónde estás?"</li>
+              <li><b>Objetivo y motivo real:</b> "¿Por qué ahora?"</li>
+            </ul>
+            <p class="say">"Entrenas, comes 'sano' y sigues igual… No es tu genética: es la estructura."</p>
+          </div>
+          <div class="card">
+            <h3>3 · El método, en 2 minutos</h3>
+            <ul class="l">
+              <li><b>Fase 1 · Desestancar (meses 1–3):</b> perder grasa sin perder fuerza y ordenar comidas, horarios y hábitos.</li>
+              <li><b>Fase 2 · Construir (meses 4–6):</b> ganar músculo con la mínima grasa y mejorar el rendimiento.</li>
+              <li><b>Año completo:</b> fase 3, autonomía para mantenerlo solo.</li>
+              <li><b>Cada semana:</b> revisión en la app y ajuste.</li>
+            </ul>
+            <p class="soft" style="font-size:14px">Corto y conectado con lo que ha contado. Nada de clases.</p>
+          </div>
+          <div class="card">
+            <h3>4 · Encaje, oferta y cierre</h3>
+            <p class="say">"Por lo que me cuentas, necesitas justo esto. ¿Quieres que te explique cómo trabajaríamos?"</p>
+            <ul class="l"><li>Oferta: primero el año, después el semestre en dos fases, con la garantía.</li><li>Downsell solo si hace falta: semestre en 2 pagos y, por último, el trimestre.</li><li>Precio, dicho una vez y en silencio.</li><li>"¿Empezamos?"</li></ul>
+          </div>
+        </div>
+        <div class="card sand">
+          <h3>Objeciones: cómo se desactivan antes y cómo se responden si aparecen</h3>
+          <div class="obj"><b>"Lo tengo que hablar con mi mujer"</b><span>Antes: se pregunta en la apertura quién decide. Si aparece: "Claro. ¿Qué crees que te va a preguntar? Lo vemos ahora juntos."</span></div>
+          <div class="obj"><b>"No tengo tiempo"</b><span>Antes: en el diagnóstico, su día real. Si aparece: "Por eso el plan se adapta a tus horarios reales. Precisamente porque no tienes tiempo, no puedes perderlo con algo que no funciona."</span></div>
+          <div class="obj"><b>"Es caro"</b><span>Antes: el coste de seguir así. Si aparece: "¿Caro comparado con qué? ¿Cuánto llevas pagando de gimnasio y suplementos para seguir igual?"</span></div>
+          <div class="obj"><b>"Ya lo he probado y no funcionó"</b><span>Antes: en el diagnóstico se explica por qué no funcionó. Si aparece: "Probaste a entrenar más o a comer menos. Esto es estructura por fases: perder grasa y ganar músculo a la vez. Es otra cosa."</span></div>
+          <div class="obj"><b>"Me lo pienso"</b><span>Antes: en la apertura, "¿estarías en disposición de empezar esta semana?". Si aparece: "¿Qué es exactamente lo que necesitas pensar? Vamos a verlo ahora."</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="label">Si no responde</span>
+        <h3>Secuencia de seguimiento</h3>
+        <ul class="l">
+          <li><b>Día 0:</b> llamada y mensaje.</li>
+          <li><b>Día 2:</b> "Te lo vuelvo a subir por aquí. ¿Sigues queriendo salir del estancamiento este mes?"</li>
+          <li><b>Día 7:</b> un caso de alguien parecido.</li>
+          <li><b>Día 14:</b> mensaje de cierre: "Entiendo que ahora no es tu prioridad. Si cambia, aquí estoy."</li>
+          <li>Después, a la lista de reactivación.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</main>
+
+<div class="drawer-bg" id="drawerBg" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Ficha del lead"></aside>
+
+<script>
+(function () {
+  var STAGES = [
+    { id: "nuevo", name: "Nuevo" },
+    { id: "agendado", name: "Llamada agendada" },
+    { id: "hecha", name: "Llamada hecha" },
+    { id: "cliente", name: "Cliente" },
+    { id: "perdido", name: "Perdido" }
+  ];
+  var PRE = [
+    { k: "pre_testimonio", t: "Testimonio enviado al agendar", s: "Un caso parecido al suyo" },
+    { k: "pre_selfie", t: "Vídeo selfie de Adrián dando las gracias", s: "Corto, personal, el mismo día" },
+    { k: "pre_dia", t: "Día de la llamada: testimonio similar y explicación breve", s: "3 líneas del servicio" },
+    { k: "pre_recordatorio", t: "Recordatorio 1 hora antes con el enlace", s: "" }
+  ];
+  var POST = [
+    { k: "post_1", d: 0, t: "Día 1: resumen, caso parecido y audio personal", s: "En menos de 10 minutos tras la llamada" },
+    { k: "post_2", d: 1, t: "Día 2: contenido de valor, otro caso y resolver dudas", s: "" },
+    { k: "post_3", d: 2, t: "Día 3: oferta por escrito con testimonios", s: "" },
+    { k: "post_4", d: 3, t: "Día 4: último seguimiento con urgencia real", s: "Audio o vídeo corto" }
+  ];
+  var FOLLOW = [
+    { d: 2, t: "Día 2", m: "Hola {n}, te lo vuelvo a subir por aquí. ¿Sigues queriendo salir del estancamiento este mes?" },
+    { d: 7, t: "Día 7", m: "Hola {n}, me he acordado de ti. Acabo de ayudar a alguien con tu misma situación a salir del estancamiento: menos grasa y más músculo: [enlace al caso]. Creo que te puede servir." },
+    { d: 14, t: "Día 14", m: "Hola {n}, como no he sabido de ti, entiendo que ahora no es tu prioridad. Cierro tu ficha. Si las cosas cambian, aquí estoy." }
+  ];
+
+  var PLANS = [
+    { id: "Año", m: 12, p: 1050 },
+    { id: "Año a plazos", m: 12, p: 1100 },
+    { id: "Semestre", m: 6, p: 650 },
+    { id: "Semestre en 2 pagos", m: 6, p: 700 },
+    { id: "Trimestre", m: 3, p: 350 },
+    { id: "Mantenimiento mensual", m: 1, p: 0 }
+  ];
+  var OLD_MONTHS = { "90 días": 3, "6 meses": 6, "1 año": 12 };
+  var EXTRA_TIPOS = ["Ascensión", "Renovación anticipada", "Continuidad", "Referido"];
+
+  var db = null, leads = [], openId = null, busy = {};
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function now() { return new Date().toISOString(); }
+  function days(iso) { if (!iso) return 0; return Math.floor((Date.now() - new Date(iso).getTime()) / 86400000); }
+  function fmtDate(iso) { if (!iso) return "—"; var d = new Date(iso), o = { day: "numeric", month: "short" }; if (d.getFullYear() !== new Date().getFullYear()) o.year = "numeric"; return d.toLocaleDateString("es-ES", o); }
+  function fmtDT(v) { if (!v) return ""; var d = new Date(v); return d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }); }
+  function num(v) { return parseFloat(String(v == null ? "" : v).replace(",", ".")) || 0; }
+  function eur(v) { return Math.round(v).toLocaleString("es-ES") + " €"; }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function planM(p) { var f = PLANS.find(function (x) { return x.id === p; }); return f ? f.m : (OLD_MONTHS[p] || 0); }
+  function altaOf(l) { return l.altaEl || (l.cerradoEl ? l.cerradoEl.slice(0, 10) : today()); }
+  function addMonths(iso, m) { var d = new Date(iso + "T12:00:00"); d.setMonth(d.getMonth() + m); return d; }
+  function finPlan(l) { var m = planM(l.plan) + (l.extras || []).reduce(function (a, e) { return a + num(e.meses); }, 0); return m ? addMonths(altaOf(l), m) : null; }
+  function stayDays(l) { var end = l.estadoCliente === "baja" && l.bajaEl ? new Date(l.bajaEl + "T12:00:00") : new Date(); return Math.max(0, Math.round((end - new Date(altaOf(l) + "T12:00:00")) / 86400000)); }
+  function months(d) { return (d / 30.44).toLocaleString("es-ES", { maximumFractionDigits: 1 }); }
+  function billed(l) { return num(l.importe) + (l.extras || []).reduce(function (a, e) { return a + num(e.importe); }, 0); }
+  function clients() { return leads.filter(function (l) { return l.etapa === "cliente"; }); }
+  function isActive(l) { return l.estadoCliente !== "baja"; }
+  function renewTask(l) {
+    if (!isActive(l)) return null;
+    var f = finPlan(l); if (!f) return null;
+    var left = Math.ceil((f - new Date()) / 86400000);
+    if (left < 0) return { t: "Plan terminado hace " + (-left) + " d: renovar o dar de baja", u: true };
+    if (left <= 21) return { t: "Su plan acaba el " + fmtDate(f.toISOString()) + ": ofrecer renovación anticipada", u: left <= 7 };
+    return null;
+  }
+  function first(n) { return (n || "").split(" ")[0] || "crack"; }
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+
+  /* Siguiente acción */
+  function nextAction(l) {
+    var st = l.etapa || "nuevo", toques = (l.toques || []).length;
+    if (st === "nuevo") {
+      if (!toques) return { t: l.entrada === "ig" ? "Mandarle el enlace para agendar (2–3 días vista)" : "Llamar ya: llamada de filtro", u: true };
+      var d = days(l.ultimoContacto);
+      for (var i = FOLLOW.length - 1; i >= 0; i--) {
+        if (d >= FOLLOW[i].d && !(l.seguimiento || {})["f" + FOLLOW[i].d]) return { t: "Sin respuesta · mensaje del " + FOLLOW[i].t.toLowerCase(), u: FOLLOW[i].d >= 7, f: FOLLOW[i] };
+      }
+      if ((l.seguimiento || {}).f14) return { t: "Secuencia terminada: pasar a Perdido o reactivar", u: false };
+      return { t: "Esperando respuesta (" + d + " d)", u: false };
+    }
+    if (st === "agendado") {
+      if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) return { t: "Llamada a más de 3 días: intentar adelantarla", u: true };
+      var c = l.checks || {};
+      if (!c.pre_testimonio || !c.pre_selfie) return { t: "Enviar testimonio y vídeo selfie", u: true };
+      if (l.fechaLlamada && new Date(l.fechaLlamada).toDateString() === new Date().toDateString() && !c.pre_dia) return { t: "Hoy es la llamada: testimonio similar y explicación breve", u: true };
+      if (l.fechaLlamada && new Date(l.fechaLlamada) < new Date()) return { t: "¿Se hizo la llamada? Pasar a Llamada hecha", u: true };
+      return { t: "Llamada " + fmtDT(l.fechaLlamada), u: false };
+    }
+    if (st === "hecha") {
+      var dc = days(l.llamadaHechaEl), cc = l.checks || {};
+      for (var j = 0; j < POST.length; j++) if (dc >= POST[j].d && !cc[POST[j].k]) return { t: POST[j].t, u: true };
+      return { t: "Seguimiento hecho: cerrar o pasar a Perdido", u: dc > 4 };
+    }
+    if (st === "cliente") {
+      if (!isActive(l)) return { t: "Baja · estuvo " + months(stayDays(l)) + " meses", u: false, done: true };
+      var r = renewTask(l); if (r) return { t: r.t, u: r.u, done: true, renew: true };
+      return { t: "Cliente activo · " + (l.plan || "plan sin apuntar") + " · " + eur(billed(l)), u: false, done: true };
+    }
+    return { t: "Perdido" + (l.motivo ? " · " + l.motivo : ""), u: false, done: true };
+  }
+
+  /* Escrituras */
+  async function patch(id, data) {
+    if (!db) return;
+    if (busy[id]) { await busy[id]; }
+    var p = db.collection("leads").doc(id).update(Object.assign({ actualizado: now() }, data));
+    busy[id] = p.catch(function () {});
+    try { await p; } catch (e) { setStatus(e && e.code === "invalid_argument" ? "No tienes permiso para editar" : "No se ha podido guardar", true); }
+  }
+
+  /* Render */
+  function renderKpis() {
+    var c = function (s) { return leads.filter(function (l) { return (l.etapa || "nuevo") === s; }).length; };
+    var week = leads.filter(function (l) { return days(l.creado) < 7; }).length;
+    var pend = leads.filter(function (l) { var a = nextAction(l); return a.u && !a.done; }).length;
+    var act = clients().filter(isActive).length;
+    var data = [[week, "Leads últimos 7 días"], [c("nuevo"), "Nuevos sin agendar"], [c("agendado"), "Llamadas agendadas"], [c("hecha"), "En seguimiento"], [act, "Clientes activos"], [pend, "Tareas urgentes"]];
+    $("kpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + d[0] + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+  }
+  function renderToday() {
+    var list = leads.filter(function (l) { return ["cliente", "perdido"].indexOf(l.etapa || "nuevo") < 0 || (l.etapa === "cliente" && renewTask(l)); })
+      .map(function (l) { return { l: l, a: l.etapa === "cliente" ? renewTask(l) : nextAction(l) }; })
+      .sort(function (x, y) { return (y.a.u ? 1 : 0) - (x.a.u ? 1 : 0); });
+    var box = $("todayList");
+    if (!list.length) { box.innerHTML = '<p class="empty">No hay leads abiertos. Añade el primero arriba.</p>'; return; }
+    box.innerHTML = "";
+    list.forEach(function (o) {
+      var el = document.createElement("div"); el.className = "task" + (o.a.u ? " urgent" : "");
+      el.innerHTML = '<span class="dot" aria-hidden="true"></span><div><b>' + esc(o.l.nombre) + '</b><span>' + esc(o.a.t) + (o.l.telefono ? ' · ' + esc(o.l.telefono) : '') + '</span></div><button type="button" class="btn small ghost">Abrir</button>';
+      el.querySelector("button").addEventListener("click", function () { openLead(o.l.id); });
+      box.appendChild(el);
+    });
+  }
+  function renderBoard() {
+    var b = $("board"); b.innerHTML = "";
+    STAGES.forEach(function (s) {
+      var items = leads.filter(function (l) { return (l.etapa || "nuevo") === s.id; });
+      var col = document.createElement("div"); col.className = "col";
+      col.innerHTML = '<div class="col-h"><b>' + esc(s.name) + '</b><span>' + items.length + '</span></div>';
+      items.forEach(function (l) {
+        var a = nextAction(l), card = document.createElement("button");
+        card.type = "button"; card.className = "lead" + (a.u ? " warn" : "");
+        card.innerHTML = '<b>' + esc(l.nombre) + '</b><span class="meta">' + esc(l.origen || "") + ' · ' + fmtDate(l.creado) + '</span><span class="next">' + esc(a.t) + '</span>';
+        card.addEventListener("click", function () { openLead(l.id); });
+        col.appendChild(card);
+      });
+      b.appendChild(col);
+    });
+  }
+  function renderClients() {
+    var cl = clients(), act = cl.filter(isActive), gone = cl.filter(function (l) { return !isActive(l); });
+    var n = new Date(), mStart = new Date(n.getFullYear(), n.getMonth(), 1), ym = today().slice(0, 7);
+    var altasMes = cl.filter(function (l) { return altaOf(l).slice(0, 7) === ym; }).length;
+    var bajasMes = gone.filter(function (l) { return (l.bajaEl || "").slice(0, 7) === ym; }).length;
+    var inicioMes = cl.filter(function (l) { return new Date(altaOf(l) + "T12:00:00") < mStart && (isActive(l) || !l.bajaEl || new Date(l.bajaEl + "T12:00:00") >= mStart); }).length;
+    var vida = gone.length ? gone.reduce(function (a, l) { return a + stayDays(l); }, 0) / gone.length : null;
+    var total = cl.reduce(function (a, l) { return a + billed(l); }, 0);
+    var back = cl.reduce(function (a, l) { return a + (l.extras || []).reduce(function (x, e) { return x + num(e.importe); }, 0); }, 0);
+    var data = [
+      [act.length, "Clientes activos"],
+      [altasMes, "Altas este mes"],
+      [bajasMes, "Bajas este mes" + (inicioMes ? " · " + Math.round(bajasMes / inicioMes * 100) + " % abandono" : "")],
+      [vida == null ? "—" : months(vida) + " m", vida == null ? "Vida media (aún sin bajas)" : "Vida media · " + gone.length + " baja" + (gone.length > 1 ? "s" : "")],
+      [cl.length ? eur(total / cl.length) : "—", "Facturado por cliente"],
+      [eur(back), "Facturado en back-end"]
+    ];
+    $("ckpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + esc(d[0]) + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+    var box = $("clist");
+    if (!cl.length) { box.innerHTML = '<p class="empty">Todavía no hay clientes. Cuando un lead cierre, pásalo a "Cliente" o añade aquí los que ya tenías.</p>'; return; }
+    var sorted = act.slice().sort(function (a, b) { return (finPlan(a) || 0) - (finPlan(b) || 0); }).concat(gone);
+    box.innerHTML = '<div class="crow head" aria-hidden="true"><span>Cliente</span><span class="hm">Alta</span><span class="hm">Tiempo</span><span class="hm">Fin del plan</span><span class="hm">Facturado</span><span>Estado</span></div>';
+    sorted.forEach(function (l) {
+      var f = finPlan(l), r = renewTask(l), b = document.createElement("button");
+      b.type = "button"; b.className = "crow";
+      var pill = !isActive(l) ? '<span class="pill baja">Baja</span>' : (r ? '<span class="pill warn">Renovar</span>' : '<span class="pill">Activo</span>');
+      b.innerHTML = '<span><b>' + esc(l.nombre) + '</b><small>' + esc(l.plan || "Plan sin apuntar") + '<span class="mo"> · ' + months(stayDays(l)) + ' m · ' + eur(billed(l)) + '</span></small></span><span class="hm num">' + fmtDate(altaOf(l)) + '</span><span class="hm num">' + months(stayDays(l)) + ' m</span><span class="hm num">' + (isActive(l) ? (f ? fmtDate(f.toISOString()) : "—") : "Baja " + fmtDate(l.bajaEl)) + '</span><span class="hm num">' + eur(billed(l)) + '</span>' + pill;
+      b.addEventListener("click", function () { openLead(l.id); });
+      box.appendChild(b);
+    });
+  }
+  function renderAll() { renderKpis(); renderToday(); renderBoard(); renderClients(); if (openId) renderDrawer(); }
+
+  /* Ficha */
+  function openLead(id) { openId = id; $("drawer").hidden = false; $("drawerBg").hidden = false; renderDrawer(); }
+  function closeLead() { openId = null; $("drawer").hidden = true; $("drawerBg").hidden = true; }
+  $("drawerBg").addEventListener("click", closeLead);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeLead(); });
+
+  function renderDrawer() {
+    var l = leads.find(function (x) { return x.id === openId; });
+    var d = $("drawer");
+    if (!l) { closeLead(); return; }
+    var st = l.etapa || "nuevo", a = nextAction(l), c = l.checks || {}, seg = l.seguimiento || {};
+    var h = '<div class="drawer-head"><div><span class="label">' + esc(l.origen || "Lead") + (l.origen === "Cliente previo" ? "" : ' · ' + (l.entrada === "ig" ? "Desde Instagram" : "En frío")) + '</span><h2>'  + esc(l.nombre) + '</h2></div><button type="button" class="btn small ghost" id="dClose">Cerrar</button></div>';
+    h += '<div class="steps" role="group" aria-label="Etapa">' + STAGES.map(function (s) { return '<button type="button" data-stage="' + s.id + '" aria-pressed="' + (s.id === st) + '">' + esc(s.name) + '</button>'; }).join("") + '</div>';
+    h += '<div class="card"><span class="label">Siguiente paso</span><b>' + esc(a.t) + '</b></div>';
+    if (l.telefono) h += '<div class="phone-line"><code>' + esc(l.telefono) + '</code><a class="btn small" href="https://wa.me/' + esc(String(l.telefono).replace(/\D/g, "")) + '" target="_blank" rel="noopener">WhatsApp</a></div>';
+    h += '<div class="card"><div class="fields">' +
+      '<label class="f">Teléfono<input data-f="telefono" value="' + esc(l.telefono) + '"></label>' +
+      '<label class="f">Instagram<input data-f="ig" value="' + esc(l.ig) + '"></label>' +
+      '<label class="f">Edad<input data-f="edad" value="' + esc(l.edad) + '"></label>' +
+      '<label class="f">Trabajo<input data-f="trabajo" value="' + esc(l.trabajo) + '" placeholder="Oficina, turnos, trabajo físico…"></label>' +
+      '<label class="f full">Objetivo<input data-f="objetivo" value="' + esc(l.objetivo) + '"></label>' +
+      '<label class="f full">Notas<textarea data-f="notas">' + esc(l.notas) + '</textarea></label></div></div>';
+    h += '<div class="card"><div class="phone-line" style="justify-content:space-between"><b>Contactos (' + (l.toques || []).length + ')</b><span><select id="toqueCanal" style="width:auto"><option>Llamada</option><option>WhatsApp</option><option>Audio</option><option>Instagram</option></select> <button type="button" class="btn small" id="addToque">Registrar contacto</button></span></div>' +
+      '<div class="log">' + ((l.toques || []).slice().reverse().map(function (t) { return '<span>' + fmtDT(t.fecha) + ' · ' + esc(t.canal) + '</span>'; }).join("") || '<span>Todavía sin contactos.</span>') + '</div></div>';
+
+    if (st === "nuevo") {
+      h += '<div class="card sand"><span class="label">Si no responde</span>' + FOLLOW.map(function (f) {
+        var m = f.m.replace("{n}", first(l.nombre));
+        return '<div class="msg"><div class="row"><b>' + f.t + '</b><label style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:700"><input type="checkbox" data-seg="f' + f.d + '"' + (seg["f" + f.d] ? " checked" : "") + ' style="width:auto"> Enviado</label></div><p>' + esc(m) + '</p><button type="button" class="btn small ghost" data-copy="' + esc(m) + '">Copiar</button></div>';
+      }).join("") + '</div>';
+      h += '<button type="button" class="btn" data-go="agendado">Ha agendado la llamada</button>';
+    }
+    if (st === "agendado" || st === "hecha" || (st === "cliente" && l.fechaLlamada)) {
+      h += '<div class="card"><label class="f">Fecha y hora de la llamada<input type="datetime-local" data-f="fechaLlamada" value="' + esc(l.fechaLlamada || "") + '"></label>';
+      if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) h += '<p class="alert">Está a más de 3 días. Intenta adelantarla: cuanto más lejos, más se cae.</p>';
+      h += '</div>';
+    }
+    if (st === "agendado") {
+      h += '<div class="card sand"><span class="label">Antes de la llamada</span><div class="check">' + PRE.map(function (p) { return '<label><input type="checkbox" data-chk="' + p.k + '"' + (c[p.k] ? " checked" : "") + '><span>' + esc(p.t) + (p.s ? '<small>' + esc(p.s) + '</small>' : '') + '</span></label>'; }).join("") + '</div>';
+      var dm = "[Nombre], hoy a las [hora] hablamos. Te dejo el caso de [cliente], que estaba como tú. Lo que hacemos: un plan por fases para perder grasa y ganar músculo a la vez, con revisión semanal y adaptado a tu vida real. ¡Nos vemos!".replace("[Nombre]", first(l.nombre)).replace("[hora]", l.fechaLlamada ? new Date(l.fechaLlamada).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) : "[hora]");
+      h += '<div class="msg"><b>Mensaje del día de la llamada</b><p>' + esc(dm) + '</p><button type="button" class="btn small ghost" data-copy="' + esc(dm) + '">Copiar</button></div></div>';
+      h += '<button type="button" class="btn" data-go="hecha">Llamada hecha</button>';
+    }
+    if (st === "hecha") {
+      h += '<div class="card sand"><span class="label">Después de la llamada · día ' + (days(l.llamadaHechaEl) + 1) + '</span><div class="check">' + POST.map(function (p) { return '<label><input type="checkbox" data-chk="' + p.k + '"' + (c[p.k] ? " checked" : "") + '><span>' + esc(p.t) + (p.s ? '<small>' + esc(p.s) + '</small>' : '') + '</span></label>'; }).join("") + '</div></div>';
+      h += '<div class="phone-line"><button type="button" class="btn" data-go="cliente">Ha cerrado</button><button type="button" class="btn ghost" data-go="perdido">No ha cerrado</button></div>';
+    }
+    if (st === "cliente") {
+      var act = isActive(l), fp = finPlan(l), sd = stayDays(l);
+      h += '<div class="card sand"><span class="label">Cliente · ' + (act ? 'activo' : 'baja') + '</span>' +
+        '<p><b>' + (act ? 'Lleva ' : 'Estuvo ') + months(sd) + ' meses</b> (' + sd + ' días)' + (act && fp ? ' · plan hasta el ' + fmtDate(fp.toISOString()) : '') + ' · facturado ' + eur(billed(l)) + '</p>' +
+        '<div class="fields"><label class="f">Fecha de alta<input type="date" data-f="altaEl" value="' + esc(altaOf(l)) + '"></label>' +
+        '<label class="f">Plan<select data-f="plan" id="dPlan"><option></option>' + PLANS.map(function (p) { return '<option>' + esc(p.id) + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Primer cobro (€)<input data-f="importe" inputmode="decimal" value="' + esc(l.importe) + '"></label>' +
+        '<label class="f">Pago<select data-f="pago"><option></option><option>Pago único</option><option>2 pagos</option><option>Klarna / Sequra</option><option>Mensual</option></select></label>' +
+        '<label class="f full">Qué le convenció<input data-f="comoCerro" value="' + esc(l.comoCerro) + '"></label></div></div>';
+      h += '<div class="card"><span class="label">Back-end · momento dulce</span><p class="soft" style="font-size:13.5px">Ofrécelo cuando vea un resultado claro: una foto que impacta, la analítica mejor que la anterior o un comentario espontáneo.</p>' +
+        ((l.extras || []).map(function (e, i) { return '<div class="extra"><span><b>' + esc(e.tipo) + '</b> · ' + fmtDate(e.fecha) + (num(e.meses) ? ' · +' + num(e.meses) + ' meses' : '') + '</span><span>' + eur(num(e.importe)) + ' <button type="button" class="btn small ghost" data-delx="' + i + '" aria-label="Quitar">×</button></span></div>'; }).join("") || '<p class="soft" style="font-size:13px">Sin ventas de back-end todavía.</p>') +
+        '<div class="fields"><label class="f">Tipo<select id="xTipo">' + EXTRA_TIPOS.map(function (t) { return '<option>' + t + '</option>'; }).join("") + '</select></label><label class="f">Importe (€)<input id="xImp" inputmode="decimal"></label><label class="f">Meses que añade<input id="xMes" inputmode="numeric" placeholder="0"></label><label class="f" style="align-self:end"><button type="button" class="btn small" id="xAdd">Añadir venta</button></label></div></div>';
+      if (act) {
+        h += '<button type="button" class="btn small ghost" id="bajaBtn" style="justify-self:start">Dar de baja</button><div id="bajaBox" hidden class="card sand"><div class="fields"><label class="f">Fecha de baja<input type="date" id="bajaFecha" value="' + today() + '"></label><label class="f">Motivo<select id="bajaMotivo"><option>Terminó y no renueva</option><option>Precio</option><option>Falta de tiempo</option><option>No ve resultados</option><option>Motivos personales</option><option>Otro</option></select></label></div><div class="phone-line"><button type="button" class="btn small" id="bajaOk">Confirmar baja</button><button type="button" class="btn small ghost" id="bajaNo">Cancelar</button></div></div>';
+      } else {
+        h += '<div class="card"><p><b>Baja el ' + fmtDate(l.bajaEl) + '</b>' + (l.motivoBaja ? ' · ' + esc(l.motivoBaja) : '') + '</p><button type="button" class="btn small ghost" id="reactBtn" style="justify-self:start">Reactivar cliente</button></div>';
+      }
+    }
+    if (st === "perdido") {
+      h += '<div class="card sand"><label class="f">Motivo<select data-f="motivo"><option></option><option>No responde</option><option>Precio</option><option>No es el momento</option><option>Lo consulta con su pareja</option><option>No encaja</option><option>Otro</option></select></label><p class="soft" style="font-size:13px">Pasados 30 días, a la lista de reactivación.</p></div>';
+    }
+    h += '<p class="soft" style="font-size:12.5px">Creado ' + fmtDate(l.creado) + ' · actualizado ' + fmtDate(l.actualizado) + '</p>';
+    h += '<button type="button" class="btn small ghost" id="delBtn" style="justify-self:start">Borrar lead</button><div id="delConfirm" hidden class="phone-line"><span class="soft">¿Borrar este lead para siempre?</span><button type="button" class="btn small" id="delYes">Sí, borrar</button><button type="button" class="btn small ghost" id="delNo">Cancelar</button></div>';
+    d.innerHTML = h;
+
+    if (st === "cliente") {
+      var dp = $("dPlan"); if (dp) dp.addEventListener("change", function () { var pl = PLANS.find(function (x) { return x.id === dp.value; }); if (pl && pl.p && !num(l.importe)) patch(l.id, { importe: String(pl.p) }); });
+      d.querySelectorAll("[data-delx]").forEach(function (b) { b.addEventListener("click", function () { var x = (l.extras || []).slice(); x.splice(+b.dataset.delx, 1); patch(l.id, { extras: x }); }); });
+      $("xAdd").addEventListener("click", function () { var imp = $("xImp").value.trim(); if (!imp) { $("xImp").focus(); return; } var x = (l.extras || []).slice(); x.push({ fecha: now(), tipo: $("xTipo").value, importe: imp, meses: $("xMes").value.trim() }); patch(l.id, { extras: x.slice(-60) }); });
+      if ($("bajaBtn")) {
+        $("bajaBtn").addEventListener("click", function () { $("bajaBox").hidden = false; });
+        $("bajaNo").addEventListener("click", function () { $("bajaBox").hidden = true; });
+        $("bajaOk").addEventListener("click", function () { patch(l.id, { estadoCliente: "baja", bajaEl: $("bajaFecha").value || today(), motivoBaja: $("bajaMotivo").value }); });
+      }
+      if ($("reactBtn")) $("reactBtn").addEventListener("click", function () { patch(l.id, { estadoCliente: "activo", bajaEl: "", motivoBaja: "" }); });
+    }
+    ["plan", "pago", "motivo"].forEach(function (k) { var s = d.querySelector('select[data-f="' + k + '"]'); if (s) s.value = l[k] || ""; });
+    $("dClose").addEventListener("click", closeLead);
+    d.querySelectorAll("[data-stage]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.stage); }); });
+    d.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.go); }); });
+    d.querySelectorAll("[data-f]").forEach(function (inp) { inp.addEventListener("change", function () { var o = {}; o[inp.dataset.f] = inp.value; patch(l.id, o); }); });
+    d.querySelectorAll("[data-chk]").forEach(function (inp) { inp.addEventListener("change", function () { var cc = Object.assign({}, l.checks || {}); cc[inp.dataset.chk] = inp.checked; patch(l.id, { checks: cc }); }); });
+    d.querySelectorAll("[data-seg]").forEach(function (inp) { inp.addEventListener("change", function () { var ss = Object.assign({}, l.seguimiento || {}); ss[inp.dataset.seg] = inp.checked; patch(l.id, { seguimiento: ss }); }); });
+    d.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { copy(b.dataset.copy, b); }); });
+    $("addToque").addEventListener("click", function () { var t = (l.toques || []).slice(); t.push({ fecha: now(), canal: $("toqueCanal").value }); t = t.slice(-40); patch(l.id, { toques: t, ultimoContacto: now() }); });
+    $("delBtn").addEventListener("click", function () { $("delConfirm").hidden = false; });
+    $("delNo").addEventListener("click", function () { $("delConfirm").hidden = true; });
+    $("delYes").addEventListener("click", async function () { try { await db.collection("leads").doc(l.id).delete(); closeLead(); } catch (e) { setStatus("No se ha podido borrar", true); } });
+  }
+  function goStage(l, s) {
+    var o = { etapa: s };
+    if (s === "agendado" && !l.agendadoEl) o.agendadoEl = now();
+    if (s === "hecha" && !l.llamadaHechaEl) o.llamadaHechaEl = now();
+    if (s === "cliente" || s === "perdido") o.cerradoEl = now();
+    if (s === "cliente") { if (!l.altaEl) o.altaEl = today(); if (!l.estadoCliente) o.estadoCliente = "activo"; }
+    patch(l.id, o);
+  }
+  function copy(text, btn) {
+    function done(t) { var o = btn.textContent; btn.textContent = t; setTimeout(function () { btn.textContent = o; }, 1500); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona y copia"); });
+    else done("Selecciona y copia");
+  }
+
+  /* Tabs */
+  document.querySelectorAll(".tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["hoy", "embudo", "clientes", "guion"].forEach(function (v) { $("view-" + v).hidden = v !== t.dataset.view; });
+      $("addCard").hidden = t.dataset.view === "guion" || t.dataset.view === "clientes";
+    });
+  });
+
+  /* Alta */
+  $("addForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("addNote").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("n-nombre").value.trim(); if (!nombre) return;
+    var entrada = document.querySelector('input[name="entrada"]:checked').value;
+    var data = { nombre: nombre, telefono: $("n-tel").value.trim(), ig: $("n-ig").value.trim(), origen: $("n-origen").value, entrada: entrada, objetivo: $("n-obj").value.trim(), edad: $("n-edad").value.trim(), etapa: "nuevo", creado: now(), actualizado: now(), toques: [], checks: {}, seguimiento: {} };
+    $("addBtn").disabled = true;
+    try {
+      await db.collection("leads").add(data);
+      $("addForm").reset(); $("addNote").textContent = "Añadido. " + (entrada === "ig" ? "Siguiente paso: mandarle el enlace para agendar." : "Siguiente paso: llamarle en menos de 5 minutos.");
+    } catch (err) {
+      $("addNote").textContent = err && err.code === "quota_exceeded" ? "La base de datos está llena: borra leads antiguos." : (err && err.code === "invalid_argument" ? "No tienes permiso para añadir leads en esta página." : "No se ha podido guardar. Inténtalo otra vez.");
+    }
+    $("addBtn").disabled = false;
+  });
+
+  /* Alta de cliente existente */
+  $("c-plan").innerHTML = PLANS.map(function (p) { return '<option>' + esc(p.id) + '</option>'; }).join("");
+  $("c-plan").value = "Semestre";
+  $("c-alta").value = today();
+  $("addCli").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("c-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("c-nombre").value.trim(); if (!nombre) return;
+    var pl = PLANS.find(function (x) { return x.id === $("c-plan").value; });
+    var data = { nombre: nombre, telefono: $("c-tel").value.trim(), ig: "", origen: "Cliente previo", entrada: "ig", objetivo: "", edad: "", etapa: "cliente", estadoCliente: "activo", plan: pl.id, importe: pl.p ? String(pl.p) : "", altaEl: $("c-alta").value || today(), creado: now(), actualizado: now(), cerradoEl: now(), toques: [], checks: {}, seguimiento: {}, extras: [] };
+    $("c-btn").disabled = true;
+    try { await db.collection("leads").add(data); $("addCli").reset(); $("c-plan").value = "Semestre"; $("c-alta").value = today(); $("c-note").textContent = "Cliente añadido."; }
+    catch (err) { $("c-note").textContent = err && err.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez."; }
+    $("c-btn").disabled = false;
+  });
+
+  /* Conexión */
+  renderAll();
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) {
+      setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true);
+      $("todayList").innerHTML = '<p class="empty">El CRM necesita abrirse desde claude.ai con una cuenta con acceso. La pestaña "Proceso y guion" funciona igualmente.</p>';
+      $("addBtn").disabled = true; $("c-btn").disabled = true; return;
+    }
+    db = c;
+    var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
+    db.collection("leads").orderBy("creado", "desc").onSnapshot(function (snap) {
+      leads = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); });
+      if (!snap.metadata.fromCache) { clearTimeout(timer); setStatus(leads.length + " leads · actualizado en directo"); }
+      renderAll();
+    }, function (err) {
+      clearTimeout(timer);
+      setStatus(err && err.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true);
+    });
+  })();
+})();
+</script>

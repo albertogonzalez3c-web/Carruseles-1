@@ -1,0 +1,368 @@
+<title>Gerard Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #f5c400;
+  --accent-text: #7a5c00;
+  --accent-dark: #f5c400;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: #111111; box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l { color: #1a1a1a; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fdf3c4; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#f5c400, #f5c400, #141414, #f5c400); }
+.avatar img, .avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #2a2a2a, #141414); display: grid; place-items: center; color: #fff; font: 800 26px/1 var(--f-head); letter-spacing: .02em; }
+.ig-user { font-weight: 800; font-size: 16px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #fff; font: 700 12px/1 var(--f-head); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #2a2a2a, #141414); color: #fff; display: grid; align-content: end; padding: 6px; font: 700 11px/1.1 var(--f-head); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--accent-dark); display: block; font-size: 12px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--accent-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--accent-dark); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+.opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.opt .txt { white-space: pre-line; font-size: 15px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 14px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15.5px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#f5c400, #f5c400, #141414, #f5c400); }
+.photo .mock img { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; object-fit: cover; display: block; }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #7a4e33 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #7a4e33 0 46%, transparent 47%), #2a2a2a; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+
+.nm { --nm-a: var(--accent, #f5c400); --nm-at: var(--accent-text, #7a5c00); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #111111; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.avatar img { object-fit: cover; display: block; }
+.ig-hl i span { font-size: 11px; }
+
+/* Marca Gerard · GPC: negro + amarillo (como sus carruseles). Sobre amarillo, siempre texto negro. */
+.card.accent, .card.acc { color: #111; }
+.card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b, .card.acc ul.l b, .card.acc ol.l b, .card.acc h3, .card.acc b, .card.acc p { color: #111; }
+.card.accent .label, .card.acc .label { color: #3a2e00; }
+.card.accent ul.l, .card.accent ol.l, .card.acc ul.l, .card.acc ol.l { color: #1a1a1a; }
+.card.accent .say { background: rgba(0,0,0,.08); border-left-color: #111; color: #111; }
+.card.accent .badge { background: rgba(0,0,0,.12); color: #111; }
+h1 { text-transform: uppercase !important; letter-spacing: -.01em !important; }
+h1 em { background: #f5c400; color: #111 !important; padding: 0 .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.avatar span { font-size: 20px !important; }
+.ig-hl small { font-size: 10px; }
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Gerard · GPC · Parte 1 · Perfil</span>
+    <h1>Tu perfil tiene que decir en 3 segundos: <em>entreno a gente con turnos</em>.</h1>
+    <p class="soft" style="font-size:18px">Ya tienes lo más difícil: casos reales (dos vigilantes y un camarero que acabó en la Policía Nacional) y una marca negra y amarilla que se reconoce. Lo que falta es que quien entra sepa en un vistazo que es para él, que trabaja de noche o a turnos. Esto lo dejas hecho esta semana. Toca un nombre y una bio para ver cómo queda y elige.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Ayudo a hombres de 20 a 40 que trabajan a turnos —de noche, rotativos o con horarios que cambian cada semana— a perder grasa y ponerse en forma de verdad, fuertes y con fondo, con un plan que se adapta a su cuadrante y no al revés.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Cuadrante</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Tu turno manda</b><span>3–4 sesiones de 45–60 minutos con versión de mañana, de tarde y de noche. Si cambia tu cuadrante, cambia el plan; no se rompe.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Comer a tu hora, sin vivir de arroz con pollo</b><span>Comidas según tu turno y un tupper que aguanta la noche. Nada de dietas extremas que acaban en atracón el fin de semana.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Fuerte y con fondo</b><span>Fuerza, resistencia y pasos. La fuerza no lo es todo: de nada sirve estar fuerte si te ahogas subiendo una escalera.</span></div></div><h3 style="margin-top:14px">3 fases · un trimestre</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Encajar</b><p><em>Qué pasa:</em> Montamos el plan sobre tu cuadrante real y dejas de empezar de cero cada vez que cambias de turno.</p><p><em>Qué haces tú:</em> Me mandas tu cuadrante, haces tus 3 sesiones mínimas y llegas a tus pasos.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–9</span><b>Apretar</b><p><em>Qué pasa:</em> Baja la grasa (o sube el músculo si ese es tu objetivo), suben las cargas y aguantas más corriendo o subiendo escaleras.</p><p><em>Qué haces tú:</em> Subes cargas cada semana, metes el trabajo de fondo y ajustamos la comida en cada revisión.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Semanas 10–12</span><b>Sostener</b><p><em>Qué pasa:</em> Aprendes a ajustar tú solo entreno y comida cuando cambia el turno, encadenas noches o llegan las vacaciones.</p><p><em>Qué haces tú:</em> Te quedas con tus plantillas por tipo de turno y tu plan para los 3 meses siguientes.</p></div></div><div class="nm-nn"><b>3 no negociables:</b><span>Cuadrante y revisión cada semana</span><span>Mínimo 3 sesiones, caiga el turno que caiga</span><span>Pasos diarios mínimos</span></div></div><p class="nm-proof">Prueba: "Me preparé para competir trabajando de albañil y en el campo, y perdía el progreso cada vez que el trabajo apretaba. Hoy hago planes para gente con turnos imposibles."</p><p class="nm-line">Felipe, vigilante de seguridad: −17 kg (de 111,2 a 94,2). Javi: de camarero a Policía Nacional. Juanjo, vigilante: de 95,4 a 88,4 kg.</p></section>
+
+  <section class="card accent" aria-label="Cómo usar tu nicho">
+    <span class="label">Cómo usar tu nicho</span>
+    <ul class="l">
+      <li><b>"Tu turno cambia. Tu plan también."</b> Es tu promesa: bio, vídeos, llamadas. Y tu palabra clave en todo: <b>CUADRANTE</b>.</li>
+      <li><b>Tu prueba son tus casos:</b> Felipe (−17 kg) y Juanjo, vigilantes; Javi, de camarero a Policía Nacional. Todos con turnos.</li>
+      <li><b>Tu historia lo explica:</b> perdías el progreso cada vez que el trabajo de obra o de campo apretaba. Por eso haces planes que no se rompen.</li>
+      <li><b>Tu sello:</b> "La fuerza no lo es todo." Fuerte y con fondo, y sin vivir de arroz con pollo.</li>
+      <li><b>¿Entrenas a mujeres? Sí</b> (Laura, Lorena…), pero no cambia a quién le hablas. Si algún día hay casos con permiso, van en una destacada aparte.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes bien</span>
+      <ul class="l">
+        <li><b>Resultados arriba del todo:</b> los 3 fijados son casos (−17 kg de Felipe, Javi de camarero a Policía Nacional y un testimonio en vídeo). Muy pocos entrenadores empiezan así.</li>
+        <li><b>Marca reconocible:</b> negro, amarillo y franjas de obra; "GPC" y @g.pavon9 en cada carrusel. Mantenla igual en todo.</li>
+        <li><b>Ya hablas a tu nicho sin decirlo:</b> "Trabajas tantas…", "Trabajaba de noche", "vigilante de seguridad".</li>
+        <li><b>Carruseles de caso con estructura:</b> "Pipe consiguió su cambio y dejó la asesoría. Pero volvió. Te cuento por qué" es un gancho de 10.</li>
+        <li><b>Destacadas cortas y claras:</b> Resultados, Método 1:1 y Mi historia.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que cambias ya</span>
+      <ul class="l">
+        <li><b>Nadie sabe para quién es</b> si no lee los casos uno a uno. La bio y el nombre tienen que decir "turnos".</li>
+        <li><b>"Método 1:1"</b> no dice nada: pasa a ser <b>Método Cuadrante</b>, con sus 3 pilares y 3 fases.</li>
+        <li><b>Tu cara no aparece</b> en la primera fila: todo son clientes. Pon una foto tuya de perfil reconocible y un carrusel de tu historia fijado.</li>
+        <li><b>Títulos cortados:</b> "Trabajas tantas…" y "Trabaja(s) de noche…" se cortan en la parrilla. La frase clave, en las 3 primeras palabras.</li>
+        <li><b>Más rol de entrenador:</b> tu tupper de turno de noche, cómo encajas una semana de noches, corregir técnica. Los casos atraen; el rol de entrenador vende.</li>
+        <li><b>Tu problema no es el contenido, son las conversaciones:</b> 100 al día. Eso va en el embudo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-label="Para aclarar con Gerard">
+    <span class="label">Para aclarar con Gerard · antes de publicar nada</span>
+    <ul class="l">
+      <li><b>¿Felipe y Pipe son la misma persona?</b> En el perfil pone "Felipe · vigilante −17 kg" y en tu historia hablas de "Pipe", vigilante, que dejó la asesoría y volvió. Si es el mismo, cuéntalo como un solo caso (y di si el −17 kg es de la primera etapa o de la vuelta).</li>
+      <li><b>El caso del −4,8 kg (después 101,8 kg) y el "Testimonio real":</b> ¿quiénes son, qué trabajo tienen y en cuántas semanas?</li>
+      <li><b>Javi:</b> ¿aprobó la oposición? Lo escribes ("lo logró"), pero en público solo si él lo confirma. ¿Cuánto tiempo y qué cifras?</li>
+      <li><b>Permisos por escrito</b> de Felipe/Pipe, Javi, Juanjo y los demás para usar fotos en la web y en anuncios.</li>
+      <li><b>Cronología:</b> escribes que empezaste en 2015 y en 2016, con 70 kg y con 72–73 kg. Elige una versión (propuesta: 2015, 16–17 años, 70 kg) y cuéntala siempre igual.</li>
+      <li><b>Datos que faltan:</b> edad y peso de hoy, ciudad, formación concreta (qué curso o titulación), tu bio actual y número de seguidores.</li>
+      <li><b>WhatsApp y formulario:</b> ¿qué número y qué enlace pones en la bio y en la web?</li>
+      <li><b>¿"GPC" es Gerard Pavón Coaching?</b> Si lo es, úsalo igual en todas partes.</li>
+    </ul>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil"><span>GPC</span></div>
+          <div>
+            <div class="ig-user">g.pavon9</div>
+            <div class="ig-stats"><span><b>—</b>posts</span><span><b>—</b>seguidores</span><span><b>—</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Entrenador personal</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>[tu web o WhatsApp · confirmar]</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>✓</span></i><small>Resultados</small></div>
+          <div><i><span>3F</span></i><small>Método Cuadrante</small></div>
+          <div><i><span>🌙</span></i><small>Turnos</small></div>
+          <div><i><span>GP</span></i><small>Mi historia</small></div>
+          <div><i><span>1:1</span></i><small>Empieza</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>−17 kg</em>Felipe, vigilante</div>
+          <div><em>Policía Nacional</em>Javi, camarero</div>
+          <div><em>Mi historia</em>Perdía el progreso</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis pueden contar doble en Instagram: deja margen.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda: tu nombre y para quién. "Entrenador personal" ya sale en la categoría.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="Gerard Pavón | Entreno para gente a turnos"><b>Gerard Pavón | Entreno para gente a turnos</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="Gerard | Coach online para turnos de noche"><b>Gerard | Coach online para turnos de noche</b></button><button class="opt" type="button" data-name="Gerard Pavón | Pierde grasa trabajando a turnos"><b>Gerard Pavón | Pierde grasa trabajando a turnos</b></button><button class="opt" type="button" data-name="GPC | Fuerte y con fondo a turnos"><b>GPC | Fuerte y con fondo a turnos</b></button><button class="opt" type="button" data-name="Gerard | Método Cuadrante"><b>Gerard | Método Cuadrante</b></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué tú, y caben en 150 caracteres. Elige una y no la toques en 3 meses.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">Tu turno cambia. Tu plan también.
+Hombres a turnos: pierde grasa y ponte en forma
+Vigilante −17 kg · Camarero → Policía
+Escríbeme CUADRANTE 👇</span><span class="why">Tu promesa, a quién, tu prueba y una sola acción.</span></button><button class="opt" type="button"><span class="tag">B · La fuerza no lo es todo</span><span class="txt">La fuerza no lo es todo
+Para gente con turnos de noche o rotativos
+Fuerte, con fondo y sin vivir de arroz con pollo
+Escríbeme CUADRANTE 👇</span><span class="why">Tu frase de un año y tu diferencia: fuerza + fondo + comida flexible.</span></button><button class="opt" type="button"><span class="tag">C · Mi historia</span><span class="txt">Perdía el progreso cada vez que el trabajo apretaba
+Hoy hago planes para gente a turnos
+Método Cuadrante · Online
+Escríbeme CUADRANTE 👇</span><span class="why">Tu historia en una línea: el que trabaja a turnos se ve en ti.</span></button><button class="opt" type="button"><span class="tag">D · Rol entrenador</span><span class="txt">Coach online · Método Cuadrante
+Entreno por turnos + comida a tu hora + revisión semanal
+Hombres 20-40 a turnos
+Escríbeme CUADRANTE 👇</span><span class="why">Te posiciona como entrenador con método, no como "el que está fuerte".</span></button><button class="opt" type="button"><span class="tag">E · Ruleta rusa</span><span class="txt">Deja de jugar a la ruleta rusa con tu comida y tu entreno
+Planes para gente que trabaja a turnos
+Escríbeme CUADRANTE 👇</span><span class="why">Tu frase literal ("lo que vas a dejar de hacer…"), convertida en promesa.</span></button><button class="opt" type="button"><span class="tag">F · Casos</span><span class="txt">Vigilantes, camareros y turnos de noche
+Pierden grasa y se ponen en forma conmigo
+Mira los resultados 👇 · Escríbeme CUADRANTE</span><span class="why">Si quieres que hablen tus casos y no tú.</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><span></span></div>
+          <ul class="l">
+            <li><b>Tú, no un caso:</b> de pecho para arriba, mirando a cámara, que se te reconozca en pequeño.</li>
+            <li><b>Fondo negro o amarillo</b> como tus carruseles. El retrato de "Trabajas de noche" ya tiene esa luz: úsalo de base.</li>
+            <li><b>Camiseta ajustada o de tirantes:</b> que se vea que entrenas, sin necesidad de ir sin camiseta.</li>
+            <li><b>Luz de frente y lado,</b> sin gente detrás.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Resultados:</b> ya la tienes. Ordénala: Felipe, Javi, Juanjo, −4,8 kg, Pipe. Debajo de cada uno, su trabajo y su turno.</li><li><b>Método Cuadrante</b> (antes "Método 1:1"): 5 historias con pilares, fases y no negociables.</li><li><b>Turnos:</b> cómo entrenar y comer en semana de noches, de mañanas y rotativa. Valor puro.</li><li><b>Mi historia:</b> 10 historias (abajo, escritas).</li><li><b>Empieza:</b> para quién es y "escríbeme CUADRANTE".</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>Felipe −17 kg:</b> se queda el primero.</li><li><b>De camarero a Policía Nacional:</b> se queda.</li><li><b>Nuevo · carrusel "Mi historia":</b> "Perdía el progreso cada vez que el trabajo apretaba" (abajo, diapositiva a diapositiva). Sustituye al "Testimonio real", que pasa a Resultados.</li></ul></div>
+          <div class="card"><span class="label">Reglas</span><ul class="l"><li><b>Una sola acción:</b> "escríbeme CUADRANTE".</li><li><b>Nada de nombres ni fotos de clientes</b> sin permiso por escrito.</li><li><b>Lo personal no se publica:</b> ni tu familia, ni el accidente, ni detalles de leads.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Tu historia: tu mejor caso de éxito</h2>
+        <p class="soft">Tu cliente no compra un plan: compra verse en ti. Fuiste el que entrenaba en serio con un trabajo que te rompía el plan cada pocas semanas. Cuéntalo con datos y sin dramas.</p>
+        <div class="card accent"><span class="label">Lo que necesito de ti esta semana</span><p>Fotos de 2015 (1,70 y 70 kg), de tus 90 kg, de la etapa de preparación trabajando en obra o en el campo, del campeonato de power y de hoy (frente, perfil y espalda con la misma luz). Y tu edad y tu peso actuales.</p></div>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Destacada "Mi historia" · 10 historias</span>
+            <ol class="l">
+              <li>"Con 16 años dejé el fútbol por una lesión y me quedé sin mi rutina."</li>
+              <li>"Entré al gimnasio con 1,70 y 70 kg. Levantaba pesos que la gente con experiencia no movía."</li>
+              <li>"Llegué a 90 kg, me metí en powerlifting y competí en un campeonato del gimnasio."</li>
+              <li>"Quise competir en culturismo trabajando de albañil: arroz blanco, pollo recalentado y tubos de pavo."</li>
+              <li>"Con ese trabajo y esa dieta, acababa los fines de semana con atracones."</li>
+              <li>"Cada vez que el trabajo apretaba, perdía todo el progreso. Nunca llegué a competir."</li>
+              <li>"Cuando por fin tuve un plan que encajaba en mi vida, me vi cómodo: fuerte y corriendo sin ahogarme."</li>
+              <li>"En 2023 decidí dedicarme a esto. Mi primer cliente fue Javi, camarero, que quería ser Policía Nacional."</li>
+              <li>"Después llegaron vigilantes de seguridad con turnos de noche. Felipe bajó 17 kg."</li>
+              <li>"Tu turno cambia. Tu plan también. Escríbeme CUADRANTE y te digo cómo lo haría contigo."</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="label">Carrusel fijado "Mi historia" · 9 diapositivas</span>
+            <ol class="l">
+              <li><b>Portada:</b> "Perdía el progreso cada vez que el trabajo apretaba." (foto de obra o campo + foto de hoy)</li>
+              <li><b>El chaval del fútbol:</b> la lesión y quedarte sin rutina.</li>
+              <li><b>El gimnasio:</b> 1,70 y 70 kg; de ahí a 90 kg y al power.</li>
+              <li><b>Error 1 · Dieta extrema:</b> arroz blanco, pollo recalentado, tubos de pavo, trabajando de pie.</li>
+              <li><b>Error 2 · Solo fuerza:</b> 90 kg y sin fondo. "La fuerza no lo es todo."</li>
+              <li><b>Error 3 · Un plan de 9 a 5:</b> cada cambio de trabajo, vuelta a empezar.</li>
+              <li><b>Lo que cambió:</b> un plan que encaja en tu vida; fuerte, flexible, corriendo sin ahogarte.</li>
+              <li><b>Hoy:</b> Felipe, Juanjo y Javi, todos con turnos.</li>
+              <li><b>Cierre:</b> "Tu turno cambia. Tu plan también. Escríbeme CUADRANTE."</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = pvName.textContent.length; cb.textContent = pvBio.textContent.length;
+    cn.className = pvName.textContent.length > 64 ? "over" : ""; cb.className = pvBio.textContent.length > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = b.querySelector(".txt").textContent.length + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>
