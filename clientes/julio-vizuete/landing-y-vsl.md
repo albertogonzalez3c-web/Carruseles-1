@@ -18,9 +18,10 @@ Una línea encima del titular, pequeña y en mayúsculas:
 
 ### Paso 2 · Titular: avatar + resultado + plazo + sin sacrificio
 Fórmula: *Ayudo a [avatar] a conseguir [resultado] en [plazo] sin [sacrificio].*
-- **A (recomendada):** Pierde grasa y gana músculo en 12 semanas, sin dietas extremas ni vivir en el gimnasio.
-- B: Ayudo a hombres ocupados de +30 a recuperar su mejor físico en 12 semanas sin renunciar a su negocio ni a su vida.
-- C: El físico que te mereces, ajustado a tu analítica y a tu agenda. En 12 semanas.
+- **A (recomendada):** Tu mejor físico en un año. Y que te dure para siempre.
+- B: Ayudo a hombres ocupados de +30 a conseguir su mejor físico en 12 meses, sin renunciar a su negocio ni a su vida.
+- C: Un año para recomponer tu cuerpo. El resto de tu vida para disfrutarlo.
+- *Por qué un año y no 12 semanas:* el programa es anual. Vender "12 semanas" hace que el cliente piense en un reto corto y choca con la oferta. "Un año" filtra a quien quiere un cambio de verdad y justifica el precio.
 
 ### Paso 3 · Subtítulo: el mecanismo
 - **A:** Con el Reset Metabólico: leemos tu analítica y ajustamos insulina, leptina, cortisol y testosterona con nutrición, entrenamiento y hábitos, para que tu cuerpo vuelva a quemar grasa y construir músculo.
@@ -41,7 +42,7 @@ Orden recomendado:
 1. **3 casos estrella en vídeo** (60–90 s cada uno): el cliente contando dónde estaba, qué cambió y cómo se siente hoy.
 2. **Cuadrícula de 6–9 antes/después** con 3 datos debajo de cada uno: edad y profesión · tiempo · resultado (kg, cm de cintura o "recomposición").
 3. **Capturas de WhatsApp** de mensajes de clientes (sin datos personales).
-4. **Un caso explicado con analítica** (con permiso y anonimizado): "Así cambió su glucosa/insulina en 12 semanas". Es lo que nadie más enseña y encaja perfecto con el Reset Metabólico.
+4. **Un caso explicado con analítica** (con permiso y anonimizado): "Así cambió su glucosa/insulina en [X] meses". Es lo que nadie más enseña y encaja perfecto con el Reset Metabólico.
 *(Cómo elegir los casos: Parte 3.)*
 
 ### Paso 7 · Tu historia y cómo descubriste el mecanismo
@@ -57,6 +58,7 @@ Guion corto para el bloque:
 - **No tengo tiempo. ¿Me da?** El plan está pensado para eso: 3–4 entrenos de 45–60 minutos y comida que funciona aunque comas fuera o viajes.
 - **¿Tengo que dejar de salir a cenar o el alcohol?** No. Aprendes a encajarlo. Lo que cambia es la frecuencia y cómo compensas.
 - **¿En qué se diferencia de un plan normal?** En que parte de tus datos, mira tus hormonas y se revisa contigo cada [semana/15 días]. No es una plantilla.
+- **¿Por qué un año?** Porque perder grasa en unas semanas lo hace cualquiera; recomponer tu cuerpo y que no vuelva, no. En un año pasas por vacaciones, cenas y semanas de mucho trabajo, y aprendes a mantenerlo solo.
 - **¿Cuánto cuesta?** Depende de tu caso y del plan. Te lo explico en la llamada, sin compromiso.
 
 ### Paso 9 · Llamada a la acción
@@ -88,9 +90,9 @@ Tono: cercano, seguro, didáctico. Como sus vídeos de pizarra: puede usar la pi
 
 ### 4 · El mecanismo: el Reset Metabólico (3:00–4:30) — aquí, la pizarra
 > Por eso creé el Reset Metabólico. Tiene tres fases.
-> **Fase uno, Leer.** Partimos de tu analítica y de tu punto de partida: cómo duermes, cómo comes, cómo entrenas, cuánto estrés tienes. Nada de plantillas.
-> **Fase dos, Resetear.** Ajustamos tu comida, tu entrenamiento, tu sueño y tu estrés para que la insulina, la leptina, el cortisol y la testosterona trabajen a tu favor. Aquí es donde tu cuerpo sale del modo ahorro.
-> **Fase tres, Recomponer.** Con el cuerpo funcionando, perdemos grasa sin perder músculo, y ganamos fuerza. Y te enseño a mantenerlo con tu vida: viajes, cenas y semanas de mucho trabajo.
+> **Fase uno, Leer, el primer mes.** Partimos de tu analítica y de tu punto de partida: cómo duermes, cómo comes, cómo entrenas, cuánto estrés tienes. Nada de plantillas.
+> **Fase dos, Resetear, del mes dos al cuatro.** Ajustamos tu comida, tu entrenamiento, tu sueño y tu estrés para que la insulina, la leptina, el cortisol y la testosterona trabajen a tu favor. Aquí es donde tu cuerpo sale del modo ahorro.
+> **Fase tres, Recomponer, hasta completar el año.** Con el cuerpo funcionando, perdemos grasa sin perder músculo, y ganamos fuerza. Y te enseño a mantenerlo con tu vida: viajes, cenas y semanas de mucho trabajo.
 
 ### 5 · Prueba (4:30–5:30)
 > Esto no es teoría. [Caso 1: nombre o profesión, edad, punto de partida, resultado y tiempo.] [Caso 2: alguien con poco tiempo o empresario.] [Caso 3: un caso con analítica o un +40.]
@@ -98,7 +100,8 @@ Tono: cercano, seguro, didáctico. Como sus vídeos de pizarra: puede usar la pi
 
 ### 6 · Para quién es y para quién no (5:30–6:00)
 > Esto es para ti si tienes más de 30, poco tiempo, ganas de hacerlo bien y quieres entender tu cuerpo, no seguir a ciegas otra dieta.
-> No es para ti si buscas un resultado en dos semanas o una plantilla genérica que nadie revise.
+> No es para ti si buscas un resultado rápido para volver a lo de siempre, o una plantilla genérica que nadie revise.
+> Trabajo por un año porque perder grasa en unas semanas lo hace cualquiera. Recomponer tu cuerpo y que no vuelva, no.
 
 ### 7 · Llamada a la acción (6:00–6:30)
 > Si te has visto en este vídeo, pulsa el botón de aquí debajo y escríbeme por WhatsApp. Te hago unas preguntas sobre tu caso y, si encaja, lo vemos en una llamada de 30 minutos. Gratis y sin compromiso.
