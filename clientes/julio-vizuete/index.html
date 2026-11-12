@@ -1,0 +1,293 @@
+<title>Nutribuilder Reset Metabólico</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Julio Vizuete · Reset Metabólico. Recomposición corporal para hombres +30 con poco tiempo, basada en tu analítica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#0c0c0c; --bg-2:#141414; --card:#1a1a1a; --line:rgba(255,255,255,.1);
+  --ink:#f5f5f2; --soft:#b9b9b2; --mute:#8a8a84;
+  --gold:#f5c400; --gold-ink:#111; --wa:#25d366;
+  --f-head:"Anton","Impact","Arial Narrow",sans-serif; --f-body:"Inter","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c0c0c}}
+:root[data-theme="dark"]{--bg:#0c0c0c}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(48px,8vw,88px)}
+h1,h2{font-family:var(--f-head);font-weight:400;text-transform:uppercase;letter-spacing:.01em;margin:0;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(40px,7.4vw,76px)}
+h2{font-size:clamp(32px,5.4vw,54px)}
+h3{margin:0;font:800 19px/1.3 var(--f-body)}
+p{margin:0}
+.gold{color:var(--gold)}
+.kicker{display:inline-block;font:800 12.5px/1.3 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.soft{color:var(--soft)}
+.step{display:inline-flex;align-items:center;gap:8px;font:700 11px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);background:var(--gold);padding:5px 9px;border-radius:999px;margin-bottom:14px}
+.ph{background:rgba(245,196,0,.14);color:var(--gold);border:1px dashed rgba(245,196,0,.5);border-radius:4px;padding:0 5px;font-weight:700;font-size:.9em}
+
+/* boceto */
+.sketch{background:var(--gold);color:var(--gold-ink);font:700 13px/1.4 var(--f-body);text-align:center;padding:8px 16px}
+
+/* barra */
+.bar{position:sticky;top:0;z-index:20;background:rgba(12,12,12,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 30%}
+.brand b{font:400 20px/1 var(--f-head);letter-spacing:.05em;white-space:nowrap}
+.brand small{display:block;color:var(--mute);font:500 12px/1.2 var(--f-body);margin-top:3px}
+.mini{font:800 13px/1 var(--f-body);background:var(--gold);color:var(--gold-ink);text-decoration:none;padding:10px 14px;border-radius:999px;white-space:nowrap}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--gold-ink);font:400 19px/1.1 var(--f-head);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;padding:18px 28px;border-radius:12px;box-shadow:0 6px 0 #a88600;transition:transform .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #a88600}
+.btn svg{flex:none}
+.under{margin-top:12px;font-size:14px;color:var(--soft)}
+
+/* hero */
+.hero{padding-top:clamp(36px,6vw,64px);background:radial-gradient(900px 420px at 85% -10%,rgba(245,196,0,.16),transparent 60%),var(--bg)}
+.hero .stack{display:grid;gap:20px;max-width:860px;margin:0 auto;text-align:center;justify-items:center}
+.hero .sub{color:var(--soft);font-size:clamp(17px,2.2vw,20px);max-width:62ch}
+.vsl{width:100%;max-width:880px;margin:26px auto 0;position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.6)}
+.vsl img{width:100%;height:100%;object-fit:cover;object-position:50% 70%;opacity:.45}
+.vsl .play{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px}
+.vsl .play b{display:grid;place-items:center;width:78px;height:78px;border-radius:50%;background:var(--gold);color:var(--gold-ink);font-size:28px;margin:0 auto 14px;box-shadow:0 0 0 10px rgba(245,196,0,.18)}
+.vsl .play span{font:400 clamp(18px,3vw,26px)/1.1 var(--f-head);text-transform:uppercase;letter-spacing:.02em}
+.vsl .play small{display:block;margin-top:8px;color:var(--soft);font:500 14px/1.4 var(--f-body)}
+.vsl iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:22px;color:var(--soft);font-size:14px}
+.trust b{color:var(--ink)}
+
+/* mecanismo */
+.mech{background:var(--bg-2)}
+.mech .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card .n{font:400 34px/1 var(--f-head);color:var(--gold);margin-bottom:10px}
+.card p{color:var(--soft);margin-top:8px;font-size:16px}
+.hormones{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.hormones span{font:700 13px/1 var(--f-body);padding:9px 12px;border-radius:999px;border:1px solid rgba(245,196,0,.45);color:var(--gold)}
+.phases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+.phase{border-top:4px solid var(--gold);background:var(--card);border-radius:0 0 14px 14px;padding:18px}
+.phase small{font:800 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.phase h3{margin-top:8px;font:400 26px/1 var(--f-head);text-transform:uppercase}
+.phase p{color:var(--soft);font-size:15px;margin-top:8px}
+
+/* prueba */
+.proof .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
+.stars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.vid{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000;border:1px solid var(--line)}
+.vid.empty{background:repeating-linear-gradient(135deg,#151515 0 14px,#1b1b1b 14px 28px)}
+.vid img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.vid .t{position:absolute;inset:auto 0 0 0;padding:14px;background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.vid .t b{display:block;font:400 22px/1 var(--f-head);text-transform:uppercase}
+.vid .t span{font-size:13px;color:var(--soft)}
+.vid .pl{position:absolute;top:12px;left:12px;width:38px;height:38px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;font-size:14px}
+.ba{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tile .pics{aspect-ratio:4/3;background:#222}
+.tile .pics img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.tile .pics.empty{display:grid;place-items:center;color:var(--mute);font-size:13px;text-align:center;padding:10px}
+.tile .meta{padding:14px}
+.tile .meta b{display:block;font:400 21px/1.05 var(--f-head);text-transform:uppercase;color:var(--gold)}
+.tile .meta span{font-size:14px;color:var(--soft)}
+.lab{margin-top:14px;display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:stretch}
+.lab .card h3{font:400 28px/1.05 var(--f-head);text-transform:uppercase}
+.lab table{width:100%;border-collapse:collapse;font-size:15px;margin-top:14px}
+.lab td,.lab th{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left}
+.lab th{color:var(--mute);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.08em}
+.lab td.up{color:var(--gold);font-weight:700}
+.chats{display:grid;gap:10px;align-content:start}
+.chat{background:#1f2c22;border-radius:14px 14px 14px 4px;padding:12px 14px;font-size:15px;color:#e8f2ea;max-width:92%}
+.chat small{display:block;color:#8fb59a;font-size:12px;margin-top:4px}
+
+/* historia */
+.story .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(20px,4vw,48px);align-items:center}
+.story figure{margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.story figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%}
+.story .txt{display:grid;gap:14px}
+.story .txt p{color:var(--soft)}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.badges span{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px}
+.badges b{display:block;font:400 22px/1 var(--f-head);color:var(--gold)}
+
+/* para quién */
+.fit .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.fit ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.fit li{padding-left:28px;position:relative;color:var(--soft)}
+.fit .yes li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+.fit .no li::before{content:"✕";position:absolute;left:0;color:#e45c5c;font-weight:800}
+
+/* faq */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:10px}
+.faq summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";color:var(--gold);font-weight:800}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--soft);margin-top:10px}
+
+/* cta final */
+.final{text-align:center;background:radial-gradient(800px 360px at 50% 0%,rgba(245,196,0,.18),transparent 65%),var(--bg-2)}
+.final .stack{display:grid;gap:18px;justify-items:center}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:10px 0 6px;max-width:820px;width:100%;text-align:left}
+.steps3 div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.steps3 b{display:block;font:400 20px/1 var(--f-head);color:var(--gold);margin-bottom:4px}
+.steps3 span{font-size:14px;color:var(--soft)}
+footer{padding:28px 0 100px;color:var(--mute);font-size:13px;text-align:center}
+.float{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px max(16px,env(safe-area-inset-left,0px)) calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(12,12,12,.95) 40%);display:none}
+.float .btn{width:100%}
+
+@media (max-width:760px){
+  .mech .grid,.stars,.ba,.lab,.story .grid,.fit .grid,.phases,.steps3{grid-template-columns:1fr}
+  .stars{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .vid .t b{font-size:16px}.vid .t span{display:none}
+  .float{display:block}
+  .bar .mini{display:none}
+}
+</style>
+
+<div class="sketch">Boceto de landing · Los huecos en amarillo se rellenan con datos reales de Julio antes de publicar</div>
+
+<header class="bar"><div class="wrap">
+  <a class="brand" href="#inicio"><img src="casos/julio-avatar.jpg" alt=""><span><b>NUTRIBUILDER</b><small>Julio Vizuete · Preparador físico</small></span></a>
+  <a class="mini" data-wa href="#cta">Valoración gratis</a>
+</div></header>
+
+<!-- 1 · Atención + 2 · Titular + 3 · Mecanismo + 4 · VSL -->
+<section class="hero" id="inicio"><div class="wrap">
+  <div class="stack">
+    <span class="kicker">Para hombres de +30 con poco tiempo y mucha responsabilidad</span>
+    <h1>Pierde grasa y gana músculo <span class="gold">en 12 semanas</span>, sin dietas extremas ni vivir en el gimnasio</h1>
+    <p class="sub">Con el <b>Reset Metabólico</b>: leemos tu analítica y ajustamos insulina, leptina, cortisol y testosterona con nutrición, entrenamiento y hábitos, para que tu cuerpo vuelva a quemar grasa y construir músculo.</p>
+  </div>
+  <div class="vsl" id="vslFrame">
+    <img src="casos/julio-pizarra.jpg" alt="">
+    <div class="play"><div><b>▶</b><span>Por qué tu cuerpo no cambia<br>(aunque lo hagas todo bien)</span><small>Vídeo de Julio · 6 minutos · <span class="ph">VSL pendiente</span></small></div></div>
+  </div>
+  <div class="stack" style="margin-top:26px">
+    <a class="btn" data-wa href="#cta"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Quiero mi valoración gratuita</a>
+    <p class="under">30 minutos · Hablas directamente conmigo · Si no es para ti, te lo digo</p>
+  </div>
+  <div class="trust"><span><b>+800</b> hombres transformados</span><span><b>Evidencia</b> + experiencia</span><span><b>56K</b> seguidores en Instagram</span></div>
+</div></section>
+
+<!-- 5 · Cómo consigues resultados -->
+<section class="mech" id="metodo"><div class="wrap">
+  <span class="step">El método</span>
+  <h2>Reset <span class="gold">Metabólico</span></h2>
+  <p class="soft" style="margin-top:12px;max-width:62ch">No es otra dieta. Es un método que parte de tus datos y pone tus hormonas a trabajar a tu favor.</p>
+  <div class="hormones"><span>Insulina</span><span>Leptina</span><span>Cortisol</span><span>Testosterona</span></div>
+  <div class="grid">
+    <div class="card"><div class="n">01</div><h3>Partimos de tu analítica, no de una plantilla</h3><p>Antes de tocar tu dieta vemos tu glucosa, tu insulina, tus marcadores y tus hormonas. Tu plan sale de tus datos.</p></div>
+    <div class="card"><div class="n">02</div><h3>Ponemos tus hormonas a favor</h3><p>Comida, entreno, sueño y estrés ajustados para mejorar la sensibilidad a la insulina, salir del "modo ahorro" y controlar el cortisol.</p></div>
+    <div class="card"><div class="n">03</div><h3>Recomposición, no solo bajar de peso</h3><p>Perder grasa sin perder músculo. La báscula no manda: mandan tu cintura, tus fotos y tu fuerza.</p></div>
+    <div class="card"><div class="n">04</div><h3>Hecho para tu agenda</h3><p>Entrenos de 45–60 minutos, comida que funciona aunque comas fuera o viajes, y revisión conmigo cada <span class="ph">[semana / 15 días]</span>.</p></div>
+  </div>
+  <div class="phases">
+    <div class="phase"><small>Fase 1</small><h3>Leer</h3><p>Tu analítica y tu punto de partida: sueño, comida, entreno y estrés.</p></div>
+    <div class="phase"><small>Fase 2</small><h3>Resetear</h3><p>Tu cuerpo sale del modo ahorro y tus hormonas empiezan a trabajar a favor.</p></div>
+    <div class="phase"><small>Fase 3</small><h3>Recomponer</h3><p>Menos grasa, más músculo y fuerza. Y lo mantienes con tu vida real.</p></div>
+  </div>
+</div></section>
+
+<!-- 6 · Prueba social -->
+<section class="proof" id="casos"><div class="wrap">
+  <div class="head"><div><span class="step">Resultados</span><h2>+800 hombres <span class="gold">ya lo han hecho</span></h2></div><p class="soft" style="max-width:42ch">Ninguno tenía más tiempo que tú. Tenían un método.</p></div>
+
+  <div class="stars">
+    <div class="vid empty"><div class="pl">▶</div><div class="t"><b>Caso estrella 1</b><span class="ph">vídeo · edad · profesión</span></div></div>
+    <div class="vid empty"><div class="pl">▶</div><div class="t"><b>Caso estrella 2</b><span class="ph">vídeo · edad · profesión</span></div></div>
+    <div class="vid empty"><div class="pl">▶</div><div class="t"><b>Caso estrella 3</b><span class="ph">vídeo · edad · profesión</span></div></div>
+  </div>
+
+  <div class="ba">
+    <div class="tile"><div class="pics"><img src="casos/caso-1.jpg" alt="Antes y después de un cliente de Julio"></div><div class="meta"><b>Recomposición</b><span><span class="ph">[nombre], [edad] · [profesión] · [semanas]</span></span></div></div>
+    <div class="tile"><div class="pics"><img src="casos/caso-2.jpg" alt="Antes y después de un cliente de Julio"></div><div class="meta"><b>Definición</b><span><span class="ph">[nombre], [edad] · [profesión] · [semanas]</span></span></div></div>
+    <div class="tile"><div class="pics"><img src="casos/caso-3.jpg" alt="Antes y después de un cliente de Julio"></div><div class="meta"><b><span class="ph">−[X] kg</span></b><span><span class="ph">[nombre], [edad] · [profesión] · [semanas]</span></span></div></div>
+    <div class="tile"><div class="pics empty">Foto antes / después<br>caso +40</div><div class="meta"><b>Caso +40</b><span class="ph">pendiente</span></div></div>
+    <div class="tile"><div class="pics empty">Foto antes / después<br>empresario / viaja</div><div class="meta"><b>Sin tiempo</b><span class="ph">pendiente</span></div></div>
+    <div class="tile"><div class="pics empty">Foto antes / después<br>estancado años</div><div class="meta"><b>Estancado</b><span class="ph">pendiente</span></div></div>
+  </div>
+
+  <div class="lab">
+    <div class="card">
+      <span class="kicker">Lo que nadie enseña</span>
+      <h3 style="margin-top:8px">Un caso, explicado con su analítica</h3>
+      <p class="soft" style="margin-top:8px">Con permiso y anonimizado. <span class="ph">Datos reales de un cliente</span></p>
+      <table>
+        <tr><th>Marcador</th><th>Inicio</th><th>12 semanas</th></tr>
+        <tr><td>Glucosa en ayunas</td><td>[ ]</td><td class="up">[ ]</td></tr>
+        <tr><td>Insulina</td><td>[ ]</td><td class="up">[ ]</td></tr>
+        <tr><td>Triglicéridos</td><td>[ ]</td><td class="up">[ ]</td></tr>
+        <tr><td>Cintura</td><td>[ ] cm</td><td class="up">[ ] cm</td></tr>
+      </table>
+    </div>
+    <div class="chats">
+      <div class="chat">Julio, he bajado 2 agujeros de cinturón y ya no me duermo después de comer <small>Cliente · <span class="ph">captura real</span></small></div>
+      <div class="chat">Por primera vez en años no tengo hambre por la noche <small>Cliente · <span class="ph">captura real</span></small></div>
+      <div class="chat">Mi mujer me ha preguntado qué estoy haciendo 😂 <small>Cliente · <span class="ph">captura real</span></small></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:28px"><a class="btn" data-wa href="#cta">Quiero mi valoración gratuita</a></div>
+</div></section>
+
+<!-- 7 · Historia -->
+<section class="story" id="historia"><div class="wrap"><div class="grid">
+  <figure><img src="casos/julio-camara.jpg" alt="Julio Vizuete hablando a cámara"></figure>
+  <div class="txt">
+    <span class="step">Quién soy</span>
+    <h2>Evidencia + <span class="gold">experiencia</span></h2>
+    <p>Soy Julio, preparador físico. <span class="ph">[Tu punto de partida]</span></p>
+    <p>Durante años hice lo que hace todo el mundo: comer menos y entrenar más. <span class="ph">[Lo que te pasó: estancamiento, rebote, cansancio]</span></p>
+    <p>El cambio llegó cuando empecé a mirar dentro: analíticas, estudios, cómo responden la insulina, la leptina o el cortisol a lo que comes y a cómo vives. Lo apliqué primero en mí y en mi preparación de competición, y después en más de 800 hombres. Así nació el Reset Metabólico.</p>
+    <div class="badges"><span><b>+800</b>hombres</span><span><b>Prep 2025</b>competición</span><span><b><span class="ph">[X]</span> años</b>de experiencia</span></div>
+  </div>
+</div></div></section>
+
+<!-- Para quién -->
+<section class="fit" style="padding-top:0"><div class="wrap">
+  <h2>Esto <span class="gold">es</span> / <span class="gold">no es</span> para ti</h2>
+  <div class="grid">
+    <div class="card yes"><h3>Es para ti si…</h3><ul><li>Tienes más de 30, trabajas mucho o tienes negocio.</li><li>Entrenas o lo has intentado y tu cuerpo no cambia.</li><li>Quieres entender tu cuerpo, no seguir otra dieta a ciegas.</li><li>Puedes entrenar 3–4 días de 45–60 minutos.</li></ul></div>
+    <div class="card no"><h3>No es para ti si…</h3><ul><li>Buscas un resultado en dos semanas.</li><li>Quieres una plantilla genérica que nadie revise.</li><li>No estás dispuesto a medir y ajustar.</li></ul></div>
+  </div>
+</div></section>
+
+<!-- 8 · FAQ -->
+<section class="faq" style="padding-top:0"><div class="wrap">
+  <span class="step">Preguntas</span><h2>Lo que me suelen preguntar</h2>
+  <details><summary>¿Necesito una analítica para empezar?</summary><p>Es lo ideal. Si no tienes una reciente, te digo qué pedir. <span class="ph">[laboratorio / médico de referencia]</span> Si algo sale fuera de rango, lo valora tu médico.</p></details>
+  <details><summary>No tengo tiempo. ¿Me da?</summary><p>El plan está pensado para eso: 3–4 entrenos de 45–60 minutos y comida que funciona aunque comas fuera o viajes.</p></details>
+  <details><summary>¿Tengo que dejar las cenas o el alcohol?</summary><p>No. Aprendes a encajarlo. Lo que cambia es la frecuencia y cómo compensas.</p></details>
+  <details><summary>¿En qué se diferencia de un plan normal?</summary><p>Parte de tus datos, mira tus hormonas y se revisa contigo cada <span class="ph">[semana / 15 días]</span>. No es una plantilla.</p></details>
+  <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan. Te lo explico en la llamada, sin compromiso.</p></details>
+</div></section>
+
+<!-- 9 · CTA -->
+<section class="final" id="cta"><div class="wrap"><div class="stack">
+  <h2>Llevas tiempo haciéndolo "todo bien".<br><span class="gold">Ahora, con método.</span></h2>
+  <div class="steps3">
+    <div><b>01 · Me escribes</b><span>Por WhatsApp. El mensaje ya va escrito.</span></div>
+    <div><b>02 · Valoración</b><span>30 minutos: tu punto de partida, tu agenda y tu analítica.</span></div>
+    <div><b>03 · Tu plan</b><span>Si encaja, empezamos por la fase Leer.</span></div>
+  </div>
+  <a class="btn" data-wa href="#cta"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Quiero mi valoración gratuita</a>
+  <p class="under">Gratis · Sin compromiso · Te contesto yo</p>
+</div></div></section>
+
+<footer><div class="wrap">NUTRIBUILDER · Julio Vizuete · Instagram @_nutribuilder_<br>Los resultados dependen de cada persona. Este servicio no sustituye el consejo médico.</div></footer>
+<div class="float"><a class="btn" data-wa href="#cta">Valoración gratuita</a></div>
+
+<script>
+(function(){
+  var WA_LINK = "https://wa.link/2qvv3e"; /* su enlace actual; si se cambia por wa.me/34XXXXXXXXX se puede añadir mensaje predefinido */
+  document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = WA_LINK; a.target = "_blank"; a.rel = "noopener"; });
+  var VSL_ID = ""; /* ID del vídeo de YouTube cuando esté grabado */
+  if (VSL_ID) { document.getElementById("vslFrame").innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + VSL_ID + '?rel=0" title="Vídeo de Julio" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>'; }
+})();
+</script>
