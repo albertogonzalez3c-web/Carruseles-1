@@ -62,8 +62,8 @@ Guion corto para el bloque:
 - **¿Cuánto cuesta?** Depende de tu caso y del plan. Te lo explico en la llamada, sin compromiso.
 
 ### Paso 9 · Llamada a la acción
-- **Botón principal:** "Quiero mi valoración gratuita" → WhatsApp (wa.link/2qvv3e) con mensaje ya escrito: *"Hola Julio, vengo de tu web. Tengo __ años, trabajo de __ y quiero recomponer mi cuerpo. ¿Me cuentas cómo funciona?"*
-- Debajo: "30 minutos · Hablas directamente conmigo · Si no es para ti, te lo digo."
+- **Botón principal:** "Aplica para tu plaza" (secundario: "Reservar llamada") → WhatsApp (wa.link/2qvv3e) con mensaje ya escrito: *"Hola Julio, vengo de tu web. Tengo __ años, trabajo de __ y quiero recomponer mi cuerpo. ¿Me cuentas cómo funciona?"*
+- Debajo: "30 minutos · Hablas directamente conmigo · Plazas limitadas."
 - Repetir el botón: después del VSL, después de la prueba social y al final.
 
 ---
@@ -104,7 +104,7 @@ Tono: cercano, seguro, didáctico. Como sus vídeos de pizarra: puede usar la pi
 > Perder grasa en unas semanas lo hace cualquiera. Mi objetivo es que tengas tu mejor físico en menos de un año y que sepas mantenerlo para siempre.
 
 ### 7 · Llamada a la acción (6:00–6:30)
-> Si te has visto en este vídeo, pulsa el botón de aquí debajo y escríbeme por WhatsApp. Te hago unas preguntas sobre tu caso y, si encaja, lo vemos en una llamada de 30 minutos. Gratis y sin compromiso.
+> Si te has visto en este vídeo, pulsa el botón de aquí debajo y aplica para tu plaza. Te hago unas preguntas sobre tu caso por WhatsApp y, si encaja, reservamos una llamada de 30 minutos. Trabajo con plazas limitadas, porque reviso a cada cliente yo.
 > Llevas tiempo haciéndolo "todo bien". Ahora toca hacerlo con método. Te espero.
 
 **Si se usa un trozo como anuncio:** Meta no acepta "Si tienes más de 30 años…" ni atribuir problemas de salud a quien lo ve. Para anuncio: "Más de 800 hombres han cambiado su físico con este método. Te explico por qué tu cuerpo no responde."
@@ -137,4 +137,4 @@ Tiene muchos casos: el trabajo no es tener más, es elegir bien.
 > Preparador físico · Reset Metabólico
 > Recomposición corporal para hombres +30 con poco tiempo
 > +800 casos · Evidencia + experiencia
-> Valoración gratis ↓
+> Aplica para tu plaza ↓
