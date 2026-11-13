@@ -1,0 +1,413 @@
+<title>Método Yébenez</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<meta name="description" content="Álvaro Yébenez · Método Yébenez · Pérdida de grasa para hombres y mujeres de más de 30 que trabajan 8–12 horas al día, sin dietas de hambre ni vivir en el gimnasio.">
+<style>
+/* Layout: boceto de landing en una columna. Hero negro y amarillo con hueco para el VSL y los dos CTA (Aplica para tu plaza / Reservar llamada); ¿te suena? con frases reales; su historia (88 kg → hoy); Método Yébenez en claro; casos reales recortados de su Instagram; para quién; 3 pasos; aplicar; FAQ y cierre. */
+:root {
+  --black: #0d0d0d;
+  --black-2: #171717;
+  --black-3: #232323;
+  --yellow: #f5c400;
+  --yellow-ink: #7a5c00;
+  --white: #ffffff;
+  --paper: #f7f6f2;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --soft-dark: #bdbdbd;
+  --line: #dcdcda;
+  --line-dark: #2e2e2e;
+  --f-head: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--black); color: var(--white); font: 400 17px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+section { padding-block: clamp(56px, 8vw, 96px); }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 700; font-size: clamp(40px, 7vw, 76px); line-height: 1; }
+h1 em, h2 em { font-style: normal; color: var(--yellow); }
+h2 { font-weight: 700; font-size: clamp(30px, 4.6vw, 48px); line-height: 1.04; }
+h3 { font-weight: 600; font-size: 22px; line-height: 1.15; }
+p { margin: 0; }
+.label { font: 500 12px/1.2 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); }
+.lede { font-size: clamp(17px, 2vw, 20px); color: var(--soft-dark); max-width: 62ch; }
+.stack { display: grid; gap: 14px; }
+.read { max-width: 760px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 14px 24px; border-radius: 4px; font: 700 15.5px/1 var(--f-body); letter-spacing: .02em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: 0; }
+.btn-y { background: var(--yellow); color: var(--ink); }
+.btn-y:hover { background: #ffd31f; }
+.btn-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 2px var(--white); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 2px var(--yellow); color: var(--yellow); }
+.btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.light .btn:focus-visible { outline-color: var(--ink); }
+
+/* Cabecera */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font: 700 18px/1.05 var(--f-head); text-transform: uppercase; }
+.brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--yellow); }
+.brand small { display: block; font: 500 10.5px/1.3 var(--f-mono); letter-spacing: .12em; color: var(--yellow); }
+.top .btn { min-height: 42px; padding: 10px 16px; font-size: 13.5px; }
+
+/* Hero */
+.hero { padding-block: clamp(28px, 5vw, 56px) clamp(56px, 8vw, 90px); display: grid; gap: 22px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 48px); align-items: center; }
+.vsl { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; background: radial-gradient(circle at 30% 30%, #2a2a2a, #111 70%); box-shadow: inset 0 0 0 2px var(--yellow); display: grid; place-items: center; overflow: hidden; }
+.vsl::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 18px, rgba(245,196,0,.05) 18px 20px); }
+.vsl .play { position: relative; width: 78px; height: 78px; border-radius: 50%; background: var(--yellow); display: grid; place-items: center; }
+.vsl .play::after { content: ""; margin-left: 6px; border-left: 24px solid var(--ink); border-top: 15px solid transparent; border-bottom: 15px solid transparent; }
+.vsl span { position: absolute; left: 12px; bottom: 10px; right: 12px; font: 500 11.5px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft-dark); }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.cta-note { font-size: 14px; color: var(--soft-dark); }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.fact { border-top: 3px solid var(--yellow); padding-top: 10px; display: grid; gap: 2px; }
+.fact b { font: 700 28px/1 var(--f-head); text-transform: uppercase; }
+.fact span { font-size: 14px; color: var(--soft-dark); }
+
+/* ¿Te suena? */
+.signs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sign { background: var(--black-2); border-left: 4px solid var(--yellow); border-radius: 4px; padding: 16px 18px; font-weight: 600; font-size: 16.5px; }
+.turn { margin-top: 26px; font: 700 clamp(24px, 3.4vw, 34px)/1.15 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+.turn em { font-style: normal; color: var(--yellow); }
+
+/* Historia */
+.alt { background: var(--black-2); }
+.story { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(22px, 4vw, 48px); align-items: start; }
+.story figure { margin: 0; display: grid; gap: 8px; }
+.story figure img { border-radius: 6px; width: 100%; height: auto; }
+.story figcaption { font-size: 13.5px; color: var(--soft-dark); }
+.timeline { display: grid; gap: 0; margin-top: 6px; }
+.tl { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 14px; padding: 14px 0; border-top: 1px solid var(--line-dark); }
+.tl b { font: 700 20px/1.1 var(--f-head); color: var(--yellow); text-transform: uppercase; }
+.tl p { color: #dedede; font-size: 16px; }
+.quote { margin-top: 18px; font: 600 clamp(22px, 3vw, 30px)/1.2 var(--f-head); text-transform: uppercase; border-left: 5px solid var(--yellow); padding-left: 14px; }
+
+/* Método (claro) */
+.light { background: var(--paper); color: var(--ink); }
+.light .label { color: var(--yellow-ink); }
+.light .lede { color: var(--soft); }
+.light h2 em { color: var(--ink); background: linear-gradient(transparent 60%, var(--yellow) 60%); padding: 0 3px; }
+.layers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.layer { background: var(--ink); color: var(--white); border-radius: 6px; padding: 20px; display: grid; gap: 8px; align-content: start; }
+.layer .n { font: 500 11.5px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--yellow); }
+.layer p { color: #d6d6d6; font-size: 15.5px; }
+
+/* Casos */
+.cases { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; align-items: start; }
+.case { margin: 0; background: var(--black-2); border-radius: 6px; overflow: hidden; display: grid; }
+.case img { width: 100%; height: auto; }
+.case figcaption { padding: 14px 16px; display: grid; gap: 2px; }
+.case figcaption b { font: 600 19px/1.15 var(--f-head); text-transform: uppercase; }
+.case figcaption span { font-size: 14px; color: var(--soft-dark); }
+.case-ph { border: 2px dashed var(--line-dark); border-radius: 6px; padding: 18px; display: grid; place-items: center; text-align: center; color: var(--soft-dark); font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; min-height: 120px; }
+.case-side { display: grid; gap: 14px; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.fit > div { border-radius: 6px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.fit .yes { background: var(--yellow); color: var(--ink); }
+.fit .no { background: var(--black-2); box-shadow: inset 0 0 0 1px var(--line-dark); }
+.fit ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 16px; }
+.fit .no ul { color: #d6d6d6; }
+
+/* Pasos y aplicar */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.step { background: var(--black-2); border-radius: 6px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.step .n { font: 700 44px/1 var(--f-head); color: var(--yellow); }
+.step p { color: #d6d6d6; font-size: 15.5px; }
+.apply { background: var(--yellow); color: var(--ink); border-radius: 8px; padding: clamp(22px, 4vw, 40px); display: grid; gap: 16px; }
+.apply .label { color: #3d2e00; }
+.apply h2 em { color: var(--ink); text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 6px; }
+.apply .btn-y { background: var(--ink); color: var(--yellow); }
+.apply .btn-ghost { color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.apply .btn:focus-visible { outline-color: var(--ink); }
+.apply ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.form-embed iframe { width: 100%; min-height: 900px; border: 0; border-radius: 6px; background: #fff; }
+
+/* FAQ */
+.faq { display: grid; gap: 8px; max-width: 820px; }
+.faq details { background: var(--black-2); border-radius: 6px; padding: 0 18px; }
+.faq summary { cursor: pointer; padding: 16px 0; font-weight: 700; font-size: 16.5px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--yellow); font: 700 22px/1 var(--f-head); }
+.faq details[open] summary::after { content: "–"; }
+.faq summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.faq p { padding: 0 0 16px; color: #d6d6d6; }
+
+.final { text-align: center; }
+.final .ctas { justify-content: center; margin-top: 22px; }
+.final h2 { max-width: 20ch; margin-inline: auto; }
+footer { border-top: 1px solid var(--line-dark); padding-block: 26px 90px; font-size: 13px; color: var(--soft-dark); }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.sticky-cta { display: none; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: #f5c400; --nm-at: #7a5c00; display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px #111, inset 0 6px 0 #f5c400; margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #111; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.light .nm { margin-top: 26px; }
+
+@media (max-width: 900px) {
+  .hero-grid, .story { grid-template-columns: 1fr; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .signs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .layers, .steps { grid-template-columns: 1fr; }
+  .cases { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .signs, .fit { grid-template-columns: 1fr; }
+  .top .btn { display: none; }
+  .ctas .btn { width: 100%; }
+  .tl { grid-template-columns: 1fr; gap: 4px; }
+  .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; padding: 10px max(16px, env(safe-area-inset-left, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(13,13,13,.94); border-top: 1px solid var(--line-dark); z-index: 20; }
+  .sticky-cta .btn { width: 100%; }
+}
+</style>
+<!--
+  BOCETO · PENDIENTE (no se ve en la página):
+  - VSL: hueco reservado en el hero. Grabar (guion: su historia 88 kg → dieta extrema → Método Yébenez → para quién → CTA).
+  - Enlaces: APPLY_URL (formulario de aplicación) y CALL_URL (Calendly o similar) son marcadores en el script de abajo. Confirmar qué hay hoy en metodoyebenez.netlify.app y en el segundo enlace de su bio.
+  - Casos: recortes de sus capturas de Instagram (chico «90 días» de la destacada CAMBIOS y antes/después de una clienta fijado). Confirmar permiso por escrito, edad y tiempo de cada uno antes de publicar. No hay testimonios escritos: no inventar ninguno.
+  - «+197 transformaciones» (su bio): no se usa aquí hasta confirmar que se puede demostrar.
+  - Historia: «o comes o te ingreso» y el bajón tras el robo de la moto NO aparecen hasta que Álvaro lo confirme.
+  - Fotos de Álvaro: solo hay el recorte 2023→2025 y el avatar. Faltan la de 88 kg, la de 57 kg y la de hoy.
+  - Online o presencial y ciudad: [confirmar] (FAQ).
+-->
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><img src="casos/alvaro-avatar.jpg" alt="" width="223" height="223"><div>Álvaro Yébenez<small>Método Yébenez</small></div></div>
+    <a class="btn btn-y" href="#aplica">Aplica para tu plaza</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div class="stack">
+        <div class="label">Para hombres y mujeres de más de 30 que trabajan 8–12 horas al día</div>
+        <h1>Pierde la grasa del abdomen <em>sin pasar hambre</em> ni vivir en el gimnasio.</h1>
+        <p class="lede">Con 30 minutos al día, comiendo lo que te gusta y con alguien que no te suelta. Yo hice la dieta extrema: con 17 años pesaba 88 kg y bajé a 57 pasando hambre y con atracones. Por eso trabajo justo al revés.</p>
+      </div>
+      <div class="vsl" role="img" aria-label="Vídeo de presentación (pendiente de grabar)"><div class="play"></div><span>Vídeo · 4 minutos · cómo funciona el Método Yébenez (pendiente de grabar)</span></div>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-y" href="#aplica">Aplica para tu plaza</a>
+      <a class="btn btn-ghost js-call" href="#aplica">Reservar llamada</a>
+    </div>
+    <p class="cta-note">Lo leo yo personalmente. Si encajamos, hablamos 30 minutos y te digo qué haría en tu caso.</p>
+    <div class="facts">
+      <div class="fact"><b>30 min</b><span>Por entreno, 3 días a la semana</span></div>
+      <div class="fact"><b>0</b><span>Alimentos prohibidos</span></div>
+      <div class="fact"><b>1 comida libre</b><span>Planificada, cada semana</span></div>
+      <div class="fact"><b>Cada domingo</b><span>Reviso tus fotos y tu cintura</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:22px">
+      <div class="label">¿Te suena?</div>
+      <h2>Trabajas todo el día, has probado mil dietas y la barriga sigue ahí.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Me miro al espejo y no me gusto."</div>
+      <div class="sign">"He cogido muchos kilos y no sé cómo perderlos."</div>
+      <div class="sign">"Tengo muchas cosas que hacer y no me da tiempo."</div>
+      <div class="sign">"Me veo mejor, pero mi peso no baja."</div>
+      <div class="sign">"Me da vergüenza ir al gimnasio."</div>
+      <div class="sign">"No me gusta cómo me queda la ropa."</div>
+    </div>
+    <p class="turn">No te falta voluntad. <em>Te sobran dietas de hambre</em> y te falta un plan que quepa en tu día.</p>
+  </div>
+</section>
+
+<section id="historia" class="alt">
+  <div class="wrap story">
+    <figure>
+      <img src="casos/alvaro-2023-2025.jpg" alt="Álvaro Yébenez en 2023, con abrigo, y en 2025, sin camiseta" width="436" height="496" loading="lazy">
+      <figcaption>De esconder mi cuerpo bajo un abrigo a dedicarme a transformar cuerpos.</figcaption>
+    </figure>
+    <div class="stack">
+      <div class="label">Mi historia</div>
+      <h2>Con 17 años llevaba chaqueta <em>en pleno verano</em>.</h2>
+      <div class="timeline">
+        <div class="tl"><b>17 años</b><p>1,70 m y 88 kg. No iba a la playa, la ropa no me quedaba y un día no me pude comprar una camiseta que me gustaba. Mi primer día de gimnasio fui con mi padre y solo me atreví con la máquina de cardio.</p></div>
+        <div class="tl"><b>El otro extremo</b><p>Rutinas de redes, siete días a la semana, mucho cardio y comer siempre lo mismo, y poco. Bajé a 57 kg en menos de un año. Cada vez que comía algo que me gustaba, me daba un atracón.</p></div>
+        <div class="tl"><b>19 años</b><p>Aprendí a entrenar con estructura, a descansar y a comer con sentido. Y aprendí lo más importante: tras 3 meses sin una comida libre, en Navidad lo tiré todo. Prohibir no funciona.</p></div>
+        <div class="tl"><b>Hoy</b><p>Mi primer verano sin camiseta ni me lo creía. Hoy preparo mi primera competición y acompaño a gente que trabaja todo el día a perder grasa sin pasar por lo que pasé yo.</p></div>
+      </div>
+      <p class="quote">"Las cosas fáciles nunca llegan. Pero no hace falta pasar hambre."</p>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" class="light">
+  <div class="wrap">
+    <div class="read stack">
+      <div class="label">Método Yébenez</div>
+      <h2>Ordenar. Quemar. <em>Mantener.</em></h2>
+      <p class="lede">Perder la grasa es la mitad. La otra mitad es no volver a cogerla. Por eso el método tiene una fase que casi nadie vende.</p>
+    </div>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Para quién es</span><p class="nm-big">Hombres y mujeres de más de 30 que trabajan 8–12 horas al día y quieren perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio.</p></div><div class="nm-meth"><span class="nm-lab">Método Yébenez en 30 segundos</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Comer lo que te gusta</b><span>Yo bajé de 88 a 57 kg en menos de un año comiendo poco y siempre lo mismo, con atracones cada vez que probaba algo que me gustaba. Aquí no hay alimentos prohibidos: hay cantidades y orden.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>30 minutos que caben en tu horario</b><span>Yo entrenaba los 7 días, con mucho cardio y saltándome pierna. Más no era mejor. 3 entrenos de fuerza de 30–45 minutos encajados en jornadas de 8 a 12 horas.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Acompañamiento que no te suelta</b><span>Tras 3 meses sin una comida libre llegó la Navidad y lo tiré todo por la ventana. Por mucho que pasen cosas, hay que seguir: revisión cada semana, ajustes y cabeza.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Ordenar</b><p><em>Qué pasa:</em> Comes lo que ya te gusta, pero con orden, y tus 3 entrenos entran en la agenda. Se acaban las excusas, no la comida.</p><p><em>Qué haces tú:</em> 3 entrenos de 30 minutos, proteína en cada comida, tu comida libre y la revisión del domingo.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–12</span><b>Quemar</b><p><em>Qué pasa:</em> Bajas grasa sin pasar hambre. El abdomen y la ropa lo notan antes que la báscula.</p><p><em>Qué haces tú:</em> Subes cargas, ajustamos cantidades cada semana y mides cintura y fotos.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Mantener</b><p><em>Qué pasa:</em> Aprendes a mantenerlo en Navidad, en vacaciones y en semanas de 12 horas, para no volver atrás.</p><p><em>Qué haces tú:</em> Comes más flexible, entrenas igual y te quedas con tu propio sistema.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>Una comida libre planificada cada semana</b><p><em>Por qué:</em> Prohibir lleva al atracón. Yo estuve 3 meses sin ninguna y lo pagué en Navidad.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>3 entrenos de 30 minutos en la agenda, con pierna</b><p><em>Por qué:</em> Lo que está en el calendario se hace, y la pierna es lo que más gasta. Yo me la saltaba.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Revisión semanal con fotos y cintura</b><p><em>Por qué:</em> «Me veo mejor pero mi peso no baja»: la báscula sola engaña; la cintura y las fotos, no.</p></div></div></div><p class="nm-proof">Prueba: «Con 17 años pesaba 88 kg y llevaba chaqueta en pleno verano. No pude comprarme una camiseta que me gustaba. Hoy ayudo a gente que trabaja todo el día a perder grasa sin pasar hambre.»</p><p class="nm-line">Lo primero que vas a dejar de hacer es ponerte tantas excusas. Se puede con 30 minutos y comiendo lo que te gusta.</p></section>
+    <div class="layers">
+      <article class="layer"><span class="n">Semanas 1–4</span><h3>Ordenar</h3><p>Tu comida de siempre, con orden y cantidades. 3 entrenos de 30 minutos metidos en tu agenda real.</p></article>
+      <article class="layer"><span class="n">Semanas 5–12</span><h3>Quemar</h3><p>Bajas grasa sin pasar hambre. Lo nota tu cintura y tu ropa antes que la báscula.</p></article>
+      <article class="layer"><span class="n">Meses 4–6</span><h3>Mantener</h3><p>Navidad, vacaciones, semanas de 12 horas: aprendes a mantenerlo para no volver atrás.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Cambios reales</div>
+      <h2>Sin dietas de hambre. <em>Con acompañamiento.</em></h2>
+    </div>
+    <!-- Recortes de sus capturas de Instagram. Publicar solo con permiso por escrito; añadir edad y tiempo reales cuando los confirme. -->
+    <div class="cases">
+      <figure class="case"><img src="casos/chico-90-dias.jpg" alt="Antes y después de un cliente de Álvaro: cambio en 90 días" width="1012" height="886" loading="lazy"><figcaption><b>90 días</b><span>Cliente del equipo de Álvaro · de la destacada «Cambios».</span></figcaption></figure>
+      <div class="case-side">
+        <figure class="case"><img src="casos/mujer-antes-despues.jpg" alt="Antes y después de una clienta del Método Yébenez" width="427" height="404" loading="lazy"><figcaption><b>Método Yébenez</b><span>Clienta · antes y después.</span></figcaption></figure>
+        <div class="case-ph">Cambio de cliente de +40 · pendiente de fotos y permiso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien" class="alt">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Tienes más de 30 y trabajas 8, 10 o 12 horas al día.</li>
+          <li>Quieres perder grasa, sobre todo del abdomen, y volver a ponerte lo que te gusta.</li>
+          <li>Has probado dietas restrictivas y has vuelto al punto de partida.</li>
+          <li>Puedes darle 30 minutos, 3 días a la semana, y mandarme tu revisión cada domingo.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Lo quieres todo ya.</li>
+          <li>Tienes una excusa preparada para cada semana.</li>
+          <li>Vas a juzgarlo todo por la báscula en la segunda semana.</li>
+          <li>Buscas una dieta milagro o un batido que lo haga por ti.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:26px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Aplicas</h3><p>Me cuentas tu caso: edad, horario, qué has probado y qué quieres conseguir. Dos minutos.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablamos</h3><p>Si encajamos, una llamada de 30 minutos en la que te digo qué haría contigo.</p></div>
+      <div class="step"><span class="n">03</span><h3>Ordenas</h3><p>Tu plan de comida y tus 3 entrenos en tu agenda, y la primera revisión en el calendario.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="aplica" style="padding-top:0">
+  <div class="wrap">
+    <div class="apply">
+      <div class="label">Plazas limitadas: acompaño a pocas personas a la vez</div>
+      <h2>Aplica para tu plaza. <em>Lo leo yo.</em></h2>
+      <ul>
+        <li>Si encajas, te escribo para reservar una llamada de 30 minutos.</li>
+        <li>Si no encajas, también te lo digo. No quiero que pagues por algo que no te va a servir.</li>
+      </ul>
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <div class="ctas">
+        <a class="btn btn-y js-apply" href="#aplica" target="_blank" rel="noopener">Aplica para tu plaza</a>
+        <a class="btn btn-ghost js-call" href="#aplica" target="_blank" rel="noopener">Reservar llamada</a>
+      </div>
+      <p style="font-size:14.5px">¿Prefieres Instagram? Escríbeme <b>PLAZA</b> por privado a <a href="https://www.instagram.com/alvaro.yebenezfit/" target="_blank" rel="noopener">@alvaro.yebenezfit</a> y te contesto yo.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:22px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Trabajo muchísimas horas. ¿De verdad me da tiempo?</summary><p>Son 3 entrenos de 30 minutos, en el gimnasio o en casa, encajados en tu horario real. Yo entrenaba los siete días y estaba peor: más no es mejor, mejor es lo que cumples.</p></details>
+      <details><summary>¿Voy a pasar hambre?</summary><p>No. No hay alimentos prohibidos: hay cantidades y orden, y una comida libre planificada cada semana. Yo pasé hambre para bajar de peso y acabé con atracones. No te lo voy a pedir.</p></details>
+      <details><summary>Tengo críos y no puedo cocinar aparte.</summary><p>No hace falta: comes lo mismo que tu familia, con otro reparto en el plato. Y si no puedes ir al gimnasio, entrenas en casa.</p></details>
+      <details><summary>Eres muy joven. ¿Me vas a entender con mis 40 o 50 años?</summary><p>Los clientes con los que mejor me sale tienen más de 40. Yo ya hice la dieta extrema y sé dónde acaba; por eso trabajo con lo que tú puedes sostener, a tu ritmo y con tu cuerpo.</p></details>
+      <details><summary>¿Y si me veo mejor pero la báscula no baja?</summary><p>Pasa mucho, sobre todo al principio. Por eso cada semana revisamos fotos y cintura, no solo el peso. Si la cintura baja, estás perdiendo grasa.</p></details>
+      <details><summary>Me da vergüenza ir al gimnasio.</summary><p>A mí también: el primer día solo me atreví con la cinta. Puedes empezar en casa y, cuando vayas, irás con tu plan y sabiendo exactamente qué hacer.</p></details>
+      <details><summary>Tengo dolores o alguna lesión.</summary><p>Adaptamos el plan a tu punto de partida. Si hay dolor o una lesión, primero tu médico o fisio: yo no diagnostico, adapto el entrenamiento a lo que te digan.</p></details>
+      <details><summary>¿Cuánto cuesta? ¿Se puede pagar en partes?</summary><p>Depende de tu caso y de cuánto tiempo trabajemos juntos (mínimo un trimestre). Se puede fraccionar. Te lo explico en la llamada.</p></details>
+      <!-- FAQ PENDIENTE: «¿Es online o presencial? ¿Desde dónde?» — falta que Álvaro lo confirme. -->
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2 style="margin-top:12px">Lo primero que vas a dejar de hacer es <em>ponerte excusas</em>.</h2>
+    <div class="ctas">
+      <a class="btn btn-y" href="#aplica">Aplica para tu plaza</a>
+      <a class="btn btn-ghost js-call" href="#aplica">Reservar llamada</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Álvaro Yébenez · Método Yébenez</span><span><a href="https://www.instagram.com/alvaro.yebenezfit/" target="_blank" rel="noopener">@alvaro.yebenezfit</a></span></div>
+    <p>Este asesoramiento no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su implicación.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-y" href="#aplica">Aplica para tu plaza</a></div>
+<script>
+(function () {
+  // PENDIENTE: pegar aquí el enlace real del formulario de aplicación y el de reservar llamada (Calendly o similar).
+  var APPLY_URL = "";
+  var CALL_URL = "";
+  document.querySelectorAll(".js-apply").forEach(function (a) { a.href = APPLY_URL || "https://www.instagram.com/alvaro.yebenezfit/"; });
+  document.querySelectorAll(".js-call").forEach(function (a) { if (CALL_URL) { a.href = CALL_URL; a.target = "_blank"; a.rel = "noopener"; } else { a.removeAttribute("target"); a.href = "#aplica"; } });
+  var fe = document.getElementById("formEmbed");
+  if (fe && APPLY_URL && window.self === window.top && /\/viewform/.test(APPLY_URL)) {
+    var f = document.createElement("iframe");
+    f.src = APPLY_URL + (APPLY_URL.indexOf("?") < 0 ? "?" : "&") + "embedded=true"; f.title = "Aplica para tu plaza"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

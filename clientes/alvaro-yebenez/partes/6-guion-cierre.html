@@ -1,0 +1,344 @@
+<title>Álvaro Yébenez Guion</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+
+/* Layout: guion de cierre imprimible de Álvaro Yébenez; una columna de lectura con frases literales en recuadro y botón de copiar. Paleta negra y amarilla. */
+:root {
+  --paper: #f7f6f2;
+  --white: #ffffff;
+  --sand: #efede6;
+  --sand-line: #d6d6d3;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --gold: #f5c400;
+  --gold-text: #7a5c00;
+  --chip: #efede6;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: clamp(28px, 5vw, 52px) max(16px, env(safe-area-inset-right, 0px)) 70px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 18px; }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 800 clamp(34px, 5.5vw, 54px)/1 var(--f-head); letter-spacing: 0; text-transform: uppercase; }
+h2 { font: 700 26px/1.12 var(--f-head); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: space-between; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: #111; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: #fff; }
+.card.dark .label { color: #f5c400; }
+.card.dark ul.l, .card.dark ul.l b { color: #e2e2e2; }
+.cs { padding: 22px clamp(18px, 3vw, 28px); gap: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 4px solid var(--gold); border-radius: 10px; padding: 11px 14px; font-size: 15px; font-weight: 600; }
+.say.placeholder { border: 1.5px dashed var(--gold); border-left-width: 4px; }
+.say .cpy { all: unset; cursor: pointer; float: right; margin: -2px -4px 4px 10px; font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .04em; padding: 6px 8px; border-radius: 8px; background: var(--white); box-shadow: inset 0 0 0 1px var(--sand-line); color: var(--ink); }
+.say .cpy:focus-visible { outline: 3px solid var(--ink); }
+.cs h3.ph { font: 700 25px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--sand-line); }
+.cs h4 { margin: 4px 0 0; font: 700 15.5px/1.3 var(--f-body); color: var(--gold-text); }
+.tw { overflow-x: auto; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+.ctab th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 8px 10px; background: var(--chip); }
+.ctab td { padding: 9px 10px; border-top: 1px solid var(--sand-line); vertical-align: top; }
+.note { background: var(--white); border: 1.5px dashed var(--sand-line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; font-size: 14px; }
+.check-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14.5px; }
+.objs { display: grid; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; margin-top: 10px; font-size: 14.5px; }
+.obj > b { font-size: 15px; }
+.obj .say { display: block; margin: 0 0 6px; }
+@media (max-width: 640px) { .grid2, .obj { grid-template-columns: 1fr; } }
+@media print {
+  @page { margin: 14mm 12mm; }
+  body { background: #fff; font-size: 11.5pt; }
+  .wrap { padding: 0; max-width: none; gap: 10px; }
+  .noprint, .say .cpy { display: none !important; }
+  .card, .cs { padding: 0; border-radius: 0; background: #fff !important; }
+  .card.sand, .card.dark, .note { background: #fff !important; color: #000 !important; border: 1px solid #bbb; padding: 10px 12px; border-radius: 6px; }
+  .card.dark .label, .card.dark ul.l { color: #000 !important; }
+  .say { background: #fff; border: 1px solid #c9c9c6; border-left: 4px solid #f5c400; break-inside: avoid; }
+  .cs h3.ph { break-after: avoid; }
+  h4 { break-after: avoid; }
+  .obj, table, .grid2 > * { break-inside: avoid; }
+  .tw { overflow: visible; }
+  .ctab { min-width: 0; }
+  a { color: #000; }
+}
+
+/* Álvaro: Oswald en mayúscula para los titulares */
+h1 { letter-spacing: .005em; font-weight: 700; }
+h2, .cs h3.ph { font-family: var(--f-head); letter-spacing: .005em; }
+
+</style>
+
+<main class="wrap">
+  <header class="top">
+    <div style="display:grid;gap:8px">
+      <span class="label">Álvaro Yébenez · Método Yébenez · Material de mentoría</span>
+      <h1>Guion de llamada de cierre</h1>
+      <p class="soft">Hombres y mujeres de más de 30 que trabajan 8–12 horas al día y quieren perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio. Lo primero que van a dejar de hacer contigo es ponerse tantas excusas.</p>
+    </div>
+    <button type="button" class="btn noprint" id="printBtn">Imprimir o guardar en PDF</button>
+  </header>
+      <article class="card cs" id="cierre">
+        <span class="label">Llamada de cierre · 35–40 min</span>
+        <h2>Guion de cierre: conectas, escuchas, resumes, propones y cierras.</h2>
+        <p class="soft">Basado en el Guion de Cierre Escuela Aglez, adaptado a ti. Orden fijo: adaptas el tono a cada persona, nunca el orden. Hablas tú el 30 % del tiempo como mucho. Las frases en recuadro son casi literales: dilas con tus palabras, pero no te saltes ninguna. Le hablas como el entrenador cercano que pasó por la dieta extrema, no como un vendedor.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Fase</th><th>Objetivo</th><th>Tiempo</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Conexión + Autoridad</td><td>Bajar defensas y liderar la llamada</td><td>5 min</td></tr>
+            <tr><td>2 · Descubrimiento</td><td>Dolor, intentos, riesgo y objetivo</td><td>20 min</td></tr>
+            <tr><td>2.5 · Resumen + Validación</td><td>Que se sienta entendido</td><td>2 min</td></tr>
+            <tr><td>3 · Propuesta + Precio</td><td>Solo lo que le importa a esa persona</td><td>5 min</td></tr>
+            <tr><td>4 · Objeciones + Cierre</td><td>Aclarar, aislar, solucionar y cobrar</td><td>10 min</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="card sand">
+          <h3>Antes de la llamada (5 min de preparación, obligatorio)</h3>
+          <ul class="check-l">
+            <li>☐ Repasa su ficha del CRM: edad, horas de trabajo, si tiene críos, qué ha probado (dietas restrictivas, gimnasio, cardio), qué quiere perder y desde cuándo.</li>
+            <li>☐ Marca su fase: <b>frío, tibio o caliente</b>, y apunta <b>una frase literal suya</b> para el resumen ("me miro al espejo y no me gusto", "no me da tiempo", "he cogido muchos kilos y no sé cómo perderlos"…).</li>
+            <li>☐ Ten preparado <b>tu cambio</b> (88 kg y chaqueta en verano → hoy) y, si tienes permiso, el caso de un cliente parecido (mujer adulta, hombre +40, el chico de 90 días).</li>
+            <li>☐ ¿Decide sola/solo o con su pareja? Si pagan a medias, propón que esté en la llamada.</li>
+            <li>☐ Mira tu <b>nivel de precios actual</b> en la pestaña Clientes del CRM.</li>
+            <li>☐ Ten abierto el <b>enlace de pago</b> (pago único y fraccionado).</li>
+            <li>☐ Cámara a la altura de los ojos, buena luz, móvil en silencio. Puntual al minuto.</li>
+          </ul>
+        </div>
+
+        <h3 class="ph">Fase 1 · Conexión + Autoridad (5 min)</h3>
+        <p class="soft">Que se relaje y entienda que tú llevas la llamada. Dos minutos de charla como mucho y entras al marco.</p>
+        <h4>Small talk (elige una o dos)</h4>
+        <ul class="l">
+          <li>"¿Qué tal, cómo va? ¿Vienes de trabajar?"</li>
+          <li>"¿Has podido escaparte un rato o estás todavía con lío?"</li>
+          <li>"¿Desde dónde me hablas, desde casa?"</li>
+          <li>"Vi que me escribiste PLAZA por la historia de [tema], ¿qué fue lo que te hizo clic?"</li>
+        </ul>
+        <p class="soft">La última es la mejor si sabes de dónde viene: te da contexto y abre directamente el dolor.</p>
+        <h4>Marco de autoridad (obligatorio, casi literal)</h4>
+        <p class="say">"Bueno, te cuento cómo va a ir esto. Te voy a hacer unas cuantas preguntas para entender bien dónde estás y qué te está pasando. Si veo que te puedo ayudar de verdad, te explico cómo trabajo y vemos si tiene sentido. Y si veo que no es para ti, te lo digo igual, que no quiero que me pagues por algo que no te va a servir. ¿Te parece bien?"</p>
+        <p class="soft">Espera el sí: es el primer compromiso de la llamada. <b>Errores a evitar:</b> hablar de ti antes de saber nada, alargar el small talk más de 3 minutos o empezar a explicar el plan.</p>
+
+        <h3 class="ph">Fase 2 · Descubrimiento profundo (20 min)</h3>
+        <p class="soft">Aquí se gana o se pierde la venta. Preguntas, escuchas, apuntas sus palabras literales y aguantas los silencios. Todavía no das soluciones.</p>
+
+        <h4>2.1 Dolor</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"Para empezar, ¿por qué has decidido coger esta llamada ahora y no hace seis meses?"</p>
+        <p class="soft">Profundiza:</p>
+        <ul class="l">
+          <li>¿Desde cuándo te ves así? ¿Qué ha pasado en estos años (trabajo, críos, mudanza…)?</li>
+          <li>¿Qué es lo que más te molesta cuando te miras al espejo? (casi siempre el abdomen)</li>
+          <li>Ponme un ejemplo reciente en el que lo notaras: una foto, una prenda que no te pusiste, la playa, unos pantalones cortos.</li>
+          <li>¿Cuántas horas trabajas y qué hueco real te queda para ti?</li>
+          <li>¿Cómo es un día normal de comidas? ¿Picas? ¿Cenas tarde?</li>
+          <li>¿Hay algo que te duela o te limite al moverte? ("los años, los dolores, los huesos…")</li>
+        </ul>
+        <p class="soft">Silencio de 5 a 7 segundos después de cada respuesta. Si contesta en superficie ("nada, quiero perder unos kilos"):</p>
+        <p class="say">"Te lo pregunto porque cuanto mejor entienda lo que te pasa, mejor te voy a poder ayudar. Tómate tu tiempo."</p>
+        <p class="soft">Si sigue en superficie, usa tu historia:</p>
+        <p class="say">"Te cuento por qué te lo pregunto. Con 17 años pesaba 88 kilos y llevaba chaqueta hasta en verano. No iba a la playa y un día no me pude comprar una camiseta que me gustaba. Cuando empecé, me pasé al otro extremo: entrenaba todos los días y comía poco y siempre lo mismo. Bajé a 57 kilos, pero con atracones y sin poder vivir. Por eso hoy trabajo justo al revés. ¿Cuál dirías que ha sido tu momento, el que te ha hecho escribirme?"</p>
+        <p class="soft">Cuéntalo en menos de 30 segundos. Lo de tu madre y el bajón tras el robo de la moto no van aquí salvo que tú decidas contarlo.</p>
+        <p class="soft">Quédate con <b>un dolor principal</b> y apúntalo en el CRM con <b>sus</b> palabras.</p>
+
+        <h4>2.2 Intentos</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"Seguro que ya lo has intentado. Cuéntame uno o dos intentos serios que hayas hecho y qué no te funcionó en cada uno."</p>
+        <ul class="l">
+          <li>¿Y qué fue lo que falló ahí exactamente?</li>
+          <li>¿Cuánto te duró?</li>
+          <li>¿Por qué lo dejaste? ¿Y qué pasó con los kilos después?</li>
+        </ul>
+        <p class="soft">Enfócate en lo que falló (dietas restrictivas, pasar hambre, apuntarse al gym y dejarlo, mucho cardio, hacerlo sin nadie, "la báscula no bajaba"). Todavía no le digas cómo lo harías tú.</p>
+        <p class="soft">Escucha qué le frena de verdad: <b>el tiempo</b> (trabajo, críos), <b>el hambre</b> (dietas que no aguanta) o <b>la cabeza</b> ("me culpo por falta de voluntad", "esto no es para mí").</p>
+
+        <h4>2.3 Frenos y riesgo</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"Imagínate que hoy empiezas con un entrenador, no hace falta que sea yo. ¿Qué miedo o qué duda te vendría a la cabeza?"</p>
+        <p class="soft">Si no sale nada:</p>
+        <ul class="l">
+          <li>¿Has tenido entrenador antes? ¿Qué tal te fue? ¿Te acompañaba o te mandaba un PDF?</li>
+          <li>¿Qué crees que te podría hacer dejarlo a mitad?</li>
+        </ul>
+        <p class="soft">Apunta el miedo literal ("no voy a tener tiempo", "voy a pasar hambre", "lo voy a dejar como siempre", "es mucho dinero"). Lo resuelves en la fase 3.</p>
+
+        <h4>2.4 Deseo y servicio ideal</h4>
+        <p class="soft">Pregunta clave:</p>
+        <p class="say">"¿Qué tendría que pasar en 3 meses y en 6 meses para que digas: vale, esto está funcionando?"</p>
+        <p class="soft">Profundiza en el deseo real, que casi nunca es el número de la báscula:</p>
+        <ul class="l">
+          <li>Y cuando lo consigas, ¿qué cambia? (ponerte lo que te gusta, pantalones cortos, la playa con tus hijos, mirarte al espejo y gustarte, tener energía al salir de trabajar…)</li>
+          <li>¿Por qué ahora es importante para ti?</li>
+          <li>Del 1 al 10, ¿cómo de importante es solucionar esto ya?</li>
+        </ul>
+        <p class="soft">Si pregunta "¿cuántos kilos voy a perder?", sé honesto: no prometes una cifra; prometes un plan, revisión semanal y que se mide la cintura, no solo la báscula.</p>
+        <p class="soft">Cierra con el servicio ideal:</p>
+        <p class="say">"Si fueras a contratar a alguien para esto, ¿a qué una o dos cosas le darías más importancia?"</p>
+        <p class="soft">¿Por qué eso es tan importante para ti? Si el 1–10 da menos de 7: "¿Qué haría falta para que fuera un 9?". Si no hay urgencia real, no fuerces el cierre.</p>
+
+        <h3 class="ph">Fase 2.5 · Resumen + Validación (2 min)</h3>
+        <p class="soft">Si se siente entendido, la propuesta entra sola. Usa sus palabras exactas, no las tuyas.</p>
+        <h4>Resumen</h4>
+        <p class="say">"A ver si lo he pillado bien. Trabajas [horas] al día, llevas [tiempo] sin sentirte a gusto y lo que más te molesta es [frase literal]. Has probado [intento] y no te funcionó porque [motivo]. Lo que quieres de verdad es [deseo] y lo que más te preocupa es [miedo]. ¿Me dejo algo importante?"</p>
+        <p class="soft">Si corrige algo, escuchas y lo ajustas en voz alta.</p>
+        <h4>Validación</h4>
+        <p class="say">"Te voy a ser sincero. Sí creo que te puedo ayudar, y lo que te pasa es mucho más común de lo que piensas. No te falta voluntad: te han sobrado dietas de hambre y te ha faltado un plan que quepa en tu día y alguien que no te suelte. Te explico cómo lo haríamos en tres minutos y luego me dices qué dudas te quedan, ¿vale?"</p>
+        <p class="soft">Si ves que <b>no</b> es para ti (lo quiere todo ya, pone pegas a todo, o necesita un médico antes), díselo aquí. Cumplir el marco de la fase 1 te da credibilidad.</p>
+
+        <h3 class="ph">Fase 3 · Propuesta + Precio (5 min)</h3>
+        <p class="soft">No explicas todo el servicio. Explicas solo lo que resuelve SU dolor y SU miedo.</p>
+        <h4>Qué es (20 segundos)</h4>
+        <p class="say">"Ayudo a hombres y mujeres de más de 30 que trabajan 8–12 horas al día a perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio. Yo hice la dieta extrema: bajé de 88 a 57 kilos pasando hambre. Por eso trabajo justo al revés."</p>
+        <h4>Método en 2 minutos · Método Yébenez</h4>
+        <p class="soft">Empieza siempre por el pilar que más le importa (lo dijo en la 2.4).</p>
+        <ul class="l">
+          <li><b>Pilar 1 · Comer lo que te gusta:</b> "No hay alimentos prohibidos: hay cantidades y orden. Comes lo que ya comes en casa, con otro reparto, y tienes una comida libre a la semana. Yo me prohibía todo y acababa en atracón."</li>
+          <li><b>Pilar 2 · 30 minutos que caben en tu horario:</b> "Tres entrenos de 30 minutos, con pierna, en tu agenda. En tu caso, con [trabajo/horario/críos], sería así: [ejemplo concreto]. Yo entrenaba siete días y estaba peor."</li>
+          <li><b>Pilar 3 · Acompañamiento que no te suelta:</b> "Cada domingo me mandas fotos, cintura y cómo ha ido la semana, y te ajusto. Me tienes por WhatsApp. Y la semana que todo se tuerza, no lo tiras por la ventana: lo ajustamos."</li>
+        </ul>
+        <p class="soft"><b>Las 3 fases:</b> 1 · Ordenar (semanas 1–4): tu comida con orden y tus 3 entrenos en la agenda. 2 · Quemar (semanas 5–12): bajas grasa sin pasar hambre; lo nota la cintura y la ropa antes que la báscula. 3 · Mantener (meses 4–6): aprendes a mantenerlo en Navidad, vacaciones y semanas malas, para no volver atrás. <b>3 no negociables y su porqué:</b> comida libre planificada (prohibir lleva al atracón), 3 entrenos de 30 minutos con pierna (lo que está en la agenda se hace), revisión semanal con fotos y cintura (la báscula sola engaña).</p>
+        <h4>Resuelve el miedo de la 2.3</h4>
+        <p class="say">"Antes me dijiste que te daba miedo [miedo literal]. Justo por eso lo planteamos así: [solución concreta]."</p>
+        <h4>Caso parecido</h4>
+        <p class="soft">Elige el que más se parezca. Los recuadros con borde discontinuo son para rellenar con <b>datos reales</b> y permiso por escrito antes de usarlos.</p>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Caso</th><th>Qué contar</th><th>Úsalo cuando el lead…</th></tr></thead>
+          <tbody>
+            <tr><td>Tu propio cambio</td><td>17 años, 1,70, 88 kg, chaqueta en verano. Te pasaste al otro extremo (57 kg en menos de un año, con atracones). Con 19, estructura; hoy, la tarima.</td><td>Ha hecho dietas restrictivas o cree que tiene que pasar hambre.</td></tr>
+            <tr><td>Navidad</td><td>3 meses sin comida libre y en Navidad lo tiraste todo. Por eso la comida libre es obligatoria y existe la fase Mantener.</td><td>Ha perdido kilos otras veces y los ha recuperado.</td></tr>
+            <tr><td>La clienta del antes/después</td><td><b>[Pendiente: edad, tiempo y permiso.]</b> Sin dieta de hambre.</td><td>Mujer adulta que cree que "esto no es para mí".</td></tr>
+            <tr><td>El chico de 90 días</td><td><b>[Pendiente: permiso y qué hizo.]</b> "Este cambio fue en 90 días."</td><td>Hombre que duda de si en un trimestre se nota.</td></tr>
+            <tr><td>Cliente de +40</td><td><b>[Pendiente: Mcarmen, Paco o Shuli, con permiso y datos reales.]</b></td><td>Cree que a su edad ya es tarde.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="say placeholder">"[Cliente de +30, con permiso]: trabajaba [horas] y había probado [dietas]. Empezó con [cintura/kg] y [entrenos a la semana]. En [semanas] semanas [resultado real: cintura, fotos, ropa]. Lo que más le costó fue [x]."</p>
+        <p class="say placeholder">"[Antiguo cliente que lo ha mantenido]: terminó hace [meses] y sigue [resultado]. Lo que le ayudó a no volver atrás fue [x]."</p>
+
+        <h4>El precio: así se presenta</h4>
+        <p class="soft">Siempre en este orden. Mira tu nivel actual en la pestaña Clientes del CRM. Precios en <b>propuesta</b>: valídalos con Alberto antes de la primera llamada.</p>
+        <ol class="l">
+          <li><b>Primero el semestre</b>, como lo normal: "Lo que yo recomiendo son seis meses, las tres fases, porque perder la grasa es la mitad: la otra mitad es no volver a cogerla."</li>
+          <li><b>El año, como mejor valor:</b> "Si quieres asegurarte de no volver atrás, el año completo te sale mucho mejor."</li>
+          <li><b>Trimestre solo como mínimo</b>, si de verdad no puede: Ordenar y Quemar. Nunca mes a mes.</li>
+        </ol>
+        <div class="tw"><table class="ctab">
+          <thead><tr><th>Nivel</th><th>Trimestre</th><th>Trimestre en 3 pagos</th><th>Semestre</th><th>Semestre en 2 pagos</th><th>Año</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>300 €</td><td>3 × 105 €</td><td>500 €</td><td>2 × 265 €</td><td>850 €</td></tr>
+            <tr><td>1</td><td>360 €</td><td>3 × 125 €</td><td>600 €</td><td>2 × 315 €</td><td>1.020 €</td></tr>
+            <tr><td>2</td><td>430 €</td><td>3 × 150 €</td><td>720 €</td><td>2 × 380 €</td><td>1.225 €</td></tr>
+            <tr><td>3</td><td>520 €</td><td>3 × 180 €</td><td>865 €</td><td>2 × 455 €</td><td>1.470 €</td></tr>
+          </tbody>
+        </table></div>
+        <p class="say">"Los seis meses son [precio]. Si te viene mejor, lo puedes pagar en dos pagos de [cuota]."</p>
+        <p class="soft"><b>Dilo una vez y calla.</b> No lo justifiques ni lo rebajes. Fraccionar sí, pero siempre el compromiso completo, firmado: nunca "pago este mes y vemos". Cada venta cerrada, subes un nivel en el CRM.</p>
+        <h4>Cierre de bloque</h4>
+        <p class="say">"Hasta aquí lo importante. Ahora dime tú: ¿qué dudas te quedan, sobre cómo funciona, el pago o cuándo empezar?"</p>
+        <p class="soft">Y te callas. El primero que habla después de esta pregunta, pierde.</p>
+
+        <h3 class="ph">Fase 4 · Objeciones + Cierre (10 min)</h3>
+        <p class="soft">Nunca discutes ni te justificas. Preguntas. Cada objeción pasa por tres pasos:</p>
+        <ol class="l">
+          <li><b>Aclarar:</b> "¿A qué te refieres exactamente?"</li>
+          <li><b>Aislar:</b> "Quitando eso, ¿hay algo más que te frene para empezar hoy?"</li>
+          <li><b>Solucionar:</b> validas lo que siente y le das una salida concreta.</li>
+        </ol>
+        <div class="objs">
+          <div class="obj"><b>"No me da tiempo"</b><span><span class="say">"¿Cuánto tiempo crees que te haría falta?"</span>"Son 30 minutos, tres días. Si hace falta, en casa. Lo montamos con tu horario real, no con el de un influencer. Si una semana fallas, la ajustamos; no empiezas de cero."</span></div>
+          <div class="obj"><b>"Es una inversión importante" / "No tengo dinero"</b><span><span class="say">"¿Es que ahora mismo no lo tienes o que no tienes claro que valga lo que cuesta?"</span>Si es liquidez: "El precio no lo toco, pero lo puedes fraccionar: el trimestre en 3 pagos o el semestre en 2." Si es valor: "¿Cuánto llevas gastado en dietas, cuotas de gimnasio que no usas y productos 'fit'? ¿Y cuánto vale para ti volver a ponerte lo que te gusta?" Nunca bajes el precio.</span></div>
+          <div class="obj"><b>"Con los nenes y todo lo que llevamos…"</b><span><span class="say">"Te entiendo perfectamente. ¿Qué es lo que más te preocupa: el tiempo o el dinero?"</span>"Por eso son 30 minutos y comiendo lo mismo que tu familia, sin cocinar aparte. Mucha gente con críos lo hace en casa mientras duermen o antes de que se levanten. Justo para ti está pensado así."</span></div>
+          <div class="obj"><b>"Me lo voy a pensar"</b><span><span class="say">"Normal, es una decisión. ¿Qué es exactamente lo que tienes que pensar? Así lo vemos ahora juntos."</span>Casi siempre esconde precio, pareja o miedo a dejarlo otra vez. Aclara y aísla. Si sigue: "Llevas [tiempo] así. Cada mes que lo piensas es otro mes igual. Lo primero que vas a dejar de hacer es ponerte excusas, y esta es la primera."</span></div>
+          <div class="obj"><b>"Lo tengo que hablar con mi pareja"</b><span>1. Valida: "Tiene todo el sentido." 2. Pregunta: "¿Es por el dinero o porque quieres que te apoye?" 3. Excluye: "Quitando eso un momento, ¿tú lo tienes claro?" 4. Propón una llamada corta de 10 minutos con los dos o un audio tuyo explicando el plan. Cierra día y hora concretos para la respuesta.</span></div>
+          <div class="obj"><b>"Eres muy joven"</b><span><span class="say">"¿Qué te preocupa exactamente de eso?"</span>"Es verdad, y por eso te puedo ayudar: yo ya hice la dieta extrema y sé dónde acaba. Los clientes con los que mejor me sale tienen más de 40. Y lo que te ofrezco no es mi edad: es un plan que cabe en tu día y alguien que te revisa cada semana."</span></div>
+          <div class="obj"><b>"Ya he probado mil dietas"</b><span><span class="say">"¿Cuál fue la última? ¿Y qué pasó cuando la dejaste?"</span>"Normal que no funcionaran: casi todas eran de pasar hambre, y eso se aguanta dos semanas. Yo lo hice y acabé con atracones. Aquí comes lo que te gusta y tienes una comida libre a la semana. No es otra dieta."</span></div>
+          <div class="obj"><b>"¿Y si la báscula no baja?"</b><span><span class="say">"¿Te ha pasado antes? ¿Qué hiciste?"</span>"Pasa, sobre todo en las primeras semanas. Por eso medimos cintura y fotos cada semana. Si te ves mejor y la cintura baja, estás perdiendo grasa aunque la báscula se haga la tonta. Y si en 12 semanas cumpliendo tu cintura no baja, sigo contigo gratis."</span></div>
+          <div class="obj"><b>"Me da vergüenza ir al gimnasio"</b><span>"A mí también: el primer día solo me atreví con la cinta. Puedes empezar en casa, y cuando vayas al gimnasio, irás con tu plan y los vídeos de técnica, sabiendo exactamente qué hacer."</span></div>
+          <div class="obj"><b>"Prefiero ir mes a mes"</b><span><span class="say">"¿Qué te hace preferirlo?"</span>"Lo entiendo, pero en un mes solo ordenas. La grasa se pierde en Quemar y no se recupera gracias a Mantener. Mes a mes, la mayoría lo deja justo antes de que llegue el cambio. Lo que sí puedes es pagarlo en partes."</span></div>
+        </div>
+        <h4>Señales de compra</h4>
+        <p class="soft">Si dice "¿cómo se paga?", "¿cuándo empiezo?" o "¿qué pasa después?", deja de vender y pasa al cobro.</p>
+
+        <h4>Cobro</h4>
+        <p class="say">"Perfecto. Te paso ahora el enlace y nos quedamos un minuto hasta que te llegue la confirmación, ¿vale?"</p>
+        <p class="soft">No cuelgas hasta ver el pago confirmado.</p>
+
+        <div class="grid2">
+          <div class="card sand">
+            <h3>Si no se presenta</h3>
+            <ul class="l">
+              <li><b>A los 5 minutos:</b> "Buenas [nombre], te estoy esperando en la llamada. ¿Te ha surgido algo?"</li>
+              <li>Si responde, reagenda <b>una sola vez</b>, dentro de 1–2 días.</li>
+              <li>Si no responde o falla otra vez, a seguimiento por DM (día 2, 7 y 14).</li>
+            </ul>
+          </div>
+          <div class="card sand">
+            <h3>Si no cierra en la llamada</h3>
+            <ul class="l">
+              <li><b>24 h:</b> audio por WhatsApp recordando su objetivo con sus palabras.</li>
+              <li><b>48 h:</b> un vídeo tuyo o un caso parecido: "esto es lo que te decía".</li>
+              <li><b>Día 5:</b> último mensaje con una fecha concreta para decidir.</li>
+              <li>Déjalo en el CRM como "Llamada hecha", con nota de su dolor y su objeción literal.</li>
+              <li>Guárdalo en contactos y en tu lista de difusión: verá tus Estados de WhatsApp a diario.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Post-cierre (las primeras 24 h marcan si llega motivado o con dudas)</h3>
+          <ul class="check-l">
+            <li>☐ Mensaje de bienvenida por WhatsApp el mismo día (mejor en audio).</li>
+            <li>☐ Contrato firmado: compromiso mínimo, pagos, garantía y consentimiento de imagen.</li>
+            <li>☐ Guardado en contactos + añadido a tu lista de difusión.</li>
+            <li>☐ Checklist de inicio: fotos (frente, perfil, espalda), cintura, peso, horario, comidas de un día normal, lesiones o dolores.</li>
+            <li>☐ Pedir <b>permiso por escrito</b> para usar sus fotos y su caso más adelante.</li>
+            <li>☐ Agendar la primera revisión del domingo.</li>
+            <li>☐ Pasarlo a <b>"Cliente"</b> en el CRM y <b>subir el nivel de precios</b>.</li>
+          </ul>
+        </div>
+
+        <div class="card dark">
+          <span class="label">Antes de cada llamada, recuerda</span>
+          <ul class="l">
+            <li>El silencio trabaja por ti.</li>
+            <li>El orden no se rompe.</li>
+            <li>No tienes que convencer a nadie. Si es para esa persona, lo verá sola.</li>
+            <li>Tu diferencia es la cercanía: que se note desde el primer minuto.</li>
+            <li>Tú hiciste la dieta extrema. Eso vale más que cualquier argumento.</li>
+          </ul>
+        </div>
+      </article>
+
+</main>
+
+<script>
+(function () {
+  function copy(text, btn) {
+    function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = "Copiar"; }, 1400); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  }
+  document.querySelectorAll(".say").forEach(function (p) {
+    var txt = p.textContent.trim();
+    var b = document.createElement("button"); b.type = "button"; b.className = "cpy"; b.textContent = "Copiar";
+    b.addEventListener("click", function () { copy(txt, b); });
+    p.insertBefore(b, p.firstChild);
+  });
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+})();
+</script>

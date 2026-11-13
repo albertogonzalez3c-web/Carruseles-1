@@ -1,0 +1,386 @@
+<title>Álvaro Yébenez Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f6f2;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #efede6;
+  --accent: #f5c400;
+  --accent-text: #7a5c00;
+  --accent-dark: #f5c400;
+  --on-dark: #cfcfcf;
+  --f-head: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #dbe4ff; }
+.card.accent ul.l, .card.accent ol.l { color: #eef2ff; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #fdf3c4; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Marca Álvaro Yébenez: negro y amarillo (#f5c400), titulares en Oswald mayúscula. El amarillo siempre lleva texto negro. */
+h1, h2, h3 { letter-spacing: .01em; }
+h1 { font-weight: 700; font-size: clamp(34px, 5.4vw, 58px); line-height: 1.02; }
+h2 { font-weight: 700; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.08; }
+h3 { font-weight: 600; font-size: 19px; line-height: 1.2; }
+h1 em, h2 em { color: var(--ink); background: linear-gradient(transparent 60%, #f5c400 60%); padding: 0 2px; }
+.card.accent, .card.accent h2, .card.accent h3, .card.accent ul.l b, .card.accent ol.l b { color: var(--ink); }
+.card.accent .label { color: #3d2e00; }
+.card.accent ul.l, .card.accent ol.l { color: #2a2200; }
+.card.accent .say { background: rgba(0,0,0,.08); border-left-color: var(--ink); color: var(--ink); }
+.card.accent .badge { background: rgba(0,0,0,.12); color: var(--ink); }
+.card.dark .label { color: #f5c400; }
+
+/* Layout: nicho, diagnóstico y lo que hay que aclarar arriba; debajo, vista previa del perfil (fija en escritorio) y a su lado nombres, bios, foto, destacadas, fijados y tu historia. */
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#f5c400, #111, #f5c400, #111, #f5c400); }
+.avatar img { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; object-fit: cover; display: block; }
+.ig-user { font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 4px; }
+.ig-user i { width: 14px; height: 14px; border-radius: 50%; background: #3897f0; display: inline-grid; place-items: center; color: #fff; font: 700 9px/1 Arial, sans-serif; font-style: normal; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #f5c400; font: 700 11px/1 var(--f-head); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #2a2a2a, #111); color: #fff; display: grid; align-content: end; padding: 6px; font: 600 11px/1.1 var(--f-head); text-transform: uppercase; position: relative; overflow: hidden; }
+.ig-grid div img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.ig-grid div span { position: relative; }
+.ig-grid div em { font-style: normal; color: #f5c400; display: block; font-size: 12px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; z-index: 1; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: #b3261e; }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px #b89400; }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--ink), inset 6px 0 0 #f5c400; }
+.opt:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.opt .txt { white-space: pre-line; font-size: 15px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 14px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.opt .n.over { color: #b3261e; }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15.5px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#f5c400, #111, #f5c400, #111, #f5c400); }
+.photo .mock img { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; object-fit: cover; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: #f5c400; --nm-at: #7a5c00; display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px #111, inset 0 6px 0 #f5c400; margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #111; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Álvaro Yébenez · Parte 1 · Perfil</span>
+    <h1>Tu perfil tiene que decir en 3 segundos: <em>pierdes grasa aunque trabajes 10 horas</em>.</h1>
+    <p class="soft" style="font-size:18px">Ya tienes mucho bien: verificado, el Método Yébenez con nombre, una clienta adulta fijada y una bio que habla a "personas que trabajan todo el día". Lo que falta es afilarlo: para quién (+30), qué consigue (grasa, sobre todo abdomen) y por qué tú (hiciste la dieta extrema y no se la recomiendas a nadie). Toca un nombre y una bio para ver cómo queda y elige.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Hombres y mujeres de más de 30 que trabajan 8–12 horas al día y quieren perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método Yébenez</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Comer lo que te gusta</b><span>Yo bajé de 88 a 57 kg en menos de un año comiendo poco y siempre lo mismo, con atracones cada vez que probaba algo que me gustaba. Aquí no hay alimentos prohibidos: hay cantidades y orden.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>30 minutos que caben en tu horario</b><span>Yo entrenaba los 7 días, con mucho cardio y saltándome pierna. Más no era mejor. 3 entrenos de fuerza de 30–45 minutos encajados en jornadas de 8 a 12 horas.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Acompañamiento que no te suelta</b><span>Tras 3 meses sin una comida libre llegó la Navidad y lo tiré todo por la ventana. Por mucho que pasen cosas, hay que seguir: revisión cada semana, ajustes y cabeza.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Ordenar</b><p><em>Qué pasa:</em> Comes lo que ya te gusta, pero con orden, y tus 3 entrenos entran en la agenda. Se acaban las excusas, no la comida.</p><p><em>Qué haces tú:</em> 3 entrenos de 30 minutos, proteína en cada comida, tu comida libre y la revisión del domingo.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–12</span><b>Quemar</b><p><em>Qué pasa:</em> Bajas grasa sin pasar hambre. El abdomen y la ropa lo notan antes que la báscula.</p><p><em>Qué haces tú:</em> Subes cargas, ajustamos cantidades cada semana y mides cintura y fotos.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Mantener</b><p><em>Qué pasa:</em> Aprendes a mantenerlo en Navidad, en vacaciones y en semanas de 12 horas, para no volver atrás.</p><p><em>Qué haces tú:</em> Comes más flexible, entrenas igual y te quedas con tu propio sistema.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>Una comida libre planificada cada semana</b><p><em>Por qué:</em> Prohibir lleva al atracón. Yo estuve 3 meses sin ninguna y lo pagué en Navidad.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>3 entrenos de 30 minutos en la agenda, con pierna</b><p><em>Por qué:</em> Lo que está en el calendario se hace, y la pierna es lo que más gasta. Yo me la saltaba.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Revisión semanal con fotos y cintura</b><p><em>Por qué:</em> «Me veo mejor pero mi peso no baja»: la báscula sola engaña; la cintura y las fotos, no.</p></div></div></div><p class="nm-proof">Prueba: «Con 17 años pesaba 88 kg y llevaba chaqueta en pleno verano. No pude comprarme una camiseta que me gustaba. Hoy ayudo a gente que trabaja todo el día a perder grasa sin pasar hambre.»</p><p class="nm-line">Lo primero que vas a dejar de hacer es ponerte tantas excusas. Se puede con 30 minutos y comiendo lo que te gusta.</p></section>
+
+  <section class="card accent" aria-label="Cómo usar tu nicho">
+    <span class="label">Cómo usar tu nicho</span>
+    <ul class="l">
+      <li><b>"Sin dietas de hambre":</b> es tu diferencia y tu historia. Tú bajaste de 88 a 57 kg en menos de un año comiendo poco y siempre lo mismo, con atracones. Nadie te puede discutir eso.</li>
+      <li><b>"30 minutos" y "8–12 horas":</b> tu cliente no tiene tiempo, o eso cree. Cada pieza le enseña que con 30 minutos y la comida que le gusta se puede.</li>
+      <li><b>"Sobre todo del abdomen":</b> es lo que le da vergüenza y lo que busca ("cómo perder grasa"). Habla de cintura y de ropa, no de kilos.</li>
+      <li><b>+30 y no +20:</b> tus casos reales son adultos con trabajo y familia, y tú mismo dices que los de +40 son los que mejor se te dan. Muchos ejemplos de 40 y 50 años.</li>
+      <li><b>Tu territorio:</b> si un vídeo no toca perder grasa sin pasar hambre, el poco tiempo o no volver atrás, no es tuyo. Lo de la tarima y Prozis va en historias, no en el mensaje.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes bien · 122 posts · 3.676 seguidores · verificado</span>
+      <ul class="l">
+        <li><b>"Ayudo a personas que trabajan todo el día a perder grasa":</b> ya hablas a tu nicho. Solo hay que afilarlo (+30, abdomen, sin hambre).</li>
+        <li><b>Método Yébenez</b> en la web y en los antes/después: ya tienes marca de método. Se queda.</li>
+        <li><b>Fijados con prueba:</b> el antes/después de una mujer adulta y un testimonio en vídeo. Es justo tu cliente.</li>
+        <li><b>"De esconder mi cuerpo bajo un abrigo… a dedicarme a transformar cuerpos y vidas":</b> tu historia en una línea. Funciona.</li>
+        <li><b>Estética negra y amarilla coherente</b> y una sola acción: "Solicita tu plaza".</li>
+        <li><b>Contenido de valor que ya funciona:</b> "Si cenas fuera haz esto", "Peor / Mejor" en el súper, "3 entrenamientos por semana son más de 150 oportunidades al año".</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que cambias ya</span>
+      <ul class="l">
+        <li><b>"Coach pérdida de grasa"</b> dice qué haces, pero no para quién ni por qué tú. El nombre es lo que Instagram usa en la búsqueda.</li>
+        <li><b>"Adaptados a TÚ horario":</b> es "TU" sin tilde. Parece una tontería, pero en la bio se nota.</li>
+        <li><b>"+197 transformaciones":</b> es una cifra pública. No la cambiamos, pero tienes que poder demostrarla (capturas, fotos, lista). Si alguien te la discute, tienes que tener la respuesta.</li>
+        <li><b>CAMBIOS abre con un chico joven de 90 días.</b> Está genial, pero tu cliente de 40 tiene que verse primero: ordena la destacada con adultos delante.</li>
+        <li><b>PROZIS en la segunda destacada:</b> al que llega nuevo no le vende. Pásala al final (o a "Lo que uso").</li>
+        <li><b>Más rol de entrenador:</b> correcciones, "si fueras mi cliente con 42 años y 10 horas de trabajo…", revisar la semana de un seguidor. Tu historia atrae; el rol de entrenador vende.</li>
+        <li><b>3.676 seguidores:</b> no te falta audiencia, te faltan conversaciones. Eso va en el embudo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-label="Para aclarar con Álvaro">
+    <span class="label">Para aclarar con Álvaro · antes de publicar nada</span>
+    <ul class="l">
+      <li><b>"O comes o te ingreso":</b> es tu mejor gancho contra las dietas extremas, pero es de tu salud y de tu madre. ¿Lo quieres contar? Si sí, siempre en primera persona, sin dramatizar y nunca en anuncios. Si no, usamos "bajé de 88 a 57 kg en menos de un año, con atracones".</li>
+      <li><b>El bajón tras el robo de la moto:</b> no se publica la parte de depresión ni de ansiedad. En público: "pasó algo que me tumbó y lo tiré todo por la ventana".</li>
+      <li><b>"+197 transformaciones":</b> ¿qué cuentas como transformación y dónde están las pruebas? Entrenas a otros desde hace 1 año: que nadie te pille una cifra.</li>
+      <li><b>Tu edad y tu peso de hoy:</b> los necesitamos para cerrar tu historia ("hoy, con X años y X kg, preparando la tarima").</li>
+      <li><b>Permisos:</b> el chico de los 90 días, la mujer del antes/después y la del testimonio. ¿Tienes su OK por escrito para web y anuncios? ¿Qué edad tienen?</li>
+      <li><b>Titulación:</b> qué formación tienes. "Titulado" solo si hay un papel.</li>
+      <li><b>Tu web</b> (metodoyebenez.netlify.app) y el segundo enlace: ¿qué hay? ¿Formulario, Calendly, WhatsApp?</li>
+      <li><b>Precios de hoy:</b> cuánto cobras y cómo (mensual, fraccionado). Lo necesitamos para la escalera.</li>
+      <li><b>Prozis:</b> ¿el contrato te obliga a algo en perfil o en historias?</li>
+    </ul>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil"><img src="../casos/alvaro-avatar.jpg" alt="" width="223" height="223"></div>
+          <div>
+            <div class="ig-user">alvaro.yebenezfit <i aria-label="verificado">✓</i></div>
+            <div class="ig-stats"><span><b>122</b>posts</span><span><b>3.676</b>seguidores</span><span><b>671</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Coach</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>metodoyebenez.netlify.app</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>✓</span></i><small>Cambios +30</small></div>
+          <div><i><span>AY</span></i><small>Mi historia</small></div>
+          <div><i><span>3F</span></i><small>Método</small></div>
+          <div><i><span>“ ”</span></i><small>Opiniones</small></div>
+          <div><i><span>?!</span></i><small>Excusas</small></div>
+          <div><i><span>P</span></i><small>Prozis</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><img src="../casos/alvaro-2023-2025.jpg" alt=""><span><em>Mi cambio</em>88 kg y chaqueta en verano</span></div>
+          <div><img src="../casos/mujer-antes-despues.jpg" alt=""><span><em>Método Yébenez</em>Antes / después</span></div>
+          <div><span><em>Testimonio</em>En vídeo</span></div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Es lo que Instagram usa en la búsqueda: tu nombre y lo que consigues (perder grasa) para quién (+30, gente ocupada). "Coach" ya sale en la categoría.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="Álvaro Yébenez | Pérdida de grasa +30"><b>Álvaro Yébenez | Pérdida de grasa +30</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="Álvaro Yébenez | Perder grasa con 30 min al día"><b>Álvaro Yébenez | Perder grasa con 30 min al día</b></button><button class="opt" type="button" data-name="Álvaro Yébenez | Perder abdomen sin pasar hambre"><b>Álvaro Yébenez | Perder abdomen sin pasar hambre</b></button><button class="opt" type="button" data-name="Álvaro Yébenez | Pérdida de grasa para gente ocupada"><b>Álvaro Yébenez | Pérdida de grasa para gente ocupada</b></button><button class="opt" type="button" data-name="Álvaro Yébenez | Método Yébenez · Pérdida de grasa"><b>Álvaro Yébenez | Método Yébenez · Pérdida de grasa</b></button><button class="opt" type="button" data-name="ÁLVARO YÉBENEZ | COACH PÉRDIDA DE GRASA"><b>ÁLVARO YÉBENEZ | COACH PÉRDIDA DE GRASA</b><span class="n">El de ahora</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen a quién ayudas, qué consigue y por qué tú, y caben en 150 caracteres. Las que llevan "+197 transformaciones" solo si lo puedes demostrar. Elige una y no la toques en 3 meses.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">Pierde grasa aunque trabajes 8–12 h al día
+Sin dietas de hambre ni vivir en el gym
+Yo hice la dieta extrema: tú no
+👇 Aplica para tu plaza</span><span class="why">Para quién, qué consigue y tu diferencia (tu historia) en tres líneas. La acción de siempre.</span></button><button class="opt" type="button"><span class="tag">B · Tu historia</span><span class="txt">Con 17 años: 88 kg y chaqueta en verano
+Hoy ayudo a +30 a perder grasa
+Comiendo lo que te gusta, 30 min al día
+👇 Solicita tu plaza</span><span class="why">El "de dónde vengo" que quieres enseñar, en una línea. El que lee piensa: "si él pudo…".</span></button><button class="opt" type="button"><span class="tag">C · Sin hambre</span><span class="txt">Bajé de 88 a 57 kg pasando hambre
+Te enseño a perder grasa sin hacerlo
+Para +30 con jornadas largas
+👇 Aplica para tu plaza</span><span class="why">Tu ángulo más fuerte: el que ha hecho mil dietas restrictivas se siente entendido.</span></button><button class="opt" type="button"><span class="tag">D · Tiempo</span><span class="txt">¿Trabajas 10 horas? 30 minutos bastan
+Pierde la barriga comiendo lo que te gusta
+Método Yébenez
+👇 Solicita tu plaza</span><span class="why">Ataca la excusa nº 1 ("no me da tiempo") y usa tu creencia de los 30 minutos.</span></button><button class="opt" type="button"><span class="tag">E · Abdomen</span><span class="txt">Para +30 que trabajan todo el día
+Adiós a la barriga sin dietas de hambre
+Entreno + comida a TU horario
+👇 Aplica para tu plaza</span><span class="why">Tu bio de ahora, afilada: edad, abdomen y sin hambre. Y "TU" sin tilde.</span></button><button class="opt" type="button"><span class="tag">F · Excusas</span><span class="txt">Lo primero que vas a dejar: las excusas
+Pierde grasa en 30 min con la comida que te gusta
++197 transformaciones
+👇 Solicita tu plaza</span><span class="why">Tu frase literal ("lo primero que vas a dejar de hacer…") como titular. Solo si puedes demostrar el 197.</span></button><button class="opt" type="button"><span class="tag">G · Método</span><span class="txt">Método Yébenez: Ordenar · Quemar · Mantener
+Pérdida de grasa para +30 con poco tiempo
+Sin dietas de hambre
+👇 Aplica para tu plaza</span><span class="why">Te posiciona como entrenador con método: tres fases y para quién.</span></button><button class="opt" type="button"><span class="tag">H · No recuperarla</span><span class="txt">Pierde grasa y no la recuperes
+Te acompaño cada semana: comida, entreno y cabeza
+Para +30 con poco tiempo
+👇 Solicita tu plaza</span><span class="why">Tu diferencia (acompañamiento y cercanía) y la fase Mantener, que es lo que nadie vende.</span></button><button class="opt" type="button"><span class="tag">I · Báscula</span><span class="txt">¿Te ves mejor pero el peso no baja?
+Perder grasa no es pasar hambre
+Coach para +30 con jornadas de 8–12 h
+👇 Aplica para tu plaza</span><span class="why">Usa la frase literal que más escuchas. Conecta con el que está a punto de dejarlo.</span></button><button class="opt" type="button"><span class="tag">J · Ropa</span><span class="txt">Vuelve a ponerte la ropa que te gusta
+Pierde grasa sin dietas de hambre, 30 min al día
++197 transformaciones
+👇 Solicita tu plaza</span><span class="why">Tu detonante (la camiseta que no te pudiste comprar) convertido en promesa.</span></button><button class="opt" type="button"><span class="tag">K · Abrigo</span><span class="txt">De esconderme bajo un abrigo a coach
+Ayudo a +30 que trabajan todo el día a perder grasa
+👇 Aplica para tu plaza</span><span class="why">Tu post fijado de 2023→2025 hecho bio. Muy de historia, menos de promesa.</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><img src="../casos/alvaro-avatar.jpg" alt=""></div>
+          <ul class="l">
+            <li><b>La de ahora funciona:</b> camiseta negra ajustada, físico visible, colores de tu marca. Se queda.</li>
+            <li><b>Lo único:</b> en pequeño el texto ("Entrenador personal", tu firma) no se lee y ensucia. Prueba una versión sin textos, solo tú y el logo.</li>
+            <li><b>Cara más grande:</b> de pecho para arriba, mirando a cámara. En el móvil la foto mide 1 cm.</li>
+            <li><b>Sonrisa ligera:</b> tu diferencia es la cercanía; que se note también en la foto.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Cambios +30:</b> antes/después de adultos primero (la mujer del fijado, tus clientes de 40 y 50), con permiso. El chico de los 90 días, después.</li><li><b>Mi historia:</b> 10 historias (abajo, escritas).</li><li><b>Método:</b> el Método Yébenez en 6 historias (3 pilares, 3 fases, 3 no negociables).</li><li><b>Opiniones:</b> capturas de mensajes ("esto de verdad sirve") y testimonios en vídeo, con permiso.</li><li><b>Excusas:</b> respuestas a "no me da tiempo", "esto no es para mí", "la báscula no baja" y "me da vergüenza el gimnasio".</li><li><b>Prozis:</b> al final, o renómbrala "Lo que uso".</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>Mantén el antes/después de la mujer</b> (Método Yébenez): es tu cliente ideal. Si te da permiso, añade su edad y en cuánto tiempo.</li><li><b>Mantén el testimonio en vídeo.</b> Pon en la portada una frase literal suya, no solo "TESTIMONIO".</li><li><b>Cambia el 2023→2025 por el carrusel "88 kg y chaqueta en verano"</b> (abajo) cuando lo tengas: misma historia, con la dieta extrema y el mensaje de "sin hambre".</li></ul></div>
+          <div class="card"><span class="label">Reglas</span><ul class="l"><li><b>Una sola acción:</b> "Aplica para tu plaza" (web) o "escríbeme PLAZA".</li><li><b>Nada de nombres ni fotos de clientes</b> sin permiso por escrito.</li><li><b>Lo personal no se publica:</b> ni tu madre, ni el bajón tras el robo de la moto, sin hablarlo antes.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Tu historia: tu mejor caso de éxito</h2>
+        <p class="soft">Tu cliente no compra un plan: compra verse en ti. Fuiste el chaval de 88 kg con chaqueta en verano que se pasó al otro extremo. Cuéntalo con datos y sin dramas.</p>
+        <div class="card accent"><span class="label">Lo que necesito de ti esta semana</span><p>Fotos de los 17 (88 kg, con la chaqueta si la tienes), de cuando estabas en 57 kg, de tus volúmenes y definiciones, de tu primer verano sin camiseta y de hoy, de frente y de perfil con la misma luz. Y tu edad y tu peso actuales. Sin fotos, tu historia pierde la mitad de su fuerza.</p></div>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Destacada "Mi historia" · 10 historias</span>
+            <ol class="l">
+              <li>"Con 17 años pesaba 88 kg y medía 1,70. Iba siempre en chaqueta, aunque fuera verano."</li>
+              <li>"No iba a la playa, me privaba de salir y la ropa no me quedaba bien."</li>
+              <li>"Un día no pude comprarme una camiseta que me gustaba. Y se reían de mí por mi físico. Ahí dije: se acabó."</li>
+              <li>"Mi primer día fui con mi padre. Solo me atreví con la máquina de cardio. Me moría de vergüenza."</li>
+              <li>"Mi primera compra 'fit': harina de avena, pensando que era proteína. En casa: 'ya te estás metiendo polvos'."</li>
+              <li>"Entrenaba los 7 días, me saltaba pierna, mucho cardio y comía siempre lo mismo: tostada, pasta con pollo y pollo para cenar."</li>
+              <li>"Bajé de 88 a 57 kg en menos de un año. Me privaba tanto que cuando comía algo que me gustaba, me daba un atracón." [confirmar si añade lo de su madre]</li>
+              <li>"Con 19 empecé a entrenar con estructura: descanso, cardio pautado y comida con sentido."</li>
+              <li>"Tras 3 meses sin una comida libre llegó la Navidad y lo tiré todo por la ventana. Aprendí que por mucho que pasen cosas, hay que seguir."</li>
+              <li>"Mi primer verano sin camiseta ni me lo creía. Hoy ayudo a gente que trabaja todo el día a perder grasa sin pasar hambre. Escríbeme PLAZA."</li>
+            </ol>
+          </div>
+          <div class="card">
+            <span class="label">Carrusel fijado "88 kg y chaqueta en verano" · 9 diapositivas</span>
+            <ol class="l">
+              <li><b>Portada:</b> "Con 17 años pesaba 88 kg y llevaba chaqueta en verano." (foto de entonces + foto de hoy)</li>
+              <li><b>La camiseta:</b> la que no pude comprarme. Y las risas.</li>
+              <li><b>El primer día:</b> con mi padre, solo cardio, con vergüenza.</li>
+              <li><b>Error 1 · Redes:</b> rutina copiada y harina de avena "de proteína".</li>
+              <li><b>Error 2 · Más es mejor:</b> 7 días a la semana, mucho cardio, sin pierna, sin descanso.</li>
+              <li><b>Error 3 · Pasar hambre:</b> siempre lo mismo, poco, y atracones. De 88 a 57 kg en menos de un año.</li>
+              <li><b>Lo que cambió:</b> estructura, descanso, comer con sentido y una comida libre.</li>
+              <li><b>El primer verano sin camiseta:</b> "ni me lo creía".</li>
+              <li><b>Cierre:</b> "No hace falta pasar hambre ni vivir en el gimnasio. Si trabajas todo el día y quieres perder grasa, escríbeme PLAZA."</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function len(t) { return t.length; }
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    cn.textContent = len(pvName.textContent); cb.textContent = len(pvBio.textContent);
+    cn.className = len(pvName.textContent) > 64 ? "over" : ""; cb.className = len(pvBio.textContent) > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"), l = len(b.querySelector(".txt").textContent);
+    n.className = "n" + (l > 150 ? " over" : "");
+    n.textContent = l + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>
