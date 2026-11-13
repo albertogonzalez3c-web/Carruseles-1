@@ -84,7 +84,7 @@ No inventar nada fuera de esto. Las citas entre comillas son literales (con su o
 - Idea de un año: **"grabar mi vida para poder inspirar a otro mediante mi día o cosas que pase y mostrar mi físico de tantos años trabajados y de dónde venía"**.
 - Lo que hace mal el sector: **"dar consejos que no son correctos, no tener un buen acompañamiento por parte del entrenador"**.
 - Su diferencia: **"en el acompañamiento sin duda y mi cercanía con cada persona que trabajo"**.
-- 3 creencias: **"que se puede conseguir haciendo cosas que te gustan y que aunque tengas 30 minutos se puede hacer, comiendo alimentos que te gustan"**.
+- 3 creencias: **"que se puede conseguir haciendo cosas que te gustan y que aunque tengas [poco tiempo] se puede hacer, comiendo alimentos que te gustan"**. (En su respuesta pone una duración concreta; Alberto la cambia: en todo el sistema el entreno es **3 entrenos a la semana de 45–70 minutos**. La cifra original solo queda en `capturas/semana-1-respuestas.txt`.)
 - **"Si trabajas conmigo, lo primero que vas a dejar de hacer es ponerte tantas excusas y ver qué es trabajar de verdad en tu físico."**
 - Referentes: **diegosicrex** (cambios y vídeos en voz en off con frames; "le habla a aquellas personas que creen que no son capaces"; tono de autoridad, "haciendo las cosas con unos hábitos se puede conseguir sea quien sea") y **"estilo Alberto" lifestyle**. Nunca copiaría "grabar contenido que realmente no me llena".
 
@@ -94,32 +94,40 @@ No inventar nada fuera de esto. Las citas entre comillas son literales (con su o
 - **Problema de retención**: el pago fraccionado mes a mes se corta en cuanto ven el cambio. La oferta lo ataca con compromiso mínimo de un trimestre (fraccionar es pagar el compromiso en partes, no ir mes a mes) y una fase de mantenimiento dentro del semestre.
 
 ## Nicho: decisión y por qué
-**Frase exacta (igual en todas las páginas):**
-> Hombres y mujeres de más de 30 que trabajan 8–12 horas al día y quieren perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio.
+**Frase exacta (igual en todas las páginas, también en el CLAUDE.md de la pestaña Claude Code):**
+> Personas de +30 con jornadas de 8–12 horas que han hecho mil dietas y siempre recuperan: pierden la barriga para siempre con 3 entrenos a la semana y comiendo lo que les gusta.
+
+**Por qué esta frase (cambio de Alberto, noviembre 2026: nicho más específico).** La versión anterior ("Hombres y mujeres de más de 30 que trabajan 8–12 horas al día y quieren perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio") describía a quién y qué, pero no el dolor que le diferencia. Se mantiene la base de Alberto tal cual porque ya es la mejor opción; las alternativas que se valoraron eran peores:
+- "…que han hecho mil dietas y siempre recuperan" es **el dolor concreto que conecta con su historia**: él bajó de 88 a 57 kg pasando hambre, con atracones, y recayó en Navidad tras 3 meses sin comida libre. No habla de algo que ha leído: le pasó. Y es lo que su cliente ya ha probado ("dietas restrictivas") y de lo que se culpa ("su falta de voluntad").
+- "Siempre recuperan" en vez de "efecto rebote": es como lo dice el cliente, no como lo dice un entrenador.
+- "Pierden la barriga" en vez de "pierden grasa, sobre todo del abdomen": misma vergüenza que él identifica ("normalmente el abdomen"), dicha en la palabra del cliente.
+- "Para siempre" convierte la fase Mantener en la promesa central y ataca además su problema de retención (clientes que se van en el mes 3 "porque ya saben hacerlo solos"). Se cumple con el método (fase Mantener, su propio sistema), no con una garantía de por vida: así se explica en la llamada.
+- "Con 3 entrenos a la semana" sustituye a "sin vivir en el gimnasio" y a la cifra de minutos: concreto, creíble para jornadas de 8–12 h y coherente con su post "3 entrenamientos por semana son más de 150 oportunidades al año".
+- "Comiendo lo que les gusta" es su creencia literal ("comiendo alimentos que te gustan") y el pilar 1.
+- Se descartó añadir "+40" o "hombres y mujeres": alarga la frase sin filtrar mejor. "Personas" ya incluye a los dos (sus casos visibles son mixtos).
 
 **Por qué +30 y no "+20" ni "+40":**
-- Él escribe "+20 años", pero todo lo demás apunta a adultos con trabajo y familia: "los años, los dolores, los huesos", Mcarmen, Paco y Shuli, Raquel "con los nenes", la clienta del fijado y la del testimonio (mujeres adultas). Un chaval de 20 no habla de huesos ni de nenes.
-- Él mismo dice que su hueco son los **+40, "los que mejor se me da ayudar"**. Pero cortar en +40 deja fuera al de 32–39 con críos y 10 horas de trabajo, que tiene exactamente el mismo problema (tiempo + abdomen + dietas restrictivas) y es el que más dinero mueve. **+30** incluye a los +40 sin perder a los treintañeros. En contenido, muchos ejemplos de 40+ (es donde mejor le sale).
-- "Trabajan 8–12 horas" ya está en su bio ("personas que trabajan todo el día") y en sus respuestas: no rompe lo que ya funciona en su perfil.
-- "Sobre todo del abdomen": es la vergüenza que él mismo identifica y lo que buscan ("cómo perder grasa").
-- "Sin dietas de hambre ni vivir en el gimnasio": es su diferencial y su historia (88→57 kg comiendo poco, atracones, entrenar 7 días con mucho cardio) + su creencia "30 minutos y comiendo alimentos que te gustan".
-- **Hombres y mujeres**: sus casos visibles son de los dos (mujer adulta en fijados, chico en CAMBIOS) y la lista de clientes es mixta. No se cierra a un sexo para no perder la prueba que ya tiene. Si en 2–3 meses los cierres son claramente de un sexo, se afina.
-- Anuncios: España +25 (regla de Alberto); el mensaje de +30 filtra solo.
+- Él escribe "+20 años", pero todo lo demás apunta a adultos con trabajo y familia: "los años, los dolores, los huesos", Mcarmen, Paco y Shuli, Raquel "con los nenes", la clienta del fijado y la del testimonio (mujeres adultas). Un chaval de 20 no habla de huesos ni de nenes, ni ha hecho mil dietas.
+- Él mismo dice que su hueco son los **+40, "los que mejor se me da ayudar"**. Pero cortar en +40 deja fuera al de 32–39 con críos y 10 horas de trabajo, que tiene exactamente el mismo problema (tiempo + barriga + dietas que no duran) y es el que más dinero mueve. **+30** incluye a los +40 sin perder a los treintañeros. En contenido, muchos ejemplos de 40+ (es donde mejor le sale).
+- "Jornadas de 8–12 horas" ya está en su bio ("personas que trabajan todo el día") y en sus respuestas: no rompe lo que ya funciona en su perfil.
+- Anuncios: España +25 (regla de Alberto, no se cambia); el mensaje de +30 y "mil dietas" filtra solo.
 
-**Ángulo diferencial:** "Yo hice la dieta extrema y casi me ingresan: te enseño a perder grasa comiendo lo que te gusta, aunque solo tengas 30 minutos." (la parte "casi me ingresan" solo si confirma que lo quiere contar; si no: "yo hice la dieta extrema: de 88 a 57 kg en menos de un año y con atracones").
+**Entreno (cambio de Alberto):** en todo el sistema, **3 entrenos a la semana, sesiones de 45–70 minutos**. No se usa ninguna otra duración (las "llamadas de 30 minutos" de la landing y el embudo son la llamada de venta, no el entreno).
+
+**Ángulo diferencial:** "Yo hice la dieta extrema, con atracones, y recuperé: te enseño a perder la barriga una vez y para siempre, comiendo lo que te gusta y con 3 entrenos a la semana." (Con su OK se puede añadir "y casi me ingresan"; nunca en anuncios.)
 
 **Ojo con la edad de él:** con ~21 años hablando a +30/+40 la objeción "eres muy joven" va a salir. Respuesta: su historia (pasó por la dieta extrema), sus casos de adultos y el acompañamiento. En la llamada, nunca esconderla.
 
 ## Método Yébenez (se mantiene el nombre: ya lo usa)
 - **3 pilares** (cada uno de su historia):
   1. **Comer lo que te gusta** · de 88 a 57 kg comiendo poco y siempre lo mismo, atracones por privarse ("o comes o te ingreso" [confirmar]). Nada prohibido, todo con cantidad y orden.
-  2. **30 minutos que caben en tu horario** · él entrenaba 7 días, con mucho cardio, sin descanso y saltándose pierna. Más no era mejor. 3 entrenos de fuerza de 30–45 min adaptados a jornadas de 8–12 h.
+  2. **3 entrenos a la semana que caben en tu horario** · él entrenaba 7 días, con mucho cardio, sin descanso y saltándose pierna. Más no era mejor. 3 entrenos de fuerza a la semana, de 45–70 min, adaptados a jornadas de 8–12 h.
   3. **Acompañamiento que no te suelta** · Navidad tras 3 meses sin comida libre y el bajón que le hizo tirarlo todo: "por mucho que pasen cosas debes seguir". Seguimiento semanal, asesoramiento y parte mental.
-- **3 fases**: 1 · **Ordenar** (semanas 1–4) · 2 · **Quemar** (semanas 5–12) · 3 · **Mantener** (meses 4–6).
-- **3 no negociables**: una comida libre planificada a la semana · 3 entrenos de 30 minutos en la agenda (con pierna) · revisión semanal con fotos y cintura, no solo báscula.
+- **3 fases**: 1 · **Ordenar** (semanas 1–4) · 2 · **Quemar** (semanas 5–12) · 3 · **Mantener** (meses 4–6). Mantener es la promesa central del nicho ("para siempre", sin rebote), no un extra.
+- **3 no negociables**: una comida libre planificada a la semana · 3 entrenos a la semana de 45–70 min en la agenda (con pierna) · revisión semanal con fotos y cintura, no solo báscula.
 
 ## Gancho central (datos reales)
-"Con 17 años pesaba 88 kg y llevaba chaqueta en pleno verano. No pude comprarme una camiseta que me gustaba. Hoy ayudo a gente que trabaja todo el día a perder grasa sin pasar hambre."
+"Con 17 años pesaba 88 kg y llevaba chaqueta en pleno verano. No pude comprarme una camiseta que me gustaba. Bajé a 57 pasando hambre, con atracones, y recaí. Hoy ayudo a gente que trabaja todo el día a perder la barriga sin dietas de hambre y sin rebote."
 
 ## Sensibles (no publicar sin hablarlo)
 - "O comes o te ingreso" (salud + madre): solo con su OK; nunca en anuncios.
@@ -136,3 +144,4 @@ No inventar nada fuera de esto. Las citas entre comillas son literales (con su o
 - Precio actual, cuántos clientes activos tiene, si cobra mensual: [no lo dice] (solo que "se puede fraccionar").
 - Titulación: [no lo dice]. No usar "titulado" hasta verlo.
 - Web metodoyebenez.netlify.app y el "and 1 more": qué hay ahí (formulario, Calendly): [confirmar].
+- Nuevos [confirmar] (cambios de noviembre 2026): un cliente que lleve meses manteniendo el cambio después de terminar (es la prueba de "para siempre"; sin él, no se publica ningún "un año después"); capturas de "esto de verdad sirve" con permiso; datos reales de algún cliente de +40 (Mcarmen, Paco o Shuli, sin nombre si lo prefieren); que el "para siempre" se explique en la llamada como resultado del método (fase Mantener), no como garantía de por vida.
