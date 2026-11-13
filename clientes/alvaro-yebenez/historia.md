@@ -95,7 +95,7 @@ No inventar nada fuera de esto. Las citas entre comillas son literales (con su o
 
 ## Nicho: decisión y por qué
 **Frase exacta (igual en todas las páginas, también en el CLAUDE.md de la pestaña Claude Code):**
-> Personas de +30 con jornadas de 8–12 horas que han hecho mil dietas y siempre recuperan: pierden la barriga para siempre con 3 entrenos a la semana y comiendo lo que les gusta.
+> Personas de +30 con jornadas de 8–12 horas que han hecho mil dietas y siempre recuperan: recomposición corporal para perder la barriga y ganar músculo para siempre, con 3 entrenos a la semana y comiendo lo que les gusta.
 
 **Por qué esta frase (cambio de Alberto, noviembre 2026: nicho más específico).** La versión anterior ("Hombres y mujeres de más de 30 que trabajan 8–12 horas al día y quieren perder grasa, sobre todo del abdomen, sin dietas de hambre ni vivir en el gimnasio") describía a quién y qué, pero no el dolor que le diferencia. Se mantiene la base de Alberto tal cual porque ya es la mejor opción; las alternativas que se valoraron eran peores:
 - "…que han hecho mil dietas y siempre recuperan" es **el dolor concreto que conecta con su historia**: él bajó de 88 a 57 kg pasando hambre, con atracones, y recayó en Navidad tras 3 meses sin comida libre. No habla de algo que ha leído: le pasó. Y es lo que su cliente ya ha probado ("dietas restrictivas") y de lo que se culpa ("su falta de voluntad").
@@ -114,20 +114,29 @@ No inventar nada fuera de esto. Las citas entre comillas son literales (con su o
 
 **Entreno (cambio de Alberto):** en todo el sistema, **3 entrenos a la semana, sesiones de 45–70 minutos**. No se usa ninguna otra duración (las "llamadas de 30 minutos" de la landing y el embudo son la llamada de venta, no el entreno).
 
-**Ángulo diferencial:** "Yo hice la dieta extrema, con atracones, y recuperé: te enseño a perder la barriga una vez y para siempre, comiendo lo que te gusta y con 3 entrenos a la semana." (Con su OK se puede añadir "y casi me ingresan"; nunca en anuncios.)
+**Ángulo diferencial:** "Yo hice la dieta extrema, con atracones, perdí también músculo y recuperé: te enseño a perder la barriga y ganar músculo a la vez (recomposición corporal), una vez y para siempre, comiendo lo que te gusta y con 3 entrenos a la semana." (Con su OK se puede añadir "y casi me ingresan"; nunca en anuncios.)
 
 **Ojo con la edad de él:** con ~21 años hablando a +30/+40 la objeción "eres muy joven" va a salir. Respuesta: su historia (pasó por la dieta extrema), sus casos de adultos y el acompañamiento. En la llamada, nunca esconderla.
+
+## Recomposición corporal: su especialidad (cambio de Alberto, noviembre 2026)
+Alberto: "dale una ligera vuelta enfocado a que es experto en recomposición corporal". Es una vuelta ligera: se mantiene el sistema y se reposiciona. La frase de nicho pasa de "pierden la barriga para siempre" a "recomposición corporal para perder la barriga y ganar músculo para siempre" (arriba).
+- **La lógica (en lenguaje sencillo):** las dietas de hambre te quitan grasa **y músculo** → con menos músculo gastas menos → al volver a comer normal recuperas (rebote) y acabas "flaco-fofo" o peor que antes. La recomposición corporal es lo contrario: perder grasa mientras ganas o mantienes músculo, con **fuerza 3 días a la semana de 45–70 min, proteína suficiente y un déficit moderado, no de hambre**. Por eso no rebota.
+- **Su historia lo demuestra:** de 88 a 57 kg pasando hambre perdió también músculo; se recuperó con estructura y fuerza.
+- **Consecuencia:** la báscula engaña (puede bajar poco mientras la cintura y las fotos cambian) → se mide **cintura, fotos y fuerza**, además del peso. Conecta con la frase literal de sus clientes **"me veo mejor pero mi peso no baja"** y con lo que buscan sus 3 mejores casos: **"bajar de peso y tonificar"**.
+- **Fase 2 renombrada:** Ordenar · **Recomponer** · Mantener (en todo el sistema).
+- **Nombre de perfil propuesto:** "Álvaro Yébenez | Recomposición corporal".
+- Sin cifras prometidas (ni kilos de grasa ni de músculo) y sin tecnicismos.
 
 ## Método Yébenez (se mantiene el nombre: ya lo usa)
 - **3 pilares** (cada uno de su historia):
   1. **Comer lo que te gusta** · de 88 a 57 kg comiendo poco y siempre lo mismo, atracones por privarse ("o comes o te ingreso" [confirmar]). Nada prohibido, todo con cantidad y orden.
   2. **3 entrenos a la semana que caben en tu horario** · él entrenaba 7 días, con mucho cardio, sin descanso y saltándose pierna. Más no era mejor. 3 entrenos de fuerza a la semana, de 45–70 min, adaptados a jornadas de 8–12 h.
   3. **Acompañamiento que no te suelta** · Navidad tras 3 meses sin comida libre y el bajón que le hizo tirarlo todo: "por mucho que pasen cosas debes seguir". Seguimiento semanal, asesoramiento y parte mental.
-- **3 fases**: 1 · **Ordenar** (semanas 1–4) · 2 · **Quemar** (semanas 5–12) · 3 · **Mantener** (meses 4–6). Mantener es la promesa central del nicho ("para siempre", sin rebote), no un extra.
-- **3 no negociables**: una comida libre planificada a la semana · 3 entrenos a la semana de 45–70 min en la agenda (con pierna) · revisión semanal con fotos y cintura, no solo báscula.
+- **3 fases**: 1 · **Ordenar** (semanas 1–4) · 2 · **Recomponer** (semanas 5–12; antes se llamaba "Quemar") · 3 · **Mantener** (meses 4–6). Mantener es la promesa central del nicho ("para siempre", sin rebote), no un extra.
+- **3 no negociables**: una comida libre planificada a la semana · 3 entrenos a la semana de 45–70 min en la agenda (con pierna) · revisión semanal con cintura, fotos y fuerza, no solo báscula.
 
 ## Gancho central (datos reales)
-"Con 17 años pesaba 88 kg y llevaba chaqueta en pleno verano. No pude comprarme una camiseta que me gustaba. Bajé a 57 pasando hambre, con atracones, y recaí. Hoy ayudo a gente que trabaja todo el día a perder la barriga sin dietas de hambre y sin rebote."
+"Con 17 años pesaba 88 kg y llevaba chaqueta en pleno verano. No pude comprarme una camiseta que me gustaba. Bajé a 57 pasando hambre, con atracones, y recaí. Hoy ayudo a gente que trabaja todo el día a perder la barriga y ganar músculo a la vez, sin dietas de hambre y sin rebote."
 
 ## Sensibles (no publicar sin hablarlo)
 - "O comes o te ingreso" (salud + madre): solo con su OK; nunca en anuncios.
