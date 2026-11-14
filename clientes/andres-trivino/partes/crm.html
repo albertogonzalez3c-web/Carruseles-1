@@ -1,0 +1,901 @@
+<title>Andrés CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: CRM compartido de Andrés y Fran con 4 vistas (Hoy, Embudo, Clientes, Proceso): contador diario de mensajes por persona, filtros por responsable y estado, seguimientos 2/7/14 vencidos arriba, plantilla sugerida por estado y origen, garantía por cliente y escalera de precios en la base de datos compartida. */
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --sand: #ededeb;
+  --sand-line: #d6d6d3;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --gold: #1d6b4f;
+  --gold-text: #175a42;
+  --chip: #ededeb;
+  --rust: #9a3b2f;
+  --green: #3f6b3a;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.5 var(--f-body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { margin: 0; letter-spacing: -.025em; text-wrap: balance; }
+h1 { font: 800 clamp(30px, 4vw, 44px)/1.02 var(--f-head); letter-spacing: -.01em; text-transform: uppercase; }
+h2 { font: 700 24px/1.12 var(--f-head); letter-spacing: 0; }
+h3 { font: 700 16px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+button { font-family: inherit; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: #fff; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; white-space: nowrap; }
+.btn.ghost { background: var(--white); color: var(--gold-text); box-shadow: inset 0 0 0 1.5px var(--sand-line); }
+.btn.small { padding: 8px 12px; font-size: 13px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn:focus-visible, .tab:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+input, select, textarea { font: 600 14.5px/1.3 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--sand-line); border-radius: 10px; background: var(--white); color: var(--ink); width: 100%; }
+textarea { resize: vertical; min-height: 64px; font-weight: 500; }
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--ink); outline-offset: 1px; }
+label.f { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); }
+
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: rgba(247, 247, 245, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--sand); }
+header.top .wrap { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding-block: 12px; }
+.brand { display: grid; gap: 2px; }
+.brand b { font: 800 21px/1 var(--f-head); text-transform: uppercase; letter-spacing: .01em; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab { all: unset; cursor: pointer; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--white); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--white); }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--rust); }
+
+main { padding-block: 22px 60px; }
+[hidden] { display: none !important; }
+.card { background: var(--white); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-bottom: 16px; }
+.kpi { background: var(--white); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; }
+.kpi b { font: 800 30px/1 var(--f-head); color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12.5px; color: var(--soft); font-weight: 600; }
+
+/* Alta */
+.add { margin-bottom: 16px; }
+.add form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.add .full { grid-column: 1 / -1; }
+.add .two { grid-column: span 2; }
+.entrada { display: flex; gap: 6px; flex-wrap: wrap; }
+.entrada label { display: flex; gap: 8px; align-items: center; background: var(--chip); border-radius: 999px; padding: 8px 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; }
+.entrada input { width: auto; margin: 0; accent-color: var(--gold); }
+
+/* Hoy */
+.tasks { display: grid; gap: 8px; }
+.task { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--white); border-radius: 14px; padding: 12px 14px; }
+.task .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+.task.urgent .dot { background: var(--rust); }
+.task.done .dot { background: var(--green); }
+.task b { display: block; font-size: 15px; }
+.task span { color: var(--soft); font-size: 13.5px; }
+.empty { color: var(--soft); text-align: center; padding: 26px; background: var(--white); border-radius: 14px; }
+
+/* Embudo */
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 1fr); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: var(--sand); border-radius: 16px; padding: 10px; display: grid; gap: 8px; align-content: start; min-height: 120px; }
+.col-h { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; }
+.col-h b { font-size: 14px; }
+.col-h span { font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.lead { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 12px; padding: 10px 12px; display: grid; gap: 4px; }
+.lead:focus-visible { outline: 3px solid var(--ink); }
+.lead b { font-size: 14.5px; }
+.lead .meta { font-size: 12.5px; color: var(--soft); }
+.lead .next { font-size: 12.5px; font-weight: 700; color: var(--gold-text); }
+.lead.warn .next { color: var(--rust); }
+
+/* Ficha */
+.drawer-bg { position: fixed; inset: 0; background: rgba(28, 26, 23, .35); z-index: 20; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100%); background: var(--paper); z-index: 21; overflow-y: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) 18px; display: grid; gap: 12px; align-content: start; box-shadow: -10px 0 30px rgba(0, 0, 0, .15); }
+.drawer-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields .full { grid-column: 1 / -1; }
+.steps { display: flex; gap: 4px; flex-wrap: wrap; }
+.steps button { all: unset; cursor: pointer; font-size: 12.5px; font-weight: 700; padding: 7px 10px; border-radius: 999px; background: var(--white); color: var(--soft); }
+.steps button[aria-pressed="true"] { background: var(--gold); color: #fff; }
+.steps button:focus-visible { outline: 3px solid var(--ink); }
+.check { display: grid; gap: 6px; }
+.check label { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; cursor: pointer; background: var(--white); border-radius: 10px; padding: 9px 10px; }
+.check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--gold); }
+.check small { display: block; color: var(--soft); font-size: 12.5px; }
+.msg { background: var(--chip); border-radius: 12px; padding: 10px 12px; display: grid; gap: 8px; }
+.msg p { font-size: 14px; }
+.msg .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.log { display: grid; gap: 4px; font-size: 13px; color: var(--soft); max-height: 160px; overflow-y: auto; }
+.phone-line { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.phone-line code { font: 700 15px/1 var(--f-mono); background: var(--white); padding: 8px 10px; border-radius: 8px; user-select: all; }
+.alert { background: #fbe5df; color: var(--rust); border-radius: 10px; padding: 9px 12px; font-size: 13.5px; font-weight: 700; }
+
+/* Nivel de precios */
+.nivel { gap: 12px; }
+.nivel .nv-top { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
+.nivel .nv-dots { display: flex; gap: 6px; }
+.nivel .nv-dots i { width: 28px; height: 8px; border-radius: 99px; background: var(--sand); }
+.nivel .nv-dots i.on { background: var(--gold); }
+.nivel .nv-prices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.nivel .nv-prices div { background: var(--chip); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
+.nivel .nv-prices b { font: 800 24px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.nivel .nv-prices span { font-size: 12.5px; color: var(--soft); font-weight: 700; }
+.nivel .nv-prices .star { background: #e3f2ea; box-shadow: inset 0 0 0 1.5px var(--gold); }
+.hint { background: #e3f2ea; color: var(--gold-text); border-radius: 12px; padding: 12px 14px; display: grid; gap: 8px; font-weight: 700; font-size: 14px; }
+.linkish { all: unset; cursor: pointer; font-size: 12.5px; color: var(--soft); text-decoration: underline; }
+.linkish:focus-visible { outline: 3px solid var(--ink); }
+/* Clientes */
+.crow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center; background: var(--white); border-radius: 12px; padding: 11px 14px; font-size: 14px; width: 100%; }
+.crow:focus-visible { outline: 3px solid var(--ink); }
+.crow.head { cursor: default; background: none; padding-block: 4px; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.crow .num { font-variant-numeric: tabular-nums; }
+.crow .mo { display: none; }
+.crow small { display: block; color: var(--soft); font-size: 12.5px; }
+.pill { display: inline-block; width: fit-content; font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 999px; background: #e3e8dc; color: var(--green); }
+.pill.baja { background: #f4e3dc; color: var(--rust); }
+.pill.warn { background: #e3f2ea; color: var(--gold-text); }
+.clist { display: grid; gap: 6px; }
+details.addc > summary { cursor: pointer; font-weight: 800; list-style: none; }
+details.addc > summary::-webkit-details-marker { display: none; }
+.addc form { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: end; margin-top: 12px; }
+.extra { display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; border-bottom: 1px solid var(--sand-line); padding-block: 6px; }
+
+/* Guion de cierre */
+.cs h3.ph { font: 700 23px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--sand-line); }
+.cs h4 { margin: 4px 0 0; font: 700 15px/1.3 var(--f-body); color: var(--gold-text); }
+.tw { overflow-x: auto; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+.ctab th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 8px 10px; background: var(--chip); }
+.ctab td { padding: 9px 10px; border-top: 1px solid var(--sand-line); vertical-align: top; }
+.say { position: relative; }
+.say .cpy { all: unset; cursor: pointer; float: right; margin: -2px -4px 4px 10px; font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .04em; padding: 6px 8px; border-radius: 8px; background: var(--white); box-shadow: inset 0 0 0 1px var(--sand-line); color: var(--ink); }
+.say .cpy:focus-visible { outline: 3px solid var(--ink); }
+.say.placeholder { box-shadow: inset 0 0 0 1.5px dashed var(--gold); border: 1.5px dashed var(--gold); }
+.note { background: var(--white); border: 1.5px dashed var(--sand-line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; font-size: 14px; }
+.check-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14.5px; }
+.objs { display: grid; gap: 0; }
+.obj .say { display: block; margin: 0 0 6px; }
+.card.dark { background: var(--ink); color: #fff; }
+.card.dark .label { color: #8fd4b2; }
+.card.dark ul.l, .card.dark ul.l b { color: #e2e2e2; }
+/* Guion */
+.guide { display: grid; gap: 14px; }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.flow .card .n { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: #fff; display: grid; place-items: center; font-weight: 800; }
+ul.l { margin: 0; padding-left: 18px; display: grid; gap: 5px; color: var(--soft); font-size: 14.5px; }
+ul.l b { color: var(--ink); }
+.say { background: var(--chip); border-radius: 10px; padding: 9px 12px; font-size: 14px; font-weight: 600; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; font-size: 14px; }
+.obj b { font-size: 14.5px; }
+
+@media (max-width: 980px) {
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .add form { grid-template-columns: 1fr 1fr; }
+  .addc form { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .kpis, .grid2, .flow, .fields { grid-template-columns: 1fr 1fr; }
+  .add form { grid-template-columns: 1fr; }
+  .add .two { grid-column: auto; }
+  .grid2, .flow { grid-template-columns: 1fr; }
+  .obj { grid-template-columns: 1fr; }
+  .addc form { grid-template-columns: 1fr; }
+  .nivel .nv-prices { grid-template-columns: 1fr 1fr; }
+  .crow { grid-template-columns: minmax(0, 1fr) auto; }
+  .crow .hm { display: none; }
+  .crow .mo { display: inline; }
+  .task { grid-template-columns: 10px minmax(0, 1fr); }
+  .task .btn { grid-column: 2; justify-self: start; }
+}
+.react .msg { border-top: 1px solid var(--sand-line); padding-top: 10px; }
+.react .msg p { overflow-wrap: anywhere; }
+
+
+/* Andrés: contador, filtros, responsables y seguimientos vencidos */
+.counter { margin-bottom: 16px; gap: 12px; }
+.cnt-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: end; }
+.cnt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.cnt { background: var(--chip); border-radius: 14px; padding: 12px 14px; display: grid; gap: 8px; }
+.cnt-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.cnt-h b { font-size: 16px; }
+.cnt-n { font: 800 28px/1 var(--f-head); color: var(--gold-text); font-variant-numeric: tabular-nums; }
+.meter { height: 8px; border-radius: 99px; background: var(--white); overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--gold); }
+.cnt-hist { overflow-x: auto; }
+.cnt-hist .ctab { min-width: 520px; }
+.cnt-hist td.ok { color: var(--green); font-weight: 800; }
+.cnt-hist td.low { color: var(--rust); font-weight: 700; }
+.filters { margin-bottom: 16px; gap: 8px; }
+.frow { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.frow .label { min-width: 92px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 999px; background: var(--chip); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.seg button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.who { display: inline-block; font: 700 11px/1 var(--f-body); padding: 3px 7px; border-radius: 999px; vertical-align: 2px; }
+.who.f { background: #e3e8f4; color: #2c3e6b; }
+.who.a { background: #e3f2ea; color: var(--gold-text); }
+.kpi.bad b { color: var(--rust); }
+.task { grid-template-columns: 10px minmax(0, 1fr) auto; }
+.task.late { box-shadow: inset 0 0 0 2px var(--rust); }
+.tbtns { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.overdue { gap: 8px; }
+.overdue.has-late { box-shadow: inset 0 0 0 2px var(--rust); background: #fbefeb; }
+.overdue.has-late h3 { color: var(--rust); }
+.sugg { box-shadow: inset 0 0 0 2px var(--gold); }
+.sugg p { font-size: 14.5px; font-weight: 600; overflow-wrap: anywhere; }
+.msg.due { box-shadow: inset 0 0 0 2px var(--rust); }
+.react .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 13.5px; }
+.crow { grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); }
+@media (max-width: 560px) {
+  .cnt-grid { grid-template-columns: 1fr; }
+  .task { grid-template-columns: 10px minmax(0, 1fr); }
+  .tbtns { grid-column: 2; justify-content: flex-start; }
+  .frow .label { min-width: 0; width: 100%; }
+}
+h1, h2 { letter-spacing: -.02em; }
+
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="label">Andrés Triviño · Método 31/31 · Andrés y Fran</span><b>Conversaciones y clientes</b></div>
+    <nav class="tabs" role="tablist" aria-label="Vistas">
+      <button class="tab" role="tab" id="tab-hoy" aria-selected="true" data-view="hoy">Hoy</button>
+      <button class="tab" role="tab" id="tab-embudo" aria-selected="false" data-view="embudo">Embudo</button>
+      <button class="tab" role="tab" id="tab-clientes" aria-selected="false" data-view="clientes">Clientes</button>
+      <button class="tab" role="tab" id="tab-guion" aria-selected="false" data-view="guion">Proceso</button>
+    </nav>
+    <span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card counter" id="counterCard" aria-labelledby="h-cnt">
+    <div class="cnt-top"><div><span class="label">Mensajes enviados hoy · cada uno suma los suyos</span><h2 id="h-cnt">Contador del día</h2></div><span class="soft" id="cntSave" style="font-size:12.5px"></span></div>
+    <div class="cnt-grid" id="cntGrid"></div>
+    <div class="cnt-hist" id="cntHist"></div>
+  </section>
+
+  <section class="card add" id="addCard" aria-labelledby="h-add">
+    <h2 id="h-add">Nueva conversación <small class="soft" style="font:600 13px/1 var(--f-body)">· quien responde o rellena el formulario</small></h2>
+    <form id="addForm" autocomplete="off">
+      <label class="f">Instagram<input id="n-ig" placeholder="@usuario"></label>
+      <label class="f">Nombre<input id="n-nombre" required placeholder="Nombre"></label>
+      <label class="f">Origen<select id="n-origen"></select></label>
+      <label class="f">Responsable<select id="n-resp"><option>Fran</option><option>Andrés</option></select></label>
+      <label class="f two">De qué trabaja, horario y qué quiere<input id="n-obj" placeholder="Ej.: camarero a turno partido, quiere perder barriga, lo ha dejado 3 veces"></label>
+      <label class="f">Teléfono (opcional)<input id="n-tel" inputmode="tel" placeholder="+34 …"></label>
+      <button class="btn" type="submit" id="addBtn">Añadir</button>
+    </form>
+    <p class="soft" id="addNote" aria-live="polite" style="font-size:13px"></p>
+  </section>
+
+  <section class="card filters" id="filterCard" aria-label="Filtros">
+    <div class="frow"><span class="label">Responsable</span><div class="seg" id="fResp" role="group" aria-label="Filtrar por responsable"></div></div>
+    <div class="frow"><span class="label">Estado</span><div class="seg" id="fEst" role="group" aria-label="Filtrar por estado"></div></div>
+  </section>
+
+  <section class="view" id="view-hoy" aria-labelledby="h-hoy">
+    <div class="kpis" id="kpis"></div>
+    <div class="card overdue" id="segCard">
+      <span class="label">Seguimientos días 2 · 7 · 14</span>
+      <h3 id="segTitle">Seguimientos</h3>
+      <div class="tasks" id="segList"></div>
+    </div>
+    <h2 id="h-hoy" style="margin:18px 0 10px">Qué toca hoy</h2>
+    <div class="tasks" id="todayList"><p class="empty">Cargando…</p></div>
+    <div class="card sand react" id="reactCard" style="margin-top:18px">
+      <span class="label">Reactivar esta semana · los que ya os conocen</span>
+      <h3>Un formulario antiguo vale hoy más que cien mensajes en frío.</h3>
+      <div id="lostList"></div>
+      <div class="msg"><b>Formularios de Jotform que no acabaron en llamada</b><p id="reMsg1">¡Hola, [Nombre]! Soy Fran, del equipo de Andrés Triviño. Hace un tiempo rellenaste el formulario para tu cambio y no llegamos a hablar. ¿Sigue en pie? Andrés ahora trabaja con seguimiento diario y garantía de resultados por escrito, y tiene un par de huecos esta semana para una llamada de 20 minutos.</p><button type="button" class="btn small ghost" data-copy-id="reMsg1">Copiar</button></div>
+      <div class="msg"><b>Antiguos clientes · 1 · ¿Cómo vas?</b><p id="reMsg2">¡[Nombre]! ¿Cómo estás? Andrés se ha acordado de ti viendo tu antes y después. ¿Cómo lo llevas? ¿Has podido mantenerlo con el trabajo?</p><button type="button" class="btn small ghost" data-copy-id="reMsg2">Copiar</button></div>
+      <div class="msg"><b>2 · Testimonio y permiso de fotos</b><p id="reMsg3">Te queríamos pedir un favor: ¿nos grabarías un vídeo de 30 segundos (o unas líneas) contando cómo estabas, qué cambió y qué te ayudó más? Y si nos dejas usar tus fotos de antes y después en la web y en anuncios, genial. Si prefieres sin cara o sin nombre, también vale.</p><button type="button" class="btn small ghost" data-copy-id="reMsg3">Copiar</button></div>
+      <div class="msg"><b>3 · Referidos</b><p id="reMsg4">Una cosa más: si conoces a alguien que esté como estabas tú al empezar (muchas horas de trabajo y sin ser constante), pásale el contacto de Andrés. Si entra, te regalamos un mes de seguimiento.</p><button type="button" class="btn small ghost" data-copy-id="reMsg4">Copiar</button></div>
+      <p class="soft" style="font-size:13px">Cada uno que responda: apúntalo arriba con origen "Formulario" o "Antiguo cliente". Guarda los permisos por escrito (captura del "sí").</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-embudo" hidden aria-labelledby="h-emb">
+    <h2 id="h-emb" style="margin-bottom:10px">Embudo</h2>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section class="view" id="view-clientes" hidden aria-labelledby="h-cli">
+    <div class="card nivel" id="nivelCard" style="margin-bottom:16px"></div>
+    <div class="kpis" id="ckpis"></div>
+    <div class="card sand" style="margin-bottom:16px">
+      <details class="addc">
+        <summary>+ Añadir un cliente que ya teníais</summary>
+        <form id="addCli" autocomplete="off">
+          <label class="f">Nombre<input id="c-nombre" required placeholder="Nombre"></label>
+          <label class="f">Teléfono<input id="c-tel" inputmode="tel" placeholder="+34 …"></label>
+          <label class="f">Plan<select id="c-plan"></select></label>
+          <label class="f">Fecha de alta<input id="c-alta" type="date" required></label>
+          <button class="btn" type="submit" id="c-btn">Añadir cliente</button>
+        </form>
+        <p class="soft" id="c-note" aria-live="polite" style="font-size:13px"></p>
+      </details>
+    </div>
+    <h2 id="h-cli" style="margin-bottom:10px">Clientes</h2>
+    <div class="clist" id="clist"></div>
+    <p class="soft" style="font-size:13px;margin-top:12px"><b>Garantía:</b> cada cliente tiene su objetivo firmado y su semana (1–12). En la semana 12 aparece en "Hoy" la tarea de medirla. <b>Vida media</b> = media del tiempo entre alta y baja de los que se han ido.</p>
+  </section>
+
+  <section class="view" id="view-guion" hidden aria-labelledby="h-guion">
+    <div class="guide">
+      <div>
+        <span class="label">Proceso completo</span>
+        <h2 id="h-guion" style="margin-top:6px">De un mensaje de Fran a una llamada de Andrés.</h2>
+        <p class="soft" style="margin-top:6px"><b>Nicho:</b> Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito.</p>
+        <p class="soft" style="margin-top:6px">Fran abre 100 conversaciones al día en 2 rondas de 50 (primero interacción, luego frío) y las suma en el contador. Cada persona que responde entra aquí con su origen y su responsable. Lo que no está en el CRM, no existe.</p>
+      </div>
+      <div class="flow">
+        <article class="card"><span class="n">1</span><h3>Abrir · Fran</h3><ul class="l"><li>Ronda 1: interacción (nuevos seguidores, historias, comentarios, likes, quien ve historias).</li><li>Ronda 2: frío por tipo de perfil.</li><li>Formularios: menos de 24 h.</li></ul></article>
+        <article class="card"><span class="n">2</span><h3>Cualificar · Fran</h3><ul class="l"><li>Horario, objetivo, intentos, por qué ahora, del 1 al 10.</li><li>Si está caliente: audio de Andrés.</li></ul></article>
+        <article class="card"><span class="n">3</span><h3>Agendar · pasa a Andrés</h3><ul class="l"><li>Máximo 2–3 días vista.</li><li>Al agendar, el responsable cambia a Andrés.</li><li>Caso parecido + recordatorio 1 h antes.</li></ul></article>
+        <article class="card"><span class="n">4</span><h3>Cerrar · Andrés</h3><ul class="l"><li>Guion de la parte 6.</li><li>Firma del objetivo y la garantía.</li><li>Cliente → subir nivel de precios.</li></ul></article>
+      </div>
+      <div class="grid2">
+        <article class="card">
+          <span class="label">Estados del CRM</span>
+          <ul class="l">
+            <li><b>Conversando:</b> ha respondido. Próximo paso: cualificar o seguimiento 2/7/14 si se calla.</li>
+            <li><b>Llamada agendada:</b> fecha y hora puestas. Responsable: Andrés.</li>
+            <li><b>Llamada hecha:</b> seguimiento 24 h, 48 h y día 5.</li>
+            <li><b>Cliente:</b> plan, importe, objetivo de la garantía y semana.</li>
+            <li><b>Perdido:</b> con motivo. A los 30 días sale en "Reactivar".</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="label">Reglas de los dos</span>
+          <ul class="l">
+            <li><b>Registrar contacto</b> cada vez que la conversación avanza; <b>"Respondió"</b> reinicia los seguimientos.</li>
+            <li><b>Próximo paso con fecha</b> en cada ficha. Si la fecha pasa, sale en rojo.</li>
+            <li><b>Plantilla sugerida</b> en cada ficha según su estado y origen: cópiala y personalízala.</li>
+            <li>Las plantillas completas están en <b>4 · Embudo</b>; el guion de llamada, en <b>6 · Guion de cierre</b>.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="drawer-bg" id="drawerBg" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Ficha"></aside>
+<script>
+(function () {
+  var STAGES = [
+    { id: "conversando", name: "Conversando" },
+    { id: "agendado", name: "Llamada agendada" },
+    { id: "hecha", name: "Llamada hecha" },
+    { id: "cliente", name: "Cliente" },
+    { id: "perdido", name: "Perdido" }
+  ];
+  var ORIGENES = ["Frío", "Like", "Comentario", "Respuesta a historia", "Nuevo seguidor", "Ve las historias", "Formulario", "Voto en encuesta", "Escribió CAMBIO", "Anuncio", "Recomendación", "Antiguo cliente", "Otro"];
+  var RESP = ["Fran", "Andrés"];
+  var OBJ = { Fran: 100, "Andrés": 0 };
+  var CANALES = ["DM enviado", "Respondió", "Audio de Andrés", "WhatsApp", "Llamada"];
+  var PRE = [
+    { k: "pre_caso", t: "Caso parecido enviado al agendar", s: "El antes/después con su horario (con permiso)" },
+    { k: "pre_audio", t: "Audio de Andrés de 15 s", s: "«Me ha contado Fran lo de… lo vemos el [día]»" },
+    { k: "pre_recordatorio", t: "Recordatorio 1 hora antes", s: "Y el enlace de pago y las condiciones de la garantía abiertos" }
+  ];
+  var POST = [
+    { k: "post_1", d: 0, t: "24 h: audio de Andrés recordando su objetivo con sus palabras" },
+    { k: "post_2", d: 2, t: "48 h: el caso que más se le parece: «esto es lo que te decía»" },
+    { k: "post_3", d: 5, t: "Día 5: último mensaje con fecha concreta para decidir" }
+  ];
+  var FOLLOW = [
+    { d: 2, t: "Día 2", v: ["Buenas {n}, te lo vuelvo a subir por aquí 😊 ¿Sigues con ganas de empezar o lo dejamos para más adelante?", "{n}, ¿cómo va la semana? Me quedé con lo que me contaste de [tema].", "Hola {n}, ¿pudiste pensar lo que hablamos? Sin prisa, solo para saber si te reservo hueco con Andrés."] },
+    { d: 7, t: "Día 7", v: ["{n}, me acordé de ti con este caso: [caso parecido]. Horario parecido al tuyo. Por si te anima 🙌", "Buenas {n}. Esta semana Andrés tiene un par de huecos para llamadas. ¿Te guardo uno?", "{n}, una pregunta rápida: ¿sigues con [problema] o lo has podido arreglar?"] },
+    { d: 14, t: "Día 14", v: ["Hola {n}. Como no he sabido de ti, entiendo que ahora no es el momento, sin problema. Cuando quieras, aquí estamos.", "{n}, último mensaje para no ser pesado 😄 Si algún día te apetece hacerlo con alguien encima, escríbenos CAMBIO.", "Buenas {n}. Te dejo la puerta abierta: cuando tu horario te lo permita, lo vemos con Andrés."] }
+  ];
+  var OPEN = {
+    "Frío": "¡Buenas, {n}! Pregunta rápida: con tu horario, ¿te da la vida para entrenar o lo tienes aparcado?",
+    "Like": "¡Buenas, {n}! Gracias por el like en el caso de [caso] 🙌 ¿Te viste un poco reflejado/a?",
+    "Comentario": "¡Gracias por comentar, {n}! Lo que dices de [comentario] lo escuchamos mucho. ¿Te pasa a ti también?",
+    "Respuesta a historia": "Gracias por responder, {n} 🙌 ¿Cómo lo llevas tú con tu horario?",
+    "Nuevo seguidor": "¡Buenas, {n}! Gracias por seguir la cuenta 🙌 Pregunta rápida: ¿estás entrenando ahora o con el trabajo no hay manera?",
+    "Ve las historias": "¡Hola {n}! Te veo a menudo por las historias 😄 ¿Alguna te ha servido o te estás animando poco a poco?",
+    "Formulario": "¡Hola {n}! Soy Fran, del equipo de Andrés. Hemos recibido tu formulario 🙌 Antes de hablar, una pregunta: ¿qué es lo que más te gustaría cambiar en los próximos 3 meses?",
+    "Voto en encuesta": "¡Gracias por votar, {n}! Has puesto «[respuesta]». ¿Desde cuándo te pasa?",
+    "Escribió CAMBIO": "¡Buenas, {n}! Gracias por escribir CAMBIO 🙌 Para ver si te podemos ayudar: ¿de qué trabajas y qué te gustaría cambiar?",
+    "Anuncio": "¡Buenas, {n}! Gracias por seguir la cuenta 🙌 ¿Qué vídeo te trajo por aquí?",
+    "Recomendación": "¡Hola {n}! [Quien te recomendó] nos ha hablado de ti. ¿Qué te gustaría cambiar?",
+    "Antiguo cliente": "¡{n}! ¿Cómo estás? Andrés se ha acordado de ti. ¿Has podido mantenerlo con el trabajo?",
+    "Otro": "¡Hola {n}! ¿Qué tal? Cuéntame un poco: ¿de qué trabajas y qué te gustaría cambiar?"
+  };
+  var QUALIFY = "Para ver si encajas, {n}: ¿de qué trabajas y qué horario tienes? ¿Y qué te gustaría cambiar en los próximos 3 meses?";
+  var HANDOFF = "Por lo que me cuentas, encajas justo con la gente con la que mejor trabaja Andrés. Lo mejor es que lo hables con él en una llamada de 20 minutos y te diga cómo sería en tu caso. ¿Te va mejor [día] o [día]?";
+
+  /* Precios: cada venta cerrada sube un nivel (~20 %) hasta el máximo */
+  var LEVELS = { "Trimestre": [300, 360, 430, 520], "Semestre": [500, 600, 720, 865], "Año": [850, 1020, 1225, 1470] };
+  var MAXN = 3, nivel = 0, ventasDesdeSubida = 0;
+  function r5(x) { return Math.round(x / 5) * 5; }
+  function cuota2(n) { return r5(LEVELS.Semestre[n == null ? nivel : n] * 1.05 / 2); }
+  var PLANS = [{ id: "Semestre", m: 6 }, { id: "Año", m: 12 }, { id: "Semestre en 2 pagos", m: 6 }, { id: "Trimestre", m: 3 }, { id: "Continuidad mensual", m: 1 }];
+  function priceOf(id, n) { n = n == null ? nivel : n; if (LEVELS[id]) return LEVELS[id][n]; if (id === "Semestre en 2 pagos") return cuota2(n) * 2; return 0; }
+  function firstCharge(id) { return id === "Semestre en 2 pagos" ? cuota2() : priceOf(id); }
+  var EXTRA_TIPOS = ["Ascensión", "Renovación anticipada", "Continuidad", "Referido"];
+
+  var db = null, leads = [], openId = null, busy = {}, fResp = "", fEst = "";
+  var counts = {}, cntTimer = null, cntChain = Promise.resolve(), cntDirty = false;
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function now() { return new Date().toISOString(); }
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function today() { return iso(new Date()); }
+  function addDays(f, n) { var d = new Date(f + "T12:00:00"); d.setDate(d.getDate() + n); return iso(d); }
+  function days(isoS) { if (!isoS) return 0; return Math.floor((Date.now() - new Date(isoS).getTime()) / 86400000); }
+  function fmtDate(v) { if (!v) return "—"; var d = new Date(v.length === 10 ? v + "T12:00:00" : v), o = { day: "numeric", month: "short" }; if (d.getFullYear() !== new Date().getFullYear()) o.year = "numeric"; return d.toLocaleDateString("es-ES", o); }
+  function fmtDT(v) { if (!v) return ""; var d = new Date(v); return d.toLocaleDateString("es-ES", { weekday: "short", day: "numeric", month: "short" }) + " " + d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }); }
+  function num(v) { return parseFloat(String(v == null ? "" : v).replace(",", ".")) || 0; }
+  function eur(n) { n = Number(n) || 0; var r = Math.round(n * 100) / 100, s = Math.floor(Math.abs(r)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."), dec = Math.round(Math.abs(r) * 100) % 100; return (r < 0 ? "-" : "") + s + (dec ? "," + String(dec).padStart(2, "0") : "") + " €"; }
+  function first(n) { return (n || "").split(" ")[0] || ""; }
+  function hash(s) { var h = 0; s = String(s || ""); for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+  function stageName(id) { var s = STAGES.find(function (x) { return x.id === id; }); return s ? s.name : id; }
+  function respOf(l) { return l.responsable || "Fran"; }
+  function planM(p) { var f = PLANS.find(function (x) { return x.id === p; }); return f ? f.m : 0; }
+  function altaOf(l) { return l.altaEl || (l.cerradoEl ? l.cerradoEl.slice(0, 10) : today()); }
+  function addMonths(f, m) { var d = new Date(f + "T12:00:00"); d.setMonth(d.getMonth() + m); return d; }
+  function finPlan(l) { var m = planM(l.plan) + (l.extras || []).reduce(function (a, e) { return a + num(e.meses); }, 0); return m ? addMonths(altaOf(l), m) : null; }
+  function stayDays(l) { var end = l.estadoCliente === "baja" && l.bajaEl ? new Date(l.bajaEl + "T12:00:00") : new Date(); return Math.max(0, Math.round((end - new Date(altaOf(l) + "T12:00:00")) / 86400000)); }
+  function months(d) { return (d / 30.44).toLocaleString("es-ES", { maximumFractionDigits: 1 }); }
+  function billed(l) { return num(l.importe) + (l.extras || []).reduce(function (a, e) { return a + num(e.importe); }, 0); }
+  function clients() { return leads.filter(function (l) { return l.etapa === "cliente"; }); }
+  function isActive(l) { return l.estadoCliente !== "baja"; }
+  function gWeek(l) { var g = l.garantia || {}; var ini = g.inicio || altaOf(l); return Math.floor(Math.max(0, (new Date(today() + "T12:00:00") - new Date(ini + "T12:00:00")) / 86400000) / 7) + 1; }
+  function passes(l) { return (!fResp || respOf(l) === fResp) && (!fEst || (l.etapa || "conversando") === fEst); }
+
+  /* Seguimiento 2/7/14: cuenta desde el último contacto en el que la conversación avanzó */
+  function followDue(l) {
+    if ((l.etapa || "conversando") !== "conversando") return null;
+    var last = (l.toques || []).slice(-1)[0];
+    if (last && last.canal === "Respondió") return null;
+    var d = days(l.ultimoContacto || l.creado), seg = l.seguimiento || {};
+    for (var i = FOLLOW.length - 1; i >= 0; i--) {
+      var f = FOLLOW[i];
+      if (d >= f.d && !seg["f" + f.d]) return { f: f, d: d, late: d - f.d, due: addDays((l.ultimoContacto || l.creado).slice(0, 10), f.d) };
+    }
+    return null;
+  }
+  function pick(arr, l, salt) { return arr[hash(l.id + (salt || "")) % arr.length]; }
+  function fill(t, l) { return t.replace(/\{n\}/g, first(l.nombre) || "[nombre]"); }
+
+  /* Plantilla sugerida según estado y origen */
+  function suggest(l) {
+    var st = l.etapa || "conversando", toques = l.toques || [], last = toques.slice(-1)[0];
+    if (st === "conversando") {
+      var fd = followDue(l); if (fd) return { k: "Seguimiento " + fd.f.t.toLowerCase(), t: fill(pick(fd.f.v, l, fd.f.d), l) };
+      if ((l.seguimiento || {}).f14) return { k: "Reactivación (a los 30 días)", t: fill("¡Hola {n}! Hace unas semanas hablamos de tu cambio. ¿Cómo va? Andrés tiene huecos esta semana por si te apetece hacerlo con alguien encima.", l) };
+      if (!toques.length) return { k: "Primer mensaje · " + (l.origen || "Otro"), t: fill(OPEN[l.origen] || OPEN.Otro, l) };
+      if (toques.filter(function (t) { return t.canal === "Respondió"; }).length >= 2) return { k: "Pasar a llamada con Andrés", t: fill(HANDOFF, l) };
+      return { k: "Cualificar", t: fill(QUALIFY, l) };
+    }
+    if (st === "agendado") {
+      var h = l.fechaLlamada ? new Date(l.fechaLlamada).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) : "[hora]";
+      var dd = l.fechaLlamada ? new Date(l.fechaLlamada).toLocaleDateString("es-ES", { weekday: "long", day: "numeric" }) : "[día]";
+      if (l.fechaLlamada && new Date(l.fechaLlamada).toDateString() === new Date().toDateString()) return { k: "Recordatorio · hoy es la llamada", t: fill("{n}, hoy a las " + h + " te llama Andrés. ¡Hasta luego!", l) };
+      return { k: "Confirmación de la llamada", t: fill("¡Hecho, {n}! El " + dd + " a las " + h + " te llama Andrés. Mientras, te dejo un caso parecido al tuyo: [enlace]. Cualquier cosa, por aquí.", l) };
+    }
+    if (st === "hecha") {
+      var dc = days(l.llamadaHechaEl);
+      if (dc < 2) return { k: "24 h · audio de Andrés", t: fill("{n}, soy Andrés. Me quedé pensando en lo que me contaste de [su frase]. Lo tuyo tiene solución y con la garantía el riesgo lo pongo yo. ¿Lo vemos?", l) };
+      if (dc < 5) return { k: "48 h · caso parecido", t: fill("{n}, esto es lo que te decía: [caso parecido]. Mismo tipo de horario que el tuyo.", l) };
+      return { k: "Día 5 · fecha para decidir", t: fill("{n}, te escribo por última vez sobre esto: tengo una plaza hasta el [fecha]. Si la quieres, es tuya; si no, sin problema.", l) };
+    }
+    if (st === "cliente") {
+      if (!isActive(l)) return { k: "Antiguo cliente · ¿cómo vas?", t: fill("¡{n}! ¿Cómo estás? Andrés se ha acordado de ti viendo tu antes y después. ¿Has podido mantenerlo con el trabajo?", l) };
+      if (days(l.cerradoEl) <= 2) return { k: "Bienvenida", t: fill("¡Bienvenido/a, {n}! Esta noche te llega tu primer check-in: 4 respuestas, 1 minuto. Mañana empezamos. Vamos a por ello 💪", l) };
+      if (gWeek(l) >= 8) return { k: "Permiso de fotos y referidos", t: fill("{n}, vas genial. ¿Nos dejas usar tu antes y después (con o sin cara, como prefieras)? Y si conoces a alguien con un horario como el tuyo, si entra te regalamos un mes.", l) };
+      return { k: "Check-in diario", t: fill("{n}, ¿qué tal hoy? Entreno, comida, pasos y sueño. 1 minuto 🙌", l) };
+    }
+    return { k: "Reactivación (a los 30 días)", t: fill("¡Hola {n}! Hace unas semanas hablamos de tu cambio. ¿Cómo va? Andrés tiene huecos esta semana por si te apetece hacerlo con alguien encima.", l) };
+  }
+
+  /* Siguiente acción */
+  function nextAction(l) {
+    var st = l.etapa || "conversando", toques = l.toques || [], last = toques.slice(-1)[0];
+    var vencido = l.proximaFecha && l.proximaFecha < today();
+    if (l.proximoPaso && st !== "cliente" && st !== "perdido") return { t: l.proximoPaso + (l.proximaFecha ? " · " + fmtDate(l.proximaFecha) : ""), u: !!vencido || l.proximaFecha === today(), late: !!vencido };
+    if (st === "conversando") {
+      if (last && last.canal === "Respondió") return { t: "Ha respondido: contestar hoy", u: true };
+      var fd = followDue(l); if (fd) return { t: "Seguimiento del " + fd.f.t.toLowerCase(), u: true, late: fd.late > 0 };
+      if ((l.seguimiento || {}).f14) return { t: "Secuencia terminada: pasar a Perdido", u: false };
+      if (!toques.length) return { t: "Enviar el primer mensaje", u: true };
+      return { t: "Esperando respuesta (" + days(l.ultimoContacto || l.creado) + " d)", u: false };
+    }
+    if (st === "agendado") {
+      var c = l.checks || {};
+      if (!l.fechaLlamada) return { t: "Poner fecha y hora de la llamada", u: true };
+      if (new Date(l.fechaLlamada) < new Date()) return { t: "¿Se hizo la llamada? Pasar a Llamada hecha", u: true };
+      if (!c.pre_caso || !c.pre_audio) return { t: "Enviar caso parecido y audio de Andrés", u: true };
+      return { t: "Llamada " + fmtDT(l.fechaLlamada), u: false };
+    }
+    if (st === "hecha") {
+      var dc = days(l.llamadaHechaEl), cc = l.checks || {};
+      for (var j = 0; j < POST.length; j++) if (dc >= POST[j].d && !cc[POST[j].k]) return { t: POST[j].t, u: true };
+      return { t: "Seguimiento hecho: cerrar o pasar a Perdido", u: dc > 5 };
+    }
+    if (st === "cliente") {
+      if (!isActive(l)) return { t: "Baja · estuvo " + months(stayDays(l)) + " meses", u: false, done: true };
+      var t = clientTask(l); if (t) return t;
+      return { t: "Cliente activo · semana " + gWeek(l) + " · " + (l.plan || "plan sin apuntar"), u: false, done: true };
+    }
+    return { t: "Perdido" + (l.motivo ? " · " + l.motivo : ""), u: false, done: true };
+  }
+  function clientTask(l) {
+    if (l.etapa !== "cliente" || !isActive(l)) return null;
+    var g = l.garantia || {};
+    if (!g.firmada) return { t: "Firmar objetivo y condiciones de la garantía", u: true, done: true };
+    if (gWeek(l) >= 12 && !g.medida) return { t: "Semana " + gWeek(l) + ": medir la garantía (fotos y medidas frente al objetivo)", u: true, done: true };
+    var f = finPlan(l); if (!f) return null;
+    var left = Math.ceil((f - new Date()) / 86400000);
+    if (left < 0) return { t: "Plan terminado hace " + (-left) + " d: renovar o dar de baja", u: true, done: true };
+    if (left <= 21) return { t: "Su plan acaba el " + fmtDate(iso(f)) + ": ofrecer renovación anticipada", u: left <= 7, done: true };
+    return null;
+  }
+
+  /* Escrituras */
+  async function patch(id, data) {
+    if (!db) return;
+    if (busy[id]) { await busy[id]; }
+    var p = db.collection("leads").doc(id).update(Object.assign({ actualizado: now() }, data));
+    busy[id] = p.catch(function () {});
+    try { await p; } catch (e) { setStatus(e && e.code === "invalid_argument" ? "No tienes permiso para editar" : (e && e.code === "quota_exceeded" ? "La base de datos está llena: borra fichas antiguas" : "No se ha podido guardar"), true); }
+  }
+
+  /* Contador diario de mensajes (set con debounce) */
+  function cntDoc(f) { var c = counts[f] || {}; return { fecha: f, Fran: num(c.Fran), "Andrés": num(c["Andrés"]) }; }
+  function bump(who, n) {
+    var f = today(); counts[f] = cntDoc(f); counts[f][who] = Math.max(0, counts[f][who] + n);
+    cntDirty = true; renderCounter(); renderKpis();
+    if (!db) { $("cntSave").textContent = "Sin base de datos: no se guarda."; return; }
+    $("cntSave").textContent = "Guardando…";
+    clearTimeout(cntTimer);
+    cntTimer = setTimeout(function () {
+      var data = Object.assign(cntDoc(f), { actualizado: now() });
+      cntChain = cntChain.then(function () {
+        cntDirty = false;
+        return db.collection("contador").doc(f).set(data).then(function () { if (!cntDirty) $("cntSave").textContent = "Guardado " + new Date().toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }); },
+          function (e) { cntDirty = false; $("cntSave").textContent = e && e.code === "invalid_argument" ? "No tienes permiso para guardar." : (e && e.code === "quota_exceeded" ? "La base de datos está llena." : "No se ha podido guardar."); });
+      });
+    }, 600);
+  }
+  function renderCounter() {
+    var c = cntDoc(today());
+    $("cntGrid").innerHTML = RESP.map(function (r) {
+      var o = OBJ[r], v = c[r], pct = o ? Math.min(100, Math.round(v / o * 100)) : 0;
+      return '<div class="cnt" data-who="' + r + '"><div class="cnt-h"><b>' + r + '</b><span class="cnt-n" id="cnt-' + (r === "Fran" ? "fran" : "andres") + '">' + v + (o ? ' / ' + o : '') + '</span></div>' +
+        (o ? '<div class="meter" aria-hidden="true"><i style="width:' + pct + '%"></i></div><span class="soft" style="font-size:12.5px">' + (v >= o ? "✓ Objetivo cumplido" : "Faltan " + (o - v) + " · 2 rondas de 50") + '</span>' : '<span class="soft" style="font-size:12.5px">Audios y mensajes a calientes</span>') +
+        '<div class="phone-line"><button type="button" class="btn small" data-bump="1">+1</button><button type="button" class="btn small ghost" data-bump="5">+5</button><button type="button" class="btn small ghost" data-bump="10">+10</button><button type="button" class="linkish" data-bump="-1">−1</button></div></div>';
+    }).join("");
+    var f = [], i; for (i = 6; i >= 1; i--) f.push(addDays(today(), -i));
+    $("cntHist").innerHTML = '<table class="ctab"><thead><tr><th>Últimos días</th>' + f.map(function (x) { return '<th>' + new Date(x + "T12:00:00").toLocaleDateString("es-ES", { weekday: "short", day: "numeric" }) + '</th>'; }).join("") + '</tr></thead><tbody>' +
+      RESP.map(function (r) { return '<tr><td><b>' + r + '</b></td>' + f.map(function (x) { var v = num((counts[x] || {})[r]); return '<td class="' + (OBJ[r] ? (v >= OBJ[r] ? "ok" : (v ? "low" : "")) : "") + '">' + (v || "—") + '</td>'; }).join("") + '</tr>'; }).join("") + '</tbody></table>';
+  }
+  $("cntGrid").addEventListener("click", function (e) { var b = e.target.closest("[data-bump]"); if (!b) return; bump(b.closest(".cnt").dataset.who, +b.dataset.bump); });
+
+  /* Filtros */
+  function renderFilters() {
+    $("fResp").innerHTML = [["", "Los dos"]].concat(RESP.map(function (r) { return [r, r]; })).map(function (x) { return '<button type="button" data-v="' + x[0] + '" aria-pressed="' + (fResp === x[0]) + '">' + x[1] + '</button>'; }).join("");
+    $("fEst").innerHTML = [["", "Todos"]].concat(STAGES.map(function (s) { return [s.id, s.name]; })).map(function (x) { return '<button type="button" data-v="' + x[0] + '" aria-pressed="' + (fEst === x[0]) + '">' + x[1] + '</button>'; }).join("");
+  }
+  $("fResp").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; fResp = b.dataset.v; renderAll(); });
+  $("fEst").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; fEst = b.dataset.v; renderAll(); });
+
+  /* Render */
+  function renderKpis() {
+    var L = leads.filter(function (l) { return !fResp || respOf(l) === fResp; });
+    var c = function (s) { return L.filter(function (l) { return (l.etapa || "conversando") === s; }).length; };
+    var cd = cntDoc(today()), msgs = fResp ? cd[fResp] : cd.Fran + cd["Andrés"];
+    var segs = L.filter(function (l) { return followDue(l); }).length;
+    var late = L.filter(function (l) { return l.proximaFecha && l.proximaFecha < today() && ["cliente", "perdido"].indexOf(l.etapa) < 0; }).length;
+    var act = clients().filter(isActive).filter(function (l) { return !fResp || respOf(l) === fResp; }).length;
+    var data = [[msgs, "Mensajes enviados hoy" + (fResp ? " · " + fResp : "")], [c("conversando"), "Conversando"], [c("agendado"), "Llamadas agendadas"], [segs, "Seguimientos pendientes"], [late, "Próximos pasos vencidos"], [act, "Clientes activos"]];
+    $("kpis").innerHTML = data.map(function (d, i) { return '<div class="kpi' + ((i === 3 || i === 4) && d[0] ? " bad" : "") + '"><b>' + d[0] + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+  }
+  function taskEl(l, a, extra) {
+    var el = document.createElement("div"); el.className = "task" + (a.u ? " urgent" : "") + (a.late ? " late" : "");
+    var sg = suggest(l);
+    el.innerHTML = '<span class="dot" aria-hidden="true"></span><div><b>' + esc(l.nombre) + ' <span class="who ' + (respOf(l) === "Andrés" ? "a" : "f") + '">' + esc(respOf(l)) + '</span></b><span>' + esc(extra || a.t) + ' · ' + esc(stageName(l.etapa || "conversando")) + (l.origen ? ' · ' + esc(l.origen) : '') + (l.ig ? ' · ' + esc(l.ig) : '') + '</span></div><span class="tbtns"><button type="button" class="btn small ghost" data-tcopy>Copiar plantilla</button><button type="button" class="btn small" data-topen>Abrir</button></span>';
+    el.querySelector("[data-topen]").addEventListener("click", function () { openLead(l.id); });
+    el.querySelector("[data-tcopy]").addEventListener("click", function () { copy(sg.t, this); });
+    el.querySelector("[data-tcopy]").title = sg.k + ": " + sg.t;
+    return el;
+  }
+  function renderSegs() {
+    var list = leads.filter(passes).map(function (l) { return { l: l, f: followDue(l) }; }).filter(function (o) { return o.f; })
+      .sort(function (a, b) { return b.f.late - a.f.late; });
+    var late = list.filter(function (o) { return o.f.late > 0; }).length;
+    $("segTitle").textContent = list.length ? list.length + (list.length === 1 ? " seguimiento toca hoy" : " seguimientos tocan hoy") + (late ? " · " + late + " vencido" + (late > 1 ? "s" : "") : "") : "Ningún seguimiento pendiente";
+    $("segCard").className = "card overdue" + (late ? " has-late" : "");
+    var box = $("segList"); box.innerHTML = "";
+    if (!list.length) { box.innerHTML = '<p class="soft" style="font-size:13.5px">Al día. Cuando alguien deje de responder, aquí saldrá el mensaje del día 2, 7 o 14.</p>'; return; }
+    list.forEach(function (o) {
+      box.appendChild(taskEl(o.l, { u: true, late: o.f.late > 0 }, o.f.f.t + (o.f.late > 0 ? " · vencido hace " + o.f.late + " d (tocaba el " + fmtDate(o.f.due) + ")" : " · toca hoy")));
+    });
+  }
+  function renderToday() {
+    var list = leads.filter(passes).filter(function (l) { var st = l.etapa || "conversando"; return (st !== "cliente" && st !== "perdido" && !followDue(l)) || clientTask(l); })
+      .map(function (l) { return { l: l, a: l.etapa === "cliente" ? clientTask(l) : nextAction(l) }; })
+      .sort(function (x, y) { return ((y.a.late ? 2 : 0) + (y.a.u ? 1 : 0)) - ((x.a.late ? 2 : 0) + (x.a.u ? 1 : 0)); });
+    var box = $("todayList");
+    if (!list.length) { box.innerHTML = '<p class="empty">' + (leads.length ? "Nada pendiente con estos filtros." : "Todavía no hay conversaciones. Cada persona que responda, apúntala arriba.") + '</p>'; return; }
+    box.innerHTML = "";
+    list.forEach(function (o) { box.appendChild(taskEl(o.l, o.a)); });
+  }
+  function renderLost() {
+    var lost = leads.filter(function (l) { return l.etapa === "perdido" && days(l.cerradoEl) >= 30; });
+    $("lostList").innerHTML = lost.length ? '<div class="msg"><b>Perdidos hace más de 30 días (' + lost.length + ')</b>' + lost.slice(0, 8).map(function (l) { return '<div class="row"><span>' + esc(l.nombre) + ' · ' + esc(l.motivo || "sin motivo") + ' · ' + esc(respOf(l)) + '</span><button type="button" class="btn small ghost" data-react="' + l.id + '">Reactivar</button></div>'; }).join("") + '</div>' : "";
+    $("lostList").querySelectorAll("[data-react]").forEach(function (b) { b.addEventListener("click", function () { patch(b.dataset.react, { etapa: "conversando", seguimiento: {}, ultimoContacto: now(), proximoPaso: "Mensaje de reactivación", proximaFecha: today(), motivo: "" }); }); });
+  }
+  function renderBoard() {
+    var b = $("board"); b.innerHTML = "";
+    STAGES.filter(function (s) { return !fEst || s.id === fEst; }).forEach(function (s) {
+      var items = leads.filter(function (l) { return (l.etapa || "conversando") === s.id && (!fResp || respOf(l) === fResp); });
+      var col = document.createElement("div"); col.className = "col";
+      col.innerHTML = '<div class="col-h"><b>' + esc(s.name) + '</b><span>' + items.length + '</span></div>';
+      items.forEach(function (l) {
+        var a = nextAction(l), card = document.createElement("button");
+        card.type = "button"; card.className = "lead" + (a.u ? " warn" : "");
+        card.innerHTML = '<b>' + esc(l.nombre) + ' <span class="who ' + (respOf(l) === "Andrés" ? "a" : "f") + '">' + esc(respOf(l)) + '</span></b><span class="meta">' + esc(l.origen || "") + ' · ' + fmtDate(l.creado) + '</span><span class="next">' + esc(a.t) + '</span>';
+        card.addEventListener("click", function () { openLead(l.id); });
+        col.appendChild(card);
+      });
+      b.appendChild(col);
+    });
+  }
+  function renderClients() {
+    var cl = clients(), act = cl.filter(isActive), gone = cl.filter(function (l) { return !isActive(l); });
+    var ym = today().slice(0, 7);
+    var altasMes = cl.filter(function (l) { return altaOf(l).slice(0, 7) === ym; }).length;
+    var bajasMes = gone.filter(function (l) { return (l.bajaEl || "").slice(0, 7) === ym; }).length;
+    var vida = gone.length ? gone.reduce(function (a, l) { return a + stayDays(l); }, 0) / gone.length : null;
+    var total = cl.reduce(function (a, l) { return a + billed(l); }, 0);
+    var gar = act.filter(function (l) { return gWeek(l) >= 12 && !(l.garantia || {}).medida; }).length;
+    var data = [[act.length, "Clientes activos"], [altasMes, "Altas este mes"], [bajasMes, "Bajas este mes"], [vida == null ? "—" : months(vida) + " m", "Vida media"], [cl.length ? eur(total / cl.length) : "—", "Facturado por cliente"], [gar, "Garantías por medir"]];
+    $("ckpis").innerHTML = data.map(function (d) { return '<div class="kpi"><b>' + esc(d[0]) + '</b><span>' + esc(d[1]) + '</span></div>'; }).join("");
+    var box = $("clist");
+    if (!cl.length) { box.innerHTML = '<p class="empty">Todavía no hay clientes. Cuando uno cierre, pásalo a "Cliente" o añade aquí los que ya teníais.</p>'; return; }
+    var sorted = act.slice().sort(function (a, b) { return (finPlan(a) || 0) - (finPlan(b) || 0); }).concat(gone);
+    box.innerHTML = '<div class="crow head" aria-hidden="true"><span>Cliente</span><span class="hm">Alta</span><span class="hm">Semana</span><span class="hm">Fin del plan</span><span class="hm">Facturado</span><span>Estado</span></div>';
+    sorted.forEach(function (l) {
+      var f = finPlan(l), t = clientTask(l), b = document.createElement("button");
+      b.type = "button"; b.className = "crow";
+      var pill = !isActive(l) ? '<span class="pill baja">Baja</span>' : (t ? '<span class="pill warn">' + (/garantía/.test(t.t) ? "Garantía" : "Renovar") + '</span>' : '<span class="pill">Activo</span>');
+      b.innerHTML = '<span><b>' + esc(l.nombre) + '</b><small>' + esc(l.plan || "Plan sin apuntar") + '<span class="mo"> · sem. ' + gWeek(l) + ' · ' + eur(billed(l)) + '</span></small></span><span class="hm num">' + fmtDate(altaOf(l)) + '</span><span class="hm num">' + (isActive(l) ? gWeek(l) + (gWeek(l) <= 12 ? " / 12" : "") : "—") + '</span><span class="hm num">' + (isActive(l) ? (f ? fmtDate(iso(f)) : "—") : "Baja " + fmtDate(l.bajaEl)) + '</span><span class="hm num">' + eur(billed(l)) + '</span>' + pill;
+      b.addEventListener("click", function () { openLead(l.id); });
+      box.appendChild(b);
+    });
+  }
+  function renderNivel() {
+    var box = $("nivelCard");
+    var dots = ""; for (var i = 0; i <= MAXN; i++) dots += '<i class="' + (i <= nivel ? "on" : "") + '"></i>';
+    var pr = [["Semestre", "El estándar · 3 fases", true], ["Año", "Mejor valor"], ["Semestre en 2 pagos", "2 × " + eur(cuota2())], ["Trimestre", "Último recurso"]];
+    box.innerHTML = '<div class="nv-top"><div><span class="label">Precios actuales · propuesta, confirmar</span><h3>Nivel de precios: ' + nivel + ' de ' + MAXN + '</h3></div><div class="nv-dots" aria-hidden="true">' + dots + '</div></div>' +
+      '<div class="nv-prices">' + pr.map(function (p) { return '<div class="' + (p[2] ? "star" : "") + '"><span>' + esc(p[0]) + '</span><b>' + eur(priceOf(p[0])) + '</b><span>' + esc(p[1]) + '</span></div>'; }).join("") + '</div>' +
+      '<p class="soft" style="font-size:13.5px"><b>Regla:</b> cada venta cerrada sube un nivel (+20 %) hasta el máximo (Año 1.470 € / Trimestre 520 €). Nunca se baja para cerrar. <b>Precios en PROPUESTA:</b> confírmalos con Alberto y con Andrés.' + (ventasDesdeSubida ? ' · Ventas desde la última subida: ' + ventasDesdeSubida : '') + '</p>' +
+      '<div class="phone-line"><button type="button" class="btn small" id="nvUp"' + (nivel >= MAXN ? " disabled" : "") + '>' + (nivel >= MAXN ? "Ya estás en el máximo" : "Subir a nivel " + (nivel + 1)) + '</button>' +
+      (nivel > 0 ? '<button type="button" class="linkish" id="nvDownAsk">Bajar un nivel</button><span id="nvDownBox" hidden class="phone-line"><span class="soft" style="font-size:13px">¿Seguro? Solo si no estáis cerrando nada.</span><button type="button" class="btn small ghost" id="nvDownYes">Sí, bajar</button><button type="button" class="linkish" id="nvDownNo">Cancelar</button></span>' : '') + '</div>';
+    $("nvUp").addEventListener("click", function () { setNivel(nivel + 1); });
+    if ($("nvDownAsk")) {
+      $("nvDownAsk").addEventListener("click", function () { $("nvDownBox").hidden = false; });
+      $("nvDownNo").addEventListener("click", function () { $("nvDownBox").hidden = true; });
+      $("nvDownYes").addEventListener("click", function () { setNivel(nivel - 1); });
+    }
+  }
+  var nivelBusy = Promise.resolve();
+  function saveNivel(n, ventas) {
+    if (!db) { nivel = n; ventasDesdeSubida = ventas; renderAll(); return; }
+    nivelBusy = nivelBusy.then(function () { return db.collection("config").doc("precios").set({ nivel: n, ventasDesdeSubida: ventas, actualizado: now() }); })
+      .catch(function (e) { setStatus(e && e.code === "invalid_argument" ? "No tienes permiso para cambiar precios" : "No se han podido guardar los precios", true); });
+  }
+  function setNivel(n) { n = Math.max(0, Math.min(MAXN, n)); saveNivel(n, n > nivel ? 0 : ventasDesdeSubida); }
+  function renderAll() { renderFilters(); renderCounter(); renderKpis(); renderSegs(); renderToday(); renderLost(); renderBoard(); renderNivel(); renderClients(); if (openId) renderDrawer(); }
+
+  /* Ficha */
+  function openLead(id) { openId = id; $("drawer").hidden = false; $("drawerBg").hidden = false; renderDrawer(); }
+  function closeLead() { openId = null; $("drawer").hidden = true; $("drawerBg").hidden = true; }
+  $("drawerBg").addEventListener("click", closeLead);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeLead(); });
+
+  function renderDrawer() {
+    var l = leads.find(function (x) { return x.id === openId; });
+    var d = $("drawer");
+    if (!l) { closeLead(); return; }
+    var st = l.etapa || "conversando", a = nextAction(l), c = l.checks || {}, seg = l.seguimiento || {}, sg = suggest(l), g = l.garantia || {};
+    var h = '<div class="drawer-head"><div><span class="label">' + esc(l.origen || "Lead") + ' · ' + esc(stageName(st)) + '</span><h2>' + esc(l.nombre) + '</h2></div><button type="button" class="btn small ghost" id="dClose">Cerrar</button></div>';
+    h += '<div class="steps" role="group" aria-label="Estado">' + STAGES.map(function (s) { return '<button type="button" data-stage="' + s.id + '" aria-pressed="' + (s.id === st) + '">' + esc(s.name) + '</button>'; }).join("") + '</div>';
+    h += '<div class="card"><div class="fields"><label class="f">Responsable<select data-f="responsable" id="dResp">' + RESP.map(function (r) { return '<option>' + r + '</option>'; }).join("") + '</select></label><label class="f">Origen<select data-f="origen" id="dOrig">' + ORIGENES.map(function (o) { return '<option>' + o + '</option>'; }).join("") + '</select></label>' +
+      '<label class="f full">Próximo paso<input data-f="proximoPaso" value="' + esc(l.proximoPaso) + '" placeholder="' + esc(a.t) + '"></label>' +
+      '<label class="f">Fecha<input type="date" data-f="proximaFecha" value="' + esc(l.proximaFecha || "") + '"></label><label class="f" style="align-self:end"><button type="button" class="btn small ghost" id="pasoHecho">Paso hecho</button></label></div>' +
+      (l.proximaFecha && l.proximaFecha < today() && st !== "cliente" && st !== "perdido" ? '<p class="alert">Vencido desde el ' + fmtDate(l.proximaFecha) + '.</p>' : '') +
+      '<p class="soft" style="font-size:13px"><b>Lo que toca:</b> ' + esc(a.t) + '</p></div>';
+    h += '<div class="card sugg"><span class="label">Plantilla sugerida · ' + esc(sg.k) + '</span><p id="sugTxt">' + esc(sg.t) + '</p><div class="phone-line"><button type="button" class="btn small" id="sugCopy">Copiar</button><span class="soft" style="font-size:12.5px">Personaliza lo que va entre corchetes. Más variantes en 4 · Embudo.</span></div></div>';
+    var igh = String(l.ig || "").replace(/^@/, "").trim();
+    if (igh || l.telefono) h += '<div class="phone-line">' + (igh ? '<code>@' + esc(igh) + '</code><a class="btn small" href="https://instagram.com/' + encodeURIComponent(igh) + '" target="_blank" rel="noopener">Abrir Instagram</a>' : '') + (l.telefono ? '<code>' + esc(l.telefono) + '</code><a class="btn small ghost" href="https://wa.me/' + esc(String(l.telefono).replace(/\D/g, "")) + '" target="_blank" rel="noopener">WhatsApp</a>' : '') + '</div>';
+    h += '<div class="card"><div class="fields">' +
+      '<label class="f">Teléfono<input data-f="telefono" value="' + esc(l.telefono) + '"></label>' +
+      '<label class="f">Instagram<input data-f="ig" value="' + esc(l.ig) + '"></label>' +
+      '<label class="f full">Trabajo y horario<input data-f="trabajo" value="' + esc(l.trabajo) + '" placeholder="Camarero a turno partido, madre con jornada completa…"></label>' +
+      '<label class="f full">Qué quiere / lo que contó<input data-f="objetivo" value="' + esc(l.objetivo) + '"></label>' +
+      '<label class="f full">Notas (frases literales suyas)<textarea data-f="notas">' + esc(l.notas) + '</textarea></label></div></div>';
+    h += '<div class="card"><div class="phone-line" style="justify-content:space-between"><b>Contactos (' + (l.toques || []).length + ')</b><span class="phone-line"><select id="toqueCanal" style="width:auto">' + CANALES.map(function (x) { return '<option>' + x + '</option>'; }).join("") + '</select><button type="button" class="btn small" id="addToque">Registrar</button></span></div>' +
+      '<div class="log">' + ((l.toques || []).slice().reverse().map(function (t) { return '<span>' + fmtDT(t.fecha) + ' · ' + esc(t.canal) + (t.quien ? ' · ' + esc(t.quien) : '') + '</span>'; }).join("") || '<span>Todavía sin contactos.</span>') + '</div></div>';
+    if (st === "conversando") {
+      var fd = followDue(l);
+      h += '<div class="card sand"><span class="label">Si no responde · días 2, 7 y 14 desde el último contacto (' + fmtDate((l.ultimoContacto || l.creado || "").slice(0, 10)) + ')</span>' + FOLLOW.map(function (f) {
+        var msg = fill(pick(f.v, l, f.d), l), due = fd && fd.f.d === f.d;
+        return '<div class="msg' + (due ? " due" : "") + '"><div class="row"><b>' + f.t + (due ? (fd.late > 0 ? " · vencido" : " · toca hoy") : "") + '</b><label style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:700"><input type="checkbox" data-seg="f' + f.d + '"' + (seg["f" + f.d] ? " checked" : "") + ' style="width:auto"> Enviado</label></div><p>' + esc(msg) + '</p><button type="button" class="btn small ghost" data-copy="' + esc(msg) + '">Copiar</button></div>';
+      }).join("") + '</div>';
+      h += '<button type="button" class="btn" data-go="agendado">Ha aceptado la llamada (pasa a Andrés)</button>';
+    }
+    if (st === "agendado" || st === "hecha") {
+      h += '<div class="card"><label class="f">Fecha y hora de la llamada<input type="datetime-local" data-f="fechaLlamada" value="' + esc(l.fechaLlamada || "") + '"></label>';
+      if (l.fechaLlamada && l.agendadoEl && (new Date(l.fechaLlamada) - new Date(l.agendadoEl)) / 86400000 > 3.5) h += '<p class="alert">Está a más de 3 días: intenta adelantarla.</p>';
+      h += '</div>';
+    }
+    if (st === "agendado") {
+      h += '<div class="card sand"><span class="label">Antes de la llamada</span><div class="check">' + PRE.map(function (p) { return '<label><input type="checkbox" data-chk="' + p.k + '"' + (c[p.k] ? " checked" : "") + '><span>' + esc(p.t) + '<small>' + esc(p.s) + '</small></span></label>'; }).join("") + '</div></div>';
+      h += '<button type="button" class="btn" data-go="hecha">Llamada hecha</button>';
+    }
+    if (st === "hecha") {
+      h += '<div class="card sand"><span class="label">Después de la llamada · día ' + (days(l.llamadaHechaEl) + 1) + '</span><div class="check">' + POST.map(function (p) { return '<label><input type="checkbox" data-chk="' + p.k + '"' + (c[p.k] ? " checked" : "") + '><span>' + esc(p.t) + '</span></label>'; }).join("") + '</div></div>';
+      h += '<div class="phone-line"><button type="button" class="btn" data-go="cliente">Ha cerrado</button><button type="button" class="btn ghost" data-go="perdido">No ha cerrado</button></div>';
+    }
+    if (st === "cliente") {
+      var act = isActive(l), fp = finPlan(l), sd = stayDays(l);
+      if (nivel < MAXN && !l.precioSubido && days(l.cerradoEl) <= 2 && l.origen !== "Cliente previo") h += '<div class="hint">¡Venta cerrada! Toca subir precios al nivel ' + (nivel + 1) + '.<span class="phone-line"><button type="button" class="btn small" id="hintUp">Subir a nivel ' + (nivel + 1) + '</button><button type="button" class="linkish" id="hintNo">Ahora no</button></span></div>';
+      h += '<div class="card sand"><span class="label">Cliente · ' + (act ? 'activo · semana ' + gWeek(l) : 'baja') + '</span>' +
+        '<p><b>' + (act ? 'Lleva ' : 'Estuvo ') + months(sd) + ' meses</b>' + (act && fp ? ' · plan hasta el ' + fmtDate(iso(fp)) : '') + ' · facturado ' + eur(billed(l)) + '</p>' +
+        '<div class="fields"><label class="f">Fecha de alta<input type="date" data-f="altaEl" value="' + esc(altaOf(l)) + '"></label>' +
+        '<label class="f">Plan<select data-f="plan" id="dPlan"><option></option>' + PLANS.map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.id) + (priceOf(p.id) ? ' · ' + eur(priceOf(p.id)) : '') + '</option>'; }).join("") + '</select></label>' +
+        '<label class="f">Primer cobro (€)<input data-f="importe" inputmode="decimal" value="' + esc(l.importe) + '"></label>' +
+        '<label class="f">Pago<select data-f="pago"><option></option><option>Pago único</option><option>2 pagos</option><option>Mensual (solo continuidad)</option></select></label></div></div>';
+      h += '<div class="card"><span class="label">Garantía · por escrito</span><div class="fields"><label class="f full">Objetivo firmado (medible)<input id="gObj" value="' + esc(g.objetivo) + '" placeholder="Ej.: −6 cm de cintura en 12 semanas"></label><label class="f">Inicio<input type="date" id="gIni" value="' + esc(g.inicio || altaOf(l)) + '"></label></div>' +
+        '<div class="check"><label><input type="checkbox" id="gFirm"' + (g.firmada ? " checked" : "") + '><span>Contrato y condiciones de la garantía firmados</span></label><label><input type="checkbox" id="gMed"' + (g.medida ? " checked" : "") + '><span>Garantía medida en la semana 12<small>' + (gWeek(l) >= 12 ? "Toca ya: fotos y medidas frente al objetivo." : "Semana " + gWeek(l) + " de 12.") + '</small></span></label></div>' +
+        '<label class="f">Resultado<select id="gRes"><option></option><option>Objetivo conseguido</option><option>No llegó · sigue gratis</option><option>No cumplió requisitos</option></select></label></div>';
+      h += '<div class="card"><span class="label">Back-end · momento dulce</span>' +
+        ((l.extras || []).map(function (e, i) { return '<div class="extra"><span><b>' + esc(e.tipo) + '</b> · ' + fmtDate(e.fecha) + (num(e.meses) ? ' · +' + num(e.meses) + ' meses' : '') + '</span><span>' + eur(num(e.importe)) + ' <button type="button" class="btn small ghost" data-delx="' + i + '" aria-label="Quitar">×</button></span></div>'; }).join("") || '<p class="soft" style="font-size:13px">Sin ventas de back-end todavía.</p>') +
+        '<div class="fields"><label class="f">Tipo<select id="xTipo">' + EXTRA_TIPOS.map(function (t) { return '<option>' + t + '</option>'; }).join("") + '</select></label><label class="f">Importe (€)<input id="xImp" inputmode="decimal"></label><label class="f">Meses que añade<input id="xMes" inputmode="numeric" placeholder="0"></label><label class="f" style="align-self:end"><button type="button" class="btn small" id="xAdd">Añadir venta</button></label></div></div>';
+      if (act) h += '<button type="button" class="btn small ghost" id="bajaBtn" style="justify-self:start">Dar de baja</button><div id="bajaBox" hidden class="card sand"><div class="fields"><label class="f">Fecha de baja<input type="date" id="bajaFecha" value="' + today() + '"></label><label class="f">Motivo<select id="bajaMotivo"><option>Terminó y no renueva</option><option>Ya sabe hacerlo solo</option><option>Precio</option><option>Cambio de trabajo u horario</option><option>No cumplía el check-in</option><option>Motivos personales</option><option>Otro</option></select></label></div><div class="phone-line"><button type="button" class="btn small" id="bajaOk">Confirmar baja</button><button type="button" class="btn small ghost" id="bajaNo">Cancelar</button></div></div>';
+      else h += '<div class="card"><p><b>Baja el ' + fmtDate(l.bajaEl) + '</b>' + (l.motivoBaja ? ' · ' + esc(l.motivoBaja) : '') + '</p><button type="button" class="btn small ghost" id="reactBtn" style="justify-self:start">Reactivar cliente</button></div>';
+    }
+    if (st === "perdido") h += '<div class="card sand"><label class="f">Motivo<select data-f="motivo"><option></option><option>No responde</option><option>Precio</option><option>No es el momento</option><option>Lo consulta con su pareja</option><option>Su horario</option><option>No quiere check-in diario</option><option>No encaja</option><option>Otro</option></select></label><p class="soft" style="font-size:13px">A los 30 días sale en "Reactivar" (pestaña Hoy).</p></div>';
+    h += '<p class="soft" style="font-size:12.5px">Creado ' + fmtDate(l.creado) + ' · actualizado ' + fmtDate(l.actualizado) + '</p>';
+    h += '<button type="button" class="btn small ghost" id="delBtn" style="justify-self:start">Borrar ficha</button><div id="delConfirm" hidden class="phone-line"><span class="soft">¿Borrar esta ficha para siempre?</span><button type="button" class="btn small" id="delYes">Sí, borrar</button><button type="button" class="btn small ghost" id="delNo">Cancelar</button></div>';
+    d.innerHTML = h;
+
+    $("dResp").value = respOf(l); $("dOrig").value = ORIGENES.indexOf(l.origen) >= 0 ? l.origen : "Otro";
+    ["plan", "pago", "motivo"].forEach(function (k) { var s = d.querySelector('select[data-f="' + k + '"]'); if (s) s.value = l[k] || ""; });
+    $("dClose").addEventListener("click", closeLead);
+    $("sugCopy").addEventListener("click", function () { copy(sg.t, this); });
+    $("pasoHecho").addEventListener("click", function () { patch(l.id, { proximoPaso: "", proximaFecha: "" }); });
+    d.querySelectorAll("[data-stage]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.stage); }); });
+    d.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { goStage(l, b.dataset.go); }); });
+    d.querySelectorAll("[data-f]").forEach(function (inp) { inp.addEventListener("change", function () { var o = {}; o[inp.dataset.f] = inp.value; patch(l.id, o); }); });
+    d.querySelectorAll("[data-chk]").forEach(function (inp) { inp.addEventListener("change", function () { var cc = Object.assign({}, l.checks || {}); cc[inp.dataset.chk] = inp.checked; patch(l.id, { checks: cc }); }); });
+    d.querySelectorAll("[data-seg]").forEach(function (inp) { inp.addEventListener("change", function () { var ss = Object.assign({}, l.seguimiento || {}); ss[inp.dataset.seg] = inp.checked ? now() : false; patch(l.id, { seguimiento: ss }); }); });
+    d.querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { copy(b.dataset.copy, b); }); });
+    $("addToque").addEventListener("click", function () {
+      var canal = $("toqueCanal").value, t = (l.toques || []).slice(); t.push({ fecha: now(), canal: canal, quien: canal === "Respondió" ? "" : respOf(l) }); t = t.slice(-40);
+      var o = { toques: t, ultimoContacto: now() }; if (canal === "Respondió") o.seguimiento = {};
+      patch(l.id, o);
+    });
+    if (st === "cliente") {
+      var dp = $("dPlan"); if (dp) dp.addEventListener("change", function () { var pr = firstCharge(dp.value); if (pr) patch(l.id, { importe: String(pr), pago: dp.value === "Semestre en 2 pagos" ? "2 pagos" : (l.pago || "Pago único") }); });
+      var saveG = function () { patch(l.id, { garantia: { objetivo: $("gObj").value, inicio: $("gIni").value || altaOf(l), firmada: $("gFirm").checked, medida: $("gMed").checked, resultado: $("gRes").value } }); };
+      $("gRes").value = g.resultado || "";
+      ["gObj", "gIni", "gFirm", "gMed", "gRes"].forEach(function (id) { $(id).addEventListener("change", saveG); });
+      if ($("hintUp")) $("hintUp").addEventListener("click", function () { setNivel(nivel + 1); patch(l.id, { precioSubido: true }); });
+      if ($("hintNo")) $("hintNo").addEventListener("click", function () { patch(l.id, { precioSubido: true }); });
+      d.querySelectorAll("[data-delx]").forEach(function (b) { b.addEventListener("click", function () { var x = (l.extras || []).slice(); x.splice(+b.dataset.delx, 1); patch(l.id, { extras: x }); }); });
+      $("xAdd").addEventListener("click", function () { var imp = $("xImp").value.trim(); if (!imp) { $("xImp").focus(); return; } var x = (l.extras || []).slice(); x.push({ fecha: now(), tipo: $("xTipo").value, importe: imp, meses: $("xMes").value.trim() }); patch(l.id, { extras: x.slice(-60) }); });
+      if ($("bajaBtn")) {
+        $("bajaBtn").addEventListener("click", function () { $("bajaBox").hidden = false; });
+        $("bajaNo").addEventListener("click", function () { $("bajaBox").hidden = true; });
+        $("bajaOk").addEventListener("click", function () { patch(l.id, { estadoCliente: "baja", bajaEl: $("bajaFecha").value || today(), motivoBaja: $("bajaMotivo").value }); });
+      }
+      if ($("reactBtn")) $("reactBtn").addEventListener("click", function () { patch(l.id, { estadoCliente: "activo", bajaEl: "", motivoBaja: "" }); });
+    }
+    $("delBtn").addEventListener("click", function () { $("delConfirm").hidden = false; });
+    $("delNo").addEventListener("click", function () { $("delConfirm").hidden = true; });
+    $("delYes").addEventListener("click", async function () { try { await db.collection("leads").doc(l.id).delete(); closeLead(); } catch (e) { setStatus("No se ha podido borrar", true); } });
+  }
+  function goStage(l, s) {
+    var o = { etapa: s };
+    if (s === "agendado") { if (!l.agendadoEl) o.agendadoEl = now(); o.responsable = "Andrés"; o.proximoPaso = ""; o.proximaFecha = ""; }
+    if (s === "hecha" && !l.llamadaHechaEl) o.llamadaHechaEl = now();
+    if (s === "conversando") { o.ultimoContacto = now(); o.seguimiento = {}; }
+    if (s === "cliente" || s === "perdido") { o.cerradoEl = now(); o.proximoPaso = ""; o.proximaFecha = ""; }
+    if (s === "cliente") { if (!l.altaEl) o.altaEl = today(); if (!l.estadoCliente) o.estadoCliente = "activo"; if (!l.garantia) o.garantia = { inicio: l.altaEl || today(), firmada: false, medida: false, objetivo: "" }; if (l.etapa !== "cliente") saveNivel(nivel, ventasDesdeSubida + 1); }
+    patch(l.id, o);
+  }
+  function copy(text, btn) {
+    function done(t) { var o = btn.textContent; btn.textContent = t; setTimeout(function () { btn.textContent = o; }, 1500); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona y copia"); });
+    else done("Selecciona y copia");
+  }
+
+  /* Pestañas */
+  document.querySelectorAll(".tab").forEach(function (t) {
+    t.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+      ["hoy", "embudo", "clientes", "guion"].forEach(function (v) { $("view-" + v).hidden = v !== t.dataset.view; });
+      var v = t.dataset.view;
+      $("addCard").hidden = v === "guion" || v === "clientes";
+      $("filterCard").hidden = v === "guion" || v === "clientes";
+      $("counterCard").hidden = v !== "hoy";
+    });
+  });
+
+  /* Alta */
+  $("n-origen").innerHTML = ORIGENES.map(function (o) { return '<option>' + o + '</option>'; }).join("");
+  $("addForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("addNote").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("n-nombre").value.trim(); if (!nombre) return;
+    var data = { nombre: nombre, telefono: $("n-tel").value.trim(), ig: $("n-ig").value.trim(), origen: $("n-origen").value, responsable: $("n-resp").value, objetivo: $("n-obj").value.trim(), trabajo: "", etapa: "conversando", proximoPaso: "", proximaFecha: today(), creado: now(), actualizado: now(), ultimoContacto: now(), toques: [], checks: {}, seguimiento: {} };
+    $("addBtn").disabled = true;
+    try { await db.collection("leads").add(data); $("addForm").reset(); $("addNote").textContent = "¡Apuntado! Tienes su plantilla sugerida en la ficha."; }
+    catch (err) { $("addNote").textContent = err && err.code === "quota_exceeded" ? "La base de datos está llena: borra fichas antiguas." : (err && err.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez."); }
+    $("addBtn").disabled = false;
+  });
+  $("c-plan").innerHTML = PLANS.map(function (p) { return '<option value="' + esc(p.id) + '">' + esc(p.id) + '</option>'; }).join("");
+  $("c-plan").value = "Semestre"; $("c-alta").value = today();
+  $("addCli").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!db) { $("c-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("c-nombre").value.trim(); if (!nombre) return;
+    var pl = $("c-plan").value, alta = $("c-alta").value || today();
+    var data = { nombre: nombre, telefono: $("c-tel").value.trim(), ig: "", origen: "Antiguo cliente", responsable: "Andrés", objetivo: "", etapa: "cliente", estadoCliente: "activo", plan: pl, importe: firstCharge(pl) ? String(firstCharge(pl)) : "", precioSubido: true, altaEl: alta, creado: now(), actualizado: now(), cerradoEl: now(), toques: [], checks: {}, seguimiento: {}, extras: [], garantia: { inicio: alta, firmada: false, medida: false, objetivo: "" } };
+    $("c-btn").disabled = true;
+    try { await db.collection("leads").add(data); $("addCli").reset(); $("c-plan").value = "Semestre"; $("c-alta").value = today(); $("c-note").textContent = "Cliente añadido."; }
+    catch (err) { $("c-note").textContent = err && err.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez."; }
+    $("c-btn").disabled = false;
+  });
+  document.querySelectorAll("[data-copy-id]").forEach(function (b) { b.addEventListener("click", function () { copy($(b.dataset.copyId).textContent.trim(), b); }); });
+
+  /* Conexión */
+  renderAll();
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) {
+      setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true);
+      $("todayList").innerHTML = '<p class="empty">El CRM necesita abrirse desde claude.ai con una cuenta con acceso. La pestaña "Proceso" funciona igualmente.</p>';
+      $("addBtn").disabled = true; $("c-btn").disabled = true; return;
+    }
+    db = c;
+    var timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
+    db.collection("leads").orderBy("creado", "desc").onSnapshot(function (snap) {
+      leads = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); });
+      if (!snap.metadata.fromCache) { clearTimeout(timer); setStatus(leads.length + " fichas · en directo para Andrés y Fran"); }
+      renderAll();
+    }, function (err) { clearTimeout(timer); setStatus(err && err.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); });
+    db.collection("config").onSnapshot(function (snap) {
+      var d = snap.docs.find(function (x) { return x.id === "precios"; });
+      var v = d ? d.data() : null;
+      nivel = v && typeof v.nivel === "number" ? Math.max(0, Math.min(MAXN, v.nivel)) : 0;
+      ventasDesdeSubida = v && v.ventasDesdeSubida ? v.ventasDesdeSubida : 0;
+      renderAll();
+    }, function () {});
+    db.collection("contador").orderBy("fecha", "desc").limit(14).onSnapshot(function (snap) {
+      snap.docs.forEach(function (d) { var x = d.data(); if (x && x.fecha && !(cntDirty && x.fecha === today())) counts[x.fecha] = x; });
+      renderCounter(); renderKpis();
+    }, function () {});
+  })();
+})();
+</script>

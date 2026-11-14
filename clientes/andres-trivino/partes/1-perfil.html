@@ -1,0 +1,354 @@
+<title>Andrés Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #1d6b4f;
+  --accent-text: #175a42;
+  --accent-dark: #7fd1a8;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #d6f0e3; }
+.card.accent ul.l, .card.accent ol.l { color: #ecf7f1; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #e3f2ea; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: nicho, diagnóstico y lo que hay que aclarar arriba; debajo, vista previa del perfil (fija en escritorio) y a su lado nombres, bios, foto, destacadas, fijados y las preguntas para su historia. */
+.layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 26px; align-items: start; }
+.preview-col { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); display: grid; gap: 12px; }
+.phone { background: #fff; border: 9px solid var(--ink); border-radius: 34px; padding: 18px 16px 20px; display: grid; gap: 12px; color: #111; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.ig-top { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 14px; align-items: center; }
+.avatar { width: 82px; height: 82px; border-radius: 50%; padding: 3px; background: conic-gradient(#7fd1a8, #1d6b4f, #141414, #7fd1a8); }
+.avatar img, .avatar span { width: 100%; height: 100%; border-radius: 50%; border: 3px solid #fff; background: linear-gradient(160deg, #2a2a2a, #141414); display: grid; place-items: center; color: #fff; font: 800 26px/1 var(--f-head); letter-spacing: .02em; }
+.ig-user { font-weight: 800; font-size: 16px; }
+.ig-stats { display: flex; gap: 14px; font-size: 13px; margin-top: 4px; }
+.ig-stats b { display: block; font-size: 15px; }
+.ig-name { font-weight: 700; font-size: 14px; }
+.ig-cat { color: #737373; font-size: 13.5px; }
+.ig-bio { white-space: pre-line; font-size: 14px; line-height: 1.4; }
+.ig-link { color: #3a6ea5; font-weight: 600; font-size: 13.5px; display: flex; gap: 5px; align-items: center; overflow-wrap: anywhere; }
+.ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ig-btns span { background: #efefef; border-radius: 8px; text-align: center; font-weight: 700; font-size: 13px; padding: 7px; }
+.ig-hl { display: flex; gap: 10px; overflow: hidden; }
+.ig-hl div { display: grid; justify-items: center; gap: 4px; flex: none; width: 56px; }
+.ig-hl i { width: 54px; height: 54px; border-radius: 50%; border: 1.5px solid #dbdbdb; display: grid; place-items: center; background: #fff; }
+.ig-hl i span { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); display: grid; place-items: center; color: #fff; font: 700 12px/1 var(--f-head); }
+.ig-hl small { font-size: 11px; color: #222; text-align: center; line-height: 1.15; }
+.ig-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+.ig-grid div { aspect-ratio: 4 / 5; background: linear-gradient(180deg, #2a2a2a, #141414); color: #fff; display: grid; align-content: end; padding: 6px; font: 700 11px/1.1 var(--f-head); text-transform: uppercase; position: relative; }
+.ig-grid div em { font-style: normal; color: var(--accent-dark); display: block; font-size: 12px; }
+.ig-grid div::before { content: "📌"; position: absolute; top: 4px; right: 4px; font-size: 10px; }
+.counter { display: flex; justify-content: space-between; font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.counter b.over { color: var(--accent-text); }
+.group { display: grid; gap: 10px; margin-bottom: 26px; }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opt { all: unset; box-sizing: border-box; cursor: pointer; background: var(--white); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); }
+.opt:hover { box-shadow: inset 0 0 0 1.5px var(--accent-dark); }
+.opt[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+.opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.opt .tag { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); }
+.opt .txt { white-space: pre-line; font-size: 15px; line-height: 1.45; }
+.opt .why { color: var(--soft); font-size: 14px; }
+.opt .n { font: 500 11px/1 var(--f-mono); color: var(--soft); }
+.names { display: flex; flex-wrap: wrap; gap: 8px; }
+.names .opt { padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.names .opt b { font-size: 15.5px; }
+.photo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: center; }
+.photo .mock { width: 120px; height: 120px; border-radius: 50%; padding: 4px; background: conic-gradient(#7fd1a8, #1d6b4f, #141414, #7fd1a8); }
+.photo .mock img { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; object-fit: cover; display: block; }
+.photo .mock span { width: 100%; height: 100%; border-radius: 50%; border: 4px solid #fff; background: radial-gradient(circle at 50% 38%, #7a4e33 0 26%, transparent 27%), radial-gradient(ellipse at 50% 100%, #7a4e33 0 46%, transparent 47%), #2a2a2a; display: block; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .preview-col { position: static; max-width: 380px; } }
+@media (max-width: 620px) { .opts { grid-template-columns: 1fr; } .photo { grid-template-columns: 90px minmax(0, 1fr); } .photo .mock { width: 90px; height: 90px; } }
+
+/* Marca Andrés: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #1d6b4f); --nm-at: var(--accent-text, #175a42); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.avatar img { object-fit: cover; display: block; }
+.ig-hl i span { font-size: 11px; }
+
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Andrés Triviño · Parte 1 · Perfil</span>
+    <h1>Tu perfil ya demuestra que funciona. Ahora tiene que decir <em>para quién</em>.</h1>
+    <p class="soft" style="font-size:18px">Tienes lo que casi nadie tiene: cientos de cambios, una plantilla de casos y una garantía en la bio. Lo que falta es que quien entra sepa en 3 segundos que es para él: el que trabaja muchas horas y solo nunca ha sido constante. Esto lo dejas hecho en una tarde. Toca un nombre y una bio para ver cómo queda.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método 31/31 («31 de 31 días contigo») [nombre a confirmar]</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Seguimiento diario y cercano</b><span>Un check-in de 1 minuto cada día y respuesta mía. «Seguimiento y acompañamiento diario y cercano» no es una frase de bio: es el método. Muchos de mis casos pensaban que solo necesitaban una rutina.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Un plan que cabe en tu horario real</b><span>Entreno y comida montados sobre tu turno, no sobre el ideal. Bryan Torres, padre y camarero a turno partido; una madre a turno partido; alguien con varios trabajos y sin descanso.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Resultados garantizados por escrito</b><span>El día 1 pactamos un objetivo medible. Si cumples tu parte y no llega, sigo contigo gratis. «Trabajo con garantía de resultados», con condiciones firmadas.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Arrancar</b><p><em>Qué pasa:</em> Se acaba el «empiezo el lunes». Las primeras 4 semanas seguidas sin desaparecer.</p><p><em>Qué haces tú:</em> Check-in diario, entrenos pactados con tu turno, foto y medidas del día 1.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–12</span><b>Transformar</b><p><em>Qué pasa:</em> El cambio se ve en fotos y medidas. En la semana 12 medimos la garantía.</p><p><em>Qué haces tú:</em> Subes cargas, ajustamos la comida a tu horario y revisamos cada semana.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Sostener</b><p><em>Qué pasa:</em> Lo mantienes cuando cambia el turno, en vacaciones o en temporada alta.</p><p><em>Qué haces tú:</em> Sigues con el check-in diario, pero cada vez decides tú más.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>Check-in diario (1 minuto)</b><p><em>Por qué:</em> Lo que se reporta cada día no se abandona. Es el 31 de 31.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>Foto y medidas cada semana</b><p><em>Por qué:</em> Sin datos no hay ajustes ni garantía.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Entrenos pactados hechos (mínimo 80 %)</b><p><em>Por qué:</em> El plan se ajusta a tu horario: por eso el horario deja de ser excusa.</p></div></div></div><p class="nm-proof">Prueba: «+300 cambios» [cifra a unificar] · casos de 17 a 64 años, hombres y mujeres · «22 kg perdidos en 6 meses: Bryan Torres, padre de familia y camarero a turno partido».</p><p class="nm-line">Para los que solos no lo consiguen: alguien encima cada día y un resultado garantizado por escrito. Las 3 no negociables son, a la vez, las condiciones de la garantía.</p></section>
+
+  <section class="card accent" aria-label="Cómo usar tu nicho">
+    <span class="label">Cómo usar tu nicho</span>
+    <ul class="l">
+      <li><b>"Para los que solos no lo consiguen."</b> Tu mensaje en corto. Todos tus titulares lo dicen sin decirlo: "pensaba que solo necesitaba una rutina", "el estrés y la constancia se lo ponían difícil", "no sabía cómo entrenar".</li>
+      <li><b>Tu mecanismo es tu marca:</b> seguimiento diario (31/31) + garantía por escrito. Nadie más en la mentoría vende eso. Repítelo en todo.</li>
+      <li><b>Tu prueba son tus clientes:</b> de 17 a 64 años, hostelería, turno partido, varios trabajos. Cada caso es una voz en off (en Contenido tienes uno por caso).</li>
+      <li><b>Palabra clave: CAMBIO.</b> Sale de tu bio ("TU GRAN CAMBIO"). "Escríbeme CAMBIO" en historias y reels; Fran responde todos.</li>
+      <li><b>Tu territorio:</b> constancia con alguien encima y garantía. No hablas de "la vida adulta", ni de metabolismo, ni de "los que creen que es imposible" a secas: hablas de los que trabajan mucho y solos lo dejan.</li>
+    </ul>
+  </section>
+
+  <section class="g2" aria-label="Lo que he visto en tu perfil">
+    <div class="card">
+      <span class="label">Lo que ya tienes bien · 1.030 posts · 5.501 seguidores · 575 seguidos</span>
+      <ul class="l">
+        <li><b>Prueba por todas partes:</b> la plantilla "Una transformación real" con 12 casos seguidos en el grid. Es tu mejor activo.</li>
+        <li><b>Mecanismo en la bio:</b> "Trabajo con garantía de resultados" y "Seguimiento y acompañamiento diario y cercano". Solo hay que decir para quién.</li>
+        <li><b>Fijados que venden:</b> el de 64 años y 102 kg, "Clients wins" y Bryan Torres, padre y camarero a turno partido. Hablan justo a tu nicho.</li>
+        <li><b>Una sola acción:</b> el formulario de Jotform ("Rellena el formulario para TU GRAN CAMBIO").</li>
+        <li><b>Te siguen otros entrenadores</b> (alastair.physique, michaltobiasz_coach): autoridad entre colegas.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Lo que cambias ya</span>
+      <ul class="l">
+        <li><b>"ONLINE COACH" no dice para quién</b> ni qué consigues. Instagram busca por el nombre: mete el resultado o el mecanismo.</li>
+        <li><b>Cifra contradictoria:</b> la bio dice "+300 cambios" y el fijado "+100 lives changed". Elige una que puedas demostrar y úsala igual en todas partes.</li>
+        <li><b>La garantía no se explica en ningún sitio.</b> Una garantía sin condiciones genera dudas (y en España tiene que cumplirse y darse por escrito). Destacada "Garantía" + enlace a las condiciones desde la landing.</li>
+        <li><b>Destacadas mezcladas</b> (RESULTS, RESULTS 2, CASO PRÁCTICO, en inglés y español): ordénalas por tipo de persona, no por fecha.</li>
+        <li><b>Sin palabra clave:</b> todo va al formulario. Añade "Escríbeme CAMBIO" para que Fran tenga conversaciones que abrir.</li>
+        <li><b>Contenido parado:</b> lo arreglamos con lo mínimo (voz en off sobre lo que ya tienes). Está en Contenido.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-label="Para aclarar con Andrés">
+    <span class="label">Para aclarar con Andrés · antes de publicar nada</span>
+    <ul class="l">
+      <li><b>¿Qué es "31/31"?</b> Proponemos llamar así al método ("31 de 31 días contigo"). Si significa otra cosa, se cambia el nombre.</li>
+      <li><b>+300 o +100:</b> ¿cuántos cambios puedes demostrar con fotos y fecha? Esa es la cifra para todo.</li>
+      <li><b>La garantía, por escrito:</b> ¿qué garantizas hoy y qué pasa si no se cumple? Elige: seguir gratis hasta conseguirlo o devolver el trimestre. Está propuesta en Oferta.</li>
+      <li><b>Tu historia:</b> no la tenemos. Edad, cómo empezaste, tu propio cambio, desde cuándo entrenas a gente y desde cuándo online. Hasta tenerla por escrito, no se cuenta nada de ti.</li>
+      <li><b>Permisos:</b> para la web y los anuncios, permiso por escrito de cada cliente (Bryan Torres sale con nombre).</li>
+      <li><b>Fran:</b> ¿escribe desde tu cuenta o desde la suya? Si es desde la tuya, se presenta como Fran en cuanto la conversación avanza.</li>
+    </ul>
+  </section>
+
+  <div class="layout">
+    <aside class="preview-col" aria-label="Vista previa del perfil">
+      <div class="phone">
+        <div class="ig-top">
+          <div class="avatar" role="img" aria-label="Foto de perfil"><img src="../casos/andres-avatar.jpg" alt="" width="300" height="300"></div>
+          <div>
+            <div class="ig-user">andrestrivi6</div>
+            <div class="ig-stats"><span><b>1.030</b>posts</span><span><b>5.501</b>seguidores</span><span><b>575</b>seguidos</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="ig-name" id="pv-name"></div>
+          <div class="ig-cat">Entrenador personal</div>
+          <div class="ig-bio" id="pv-bio"></div>
+          <div class="ig-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>form.jotform.com/243036271600041</div>
+        </div>
+        <div class="ig-btns"><span>Seguir</span><span>Enviar mensaje</span></div>
+        <div class="ig-hl">
+          <div><i><span>✓</span></i><small>Garantía</small></div>
+          <div><i><span>31</span></i><small>31/31</small></div>
+          <div><i><span>T</span></i><small>Turnos</small></div>
+          <div><i><span>+60</span></i><small>+60</small></div>
+          <div><i><span>★</span></i><small>Casos</small></div>
+          <div><i><span>1:1</span></i><small>Aplica</small></div>
+        </div>
+        <div class="ig-grid" aria-label="Publicaciones fijadas">
+          <div><em>Garantía</em>Qué te garantizo</div>
+          <div><em>22 kg</em>Bryan Torres</div>
+          <div><em>64 años</em>Cero experiencia</div>
+        </div>
+      </div>
+      <div class="counter"><span>Nombre: <b id="c-name">0</b>/64</span><span>Bio: <b id="c-bio">0</b>/150</span></div>
+      <p class="soft" style="font-size:13px">Los emojis cuentan doble en Instagram; el contador ya lo tiene en cuenta.</p>
+    </aside>
+
+    <main>
+      <section class="group" aria-labelledby="h-names">
+        <h2 id="h-names">Nombre</h2>
+        <p class="soft">Instagram busca por el nombre. "ONLINE COACH" ya sale en la categoría: aquí va lo que consigues o tu mecanismo.</p>
+        <div class="names" id="names"><button class="opt" type="button" data-name="Andrés Triviño | Cambio físico con seguimiento diario"><b>Andrés Triviño | Cambio físico con seguimiento diario</b><span class="n">Recomendado</span></button><button class="opt" type="button" data-name="Andrés Triviño | Coach online con garantía"><b>Andrés Triviño | Coach online con garantía</b></button><button class="opt" type="button" data-name="Andrés Triviño | Para los que solos no lo consiguen"><b>Andrés Triviño | Para los que solos no lo consiguen</b></button><button class="opt" type="button" data-name="Andrés Triviño | Método 31/31"><b>Andrés Triviño | Método 31/31</b></button><button class="opt" type="button" data-name="Andrés Triviño | Pérdida de grasa con seguimiento"><b>Andrés Triviño | Pérdida de grasa con seguimiento</b></button><button class="opt" type="button" data-name="Andrés Triviño | Online coach · Resultados garantizados"><b>Andrés Triviño | Online coach · Resultados garantizados</b></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-bios">
+        <h2 id="h-bios">Bio</h2>
+        <p class="soft">Todas dicen para quién, qué consigue y por qué tú, y caben en 150 caracteres. "+100" va entre corchetes en tu cabeza hasta que confirmes la cifra buena. Elige una y no la toques en 3 meses.</p>
+        <div class="opts" id="bios"><button class="opt" type="button"><span class="tag">A · Recomendada</span><span class="txt">Para los que trabajan mucho y solos no son constantes
+Seguimiento diario y garantía por escrito
++100 cambios
+Escríbeme CAMBIO 👇</span><span class="why">Nicho, mecanismo, prueba y acción. Lo más completo.</span></button><button class="opt" type="button"><span class="tag">B · Horario</span><span class="txt">Turno partido, hostelería, varios trabajos…
+Te acompaño cada día hasta tu cambio
+Resultados garantizados por escrito 👇</span><span class="why">Habla a los oficios de tus casos (Bryan, la madre a turno partido).</span></button><button class="opt" type="button"><span class="tag">C · Solo no</span><span class="txt">Solo no lo has conseguido. Conmigo, cada día
+Cambio físico con garantía de resultados
++100 cambios de 17 a 64 años 👇</span><span class="why">La idea central en una línea y tu rango de casos.</span></button><button class="opt" type="button"><span class="tag">D · Tu bio de hoy, afilada</span><span class="txt">ONLINE COACH · Seguimiento diario y cercano
+Si cumples y no hay resultado, sigo gratis
+Rellena el formulario para tu gran cambio 👇</span><span class="why">Mantiene tus frases y explica la garantía en 8 palabras.</span></button><button class="opt" type="button"><span class="tag">E · Prueba</span><span class="txt">De 17 a 64 años: +100 cambios reales
+Trabajan mucho y no eran constantes solos
+Método 31/31 con garantía 👇</span><span class="why">Primero la prueba, luego para quién.</span></button><button class="opt" type="button"><span class="tag">F · La rutina no basta</span><span class="txt">No te falta una rutina: te falta alguien encima
+Check-in diario y garantía de resultados
+Escríbeme CAMBIO 👇</span><span class="why">Sale de "Pensaba que solo necesitaba una rutina".</span></button><button class="opt" type="button"><span class="tag">G · Turno partido</span><span class="txt">Tu cambio físico, aunque trabajes a turno partido
+Seguimiento diario · Garantía por escrito
+Rellena el formulario 👇</span><span class="why">Muy específica. Úsala si los mensajes de hostelería funcionan.</span></button><button class="opt" type="button"><span class="tag">H · Método</span><span class="txt">Método 31/31: 31 de 31 días contigo
+Para quien trabaja mucho y nunca fue constante
+Garantía de resultados 👇</span><span class="why">Te posiciona con método propio (si confirmas el nombre).</span></button><button class="opt" type="button"><span class="tag">I · Rol entrenador</span><span class="txt">Coach online · +100 cambios documentados
+Te pregunto cada día. Tú solo cumples
+Garantía de resultados por escrito 👇</span><span class="why">Lo que hace un cliente contigo, en una línea.</span></button><button class="opt" type="button"><span class="tag">J · Casos</span><span class="txt">Hostelería, turnos, familia… y aun así cambiaron
+Seguimiento diario y garantía de resultados
+Tu gran cambio, aquí 👇</span><span class="why">Usa la objeción ("no tengo tiempo") como prueba.</span></button><button class="opt" type="button"><span class="tag">K · Garantía primero</span><span class="txt">Para los que solos no lo consiguen
+Check-in diario + plan para tu horario
+Si cumples y no llega, sigo gratis 👇</span><span class="why">Ideal cuando tengas las condiciones de la garantía enlazadas.</span></button></div>
+      </section>
+
+      <section class="group" aria-labelledby="h-photo">
+        <h2 id="h-photo">Foto de perfil</h2>
+        <div class="card photo">
+          <div class="mock" aria-hidden="true"><img src="../casos/andres-avatar.jpg" alt="" width="300" height="300"></div>
+          <ul class="l">
+            <li><b>La de ahora funciona:</b> se te ve la cara, sonríes y se ve que entrenas.</li>
+            <li><b>Si la cambias:</b> camiseta ajustada en vez de sin camiseta. Tu cliente trabaja muchas horas: le das más confianza cercano que en modo culturista.</li>
+            <li><b>Fondo limpio y luz de frente.</b> En pequeño tiene que leerse tu cara.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-rest">
+        <h2 id="h-rest">Destacadas y fijados</h2>
+        <div class="g3">
+          <div class="card"><span class="label">Destacadas · en este orden</span><ul class="l"><li><b>Garantía:</b> qué te garantizo, qué te pido (las 3 no negociables) y qué pasa si no llega. Enlace a las condiciones.</li><li><b>31/31:</b> cómo es un día de seguimiento: el check-in, tu respuesta, un ajuste. Capturas sin nombres.</li><li><b>Turnos:</b> casos de hostelería, turno partido y varios trabajos (Bryan, la madre a turno partido, varios trabajos).</li><li><b>+60:</b> los casos de 62 y 64 años.</li><li><b>Casos:</b> todo lo demás. Una sola destacada, no RESULTS y RESULTS 2.</li><li><b>Aplica:</b> para quién es y el formulario.</li></ul></div>
+          <div class="card"><span class="label">Fijados</span><ul class="l"><li><b>Nuevo carrusel "Garantía":</b> qué te garantizo y qué te pido (en Contenido, carruseles de valor).</li><li><b>Bryan Torres:</b> "22 kg perdidos en 6 meses · padre de familia y camarero a turno partido". Es tu nicho en una imagen.</li><li><b>64 años y 102 kg:</b> el que pensaba que era tarde. Quita "Clients wins" del fijado (la cifra choca con la bio).</li></ul></div>
+          <div class="card"><span class="label">Reglas</span><ul class="l"><li><b>Una sola acción:</b> formulario o "Escríbeme CAMBIO".</li><li><b>Una sola cifra de cambios</b> en todas partes.</li><li><b>Nada de clientes sin permiso</b> en web y anuncios. Lo personal no se publica.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="group" aria-labelledby="h-story">
+        <h2 id="h-story">Tu historia: la necesitamos (10 minutos de audio)</h2>
+        <p class="soft">Tus casos venden, pero la gente también compra a la persona. No tenemos tu historia y no vamos a inventarla. Mándale a Alberto un audio respondiendo esto y la convertimos en una destacada y un carrusel.</p>
+        <div class="g2">
+          <div class="card">
+            <span class="label">Preguntas · responde en audio</span>
+            <ol class="l">
+              <li>¿Cuántos años tienes y de dónde eres?</li>
+              <li>¿Cómo era tu cuerpo antes de entrenar? ¿Tienes fotos?</li>
+              <li>¿Cuándo y por qué empezaste?</li>
+              <li>¿Cuál fue tu peor época o tu error más grande?</li>
+              <li>¿Cuándo empezaste a entrenar a gente y por qué online?</li>
+              <li>¿Qué formación tienes?</li>
+              <li>¿Por qué das garantía? ¿Desde cuándo?</li>
+              <li>¿Por qué seguimiento diario y no semanal como casi todos?</li>
+              <li>¿Qué significa "31/31"?</li>
+              <li>De todos tus casos, ¿cuál te emocionó más y por qué?</li>
+            </ol>
+          </div>
+          <div class="card accent">
+            <span class="label">Mientras tanto · tu historia son tus casos</span>
+            <p>Hasta tener tus respuestas, la destacada "Mi trabajo" cuenta <b>cómo trabajas</b>, no quién eres: el check-in diario, un ajuste por turno partido, la garantía. Y la "historia" de cada vídeo es la del cliente, con sus palabras del titular.</p>
+            <p style="font-size:14px">Cuando la tengamos: 10 historias de "Mi historia" y un carrusel fijado, como en el resto de la mentoría.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(function () {
+  var pvName = document.getElementById("pv-name"), pvBio = document.getElementById("pv-bio");
+  function ig(t) { return Array.from(t).reduce(function (a, ch) { return a + (ch.codePointAt(0) > 0xffff ? 2 : 1); }, 0); }
+  function setCount() {
+    var cn = document.getElementById("c-name"), cb = document.getElementById("c-bio");
+    var nn = ig(pvName.textContent), nb = ig(pvBio.textContent);
+    cn.textContent = nn; cb.textContent = nb;
+    cn.className = nn > 64 ? "over" : ""; cb.className = nb > 150 ? "over" : "";
+  }
+  function bind(container, apply) {
+    var btns = container.querySelectorAll(".opt");
+    btns.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () {
+        btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        apply(b); setCount();
+      });
+    });
+    btns[0].click();
+  }
+  bind(document.getElementById("names"), function (b) { pvName.textContent = b.dataset.name; });
+  bind(document.getElementById("bios"), function (b) { pvBio.textContent = b.querySelector(".txt").textContent; });
+  document.querySelectorAll("#bios .opt").forEach(function (b) {
+    var n = document.createElement("span"); n.className = "n";
+    n.textContent = ig(b.querySelector(".txt").textContent) + "/150";
+    b.appendChild(n);
+  });
+})();
+</script>

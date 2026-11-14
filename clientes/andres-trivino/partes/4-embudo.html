@@ -1,0 +1,386 @@
+<title>Andrés Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #1d6b4f;
+  --accent-text: #175a42;
+  --accent-dark: #7fd1a8;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #d6f0e3; }
+.card.accent ul.l, .card.accent ol.l { color: #ecf7f1; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #e3f2ea; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: embudo centrado en Fran: objetivo de 100 mensajes al día, reparto Andrés/Fran, cuenta y ritmo humano, fuentes de frío, plantillas filtrables por tipo y situación con variantes, camino a la llamada, seguimiento 2/7/14, rutina, WhatsApp y anuncios. */
+.n { width: 34px; height: 34px; border-radius: 4px; background: var(--accent); color: var(--white); display: grid; place-items: center; font: 800 18px/1 var(--f-head); }
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 4px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--accent-text); font-weight: 800; }
+.big { font: 800 clamp(64px, 11vw, 110px)/.9 var(--f-head); color: var(--white); }
+.routine { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.routine div { background: var(--chip); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.routine b { font-size: 15.5px; }
+.routine span { color: var(--soft); font-size: 14px; }
+.routine small { font: 500 11px/1 var(--f-mono); color: var(--accent-text); text-transform: uppercase; letter-spacing: .06em; }
+.msg { display: grid; gap: 8px; }
+.msg .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.week { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.kpis div { background: rgba(255,255,255,.08); border-radius: 6px; padding: 12px; display: grid; gap: 2px; }
+.kpis b { font: 800 34px/1 var(--f-head); color: var(--white); }
+.kpis span { color: #cfcfcf; font-size: 14px; }
+@media (max-width: 900px) { .routine, .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .routine, .week { grid-template-columns: 1fr; } }
+
+.msgs { display: grid; gap: 10px; }
+.msgs .m { background: var(--white); border-radius: 6px; padding: 14px 16px; display: grid; gap: 8px; box-shadow: inset 0 0 0 1px var(--line); }
+.msgs .m .row { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msgs .m p { font-weight: 600; font-size: 15.5px; }
+
+/* Marca Andrés: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #1d6b4f); --nm-at: var(--accent-text, #175a42); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+.ad { display: grid; gap: 10px; }
+.ad .beat { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ad .beat small { font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.ad .beat p { font-size: 15px; }
+.ad .beat p + p { margin-top: 4px; color: var(--soft); font-size: 14px; }
+.ad .hooks { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; display: grid; gap: 4px; }
+.rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.rules div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.rules b { font: 800 24px/1.1 var(--f-head); letter-spacing: -.02em; }
+.rules span { color: var(--soft); font-size: 14px; }
+@media (max-width: 900px) { .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .rules { grid-template-columns: 1fr; } .ad .beat { grid-template-columns: 1fr; gap: 4px; } }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips button { all: unset; cursor: pointer; font-size: 13px; font-weight: 700; padding: 7px 11px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--white); box-shadow: none; }
+.chips button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.msgs .m p { overflow-wrap: anywhere; }
+@media (max-width: 620px) { .routine[style] { grid-template-columns: 1fr !important; } }
+
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Andrés Triviño · Parte 4 · Embudo · Para Fran</span>
+    <h1>Andrés pone los casos. <em>Fran abre las conversaciones.</em></h1>
+    <p class="soft" style="font-size:18px">Con 5.501 seguidores y cientos de cambios publicados, lo que falta no es prueba: son conversaciones. Fran escribe 100 al día en 2 rondas de 50, a ritmo humano y con variantes; Andrés hace las llamadas. Todo pasa por el CRM con su responsable.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método 31/31 («31 de 31 días contigo») [nombre a confirmar]</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Seguimiento diario y cercano</b><span>Un check-in de 1 minuto cada día y respuesta mía. «Seguimiento y acompañamiento diario y cercano» no es una frase de bio: es el método. Muchos de mis casos pensaban que solo necesitaban una rutina.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Un plan que cabe en tu horario real</b><span>Entreno y comida montados sobre tu turno, no sobre el ideal. Bryan Torres, padre y camarero a turno partido; una madre a turno partido; alguien con varios trabajos y sin descanso.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Resultados garantizados por escrito</b><span>El día 1 pactamos un objetivo medible. Si cumples tu parte y no llega, sigo contigo gratis. «Trabajo con garantía de resultados», con condiciones firmadas.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Arrancar</b><p><em>Qué pasa:</em> Se acaba el «empiezo el lunes». Las primeras 4 semanas seguidas sin desaparecer.</p><p><em>Qué haces tú:</em> Check-in diario, entrenos pactados con tu turno, foto y medidas del día 1.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–12</span><b>Transformar</b><p><em>Qué pasa:</em> El cambio se ve en fotos y medidas. En la semana 12 medimos la garantía.</p><p><em>Qué haces tú:</em> Subes cargas, ajustamos la comida a tu horario y revisamos cada semana.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Sostener</b><p><em>Qué pasa:</em> Lo mantienes cuando cambia el turno, en vacaciones o en temporada alta.</p><p><em>Qué haces tú:</em> Sigues con el check-in diario, pero cada vez decides tú más.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>Check-in diario (1 minuto)</b><p><em>Por qué:</em> Lo que se reporta cada día no se abandona. Es el 31 de 31.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>Foto y medidas cada semana</b><p><em>Por qué:</em> Sin datos no hay ajustes ni garantía.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Entrenos pactados hechos (mínimo 80 %)</b><p><em>Por qué:</em> El plan se ajusta a tu horario: por eso el horario deja de ser excusa.</p></div></div></div><p class="nm-proof">Prueba: «+300 cambios» [cifra a unificar] · casos de 17 a 64 años, hombres y mujeres · «22 kg perdidos en 6 meses: Bryan Torres, padre de familia y camarero a turno partido».</p><p class="nm-line">Para los que solos no lo consiguen: alguien encima cada día y un resultado garantizado por escrito. Las 3 no negociables son, a la vez, las condiciones de la garantía.</p></section>
+
+  <section class="card dark" aria-label="Objetivo diario">
+    <span class="label">El objetivo, cada día</span>
+    <div class="big">100</div>
+    <h2>conversaciones al día de Fran, en 2 rondas de 50.</h2>
+    <div class="kpis">
+      <div><b>50</b><span>Ronda 1 · interacción: quien ya te ha visto</span></div>
+      <div><b>50</b><span>Ronda 2 · frío por tipo de perfil</span></div>
+      <div><b>&lt; 24 h</b><span>Formularios de Jotform: respuesta de Fran</span></div>
+      <div><b>10 min</b><span>Al día de Andrés: audios a los calientes</span></div>
+    </div>
+    <p class="soft">Cada mensaje enviado se suma en el contador del CRM (botón "+1" de Fran o de Andrés) y cada persona que responde entra como ficha con su origen y su responsable. Alberto lo ve en el reporte semanal.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rep">
+    <header><span class="label">Reparto</span><h2 id="h-rep">Quién hace qué.</h2></header>
+    <div class="g2">
+      <div class="card"><span class="badge">Fran</span><ul class="l"><li><b>Ronda 1 (mañana):</b> nuevos seguidores, respuestas a historias, comentarios, likes, votos en encuestas y quien ve todas las historias.</li><li><b>Ronda 2 (tarde):</b> frío por tipo de perfil (abajo).</li><li><b>Formularios:</b> contesta todos en menos de 24 h.</li><li><b>Cualifica</b> en 3–5 mensajes y <b>agenda la llamada con Andrés</b>.</li><li><b>Seguimientos</b> de los días 2, 7 y 14 (el CRM te los marca en rojo).</li><li><b>Carruseles:</b> escribe los textos con las estructuras de Contenido.</li></ul></div>
+      <div class="card"><span class="badge">Andrés</span><ul class="l"><li><b>10 minutos al día:</b> un audio corto a las conversaciones que Fran marque como calientes ("te paso con Andrés").</li><li><b>Llamadas de cierre</b> (guion en la parte 6) y cobro.</li><li><b>Garantía:</b> firma el objetivo con cada cliente nuevo.</li><li><b>Historias</b> de los 4 bloques: es lo que genera respuestas para Fran.</li><li><b>Responsable</b> de sus fichas en el CRM desde que la llamada está agendada.</li></ul></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Desde qué cuenta y a qué ritmo">
+    <div class="card accent">
+      <span class="label">Desde qué cuenta</span>
+      <ul class="l">
+        <li><b>Opción A · Desde la cuenta de Andrés</b> (recomendada para interacción: la gente le ha visto a él). Fran se presenta en cuanto la conversación avanza: "por cierto, soy Fran, llevo los mensajes con Andrés".</li>
+        <li><b>Opción B · Desde la cuenta de Fran</b> (útil para frío): "Soy Fran, trabajo con Andrés Triviño (@andrestrivi6)".</li>
+        <li>Las plantillas de abajo sirven para las dos: <b>no hablan como si fueran Andrés</b>.</li>
+        <li>[confirmar con Andrés y Fran cuál usan]</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Ritmo humano · para no quemar la cuenta</span>
+      <ul class="l">
+        <li><b>Nada de automatizaciones</b> de envío masivo ni de copiar y pegar el mismo texto 50 veces.</li>
+        <li><b>Rota las 3 variantes</b> y cambia siempre algo (su nombre, lo que hace, el reel que vio).</li>
+        <li><b>Pausas entre mensajes</b> y 2 rondas, no 100 seguidos.</li>
+        <li><b>Prioriza</b> a quien ya ha interactuado. Si Instagram avisa de un límite, para ese día.</li>
+        <li><b>Nunca un enlace</b> en el primer mensaje. <b>Nunca el precio</b> por mensaje.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-fuentes">
+    <header><span class="label">Dónde encontrar el frío</span><h2 id="h-fuentes">Gente que trabaja muchas horas y que solo no lo consigue.</h2></header>
+    <div class="g3">
+      <div class="card"><span class="n">1</span><h3>Hostelería</h3><p class="soft">Perfiles de camareros, cocineros y encargados (bares y restaurantes en la bio o en las fotos). Seguidores de cuentas de hostelería de tu zona.</p></div>
+      <div class="card"><span class="n">2</span><h3>Turnos y varios trabajos</h3><p class="soft">Comentarios en vídeos de "no tengo tiempo para entrenar", "turno partido", "trabajo 12 horas".</p></div>
+      <div class="card"><span class="n">3</span><h3>Madres y padres que trabajan</h3><p class="soft">Comentarios en cuentas de crianza y conciliación sobre "no tengo tiempo para mí".</p></div>
+      <div class="card"><span class="n">4</span><h3>+50 que quieren empezar</h3><p class="soft">Comentarios en vídeos de "empezar a entrenar con 50/60". Siempre con respeto y sin hablar de salud.</p></div>
+      <div class="card"><span class="n">5</span><h3>Entrenan y no avanzan</h3><p class="soft">Selfies de gimnasio, comentarios tipo "voy al gym y no cambio".</p></div>
+      <div class="card"><span class="n">6</span><h3>Cuentas parecidas</h3><p class="soft">Seguidores y comentarios de coaches de pérdida de grasa y hábitos (no de los compañeros de Alberto).</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-msgs">
+    <header><span class="label">Plantillas de Fran · cópialas y rótalas</span><h2 id="h-msgs">Corto, de tú a tú y sin vender en el primer mensaje.</h2><p class="soft">Cambia {n} por su nombre y lo que va entre corchetes por algo real de su perfil. Filtra por tipo y situación.</p></header>
+    <div class="chips" id="grp" role="group" aria-label="Tipo"></div>
+    <div class="chips" id="sit" role="group" aria-label="Situación"></div>
+    <p class="soft" id="tcount" aria-live="polite" style="font-size:13.5px"></p>
+    <div id="tpls" style="display:grid;gap:14px"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-path">
+    <header><span class="label">El camino de la conversación</span><h2 id="h-path">De "hola" a llamada con Andrés en 5 pasos.</h2></header>
+    <div class="path"><span>1 · Abrir (Fran)</span><i>→</i><span>2 · Conectar</span><i>→</i><span>3 · Cualificar</span><i>→</i><span>4 · Audio de Andrés si está caliente</span><i>→</i><span>5 · Llamada con Andrés</span></div>
+    <div class="g2">
+      <div class="card"><h3>Cualificar · 3–5 mensajes</h3><ul class="l"><li><b>Horario:</b> "¿De qué trabajas y qué horario tienes?"</li><li><b>Objetivo:</b> "¿Qué te gustaría cambiar en los próximos 3 meses?"</li><li><b>Intentos:</b> "¿Qué has probado hasta ahora y qué te hizo dejarlo?"</li><li><b>Por qué ahora:</b> "¿Por qué te lo planteas justo ahora?"</li><li><b>Compromiso:</b> "Del 1 al 10, ¿cuánto te importa conseguirlo ya?" (menos de 7: no lo pases todavía)</li><li><b>¿Cuánto cuesta?</b> "Depende de tu caso y del plan: Andrés te lo explica en la llamada, junto con la garantía."</li></ul></div>
+      <div class="card"><h3>Agenda y recordatorios</h3><div class="msgs" id="agenda"></div><p class="soft">Siempre dos opciones de día, como máximo a 2–3 días vista. Apunta fecha y hora en el CRM y cambia el responsable a Andrés.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-seg">
+    <header><span class="label">Seguimiento si no responde · días 2, 7 y 14</span><h2 id="h-seg">Tres mensajes y se cierra. Sin perseguir a nadie.</h2><p class="soft">El CRM marca en rojo los seguimientos vencidos de cada responsable. Después del día 14, la ficha pasa a Perdido y a la lista de reactivación a los 30 días.</p></header>
+    <div class="g3" id="segs"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-rutina">
+    <header><span class="label">La rutina diaria</span><h2 id="h-rutina">Fran: 5 bloques. Andrés: 2.</h2></header>
+    <div class="routine">
+      <div><small>Mañana · Fran</small><b>Ronda 1</b><span>50 de interacción: nuevos seguidores primero.</span></div>
+      <div><small>Mediodía · Fran</small><b>Formularios</b><span>Responder todos los de Jotform y agendar.</span></div>
+      <div><small>Tarde · Fran</small><b>Ronda 2</b><span>50 en frío, por tipo de perfil.</span></div>
+      <div><small>Noche · Fran</small><b>Seguimientos</b><span>Los días 2/7/14 que marca el CRM.</span></div>
+      <div><small>Antes de dormir · Fran</small><b>Apuntar</b><span>CRM y contador de mensajes.</span></div>
+    </div>
+    <div class="routine" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+      <div><small>Cada día · Andrés</small><b>10 min de audios</b><span>A los calientes que Fran le pase.</span></div>
+      <div><small>Según agenda · Andrés</small><b>Llamadas</b><span>Guion de cierre (parte 6). Resultado al CRM.</span></div>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="WhatsApp">
+    <div class="card accent">
+      <span class="label">WhatsApp · el segundo canal</span>
+      <h3>Quien da el teléfono ve a Andrés cada día.</h3>
+      <ul class="l">
+        <li><b>WhatsApp Business de trabajo</b> (no el número personal de Andrés) [número a confirmar].</li>
+        <li><b>Guarda cada contacto</b> y pídele que os guarde: si no, no ve los Estados.</li>
+        <li><b>Estados diarios</b> y martes y viernes: "abro 2 plazas con garantía, respóndeme CAMBIO".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="label">Reactivar · lo más rentable</span>
+      <ul class="l">
+        <li><b>Formularios antiguos de Jotform</b> que no acabaron en llamada: mensaje de reactivación (en el CRM, pestaña Hoy).</li>
+        <li><b>Antiguos clientes:</b> testimonio, permiso de fotos y referidos.</li>
+        <li>Todo con origen "Formulario" o "Antiguo cliente" en el CRM.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-ads">
+    <header><span class="label">Anuncios de seguidores con voz en off</span><h2 id="h-ads">La voz en off ganadora de la semana, a anuncio "sígueme".</h2><p class="soft">Cada anuncio toca <b>un solo ángulo</b>, con clips de Andrés (nunca antes/después) y cierre "Sígueme…". El objetivo son seguidores del nicho; las conversaciones las abre Fran con la bienvenida a nuevo seguidor. Los 3 guiones completos están en Contenido → Guiones listos.</p></header>
+    <div class="rules">
+      <div><b>5–10 €/día</b><span>Por anuncio. A los 2 días valoras.</span></div>
+      <div><b>&lt; 1 €</b><span>Por seguidor: se queda y escalas hacia 10 €/día.</span></div>
+      <div><b>1–1,5 €</b><span>Cambias el gancho (cada guion trae 3).</span></div>
+      <div><b>&gt; 1,5 €</b><span>A los 2 días: se corta.</span></div>
+      <div><b>España · +25 años</b><span>Objetivo: visitas al perfil.</span></div>
+      <div><b>Normas de Meta</b><span>Primera persona o "la mayoría". Nunca "¿tienes…?", ni rasgos o salud de quien lo ve, ni antes/después. "Garantía" siempre con "con condiciones" o "por escrito".</span></div>
+    </div>
+    <div class="g3">
+      <article class="card"><span class="badge">Anuncio 1</span><h3>"La mayoría no necesita otra rutina. Necesita a alguien encima."</h3><p class="soft">Seguimiento diario. Cierre: "Sígueme para ver cómo se cambia el cuerpo trabajando muchas horas."</p></article>
+      <article class="card"><span class="badge">Anuncio 2</span><h3>"Trabajo con garantía de resultados. Esto es lo que pido a cambio."</h3><p class="soft">La garantía con sus condiciones. Cierre: "Sígueme para ver cómo funciona por dentro."</p></article>
+      <article class="card"><span class="badge">Anuncio 3</span><h3>"Así organizo la semana de mis clientes con turno partido."</h3><p class="soft">Horario real. Cierre: "Sígueme para planes que caben en un horario de verdad."</p></article>
+    </div>
+    <p class="soft" style="font-size:14px">Cada seguidor que llega por anuncio recibe la bienvenida de Fran ese mismo día y, si responde, entra al CRM con origen "Anuncio". El gasto y el € por seguidor se apuntan en el reporte semanal.</p>
+  </section>
+</div>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  var T = [
+    { g: "Frío", s: "Hostelería", d: "Trabaja en un bar o restaurante (bio, fotos).", v: [
+      "¡Buenas, {n}! He visto que estás en hostelería. Pregunta de curioso: con esos horarios, ¿te da la vida para entrenar o lo tienes aparcado?",
+      "Hola {n}, ¿qué tal? Trabajamos con gente de hostelería y casi todos dicen lo mismo: que con los turnos es imposible cuidarse. ¿A ti te pasa?",
+      "Ey {n} 👋 Pregunta rápida: ¿cómo lo haces para comer bien trabajando en hostelería? Es de lo que más nos preguntan los del sector."] },
+    { g: "Frío", s: "Turno partido", d: "Lo dice en la bio o en un comentario.", v: [
+      "¡Hola {n}! Vi tu perfil y me surgió una duda: ¿trabajas a turno partido? Lo pregunto porque es justo el horario con el que más gente lo deja.",
+      "Buenas {n}. Una pregunta que hago a todo el que trabaja a turno partido: ¿entrenas en el hueco del mediodía o directamente no hay manera?",
+      "{n}, ¿qué tal? Te escribo por algo concreto: ayudamos a gente con turno partido a cambiar su físico con seguimiento diario. ¿Ahora mismo estás haciendo algo o lo tienes parado?"] },
+    { g: "Frío", s: "Varios trabajos", d: "Autónomos, dos empleos, jornadas largas.", v: [
+      "¡Buenas, {n}! Por lo que veo en tu perfil no paras 😅 ¿Te queda algún hueco para ti o ahora mismo es imposible?",
+      "Hola {n}. Pregunta sin rodeos: con tanto curro, ¿cuánto tiempo a la semana podrías dedicarte de verdad? ¿2 horas, 3, ninguna?",
+      "Ey {n}, ¿qué tal? Mucha gente que trabaja muchas horas nos cuenta que lo empieza y lo deja. ¿Te suena?"] },
+    { g: "Frío", s: "Madre o padre que trabaja", d: "Familia + trabajo visibles en su perfil.", v: [
+      "¡Hola {n}! Vi que entre el trabajo y la familia vas a tope. ¿Tienes algún momento para ti o ahora mismo es misión imposible?",
+      "Buenas {n} 😊 Pregunta rápida: ¿has intentado alguna vez ponerte en forma con el trabajo y la familia? ¿Qué tal te fue?",
+      "{n}, te escribo porque una clienta de Andrés es madre, trabaja a turno partido y aun así transformó su físico. ¿Tú en qué punto estás ahora?"] },
+    { g: "Frío", s: "+50 que quiere empezar", d: "Comenta en vídeos de empezar a cualquier edad. Respeto y nada de salud.", v: [
+      "¡Buenas, {n}! Una pregunta: ¿alguna vez te has planteado empezar a entrenar o piensas que ya es tarde?",
+      "Hola {n}. Te escribo porque un cliente de Andrés de 64 años, que no había entrenado nunca, ha hecho un cambio enorme. ¿Tú has entrenado alguna vez?",
+      "{n}, ¿qué tal? Pregunta sin compromiso: ¿qué te frena más para empezar a cuidarte, el tiempo, no saber por dónde empezar o pensar que ya no toca?"] },
+    { g: "Frío", s: "Entrena y no avanza", d: "Selfies de gimnasio, «voy y no cambio».", v: [
+      "¡Buenas, {n}! Veo que entrenas. ¿Estás contento con cómo vas o sientes que llevas tiempo igual?",
+      "Hola {n} 💪 Pregunta de entrenador: ¿sigues un plan con progresión o vas un poco por libre?",
+      "Ey {n}, ¿qué tal? Mucha gente que entrena nos dice «voy al gimnasio pero no cambio». ¿Te pasa o lo tienes controlado?"] },
+    { g: "Frío", s: "Comentó en otra cuenta", d: "Comentario en un vídeo sobre falta de tiempo o constancia.", v: [
+      "¡Hola {n}! Vi tu comentario en el vídeo de [cuenta] sobre no tener tiempo para entrenar. ¿Es tu caso ahora mismo?",
+      "Buenas {n}. Te leí en [cuenta] y me quedé con lo que dijiste de [tema]. ¿Lo has intentado alguna vez con alguien que te siga cada día?",
+      "{n}, ¿qué tal? Te escribo por tu comentario en [cuenta]. Pregunta rápida: ¿ahora mismo estás haciendo algo o lo tienes parado?"] },
+    { g: "Interacción", s: "Like", d: "Le dio like a un reel o un caso.", v: [
+      "¡Buenas, {n}! Gracias por el like en el caso de [caso] 🙌 ¿Te viste un poco reflejado/a?",
+      "Hola {n}, vi que te gustó el vídeo de [tema]. Curiosidad: ¿estás entrenando ahora o lo tienes parado?",
+      "Ey {n} 👋 Gracias por pasarte por el perfil. Pregunta rápida: ¿qué te llamó la atención de ese vídeo?"] },
+    { g: "Interacción", s: "Comentario", d: "Comentó un reel o un carrusel.", v: [
+      "¡Gracias por comentar, {n}! Lo que dices de [comentario] lo escuchamos mucho. ¿Te pasa a ti también?",
+      "{n}, me ha gustado tu comentario 🙌 ¿Lo dices por experiencia propia?",
+      "Buenas {n}, te contesto por aquí que es más cómodo. ¿Ahora mismo estás haciendo algo o lo tienes en pausa?"] },
+    { g: "Interacción", s: "Respuesta a historia", d: "Respondió a una historia o reaccionó.", v: [
+      "¡Jaja, {n}! ¿Te ha pasado a ti también lo de [historia]?",
+      "Gracias por responder, {n} 🙌 ¿Cómo lo llevas tú con tu horario?",
+      "{n}, me alegra que te haya servido. ¿Lo vas a poner en práctica esta semana o es de los que se quedan guardados? 😅"] },
+    { g: "Interacción", s: "Nuevo seguidor", d: "El mismo día que sigue (también los de anuncios).", v: [
+      "¡Buenas, {n}! Gracias por seguir la cuenta 🙌 Pregunta rápida: ¿estás entrenando ahora o con el trabajo no hay manera?",
+      "Hola {n}, bienvenido/a. ¿Qué te trajo por aquí, algún caso en concreto?",
+      "Ey {n} 👋 Gracias por el follow. Por curiosidad: ¿qué te gustaría cambiar este año?"] },
+    { g: "Interacción", s: "Ve las historias", d: "Aparece en las visualizaciones a menudo y nunca escribe.", v: [
+      "¡Hola {n}! Te veo a menudo por las historias 😄 ¿Alguna te ha servido o te estás animando poco a poco?",
+      "{n}, una pregunta rápida ya que sueles ver las historias: ¿qué te cuesta más, entrenar, comer bien o no dejarlo?",
+      "Buenas {n}. Esta semana estamos ayudando a gente con horarios complicados. ¿Es tu caso?"] },
+    { g: "Interacción", s: "Formulario rellenado", d: "Rellenó el formulario de Jotform. Menos de 24 h.", v: [
+      "¡Hola {n}! Soy Fran, del equipo de Andrés. Hemos recibido tu formulario 🙌 Antes de hablar, una pregunta: ¿qué es lo que más te gustaría cambiar en los próximos 3 meses?",
+      "Buenas {n}, soy Fran y llevo los mensajes con Andrés. Hemos leído tu formulario: dices que [dato del formulario]. ¿Desde cuándo te pasa?",
+      "{n}, ¡gracias por rellenar el formulario! Andrés quiere hablar contigo. ¿Te viene mejor [día] o [día] para una llamada de 20 minutos?"] },
+    { g: "Interacción", s: "Voto en encuesta", d: "Votó en una encuesta de historias.", v: [
+      "¡Gracias por votar, {n}! Has puesto «[respuesta]». ¿Desde cuándo te pasa?",
+      "{n}, vi tu voto en la encuesta 😄 ¿Y qué has probado hasta ahora?",
+      "Buenas {n}. Mucha gente votó como tú. ¿Te cuento qué hacemos en esos casos?"] },
+    { g: "Interacción", s: "Escribió CAMBIO", d: "Palabra clave en historias o reels.", v: [
+      "¡Buenas, {n}! Gracias por escribir CAMBIO 🙌 Para ver si te podemos ayudar: ¿de qué trabajas y qué te gustaría cambiar?",
+      "{n}, ¡genial! Cuéntame un poco: ¿qué has intentado hasta ahora y qué te ha hecho dejarlo?",
+      "Hola {n}, soy Fran, del equipo de Andrés. ¿Me cuentas tu horario y tu objetivo y vemos si encajas?"] },
+    { g: "Traspaso", s: "Pasar a llamada con Andrés", d: "Cuando encaja (horario, objetivo, 7 o más sobre 10).", v: [
+      "Por lo que me cuentas, encajas justo con la gente con la que mejor trabaja Andrés: muchas horas y harto/a de empezar y dejarlo. Lo mejor es que lo hables con él en una llamada de 20 minutos y te diga cómo sería en tu caso. ¿Te va mejor [día] o [día]?",
+      "Te propongo una cosa: una llamada corta con Andrés, que es quien lleva el seguimiento. Te dice qué haría con tu horario y te explica la garantía. ¿[Día] a las [hora] o [día]?",
+      "Por cierto, soy Fran: llevo los mensajes con Andrés. Lo tuyo tiene solución y prefiero que lo veas directamente con él. ¿Te reservo 20 minutos [día] o [día]?"] }
+  ];
+  var AG = [["Al agendar", "¡Hecho, {n}! El [día] a las [hora] te llama Andrés. Mientras, te dejo un caso parecido al tuyo: [enlace]. Cualquier cosa, por aquí."],
+    ["Audio de Andrés (lo graba él)", "«{n}, soy Andrés. Me ha contado Fran lo de [tema]. Tiene solución y lo vemos el [día]. ¡Hablamos!» (15 segundos)"],
+    ["1 hora antes", "{n}, en 1 hora te llama Andrés. ¡Hasta ahora!"],
+    ["Si pregunta el precio", "Depende de tu caso y del plan: Andrés te lo explica en la llamada, junto con la garantía. ¿Te va bien el [día]?"]];
+  var SEG = [["Día 2", ["Buenas {n}, te lo vuelvo a subir por aquí 😊 ¿Sigues con ganas de empezar o lo dejamos para más adelante?", "{n}, ¿cómo va la semana? Me quedé con lo que me contaste de [tema].", "Hola {n}, ¿pudiste pensar lo que hablamos? Sin prisa, solo para saber si te reservo hueco con Andrés."]],
+    ["Día 7", ["{n}, me acordé de ti con este caso: [caso parecido]. Horario parecido al tuyo. Por si te anima 🙌", "Buenas {n}. Esta semana Andrés tiene un par de huecos para llamadas. ¿Te guardo uno?", "{n}, una pregunta rápida: ¿sigues con [problema] o lo has podido arreglar?"]],
+    ["Día 14", ["Hola {n}. Como no he sabido de ti, entiendo que ahora no es el momento, sin problema. Cuando quieras, aquí estamos.", "{n}, último mensaje para no ser pesado 😄 Si algún día te apetece hacerlo con alguien encima, escríbenos CAMBIO.", "Buenas {n}. Te dejo la puerta abierta: cuando tu horario te lo permita, lo vemos con Andrés."]]];
+  function m(label, text) { return '<div class="m"><div class="row"><span class="badge">' + esc(label) + '</span><button class="cp" type="button" data-cp="' + esc(text) + '">Copiar</button></div><p>' + esc(text) + '</p></div>'; }
+  $("agenda").innerHTML = AG.map(function (a) { return m(a[0], a[1]); }).join("");
+  $("segs").innerHTML = SEG.map(function (s) { return '<div class="card"><h3>' + s[0] + '</h3><div class="msgs">' + s[1].map(function (t, i) { return m("Variante " + (i + 1), t); }).join("") + '</div></div>'; }).join("");
+  var GR = ["Frío", "Interacción", "Traspaso"], fg = "", fs = "";
+  function renderChips() {
+    $("grp").innerHTML = ['<button type="button" data-g="" aria-pressed="' + (!fg) + '">Todo</button>'].concat(GR.map(function (g) { return '<button type="button" data-g="' + g + '" aria-pressed="' + (fg === g) + '">' + g + '</button>'; })).join("");
+    var sits = T.filter(function (t) { return !fg || t.g === fg; });
+    $("sit").innerHTML = ['<button type="button" data-s="" aria-pressed="' + (!fs) + '">Todas las situaciones</button>'].concat(sits.map(function (t) { return '<button type="button" data-s="' + esc(t.s) + '" aria-pressed="' + (fs === t.s) + '">' + esc(t.s) + '</button>'; })).join("");
+  }
+  function render() {
+    var list = T.filter(function (t) { return (!fg || t.g === fg) && (!fs || t.s === fs); });
+    $("tcount").textContent = list.length + (list.length === 1 ? " situación · " : " situaciones · ") + list.reduce(function (a, t) { return a + t.v.length; }, 0) + " variantes";
+    $("tpls").innerHTML = list.map(function (t) {
+      return '<article class="card"><div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline"><span class="badge">' + esc(t.g) + '</span><h3>' + esc(t.s) + '</h3><span class="soft" style="font-size:13.5px">' + esc(t.d) + '</span></div><div class="msgs">' + t.v.map(function (v, i) { return m("Variante " + String.fromCharCode(65 + i), v); }).join("") + '</div></article>';
+    }).join("");
+  }
+  $("grp").addEventListener("click", function (e) { var b = e.target.closest("[data-g]"); if (!b) return; fg = b.dataset.g; fs = ""; renderChips(); render(); });
+  $("sit").addEventListener("click", function (e) { var b = e.target.closest("[data-s]"); if (!b) return; fs = b.dataset.s; renderChips(); render(); });
+  renderChips(); render();
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cp]"); if (!b) return;
+    var t = b.getAttribute("data-cp"), o = b.textContent;
+    var done = function (x) { b.textContent = x; setTimeout(function () { b.textContent = o; }, 1400); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  });
+})();
+</script>

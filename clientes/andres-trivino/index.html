@@ -1,0 +1,500 @@
+<title>Andrés Triviño Coach</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<meta name="description" content="Andrés Triviño · Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito. Método 31/31.">
+<style>
+/* Layout: carta de venta en una columna. Hero oscuro «para los que solos no lo consiguen» con prueba; hueco de VSL; ¿te suena?; Método 31/31; garantía con condiciones; muro de casos reales; para quién, pasos, formulario Jotform, FAQ. Marca: negro, blanco y verde sobrio. */
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #1d6b4f;
+  --accent-text: #175a42;
+  --accent-dark: #7fd1a8;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.65 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.read { max-width: 720px; }
+section { padding-block: clamp(60px, 9vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(38px, 6vw, 64px)/.98 var(--f-head); text-transform: uppercase; letter-spacing: -.005em; }
+h3 { font: 700 21px/1.25 var(--f-body); }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.label { font: 500 12px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.lede { color: var(--soft); max-width: 62ch; font-size: 19px; }
+.stack { display: grid; gap: 18px; }
+.stack p { color: var(--soft); }
+.stack p strong { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--ink); color: var(--white); font: 700 17px/1 var(--f-body); text-decoration: none; padding: 19px 28px; border-radius: 10px; transition: transform .15s ease, background .15s ease; text-align: center; letter-spacing: .01em; }
+.btn:hover { transform: translateY(-1px); background: #2a2a2a; }
+.btn-a { background: var(--accent); color: var(--white); }
+.btn-a:hover { background: #175a42; }
+.btn-dark-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn-dark-ghost:hover { background: rgba(255,255,255,.08); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.cta-note { color: var(--soft); font-size: 14.5px; }
+.cta-note a { font-weight: 700; }
+
+/* Hero oscuro */
+.dark { background: var(--ink); color: var(--white); }
+.dark .label { color: var(--accent-dark); }
+.dark .lede, .dark .cta-note { color: var(--on-dark); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 800 20px/1 var(--f-head); letter-spacing: .04em; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.brand small { display: block; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; color: var(--accent-dark); margin-top: 3px; }
+.top .btn { padding: 12px 18px; font-size: 14px; }
+.hero { padding-block: clamp(24px, 5vw, 60px) clamp(48px, 7vw, 84px); display: grid; gap: 24px; }
+.hero h1 { font: 800 clamp(50px, 9vw, 112px)/.92 var(--f-head); text-transform: uppercase; max-width: 14ch; }
+.hero h1 em { font-style: normal; color: var(--accent-dark); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 22px); max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(255,255,255,.22); }
+.fact { padding: 16px 16px 0 0; display: grid; gap: 4px; align-content: start; }
+.fact b { font: 800 26px/1.05 var(--f-head); text-transform: uppercase; }
+.fact span { color: var(--on-dark); font-size: 14px; line-height: 1.4; }
+.proof-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; text-decoration: none; }
+.proof-strip figure { margin: 0; display: grid; gap: 8px; }
+.proof-strip img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #000; border-radius: 10px; }
+.proof-strip figcaption { font: 500 12px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark); }
+.proof-strip figcaption b { color: var(--accent-dark); font-weight: 500; }
+.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; max-width: 100%; }
+
+/* Problema */
+.signs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.sign { background: var(--white); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 16px 18px; font: 600 18px/1.4 var(--f-body); }
+.turn { margin-top: 28px; font: 800 clamp(32px, 4.6vw, 52px)/1 var(--f-head); text-transform: uppercase; }
+.turn em { font-style: normal; color: var(--accent-text); }
+
+/* Método */
+.layers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.layer { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.layer .n { font: 500 12px/1 var(--f-mono); color: var(--accent-text); letter-spacing: .1em; text-transform: uppercase; }
+.layer h3 { font: 800 30px/1 var(--f-head); text-transform: uppercase; }
+.layer p { color: var(--soft); font-size: 16px; line-height: 1.55; }
+.base { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 12px; margin-top: 14px; }
+.base .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-dark); }
+.base h3 { font: 800 clamp(30px, 4vw, 42px)/1 var(--f-head); text-transform: uppercase; }
+.base p { color: var(--on-dark); max-width: 64ch; font-size: 17px; }
+
+/* Casos */
+.wall { columns: 3 280px; column-gap: 16px; }
+.wall > * { break-inside: avoid; margin: 0 0 16px; }
+.case { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 14px 14px 20px; display: grid; gap: 12px; }
+.case img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.case .big { font: 800 30px/1 var(--f-head); text-transform: uppercase; padding-inline: 6px; }
+.case p { font-size: 16px; line-height: 1.6; color: var(--soft); padding-inline: 6px; }
+.who { display: flex; gap: 12px; align-items: center; padding-inline: 6px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--chip); color: var(--accent-text); display: grid; place-items: center; font: 800 20px/1 var(--f-head); flex: none; }
+.who b { display: block; font-size: 15px; }
+.who span { color: var(--soft); font-size: 13.5px; }
+.quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 8px; }
+.q { background: var(--ink); color: var(--white); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 14px; align-content: space-between; }
+.q blockquote { margin: 0; font: 600 20px/1.45 var(--f-body); }
+.q blockquote::before { content: "“"; display: block; font: 800 64px/.6 var(--f-head); color: var(--accent-dark); margin-bottom: 8px; }
+.q span { font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark); }
+
+/* Historia */
+.me { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; margin-bottom: 28px; }
+.me img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; }
+.me p { font: 800 clamp(26px, 3.6vw, 40px)/1.05 var(--f-head); text-transform: uppercase; max-width: 30ch; }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 36px; }
+.timeline figure { margin: 0; display: grid; gap: 8px; align-content: start; }
+.ph { aspect-ratio: 3 / 4; border-radius: 12px; border: 2px dashed #c4c4c0; background: var(--chip); display: grid; place-items: center; font: 500 12px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-align: center; padding: 10px; }
+.timeline figcaption { display: grid; gap: 2px; }
+.timeline figcaption b { font: 500 12px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-text); }
+.timeline figcaption span { font-size: 15px; color: var(--soft); line-height: 1.4; }
+.errors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 8px; }
+.err { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
+.err b { font: 800 24px/1 var(--f-head); text-transform: uppercase; }
+.err span { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+.err em { font-style: normal; color: var(--accent-text); font-weight: 700; }
+.quote { margin-top: 28px; font: 800 clamp(30px, 4.2vw, 46px)/1.02 var(--f-head); text-transform: uppercase; max-width: 26ch; }
+
+/* Garantía */
+.guarantee { background: var(--ink); color: var(--white); }
+.guarantee .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.seal { width: clamp(120px, 15vw, 160px); aspect-ratio: 1; max-width: 100%; border-radius: 50%; background: var(--accent); color: var(--white); display: grid; place-items: center; text-align: center; font: 800 clamp(24px, 2.8vw, 30px)/.95 var(--f-head); text-transform: uppercase; padding: 10px; }
+.seal small { display: block; font: 500 10px/1 var(--f-mono); letter-spacing: .12em; margin-top: 6px; }
+.guarantee .label { color: var(--accent-dark); }
+.guarantee ul { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.guarantee li { padding-left: 28px; position: relative; color: var(--on-dark); font-size: 17px; }
+.guarantee li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent-dark); font-weight: 800; }
+.guarantee .fine { margin-top: 16px; color: #9a9a9a; font-size: 14px; max-width: 60ch; }
+
+/* Para quién */
+.fit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fit > div { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: clamp(22px, 3vw, 32px); display: grid; gap: 16px; align-content: start; min-width: 0; }
+.fit ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.fit li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; font-size: 16.5px; }
+.fit li::before { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font: 700 12px/1 var(--f-body); margin-top: 2px; }
+.fit .yes li::before { content: "✓"; background: #dcefe5; color: var(--accent-text); }
+.fit .no li { color: var(--soft); }
+.fit .no li::before { content: "✕"; background: var(--line); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.step { display: grid; gap: 10px; align-content: start; border-top: 3px solid var(--ink); padding-top: 18px; }
+.step .n { font: 500 12px/1 var(--f-mono); letter-spacing: .1em; color: var(--accent-text); }
+.step h3 { font: 800 28px/1 var(--f-head); text-transform: uppercase; }
+.step p { color: var(--soft); font-size: 16px; }
+.form-box { display: grid; gap: 16px; justify-items: start; }
+.form-embed { width: 100%; background: var(--white); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.form-embed iframe { display: block; width: 100%; min-height: 760px; border: 0; }
+
+/* FAQ */
+.faq { max-width: 800px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 20px 40px 20px 0; position: relative; font-weight: 700; font-size: 18px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font: 400 30px/1 var(--f-body); color: var(--accent-text); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--soft); padding-bottom: 22px; max-width: 66ch; }
+
+.final { background: var(--ink); color: var(--white); }
+.final .wrap { display: grid; gap: 22px; justify-items: start; }
+.final .label { color: var(--accent-dark); }
+.final h2 { font-size: clamp(46px, 8vw, 96px); max-width: 14ch; }
+.final .cta-note { color: var(--on-dark); }
+footer { padding-block: 28px; color: var(--soft); font-size: 13px; }
+footer .wrap { display: grid; gap: 10px; }
+footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(247, 247, 245, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+.sticky-cta .btn { width: 100%; padding: 15px 20px; }
+
+@media (max-width: 960px) {
+  .layers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-cta { display: block; }
+  .top .btn { display: none; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .proof-strip { gap: 8px; }
+  .proof-strip figcaption { font-size: 10.5px; }
+  .signs, .layers, .fit, .steps, .errors, .quotes { grid-template-columns: 1fr; }
+  .guarantee .wrap { grid-template-columns: 1fr; }
+  .me { grid-template-columns: 1fr; }
+  .ctas .btn { width: 100%; }
+}
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #1d6b4f); --nm-at: var(--accent-text, #175a42); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+
+/* Andrés: negro y blanco con verde sobrio; titulares en minúscula. */
+h2 { font: 800 clamp(30px, 4.6vw, 52px)/1.04 var(--f-head); text-transform: none; letter-spacing: -.025em; }
+.hero h1 { font: 800 clamp(38px, 6.4vw, 78px)/1.02 var(--f-head); text-transform: none; letter-spacing: -.035em; max-width: 17ch; }
+.brand { text-transform: none; letter-spacing: -.01em; font-size: 18px; }
+.fact b, .layer h3, .base h3, .case .big, .step h3, .turn, .quote, .seal, .final h2 { text-transform: none; letter-spacing: -.02em; }
+.fact b { font-size: 21px; } .layer h3 { font-size: 24px; } .step h3 { font-size: 22px; }
+.turn { font-size: clamp(26px, 3.8vw, 42px); }
+.seal { font-size: clamp(20px, 2.4vw, 26px); }
+.final h2 { font-size: clamp(36px, 6vw, 72px); max-width: 16ch; }
+.case { margin: 0; }
+.case .big { font-size: 21px; line-height: 1.15; }
+.vsl { display: grid; }
+.vsl iframe { width: 100%; height: 100%; border: 0; }
+.vsl-ph { display: grid; place-items: center; align-content: center; gap: 12px; color: #cfcfcf; font: 500 13px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; text-align: center; padding: 16px; border: 2px dashed #444; border-radius: 14px; }
+.vsl-ph span { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 22px; }
+.q.bryan { margin-bottom: 16px; }
+.cond { margin-top: 14px; background: rgba(255,255,255,.06); border-radius: 12px; padding: 12px 16px; }
+.cond summary { cursor: pointer; font-weight: 700; color: var(--white); }
+.cond ol { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 6px; color: var(--on-dark); font-size: 15px; }
+.guarantee h2 { color: var(--white); margin-top: 8px; }
+.guarantee .fine a { color: var(--accent-dark); }
+@media (max-width: 680px) { .hero h1 { font-size: clamp(34px, 9vw, 44px); } }
+.proof-strip img { aspect-ratio: 427 / 305; object-fit: cover; }
+
+</style>
+<!--
+  PENDIENTE / PROVISIONAL (no se ve en la página):
+  - Cifra de cambios: la bio dice "+300 cambios" y un fijado "+100 lives changed". No se publica ninguna cifra hasta confirmar una demostrable.
+  - VSL: hueco preparado (#vsl). Pegar la URL del vídeo en VSL_URL (script).
+  - WhatsApp: WA_NUMBER vacío a propósito [confirmar número de trabajo; nunca el personal de Andrés]. Si se rellena, aparecen los botones de WhatsApp.
+  - Garantía: condiciones propuestas (oferta). Confirmar la opción (seguir sin coste o devolución), revisarlas con un asesor y subir el PDF firmable a COND_URL.
+  - Casos: recortes de su plantilla "Una transformación real" ya publicados en Instagram. Antes de publicar la web, permiso por escrito de cada cliente (Bryan Torres sale con nombre).
+  - Historia personal de Andrés: no la tenemos. No se cuenta nada de su vida hasta tenerla por escrito.
+-->
+<div class="dark">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><img src="casos/andres-avatar.jpg" alt="" width="300" height="300"><div>Andrés Triviño<small>Online coach · seguimiento diario</small></div></div>
+      <a class="btn btn-a js-form" href="https://form.jotform.com/243036271600041" target="_blank" rel="noopener">Aplica para tu plaza</a>
+    </header>
+
+    <div class="hero">
+      <div class="label">Para los que solos no lo consiguen</div>
+      <h1>Trabajas muchas horas y solo nunca has sido constante. <em>Conmigo, cada día.</em></h1>
+      <p class="lede">Cambio físico para personas que trabajan muchas horas y nunca han sido constantes por su cuenta: <b>seguimiento diario</b>, un plan que cabe en tu horario real y <b>resultados garantizados por escrito</b>. Hostelería, turno partido, varios trabajos, familia: lo he visto todo, y ninguno de esos horarios es la excusa.</p>
+      <div class="ctas">
+        <a class="btn btn-a js-form" href="https://form.jotform.com/243036271600041" target="_blank" rel="noopener">Rellena el formulario para tu gran cambio</a>
+        <a class="btn btn-dark-ghost js-wa" href="#" target="_blank" rel="noopener" hidden>Escríbeme CAMBIO por WhatsApp</a>
+      </div>
+      <p class="cta-note">El formulario son 2 minutos. Lo leemos nosotros y, si encajas, te escribimos para hablar con Andrés.</p>
+
+      <div class="facts">
+        <div class="fact"><b>31 de 31</b><span>Días al mes con seguimiento: un check-in de 1 minuto</span></div>
+        <div class="fact"><b>Por escrito</b><span>Tu objetivo y la garantía, firmados el día 1</span></div>
+        <div class="fact"><b>12 semanas</b><span>Para medir el resultado garantizado</span></div>
+        <div class="fact"><b>17 a 64 años</b><span>Casos reales, hombres y mujeres</span></div>
+      </div>
+
+      <a class="proof-strip" href="#casos" aria-label="Ver casos reales">
+        <figure><img src="casos/madre-turno-partido.jpg" alt="Antes y después de una clienta, madre con turno partido" width="427" height="304"><figcaption><b>Madre</b> · turno partido</figcaption></figure>
+        <figure><img src="casos/varios-trabajos.jpg" alt="Antes y después de un cliente con varios trabajos" width="427" height="306"><figcaption><b>Varios trabajos</b> · sin descanso</figcaption></figure>
+        <figure><img src="casos/64-anos.jpg" alt="Antes y después de un cliente de 64 años" width="428" height="306"><figcaption><b>64 años</b> · nunca había entrenado</figcaption></figure>
+      </a>
+    </div>
+  </div>
+</div>
+
+<section id="vsl">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">En 2 minutos</div>
+      <h2>Cómo es trabajar conmigo un día cualquiera.</h2>
+    </div>
+    <div class="vsl" id="vslBox"><div class="vsl-ph"><span aria-hidden="true">▶</span>Vídeo de presentación · pendiente de grabar</div></div>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:20px">
+      <div class="label">¿Te suena?</div>
+      <h2>No es que no sepas qué hacer. Es que solo no lo haces.</h2>
+    </div>
+    <div class="signs">
+      <div class="sign">"Tengo la rutina guardada en el móvil y no la hago."</div>
+      <div class="sign">"Empiezo el lunes y el jueves ya lo he dejado."</div>
+      <div class="sign">"Con el turno partido es imposible."</div>
+      <div class="sign">"Llego reventado de trabajar y no hay manera."</div>
+      <div class="sign">"Ya pagué a un entrenador y me mandó un PDF."</div>
+      <div class="sign">"A mi edad ya no."</div>
+    </div>
+    <p class="turn">No te falta una rutina. <em>Te falta alguien encima.</em></p>
+  </div>
+</section>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Método 31/31</div>
+      <h2>Arrancar. Transformar. Sostener.</h2>
+      <p class="lede">31 de 31 días contigo. Un minuto al día para contarme cómo ha ido, un plan hecho sobre tu turno y un objetivo que firmamos el primer día.</p>
+    </div>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Para quién es</span><p class="nm-big">Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito.</p></div><div class="nm-meth"><span class="nm-lab">Método 31/31 en 30 segundos</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Seguimiento diario y cercano</b><span>Un check-in de 1 minuto cada día y respuesta mía. «Seguimiento y acompañamiento diario y cercano» no es una frase de bio: es el método. Muchos de mis casos pensaban que solo necesitaban una rutina.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Un plan que cabe en tu horario real</b><span>Entreno y comida montados sobre tu turno, no sobre el ideal. Bryan Torres, padre y camarero a turno partido; una madre a turno partido; alguien con varios trabajos y sin descanso.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Resultados garantizados por escrito</b><span>El día 1 pactamos un objetivo medible. Si cumples tu parte y no llega, sigo contigo gratis. «Trabajo con garantía de resultados», con condiciones firmadas.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Arrancar</b><p><em>Qué pasa:</em> Se acaba el «empiezo el lunes». Las primeras 4 semanas seguidas sin desaparecer.</p><p><em>Qué haces tú:</em> Check-in diario, entrenos pactados con tu turno, foto y medidas del día 1.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–12</span><b>Transformar</b><p><em>Qué pasa:</em> El cambio se ve en fotos y medidas. En la semana 12 medimos la garantía.</p><p><em>Qué haces tú:</em> Subes cargas, ajustamos la comida a tu horario y revisamos cada semana.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Sostener</b><p><em>Qué pasa:</em> Lo mantienes cuando cambia el turno, en vacaciones o en temporada alta.</p><p><em>Qué haces tú:</em> Sigues con el check-in diario, pero cada vez decides tú más.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>Check-in diario (1 minuto)</b><p><em>Por qué:</em> Lo que se reporta cada día no se abandona. Es el 31 de 31.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>Foto y medidas cada semana</b><p><em>Por qué:</em> Sin datos no hay ajustes ni garantía.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Entrenos pactados hechos (mínimo 80 %)</b><p><em>Por qué:</em> El plan se ajusta a tu horario: por eso el horario deja de ser excusa.</p></div></div></div><p class="nm-proof">Prueba: «+300 cambios» [cifra a unificar] · casos de 17 a 64 años, hombres y mujeres · «22 kg perdidos en 6 meses: Bryan Torres, padre de familia y camarero a turno partido».</p><p class="nm-line">Para los que solos no lo consiguen: alguien encima cada día y un resultado garantizado por escrito. Las 3 no negociables son, a la vez, las condiciones de la garantía.</p></section>
+    <div class="layers">
+      <article class="layer"><span class="n">Semanas 1–4</span><h3>Arrancar</h3><p>Se acaba el "empiezo el lunes". Fotos y medidas del día 1, tu plan sobre tu horario y el primer check-in esa misma noche.</p></article>
+      <article class="layer"><span class="n">Semanas 5–12</span><h3>Transformar</h3><p>El cambio se ve en fotos y medidas. Ajustes cada semana. En la semana 12 comparamos con el objetivo firmado.</p></article>
+      <article class="layer"><span class="n">Meses 4–6</span><h3>Sostener</h3><p>Lo mantienes aunque cambie el turno, llegue el verano o la temporada alta. Sales sabiendo hacerlo.</p></article>
+      <article class="layer"><span class="n">Cada día</span><h3>Check-in</h3><p>Entreno, comida, pasos y sueño en 1 minuto por WhatsApp. Te contesto yo. Si un día se tuerce, se ajusta ese día.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee" id="garantia">
+  <div class="wrap">
+    <div class="seal">Garantía<small>POR ESCRITO</small></div>
+    <div>
+      <div class="label">Garantía de resultados</div>
+      <h2>Si cumples tu parte y no llegas, sigo contigo sin coste hasta que llegues.</h2>
+      <ul>
+        <li><b>Qué te garantizo:</b> el objetivo medible que firmamos en la llamada de inicio (cintura, peso o fotos comparables), realista para tu punto de partida.</li>
+        <li><b>En qué plazo:</b> 12 semanas desde el día 1.</li>
+        <li><b>Qué te pido:</b> check-in diario al menos el 90 % de los días, foto y medidas cada semana y al menos el 80 % de los entrenos pactados.</li>
+        <li><b>Si no llegas cumpliendo:</b> sigo contigo sin coste, mes a mes, hasta conseguirlo.</li>
+      </ul>
+      <p class="fine">Enfermedad, lesión o embarazo congelan el plazo. No aplica si no se cumplen los requisitos (el propio check-in lo registra) ni a objetivos no medibles. Condiciones completas en el contrato que firmas al empezar. <a class="js-cond" href="#condiciones">Leer las condiciones</a>.</p>
+      <details class="cond" id="condiciones">
+        <summary>Condiciones completas de la garantía</summary>
+        <ol>
+          <li>El objetivo se fija por escrito en la llamada de inicio, tras evaluar tu punto de partida, y debe ser medible (centímetros de cintura, kilos o fotos comparables con la misma luz y postura).</li>
+          <li>El plazo es de 12 semanas desde el primer día del plan.</li>
+          <li>Requisitos: check-in diario enviado al menos el 90 % de los días; foto y medidas las 12 semanas; al menos el 80 % de los entrenos pactados; seguir las pautas de alimentación acordadas.</li>
+          <li>Si cumples los requisitos y no alcanzas el objetivo en la semana 12, el seguimiento continúa sin coste, mes a mes, hasta alcanzarlo, con un máximo de 3 meses.</li>
+          <li>El plazo se congela por enfermedad, lesión o embarazo debidamente comunicados.</li>
+          <li>La garantía no aplica si no se cumplen los requisitos ni a objetivos no medibles.</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="casos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Una transformación real</div>
+      <h2>Gente con horarios como el tuyo. Y aun así.</h2>
+      <p class="lede">Casos reales de mis clientes, de 17 a 64 años. Con su permiso.</p>
+    </div>
+    <div class="q bryan"><blockquote>22 kg perdidos en 6 meses. Padre de familia y camarero a turno partido.</blockquote><span>Bryan Torres · cliente</span></div>
+    <div class="wall">
+      <figure class="case"><img src="casos/madre-turno-partido.jpg" alt="Antes y después de una madre que trabaja a turno partido" width="427" height="304"><p class="big">Es madre y trabaja a turno partido.</p><p>Aun así transformó su físico.</p></figure>
+      <figure class="case"><img src="casos/varios-trabajos.jpg" alt="Antes y después de un cliente con varios trabajos" width="427" height="306"><p class="big">Varios trabajos y sin descanso.</p><p>No sabía cómo entrenar.</p></figure>
+      <figure class="case"><img src="casos/64-anos.jpg" alt="Antes y después de un cliente de 64 años" width="428" height="306"><p class="big">64 años y vida sedentaria.</p><p>No había entrenado nunca. Pensaba que era tarde para cambiar.</p></figure>
+      <figure class="case"><img src="casos/rutina.jpg" alt="Antes y después de un cliente, de perfil" width="427" height="307"><p class="big">Pensaba que solo necesitaba una rutina.</p><p>Para cambiar su cuerpo le faltaba otra cosa.</p></figure>
+      <figure class="case"><img src="casos/17-anos.jpg" alt="Antes y después de un cliente joven" width="428" height="306"><p class="big">Desde los 17 años sin hacer deporte.</p><p>Ni él esperaba conseguir este cambio.</p></figure>
+      <figure class="case"><img src="casos/62-anos.jpg" alt="Antes y después de un cliente de 62 años" width="427" height="306"><p class="big">Con 62 años.</p><p>Ha conseguido lo que muchos creen imposible.</p></figure>
+      <figure class="case"><img src="casos/complejos-playa.jpg" alt="Antes y después de un cliente joven" width="428" height="304"><p class="big">Muchísimos complejos.</p><p>Evitaba ir a la playa a toda costa.</p></figure>
+      <figure class="case"><img src="casos/deportista.jpg" alt="Antes y después de un cliente deportista" width="427" height="304"><p class="big">Siempre fue deportista.</p><p>Pero su cuerpo no respondía bien.</p></figure>
+      <figure class="case"><img src="casos/ejemplo-familia.jpg" alt="Antes y después de un cliente" width="427" height="306"><p class="big">De no saber cuidarse…</p><p>…a ser un ejemplo para su familia.</p></figure>
+      <figure class="case"><img src="casos/cuidarse.jpg" alt="Antes y después de una clienta" width="427" height="307"><p class="big">De no saber cómo cuidarse…</p><p>…a transformar su físico.</p></figure>
+    </div>
+  </div>
+</section>
+
+<section id="para-quien">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Para quién es</div>
+      <h2>Esto no es para todo el mundo.</h2>
+    </div>
+    <div class="fit">
+      <div class="yes">
+        <h3>Es para ti si…</h3>
+        <ul>
+          <li>Trabajas muchas horas o con un horario roto: hostelería, turno partido, noches, varios trabajos, familia.</li>
+          <li>Lo has intentado solo y lo acabas dejando.</li>
+          <li>Quieres un cambio físico que se vea y que se mida.</li>
+          <li>Te comprometes a un minuto al día de check-in.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h3>No es para ti si…</h3>
+        <ul>
+          <li>Buscas una dieta milagro o un cambio en 30 días.</li>
+          <li>No quieres que nadie te pregunte cada día.</li>
+          <li>Quieres el plan y desaparecer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasos">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Cómo empezar</div>
+      <h2>Tres pasos.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Rellenas el formulario</h3><p>2 minutos: de qué trabajas, qué horario tienes y qué quieres cambiar.</p></div>
+      <div class="step"><span class="n">02</span><h3>Hablas con Andrés</h3><p>Si encajas, te escribimos y en 20 minutos te dice cómo sería en tu caso y qué te puede garantizar.</p></div>
+      <div class="step"><span class="n">03</span><h3>Firmas tu objetivo</h3><p>Fotos y medidas del día 1, tu plan sobre tu horario y el primer check-in esa misma noche.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulario">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:28px">
+      <div class="label">Formulario</div>
+      <h2>Aplica para tu plaza.</h2>
+      <p class="lede">Lo leemos personalmente. Si encajas, te escribimos para hablar con Andrés.</p>
+    </div>
+    <div class="form-box">
+      <div class="form-embed" id="formEmbed" hidden></div>
+      <a class="btn btn-a js-form" id="formBtn" href="https://form.jotform.com/243036271600041" target="_blank" rel="noopener">Rellena el formulario para tu gran cambio</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="read stack" style="margin-bottom:24px">
+      <div class="label">Preguntas frecuentes</div>
+      <h2>Dudas rápidas</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Qué es el check-in diario?</summary><p>Un mensaje de 1 minuto cada noche por WhatsApp: si has entrenado, cómo has comido, tus pasos y cómo has dormido. Te contesto y, si algo se tuerce, lo ajustamos ese mismo día.</p></details>
+      <details><summary>¿Qué me garantizas exactamente?</summary><p>El objetivo medible que firmamos el primer día. Si en 12 semanas cumples los requisitos (check-in, foto y medidas semanales y tus entrenos) y no llegas, sigo contigo sin coste hasta que llegues. Las condiciones completas están arriba y en el contrato.</p></details>
+      <details><summary>Trabajo a turno partido / de noche. ¿Puedo?</summary><p>Sí. El plan se monta sobre tu horario real: entrenos cortos donde caben y comida que puedes hacer en el trabajo. Varios de mis casos trabajan en hostelería y a turno partido.</p></details>
+      <details><summary>Tengo varios trabajos. No tengo tiempo.</summary><p>Hablamos de entrenos de unos 40 minutos y un minuto de check-in al día. Lo que falla casi nunca es el tiempo: es hacerlo sin nadie.</p></details>
+      <details><summary>Tengo más de 60 años. ¿Es para mí?</summary><p>Tengo clientes de 62 y 64 años que no habían entrenado nunca. Antes de empezar, el visto bueno de tu médico; después, se empieza por lo básico.</p></details>
+      <details><summary>¿Es online?</summary><p>Sí. Plan, seguimiento y revisiones a distancia, con el check-in diario por WhatsApp.</p></details>
+      <details><summary>¿Necesito gimnasio?</summary><p>Es lo ideal, pero si tu horario no lo permite, se adapta a casa.</p></details>
+      <details><summary>¿Entrenas a mujeres?</summary><p>Sí. Hombres y mujeres, de 17 a 64 años en mis casos.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del plan. Rellena el formulario y te lo explica Andrés en la llamada, junto con la garantía.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="label">El siguiente paso</div>
+    <h2>Solo no lo has conseguido. Conmigo, cada día.</h2>
+    <div class="ctas">
+      <a class="btn btn-a js-form" href="https://form.jotform.com/243036271600041" target="_blank" rel="noopener">Aplica para tu plaza</a>
+      <a class="btn btn-dark-ghost js-wa" href="#" target="_blank" rel="noopener" hidden>Escríbeme CAMBIO por WhatsApp</a>
+    </div>
+    <p class="cta-note">O escribe <b>CAMBIO</b> por privado a <a href="https://www.instagram.com/andrestrivi6/" target="_blank" rel="noopener">@andrestrivi6</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><span>© 2026 Andrés Triviño · Online coach</span><span><a href="https://www.instagram.com/andrestrivi6/" target="_blank" rel="noopener">@andrestrivi6</a></span></div>
+    <p>Este servicio no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados dependen de cada persona y de su implicación. La garantía está sujeta a las condiciones descritas y firmadas en el contrato.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta"><a class="btn btn-a js-form" href="https://form.jotform.com/243036271600041" target="_blank" rel="noopener">Aplica para tu plaza</a></div>
+<script>
+(function () {
+  var FORM = "https://form.jotform.com/243036271600041";
+  // [confirmar] Número de WhatsApp de TRABAJO en formato internacional sin "+" (ej.: 346XXXXXXXX). Nunca el personal de Andrés. Vacío = no se muestra.
+  var WA_NUMBER = "";
+  // [confirmar] URL del vídeo de presentación (YouTube/Vimeo embed). Vacío = queda el hueco.
+  var VSL_URL = "";
+  // [confirmar] URL del PDF con las condiciones de la garantía. Vacío = enlaza a las condiciones de esta página.
+  var COND_URL = "";
+  document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; });
+  if (WA_NUMBER) document.querySelectorAll(".js-wa").forEach(function (a) { a.href = "https://wa.me/" + WA_NUMBER.replace(/\D/g, "") + "?text=" + encodeURIComponent("CAMBIO"); a.hidden = false; });
+  if (COND_URL) document.querySelectorAll(".js-cond").forEach(function (a) { a.href = COND_URL; a.target = "_blank"; a.rel = "noopener"; });
+  else document.querySelectorAll(".js-cond").forEach(function (a) { a.addEventListener("click", function () { var d = document.getElementById("condiciones"); if (d) d.open = true; }); });
+  if (VSL_URL) { var box = document.getElementById("vslBox"); box.innerHTML = ""; var v = document.createElement("iframe"); v.src = VSL_URL; v.title = "Vídeo de presentación"; v.allow = "autoplay; fullscreen; picture-in-picture"; v.loading = "lazy"; box.appendChild(v); }
+  var fe = document.getElementById("formEmbed");
+  // Solo se incrusta cuando la página está publicada en su dominio; dentro del visor de Claude queda el botón.
+  if (fe && window.self === window.top && /jotform\.com\/\d+/.test(FORM)) {
+    var f = document.createElement("iframe"); f.src = FORM; f.title = "Formulario de Andrés Triviño"; f.loading = "lazy";
+    fe.appendChild(f); fe.hidden = false;
+  }
+})();
+</script>

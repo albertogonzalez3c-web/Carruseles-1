@@ -1,0 +1,246 @@
+<title>Andrés Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #f7f7f5;
+  --white: #ffffff;
+  --ink: #111111;
+  --soft: #5c5c5c;
+  --line: #dcdcda;
+  --chip: #ededeb;
+  --accent: #1d6b4f;
+  --accent-text: #175a42;
+  --accent-dark: #7fd1a8;
+  --on-dark: #cfcfcf;
+  --f-head: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 34px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; }
+h1 { font-weight: 800; font-size: clamp(38px, 6vw, 66px); line-height: .98; }
+h1 em, h2 em { font-style: normal; color: var(--accent-text); }
+h2 { font-weight: 800; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.02; }
+h3 { font-weight: 700; font-size: 20px; line-height: 1.1; }
+p { margin: 0; }
+.label { font: 500 11.5px/1.2 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 800px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 800px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 6px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--ink); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark .label { color: var(--accent-dark); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcfcf; }
+.card.dark ul.l b, .card.dark ol.l b { color: var(--white); }
+.card.accent { background: var(--accent); color: var(--white); box-shadow: none; }
+.card.accent h2, .card.accent h3 { color: var(--white); }
+.card.accent .label { color: #d6f0e3; }
+.card.accent ul.l, .card.accent ol.l { color: #ecf7f1; }
+.card.accent ul.l b, .card.accent ol.l b { color: var(--white); }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--accent); border-radius: 4px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; }
+.card.dark .say { background: #262626; color: var(--white); }
+.card.accent .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; background: var(--chip); color: var(--accent-text); }
+.card.dark .badge { background: #2a2a2a; color: var(--accent-dark); }
+.card.accent .badge { background: rgba(255,255,255,.2); color: var(--white); }
+.tblwrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 11px 12px 11px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+.tbl tr.now td { background: #e3f2ea; }
+.tbl td b { color: var(--ink); }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 4px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+
+/* Layout: la oferta de arriba abajo: Método 31/31 en 3 fases, qué incluye, por qué Andrés, garantía con condiciones, precios en orden de presentación, escalera de subida, contrato, reparto y back-end. */
+.phase .n { font: 800 52px/1 var(--f-head); color: var(--accent-text); }
+.price { font: 800 44px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.price small { font: 700 16px/1 var(--f-body); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.steps div { background: var(--chip); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+.steps b { font-size: 16px; }
+.steps span { color: var(--soft); font-size: 14.5px; }
+@media (max-width: 620px) { .steps { grid-template-columns: 1fr; } }
+
+/* Marca Andrés: Inter Tight 800 en minúscula con tracking negativo, directo y limpio. */
+h1, h2, h3 { text-transform: none; letter-spacing: -.02em; }
+h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.04; }
+h2 { font-size: clamp(23px, 3vw, 32px); line-height: 1.1; }
+h3 { font-size: 18px; line-height: 1.2; }
+.tbl td:not(:last-child) { white-space: nowrap; }
+
+/* Nicho y método (bloque común) */
+.nm { --nm-a: var(--accent, #1d6b4f); --nm-at: var(--accent-text, #175a42); display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: inset 0 0 0 2px var(--nm-a); margin: 0 0 26px; min-width: 0; }
+.nm-lab { font: 600 11.5px/1.2 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--nm-at); display: block; margin-bottom: 6px; }
+.nm-big { font-size: clamp(19px, 2.4vw, 25px); line-height: 1.3; font-weight: 800; margin: 0; color: inherit; }
+.nm-meth h3 { margin: 0 0 4px; font-size: 18px; line-height: 1.25; }
+.nm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.nm-card { background: rgba(0,0,0,.035); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.nm-card .nm-n { font: 700 12px/1 "JetBrains Mono", ui-monospace, monospace; color: var(--nm-at); }
+.nm-card b { font-size: 15.5px; line-height: 1.25; }
+.nm-card span, .nm-card p { font-size: 14px; line-height: 1.45; margin: 0; opacity: .85; }
+.nm-card p em { font-style: normal; font-weight: 700; opacity: 1; }
+.nm-nn { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
+.nm-nn > b { font-size: 14px; margin-right: 4px; }
+.nm-nn span { background: var(--nm-a); color: #fff; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; }
+.nm-proof { margin: 0; font-size: 15.5px; font-weight: 700; border-left: 4px solid var(--nm-a); padding: 4px 0 4px 12px; }
+.nm-line { margin: 6px 0 0; font-size: 14px; line-height: 1.45; border-left: 4px solid var(--nm-a, currentColor); padding: 2px 0 2px 10px; }
+@media (max-width: 760px) { .nm-grid { grid-template-columns: 1fr; } }
+
+</style>
+<div class="wrap">
+  <header class="head">
+    <span class="label">Andrés Triviño · Parte 2 · Oferta</span>
+    <h1>Método <em>31/31</em>: para los que solos no lo consiguen.</h1>
+    <p class="soft" style="font-size:18px">Para personas que trabajan muchas horas y nunca han sido constantes por su cuenta. Seguimiento cada día, un plan que cabe en su horario real y un resultado garantizado por escrito. Andrés lo tiene que poder explicar en 2 minutos en la llamada; Fran, en 2 líneas por mensaje.</p>
+  </header>
+<section class="nm" aria-label="Nicho y método"><div><span class="nm-lab">Tu nicho en una frase</span><p class="nm-big">Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito.</p></div><div class="nm-meth"><span class="nm-lab">Tu método en 30 segundos · Método 31/31 («31 de 31 días contigo») [nombre a confirmar]</span><h3>3 pilares</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Pilar 1</span><b>Seguimiento diario y cercano</b><span>Un check-in de 1 minuto cada día y respuesta mía. «Seguimiento y acompañamiento diario y cercano» no es una frase de bio: es el método. Muchos de mis casos pensaban que solo necesitaban una rutina.</span></div><div class="nm-card"><span class="nm-n">Pilar 2</span><b>Un plan que cabe en tu horario real</b><span>Entreno y comida montados sobre tu turno, no sobre el ideal. Bryan Torres, padre y camarero a turno partido; una madre a turno partido; alguien con varios trabajos y sin descanso.</span></div><div class="nm-card"><span class="nm-n">Pilar 3</span><b>Resultados garantizados por escrito</b><span>El día 1 pactamos un objetivo medible. Si cumples tu parte y no llega, sigo contigo gratis. «Trabajo con garantía de resultados», con condiciones firmadas.</span></div></div><h3 style="margin-top:14px">3 fases</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">Fase 1 · Semanas 1–4</span><b>Arrancar</b><p><em>Qué pasa:</em> Se acaba el «empiezo el lunes». Las primeras 4 semanas seguidas sin desaparecer.</p><p><em>Qué haces tú:</em> Check-in diario, entrenos pactados con tu turno, foto y medidas del día 1.</p></div><div class="nm-card"><span class="nm-n">Fase 2 · Semanas 5–12</span><b>Transformar</b><p><em>Qué pasa:</em> El cambio se ve en fotos y medidas. En la semana 12 medimos la garantía.</p><p><em>Qué haces tú:</em> Subes cargas, ajustamos la comida a tu horario y revisamos cada semana.</p></div><div class="nm-card"><span class="nm-n">Fase 3 · Meses 4–6</span><b>Sostener</b><p><em>Qué pasa:</em> Lo mantienes cuando cambia el turno, en vacaciones o en temporada alta.</p><p><em>Qué haces tú:</em> Sigues con el check-in diario, pero cada vez decides tú más.</p></div></div><h3 style="margin-top:14px">3 no negociables</h3><div class="nm-grid"><div class="nm-card"><span class="nm-n">No negociable 1</span><b>Check-in diario (1 minuto)</b><p><em>Por qué:</em> Lo que se reporta cada día no se abandona. Es el 31 de 31.</p></div><div class="nm-card"><span class="nm-n">No negociable 2</span><b>Foto y medidas cada semana</b><p><em>Por qué:</em> Sin datos no hay ajustes ni garantía.</p></div><div class="nm-card"><span class="nm-n">No negociable 3</span><b>Entrenos pactados hechos (mínimo 80 %)</b><p><em>Por qué:</em> El plan se ajusta a tu horario: por eso el horario deja de ser excusa.</p></div></div></div><p class="nm-proof">Prueba: «+300 cambios» [cifra a unificar] · casos de 17 a 64 años, hombres y mujeres · «22 kg perdidos en 6 meses: Bryan Torres, padre de familia y camarero a turno partido».</p><p class="nm-line">Para los que solos no lo consiguen: alguien encima cada día y un resultado garantizado por escrito. Las 3 no negociables son, a la vez, las condiciones de la garantía.</p></section>
+
+  <section class="sec" aria-labelledby="h-fases">
+    <header><span class="label">El método</span><h2 id="h-fases">Tres fases. La garantía se mide en la semana 12.</h2></header>
+    <div class="g3">
+      <article class="card phase"><span class="n">01</span><h3>Arrancar · semanas 1–4</h3><p class="soft">Llamada de inicio: objetivo medible por escrito, fotos y medidas del día 1 y el plan montado sobre su turno. Desde el día 1, check-in diario de 1 minuto. Objetivo: 4 semanas seguidas sin desaparecer.</p></article>
+      <article class="card phase"><span class="n">02</span><h3>Transformar · semanas 5–12</h3><p class="soft">Cargas que suben, comida ajustada a su horario (también el turno partido) y revisión semanal con foto y medidas. En la semana 12 se compara con el objetivo pactado: aquí se mide la garantía.</p></article>
+      <article class="card phase"><span class="n">03</span><h3>Sostener · meses 4–6</h3><p class="soft">Mantenerlo cuando cambia el turno, en vacaciones o en temporada alta. El seguimiento sigue siendo diario, pero el cliente decide cada vez más solo. Sale sabiendo hacerlo.</p></article>
+    </div>
+    <div class="card chip">
+      <h3>Qué incluye</h3>
+      <ul class="l">
+        <li><b>Check-in diario (31 de 31):</b> 1 minuto al día (entreno hecho, comida, pasos y sueño) y respuesta de Andrés. Es lo que le diferencia.</li>
+        <li><b>Plan de entreno</b> para los días y horas que el cliente tiene de verdad (turno partido, noches, varios trabajos), en gimnasio o en casa.</li>
+        <li><b>Pautas de comida</b> que encajan con su horario: comer fuera de casa, en el trabajo, a deshoras.</li>
+        <li><b>Revisión semanal</b> con foto y medidas, y ajustes.</li>
+        <li><b>Garantía de resultados por escrito</b> (abajo, con sus condiciones).</li>
+        <li><b>Soporte por WhatsApp</b> en horario fijo y por escrito (nada de "24 horas").</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card dark" aria-labelledby="h-porque">
+    <span class="label">Por qué Andrés</span>
+    <h2 id="h-porque">Porque tiene cientos de cambios de gente que no tenía tiempo.</h2>
+    <ul class="l">
+      <li><b>Volumen de prueba:</b> "+300 cambios" en la bio (cifra a unificar) y una plantilla de casos llena: de 17 a 64 años, hombres y mujeres.</li>
+      <li><b>Justo tu cliente:</b> Bryan Torres, padre y camarero a turno partido, 22 kg en 6 meses; una madre a turno partido; alguien con varios trabajos y sin descanso; dos personas de 62 y 64 años que no habían entrenado nunca.</li>
+      <li><b>Un mecanismo que casi nadie da:</b> seguimiento diario y garantía. La mayoría revisa una vez a la semana y no garantiza nada.</li>
+      <li><b>Sé honesto con esto:</b> todavía no tenemos tu historia personal. Hasta tenerla, vendes tus casos y tu método, no una historia que no hemos escrito.</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="h-gar">
+    <header><span class="label">Garantía · propuesta para dejar por escrito</span><h2 id="h-gar">La garantía es tu mejor argumento. Solo si está bien atada.</h2><p class="soft">En España la publicidad tiene que ser veraz y una garantía comercial tiene que cumplirse y entregarse por escrito. Bien hecha, juega a tu favor: quita el miedo a pagar y además obliga al cliente a cumplir los no negociables. <b>Revísala con un asesor antes de anunciarla.</b></p></header>
+    <div class="g2">
+      <div class="card accent">
+        <span class="label">Lo que se dice (llamada, landing, mensajes)</span>
+        <h3>"Si cumples tu parte durante 12 semanas y no llegas al objetivo que pactamos el día 1, sigo contigo gratis hasta que llegue."</h3>
+        <p style="font-size:14.5px">Alternativa si Andrés lo prefiere: "…te devuelvo lo que pagaste por ese trimestre". <b>Elige una de las dos y no la cambies.</b></p>
+      </div>
+      <div class="card">
+        <span class="label">Condiciones (documento firmado al empezar)</span>
+        <ul class="l">
+          <li><b>Qué se garantiza:</b> el objetivo medible pactado por escrito en la llamada de inicio (cintura, peso o fotos comparables), realista y fijado por Andrés tras evaluar al cliente.</li>
+          <li><b>Plazo:</b> 12 semanas desde el día 1 (fin de la fase Transformar).</li>
+          <li><b>Requisitos:</b> check-in diario al menos el 90 % de los días (76 de 84), foto y medidas las 12 semanas, al menos el 80 % de los entrenos pactados y seguir las pautas de comida.</li>
+          <li><b>Si no se cumple el objetivo cumpliendo los requisitos:</b> meses extra gratis hasta conseguirlo (máximo 3) <b>o</b> devolución del trimestre.</li>
+          <li><b>Se congela</b> el plazo por enfermedad, lesión o embarazo.</li>
+          <li><b>No aplica</b> si no se cumplen los requisitos (el propio check-in lo registra) ni a objetivos no medibles.</li>
+          <li><b>Enlace a estas condiciones</b> desde la landing y en el contrato.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="say">"Te lo garantizo por escrito porque sé lo que pasa cuando alguien cumple: lo he visto cientos de veces. Lo que te pido son tres cosas: tu check-in cada día, tu foto y medidas cada semana y tus entrenos. Si haces eso y no llegas, el que paga soy yo."</div>
+  </section>
+
+  <section class="g2" aria-label="Lo que nunca prometes y cifras">
+    <div class="card">
+      <span class="label">Lo que nunca prometes</span>
+      <ul class="l">
+        <li><b>Kilos concretos en público:</b> el objetivo se pacta caso a caso, en privado y por escrito.</li>
+        <li><b>"Garantía" sin condiciones:</b> siempre con su enlace o su explicación.</li>
+        <li><b>Disponible 24 horas:</b> el seguimiento es diario, pero con horario de respuesta.</li>
+        <li><b>Nada médico:</b> en clientes de 60 o más, o con patologías, primero el médico. Tú trabajas hábitos y entreno.</li>
+      </ul>
+    </div>
+    <div class="card chip">
+      <span class="label">Cifras · antes de usarlas</span>
+      <ul class="l">
+        <li><b>"+300 cambios" y "+100 lives changed"</b> no pueden convivir. Una sola cifra, la que puedas demostrar con una lista de clientes y fechas.</li>
+        <li><b>"22 kg en 6 meses"</b> de Bryan Torres: ya lo publicaste; para web y anuncios, su permiso por escrito.</li>
+        <li><b>Antes/después:</b> en orgánico sí (con permiso); en anuncios, nunca.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-precios">
+    <header><span class="label">Precios · propuesta para confirmar con Alberto y Andrés</span><h2 id="h-precios">El semestre es el que se vende.</h2><p class="soft">Mínimo trimestral (es lo que cubre la garantía de 12 semanas) y el semestre como el plan normal: las 3 fases. Nada de mensualidades sueltas. El precio va en la llamada con Andrés, nunca por mensaje: Fran responde "depende de tu caso, te lo explica Andrés en la llamada".</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">1 · Se ofrece primero</span><h3>Semestre</h3><p class="price">500 €</p><p class="soft">Las 3 fases completas y la garantía. El plan normal.</p></article>
+      <article class="card dark"><span class="badge">2 · El mejor valor</span><h3>Año</h3><p class="price">850 €</p><p class="soft">Las 3 fases y 6 meses más de seguimiento diario. Solo 350 € más.</p></article>
+      <article class="card"><span class="badge">3 · Si es por liquidez</span><h3>Semestre en 2 pagos</h3><p class="price">2 × 265 €</p><p class="soft">Paga algo más por fraccionar. Nunca bajes el precio.</p></article>
+      <article class="card chip"><span class="badge">4 · Último recurso</span><h3>Trimestre</h3><p class="price">300 €</p><p class="soft">Arrancar y Transformar, con garantía. Nunca como primera opción.</p></article>
+    </div>
+    <div class="say">"Lo normal es hacerlo en seis meses, las tres fases, con la garantía: son 500 €. Si lo quieres para el año entero, son 850 €. ¿Cuál encaja contigo?" Y te callas.</div>
+    <div class="card tblwrap">
+      <h3>Escalera de subida: cada venta cerrada, +20 %</h3>
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Trimestre</th><th>Semestre</th><th>Año</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr class="now"><td>Nivel 0</td><td>300 €</td><td>500 €</td><td>850 €</td><td>Ahora (si tu precio actual es otro, dínoslo)</td></tr>
+          <tr><td>Nivel 1</td><td>360 €</td><td>600 €</td><td>1.020 €</td><td>Tras la siguiente venta</td></tr>
+          <tr><td>Nivel 2</td><td>430 €</td><td>720 €</td><td>1.225 €</td><td>Tras la siguiente</td></tr>
+          <tr><td>Nivel 3 · máximo</td><td>520 €</td><td>865 €</td><td>1.470 €</td><td>Y ahí te quedas</td></tr>
+        </tbody>
+      </table>
+      <p class="soft" style="font-size:14px">Los precios nunca bajan. El nivel actual está en el CRM (pestaña Clientes) y lo ven los dos. Si una semana no se cierra, no es el precio: es el número de conversaciones de Fran.</p>
+    </div>
+  </section>
+
+  <section class="g2" aria-label="Contrato y reparto">
+    <div class="card">
+      <span class="label">Contrato · firma antes de empezar</span>
+      <ul class="l">
+        <li>Qué se entrega, duración, pagos y <b>condiciones de la garantía</b> (las de arriba).</li>
+        <li>Objetivo medible pactado y firmado en la llamada de inicio.</li>
+        <li>Horario de respuesta del seguimiento diario.</li>
+        <li>Consentimiento de datos de salud y, aparte, de imagen (fotos y vídeo para redes, web y anuncios).</li>
+        <li><b>14 días de desistimiento:</b> el cliente pide empezar ya y acepta pagar la parte prestada si se echa atrás.</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <span class="label">Quién hace qué en la venta</span>
+      <ul class="l">
+        <li><b>Fran:</b> abre conversaciones, cualifica y agenda la llamada con Andrés. Nunca da precio.</li>
+        <li><b>Andrés:</b> hace la llamada de cierre (guion en la parte 6), cobra y firma la garantía.</li>
+        <li><b>Los dos:</b> todo apuntado en el CRM con su responsable. Cada venta sube el nivel de precios.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-back">
+    <header><span class="label">Back-end · en su momento dulce</span><h2 id="h-back">Cuando vea el cambio, le ofreces seguir.</h2><p class="soft">Señales: la foto de la semana 8–10 impacta, alguien del trabajo le pregunta qué hace, o dice "esto es lo primero que no dejo".</p></header>
+    <div class="g4">
+      <article class="card"><span class="badge">Ascensión</span><h3>Subir de plan</h3><p class="soft">Trimestre → semestre pagando la diferencia; semestre → año igual.</p></article>
+      <article class="card"><span class="badge">Renovación anticipada</span><h3>Antes de acabar</h3><p class="soft">Nunca al final. Con fecha límite y precio congelado.</p></article>
+      <article class="card"><span class="badge">Continuidad</span><h3>Seguimiento ligero</h3><p class="soft">Check-in semanal y plan actualizado (precio a decidir).</p></article>
+      <article class="card"><span class="badge">Referidos</span><h3>Trae a tu compañero de turno</h3><p class="soft">Si entra, un mes gratis. En hostelería y a turnos, todos conocen a alguien igual.</p></article>
+    </div>
+  </section>
+</div>
