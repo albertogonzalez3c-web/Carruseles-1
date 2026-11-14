@@ -40,27 +40,34 @@ Fuentes: `capturas/perfil-ig.png` y `capturas/casos-grid.png`. **No hay cuestion
 ## Lo diferencial (de su propio perfil)
 1. **Garantía de resultados** ("Trabajo con garantía de resultados").
 2. **Seguimiento diario y cercano** ("Seguimiento y acompañamiento diario y cercano" + destacada "31/31").
-3. **Volumen de prueba**: "+300 cambios" / "+100 lives changed", casos de 17 a 64 años, hombres y mujeres, hostelería, turno partido, varios trabajos.
+3. **Volumen de prueba**: **+300 cambios** (confirmado; el fijado "+100 lives changed" sobra), casos de 17 a 64 años, hombres y mujeres, hostelería, turno partido, varios trabajos.
 4. El hilo común de sus titulares: **solos no lo conseguían** ("Pensaba que solo necesitaba una rutina", "el estrés y la constancia se lo ponían difícil", "Ya entrenaba pero no lo conseguía", "No sabía cómo entrenar", "Necesitaba información, más estructura").
 
-## Nicho (propuesta)
+## Nicho (decisión)
 **Frase exacta (idéntica en todas las páginas):**
-> Personas que trabajan muchas horas y nunca han sido constantes por su cuenta: cambio físico con seguimiento diario y garantía de resultados por escrito.
+> Personas que trabajan en hostelería o a turno partido y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito.
 
-**Por qué este y no otro**
-- No define al cliente por edad ni por sexo (sus casos van de 17 a 64 años, hombres y mujeres): lo define por **un problema que todos sus casos comparten** (solos no son constantes) y por **el mecanismo que solo Andrés vende** (alguien encima cada día + garantía). Eso no lo tiene ningún otro cliente de Alberto.
-- Encaja con su bio actual sin romperla: "garantía de resultados" y "seguimiento diario" ya están ahí. Solo hay que decir para quién.
-- Sus titulares ya son ángulos de este nicho: cada caso es una voz en off.
-- "Trabajan muchas horas" recoge hostelería, turno partido y varios trabajos sin quedarse en "turnos" (Gerard).
+**En 3 segundos:** "Para los que trabajan en hostelería o a turno partido y solos siempre lo dejan." Un camarero, una cocinera, una dependienta o una madre con el día partido en dos se ve reflejada al leerlo.
 
-**Alternativas descartadas**
-- *Hombres a turnos / hostelería*: lo tiene Gerard (hombres 20–40 a turnos) y deja fuera a la mitad de sus casos (mujeres, +60).
-- *+60 que creen que es tarde*: sus dos casos de 62 y 64 son potentes, pero es un mercado pequeño en Instagram y pisa a "hombres 40–50 que creen que es tarde". Se queda como **ángulo**, no como nicho.
-- *Madres con turno partido*: pisa "mujeres con turnos/familia que empiezan y lo dejan".
-- *+30 que siempre rebotan / recomposición*: lo tiene Álvaro.
-- *"Garantía de resultados" a secas*: es un mecanismo, no un cliente; sin el "para quién" atrae a todo el mundo y a nadie.
+### Los 5 candidatos comparados
+Mecanismo diferencial de Andrés en todos: **garantía de resultados + seguimiento diario (31/31) + más de 300 cambios de 17 a 64 años**.
 
-**Cómo se dice en corto**: "Para los que solos no lo consiguen." · Palabra clave: **CAMBIO** (enlaza con "TU GRAN CAMBIO" de su bio).
+| # | Para quién | Dolor concreto | ¿Encaja el mecanismo? | ¿Pisa a otro cliente de Alberto? | Prueba propia | Veredicto |
+|---|---|---|---|---|---|---|
+| 1 | Personas que trabajan muchas horas y solas no son constantes | "Llego reventado y lo dejo" | Sí | **Sí**: +30 jornada completa <5 h/semana; +30 jornadas 8–12 h (Álvaro); +30 sobrepeso jornadas largas | Muchos casos, pero genérico | Descartado: demasiado amplio, nadie se ve en "muchas horas" |
+| 2 | **Hostelería y turno partido (hombres y mujeres, cualquier edad) que solos siempre lo dejan** | "Con el turno partido es imposible"; comer en el bar; el hueco del mediodía; picar en el turno; temporada alta | **Sí, es donde más brilla**: el seguimiento diario resuelve el horario cambiante y la garantía quita el "ya pagué y no funcionó" | Roza a Gerard (hombres 20–40 **a turnos**), pero no lo pisa: Gerard = turnos rotativos/noche, hombres jóvenes; aquí = turno partido y hostelería, hombres y mujeres de 17 a 64, y otro mecanismo | **Bryan Torres** (padre, camarero a turno partido, 22 kg en 6 meses), "Es madre, trabaja turno partido", "Varios trabajos y sin descanso" | **Elegido** |
+| 3 | +55 que nunca han entrenado | "A mi edad ya no" | Sí | Sí: hombres 40–50 que creen que es tarde; +25 que creen que es imposible | 62 y 64 años | Descartado como nicho (mercado pequeño en Instagram); se queda como ángulo |
+| 4 | Los que empiezan cada lunes y lo dejan, con garantía | "Siempre lo dejo" | Sí | Sí: mujeres con turnos/familia que empiezan y lo dejan | Muchos titulares | Descartado: es un dolor, no una persona; se queda como idea central ("no te falta una rutina, te falta alguien encima") |
+| 5 | Los que ya pagaron a un entrenador y no funcionó (desconfiados) | "Me mandó un PDF y desapareció" | Sí (garantía) | No directamente | Difícil de demostrar | Descartado: no se ve en un perfil ni se busca en frío; se queda como objeción y ángulo de anuncio |
+
+### Por qué gana el 2
+- **Se entiende en 3 segundos y se reconoce uno mismo**: "hostelería" y "turno partido" son oficios y horarios concretos, muy españoles; "muchas horas" no lo es.
+- **Es donde su mecanismo es imprescindible**: con turno partido el plan se rompe cada semana; un check-in diario que lo ajusta ese mismo día es justo lo que falta, y la garantía hace de puente con alguien que ya ha fallado sola.
+- **Ya tiene la prueba**: su fijado de Bryan Torres es literalmente el nicho en una imagen; la madre a turno partido y "varios trabajos" lo refuerzan. Los demás casos (62, 64, 17 años…) siguen sirviendo como prueba de volumen (+300).
+- **Fran lo puede prospectar en frío**: camareros, cocineros y encargados se identifican por su perfil (bio, fotos, cuentas de hostelería de la zona). Con "muchas horas" no hay a quién buscar.
+- **No pisa a nadie** si se cumple una regla: **nunca decir "a turnos" a secas** (eso es de Gerard); siempre "hostelería" o "turno partido".
+
+**Palabra clave:** CAMBIO (de su bio, "TU GRAN CAMBIO"). **Idea central:** "No te falta una rutina. Te falta alguien encima."
 
 ## Método (propuesta, [confirmar nombre con Andrés])
 **Método 31/31** ("31 de 31 días contigo"): sale de su destacada "31/31" **[confirmar qué significa para él; si es otra cosa, el nombre se cambia]**.
@@ -81,7 +88,7 @@ Fuentes: `capturas/perfil-ig.png` y `capturas/casos-grid.png`. **No hay cuestion
 3. **Entrenos pactados hechos (mínimo 80 %)**: el plan se ajusta a tu horario, por eso el horario deja de ser excusa.
 
 ## Cliente ideal (deducido de sus casos, [confirmar con Andrés])
-- Trabaja muchas horas o con horario roto (hostelería, turno partido, varios trabajos, madre/padre que trabaja).
+- Trabaja en hostelería o a turno partido (camarero, cocinera, dependienta, encargado; también madre/padre con el día partido y gente con varios trabajos).
 - Lo ha intentado solo: rutina de internet, gimnasio por su cuenta, "ya entrenaba pero no lo conseguía".
 - Sabe más o menos qué hacer, pero no lo sostiene. Necesita que alguien le pregunte cada día.
 - Quiere un resultado concreto y le da miedo pagar y que no funcione: **la garantía le quita ese miedo**.
@@ -96,7 +103,7 @@ Fuentes: `capturas/perfil-ig.png` y `capturas/casos-grid.png`. **No hay cuestion
   - **Si no se cumple el objetivo cumpliendo los requisitos**: Andrés sigue gratis mes a mes hasta conseguirlo (máximo 3 meses) **o** devolución del importe de ese trimestre. **[Andrés elige una de las dos y no se cambia.]**
   - Documento de condiciones en PDF, firmado al empezar y **enlazado desde la landing** (URL [confirmar]).
   - **[confirmar con un asesor]** antes de anunciarla en Meta.
-- **"+300 cambios" (bio) frente a "+100 lives changed" (fijado)**: se contradicen. Unificar en **una sola cifra que se pueda demostrar** (lista de clientes con fecha) y usarla igual en bio, landing, anuncios y llamadas. Mientras no se confirme: "más de 100 cambios" **[confirmar]**.
+- **Cifra: +300 cambios (confirmada por Alberto).** Se usa igual en bio, landing, contenido, anuncios y llamadas. Quitar o retocar el fijado "CLIENTS WINS +100 lives changed", que contradice la bio. Conviene tener la lista de clientes con fecha por si alguien lo cuestiona.
 - **Imágenes de clientes**: ya están publicadas por él, pero para **anuncios** y la **landing** pedir permiso expreso por escrito (captura del "sí"). Bryan Torres sale con nombre: confirmar que está de acuerdo en la web.
 - **Anuncios**: sin antes/después, normas de Meta (nunca "¿tienes…?", ni atribuir rasgos físicos o de salud a quien lo ve; primera persona o "la mayoría"). Público: España, +25.
 - **Mensajes en frío de Fran**: desde la cuenta de Andrés o la suya, a ritmo humano (2 rondas de 50, con pausas, variantes, sin copiar y pegar idéntico), nada de automatizaciones de envío masivo. Si escribe desde la cuenta de Andrés, se presenta como Fran en cuanto la conversación avanza.
@@ -110,7 +117,7 @@ Fuentes: `capturas/perfil-ig.png` y `capturas/casos-grid.png`. **No hay cuestion
 
 ## Contradicciones y cosas a confirmar
 1. Qué es la destacada "31/31" (y si podemos llamar así al método).
-2. Cifra única de cambios (+300 frente a +100) y prueba que la respalde.
+2. Quitar el fijado "+100 lives changed" (la cifra confirmada es +300).
 3. Garantía: qué opción elige (seguir gratis o devolver) y si hoy tiene condiciones por escrito.
 4. Toda su historia personal (edad, cambio propio, formación, años de experiencia).
 5. Permisos de imagen por escrito para landing y anuncios; en particular Bryan Torres y los de 62 y 64 años.
