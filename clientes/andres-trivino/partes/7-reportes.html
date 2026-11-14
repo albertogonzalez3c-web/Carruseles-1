@@ -136,7 +136,7 @@ h1 { letter-spacing: -.025em !important; }
   <header class="head">
     <span class="label">Andrés Triviño · Andrés y Fran · Reporte para Alberto</span>
     <h1>Los números de los dos, cada día y cada semana.</h1>
-    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Nicho: Personas que trabajan en hostelería o a turno partido y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito. · Método 31/31: arrancar, transformar, sostener.</p>
+    <p class="nm-line" style="margin:0;font-size:14.5px;font-weight:600;border-left:3px solid currentColor;padding-left:10px;opacity:.85">Nicho: Personas que trabajan todo el día y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito. · Método 31/31: arrancar, transformar, sostener.</p>
     <p class="soft">Cada noche, 3 minutos: Fran apunta sus mensajes y conversaciones; Andrés, sus llamadas, ventas y lo que ha publicado. El domingo, la semana. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo, lo que se corrige mañana.</p>
     <div class="bar">
       <label for="fecha">Día<input type="date" id="fecha"></label>
@@ -198,7 +198,7 @@ h1 { letter-spacing: -.025em !important; }
 
         <div class="grp">
           <div class="gh">Nota del día <small>opcional</small></div>
-          <label class="fld">Una frase (lo que salió y lo que no)<textarea data-d="nota" placeholder="Ej.: 2 llamadas agendadas de hostelería; la ronda 2 la hizo Fran por la noche"></textarea></label>
+          <label class="fld">Una frase (lo que salió y lo que no)<textarea data-d="nota" placeholder="Ej.: 2 llamadas agendadas de gente de oficina; la ronda 2 la hizo Fran por la noche"></textarea></label>
         </div>
         <span class="saved" id="sv-dia"></span>
       </form>
@@ -281,7 +281,7 @@ h1 { letter-spacing: -.025em !important; }
 
         <div class="grp">
           <div class="gh">Para la revisión</div>
-          <label class="fld">Victorias de la semana<textarea data-s="victorias" placeholder="Ej.: 600 mensajes de Fran; 2 ventas; el trial reel de turno partido a 3.000 vistas"></textarea></label>
+          <label class="fld">Victorias de la semana<textarea data-s="victorias" placeholder="Ej.: 600 mensajes de Fran; 2 ventas; el trial reel de «trabajas todo el día» a 3.000 vistas"></textarea></label>
           <label class="fld">Bloqueos: qué ha fallado y por qué<textarea data-s="bloqueos" placeholder="Ej.: el domingo no hubo grabación por trabajo"></textarea></label>
           <label class="fld">Dudas para la revisión<textarea data-s="dudas"></textarea></label>
           <div class="nums">
@@ -430,7 +430,7 @@ h1 { letter-spacing: -.025em !important; }
         '<label>Importe cobrado hoy (€)<input data-k="importe" type="number" min="0" step="0.01" inputmode="decimal" value="' + esc(c.importe) + '" placeholder="0"></label>' +
         '<label>Plan<select data-k="plan">' + opt(PLANES, c.plan) + '</select></label>' +
         '<label>Pago<select data-k="pago">' + opt(PAGOS, c.pago) + '</select></label>' +
-        '<label class="full">De dónde vino (origen y quién lo abrió)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: Fran, frío hostelería; turno partido; la garantía le convenció"></label></div>';
+        '<label class="full">De dónde vino (origen y quién lo abrió)<input data-k="como" value="' + esc(c.como) + '" placeholder="Ej.: Fran, frío autónomos; trabaja todo el día; la garantía le convenció"></label></div>';
       row.querySelectorAll("select").forEach(function (s) { if (!c[s.dataset.k]) c[s.dataset.k] = s.value; });
       row.querySelectorAll("[data-k]").forEach(function (inp) {
         var h = function () { if (c[inp.dataset.k] === inp.value) return; c[inp.dataset.k] = inp.value; saveDay(); update(); };

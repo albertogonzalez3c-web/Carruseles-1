@@ -273,7 +273,7 @@ h1, h2 { letter-spacing: -.02em; }
       <label class="f">Nombre<input id="n-nombre" required placeholder="Nombre"></label>
       <label class="f">Origen<select id="n-origen"></select></label>
       <label class="f">Responsable<select id="n-resp"><option>Fran</option><option>Andrés</option></select></label>
-      <label class="f two">De qué trabaja, horario y qué quiere<input id="n-obj" placeholder="Ej.: camarero a turno partido, quiere perder barriga, lo ha dejado 3 veces"></label>
+      <label class="f two">De qué trabaja, horario y qué quiere<input id="n-obj" placeholder="Ej.: oficina de 8 a 7, quiere perder barriga, lo ha dejado 3 veces"></label>
       <label class="f">Teléfono (opcional)<input id="n-tel" inputmode="tel" placeholder="+34 …"></label>
       <button class="btn" type="submit" id="addBtn">Añadir</button>
     </form>
@@ -301,7 +301,7 @@ h1, h2 { letter-spacing: -.02em; }
       <div class="msg"><b>Formularios de Jotform que no acabaron en llamada</b><p id="reMsg1">¡Hola, [Nombre]! Soy Fran, del equipo de Andrés Triviño. Hace un tiempo rellenaste el formulario para tu cambio y no llegamos a hablar. ¿Sigue en pie? Andrés ahora trabaja con seguimiento diario y garantía de resultados por escrito, y tiene un par de huecos esta semana para una llamada de 20 minutos.</p><button type="button" class="btn small ghost" data-copy-id="reMsg1">Copiar</button></div>
       <div class="msg"><b>Antiguos clientes · 1 · ¿Cómo vas?</b><p id="reMsg2">¡[Nombre]! ¿Cómo estás? Andrés se ha acordado de ti viendo tu antes y después. ¿Cómo lo llevas? ¿Has podido mantenerlo con el trabajo?</p><button type="button" class="btn small ghost" data-copy-id="reMsg2">Copiar</button></div>
       <div class="msg"><b>2 · Testimonio y permiso de fotos</b><p id="reMsg3">Te queríamos pedir un favor: ¿nos grabarías un vídeo de 30 segundos (o unas líneas) contando cómo estabas, qué cambió y qué te ayudó más? Y si nos dejas usar tus fotos de antes y después en la web y en anuncios, genial. Si prefieres sin cara o sin nombre, también vale.</p><button type="button" class="btn small ghost" data-copy-id="reMsg3">Copiar</button></div>
-      <div class="msg"><b>3 · Referidos</b><p id="reMsg4">Una cosa más: si conoces a alguien que esté como estabas tú al empezar (muchas horas de trabajo y sin ser constante), pásale el contacto de Andrés. Si entra, te regalamos un mes de seguimiento.</p><button type="button" class="btn small ghost" data-copy-id="reMsg4">Copiar</button></div>
+      <div class="msg"><b>3 · Referidos</b><p id="reMsg4">Una cosa más: si conoces a alguien que esté como estabas tú al empezar (trabajando todo el día y sin ser constante), pásale el contacto de Andrés. Si entra, te regalamos un mes de seguimiento.</p><button type="button" class="btn small ghost" data-copy-id="reMsg4">Copiar</button></div>
       <p class="soft" style="font-size:13px">Cada uno que responda: apúntalo arriba con origen "Formulario" o "Antiguo cliente". Guarda los permisos por escrito (captura del "sí").</p>
     </div>
   </section>
@@ -337,7 +337,7 @@ h1, h2 { letter-spacing: -.02em; }
       <div>
         <span class="label">Proceso completo</span>
         <h2 id="h-guion" style="margin-top:6px">De un mensaje de Fran a una llamada de Andrés.</h2>
-        <p class="soft" style="margin-top:6px"><b>Nicho:</b> Personas que trabajan en hostelería o a turno partido y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito.</p>
+        <p class="soft" style="margin-top:6px"><b>Nicho:</b> Personas que trabajan todo el día y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito.</p>
         <p class="soft" style="margin-top:6px">Fran abre 100 conversaciones al día en 2 rondas de 50 (primero interacción, luego frío) y las suma en el contador. Cada persona que responde entra aquí con su origen y su responsable. Lo que no está en el CRM, no existe.</p>
       </div>
       <div class="flow">
@@ -730,7 +730,7 @@ h1, h2 { letter-spacing: -.02em; }
     h += '<div class="card"><div class="fields">' +
       '<label class="f">Teléfono<input data-f="telefono" value="' + esc(l.telefono) + '"></label>' +
       '<label class="f">Instagram<input data-f="ig" value="' + esc(l.ig) + '"></label>' +
-      '<label class="f full">Trabajo y horario<input data-f="trabajo" value="' + esc(l.trabajo) + '" placeholder="Camarero a turno partido, madre con jornada completa…"></label>' +
+      '<label class="f full">Trabajo y horario<input data-f="trabajo" value="' + esc(l.trabajo) + '" placeholder="Oficina todo el día, autónomo, madre con jornada completa…"></label>' +
       '<label class="f full">Qué quiere / lo que contó<input data-f="objetivo" value="' + esc(l.objetivo) + '"></label>' +
       '<label class="f full">Notas (frases literales suyas)<textarea data-f="notas">' + esc(l.notas) + '</textarea></label></div></div>';
     h += '<div class="card"><div class="phone-line" style="justify-content:space-between"><b>Contactos (' + (l.toques || []).length + ')</b><span class="phone-line"><select id="toqueCanal" style="width:auto">' + CANALES.map(function (x) { return '<option>' + x + '</option>'; }).join("") + '</select><button type="button" class="btn small" id="addToque">Registrar</button></span></div>' +
