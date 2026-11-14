@@ -32,7 +32,7 @@ Fuentes: `capturas/perfil-ig.png` y `capturas/casos-grid.png`. **No hay cuestion
   10. "Varios trabajos y sin descanso. No sabía cómo entrenar."
   11. "64 años y con vida sedentaria. No había entrenado nunca."
   12. "Con 62 años ha conseguido lo que muchos creen imposible."
-- Por las fotos: hombres y mujeres, de muy jóvenes a más de 60, pérdida de grasa, recomposición y algún caso de ganar peso. Muchos trabajos exigentes (hostelería, turno partido, varios trabajos, madre trabajadora).
+- Por las fotos: hombres y mujeres, de muy jóvenes a más de 60, pérdida de grasa, recomposición y algún caso de ganar peso. Casi todos trabajan todo el día (un padre camarero, una madre trabajadora, alguien con varios trabajos).
 
 ## Historia personal de Andrés
 **[confirmar todo]**: edad, de dónde es, desde cuándo entrena, cómo empezó como entrenador, su propio cambio físico, titulación, desde cuándo trabaja online, cuántos clientes activos tiene, qué significa exactamente la destacada "31/31", qué es "MI TRABAJO". No usar nada de su vida en contenido hasta tenerlo por escrito. Mientras tanto, **su prueba son sus clientes** (que es justo lo que más tiene) y su mecanismo (seguimiento diario + garantía).
@@ -40,32 +40,33 @@ Fuentes: `capturas/perfil-ig.png` y `capturas/casos-grid.png`. **No hay cuestion
 ## Lo diferencial (de su propio perfil)
 1. **Garantía de resultados** ("Trabajo con garantía de resultados").
 2. **Seguimiento diario y cercano** ("Seguimiento y acompañamiento diario y cercano" + destacada "31/31").
-3. **Volumen de prueba**: **+300 cambios** (confirmado; el fijado "+100 lives changed" sobra), casos de 17 a 64 años, hombres y mujeres, hostelería, turno partido, varios trabajos.
+3. **Volumen de prueba**: **+300 cambios** (confirmado; el fijado "+100 lives changed" sobra), casos de 17 a 64 años, hombres y mujeres, casi todos trabajando todo el día.
 4. El hilo común de sus titulares: **solos no lo conseguían** ("Pensaba que solo necesitaba una rutina", "el estrés y la constancia se lo ponían difícil", "Ya entrenaba pero no lo conseguía", "No sabía cómo entrenar", "Necesitaba información, más estructura").
 
 ## Nicho (decisión)
 **Frase exacta (idéntica en todas las páginas):**
-> Personas que trabajan en hostelería o a turno partido y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito.
+> Personas que trabajan todo el día y solas nunca han sido constantes: cambio físico con seguimiento diario y garantía de resultados por escrito.
 
-**En 3 segundos:** "Para los que trabajan en hostelería o a turno partido y solos siempre lo dejan." Un camarero, una cocinera, una dependienta o una madre con el día partido en dos se ve reflejada al leerlo.
+**En 3 segundos:** "Para los que trabajan todo el día y solos siempre lo dejan." Quien sale de casa a las 8 y vuelve a las 8 (oficina, comercio, su negocio, varios trabajos, críos al llegar) se ve reflejado al leerlo.
+
+**Nota del cambio (Alberto):** "No pongas hostelería para Andrés, sino 'trabajas todo el día'." Antes el nicho era "hostelería o turno partido". Ya no es el eje: los casos reales de Bryan Torres ("padre de familia y camarero a turno partido") y "Es madre, trabaja turno partido" se mantienen con su titular literal porque son ejemplos de gente que trabaja todo el día, pero no se usa "hostelería" ni "turno partido" en titulares, bios, ángulos, guiones, anuncios ni mensajes. **La diferenciación ya no es el sector, sino el mecanismo**: "solos nunca han sido constantes" + seguimiento diario 31/31 + garantía por escrito + +300 cambios.
 
 ### Los 5 candidatos comparados
 Mecanismo diferencial de Andrés en todos: **garantía de resultados + seguimiento diario (31/31) + más de 300 cambios de 17 a 64 años**.
 
 | # | Para quién | Dolor concreto | ¿Encaja el mecanismo? | ¿Pisa a otro cliente de Alberto? | Prueba propia | Veredicto |
 |---|---|---|---|---|---|---|
-| 1 | Personas que trabajan muchas horas y solas no son constantes | "Llego reventado y lo dejo" | Sí | **Sí**: +30 jornada completa <5 h/semana; +30 jornadas 8–12 h (Álvaro); +30 sobrepeso jornadas largas | Muchos casos, pero genérico | Descartado: demasiado amplio, nadie se ve en "muchas horas" |
-| 2 | **Hostelería y turno partido (hombres y mujeres, cualquier edad) que solos siempre lo dejan** | "Con el turno partido es imposible"; comer en el bar; el hueco del mediodía; picar en el turno; temporada alta | **Sí, es donde más brilla**: el seguimiento diario resuelve el horario cambiante y la garantía quita el "ya pagué y no funcionó" | Roza a Gerard (hombres 20–40 **a turnos**), pero no lo pisa: Gerard = turnos rotativos/noche, hombres jóvenes; aquí = turno partido y hostelería, hombres y mujeres de 17 a 64, y otro mecanismo | **Bryan Torres** (padre, camarero a turno partido, 22 kg en 6 meses), "Es madre, trabaja turno partido", "Varios trabajos y sin descanso" | **Elegido** |
+| 1 | **Personas que trabajan todo el día y solas nunca han sido constantes** | "Llego reventado y lo dejo"; "empiezo el lunes y el jueves lo dejo"; "ya pagué y no funcionó" | **Sí, es su núcleo**: el check-in diario sostiene la constancia y la garantía quita el miedo de quien ya ha fallado solo | **Roza** a Álvaro (jornadas 8–12 h que rebotan, recomposición) y a Zakaria (+30 jornada completa, <5 h/semana). No los pisa si se cumple la regla de abajo | Bryan Torres, "Es madre, trabaja turno partido", "Varios trabajos y sin descanso", +300 cambios | **Elegido por Alberto** |
+| 2 | Hostelería y turno partido que solos siempre lo dejan | "Con el turno partido es imposible" | Sí | Rozaba a Gerard (a turnos) | Bryan, la madre | Descartado por Alberto: demasiado sectorial; se queda solo en los casos reales |
 | 3 | +55 que nunca han entrenado | "A mi edad ya no" | Sí | Sí: hombres 40–50 que creen que es tarde; +25 que creen que es imposible | 62 y 64 años | Descartado como nicho (mercado pequeño en Instagram); se queda como ángulo |
-| 4 | Los que empiezan cada lunes y lo dejan, con garantía | "Siempre lo dejo" | Sí | Sí: mujeres con turnos/familia que empiezan y lo dejan | Muchos titulares | Descartado: es un dolor, no una persona; se queda como idea central ("no te falta una rutina, te falta alguien encima") |
+| 4 | Los que empiezan cada lunes y lo dejan, con garantía | "Siempre lo dejo" | Sí | Sí: mujeres con turnos/familia que empiezan y lo dejan | Muchos titulares | Absorbido en el 1 ("solas nunca han sido constantes"); idea central: "no te falta una rutina, te falta alguien encima" |
 | 5 | Los que ya pagaron a un entrenador y no funcionó (desconfiados) | "Me mandó un PDF y desapareció" | Sí (garantía) | No directamente | Difícil de demostrar | Descartado: no se ve en un perfil ni se busca en frío; se queda como objeción y ángulo de anuncio |
 
-### Por qué gana el 2
-- **Se entiende en 3 segundos y se reconoce uno mismo**: "hostelería" y "turno partido" son oficios y horarios concretos, muy españoles; "muchas horas" no lo es.
-- **Es donde su mecanismo es imprescindible**: con turno partido el plan se rompe cada semana; un check-in diario que lo ajusta ese mismo día es justo lo que falta, y la garantía hace de puente con alguien que ya ha fallado sola.
-- **Ya tiene la prueba**: su fijado de Bryan Torres es literalmente el nicho en una imagen; la madre a turno partido y "varios trabajos" lo refuerzan. Los demás casos (62, 64, 17 años…) siguen sirviendo como prueba de volumen (+300).
-- **Fran lo puede prospectar en frío**: camareros, cocineros y encargados se identifican por su perfil (bio, fotos, cuentas de hostelería de la zona). Con "muchas horas" no hay a quién buscar.
-- **No pisa a nadie** si se cumple una regla: **nunca decir "a turnos" a secas** (eso es de Gerard); siempre "hostelería" o "turno partido".
+### Por qué gana el 1 (y cómo no pisar a nadie)
+- **Lo eligió Alberto**: "trabajas todo el día" se entiende en 3 segundos y abarca a casi todos sus casos reales sin encerrarlo en un sector.
+- **La diferencia está en el mecanismo, no en el sector**: constancia acompañada (check-in diario 31/31) + resultado garantizado por escrito + volumen de prueba (+300 cambios).
+- **Fran lo puede prospectar en frío**: oficina y jornada completa, autónomos, comercio, sanitarios, padres y madres que trabajan, varios trabajos (se ve en bio, fotos y comentarios de "no tengo tiempo").
+- **Regla para no pisar a Álvaro ni a Zakaria**: Andrés **nunca habla de rebote ni de recomposición** (eso es de Álvaro) **ni de horas por semana** ("<5 h/semana", "2 o 3 horas a la semana": eso es de Zakaria). Su eje es **la constancia acompañada y la garantía**. Tampoco "a turnos" a secas (Gerard).
 
 **Palabra clave:** CAMBIO (de su bio, "TU GRAN CAMBIO"). **Idea central:** "No te falta una rutina. Te falta alguien encima."
 
@@ -74,13 +75,13 @@ Mecanismo diferencial de Andrés en todos: **garantía de resultados + seguimien
 
 **3 pilares (cada uno ligado a algo real de su perfil)**
 1. **Seguimiento diario y cercano**: un check-in de 1 minuto cada día y respuesta de Andrés. Ligado a "Seguimiento y acompañamiento diario y cercano" y al caso "Pensaba que solo necesitaba una rutina": la rutina sola no bastaba.
-2. **Un plan que cabe en tu horario real**: entreno y comida montados sobre el turno que tienes, no sobre el ideal. Ligado a Bryan Torres (padre y camarero a turno partido), "Es madre, trabaja turno partido" y "Varios trabajos y sin descanso".
+2. **Un plan que cabe en tu horario real**: entreno y comida montados sobre la jornada que tienes, no sobre la ideal. Ligado a Bryan Torres ("padre de familia y camarero a turno partido"), "Es madre, trabaja turno partido" y "Varios trabajos y sin descanso": gente que trabaja todo el día.
 3. **Resultados garantizados por escrito**: objetivo medible pactado el día 1; si cumples y no llega, Andrés sigue contigo gratis. Ligado a "Trabajo con garantía de resultados" y al volumen de casos.
 
 **3 fases**
 1. **Arrancar** (semanas 1–4): se acaba el "empiezo el lunes". Check-in diario, entrenos pactados, foto y medidas del día 1.
 2. **Transformar** (semanas 5–12): el cambio se ve en fotos y medidas. En la semana 12 se mide la garantía.
-3. **Sostener** (meses 4–6): mantenerlo cuando cambia el turno, en vacaciones o en temporada alta, con el seguimiento todavía diario.
+3. **Sostener** (meses 4–6): mantenerlo cuando el trabajo aprieta, en vacaciones o en semanas de locura, con el seguimiento todavía diario.
 
 **3 no negociables (son, a la vez, las condiciones de la garantía)**
 1. **Check-in diario** (1 minuto): lo que se reporta cada día no se abandona.
@@ -88,7 +89,7 @@ Mecanismo diferencial de Andrés en todos: **garantía de resultados + seguimien
 3. **Entrenos pactados hechos (mínimo 80 %)**: el plan se ajusta a tu horario, por eso el horario deja de ser excusa.
 
 ## Cliente ideal (deducido de sus casos, [confirmar con Andrés])
-- Trabaja en hostelería o a turno partido (camarero, cocinera, dependienta, encargado; también madre/padre con el día partido y gente con varios trabajos).
+- Trabaja todo el día (oficina, comercio, sanitarios, autónomos, madres y padres que trabajan, gente con varios trabajos) y llega a casa sin fuerzas ni hueco.
 - Lo ha intentado solo: rutina de internet, gimnasio por su cuenta, "ya entrenaba pero no lo conseguía".
 - Sabe más o menos qué hacer, pero no lo sostiene. Necesita que alguien le pregunte cada día.
 - Quiere un resultado concreto y le da miedo pagar y que no funcione: **la garantía le quita ese miedo**.
