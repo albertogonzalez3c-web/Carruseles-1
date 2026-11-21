@@ -17,6 +17,7 @@ ORDEN = [
     ("partes/3-contenido.html", "3 · Contenido", "Plan semanal, ángulos, carruseles, guiones y Claude Code"),
     ("partes/4-embudo.html", "4 · Embudo", "Conversaciones, WhatsApp, anuncios y cierre paso a paso"),
     ("partes/5-formacion.html", "5 · Formación", "Plan de estudio"),
+    ("partes/5-negocio.html", "5 · Negocio y márgenes", "Tus números, precios, gimnasio y proyección"),
     ("partes/6-guion-cierre.html", "6 · Guion de cierre", "La llamada de venta, objeciones y seguimiento"),
     ("partes/crm.html", "7 · CRM", "Leads, clientes y escalera de precios (guarda datos)"),
     ("partes/7-reportes.html", "8 · Reporte", "Reporte diario y semanal para Alberto (guarda datos)"),

@@ -1,0 +1,403 @@
+<title>Cryzz Perfil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+
+<style>
+:root {
+  --paper: #f4f3f2;
+  --white: #ffffff;
+  --ink: #0d0d0e;
+  --soft: #5a5856;
+  --line: #dcd8d4;
+  --chip: #edeae7;
+  --red: #c8141c;
+  --red-text: #a50f16;
+  --red-soft: #ff8a8f;
+  --night: #0d0d0e;
+  --night2: #221a1b;
+  --green: #2f6b35;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: .98; text-transform: uppercase; }
+h1 em, h2 em { font-style: normal; color: var(--red-text); }
+h2 { font-size: clamp(27px, 3.4vw, 36px); line-height: 1.04; text-transform: uppercase; }
+h3 { font-size: 21px; line-height: 1.12; text-transform: uppercase; }
+p { margin: 0; }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--chip); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 840px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 840px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--night); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--red-soft); }
+.card.dark .label { color: var(--red-soft); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac7; }
+.card.dark ul.l b, .card.dark ol.l b, .card.dark .soft b { color: var(--white); }
+.card.red { background: var(--red); color: #fff; box-shadow: none; }
+.card.red h2, .card.red h3 { color: #fff; }
+.card.red .label { color: #ffd9db; }
+.card.red ul.l, .card.red ol.l, .card.red .soft { color: #ffe9ea; }
+.card.red ul.l b, .card.red ol.l b, .card.red .soft b { color: #fff; }
+.card.warn { background: #fff1e6; box-shadow: inset 0 0 0 1px #f0c9a4; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--red); border-radius: 6px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.card.dark .say { background: var(--night2); color: var(--white); border-left-color: var(--red-soft); }
+.card.red .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 4px; background: var(--chip); color: var(--red-text); }
+.card.dark .badge { background: var(--night2); color: var(--red-soft); }
+.card.red .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 10px 12px 10px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbe3e4; }
+.tbl tr.tot td { color: var(--ink); font-weight: 800; border-top: 2px solid var(--ink); }
+.tbl td b { color: var(--ink); }
+.tbl td.num, .tbl th.num { text-align: right; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.card.dark .cp { background: var(--night2); color: #fff; box-shadow: inset 0 0 0 1px #4a3c3d; }
+.nicho { font: 400 clamp(24px, 3vw, 33px)/1.08 var(--f-head); color: var(--white); letter-spacing: .01em; }
+.nicho em { font-style: normal; color: var(--red-soft); }
+.pill3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pill3 > div { background: var(--night2); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.pill3 b { color: #fff; }
+.pill3 p { color: #d6d0cd; font-size: 14.5px; }
+.pill3 i { color: #b9b1ad; font-size: 14px; }
+.pill3 .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--red-soft); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--red); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--night); color: #fff; padding: 10px 16px; border-radius: 6px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+.price { display: grid; gap: 2px; }
+.price b { font: 400 40px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.card.dark .price b { color: var(--red-soft); }
+.big { font: 400 clamp(30px, 4vw, 44px)/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.dark .big { color: var(--red-soft); }
+.kpi { display: grid; gap: 4px; }
+.kpi span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .pill3 { grid-template-columns: 1fr; } .card { padding: 16px; } }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; align-items: center; }
+.hero img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px var(--white), 0 0 0 7px var(--red); }
+.hls { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.hls figure { margin: 0; display: grid; gap: 6px; justify-items: center; text-align: center; }
+.hls img { width: 100%; height: auto; max-width: 120px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--white), 0 0 0 5px var(--line); display: block; }
+.hls figcaption { font-size: 13px; color: var(--soft); }
+.hls figcaption b { display: block; color: var(--ink); }
+.pins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pins figure { margin: 0; display: grid; gap: 6px; }
+.pins img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; background: var(--chip); }
+.pins figcaption { font-size: 13px; color: var(--soft); }
+.gridmock { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; max-width: 520px; }
+.gridmock div { aspect-ratio: 4 / 5; display: grid; place-items: center; text-align: center; padding: 6px; font: 400 clamp(12px, 2.6vw, 16px)/1.1 var(--f-head); border-radius: 4px; text-transform: uppercase; }
+@media (max-width: 620px) { .hero { grid-template-columns: 1fr; } .hero img { width: 120px; height: 120px; order: -1; } .hls { grid-template-columns: repeat(3, minmax(0, 1fr)); } .pins { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } .pins figcaption { font-size: 11.5px; } }
+</style>
+<main class="wrap">
+<header class="head hero" style="max-width:none">
+  <div style="display:grid;gap:12px;max-width:840px">
+    <span class="label">Cryzz Yovany · @cryzz.spb · SPB Center · Parte 1</span>
+    <h1>Perfil: que una latina en Houston entienda en 5 segundos que <em>eres su coach</em></h1>
+    <p class="soft">Tu perfil ya está mejor que el de casi todos los clientes de Alberto: verificado, 5.543 seguidores, 676 publicaciones, foto potente y <b>cinco destacadas de casos reales</b> con su cifra (−10, −12, −16, −10, −12 kg). No se toca la estética negra y roja. Se afinan cuatro cosas: <b>que te encuentren buscando</b>, <b>que la bio diga para quién eres (y que es en Estados Unidos)</b>, <b>que el enlace filtre en vez de abrir un DM</b> y <b>que los fijados vendan online, no solo el gimnasio</b>.</p>
+  </div>
+  <img src="../casos/cryzz-avatar.jpg" alt="Foto de perfil de Cryzz: sin camiseta en su gimnasio con luz roja" width="224" height="224">
+</header>
+<nav class="toc" aria-label="Secciones"><a href="#nicho">Nicho</a><a href="#porque">Por qué</a><a href="#diag">Diagnóstico</a><a href="#nombre">Nombre</a><a href="#bios">Bios</a><a href="#enlace">Enlace</a><a href="#destacadas">Destacadas</a><a href="#fijados">Fijados</a><a href="#grid">Grid</a><a href="#casos">Casos</a><a href="#testimonios">Testimonios</a><a href="#usa">EE. UU.</a><a href="#confirmar">Confirmar</a></nav>
+
+<section class="card dark" id="nicho">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="nicho">Ayudo a latinos de 30 a 45 años que viven en <em>Estados Unidos</em>, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a <em>perder grasa y ganar músculo</em> con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.</p>
+  <p class="soft">Tu método: <b>Método SPB · Sistema, Progresión, Balance.</b> "Te doy un sistema": una estructura clara que solo tienes que repetir, medida cada semana, y al final la libertad de mantenerlo sin mí. Palabra clave: <b>SISTEMA</b>. Secundario: México de alto nivel (presencial VIP en SPB Center Coacalco y online si llegan).</p>
+  <div class="pill3">
+    <div><span class="lbl">Pilar S · Sistema</span><b>Una estructura que solo tienes que repetir</b><p>1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo y al músculo que quieres mejorar. Nada que inventar sobre la marcha.</p><i>Por qué: a los 15, sin dinero para asesorías, aprendí con una libreta, una báscula y la canasta básica: tortillas, frijoles, arroz, huevo, atún. "Sencillas, efectivas y rápidas."</i></div>
+    <div><span class="lbl">Pilar P · Progresión</span><b>Se mide cada semana, no cada mes</b><p>Peso, medidas, fotos y tus cargas cada semana. RIR y sobrecarga progresiva bien entendidas: subes cuando toca, no cuando te acuerdas.</p><i>Por qué: pasé dos años cambiando de rutina cada semana por YouTube y haciendo abdomen diario. El powerlifting me enseñó a medir: 2.º lugar estatal y 145 / 210 / 265 kg en banca, sentadilla y peso muerto.</i></div>
+    <div><span class="lbl">Pilar B · Balance</span><b>Comes lo que te gusta y sales el fin de semana</b><p>Porciones correctas, no prohibiciones. Los 5 días hacen el trabajo que los otros 2 no pueden, y al final flexibilizamos para que lo mantengas sin mí.</p><i>Por qué: mi primera definición fue sin carbohidratos, con faja y té de limón con linaza: un desastre. En 2024 bajé de 100 a 85 kg con pasos y días libres, y en 2026 de 93 a 81 kg con una comida libre a la semana.</i></div>
+  </div>
+  <div class="pill3">
+    <div><span class="lbl">Fase 1 · Semanas 1–4</span><b>Estructura</b><p><b>Qué pasa:</b> videollamada inicial, tus menús con lo que te gusta, rutina a tu tiempo y primera evaluación en la semana 1.<br><b>Qué haces tú:</b> repites al pie de la letra y mandas tu feedback cada semana.</p></div>
+    <div><span class="lbl">Fase 2 · Semanas 5–12</span><b>Progresión</b><p><b>Qué pasa:</b> subimos cargas, ajustamos porciones cada semana y aprendes a que un fin de semana no borre nada.<br><b>Qué haces tú:</b> registras pesos y repeticiones y avisas en el momento si algo cambia.</p></div>
+    <div><span class="lbl">Fase 3 · Meses 4–6</span><b>Libertad</b><p><b>Qué pasa:</b> flexibilizamos el plan: salidas, viajes, comidas libres. El objetivo es que no rebotes.<br><b>Qué haces tú:</b> decides con criterio y mantienes tus resultados sin depender de mí.</p></div>
+  </div>
+  <p class="soft"><b>3 no negociables:</b> feedback semanal completo el día que toca (peso, medidas, fotos, pesos y repeticiones) · dudas en el momento, no el domingo en la noche · cumplir los días de entrenamiento y los menús que tú elegiste.</p>
+  <div class="say">"Si trabajas conmigo, lo primero que vas a dejar de hacer es complicarte la vida buscando la forma. Te voy a dar una estructura clara y un plan de acción inmediato en el que solo tendrás que repetir." — Cryzz</div>
+</section>
+
+
+<section class="sec" id="porque">
+  <header><span class="label">Por qué este nicho</span><h2>Tus datos dicen <em>ella</em>. Alberto dice <em>Estados Unidos</em>. Las dos cosas caben</h2><p class="soft">Escribiste que tu nicho es "100 % recomposición corporal", que el 70 % de tus clientes son mujeres de 30 a 40 y que "conecto más con ellas y son capaces de invertir más". El objetivo de la mentoría es online en dólares. Por eso el <b>mercado</b> es Estados Unidos y la <b>persona</b> a la que le habla tu contenido es, sobre todo, ella. Los hombres entran (Erick −16 kg, Eduardo −10 kg), pero no escribes pensando en ellos.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">1 · Latinos en EE. UU.</span><h3>Donde está el dinero en dólares</h3><p class="soft">Hoy cobras $1,800 MXN (unos 100 dólares) al mes y "la gente lo pagó sin problemas". Para una latina que trabaja en Texas, California o Illinois, 100 dólares es una cena. Mismo trabajo, otro mercado. Y tus horarios de la noche (6 a 10 pm en Coacalco) son la tarde-noche de Estados Unidos.</p></div>
+    <div class="card"><span class="badge">2 · Sobre todo mujeres 30–45</span><h3>Ya son el 70 % de tus clientes</h3><p class="soft">Cynthia, Margarita y Gemma están en tus destacadas. Tu propio hueco, escrito por ti: mujeres con algo de experiencia que quieren estructura clara, sin competir. Antoni les habla básico; Izan les habla solo a hombres. Tú hablas técnico pero sencillo: RIR, sobrecarga, carbohidratos sin miedo.</p></div>
+    <div class="card"><span class="badge">3 · Ya pagaron y rebotaron</span><h3>Tus mejores casos tenían eso en común</h3><p class="soft">Lalo, Erick Jovany, Nataly y Gemma: "experiencias malas con otra asesoría". Llegan sabiendo lo que es invertir, se toman en serio el plan y comparan: tu atención y tu sistema ganan solos. Es tu Fase 3: "un castigo temporal que no pueden sostener".</p></div>
+  </div>
+  <div class="card warn"><span class="label">Lo que dejas fuera a propósito (en el mensaje, no en la puerta)</span><ul class="l">
+    <li><b>Hombres latinos +30 en EE. UU. como mensaje principal:</b> es el nicho de Zent (y Jony y Sebastián van a hombres latinos jóvenes). Si llegan hombres, los atiendes; tu contenido no les habla a ellos.</li>
+    <li><b>"Recomposición" como palabra de bio:</b> la usan Holyfield, Sergio PG y Álvaro. Tú dices lo que busca tu cliente: "perder grasa y ganar músculo".</li>
+    <li><b>Competidores y powerlifting:</b> lo dejaste al 100 %, y ahí tu captación "fue mínima".</li>
+    <li><b>Tus dos perfiles de "no":</b> quien no se compromete y te culpa, y quien busca atajos (esteroides, inyecciones). Más el que te escribe el domingo en la noche pidiendo cambiar lo que ni hizo.</li>
+    <li><b>México de alto nivel:</b> no es el foco del contenido; se atiende con el presencial VIP en SPB Center y online si llega.</li>
+  </ul></div>
+</section>
+
+<section class="sec" id="diag">
+  <header><span class="label">Diagnóstico del perfil actual</span><h2>Lo que ya está bien y <em>lo que te cuesta clientes en EE. UU.</em></h2></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Se queda</span><ul class="l">
+      <li><b>Foto de perfil:</b> físico real en tu gimnasio, luz roja. Es tu prueba número uno: tú bajaste de 93 a 81 kg este año.</li>
+      <li><b>Destacadas de casos con la cifra en la portada:</b> lo mejor del perfil. Nadie tiene que leer nada para entender que funciona.</li>
+      <li><b>Estética negra y roja con tu playera SPB:</b> reconocible a la primera en el feed.</li>
+      <li><b>Contenido técnico bien explicado:</b> RIR, sobrecarga progresiva, carbohidratos, proteína. Te da autoridad frente a quien ya tuvo otra asesoría.</li>
+      <li><b>Verificado y 676 publicaciones:</b> constancia que se nota.</li>
+    </ul></div>
+    <div class="card"><span class="badge">Cambia</span><ul class="l">
+      <li><b>Nombre "Cryzz Yovany":</b> no aparece cuando alguien busca "coach" o "perder grasa". El campo nombre cuenta para la búsqueda.</li>
+      <li><b>La bio es una pregunta genérica:</b> "¿Te gustaría perder grasa, ganar músculo…?" vale para cualquier coach. No dice para quién, ni dónde, ni por qué tú.</li>
+      <li><b>El enlace ig.me abre un DM vacío:</b> no filtra, no da datos, no agenda. La gente no sabe qué escribir y no escribe.</li>
+      <li><b>Fijado "Conoce SPB Center Coacalco":</b> perfecto para el gimnasio, pero a una latina de Dallas le dice "esto es local, no es para mí". Pasa a destacada.</li>
+      <li><b>Categoría "Coach":</b> mejor "Entrenador personal" (te encuentran más).</li>
+      <li><b>No hay ningún caso ni mención de Estados Unidos.</b> Mientras llega el primero: tu sistema online, tu plataforma y el horario en su zona.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="nombre">
+  <header><span class="label">Nombre del perfil (campo buscable)</span><h2>Tu nombre <em>y lo que hacen buscar</em></h2><p class="soft">El @ se queda: cryzz.spb ya es tu marca y está verificado. Lo que cambia es el campo "Nombre". Máximo 64 caracteres; Instagram deja cambiarlo 2 veces cada 14 días.</p></header>
+  <div class="g3" id="nameList"></div>
+</section>
+
+<section class="sec" id="bios">
+  <header><span class="label">5 bios para elegir · máx. 150 caracteres</span><h2>Elige una y <em>no la toques en 60 días</em></h2><p class="soft">Mi recomendada es la 1. Todas dicen Estados Unidos y llevan a la aplicación. El contador es en vivo.</p></header>
+  <div class="g2" id="bioList"></div>
+</section>
+
+<section class="sec" id="enlace">
+  <header><span class="label">El enlace</span><h2>De ig.me a una <em>aplicación de 2 minutos</em></h2><p class="soft">Quien te escribe por un ig.me no sabe qué decir y tú no sabes nada de ella. Una aplicación corta filtra, te da los datos para el CRM y llega con la mitad de la venta hecha.</p></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Las 7 preguntas</span><ol class="l">
+      <li>Nombre, WhatsApp y ciudad (y estado si es EE. UU.).</li>
+      <li>Edad y a qué te dedicas (horario de trabajo).</li>
+      <li>¿Qué quieres conseguir en 6 meses? (perder grasa, ganar músculo, las dos).</li>
+      <li>¿Qué has probado antes? (asesoría, nutriólogo, app, dieta por tu cuenta) y por qué no funcionó.</li>
+      <li>¿Cuántos días a la semana puedes entrenar y dónde? (gimnasio de cadena, en casa…).</li>
+      <li>¿Qué comidas no quieres dejar? (tortillas, pan, arroz, postre…).</li>
+      <li>Si te propongo un plan de 3 a 6 meses con seguimiento semanal, ¿estás lista para invertir en ti ahora? (sí / en 1–2 meses / solo estoy viendo).</li>
+    </ol></div>
+    <div class="card dark"><span class="label">Cómo montarlo</span><ul class="l">
+      <li><b>Herramienta:</b> Tally o Google Forms (sin costo), o el formulario de tu plataforma si lo tiene [confirmar]. La landing (index.html) lo enlaza.</li>
+      <li><b>En la bio:</b> el enlace de la landing o directo al formulario. Uno solo.</li>
+      <li><b>Al recibirla:</b> le escribes tú por WhatsApp en menos de 1 hora (mensajes en Embudo) y la apuntas en el CRM.</li>
+      <li><b>Lo que no cambia:</b> en reels y historias sigue el "escríbeme SISTEMA". El formulario es para quien llega al perfil.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="destacadas">
+  <header><span class="label">Destacadas</span><h2>Tus casos se quedan. <em>Sumas 4 delante y detrás</em></h2><p class="soft">Las 5 portadas ANTES/DESPUÉS con la cifra son tu mejor activo: se quedan igual. Solo cambia el orden y se añaden "Empieza aquí", "Método SPB", "Mi historia" y "SPB Center" con la misma portada negra y roja.</p></header>
+  <div class="card">
+    <div class="hls">
+      <figure><img src="../casos/caso-cynthia.jpg" alt="Portada de la destacada de Cynthia: antes y después, menos 10 kilos" width="155" height="155" loading="lazy"><figcaption><b>Cynthia</b>−10 kg</figcaption></figure>
+      <figure><img src="../casos/caso-margarita.jpg" alt="Portada de la destacada de Margarita: antes y después, menos 12 kilos" width="155" height="155" loading="lazy"><figcaption><b>Margarita</b>−12 kg</figcaption></figure>
+      <figure><img src="../casos/caso-gemma.jpg" alt="Portada de la destacada de Gemma: antes y después, menos 12 kilos" width="155" height="155" loading="lazy"><figcaption><b>Gemma</b>−12 kg</figcaption></figure>
+      <figure><img src="../casos/caso-erick.jpg" alt="Portada de la destacada de Erick Izquierdo: antes y después, menos 16 kilos" width="155" height="155" loading="lazy"><figcaption><b>Erick Izquierdo</b>−16 kg</figcaption></figure>
+      <figure><img src="../casos/caso-eduardo.jpg" alt="Portada de la destacada de Eduardo: antes y después, menos 10 kilos" width="155" height="155" loading="lazy"><figcaption><b>Eduardo</b>−10 kg</figcaption></figure>
+    </div>
+    <p class="soft" style="font-size:14px">Recortes de tu perfil (21-nov). Orden propuesto: las tres mujeres primero, porque es a quien le habla tu contenido. "Eric…" (cortada en la captura) y los otros ~10 testimonios grabados que tienes: misma portada [confirmar quiénes y sus cifras].</p>
+  </div>
+  <div class="g2" id="hlList"></div>
+</section>
+
+<section class="sec" id="fijados">
+  <header><span class="label">Fijados</span><h2>Uno que enseña, uno que conecta, <em>uno que vende online</em></h2></header>
+  <div class="card">
+    <div class="pins">
+      <figure><img src="../casos/fijado-asi-se-pierde-grasa.jpg" alt="Fijado actual: Así se pierde grasa, pirámide con alimentación, entrenamiento, actividad diaria, descanso y planeación" width="437" height="582" loading="lazy"><figcaption><b>Se queda · fijado 1.</b> "Así se pierde grasa": tu pirámide es tu método explicado.</figcaption></figure>
+      <figure><img src="../casos/reel-2018-ahora.jpg" alt="Reel Los resultados toman tiempo, 2018 frente a ahora" width="437" height="568" loading="lazy"><figcaption><b>Nuevo fijado 2.</b> Tu historia en carrusel, partiendo de "2018 → ahora".</figcaption></figure>
+      <figure><img src="../casos/reel-te-doy-un-sistema.jpg" alt="Reel Te doy un sistema, entrenando en SPB Center" width="438" height="577" loading="lazy"><figcaption><b>Nuevo fijado 3.</b> "Te doy un sistema" convertido en "así trabajo contigo desde EE. UU.".</figcaption></figure>
+    </div>
+  </div>
+  <div class="g3">
+    <div class="card dark"><span class="label">Fijado 1 · se queda</span><h3>"Así se pierde grasa"</h3><p class="soft">Ya está fijado y es contenido de valor puro. Solo revisa que el texto del pie termine con: "Si quieres que lo armemos para tu caso, escríbeme SISTEMA".</p></div>
+    <div class="card dark"><span class="label">Fijado 2 · carrusel de conexión</span><h3>"Con 15 años mi despensa de 15 días duró 5"</h3><p class="soft">8 slides: 60 kg y bullying → la libreta y la báscula → la despensa que duró 5 días → la definición con faja y té de linaza → 2018, entrenador por $600 a la semana → vendí mi moto para abrir SPB → 93 a 81 kg comiendo tortillas → "por eso te doy un sistema". Cierre: SISTEMA.</p></div>
+    <div class="card dark"><span class="label">Fijado 3 · cómo trabajo online</span><h3>"Así es trabajar conmigo desde Estados Unidos"</h3><p class="soft">Reel o carrusel: videollamada inicial, tu plataforma con plan, rutina y videos, WhatsApp conmigo, evaluación cada semana, horario en tu zona. Un caso (Cynthia o Gemma). "Aplica en el link de la bio".</p></div>
+  </div>
+  <p class="soft" style="font-size:14px">"Conoce SPB Center Coacalco" se despinta y pasa a la destacada SPB Center: sigue visible para la gente de tu zona sin espantar a la de fuera.</p>
+</section>
+
+<section class="sec" id="grid">
+  <header><span class="label">El grid como escaparate</span><h2>Regla: <em>1 de cada 3 piezas es prueba</em></h2><p class="soft">Tu grid ya es valor técnico. Le falta lo que vende online: tu cara contando, casos y "rol entrenador" (tú trabajando con un cliente). Así deberían verse tus primeras 9 dentro de 3 semanas.</p></header>
+  <div class="card">
+    <div class="gridmock" id="gridMock"></div>
+    <p class="soft" style="font-size:14px">📌 = fijado. Negro = valor técnico. Rojo = prueba (caso, rol entrenador). Blanco = conexión (tu historia, creencias).</p>
+  </div>
+</section>
+
+<section class="sec" id="casos">
+  <header><span class="label">Plantillas de casos de éxito</span><h2>Un caso, <em>cinco piezas</em></h2><p class="soft">Tienes ~15 testimonios grabados y más de 50 personas ayudadas. Cada caso con permiso te da un carrusel, un reel, una historia, un Estado de WhatsApp y un rol entrenador. Rellena los [corchetes] con datos reales; si un dato no existe, no se pone.</p></header>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Carrusel de caso · 7 slides</span><button class="cp" data-copy="tplCar">Copiar</button></div>
+<div class="say" id="tplCar">1 · Antes/después con tu portada negra y roja + "[Nombre], [edad], [trabajo]: −[X] kg en [tiempo] comiendo [comida que no dejó]"
+2 · Cómo llegó: "[frase literal suya del inicio]"
+3 · Qué había probado: "[asesoría / dieta / app] y por qué no funcionó"
+4 · Su sistema: "[X] días de entrenamiento, [1–3] menús con lo que le gusta, evaluación cada semana"
+5 · El momento difícil: "[fin de semana / viaje / fiesta] y cómo no perdió el progreso"
+6 · Su frase de hoy: "[testimonio literal]"
+7 · CTA: "¿Te ves en el slide 3? Escríbeme SISTEMA"</div></div>
+    <div class="card"><div class="row"><span class="badge">Reel de caso · 20–30 s</span><button class="cp" data-copy="tplReel">Copiar</button></div>
+<div class="say" id="tplReel">0–2 s · Texto: "−[X] kg sin dejar las tortillas" (o su comida)
+2–8 s · Tú a cámara: "[Nombre] venía de [otra asesoría] y pensaba que su cuerpo era el problema."
+8–18 s · 3 cosas que cambiamos, una por plano (su menú, su rutina, su evaluación semanal).
+18–25 s · Su frase literal o su video de testimonio (con permiso).
+25–30 s · "Si te pasa lo mismo, escríbeme SISTEMA."</div></div>
+    <div class="card"><div class="row"><span class="badge">Historia de chat</span><button class="cp" data-copy="tplChat">Copiar</button></div>
+<div class="say" id="tplChat">Captura del mensaje del cliente (nombre tapado si lo pide) + texto:
+"Esto pasa cuando comes lo que te gusta en las porciones correctas: [resumen en 6 palabras]"
+Ejemplo real de tus clientes: "pensé que no iba a bajar de peso con tanta comida" → "Semana [X]. Comiendo más que antes."</div></div>
+    <div class="card"><div class="row"><span class="badge">Estado de WhatsApp de caso</span><button class="cp" data-copy="tplWa">Copiar</button></div>
+<div class="say" id="tplWa">Foto (con permiso) + texto: "[Nombre] lleva [X] semanas. Esta semana: [logro real]. Sin dejar [comida]."
+Segundo estado: "¿Quieres saber cómo lo organizamos? Respóndeme este estado con un 🔥 y te cuento."</div></div>
+  </div>
+  <div class="card red"><span class="label">Rol entrenador, tu prueba diaria</span><h3>Enseña cómo trabajas, no solo el resultado</h3><p class="soft">"Así armo los menús de una clienta que no quiere dejar las tortillas", "reviso la evaluación semanal de una clienta" (con permiso y sin nombre), "por qué le subí las porciones aunque quería bajar más rápido", "le corrijo la sentadilla en SPB". Es justo lo que te diferencia de "un plan que te podría hacer ChatGPT".</p></div>
+</section>
+
+<section class="sec" id="testimonios">
+  <header><span class="label">Sistema para recoger testimonios</span><h2>Te faltó evidencia años. <em>Que no vuelva a pasar</em></h2><p class="soft">Tú mismo lo escribiste: "mi error era no tener evidencia de los cambios físicos que había conseguido con todos mis clientes anteriores". Ahora es proceso, no suerte.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Cuándo</span><ul class="l"><li><b>Día 1:</b> fotos y medidas de inicio (siempre, aunque no quiera publicarlas).</li><li><b>Semana 4:</b> primera frase ("¿qué notas distinto?").</li><li><b>Semana 12:</b> antes/después y video corto si quiere.</li><li><b>Al renovar:</b> testimonio completo y permiso por escrito.</li></ul></div>
+    <div class="card"><span class="badge">5 preguntas, siempre las mismas</span><ol class="l"><li>¿Cómo estabas antes de empezar?</li><li>¿Qué habías probado y por qué no te funcionó?</li><li>¿Qué fue lo que más te sirvió?</li><li>¿Qué cambió además del físico (ropa, fines de semana, confianza)?</li><li>¿A quién se lo recomendarías?</li></ol></div>
+    <div class="card"><span class="badge">Reglas</span><ul class="l"><li>Nada inventado ni redondeado: si fueron −9,5 kg, no son −10.</li><li>Permiso por escrito (captura guardada).</li><li>Si no quiere cara: recorte desde el cuello.</li><li>Nada de salud ni datos médicos con nombre.</li><li>En anuncios, nunca antes/después (normas de Meta).</li></ul></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Mensaje para pedir el testimonio</span><button class="cp" data-copy="msgTest">Copiar</button></div>
+<div class="say" id="msgTest">[Nombre]! Estoy armando la sección de resultados de mi cuenta y tu proceso es de los que más orgulloso me tienen. ¿Me dejarías contar tu caso y contestar 5 preguntas cortas? Puede ser sin cara si prefieres. Te lo mando antes de publicarlo para que lo apruebes.</div></div>
+    <div class="card"><div class="row"><span class="badge">Texto de permiso</span><button class="cp" data-copy="msgPerm">Copiar</button></div>
+<div class="say" id="msgPerm">Autorizo a Cryzz Yovany (SPB) a publicar mi testimonio y mis fotos de progreso en sus redes, web y presentaciones, [con / sin] mi cara y [con / sin] mi nombre. Puedo pedir que se retiren cuando quiera. — [Nombre], [fecha]</div></div>
+  </div>
+</section>
+
+<section class="sec" id="usa">
+  <header><span class="label">Perfil para latinos en Estados Unidos</span><h2>Que una mexicana de 38 en Chicago <em>sienta que es para ella</em></h2></header>
+  <div class="g2">
+    <div class="card"><ul class="l">
+      <li><b>Tu español mexicano se queda:</b> es cercanía. Para ella eres "el coach de allá" que entiende sus tortillas, el pan dulce y la carne asada del domingo.</li>
+      <li><b>Ejemplos de su vida allá:</b> turnos largos, el carro, Costco y la tienda latina, comer fuera con la familia, Thanksgiving, las fiestas de diciembre, el viaje a México en vacaciones.</li>
+      <li><b>Precios en USD</b> y pago en cuotas; se dicen en la llamada, nunca en la bio.</li>
+      <li><b>Horarios:</b> tus noches libres desde enero (6–10 pm en Coacalco) son 7–11 pm en el Este, 6–10 pm en el Centro y 4–8 pm en el Pacífico (en invierno; en verano EE. UU. adelanta una hora). Siempre escribe la hora en su zona.</li>
+      <li><b>Unidades:</b> en su plan, libras y onzas además de kilos y gramos [confirmar si tu plataforma lo permite].</li>
+    </ul></div>
+    <div class="card warn"><span class="label">Cuidado</span><p class="soft">Nada de estatus migratorio ni temas legales. Preséntate como <b>entrenador certificado</b> (no nutriólogo ni médico): si trabajas el plan de alimentación con nutricionista, dilo así. Ante una condición médica, "consúltalo con tu médico" y adaptas. Tu familia, tus rupturas y tus conflictos del pasado: solo lo que tú decidas contar.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="confirmar">
+  <header><span class="label">Confirmar con Cryzz</span><h2>Antes de <em>tocar el perfil</em></h2></header>
+  <div class="card"><ul class="l">
+    <li>Nombre de perfil y bio elegidos; ¿quitas "Coach" y pones "Entrenador personal"?</li>
+    <li>Herramienta del formulario (Tally, Google Forms o tu plataforma) y su URL.</li>
+    <li>¿"Erick Izquierdo" es el "Erick Jovany" de tus mejores casos? ¿"Eduardo" es "Lalo"? ¿Quién es "Eric…"?</li>
+    <li>Permiso por escrito de Cynthia, Margarita, Gemma, Erick y Eduardo para usar sus fotos en la landing (ya son públicas en tu perfil, pero la landing es otro sitio).</li>
+    <li>Nombre exacto de tus certificaciones (para la destacada "Mi historia") y tu ingeniería.</li>
+    <li>¿Tienes ya algún cliente viviendo en Estados Unidos? Sería el primer caso del perfil.</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  function fallback(txt) { var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); show(ok ? "Copiado" : "Selecciona y copia a mano"); }
+  window.zCopy = function (txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function () { show("Copiado"); }, function () { fallback(txt); });
+    else fallback(txt);
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (b) { var el = document.getElementById(b.getAttribute("data-copy")); if (el) window.zCopy(el.textContent.trim()); return; }
+    var c = e.target.closest("[data-cp]"); if (c) window.zCopy(c.getAttribute("data-cp"));
+  });
+})();
+</script>
+
+<script>
+(function () {
+  function len(s) { return Array.from(s).length; }
+  var NAMES = [
+    ["Recomendado", "Cryzz | Coach latinos en USA", "Te encuentran por \"coach\" y \"USA\". Corto y limpio."],
+    ["Por resultado", "Cryzz | Perder grasa y ganar músculo", "Lo que teclea tu cliente. Bueno si vas a crecer con anuncios."],
+    ["Con tu marca", "Cryzz Yovany · Coach SPB · USA", "Mantiene tu nombre completo y suma la marca."]
+  ];
+  var nl = document.getElementById("nameList");
+  NAMES.forEach(function (o, i) {
+    var c = document.createElement("div"); c.className = "card" + (i === 0 ? " dark" : "");
+    c.innerHTML = '<div class="row"><span class="badge">' + o[0] + '</span><span class="badge">' + len(o[1]) + '/64</span></div>';
+    var s = document.createElement("div"); s.className = "say"; s.id = "nm" + i; s.textContent = o[1]; c.appendChild(s);
+    var p = document.createElement("p"); p.className = "soft"; p.style.fontSize = "14.5px"; p.textContent = o[2]; c.appendChild(p);
+    var b = document.createElement("button"); b.className = "cp"; b.textContent = "Copiar"; b.setAttribute("data-copy", "nm" + i); b.style.width = "fit-content"; c.appendChild(b);
+    nl.appendChild(c);
+  });
+  var BIOS = [
+    { t: "Recomendada", b: "Coach de latinos en EE. UU. 🇺🇸 (sobre todo ellas, 30–45)\nPierde grasa y gana músculo comiendo lo que te gusta\nMétodo SPB · casos ⬆️\n👇 Aplica", w: "Dice para quién, dónde, qué consigue y lo distinto (sin dejar lo que te gusta). Los casos están justo encima." },
+    { t: "Tu bio, afinada", b: "¿Ya pagaste otra asesoría y rebotaste?\nPierde grasa y gana músculo sin perder tus fines de semana\nLatinos en EE. UU. 🇺🇸 · Método SPB\n👇 Aplica", w: "Conserva tu formato de pregunta, pero ahora filtra: le habla a quien ya probó y no le funcionó." },
+    { t: "Te doy un sistema", b: "Te doy un sistema, no una dieta 🇺🇸\nLatinos 30–45 en EE. UU.: menos grasa, más músculo\nComes lo que te gusta\n👇 Aplica o escríbeme SISTEMA", w: "Usa la frase de tu reel. Buena si \"Te doy un sistema\" es tu fijado." },
+    { t: "Autoridad", b: "10 años entrenando · dueño de SPB Center\nAyudo a latinos en EE. UU. a perder grasa y ganar músculo\nSin dietas que no te gustan\n👇 Aplica", w: "Pone delante tu experiencia y el gimnasio propio. Para quien desconfía de los coaches de Instagram." },
+    { t: "Directa a ella", b: "Para ti, latina de 30–45 en EE. UU. 🇺🇸\nMenos grasa y más músculo sin restringir lo que te gusta\nMétodo SPB · casos ⬆️\n👇 Aplica", w: "La más afilada. Úsala si en 60 días el 80 % de quien aplica es mujer." }
+  ];
+  var bl = document.getElementById("bioList");
+  BIOS.forEach(function (o, i) {
+    var c = document.createElement("div"); c.className = "card" + (i === 0 ? " dark" : "");
+    c.innerHTML = '<div class="row"><span class="badge">' + (i + 1) + ' · ' + o.t + '</span><span class="badge">' + len(o.b) + '/150</span></div>';
+    var s = document.createElement("div"); s.className = "say"; s.id = "bio" + i; s.textContent = o.b; c.appendChild(s);
+    var p = document.createElement("p"); p.className = "soft"; p.style.fontSize = "14.5px"; p.textContent = o.w; c.appendChild(p);
+    var bt = document.createElement("button"); bt.className = "cp"; bt.textContent = "Copiar bio"; bt.setAttribute("data-copy", "bio" + i); bt.style.width = "fit-content"; c.appendChild(bt);
+    bl.appendChild(c);
+  });
+  var K = ["#0d0d0e", "#fff"], R = ["#c8141c", "#fff"], W = ["#ffffff", "#0d0d0e"];
+  var G = [
+    ["📌 Así se pierde grasa", K], ["📌 Mi despensa de 15 días duró 5", W], ["📌 Así trabajo contigo desde EE. UU.", R],
+    ["Carbohidratos sin miedo", K], ["Caso Gemma −12 kg", R], ["Pagué asesoría y rebote: por qué", W],
+    ["RIR 0 vs RIR 2", K], ["Rol: armo el menú de una clienta", R], ["Tu fin de semana no borra la semana", W]
+  ];
+  var gm = document.getElementById("gridMock");
+  G.forEach(function (g) {
+    var d = document.createElement("div");
+    d.style.background = g[1][0]; d.style.color = g[1][1]; if (g[1] === W) d.style.boxShadow = "inset 0 0 0 1px #dcd8d4";
+    d.textContent = g[0]; gm.appendChild(d);
+  });
+  var HL = [
+    { n: "1 · Empieza aquí (nueva, la primera)", s: ["\"¿Eres latina o latino en EE. UU. y ya pagaste otra asesoría?\"", "Quién soy en 3 líneas: 10 años, SPB Center, 93 → 81 kg este año", "Cómo trabajo: Método SPB (una historia por pilar)", "Qué incluye y para quién NO es (atajos, no comprometerse)", "\"Aplica en 2 minutos: link en mi bio\" + sticker de enlace"] },
+    { n: "2–6 · Tus casos (se quedan)", s: ["Cynthia · Margarita · Gemma · Erick Izquierdo · Eduardo (y Eric…)", "Mismo orden en cada una: antes → qué probó → su sistema → después → su frase", "Añade al final de cada una: \"¿Quieres el tuyo? Escríbeme SISTEMA\"", "Nueva \"Resultados USA\" cuando tengas el primer cliente de allá"] },
+    { n: "7 · Método SPB (nueva)", s: ["Sistema: tus menús con lo que te gusta (captura de la plataforma, sin datos)", "Progresión: la evaluación semanal (plantilla vacía)", "Balance: \"come sin culpa y no pierdas tu progreso\"", "Las 3 fases y los 3 no negociables", "Encuesta: \"¿Qué comida no dejarías nunca?\""] },
+    { n: "8 · Mi historia (nueva)", s: ["15 años, 60 kg, la libreta de macros y la báscula", "La despensa de 15 días que duró 5", "La definición con faja y té de linaza (lo que NO hago contigo)", "2018: entrenador por $600 a la semana y mi primera certificación", "Powerlifting: 2.º lugar estatal, 145 / 210 / 265 kg", "Vendí mi moto para abrir SPB · hoy, 93 → 81 kg"] },
+    { n: "9 · SPB Center (el fijado pasa aquí)", s: ["Recorrido del gimnasio en 4 historias", "Planes presenciales (sin precios) y \"pregunta por la visita\"", "Horarios y ubicación en Coacalco", "Socios entrenando (con permiso)"] }
+  ];
+  var hl = document.getElementById("hlList");
+  HL.forEach(function (h) {
+    var c = document.createElement("div"); c.className = "card";
+    var t = document.createElement("h3"); t.textContent = h.n; c.appendChild(t);
+    var ol = document.createElement("ol"); ol.className = "l";
+    h.s.forEach(function (x) { var li = document.createElement("li"); li.textContent = x; ol.appendChild(li); });
+    c.appendChild(ol); hl.appendChild(c);
+  });
+})();
+</script>

@@ -1,0 +1,475 @@
+<title>Cryzz Negocio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+
+<style>
+:root {
+  --paper: #f4f3f2;
+  --white: #ffffff;
+  --ink: #0d0d0e;
+  --soft: #5a5856;
+  --line: #dcd8d4;
+  --chip: #edeae7;
+  --red: #c8141c;
+  --red-text: #a50f16;
+  --red-soft: #ff8a8f;
+  --night: #0d0d0e;
+  --night2: #221a1b;
+  --green: #2f6b35;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: .98; text-transform: uppercase; }
+h1 em, h2 em { font-style: normal; color: var(--red-text); }
+h2 { font-size: clamp(27px, 3.4vw, 36px); line-height: 1.04; text-transform: uppercase; }
+h3 { font-size: 21px; line-height: 1.12; text-transform: uppercase; }
+p { margin: 0; }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--chip); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 840px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 840px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--night); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--red-soft); }
+.card.dark .label { color: var(--red-soft); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac7; }
+.card.dark ul.l b, .card.dark ol.l b, .card.dark .soft b { color: var(--white); }
+.card.red { background: var(--red); color: #fff; box-shadow: none; }
+.card.red h2, .card.red h3 { color: #fff; }
+.card.red .label { color: #ffd9db; }
+.card.red ul.l, .card.red ol.l, .card.red .soft { color: #ffe9ea; }
+.card.red ul.l b, .card.red ol.l b, .card.red .soft b { color: #fff; }
+.card.warn { background: #fff1e6; box-shadow: inset 0 0 0 1px #f0c9a4; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--red); border-radius: 6px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.card.dark .say { background: var(--night2); color: var(--white); border-left-color: var(--red-soft); }
+.card.red .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 4px; background: var(--chip); color: var(--red-text); }
+.card.dark .badge { background: var(--night2); color: var(--red-soft); }
+.card.red .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 10px 12px 10px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbe3e4; }
+.tbl tr.tot td { color: var(--ink); font-weight: 800; border-top: 2px solid var(--ink); }
+.tbl td b { color: var(--ink); }
+.tbl td.num, .tbl th.num { text-align: right; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.card.dark .cp { background: var(--night2); color: #fff; box-shadow: inset 0 0 0 1px #4a3c3d; }
+.nicho { font: 400 clamp(24px, 3vw, 33px)/1.08 var(--f-head); color: var(--white); letter-spacing: .01em; }
+.nicho em { font-style: normal; color: var(--red-soft); }
+.pill3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pill3 > div { background: var(--night2); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.pill3 b { color: #fff; }
+.pill3 p { color: #d6d0cd; font-size: 14.5px; }
+.pill3 i { color: #b9b1ad; font-size: 14px; }
+.pill3 .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--red-soft); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--red); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--night); color: #fff; padding: 10px 16px; border-radius: 6px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+.price { display: grid; gap: 2px; }
+.price b { font: 400 40px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.card.dark .price b { color: var(--red-soft); }
+.big { font: 400 clamp(30px, 4vw, 44px)/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.dark .big { color: var(--red-soft); }
+.kpi { display: grid; gap: 4px; }
+.kpi span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .pill3 { grid-template-columns: 1fr; } .card { padding: 16px; } }
+
+.k5 { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.k5 .card { gap: 6px; }
+.k5 .big { font-size: clamp(28px, 3.2vw, 38px); }
+.k5 span.soft { font-size: 13.5px; line-height: 1.35; }
+.week { display: grid; grid-template-columns: 90px repeat(2, minmax(0, 1fr)); gap: 6px; font-size: 14px; }
+.week > div { padding: 8px 10px; border-radius: 6px; background: var(--chip); }
+.week .h { background: none; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 4px 0; }
+.week .me { background: var(--red); color: #fff; font-weight: 700; }
+.week .t1 { background: #3a3536; color: #fff; }
+.week .t2 { background: #6d6566; color: #fff; }
+.week .on { background: #1f4f8a; color: #fff; }
+.sim { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
+.sim label { display: grid; gap: 4px; font-size: 13px; font-weight: 700; color: var(--soft); }
+.sim input { font: 600 15px/1.2 var(--f-body); padding: 9px 10px; border: 1.5px solid var(--line); border-radius: 8px; width: 130px; background: #fff; color: var(--ink); }
+.sim input:focus { outline: 3px solid var(--red); outline-offset: 1px; }
+.proj td.pos { color: var(--green); font-weight: 800; }
+.proj td.neg { color: var(--red-text); font-weight: 800; }
+.proj th.sc { color: var(--ink); }
+.proj { min-width: 760px; }
+.formula { font: 500 13px/1.55 var(--f-mono); background: var(--chip); border-radius: 8px; padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink); }
+.bar { height: 12px; border-radius: 99px; background: var(--chip); overflow: hidden; display: flex; }
+.bar i { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--soft); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+@media (max-width: 900px) { .k5 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .week { grid-template-columns: 70px repeat(2, minmax(0, 1fr)); font-size: 12.5px; } }
+</style>
+<main class="wrap">
+<header class="head">
+  <span class="label">Cryzz Yovany · SPB Center Coacalco · Parte 5</span>
+  <h1>Tu negocio y <em>tus márgenes</em></h1>
+  <p class="soft">Tú no necesitas solo más clientes online: tienes un gimnasio que factura unos <b>$74,750 al mes</b> y te deja unos <b>$24,465</b>. Esta página es el diagnóstico de esos números (los tuyos, del último semestre), dónde se te escapa el dinero, qué precios cambiar, cómo exprimir el gimnasio que ya tienes, cómo liberar horas en enero y a dónde llega todo junto en 3, 6 y 12 meses. Cifras en <b>pesos (MXN)</b> salvo que diga USD. Los <b>supuestos</b> van marcados: cámbialos por tus datos reales en el simulador.</p>
+  <nav class="toc" aria-label="Secciones"><a href="#clave">5 cifras</a><a href="#pyl">Tu P&amp;L</a><a href="#lineas">Por línea</a><a href="#trampas">Trampas</a><a href="#precios">Precios</a><a href="#gym">Exprimir el gym</a><a href="#tiempo">Tiempo</a><a href="#proy">Proyección</a><a href="#fiscal">IVA / ISR</a><a href="#confirmar">Confirmar</a></nav>
+</header>
+
+<section class="sec" id="clave">
+  <header><span class="label">Resumen en 5 cifras</span><h2>Lo que tienes que <em>recordar</em></h2></header>
+  <div class="k5">
+    <div class="card dark"><span class="label">Margen hoy</span><b class="big">$24,465</b><span class="soft">al mes, de $74,750 facturados (33 %). Tu cálculo, verificado.</span></div>
+    <div class="card"><span class="label">Fuga nutricionista</span><b class="big">hasta $7,500</b><span class="soft">al mes si pagas $10,000 por 20 planes y ella hace 5. Pagar solo por plan hecho.</span></div>
+    <div class="card"><span class="label">El gimnasio solo</span><b class="big">≈ $5,000</b><span class="soft">te deja al mes el básico + apps después de pagar el local. Tu ganancia está en lo personalizado.</span></div>
+    <div class="card"><span class="label">Plan Cambio Físico</span><b class="big">$5,400</b><span class="soft">por trimestre ($1,800/mes). Mensual a $2,200. Online: 6 meses a 540 USD.</span></div>
+    <div class="card red"><span class="label">Margen a 12 meses</span><b class="big" id="kpi12" style="color:#fff">—</b><span class="soft" id="kpi12s">escenario realista (conservador: —)</span></div>
+  </div>
+</section>
+
+<section class="card dark" id="nicho">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="nicho">Ayudo a latinos de 30 a 45 años que viven en <em>Estados Unidos</em>, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a <em>perder grasa y ganar músculo</em> con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.</p>
+  <p class="soft">Tu método: <b>Método SPB · Sistema, Progresión, Balance.</b> "Te doy un sistema": una estructura clara que solo tienes que repetir, medida cada semana, y al final la libertad de mantenerlo sin mí. Palabra clave: <b>SISTEMA</b>. Secundario: México de alto nivel (presencial VIP en SPB Center Coacalco y online si llegan).</p>
+  <div class="pill3">
+    <div><span class="lbl">Pilar S · Sistema</span><b>Una estructura que solo tienes que repetir</b><p>1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo y al músculo que quieres mejorar. Nada que inventar sobre la marcha.</p><i>Por qué: a los 15, sin dinero para asesorías, aprendí con una libreta, una báscula y la canasta básica: tortillas, frijoles, arroz, huevo, atún. "Sencillas, efectivas y rápidas."</i></div>
+    <div><span class="lbl">Pilar P · Progresión</span><b>Se mide cada semana, no cada mes</b><p>Peso, medidas, fotos y tus cargas cada semana. RIR y sobrecarga progresiva bien entendidas: subes cuando toca, no cuando te acuerdas.</p><i>Por qué: pasé dos años cambiando de rutina cada semana por YouTube y haciendo abdomen diario. El powerlifting me enseñó a medir: 2.º lugar estatal y 145 / 210 / 265 kg en banca, sentadilla y peso muerto.</i></div>
+    <div><span class="lbl">Pilar B · Balance</span><b>Comes lo que te gusta y sales el fin de semana</b><p>Porciones correctas, no prohibiciones. Los 5 días hacen el trabajo que los otros 2 no pueden, y al final flexibilizamos para que lo mantengas sin mí.</p><i>Por qué: mi primera definición fue sin carbohidratos, con faja y té de limón con linaza: un desastre. En 2024 bajé de 100 a 85 kg con pasos y días libres, y en 2026 de 93 a 81 kg con una comida libre a la semana.</i></div>
+  </div>
+  <div class="pill3">
+    <div><span class="lbl">Fase 1 · Semanas 1–4</span><b>Estructura</b><p><b>Qué pasa:</b> videollamada inicial, tus menús con lo que te gusta, rutina a tu tiempo y primera evaluación en la semana 1.<br><b>Qué haces tú:</b> repites al pie de la letra y mandas tu feedback cada semana.</p></div>
+    <div><span class="lbl">Fase 2 · Semanas 5–12</span><b>Progresión</b><p><b>Qué pasa:</b> subimos cargas, ajustamos porciones cada semana y aprendes a que un fin de semana no borre nada.<br><b>Qué haces tú:</b> registras pesos y repeticiones y avisas en el momento si algo cambia.</p></div>
+    <div><span class="lbl">Fase 3 · Meses 4–6</span><b>Libertad</b><p><b>Qué pasa:</b> flexibilizamos el plan: salidas, viajes, comidas libres. El objetivo es que no rebotes.<br><b>Qué haces tú:</b> decides con criterio y mantienes tus resultados sin depender de mí.</p></div>
+  </div>
+  <p class="soft"><b>3 no negociables:</b> feedback semanal completo el día que toca (peso, medidas, fotos, pesos y repeticiones) · dudas en el momento, no el domingo en la noche · cumplir los días de entrenamiento y los menús que tú elegiste.</p>
+  <div class="say">"Si trabajas conmigo, lo primero que vas a dejar de hacer es complicarte la vida buscando la forma. Te voy a dar una estructura clara y un plan de acción inmediato en el que solo tendrás que repetir." — Cryzz</div>
+</section>
+
+
+<section class="sec" id="pyl">
+  <header><span class="label">Diagnóstico · tu P&amp;L actual (promedio del último semestre)</span><h2>De dónde viene y a dónde se va <em>cada peso</em></h2><p class="soft">Copiado de tus datos iniciales. Tu rango real: de $60,000 el peor mes a $85,000 el mejor. Falta la venta de productos ("falta considerar compra y venta de productos").</p></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Ingresos / mes</span><div class="tblwrap"><table class="tbl" style="min-width:0">
+      <thead><tr><th>Línea</th><th class="num">Cálculo</th><th class="num">MXN</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Gimnasio básico</td><td class="num">35 × $650</td><td class="num">22,750</td><td class="num">30 %</td></tr>
+        <tr><td>Total Pass + Wellhub</td><td class="num">media</td><td class="num">9,000</td><td class="num">12 %</td></tr>
+        <tr><td>Personalizado</td><td class="num">10 × $1,000</td><td class="num">10,000</td><td class="num">13 %</td></tr>
+        <tr><td>Plan completo</td><td class="num">20 × $1,650</td><td class="num">33,000</td><td class="num">44 %</td></tr>
+        <tr class="tot"><td>Total</td><td></td><td class="num">74,750</td><td class="num">100 %</td></tr>
+      </tbody></table></div>
+      <p class="soft" style="font-size:13.5px">Escribiste $74,745; la suma da $74,750 (diferencia de $5, sin importancia). Ojo: hoy tienes 7 de personalizado, no 10 → esa línea hoy es $8,400 con el precio nuevo de $1,200.</p></div>
+    <div class="card"><span class="badge">Gastos / mes</span><div class="tblwrap"><table class="tbl" style="min-width:0">
+      <thead><tr><th>Concepto</th><th class="num">MXN</th><th class="num">%</th></tr></thead>
+      <tbody>
+        <tr><td>Renta del local</td><td class="num">10,000</td><td class="num">13 %</td></tr>
+        <tr><td>Sueldo entrenador</td><td class="num">8,000</td><td class="num">11 %</td></tr>
+        <tr><td>Limpieza</td><td class="num">2,000</td><td class="num">3 %</td></tr>
+        <tr><td>Luz, agua, internet del local</td><td class="num">1,200</td><td class="num">2 %</td></tr>
+        <tr><td>Impuestos (16 % IVA + 1,5 % ISR)</td><td class="num">13,080</td><td class="num">17,5 %</td></tr>
+        <tr><td>Herramientas (incluye renta de casa)</td><td class="num">6,000</td><td class="num">8 %</td></tr>
+        <tr><td>Comisión nutricionista (20 × $500)</td><td class="num">10,000</td><td class="num">13 %</td></tr>
+        <tr class="tot"><td>Total gastos</td><td class="num">50,280</td><td class="num">67 %</td></tr>
+        <tr class="tot"><td>Margen</td><td class="num">24,465</td><td class="num">33 %</td></tr>
+      </tbody></table></div></div>
+  </div>
+  <div class="card">
+    <span class="label">A dónde va cada $100 que entran</span>
+    <div class="bar" id="pylBar" aria-hidden="true"></div>
+    <div class="legend" id="pylLegend"></div>
+    <p class="soft" style="font-size:14px">Dos cosas que se mezclan y conviene separar: <b>"Herramientas" incluye la renta de tu casa</b> (es gasto personal, no del negocio) y de los $24,465 libres <b>~$10,000 se van en tu vida</b> (comida, salidas). Para saber cuánto gana SPB de verdad, lleva dos cuentas: negocio y Cryzz. Tu sueldo como dueño debería ser un gasto fijo más.</p>
+  </div>
+</section>
+
+<section class="sec" id="lineas">
+  <header><span class="label">Qué línea te deja más por hora</span><h2>No todo peso que entra <em>vale lo mismo</em></h2><p class="soft">Margen por cliente = precio − impuestos (17,5 %, tu fórmula) − coste directo. Las horas tuyas por cliente al mes son un <b>supuesto</b> (no las diste): cámbialas en tu cabeza por las reales y el orden casi no cambia.</p></header>
+  <div class="card"><div class="tblwrap"><table class="tbl" id="lineTbl">
+    <thead><tr><th>Línea</th><th class="num">Precio/mes</th><th class="num">− Impuestos</th><th class="num">− Coste directo</th><th class="num">= Te queda</th><th class="num">Tus horas/mes (supuesto)</th><th class="num">$ por hora tuya</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="soft" style="font-size:13.5px">Básico: sin horas tuyas (el SPB SYSTEM de 8 niveles "no me genera ningún consumo de tiempo"), pero carga con el local: ver abajo. VIP: sus horas son de 6 a 10 am, cuando ya estás en el gimnasio; hoy esas horas no te pagan nada.</p></div>
+  <div class="g2">
+    <div class="card dark"><span class="label">La cuenta que cambia todo</span><p class="formula" style="background:#221a1b;color:#fff">Básico + apps = 22,750 + 9,000 = 31,750
+− impuestos 17,5 % = − 5,556  →  26,194
+− local (renta 10,000 + entrenador 8,000
+  + limpieza 2,000 + servicios 1,200) = − 21,200
+= ≈ 4,994 al mes</p><p class="soft">El gimnasio "abierto" apenas se paga a sí mismo. <b>Tu negocio rentable son los planes personalizados</b> (rutina y Plan Cambio Físico) y lo será el online. El gimnasio es tu escaparate y tu embudo: hay que usarlo como tal.</p></div>
+    <div class="card"><span class="label">Lectura rápida</span><ul class="l">
+      <li><b>Personalizado</b> es la línea con más margen por hora: tú solo programas y mandas el cuestionario; el seguimiento es del entrenador de turno.</li>
+      <li><b>Plan completo con nutricionista</b> es la que menos te deja por hora: pagas $500 de cada $1,800 y te consume más tiempo.</li>
+      <li><b>Online en USD</b> empieza parecido al plan completo sin nutricionista y lo supera desde el nivel 1 de la escalera (tras la primera venta). Y no depende de la zona.</li>
+      <li><b>VIP</b> vende las horas en las que hoy "atiendes el piso".</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="trampas">
+  <header><span class="label">Las 4 trampas</span><h2>Dónde se te <em>escapa</em> el dinero</h2></header>
+  <div class="g2">
+    <div class="card"><span class="badge">1 · Precio congelado 4 años</span><p class="soft">$650 desde que abriste. Con la inflación de estos años (≈ 4–5 % anual en México, <b>supuesto</b>), tus $650 de 2022 hoy compran lo que unos $550–560. Sin subir, cada año cobras menos. Subir a $700 es solo ponerte al día: <b>+$1,750 al mes</b> con 35 socios.</p></div>
+    <div class="card"><span class="badge">2 · Dependencia de las apps</span><p class="soft">Total Pass y Wellhub son el 12 % de tus ingresos ($9,000) y no controlas ni el precio ni al cliente: la app puede cambiar tarifas o irse. Cada usuario de app que viene seguido es un socio directo en potencia (ver "Exprimir el gimnasio").</p></div>
+    <div class="card warn"><span class="badge">3 · La nutricionista</span><p class="soft">Pagas $500 por plan × 20 = $10,000, pero "actualmente no me ayuda con todos, solo con la mitad" y en tus clientes de hoy pone "20 (5 con nutricionista)". Si pagas 20 y hace 10: <b>$5,000 al mes de más</b>. Si hace 5: <b>$7,500 al mes</b> ($90,000 al año). Regla nueva: $500 solo por plan que ella hace, y los demás los haces tú (ya los haces) [confirmar cuánto pagas realmente].</p></div>
+    <div class="card"><span class="badge">4 · Personalizado barato</span><p class="soft">A $1,000 era tu línea más rentable por hora y la vendías como extra. Bajó de 10 a 7 clientes (−$3,000 al mes). Ya está a $1,200; a partir de enero, $1,200 solo pagando trimestre y $1,500 mensual.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="precios">
+  <header><span class="label">Plan de precios</span><h2>Dejar de cobrar mensual: <em>la escalera completa</em></h2><p class="soft">El detalle y los guiones están en la Parte 2 (Oferta). Aquí, el resumen y su efecto en tu caja.</p></header>
+  <div class="card"><div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Plan</th><th class="num">Hoy</th><th class="num">Enero · mensual</th><th class="num">Enero · trimestre</th><th>Efecto</th></tr></thead>
+    <tbody>
+      <tr><td>Básico SPB SYSTEM</td><td class="num">$650</td><td class="num">$700</td><td class="num">$1,950</td><td>+$1,750/mes con 35 socios; el trimestre adelanta caja.</td></tr>
+      <tr><td>Personalizado</td><td class="num">$1,200</td><td class="num">$1,500</td><td class="num">$3,600</td><td>Recuperar de 7 a 10 = +$3,600/mes.</td></tr>
+      <tr><td>Plan Cambio Físico</td><td class="num">$1,800</td><td class="num">$2,200</td><td class="num">$5,400</td><td>Con 20: $36,000/mes, +$3,000 frente a $1,650.</td></tr>
+      <tr><td>SPB Uno a Uno (VIP)</td><td class="num">—</td><td class="num">—</td><td class="num">$16,500</td><td>Máx. 4 cupos de 6 a 10 am: hasta +$22,000/mes.</td></tr>
+      <tr class="now"><td>Online EE. UU. (USD)</td><td class="num">≈ $100/mes</td><td class="num">—</td><td class="num">$300 · 6 meses $540</td><td>Escalera +20 % por venta hasta $935 el semestre.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="soft" style="font-size:14px"><b>Por qué trimestral y no solo "subir":</b> en diciembre ofreces a tus clientes actuales pagar el trimestre al precio de hoy. Si 10 de tus 20 de Plan Cambio Físico lo hacen, entran <b>$54,000</b> de golpe en el mes del aguinaldo, y ya no se te van en enero.</p></div>
+</section>
+
+<section class="sec" id="gym">
+  <header><span class="label">Exprimir el gimnasio que ya tienes</span><h2>35 socios básicos son <em>35 conversaciones de venta</em></h2><p class="soft">Tú lo escribiste: "clientes que llegan primero al gym con la mensualidad normal y luego quieren el plan completo cuando ven los cambios de los demás". Hoy pasa por casualidad. Esto lo vuelve un sistema.</p></header>
+  <div class="g3">
+    <div class="card dark"><span class="label">1 · Evaluación de bienvenida</span><p class="soft">A todo socio nuevo (también de app): fotos, medidas, peso y objetivo en su primera semana, con el entrenador de turno y una ficha. A las 4 semanas, segunda medición: "esto lograste solo; con tu plan sería esto". <b>La ficha es tu CRM presencial.</b></p></div>
+    <div class="card dark"><span class="label">2 · Arranque SPB 8 semanas</span><p class="soft">Dos veces al año (enero y septiembre): 15 cupos para socios básicos, plan completo 8 semanas a <b>$3,600</b> [propuesta], fotos de inicio y fin. Al terminar, se ofrece el trimestre. Salen casos para tu Instagram. No es "un reto de 90 días": es la puerta al plan.</p></div>
+    <div class="card dark"><span class="label">3 · Ficha en recepción</span><p class="soft">Cartel con los 3 planes y un QR a la aplicación, más un muro de cambios (con permiso por escrito). El socio que ve el cambio del de al lado pregunta: hoy ya pasa, solo hay que provocarlo.</p></div>
+  </div>
+  <div class="g2">
+    <div class="card"><span class="badge">Upsell: la cuenta</span><p class="formula">Si 2 socios básicos al mes pasan a Plan Cambio Físico:
+cada uno suma 1,800 − 700 = +1,100/mes
+mes 1: +2,200 · mes 3: +6,600 · mes 6: +13,200
+(si siguen; con trimestre, al menos 3 meses seguro)</p><p class="soft">2 de 35 al mes es un 6 %. El entrenador de turno gana una comisión pequeña por cada upgrade que te pase [propuesta: $200 por upgrade cobrado].</p></div>
+    <div class="card"><span class="badge">Productos · lo que no cuentas</span><ul class="l">
+      <li><b>Qué vender:</b> agua, bebidas, proteína en polvo, creatina, barras, shakers y <b>playeras SPB</b> (ya eres tu mejor anuncio con ella).</li>
+      <li><b>Qué no:</b> quemadores ni "pastillas mágicas". Va contra tu mensaje y tus clientes lo odian.</li>
+      <li><b>Cómo:</b> anota cada venta (en el reporte diario hay casilla) para saber tu margen real. Hoy no lo sabes [confirmar margen y ventas por mes].</li>
+      <li><b>Supuesto del simulador:</b> $1,000–3,000 de margen al mes.</li>
+    </ul></div>
+    <div class="card"><span class="badge">Referidos y retención</span><ul class="l">
+      <li><b>Referidos:</b> $150 menos en el siguiente pago por cada socio nuevo que traiga y se inscriba. Para clientes de plan: 1 semana extra.</li>
+      <li><b>Retención:</b> el socio que no viene en 7 días recibe un mensaje del entrenador de turno ("¿todo bien? te guardo tu rutina"). La baja más cara es la que no ves venir.</li>
+      <li><b>Mide:</b> altas, bajas y upsells cada semana en el reporte.</li>
+    </ul></div>
+    <div class="card"><span class="badge">Horas valle y Total Pass</span><ul class="l">
+      <li><b>Horas valle</b> (probablemente 10 am – 5 pm [confirmar ocupación]): grupo pequeño "SPB Mujeres" de 3 días a la semana para home office y mamás, o una tarifa de valle de $550 con acceso de 10 a 5. Solo si el lugar está vacío a esas horas.</li>
+      <li><b>Usuarios de apps</b> que vienen 8 o más veces al mes: les sale más barato y con evaluación ser socios directos. Oferta: trimestre básico a $1,950 con evaluación incluida. <b>Antes, revisa tu contrato con Total Pass y Wellhub</b> por si prohíbe ofrecerles membresía directa [confirmar].</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="sec" id="tiempo">
+  <header><span class="label">Tu tiempo</span><h2>Enero: de 40 horas en el piso a 20. <em>Y las otras 20 van a EE. UU.</em></h2><p class="soft">Hoy estás de lunes a viernes de 6 a 10 am y de 6 a 10 pm: 40 horas a la semana en el gimnasio, más el trabajo en la computadora. Tu plan de enero (alguien de 10 am a 2 pm, el chico actual de 2 a 10 pm, tú solo de 6 a 10 am) te libera las noches. Y tus noches son exactamente cuando una latina en Estados Unidos sale del trabajo.</p></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Lunes a viernes · hoy</span><div class="week">
+      <div class="h"></div><div class="h">Quién está</div><div class="h">Tú</div>
+      <div class="h">6–10 am</div><div class="me">Tú</div><div class="me">Piso</div>
+      <div class="h">10 am–2 pm</div><div class="t1">Entrenador</div><div>Compu</div>
+      <div class="h">2–6 pm</div><div class="t1">Entrenador</div><div>Compu</div>
+      <div class="h">6–10 pm</div><div class="me">Tú</div><div class="me">Piso</div>
+    </div></div>
+    <div class="card"><span class="badge">Lunes a viernes · desde enero</span><div class="week">
+      <div class="h"></div><div class="h">Quién está</div><div class="h">Tú</div>
+      <div class="h">6–10 am</div><div class="me">Tú</div><div class="me">VIP + piso</div>
+      <div class="h">10 am–2 pm</div><div class="t2">Nuevo</div><div>Programaciones y menús</div>
+      <div class="h">2–6 pm</div><div class="t1">Entrenador</div><div>Contenido y YouTube</div>
+      <div class="h">6–10 pm</div><div class="t1">Entrenador</div><div class="on">Conversaciones y llamadas EE. UU.</div>
+    </div></div>
+  </div>
+  <div class="g3">
+    <div class="card"><span class="badge">Qué delegas</span><ul class="l"><li>Atender el piso y explicar ejercicios del SPB SYSTEM.</li><li>Informes, recorrido y visita de prueba (con tu guion de la Parte 2).</li><li>Evaluaciones de bienvenida (fotos y medidas con la ficha).</li><li>Cobranza y avisos de renovación.</li><li>Venta de productos.</li><li>Seguimiento de los socios que no vienen.</li></ul></div>
+    <div class="card"><span class="badge">Qué te quedas</span><ul class="l"><li>Programaciones y menús (es tu sistema: no se delega).</li><li>Videollamadas de Plan Cambio Físico y online.</li><li>VIP 6–10 am.</li><li>Conversaciones, llamadas de venta y contenido.</li><li>Cierre de upsells del gimnasio (el entrenador te pasa el interesado).</li></ul></div>
+    <div class="card warn"><span class="badge">Lo que cuesta</span><p class="soft">Sueldo del nuevo entrenador de 10 a 2: <b>supuesto $6,000/mes</b> (el actual cobra $8,000 por 8 horas) [confirmar]. Se paga con 4 clientes de Plan Cambio Físico o con 2 online en el nivel 1. Y te devuelve 20 horas a la semana: ese es el negocio.</p></div>
+  </div>
+  <div class="card dark"><span class="label">Tus 20 horas de la noche · lunes a viernes</span><ul class="l">
+    <li><b>6:00–7:00 pm</b> · Ronda 2 de conversaciones (50) y seguimientos del CRM. La ronda 1 va a las 2 pm.</li>
+    <li><b>7:00–9:00 pm</b> · Llamadas con EE. UU. (8–10 pm en el Este, 7–9 en el Centro, 5–7 en el Pacífico, en invierno).</li>
+    <li><b>9:00–10:00 pm</b> · Bienvenidas, respuestas a historias y reporte del día.</li>
+    <li>Tu "rutina matutina" se queda: despertar temprano, revisar tu negocio, entrenar y regresar a casa. No pierdes el contacto con tu comunidad.</li>
+  </ul></div>
+</section>
+
+<section class="sec" id="proy">
+  <header><span class="label">Proyección a 3, 6 y 12 meses</span><h2>Conservador y realista, <em>con las cuentas a la vista</em></h2><p class="soft">Mes 0 = diciembre de 2026. Precios nuevos desde enero. Todo lo que no sale de tus datos es <b>supuesto</b> y está en la tabla de abajo. Cambia los tres valores del simulador y la tabla se recalcula. <b>*Hoy</b> usa la suma exacta de tus ingresos ($74,750), por eso da $24,469 y no tus $24,465.</p></header>
+  <div class="card">
+    <div class="sim">
+      <label>Tipo de cambio (MXN por USD)<input id="tc" type="number" step="0.1" min="10" value="18" inputmode="decimal"></label>
+      <label>Planes que hace la nutricionista<input id="nut" type="number" min="0" value="10" inputmode="numeric"></label>
+      <label>Sueldo del nuevo entrenador<input id="ent" type="number" min="0" step="500" value="6000" inputmode="numeric"></label>
+    </div>
+    <div class="tblwrap"><table class="tbl proj" id="projTbl"></table></div>
+  </div>
+  <div class="g2">
+    <div class="card"><span class="badge">Supuestos por escenario</span><div class="tblwrap"><table class="tbl" id="supTbl" style="min-width:620px"></table></div></div>
+    <div class="card"><span class="badge">Cómo se calcula (realista, mes 12)</span><p class="formula" id="formula"></p></div>
+  </div>
+  <div class="card warn"><span class="label">Lo que dicen los números</span><ul class="l" id="readout"></ul></div>
+</section>
+
+<section class="sec" id="fiscal">
+  <header><span class="label">IVA e ISR</span><h2>No es asesoría fiscal: <em>es una lista para tu contador</em></h2></header>
+  <div class="card"><ul class="l">
+    <li>Hoy restas 16 % de IVA y 1,5 % de ISR a todo lo que entra. ¿Tus precios ya incluyen IVA? ¿Facturas a todos? Pregúntale si tu régimen actual es el adecuado para lo que facturas.</li>
+    <li>Cobrar en dólares a clientes que viven en Estados Unidos: cómo se facturan y declaran esos ingresos, si cambia el IVA y cómo se registra el tipo de cambio y la comisión de la pasarela.</li>
+    <li>Cobros por adelantado (trimestre, semestre): cuándo se declaran.</li>
+    <li>Separar gastos de la casa (hoy dentro de "herramientas") de los del negocio.</li>
+    <li>Comisiones al entrenador por upgrades y el sueldo del nuevo: cómo se pagan correctamente.</li>
+  </ul><p class="soft" style="font-size:14px">En el simulador se aplica tu mismo 17,5 % a todo, también al online, para no inflar la proyección. Lo real lo dirá tu contador.</p></div>
+</section>
+
+<section class="sec" id="confirmar">
+  <header><span class="label">Confirmar con Cryzz</span><h2>Datos que <em>faltan</em></h2></header>
+  <div class="card"><ul class="l">
+    <li>¿Cuánto pagas realmente a la nutricionista y por cuántos planes?</li>
+    <li>Ventas y margen de productos por mes.</li>
+    <li>Ocupación por franjas (¿cuánta gente hay de 10 am a 5 pm?) y si tienes sistema de acceso que registre asistencias.</li>
+    <li>Sueldo del nuevo entrenador y si ya tienes candidato.</li>
+    <li>Horas reales que te consume cada cliente de personalizado y de plan completo.</li>
+    <li>Contrato con Total Pass y Wellhub: cuánto te pagan por visita y si permite ofrecer membresía directa.</li>
+    <li>Pasarela para cobrar en USD y tu contador (régimen fiscal).</li>
+    <li>Precio de entrenadores 1 a 1 en tu zona (para afinar el VIP).</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  function fallback(txt) { var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); show(ok ? "Copiado" : "Selecciona y copia a mano"); }
+  window.zCopy = function (txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function () { show("Copiado"); }, function () { fallback(txt); });
+    else fallback(txt);
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (b) { var el = document.getElementById(b.getAttribute("data-copy")); if (el) window.zCopy(el.textContent.trim()); return; }
+    var c = e.target.closest("[data-cp]"); if (c) window.zCopy(c.getAttribute("data-cp"));
+  });
+})();
+</script>
+
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function mx(n) { var r = Math.round(n); return (r < 0 ? "−$" : "$") + String(Math.abs(r)).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  var TAX = 0.175, FIX = 10000 + 2000 + 1200 + 6000; /* renta + limpieza + servicios + herramientas */
+
+  /* Barra del P&L */
+  var P = [["Renta", 10000, "#3a3536"], ["Entrenador", 8000, "#6d6566"], ["Limpieza y servicios", 3200, "#9b9392"], ["Impuestos", 13080, "#e0a83a"], ["Herramientas", 6000, "#b9b1ad"], ["Nutricionista", 10000, "#8a5a00"], ["Margen", 24465, "#c8141c"]];
+  var tot = 74745;
+  $("pylBar").innerHTML = P.map(function (p) { return '<i style="width:' + (p[1] / tot * 100).toFixed(2) + '%;background:' + p[2] + '"></i>'; }).join("");
+  $("pylLegend").innerHTML = P.map(function (p) { return '<span><i style="background:' + p[2] + '"></i>' + p[0] + ' $' + Math.round(p[1] / tot * 100) + '</span>'; }).join("");
+
+  /* Tabla por línea */
+  var tcDefault = 18;
+  function lines(tc) {
+    return [
+      ["Personalizado (trimestre)", 1200, 0, 1],
+      ["Plan Cambio Físico sin nutricionista", 1800, 0, 2.5],
+      ["Plan Cambio Físico con nutricionista", 1800, 500, 2.5],
+      ["Online 6 meses · nivel 0 ($540 USD)", 90 * tc, 90 * tc * 0.05, 2.5],
+      ["Online 6 meses · nivel 3 ($935 USD)", 935 / 6 * tc, 935 / 6 * tc * 0.05, 2.5],
+      ["SPB Uno a Uno (VIP)", 5500, 0, 13]
+    ];
+  }
+  function renderLines(tc) {
+    $("lineTbl").querySelector("tbody").innerHTML = lines(tc).map(function (l) {
+      var imp = l[1] * TAX, net = l[1] - imp - l[2];
+      return "<tr><td>" + l[0] + "</td><td class=num>" + mx(l[1]) + "</td><td class=num>" + mx(-imp) + "</td><td class=num>" + (l[2] ? mx(-l[2]) + (l[0].indexOf("Online") === 0 ? " (pasarela 5 %)" : " (nutri)") : "—") + "</td><td class=num><b>" + mx(net) + "</b></td><td class=num>" + l[3] + " h</td><td class=num><b>" + mx(net / l[3]) + "</b></td></tr>";
+    }).join("");
+  }
+
+  /* Escenarios */
+  var SC = [
+    { k: "Hoy*", hoy: true, b: 35, bp: 650, pe: 10, pep: 1000, pc: 20, pcp: 1650, vip: 0, prod: 0, on: 0, onp: 0, ads: 0 },
+    { k: "Cons. 3 m", b: 35, bp: 700, pe: 8, pep: 1200, pc: 20, pcp: 1800, vip: 0, prod: 1000, on: 2, onp: 90, ads: 5 },
+    { k: "Cons. 6 m", b: 36, bp: 700, pe: 10, pep: 1200, pc: 21, pcp: 1800, vip: 1, prod: 1500, on: 5, onp: 90, ads: 5 },
+    { k: "Cons. 12 m", b: 38, bp: 700, pe: 11, pep: 1200, pc: 22, pcp: 1800, vip: 2, prod: 1500, on: 10, onp: 90, ads: 5 },
+    { k: "Real. 3 m", b: 36, bp: 700, pe: 10, pep: 1200, pc: 21, pcp: 1800, vip: 1, prod: 2000, on: 4, onp: 90, ads: 10 },
+    { k: "Real. 6 m", b: 38, bp: 700, pe: 12, pep: 1200, pc: 24, pcp: 1800, vip: 2, prod: 3000, on: 10, onp: 100, ads: 10 },
+    { k: "Real. 12 m", b: 42, bp: 700, pe: 14, pep: 1200, pc: 26, pcp: 1800, vip: 3, prod: 3000, on: 18, onp: 110, ads: 10 }
+  ];
+  var APPS = 9000, VIPP = 5500;
+  function calc(s, tc, nut, ent) {
+    var r = {};
+    r.basico = s.b * s.bp; r.apps = APPS; r.pers = s.pe * s.pep; r.plan = s.pc * s.pcp; r.vip = s.vip * VIPP; r.online = s.on * s.onp * tc; r.prod = s.prod;
+    r.ing = r.basico + r.apps + r.pers + r.plan + r.vip + r.online;
+    r.imp = r.ing * TAX;
+    r.fijos = FIX;
+    r.entren = s.hoy ? 8000 : 8000 + ent;
+    r.nutri = s.hoy ? 10000 : Math.min(nut, s.pc) * 500;
+    r.ads = s.ads * 30 * tc;
+    r.pasarela = r.online * 0.05;
+    r.gas = r.imp + r.fijos + r.entren + r.nutri + r.ads + r.pasarela;
+    r.margen = r.ing + r.prod - r.gas;
+    return r;
+  }
+  var ROWS = [["basico", "Básico (socios × precio)"], ["apps", "Total Pass + Wellhub"], ["pers", "Personalizado"], ["plan", "Plan Cambio Físico"], ["vip", "SPB Uno a Uno"], ["online", "Online EE. UU. (en MXN)"], ["prod", "Margen de productos"], ["ING", "Ingresos totales"], ["imp", "Impuestos 17,5 %"], ["fijos", "Renta, limpieza, servicios, herramientas"], ["entren", "Entrenadores"], ["nutri", "Nutricionista ($500 × plan hecho)"], ["ads", "Anuncios"], ["pasarela", "Pasarela USD (5 %)"], ["GAS", "Gastos totales"], ["margen", "Margen libre al mes"], ["DIF", "Frente a hoy"]];
+  function render() {
+    var tc = parseFloat($("tc").value) || tcDefault, nut = Math.max(0, parseInt($("nut").value, 10) || 0), ent = Math.max(0, parseFloat($("ent").value) || 0);
+    renderLines(tc);
+    var R = SC.map(function (s) { return calc(s, tc, nut, ent); }), base = R[0].margen;
+    var h = "<thead><tr><th>Concepto</th>" + SC.map(function (s) { return '<th class="num sc">' + s.k + "</th>"; }).join("") + "</tr></thead><tbody>";
+    ROWS.forEach(function (row) {
+      var k = row[0], cls = (k === "ING" || k === "GAS" || k === "margen") ? ' class="tot"' : "";
+      h += "<tr" + cls + "><td>" + row[1] + "</td>" + R.map(function (r) {
+        var v = k === "ING" ? r.ing + r.prod : (k === "GAS" ? r.gas : (k === "DIF" ? r.margen - base : r[k]));
+        var neg = ["imp", "fijos", "entren", "nutri", "ads", "pasarela", "GAS"].indexOf(k) >= 0;
+        var c = k === "DIF" ? (v > 0 ? "num pos" : (v < 0 ? "num neg" : "num")) : "num";
+        return '<td class="' + c + '">' + (k === "DIF" && v > 0 ? "+" : "") + mx(neg ? -v : v) + "</td>";
+      }).join("") + "</tr>";
+    });
+    $("projTbl").innerHTML = h + "</tbody>";
+    var SUP = [["Socios básicos", "b"], ["Personalizados", "pe"], ["Plan Cambio Físico", "pc"], ["VIP", "vip"], ["Clientes online activos", "on"], ["USD por cliente online al mes", "onp"], ["Anuncios USD/día", "ads"], ["Margen productos MXN", "prod"]];
+    $("supTbl").innerHTML = "<thead><tr><th>Supuesto</th>" + SC.slice(1).map(function (s) { return '<th class="num">' + s.k + "</th>"; }).join("") + "</tr></thead><tbody>" + SUP.map(function (x) { return "<tr><td>" + x[0] + "</td>" + SC.slice(1).map(function (s) { return '<td class="num">' + s[x[1]] + "</td>"; }).join("") + "</tr>"; }).join("") + "</tbody>";
+    var s = SC[6], r = R[6];
+    $("formula").textContent =
+      "Básico      " + s.b + " × $700 = " + mx(r.basico) + "\n" +
+      "Apps        = " + mx(r.apps) + " (igual que hoy)\n" +
+      "Personaliz. " + s.pe + " × $1,200 = " + mx(r.pers) + "\n" +
+      "Plan C.F.   " + s.pc + " × $1,800 = " + mx(r.plan) + "\n" +
+      "VIP         " + s.vip + " × $5,500 = " + mx(r.vip) + "\n" +
+      "Online      " + s.on + " × " + s.onp + " USD × " + tc + " = " + mx(r.online) + "\n" +
+      "Productos   = " + mx(r.prod) + " (supuesto)\n" +
+      "INGRESOS    = " + mx(r.ing + r.prod) + "\n\n" +
+      "Impuestos   17,5 % × " + mx(r.ing) + " = " + mx(r.imp) + "\n" +
+      "Fijos       = " + mx(r.fijos) + "\n" +
+      "Entrenad.   8,000 + " + mx(ent) + " = " + mx(r.entren) + "\n" +
+      "Nutri       " + Math.min(nut, s.pc) + " × $500 = " + mx(r.nutri) + "\n" +
+      "Anuncios    " + s.ads + " USD × 30 × " + tc + " = " + mx(r.ads) + "\n" +
+      "Pasarela    5 % × " + mx(r.online) + " = " + mx(r.pasarela) + "\n" +
+      "GASTOS      = " + mx(r.gas) + "\n\n" +
+      "MARGEN      = " + mx(r.margen) + " al mes";
+    $("kpi12").textContent = mx(R[6].margen);
+    $("kpi12s").textContent = "al mes, escenario realista (conservador: " + mx(R[3].margen) + "). Hoy: ≈ $24,465.";
+    var pers12 = s.pe + s.pc + s.on;
+    $("readout").innerHTML =
+      "<li><b>Conservador a 12 meses: " + mx(R[3].margen) + " al mes</b> (" + (R[3].margen - base > 0 ? "+" : "") + mx(R[3].margen - base) + " frente a hoy), casi todo por precios, nutricionista y unos pocos online.</li>" +
+      "<li><b>Realista a 12 meses: " + mx(R[6].margen) + " al mes.</b> El online pasa de 0 a " + mx(R[6].online) + " y es la línea que más crece, sin depender de la zona.</li>" +
+      "<li>Solo arreglar la nutricionista y subir precios (mes 3 conservador) ya paga el nuevo entrenador y te devuelve 20 horas a la semana.</li>" +
+      "<li><b>Ojo con la capacidad:</b> el realista a 12 meses son " + pers12 + " clientes personalizados + " + s.vip + " VIP. Tu máximo este año fue 45 y prefieres \"50 bien atendidos\". Pasar de ahí exige que el seguimiento presencial siga en manos de los entrenadores y que la escalera suba el precio antes que el número de clientes.</li>";
+  }
+  ["tc", "nut", "ent"].forEach(function (id) { $(id).addEventListener("input", render); });
+  render();
+})();
+</script>

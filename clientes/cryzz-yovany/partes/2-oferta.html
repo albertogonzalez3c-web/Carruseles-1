@@ -1,0 +1,287 @@
+<title>Cryzz Oferta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+
+<style>
+:root {
+  --paper: #f4f3f2;
+  --white: #ffffff;
+  --ink: #0d0d0e;
+  --soft: #5a5856;
+  --line: #dcd8d4;
+  --chip: #edeae7;
+  --red: #c8141c;
+  --red-text: #a50f16;
+  --red-soft: #ff8a8f;
+  --night: #0d0d0e;
+  --night2: #221a1b;
+  --green: #2f6b35;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: .98; text-transform: uppercase; }
+h1 em, h2 em { font-style: normal; color: var(--red-text); }
+h2 { font-size: clamp(27px, 3.4vw, 36px); line-height: 1.04; text-transform: uppercase; }
+h3 { font-size: 21px; line-height: 1.12; text-transform: uppercase; }
+p { margin: 0; }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--chip); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 840px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 840px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--night); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--red-soft); }
+.card.dark .label { color: var(--red-soft); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac7; }
+.card.dark ul.l b, .card.dark ol.l b, .card.dark .soft b { color: var(--white); }
+.card.red { background: var(--red); color: #fff; box-shadow: none; }
+.card.red h2, .card.red h3 { color: #fff; }
+.card.red .label { color: #ffd9db; }
+.card.red ul.l, .card.red ol.l, .card.red .soft { color: #ffe9ea; }
+.card.red ul.l b, .card.red ol.l b, .card.red .soft b { color: #fff; }
+.card.warn { background: #fff1e6; box-shadow: inset 0 0 0 1px #f0c9a4; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--red); border-radius: 6px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.card.dark .say { background: var(--night2); color: var(--white); border-left-color: var(--red-soft); }
+.card.red .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 4px; background: var(--chip); color: var(--red-text); }
+.card.dark .badge { background: var(--night2); color: var(--red-soft); }
+.card.red .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 10px 12px 10px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbe3e4; }
+.tbl tr.tot td { color: var(--ink); font-weight: 800; border-top: 2px solid var(--ink); }
+.tbl td b { color: var(--ink); }
+.tbl td.num, .tbl th.num { text-align: right; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.card.dark .cp { background: var(--night2); color: #fff; box-shadow: inset 0 0 0 1px #4a3c3d; }
+.nicho { font: 400 clamp(24px, 3vw, 33px)/1.08 var(--f-head); color: var(--white); letter-spacing: .01em; }
+.nicho em { font-style: normal; color: var(--red-soft); }
+.pill3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pill3 > div { background: var(--night2); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.pill3 b { color: #fff; }
+.pill3 p { color: #d6d0cd; font-size: 14.5px; }
+.pill3 i { color: #b9b1ad; font-size: 14px; }
+.pill3 .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--red-soft); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--red); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--night); color: #fff; padding: 10px 16px; border-radius: 6px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+.price { display: grid; gap: 2px; }
+.price b { font: 400 40px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.card.dark .price b { color: var(--red-soft); }
+.big { font: 400 clamp(30px, 4vw, 44px)/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.dark .big { color: var(--red-soft); }
+.kpi { display: grid; gap: 4px; }
+.kpi span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .pill3 { grid-template-columns: 1fr; } .card { padding: 16px; } }
+
+.vs { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.vs .arrow { font: 400 30px/1 var(--f-head); color: var(--red-text); }
+@media (max-width: 620px) { .vs { grid-template-columns: 1fr; } .vs .arrow { transform: rotate(90deg); justify-self: center; } }
+</style>
+<main class="wrap">
+<header class="head">
+  <span class="label">Cryzz Yovany · Método SPB · Parte 2</span>
+  <h1>Oferta: online en dólares, presencial en pesos y <em>adiós a la mensualidad suelta</em></h1>
+  <p class="soft">Dos mercados, una lógica: <b>pagos por trimestre o semestre (con cuotas)</b>, el mensual como la opción cara, y una escalera de precios que sube con cada venta. Ya diste el primer paso esta semana (personalizado a $1,200 y Plan Cambio Físico a $1,800). Aquí está el resto. <b>Todo es propuesta: se confirma con Alberto y contigo antes de usarlo.</b> Los precios no van en la bio ni en la landing: se dicen en la llamada o en el informe del gimnasio.</p>
+  <nav class="toc" aria-label="Secciones"><a href="#nicho">Nicho</a><a href="#producto">Qué incluye</a><a href="#usd">Precios USD</a><a href="#cobro">Cobro y cuotas</a><a href="#escalera">Escalera</a><a href="#garantia">Garantía</a><a href="#mxn">Presencial MXN</a><a href="#vip">VIP</a><a href="#transicion">Transición</a><a href="#regreso">Antiguos clientes</a><a href="#backend">Después</a><a href="#no">A quién no</a></nav>
+</header>
+
+<section class="card dark" id="nicho">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="nicho">Ayudo a latinos de 30 a 45 años que viven en <em>Estados Unidos</em>, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a <em>perder grasa y ganar músculo</em> con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.</p>
+  <p class="soft">Tu método: <b>Método SPB · Sistema, Progresión, Balance.</b> "Te doy un sistema": una estructura clara que solo tienes que repetir, medida cada semana, y al final la libertad de mantenerlo sin mí. Palabra clave: <b>SISTEMA</b>. Secundario: México de alto nivel (presencial VIP en SPB Center Coacalco y online si llegan).</p>
+  <div class="pill3">
+    <div><span class="lbl">Pilar S · Sistema</span><b>Una estructura que solo tienes que repetir</b><p>1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo y al músculo que quieres mejorar. Nada que inventar sobre la marcha.</p><i>Por qué: a los 15, sin dinero para asesorías, aprendí con una libreta, una báscula y la canasta básica: tortillas, frijoles, arroz, huevo, atún. "Sencillas, efectivas y rápidas."</i></div>
+    <div><span class="lbl">Pilar P · Progresión</span><b>Se mide cada semana, no cada mes</b><p>Peso, medidas, fotos y tus cargas cada semana. RIR y sobrecarga progresiva bien entendidas: subes cuando toca, no cuando te acuerdas.</p><i>Por qué: pasé dos años cambiando de rutina cada semana por YouTube y haciendo abdomen diario. El powerlifting me enseñó a medir: 2.º lugar estatal y 145 / 210 / 265 kg en banca, sentadilla y peso muerto.</i></div>
+    <div><span class="lbl">Pilar B · Balance</span><b>Comes lo que te gusta y sales el fin de semana</b><p>Porciones correctas, no prohibiciones. Los 5 días hacen el trabajo que los otros 2 no pueden, y al final flexibilizamos para que lo mantengas sin mí.</p><i>Por qué: mi primera definición fue sin carbohidratos, con faja y té de limón con linaza: un desastre. En 2024 bajé de 100 a 85 kg con pasos y días libres, y en 2026 de 93 a 81 kg con una comida libre a la semana.</i></div>
+  </div>
+  <div class="pill3">
+    <div><span class="lbl">Fase 1 · Semanas 1–4</span><b>Estructura</b><p><b>Qué pasa:</b> videollamada inicial, tus menús con lo que te gusta, rutina a tu tiempo y primera evaluación en la semana 1.<br><b>Qué haces tú:</b> repites al pie de la letra y mandas tu feedback cada semana.</p></div>
+    <div><span class="lbl">Fase 2 · Semanas 5–12</span><b>Progresión</b><p><b>Qué pasa:</b> subimos cargas, ajustamos porciones cada semana y aprendes a que un fin de semana no borre nada.<br><b>Qué haces tú:</b> registras pesos y repeticiones y avisas en el momento si algo cambia.</p></div>
+    <div><span class="lbl">Fase 3 · Meses 4–6</span><b>Libertad</b><p><b>Qué pasa:</b> flexibilizamos el plan: salidas, viajes, comidas libres. El objetivo es que no rebotes.<br><b>Qué haces tú:</b> decides con criterio y mantienes tus resultados sin depender de mí.</p></div>
+  </div>
+  <p class="soft"><b>3 no negociables:</b> feedback semanal completo el día que toca (peso, medidas, fotos, pesos y repeticiones) · dudas en el momento, no el domingo en la noche · cumplir los días de entrenamiento y los menús que tú elegiste.</p>
+  <div class="say">"Si trabajas conmigo, lo primero que vas a dejar de hacer es complicarte la vida buscando la forma. Te voy a dar una estructura clara y un plan de acción inmediato en el que solo tendrás que repetir." — Cryzz</div>
+</section>
+
+
+<section class="sec" id="producto">
+  <header><span class="label">El producto online</span><h2>Plan SPB online: <em>lo que ya haces, con nombre y con fases</em></h2><p class="soft">Tu cliente no paga una rutina ni un menú (eso, como tú dices, "te lo podría hacer ChatGPT gratis"). Paga por un sistema hecho a su vida, por alguien que lo revisa cada semana y por tu atención, "mi carta de presentación más fuerte".</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">S · Sistema</span><ul class="l"><li><b>Videollamada inicial</b> (45–60 min): objetivo, historial, qué probó, qué comidas no quiere dejar.</li><li><b>1 a 3 menús</b> con la comida que le gusta, calculados al gramo (con equivalencias para comer fuera).</li><li><b>Rutina</b> adaptada a sus días reales, su gimnasio y el músculo que quiere mejorar.</li><li><b>Tu plataforma</b> con plan, rutina y videos de cada ejercicio [confirmar nombre].</li></ul></div>
+    <div class="card"><span class="badge">P · Progresión</span><ul class="l"><li><b>Evaluación cada semana</b> (peso, medidas, fotos, pesos y repeticiones), no cada mes: "no creí poder ver cambios desde la primera semana".</li><li>Ajuste de porciones y cargas con su feedback.</li><li>Revisión de técnica por video.</li><li>Videollamada de cierre de cada fase.</li></ul></div>
+    <div class="card"><span class="badge">B · Balance</span><ul class="l"><li><b>Plan de fin de semana:</b> cómo salir, comer fuera y no perder el progreso.</li><li><b>WhatsApp contigo</b> de lunes a sábado, respuesta en menos de 24 h (domingo, descanso: es un no negociable).</li><li><b>Fase de libertad:</b> flexibilizamos para que lo mantenga sin ti y no rebote.</li></ul></div>
+  </div>
+  <div class="card chip"><span class="label">Bonus de entrada (propuesta, nada que no tengas ya)</span><p class="soft"><b>Guía 1 · "Así se pierde grasa"</b> (tu pirámide en PDF) · <b>Guía 2 · Proteína fácil con comida de casa</b> (de tu carrusel) · <b>Guía 3 · Carbohidratos sin miedo: tortilla, arroz y pan</b> · <b>Guía 4 · Cómo sobrevivir a una fiesta o un viaje sin rebotar</b>. Se entregan el día 1. Las sacas de carruseles que ya publicaste.</p></div>
+</section>
+
+<section class="sec" id="usd">
+  <header><span class="label">Precios online · USD · propuesta</span><h2>El semestre es lo que se vende. <em>El año, el mejor valor</em></h2><p class="soft">Hoy cobras unos 100 dólares al mes y te los pagan "sin problemas". El nivel 0 no sube el precio por mes: cambia el formato. Cobras por adelantado, el cliente se compromete con las 3 fases y tú dejas de "captar continuamente". La subida real viene con la escalera.</p></header>
+  <div class="g3">
+    <div class="card dark"><span class="badge">1 · Se ofrece primero</span><div class="price"><b>$540</b><span class="soft">6 meses · las 3 fases · o 2 pagos de $290</span></div><p class="soft">Estructura, progresión y libertad. Sale a $90 al mes. Es el plan normal.</p></div>
+    <div class="card"><span class="badge">2 · Mejor valor</span><div class="price"><b>$960</b><span class="soft">12 meses · 3 fases + 6 meses de mantenimiento</span></div><p class="soft">Para quien quiere pasar un año entero (fiestas, verano, viaje a México) contigo. Sale a $80 al mes.</p></div>
+    <div class="card"><span class="badge">3 · Entrada</span><div class="price"><b>$300</b><span class="soft">3 meses · fases 1 y 2</span></div><p class="soft">Solo si el semestre no encaja. Es tu precio actual por mes, pagado por adelantado. Al terminar, sigue con el precio vigente.</p></div>
+  </div>
+  <div class="card"><div class="row"><span class="badge">Cómo se dice en la llamada</span><button class="cp" data-copy="saidPrice">Copiar</button></div>
+<div class="say" id="saidPrice">Lo normal es hacerlo en seis meses: el primer mes te doy tu estructura y ya ves cambios, del segundo al tercero progresamos cada semana, y del cuarto al sexto flexibilizamos para que lo mantengas sin mí y no rebotes. Son 540 dólares, o dos pagos de 290. Si lo quieres para el año completo, con mantenimiento, son 960. ¿Cuál va más contigo?</div>
+<p class="soft">Y te callas. El primero que habla después del precio, pierde.</p></div>
+  <div class="card warn"><span class="label">Mexicanos en México que llegan online</span><p class="soft">Mismo plan y mismo nivel de la escalera, cobrado en pesos al tipo de cambio del día de la llamada (con $18 por dólar: 6 meses = $9,720 MXN) [confirmar tipo de cambio y si prefieres redondear]. Así no hay dos listas de precios que mantener.</p></div>
+</section>
+
+<section class="sec" id="cobro">
+  <header><span class="label">Cobrar en dólares desde México</span><h2>Tú cobras completo. <em>Ella puede pagar en dos</em></h2></header>
+  <div class="g2">
+    <div class="card"><ul class="l">
+      <li><b>Pasarela:</b> Stripe o PayPal con tarjeta en USD; elige una y ten el link listo antes de la primera llamada [confirmar cuál usas hoy en tu plataforma].</li>
+      <li><b>2 pagos:</b> el primero hoy y el segundo a los 30 días, con cargo programado. Solo en el semestre. El precio total en 2 pagos es un poco más alto ($580 frente a $540): así pagar completo tiene premio.</li>
+      <li><b>"Paga en 4" (Klarna, Afterpay, PayPal Pay in 4):</b> si tu pasarela lo ofrece a compradores de EE. UU., actívalo: tú cobras completo menos comisión [confirmar disponibilidad con una cuenta mexicana].</li>
+      <li><b>Nunca</b> "te lo dejo más barato". El precio es el mismo pague como pague.</li>
+    </ul></div>
+    <div class="card warn"><span class="label">Impuestos: con tu contador, no aquí</span><p class="soft">Hoy restas un 16 % de IVA + 1,5 % de ISR a todo lo que entra. Cobrar en dólares a clientes que viven fuera de México puede tener otro tratamiento de IVA y de facturación. <b>No es asesoría fiscal:</b> antes del primer cobro en USD, pregúntale a tu contador cómo facturar y declarar esos ingresos y qué pasa con la comisión de la pasarela y el tipo de cambio.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="escalera">
+  <header><span class="label">Escalera de subida · online</span><h2>Cada venta cerrada, <em>+20 %</em></h2><p class="soft">Subes por confianza, no por calendario: cada cliente nuevo online que paga, siguiente nivel. Los precios nunca bajan. Si una semana no cierras, no es el precio: son las conversaciones. El CRM lleva la cuenta (<b>config/precios</b>).</p></header>
+  <div class="card"><div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Nivel</th><th class="num">3 meses</th><th class="num">6 meses</th><th class="num">6 meses en 2 pagos</th><th class="num">12 meses</th><th>Cuándo</th></tr></thead>
+    <tbody>
+      <tr class="now"><td>Nivel 0</td><td class="num">$300</td><td class="num">$540</td><td class="num">2 × $290</td><td class="num">$960</td><td>Ahora</td></tr>
+      <tr><td>Nivel 1</td><td class="num">$360</td><td class="num">$650</td><td class="num">2 × $350</td><td class="num">$1,150</td><td>Tras la siguiente venta</td></tr>
+      <tr><td>Nivel 2</td><td class="num">$430</td><td class="num">$780</td><td class="num">2 × $420</td><td class="num">$1,380</td><td>Tras la siguiente</td></tr>
+      <tr><td>Nivel 3 · máximo</td><td class="num">$520</td><td class="num">$935</td><td class="num">2 × $505</td><td class="num">$1,660</td><td>Ahí te quedas hasta revisarlo con Alberto</td></tr>
+    </tbody>
+  </table></div>
+  <p class="soft" style="font-size:14px">Quien recibió un precio en llamada lo mantiene 72 h. Las ventas presenciales y la oferta de regreso no suben la escalera online.</p></div>
+</section>
+
+<section class="sec" id="garantia">
+  <header><span class="label">Garantía y acuerdo</span><h2>"Te puedo garantizar los resultados <em>si lo haces</em>"</h2><p class="soft">Lo escribiste tú. La garantía lo pone por escrito y, de paso, filtra a tus dos perfiles de "no".</p></header>
+  <div class="g2">
+    <div class="card dark"><span class="label">Garantía (propuesta)</span><p>"Si cumples tus 3 no negociables durante 12 semanas y en tus evaluaciones no bajan tus medidas de cintura ni suben tus cargas, sigo contigo un mes más sin costo."</p><p class="soft">Medible: 10 de 12 evaluaciones enviadas a tiempo y los días de entrenamiento que elegiste registrados. Sin devolución de dinero. Quien no cumple el plan no puede culparte.</p></div>
+    <div class="card"><span class="label">Acuerdo · se firma antes de empezar</span><ul class="l"><li>Qué incluye, duración y forma de pago.</li><li>Los 3 no negociables y la garantía.</li><li>Horario de WhatsApp (lunes a sábado, 24 h) y día de evaluación.</li><li>"Avísame de cualquier medicamento, suplemento o comida que no te guste antes de empezar" (tu lección con cierta clienta).</li><li>Permiso de imagen aparte.</li><li>Aviso: "No es atención médica. Ante una condición de salud, consulta a tu médico".</li></ul></div>
+  </div>
+</section>
+
+<section class="sec" id="mxn">
+  <header><span class="label">Presencial SPB Center · MXN · propuesta para enero</span><h2>El mensual pasa a ser <em>la opción cara</em></h2><p class="soft">Tú pensabas $1,200 y $1,800 al mes. Los mantenemos, pero como precio por mes <b>pagando el trimestre</b>. Quien quiera seguir mensual paga más. Resultado: más dinero por adelantado, menos bajas a mitad de proceso y clientes "más calificados", como tú mismo intuyes.</p></header>
+  <div class="card"><div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Plan</th><th class="num">Hoy</th><th class="num">Mensual</th><th class="num">Trimestre</th><th class="num">Semestre</th><th>Por qué</th></tr></thead>
+    <tbody>
+      <tr><td>Básico · SPB SYSTEM (8 niveles)</td><td class="num">$650</td><td class="num">$700</td><td class="num">$1,950</td><td class="num">$3,750</td><td>Primera subida en 4 años, la que ya planeabas. El trimestre ($650/mes) premia al que se compromete.</td></tr>
+      <tr><td>Personalizado (rutina tuya + entrenador de turno)</td><td class="num">$1,200</td><td class="num">$1,500</td><td class="num">$3,600</td><td class="num">$6,600</td><td>$1,200/mes pagando trimestre (tu cifra). Mensual +25 %.</td></tr>
+      <tr class="now"><td>Plan Cambio Físico (rutina + alimentación + videollamadas)</td><td class="num">$1,800</td><td class="num">$2,200</td><td class="num">$5,400</td><td class="num">$10,200</td><td>$1,800/mes pagando trimestre. Trimestre también en 2 pagos de $2,800.</td></tr>
+      <tr><td>SPB Uno a Uno (VIP)</td><td class="num">—</td><td class="num">—</td><td class="num">$16,500</td><td class="num">$31,500</td><td>Nuevo. Ver abajo.</td></tr>
+      <tr><td>Visita de prueba</td><td class="num">$75</td><td class="num" colspan="3">$100, descontable si se inscribe ese día</td><td>No regalas la visita; premias decidir.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="soft" style="font-size:14px">Escalera presencial: no sube con cada venta (estás "limitado a la zona"). Se revisa cada trimestre: si el Plan Cambio Físico tiene lista de espera o cierras más de 8 de cada 10 informes, sube $200.</p></div>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Cómo se dice en el informe del gimnasio</span><button class="cp" data-copy="saidGym">Copiar</button></div>
+<div class="say" id="saidGym">Tenemos tres planes. El que más resultados da es el Plan Cambio Físico: tu rutina hecha por mí, tu plan de alimentación con la comida que te gusta y la evaluación cada semana. Se trabaja por trimestre porque en 12 semanas ya ves el cambio completo de la primera etapa: son 5,400, o dos pagos de 2,800. Si prefieres mes a mes, son 2,200. ¿Cuál te acomoda más?</div></div>
+    <div class="card"><span class="badge">Por qué el Plan Cambio Físico va primero</span><ul class="l"><li>Es tu línea más grande: 20 clientes, $33,000 al mes hoy.</li><li>Con la nutricionista pagada solo por plan hecho, deja más margen por cliente (ver Parte 5).</li><li>Es donde salen los casos con antes/después que alimentan tu Instagram.</li></ul></div>
+  </div>
+</section>
+
+<section class="sec" id="vip">
+  <header><span class="label">Tier premium presencial</span><h2>SPB Uno a Uno: <em>tus mañanas valen más</em></h2><p class="soft">Desde enero tú solo vas de 6 a 10 am, y ahí está la gente que entrena antes de trabajar y puede pagar más. Hoy esas horas las regalas en "atender el piso". El VIP convierte 3 de esas horas en tu mejor ingreso por hora.</p></header>
+  <div class="g2">
+    <div class="card dark"><span class="label">Qué incluye</span><ul class="l"><li><b>3 sesiones a la semana contigo</b>, 1 a 1, entre 6 y 10 am.</li><li>Plan Cambio Físico completo (rutina, alimentación, videollamadas).</li><li>WhatsApp directo contigo y evaluación semanal en persona.</li><li>Prioridad de horario y lugar en máquinas.</li><li><b>Máximo 4 cupos</b>: 12 sesiones de 20 posibles a la semana. Te deja tiempo para "revisar tu negocio y entrenar".</li></ul></div>
+    <div class="card"><span class="label">Precio (propuesta)</span><div class="price"><b>$16,500</b><span class="soft">por trimestre · $5,500 al mes · 36 sesiones</span></div><p class="soft">≈ $460 por sesión con plan completo incluido. Para quién: profesionistas y dueños de negocio de Coacalco y alrededores que quieren resultados rápidos con alguien encima. [confirmar precios de entrenadores 1 a 1 en tu zona y si 6–10 am te da para 4 cupos].</p></div>
+  </div>
+</section>
+
+<section class="sec" id="transicion">
+  <header><span class="label">Transición de tus clientes actuales</span><h2>Diciembre: <em>"pásate a trimestre al precio de hoy"</em></h2><p class="soft">Nadie se entera de una subida por sorpresa. Les das una ventana y una razón para decidir ya: entra efectivo en diciembre (cuando todos tienen aguinaldo) y aseguras enero, febrero y marzo.</p></header>
+  <div class="g2">
+    <div class="card"><div class="row"><span class="badge">Mensaje a socios y clientes actuales</span><button class="cp" data-copy="msgTrans">Copiar</button></div>
+<div class="say" id="msgTrans">Hola [nombre]! Te aviso antes que a nadie: en enero SPB pasa a trabajar por trimestre y los precios mensuales suben. Como ya eres parte de SPB, hasta el 31 de diciembre puedes pagar tu trimestre de enero a marzo al precio que pagas hoy: [precio actual × 3]. Así te olvidas de pagar cada mes y aseguras tu lugar. ¿Te lo dejo apartado?</div></div>
+    <div class="card"><span class="badge">Reglas</span><ul class="l"><li><b>Básico:</b> trimestre a $1,950 (precio de hoy × 3).</li><li><b>Personalizado:</b> trimestre a $3,600 ($1,200 × 3).</li><li><b>Plan Cambio Físico:</b> trimestre a $5,400 ($1,800 × 3).</li><li>Quien no se pase, desde enero paga el mensual nuevo.</li><li>Los 7 de personalizado y los 20 de plan: mensaje personal, no difusión.</li></ul></div>
+  </div>
+</section>
+
+<section class="sec" id="regreso">
+  <header><span class="label">Oferta francotirador · antiguos clientes y leads en pausa</span><h2>Empieza por quien te llama <em>"la vieja confiable"</em></h2><p class="soft">"Cuando me conocen suelen quedarse y si se van por factores externos siempre regresan." Enero es cuando regresan. Mensajes en el CRM (pestaña Reactivación).</p></header>
+  <div class="card red"><span class="label">"Regreso SPB" · del 26 de diciembre al 15 de enero · 10 plazas</span><ul class="l">
+    <li><b>Evaluación de regreso incluida</b> (fotos, medidas, cómo está hoy) antes de pagar nada.</li>
+    <li><b>Presencial:</b> Plan Cambio Físico trimestre a $5,100 (en vez de $5,400).</li>
+    <li><b>Online desde EE. UU.:</b> semestre a precio de nivel 0 ($540) aunque la escalera ya haya subido.</li>
+    <li>Plazo real: 15 de enero. <b>No sube la escalera.</b></li>
+  </ul></div>
+  <div class="card"><div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Segmento</th><th>Quién</th><th>Qué buscas</th><th>Qué ofreces</th></tr></thead>
+    <tbody>
+      <tr><td>A · Activos con resultados</td><td>Gustavo (tu primer cliente), Cynthia, Margarita, Gemma, Erick, Eduardo [confirmar quiénes siguen activos]</td><td>Testimonio y referidos</td><td>1 semana extra por cada amigo que entre de su parte</td></tr>
+      <tr><td>B · Lograron su objetivo y se fueron</td><td>[lista de antiguos clientes]</td><td>Que vuelvan por "un objetivo más alto"</td><td>Regreso SPB</td></tr>
+      <tr><td>C · Se fueron por dinero</td><td>[lista]</td><td>Volver sin quemar la relación</td><td>Regreso SPB en 2 pagos. Un solo mensaje.</td></tr>
+      <tr><td>D · Leads en pausa</td><td>Azalea (enero, aguinaldo) · Emanuel (presupuesto con su pareja)</td><td>Decidir: sí o no</td><td>Azalea: trimestre solo alimentación $3,600 o completo $5,400 (lo que le cotizaste ×3). Emanuel: semestre online en pesos o trimestre.</td></tr>
+      <tr><td>Fuera</td><td>Quien no siguió el plan y te culpó</td><td>—</td><td>Nada. Si vuelve, entra con las reglas de los no negociables.</td></tr>
+    </tbody>
+  </table></div></div>
+</section>
+
+<section class="sec" id="backend">
+  <header><span class="label">Back-end</span><h2>Lo que pasa <em>después</em></h2></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Renovación</span><h3>Semana 10 o mes 5</h3><p class="soft">Con sus evaluaciones delante: "esto conseguiste, esto es lo siguiente". Renueva al precio vigente.</p></div>
+    <div class="card"><span class="badge">Mantenimiento online</span><h3>$70 USD/mes · propuesta</h3><p class="soft">Solo para quien termina un plan: ajuste mensual y evaluación cada 2 semanas. No cuenta para la escalera.</p></div>
+    <div class="card"><span class="badge">Referidos</span><h3>1 semana extra o $150 de descuento</h3><p class="soft">Online: una semana más por amiga que entra. Presencial: $150 menos en su siguiente pago por socio nuevo inscrito.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="no">
+  <header><span class="label">A quién dices que no</span><h2>Tus límites <em>también son oferta</em></h2></header>
+  <div class="g2">
+    <div class="card"><ul class="l">
+      <li>Quien no se compromete con el plan y luego te culpa de la falta de resultados.</li>
+      <li>Quien busca atajos: esteroides, inyecciones, "la pastilla mágica", quemadores.</li>
+      <li>Quien pide 5 días de rutina y 5 menús "porque se aburre" sin haber cumplido 3.</li>
+      <li>Quien te escribe el domingo en la noche para cambiar lo que no hizo.</li>
+    </ul></div>
+    <div class="card dark"><span class="label">Frase para la llamada</span><p>"Yo me comprometo a darte un sistema hecho a tu vida y a revisarlo cada semana. Necesito que tú te comprometas a mandarme tu feedback el día que toca y a avisarme en el momento si algo cambia. Si eso ahora no lo puedes cumplir, mejor esperamos."</p></div>
+  </div>
+</section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  function fallback(txt) { var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); show(ok ? "Copiado" : "Selecciona y copia a mano"); }
+  window.zCopy = function (txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function () { show("Copiado"); }, function () { fallback(txt); });
+    else fallback(txt);
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (b) { var el = document.getElementById(b.getAttribute("data-copy")); if (el) window.zCopy(el.textContent.trim()); return; }
+    var c = e.target.closest("[data-cp]"); if (c) window.zCopy(c.getAttribute("data-cp"));
+  });
+})();
+</script>
+

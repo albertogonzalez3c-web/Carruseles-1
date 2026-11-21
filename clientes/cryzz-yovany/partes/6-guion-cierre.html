@@ -1,0 +1,292 @@
+<title>Cryzz Guion Cierre</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: guion de llamada de cierre de Cryzz Yovany en una sola columna para leer e imprimir, con entradas para lead online de EE. UU., antiguo cliente y socio del gimnasio; frases literales en recuadro con botón de copiar. Paleta negro, blanco y rojo SPB. */
+:root {
+  --paper: #f4f3f2;
+  --white: #ffffff;
+  --sand: #ebe7e3;
+  --sand-line: #dcd8d4;
+  --ink: #0b0b0c;
+  --soft: #5a5856;
+  --gold: #c8141c;
+  --gold-text: #a50f16;
+  --chip: #edeae7;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 860px; margin: 0 auto; padding: clamp(28px, 5vw, 52px) max(16px, env(safe-area-inset-right, 0px)) 70px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 18px; }
+h1, h2, h3, h4 { margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+h1 { font: 400 clamp(34px, 5.5vw, 54px)/1 var(--f-head); letter-spacing: 0; text-transform: uppercase; }
+h2 { font: 400 26px/1.12 var(--f-head); }
+h3 { font: 700 17px/1.3 var(--f-body); }
+p { margin: 0; }
+.label { font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+.soft { color: var(--soft); }
+.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; justify-content: space-between; }
+.btn { font: 700 14px/1 var(--f-body); background: var(--gold); color: #fff; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; }
+.btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.card { background: var(--white); border-radius: 16px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sand { background: var(--sand); border: 1.5px solid var(--sand-line); }
+.card.dark { background: var(--ink); color: #fff; }
+.card.dark .label { color: #ff8a8f; }
+.card.dark ul.l, .card.dark ul.l b { color: #d6d0cd; }
+.cs { padding: 22px clamp(18px, 3vw, 28px); gap: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 4px solid var(--gold); border-radius: 10px; padding: 11px 14px; font-size: 15px; font-weight: 600; }
+.say.placeholder { border: 1.5px dashed var(--gold); border-left-width: 4px; }
+.say .cpy { all: unset; cursor: pointer; float: right; margin: -2px -4px 4px 10px; font: 500 10.5px/1 var(--f-mono); text-transform: uppercase; letter-spacing: .04em; padding: 6px 8px; border-radius: 8px; background: var(--white); box-shadow: inset 0 0 0 1px var(--sand-line); color: var(--ink); }
+.say .cpy:focus-visible { outline: 3px solid var(--ink); }
+.cs h3.ph { font: 400 25px/1.15 var(--f-head); text-transform: uppercase; letter-spacing: .01em; margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--sand-line); }
+.cs h4 { margin: 4px 0 0; font: 700 15.5px/1.3 var(--f-body); color: var(--gold-text); }
+.tw { overflow-x: auto; }
+.ctab { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+.ctab th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); padding: 8px 10px; background: var(--chip); }
+.ctab td { padding: 9px 10px; border-top: 1px solid var(--sand-line); vertical-align: top; }
+.note { background: var(--white); border: 1.5px dashed var(--sand-line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; font-size: 14px; }
+.check-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14.5px; }
+.objs { display: grid; }
+.obj { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); gap: 10px; border-top: 1px solid var(--sand-line); padding-top: 10px; margin-top: 10px; font-size: 14.5px; }
+.obj > b { font-size: 15px; }
+.obj .say { display: block; margin: 0 0 6px; }
+@media (max-width: 640px) { .grid2, .obj { grid-template-columns: 1fr; } }
+@media print {
+  @page { margin: 14mm 12mm; }
+  body { background: #fff; font-size: 11.5pt; }
+  .wrap { padding: 0; max-width: none; gap: 10px; }
+  .noprint, .say .cpy { display: none !important; }
+  .card, .cs { padding: 0; border-radius: 0; background: #fff !important; }
+  .card.sand, .card.dark, .note { background: #fff !important; color: #000 !important; border: 1px solid #bbb; padding: 10px 12px; border-radius: 6px; }
+  .card.dark .label, .card.dark ul.l { color: #000 !important; }
+  .say { background: #fff; border: 1px solid #cfc8c4; border-left: 4px solid #c8141c; break-inside: avoid; }
+  .cs h3.ph { break-after: avoid; }
+  h4 { break-after: avoid; }
+  .obj, table, .grid2 > * { break-inside: avoid; }
+  .tw { overflow: visible; }
+  .ctab { min-width: 0; }
+  a { color: #000; }
+}
+h1 { font: 400 clamp(30px, 5vw, 48px)/1.05 var(--f-head); text-transform: none; letter-spacing: -.02em; }
+.cs h3.ph { font: 400 21px/1.2 var(--f-head); text-transform: none; }
+
+/* Cryzz: Bebas Neue (400) en titulares */
+h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
+</style>
+
+<main class="wrap">
+  <header class="top">
+    <div style="display:grid;gap:8px">
+      <span class="label">Cryzz Yovany · SPB · Parte 6 · Material de mentoría</span>
+      <h1>Guion de llamada de cierre</h1>
+      <p class="soft">Para latinos de 30 a 45 años que viven en Estados Unidos, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron. Método SPB: Sistema, Progresión, Balance. Tres entradas: lead online de EE. UU. (en USD), antiguo cliente o lead en pausa, y socio de SPB Center (upsell en MXN). Desde la fase 1, el guion es el mismo.</p>
+    </div>
+    <button type="button" class="btn noprint" id="printBtn">Imprimir o guardar en PDF</button>
+  </header>
+
+  <article class="card cs" id="cierre">
+    <span class="label">Videollamada de cierre · 35–40 min</span>
+    <h2>Conectas, escuchas, resumes, propones y cierras.</h2>
+    <p class="soft">Pediste practicar la venta "de forma realista porque es algo nuevo para mí". La clave: no vas a convencer a nadie. Vas a hacer preguntas, escuchar lo que ya te contó cientos de veces la gente en SPB ("ya probé de todo", "a mi cuerpo le cuesta") y proponer tu sistema solo si encaja. Hablas tú el 30 % del tiempo como mucho. Las frases en recuadro son casi literales.</p>
+    <div class="tw"><table class="ctab">
+      <thead><tr><th>Fase</th><th>Objetivo</th><th>Tiempo</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Conexión + Autoridad</td><td>Bajar defensas y liderar la llamada</td><td>5 min</td></tr>
+        <tr><td>2 · Descubrimiento</td><td>Dolor, intentos, frenos y objetivo</td><td>18 min</td></tr>
+        <tr><td>2.5 · Resumen + Validación</td><td>Que sienta que la entiendes</td><td>2 min</td></tr>
+        <tr><td>3 · Propuesta + Precio</td><td>Solo lo que le importa a esa persona</td><td>5 min</td></tr>
+        <tr><td>4 · Objeciones + Cierre</td><td>Aclarar, aislar, solucionar y cobrar</td><td>10 min</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="card sand">
+      <span class="label">Antes de la llamada (5 min, obligatorio)</span>
+      <ul class="check-l">
+        <li>☐ Su ficha del CRM: origen, ciudad, lo que puso en la aplicación y lo que te contó por DM.</li>
+        <li>☐ <b>Zona horaria:</b> hora en su ciudad y en Coacalco. La invitación, siempre con las dos.</li>
+        <li>☐ Una frase literal suya para el resumen ("ya pagué y no me funcionó", "a mi cuerpo le cuesta mucho bajar", "no quiero dejar las tortillas").</li>
+        <li>☐ En qué fase de tu historia está: sin conocimientos · sesgada por las redes y la "pastilla mágica" · ya tuvo asesoría y fue "un castigo temporal".</li>
+        <li>☐ El caso más parecido al suyo (tabla de la fase 3) y tu historia en 30 segundos.</li>
+        <li>☐ Tu nivel de precios actual en el CRM (pestaña Clientes). Link de pago en USD abierto.</li>
+        <li>☐ Cámara a la altura de los ojos, luz de frente, playera SPB, celular en silencio. A la hora en punto.</li>
+      </ul>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <span class="label">Entrada A · Lead online de EE. UU.</span>
+        <p class="say">"¡Hola [nombre]! ¿Desde qué ciudad me hablas? ¿Allá qué hora es?"</p>
+        <p class="say">"¿Te agarro saliendo del trabajo o ya estás en casa?"</p>
+        <p class="say">"Vi que me escribiste SISTEMA por el video de [tema]. ¿Qué fue lo que te hizo clic?"</p>
+        <p class="soft" style="font-size:13.5px">Frase de cercanía: "Trabajo online con gente de México y de Estados Unidos. Lo que necesito son tus datos y tu feedback, no que estés cerca. Y te contesto yo, no un equipo."</p>
+      </div>
+      <div class="card">
+        <span class="label">Entrada B · Antiguo cliente o lead en pausa</span>
+        <p class="say">"¡Qué gusto hablar otra vez! ¿Cómo has estado desde que dejamos de trabajar juntos?"</p>
+        <p class="say">"¿Qué pasó con lo que habíamos logrado?"</p>
+        <p class="soft" style="font-size:13.5px">Ya confía en ti: descubrimiento corto. Cuéntale qué haces distinto hoy: evaluación cada semana, tu plataforma, 3 fases y la de libertad para no rebotar. Con Azalea y Emanuel: retoma su frase exacta ("se salió de mi presupuesto", "lo estamos viendo con mi pareja") y ve directo a la fase 2.5.</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="label">Entrada C · Socio de SPB Center (en persona, 6–10 am, 15 min)</span>
+      <p class="say">"[Nombre], ya llevas [X] semanas con el SPB SYSTEM. En tu evaluación [dato real]. ¿Cómo te sientes?"</p>
+      <p class="soft" style="font-size:13.5px">Versión corta del mismo guion: 2.1 dolor ("¿qué te gustaría ver distinto en 3 meses?"), 2.5 resumen, 3 propuesta (Plan Cambio Físico por trimestre: $5,400 o 2 × $2,800; mensual $2,200) y 4 cierre. Lo que ya pagó este mes se descuenta.</p>
+    </div>
+
+    <h3 class="ph">Fase 1 · Conexión + Autoridad (5 min)</h3>
+    <p class="soft">Dos minutos de charla como mucho y entras al marco.</p>
+    <h4>Marco de autoridad (obligatorio, casi literal)</h4>
+    <p class="say">"Te cuento cómo va a ser esto. Te voy a hacer unas preguntas para entender bien dónde estás y qué te ha pasado con lo que ya probaste. Si veo que te puedo ayudar de verdad, te explico cómo trabajo y vemos si tiene sentido. Y si veo que no es para ti, te lo digo igual. ¿Te parece?"</p>
+    <p class="soft">Espera el sí. <b>Errores a evitar:</b> hablar de ti antes de saber nada de ella, alargar la charla o empezar a explicar tu plataforma.</p>
+
+    <h3 class="ph">Fase 2 · Descubrimiento profundo (18 min)</h3>
+    <p class="soft">Aquí se gana o se pierde. Preguntas, escuchas, apuntas sus palabras y aguantas los silencios. Todavía no das soluciones (es lo que más te va a costar: sabes la respuesta desde el minuto 1).</p>
+    <h4>2.1 Dolor</h4>
+    <p class="say">"Para empezar, ¿por qué decidiste agendar esta llamada ahora y no hace seis meses?"</p>
+    <ul class="l">
+      <li>¿Cómo te sientes hoy con tu cuerpo? ¿Qué es lo que más te molesta?</li>
+      <li>Ponme un ejemplo reciente en que lo notaste: la ropa, una foto, el espejo, una fiesta.</li>
+      <li>¿Hay algo de salud que te preocupe a largo plazo? (escucha; si es médico, "eso con tu médico")</li>
+    </ul>
+    <p class="soft">Silencio de 5 a 7 segundos después de cada respuesta. Si contesta en superficie ("pues bajar unos kilos"):</p>
+    <p class="say">"Te lo pregunto porque mientras mejor entienda lo que te pasa, mejor te voy a poder ayudar. Tómate tu tiempo."</p>
+    <p class="soft">Si sigue en superficie, tu historia en menos de 30 segundos:</p>
+    <p class="say">"Te cuento por qué te pregunto. Yo empecé con 15 años pesando 60 kilos y sin dinero para un entrenador: aprendí con una libreta y una báscula. Mi primera definición la hice quitando todos los carbohidratos, con faja y té de linaza, y fue un desastre. Este año bajé de 93 a 81 kilos comiendo tortillas, con un sistema. Por eso te pregunto: ¿en qué parte de esto te ves tú?"</p>
+    <h4>2.2 Intentos</h4>
+    <p class="say">"Seguro ya lo intentaste antes. Cuéntame uno o dos intentos serios y qué no te funcionó."</p>
+    <ul class="l"><li>¿Era asesoría, nutriólogo, app o por tu cuenta? ¿Cuánto te duró?</li><li>¿Te gustaba lo que comías? ¿Te evaluaban cada semana o cada mes?</li><li>¿Qué pasaba los fines de semana?</li><li>¿Por qué lo dejaste?</li></ul>
+    <p class="soft">Escucha en qué fase está y apunta lo que falló (plan copiado, comidas que odiaba, coach que no contestaba, rebote, quemadores).</p>
+    <h4>2.3 Frenos y riesgo</h4>
+    <p class="say">"Imagínate que hoy entras a una asesoría como esta, no tiene que ser la mía. ¿Qué miedo o qué duda te vendría a la cabeza?"</p>
+    <p class="soft">Apunta el miedo literal ("que me vuelva a pasar", "no poder comer lo que me gusta", "que sea en dólares", "no tener tiempo con mi trabajo", "a mi edad ya no"). Lo resuelves en la fase 3.</p>
+    <h4>2.4 Deseo y servicio ideal</h4>
+    <p class="say">"¿Qué tendría que pasar en 3 meses y en 6 meses para que digas: esto sí está funcionando?"</p>
+    <ul class="l"><li>Y cuando lo consigas, ¿qué cambia? (la ropa, la confianza, comer en una fiesta sin miedo)</li><li>¿Por qué ahora es importante?</li><li>Del 1 al 10, ¿qué tan importante es resolverlo ya?</li></ul>
+    <p class="say">"Si fueras a contratar a alguien para esto, ¿a qué una o dos cosas le darías más importancia?"</p>
+    <p class="soft">Si el 1–10 da menos de 7: "¿Qué haría falta para que fuera un 9?". Sin urgencia real, no fuerces el cierre.</p>
+
+    <h3 class="ph">Fase 2.5 · Resumen + Validación (2 min)</h3>
+    <p class="say">"A ver si te entendí bien. Vives en [ciudad], trabajas [horario] y [dolor con sus palabras]. Probaste [intento] y no te funcionó porque [motivo]. Lo que quieres de verdad es [deseo] y lo que más te preocupa es [miedo]. ¿Se me escapa algo?"</p>
+    <p class="say">"Te voy a ser sincero. Sí creo que te puedo ayudar, y lo que te pasó es de lo más común: la mayoría de mis clientes llegan después de otra asesoría. No fue tu cuerpo ni tu fuerza de voluntad: te faltó un sistema hecho a tu vida y alguien que lo revisara cada semana. Te explico cómo lo haríamos en tres minutos y después me dices qué dudas tienes, ¿va?"</p>
+    <p class="soft">Si no es para ti (busca atajos o quemadores, quiere imponer su método, ya te avisa que "no va a poder" mandar feedback), díselo aquí. Son tus perfiles de "no".</p>
+
+    <h3 class="ph">Fase 3 · Propuesta + Precio (5 min)</h3>
+    <h4>Qué es (20 segundos)</h4>
+    <p class="say">"Ayudo a latinos de 30 a 45 años que viven en Estados Unidos, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a perder grasa y ganar músculo con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana. Llevo 10 años entrenando gente y tengo mi propio gimnasio en México; online trabajo con mi plataforma y te atiendo yo."</p>
+    <h4>Método SPB en 2 minutos (empieza por el pilar que más le importa)</h4>
+    <ul class="l">
+      <li><b>Sistema:</b> "Te armo de 1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina a tu tiempo. No tienes que inventar nada: solo repetir."</li>
+      <li><b>Progresión:</b> "Te evalúo cada semana: peso, medidas, fotos y tus cargas. No esperas un mes para saber si funciona."</li>
+      <li><b>Balance:</b> "No te quito las tortillas ni el fin de semana. Los 5 días hacen el trabajo y al final flexibilizamos para que lo mantengas sin mí."</li>
+    </ul>
+    <div class="tw"><table class="ctab">
+      <thead><tr><th>Fase</th><th>Qué pasa</th><th>Qué haces tú</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Estructura (semanas 1–4)</td><td>Videollamada inicial, menús, rutina, acceso a la plataforma y primera evaluación.</td><td>Repetir al pie de la letra y mandar tu feedback.</td></tr>
+        <tr><td>2 · Progresión (semanas 5–12)</td><td>Subimos cargas y ajustamos porciones cada semana.</td><td>Registrar pesos y repeticiones y avisar en el momento.</td></tr>
+        <tr><td>3 · Libertad (meses 4–6)</td><td>Flexibilizamos: salidas, viajes, comidas libres.</td><td>Decidir con criterio y mantenerlo sin mí.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="soft"><b>3 no negociables:</b> feedback semanal completo el día que toca · dudas en el momento, no el domingo en la noche · cumplir los días y los menús que tú elegiste.</p>
+    <p class="say">"Lo primero que vas a dejar de hacer conmigo es complicarte la vida buscando la forma. Yo te doy la estructura; tú solo la repites."</p>
+    <p class="soft"><b>Garantía (si la confirma Alberto):</b> "Si cumples los 3 no negociables 12 semanas y no bajan tus medidas de cintura ni suben tus cargas, sigo contigo un mes más sin costo."</p>
+    <h4>Resuelve el miedo de la 2.3</h4>
+    <p class="say">"Antes me dijiste que te daba miedo [miedo literal]. Justo por eso trabajo así: [solución concreta]."</p>
+    <h4>Caso parecido (uno solo, real y con permiso)</h4>
+    <div class="tw"><table class="ctab">
+      <thead><tr><th>Caso</th><th>Qué contar (solo lo confirmado)</th><th>Úsalo cuando…</th></tr></thead>
+      <tbody>
+        <tr><td>Cynthia · −10 kg</td><td>Su destacada. [confirmar tiempo y su frase]</td><td>Mujer que cree que a su cuerpo le cuesta bajar.</td></tr>
+        <tr><td>Gemma · −12 kg</td><td>De tus mejores casos: venía de una mala experiencia con otra asesoría.</td><td>Ya pagó y rebotó.</td></tr>
+        <tr><td>Margarita · −12 kg</td><td>Su destacada. [confirmar edad y tiempo]</td><td>"A mi edad ya no".</td></tr>
+        <tr><td>Erick · −16 kg / Eduardo · −10 kg</td><td>Sus destacadas.</td><td>Hombres o parejas.</td></tr>
+        <tr><td>Tú</td><td>93 → 81 kg en 2026 comiendo tortillas, una comida libre a la semana.</td><td>Miedo a dejar lo que le gusta.</td></tr>
+      </tbody>
+    </table></div>
+    <h4>El precio: así se presenta (USD, nivel actual en el CRM)</h4>
+    <ul class="l">
+      <li><b>Primero el semestre:</b> "Lo normal es hacerlo en seis meses: el primer mes te doy tu estructura, del segundo al tercero progresamos cada semana y del cuarto al sexto flexibilizamos para que no rebotes."</li>
+      <li><b>El año, como mejor valor:</b> "Si lo quieres para el año completo, con mantenimiento, te sale mucho mejor."</li>
+      <li><b>3 meses solo como último recurso:</b> son las fases 1 y 2.</li>
+    </ul>
+    <div class="tw"><table class="ctab">
+      <thead><tr><th>Nivel</th><th>3 meses</th><th>6 meses</th><th>6 meses en 2 pagos</th><th>12 meses</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>$300</td><td>$540</td><td>2 × $290</td><td>$960</td></tr>
+        <tr><td>1</td><td>$360</td><td>$650</td><td>2 × $350</td><td>$1,150</td></tr>
+        <tr><td>2</td><td>$430</td><td>$780</td><td>2 × $420</td><td>$1,380</td></tr>
+        <tr><td>3</td><td>$520</td><td>$935</td><td>2 × $505</td><td>$1,660</td></tr>
+      </tbody>
+    </table></div>
+    <p class="soft">México: mismo nivel, en pesos al tipo de cambio del día. Presencial (entrada C): Plan Cambio Físico $5,400 el trimestre o 2 × $2,800; mensual $2,200. Antiguos clientes ("Regreso SPB", hasta el 15 de enero): online semestre a $540 aunque la escalera haya subido; presencial trimestre $5,100. Todo es propuesta: confírmalo con Alberto antes de la primera llamada.</p>
+    <p class="say">"El semestre son [precio] dólares. Si te acomoda más, lo puedes pagar en dos pagos de [cuota]."</p>
+    <p class="soft">Dilo una vez y calla. No lo justifiques ni lo bajes. Cada venta online cerrada, subes un nivel en el CRM.</p>
+    <h4>Cierre de bloque</h4>
+    <p class="say">"Hasta aquí lo importante. Ahora dime tú: ¿qué dudas te quedan sobre cómo funciona, el pago o cuándo empezar?"</p>
+    <p class="soft">Y te callas.</p>
+
+    <h3 class="ph">Fase 4 · Objeciones + Cierre (10 min)</h3>
+    <p class="soft">Nunca discutes ni te justificas. Cada objeción pasa por tres pasos: <b>Aclarar</b> ("¿a qué te refieres exactamente?"), <b>Aislar</b> ("dejando eso de lado, ¿hay algo más que te frene para empezar hoy?") y <b>Solucionar</b>.</p>
+    <div class="objs">
+      <div class="obj"><b>"Ya pagué una asesoría y no me funcionó"</b><div><p class="say">"¿Qué fue exactamente lo que no funcionó?"</p><p class="say">"Tiene todo el sentido que desconfíes. ¿Te preguntaban qué te gustaba comer? ¿Te evaluaban cada semana? ¿Te contestaban? Conmigo es tu comida, evaluación semanal y me escribes a mí. Por eso la mayoría de mis clientes vienen de otra asesoría y se quedan."</p></div></div>
+      <div class="obj"><b>"Está caro" / "es en dólares"</b><div><p class="say">"¿Es por cómo vas este mes o porque no tienes claro que valga lo que cuesta?"</p><p class="soft">Liquidez: "El precio no lo toco, pero el semestre lo puedes pagar en dos pagos." Valor: "¿Cuánto llevas gastado entre asesorías, suplementos y dietas que no funcionaron? Esto son 90 dólares al mes con alguien que te revisa cada semana."</p></div></div>
+      <div class="obj"><b>"Lo tengo que ver con mi esposo / mi pareja"</b><div><p class="soft">1. Valida: "Tiene todo el sentido." 2. "¿Lo consultas para pedir permiso o para que te apoye?" 3. "Dejando a tu pareja de lado un momento, ¿tú lo tienes claro?" 4. "¿Quieres que lo platiquemos los tres 10 minutos mañana?" Si persiste: día y hora concretos para la respuesta.</p></div></div>
+      <div class="obj"><b>"Espero mi aguinaldo / mejor en enero"</b><div><p class="say">"Me parece bien. ¿Qué cambia en enero además del dinero?"</p><p class="soft">Si es solo dinero: "Te aparto tu lugar con el precio de hoy y empezamos el [fecha]; el primer pago lo haces ese día." Fecha concreta en el CRM. Si es miedo, vuelve a la 2.3.</p></div></div>
+      <div class="obj"><b>"No tengo tiempo, trabajo 10 horas"</b><div><p class="say">"¿Cuánto tiempo crees que haría falta?"</p><p class="say">"Tu rutina se arma con el tiempo que tienes. Prefiero 3 días bien hechos que 5 que no cumples. Y la comida es la de siempre, en su porción: no te pido cocinar distinto."</p></div></div>
+      <div class="obj"><b>"No quiero dejar de comer lo que me gusta"</b><div><p class="say">"No lo vas a dejar. Dime 3 cosas que no dejarías nunca y te digo cómo entran en tu plan. Yo bajé 12 kilos este año comiendo tortillas."</p></div></div>
+      <div class="obj"><b>"A mi edad ya no creo"</b><div><p class="say">"¿Qué te hace pensar eso?" … "Lo que cambia con la edad es que necesitas más estructura, no menos resultado. [Caso de Margarita si confirma edad]."</p></div></div>
+      <div class="obj"><b>"¿Cómo me vas a entrenar desde México?"</b><div><p class="say">"Igual que a mis clientes de aquí que no vienen al gimnasio: tu plataforma con la rutina y los videos, revisión de técnica por video y evaluación cada semana. Lo que necesito son tus datos, no que estés cerca."</p></div></div>
+      <div class="obj"><b>"Solo quiero la alimentación"</b><div><p class="say">"Se puede, pero los mejores resultados los veo cuando van de la mano: la dieta se calcula con lo que entrenas. ¿Quién te lleva hoy el entrenamiento?"</p><p class="soft">Si ya tiene entrenador (como Azalea con box): ofrece solo alimentación por trimestre, sin bajar el precio por mes.</p></div></div>
+      <div class="obj"><b>"¿Me lo das mes a mes?"</b><div><p class="say">"Mes a mes no trabajo online: en un mes no ves el cambio completo de la primera fase y casi todos los que lo dejan, lo dejan ahí. Por eso es por semestre, y lo puedes pagar en dos."</p></div></div>
+      <div class="obj"><b>"Déjame pensarlo"</b><div><p class="say">"Claro, es una decisión. ¿Qué es exactamente lo que tienes que pensar? Así lo vemos ahorita juntos."</p><p class="soft">Casi siempre esconde precio o miedo. Aclara y aísla. Si sigue, cierra día y hora para la respuesta.</p></div></div>
+    </div>
+    <p class="soft"><b>Señales de compra:</b> "¿cómo se paga?", "¿cuándo empiezo?", "¿qué pasa después?". Deja de vender y pasa al cobro.</p>
+    <h4>Cobro</h4>
+    <p class="say">"Perfecto. Te mando ahorita el link de pago y nos quedamos un minuto hasta que te llegue la confirmación, ¿va?"</p>
+    <p class="soft">No cuelgas hasta ver el pago. En EE. UU., link en USD; en México, en pesos o en USD.</p>
+
+    <div class="grid2">
+      <div class="card sand"><span class="label">Si no se presenta</span><ul class="l"><li>A los 5 minutos: "Hola [nombre], te estoy esperando en la llamada. ¿Te surgió algo?" (revisa la zona horaria).</li><li>Reagenda una sola vez, en 1–2 días.</li><li>Si vuelve a fallar: seguimiento por DM días 2, 7 y 14.</li></ul></div>
+      <div class="card sand"><span class="label">Si no cierra en la llamada</span><ul class="l"><li><b>24 h:</b> audio recordando su objetivo con sus palabras.</li><li><b>48 h:</b> el caso más parecido al suyo.</li><li><b>Día 5:</b> último mensaje con fecha concreta.</li><li>CRM: "Llamada hecha", con su dolor y su objeción literal.</li></ul></div>
+    </div>
+    <div class="card sand"><span class="label">Post-cierre (las primeras 24 h)</span><ul class="check-l">
+      <li>☐ Bienvenida el mismo día, en audio.</li>
+      <li>☐ Acceso a tu plataforma y cuestionario inicial (incluye: medicamentos, suplementos, comidas que no le gustan, días reales para entrenar).</li>
+      <li>☐ Videollamada inicial agendada y bonus entregados.</li>
+      <li>☐ Fotos y medidas de inicio. Permiso de imagen por escrito (con o sin cara).</li>
+      <li>☐ Pasarla a "Cliente" en el CRM y subir el nivel de precios.</li>
+    </ul></div>
+    <div class="card dark"><span class="label">Antes de cada llamada, recuerda</span><ul class="l">
+      <li><b>El silencio trabaja por ti.</b></li>
+      <li><b>El orden no se rompe.</b></li>
+      <li><b>No tienes que convencer a nadie.</b> Tu trabajo es "garantía", tú lo dijiste: si es para ella, lo verá.</li>
+      <li><b>Habla como en SPB a las 6 am,</b> no como vendedor.</li>
+      <li><b>10 años, un gimnasio propio y casos reales.</b> Ya tienes la autoridad: úsala.</li>
+    </ul></div>
+  </article>
+</main>
+<script>
+(function () {
+  function copy(text, btn) {
+    function done(t) { btn.textContent = t; setTimeout(function () { btn.textContent = "Copiar"; }, 1400); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done("Copiado"); }, function () { done("Selecciona"); });
+    else done("Selecciona");
+  }
+  document.querySelectorAll(".say").forEach(function (p) {
+    var txt = p.textContent.trim();
+    var b = document.createElement("button"); b.type = "button"; b.className = "cpy"; b.textContent = "Copiar";
+    b.addEventListener("click", function () { copy(txt, b); });
+    p.insertBefore(b, p.firstChild);
+  });
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+})();
+</script>

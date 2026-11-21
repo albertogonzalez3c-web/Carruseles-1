@@ -1,0 +1,357 @@
+<title>Cryzz Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+
+<style>
+:root {
+  --paper: #f4f3f2;
+  --white: #ffffff;
+  --ink: #0d0d0e;
+  --soft: #5a5856;
+  --line: #dcd8d4;
+  --chip: #edeae7;
+  --red: #c8141c;
+  --red-text: #a50f16;
+  --red-soft: #ff8a8f;
+  --night: #0d0d0e;
+  --night2: #221a1b;
+  --green: #2f6b35;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: clamp(30px, 5vw, 56px); display: grid; gap: 36px; }
+h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .01em; text-wrap: balance; }
+h1 { font-size: clamp(38px, 6vw, 64px); line-height: .98; text-transform: uppercase; }
+h1 em, h2 em { font-style: normal; color: var(--red-text); }
+h2 { font-size: clamp(27px, 3.4vw, 36px); line-height: 1.04; text-transform: uppercase; }
+h3 { font-size: 21px; line-height: 1.12; text-transform: uppercase; }
+p { margin: 0; }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--chip); padding: 1px 5px; border-radius: 4px; word-break: break-word; }
+.label { font: 500 11.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.head { display: grid; gap: 12px; max-width: 840px; }
+.sec { display: grid; gap: 14px; }
+.sec > header { display: grid; gap: 8px; max-width: 840px; }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--white); border-radius: 12px; padding: 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; box-shadow: inset 0 0 0 1px var(--line); }
+.card.chip { background: var(--chip); box-shadow: none; }
+.card.dark { background: var(--night); color: var(--white); box-shadow: none; }
+.card.dark h2, .card.dark h3 { color: var(--white); }
+.card.dark h2 em, .card.dark h1 em { color: var(--red-soft); }
+.card.dark .label { color: var(--red-soft); }
+.card.dark .soft, .card.dark ul.l, .card.dark ol.l { color: #cfcac7; }
+.card.dark ul.l b, .card.dark ol.l b, .card.dark .soft b { color: var(--white); }
+.card.red { background: var(--red); color: #fff; box-shadow: none; }
+.card.red h2, .card.red h3 { color: #fff; }
+.card.red .label { color: #ffd9db; }
+.card.red ul.l, .card.red ol.l, .card.red .soft { color: #ffe9ea; }
+.card.red ul.l b, .card.red ol.l b, .card.red .soft b { color: #fff; }
+.card.warn { background: #fff1e6; box-shadow: inset 0 0 0 1px #f0c9a4; }
+ul.l, ol.l { margin: 0; padding-left: 18px; display: grid; gap: 6px; color: var(--soft); font-size: 15.5px; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { background: var(--chip); border-left: 3px solid var(--red); border-radius: 6px; padding: 12px 14px; font-weight: 600; font-size: 15.5px; white-space: pre-line; overflow-wrap: anywhere; }
+.card.dark .say { background: var(--night2); color: var(--white); border-left-color: var(--red-soft); }
+.card.red .say { background: rgba(255,255,255,.14); border-left-color: #fff; color: #fff; }
+.badge { display: inline-block; width: fit-content; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 9px; border-radius: 4px; background: var(--chip); color: var(--red-text); }
+.card.dark .badge { background: var(--night2); color: var(--red-soft); }
+.card.red .badge { background: rgba(255,255,255,.2); color: #fff; }
+.tblwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+.tbl th { text-align: left; font: 500 11px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); padding: 0 12px 8px 0; }
+.tbl td { padding: 10px 12px 10px 0; border-top: 1px solid var(--line); vertical-align: top; color: var(--soft); font-variant-numeric: tabular-nums; }
+.tbl td:first-child { color: var(--ink); font-weight: 700; }
+.tbl tr.now td { background: #fbe3e4; }
+.tbl tr.tot td { color: var(--ink); font-weight: 800; border-top: 2px solid var(--ink); }
+.tbl td b { color: var(--ink); }
+.tbl td.num, .tbl th.num { text-align: right; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.cp { all: unset; cursor: pointer; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px; background: var(--white); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.cp:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.card.dark .cp { background: var(--night2); color: #fff; box-shadow: inset 0 0 0 1px #4a3c3d; }
+.nicho { font: 400 clamp(24px, 3vw, 33px)/1.08 var(--f-head); color: var(--white); letter-spacing: .01em; }
+.nicho em { font-style: normal; color: var(--red-soft); }
+.pill3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pill3 > div { background: var(--night2); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; }
+.pill3 b { color: #fff; }
+.pill3 p { color: #d6d0cd; font-size: 14.5px; }
+.pill3 i { color: #b9b1ad; font-size: 14px; }
+.pill3 .lbl { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--red-soft); }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+nav.toc a { font: 500 11.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-decoration: none; background: var(--white); padding: 9px 11px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+nav.toc a:hover { box-shadow: inset 0 0 0 1px var(--red); }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--night); color: #fff; padding: 10px 16px; border-radius: 6px; font: 500 13px/1 var(--f-mono); opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 10; }
+.toast.on { opacity: 1; }
+.price { display: grid; gap: 2px; }
+.price b { font: 400 40px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.card.dark .price b { color: var(--red-soft); }
+.big { font: 400 clamp(30px, 4vw, 44px)/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.dark .big { color: var(--red-soft); }
+.kpi { display: grid; gap: 4px; }
+.kpi span { font-size: 13.5px; color: var(--soft); }
+@media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .g2, .g3, .g4, .pill3 { grid-template-columns: 1fr; } .card { padding: 16px; } }
+
+.path { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-weight: 700; }
+.path span { background: var(--white); border-radius: 6px; padding: 9px 14px; font-size: 15px; box-shadow: inset 0 0 0 1px var(--line); }
+.path i { font-style: normal; color: var(--red-text); font-weight: 800; }
+.steps { counter-reset: s; display: grid; gap: 10px; }
+.steps > div { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps > div::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 6px; background: var(--red); color: var(--white); font: 400 20px/34px var(--f-head); text-align: center; }
+.card.dark .steps > div::before { background: var(--red-soft); color: var(--ink); }
+.ops { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 620px) { .ops { grid-template-columns: 1fr; } }
+</style>
+<main class="wrap">
+<header class="head">
+  <span class="label">Cryzz Yovany · Método SPB · Parte 4</span>
+  <h1>Embudo: dos puertas, <em>una conversación</em></h1>
+  <p class="soft">Online, la puerta es Instagram y WhatsApp: conversaciones escritas por ti que terminan en una llamada y un cobro en dólares. Presencial, la puerta es tu recepción: cada socio básico es una conversación hacia el Plan Cambio Físico. Pediste "fluidez de conversación" y "mandar yo mismo los mensajes": aquí tienes qué escribir, a quién, cuántos y a qué hora.</p>
+  <div class="path"><span>Contenido</span><i>+</i><span>100 conversaciones al día</span><i>+</i><span>Anuncios "sígueme"</span><i>→</i><span>DM</span><i>→</i><span>Aplicación</span><i>→</i><span>WhatsApp</span><i>→</i><span>Llamada</span><i>→</i><span>Cobro USD</span></div>
+  <nav class="toc" aria-label="Secciones"><a href="#nicho">Nicho</a><a href="#kpis">Números</a><a href="#c1">1 · Francotirador</a><a href="#c2">2 · 100 al día</a><a href="#c3">3 · Bienvenidas</a><a href="#c4">4 · Anuncios</a><a href="#conv">Conversión</a><a href="#seg">Seguimientos</a><a href="#gym">Embudo del gimnasio</a><a href="#dia">Tu día</a></nav>
+</header>
+
+<section class="card dark" id="nicho">
+  <span class="label">Tu nicho en una frase · Tu método en 30 segundos</span>
+  <p class="nicho">Ayudo a latinos de 30 a 45 años que viven en <em>Estados Unidos</em>, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a <em>perder grasa y ganar músculo</em> con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.</p>
+  <p class="soft">Tu método: <b>Método SPB · Sistema, Progresión, Balance.</b> "Te doy un sistema": una estructura clara que solo tienes que repetir, medida cada semana, y al final la libertad de mantenerlo sin mí. Palabra clave: <b>SISTEMA</b>. Secundario: México de alto nivel (presencial VIP en SPB Center Coacalco y online si llegan).</p>
+  <div class="pill3">
+    <div><span class="lbl">Pilar S · Sistema</span><b>Una estructura que solo tienes que repetir</b><p>1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo y al músculo que quieres mejorar. Nada que inventar sobre la marcha.</p><i>Por qué: a los 15, sin dinero para asesorías, aprendí con una libreta, una báscula y la canasta básica: tortillas, frijoles, arroz, huevo, atún. "Sencillas, efectivas y rápidas."</i></div>
+    <div><span class="lbl">Pilar P · Progresión</span><b>Se mide cada semana, no cada mes</b><p>Peso, medidas, fotos y tus cargas cada semana. RIR y sobrecarga progresiva bien entendidas: subes cuando toca, no cuando te acuerdas.</p><i>Por qué: pasé dos años cambiando de rutina cada semana por YouTube y haciendo abdomen diario. El powerlifting me enseñó a medir: 2.º lugar estatal y 145 / 210 / 265 kg en banca, sentadilla y peso muerto.</i></div>
+    <div><span class="lbl">Pilar B · Balance</span><b>Comes lo que te gusta y sales el fin de semana</b><p>Porciones correctas, no prohibiciones. Los 5 días hacen el trabajo que los otros 2 no pueden, y al final flexibilizamos para que lo mantengas sin mí.</p><i>Por qué: mi primera definición fue sin carbohidratos, con faja y té de limón con linaza: un desastre. En 2024 bajé de 100 a 85 kg con pasos y días libres, y en 2026 de 93 a 81 kg con una comida libre a la semana.</i></div>
+  </div>
+  <div class="pill3">
+    <div><span class="lbl">Fase 1 · Semanas 1–4</span><b>Estructura</b><p><b>Qué pasa:</b> videollamada inicial, tus menús con lo que te gusta, rutina a tu tiempo y primera evaluación en la semana 1.<br><b>Qué haces tú:</b> repites al pie de la letra y mandas tu feedback cada semana.</p></div>
+    <div><span class="lbl">Fase 2 · Semanas 5–12</span><b>Progresión</b><p><b>Qué pasa:</b> subimos cargas, ajustamos porciones cada semana y aprendes a que un fin de semana no borre nada.<br><b>Qué haces tú:</b> registras pesos y repeticiones y avisas en el momento si algo cambia.</p></div>
+    <div><span class="lbl">Fase 3 · Meses 4–6</span><b>Libertad</b><p><b>Qué pasa:</b> flexibilizamos el plan: salidas, viajes, comidas libres. El objetivo es que no rebotes.<br><b>Qué haces tú:</b> decides con criterio y mantienes tus resultados sin depender de mí.</p></div>
+  </div>
+  <p class="soft"><b>3 no negociables:</b> feedback semanal completo el día que toca (peso, medidas, fotos, pesos y repeticiones) · dudas en el momento, no el domingo en la noche · cumplir los días de entrenamiento y los menús que tú elegiste.</p>
+  <div class="say">"Si trabajas conmigo, lo primero que vas a dejar de hacer es complicarte la vida buscando la forma. Te voy a dar una estructura clara y un plan de acción inmediato en el que solo tendrás que repetir." — Cryzz</div>
+</section>
+
+
+<section class="sec" id="kpis">
+  <header><span class="label">Números diarios · lo que se te exige</span><h2>Los números <em>no se negocian</em></h2><p class="soft">Apúntalos cada noche en tu reporte. Si una semana no cierras, mira primero esta tabla, no el precio.</p></header>
+  <div class="card"><div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Acción</th><th>Cada día</th><th>Canal</th><th>Notas</th></tr></thead>
+    <tbody>
+      <tr><td>Conversaciones abiertas por ti</td><td><b>100</b></td><td>2</td><td>2 rondas de 50: 2 pm y 6 pm (hora de Coacalco). Semana 1: 2 × 25.</td></tr>
+      <tr><td>Bienvenidas manuales</td><td>Todos los nuevos</td><td>3</td><td>Antes de 24 h. Cuentan dentro de las 100.</td></tr>
+      <tr><td>Antiguos clientes y leads en pausa</td><td>10</td><td>1</td><td>Solo semanas 1 y 2 (hasta el 15 de enero).</td></tr>
+      <tr><td>Seguimientos (días 2, 7 y 14)</td><td>Todos los que tocan</td><td>CRM</td><td>Lo primero de cada mañana, después del piso.</td></tr>
+      <tr><td>Llamadas agendadas</td><td>1</td><td>—</td><td>5 a la semana. Máximo a 3 días vista.</td></tr>
+      <tr><td>Piezas publicadas</td><td>2</td><td>5</td><td>+ 1 YouTube a la semana. 3 carruseles a la semana.</td></tr>
+      <tr><td>Anuncio</td><td>5–10 USD</td><td>4</td><td>Revisa USD por seguidor cada 2 días.</td></tr>
+      <tr><td>Gimnasio: informes y evaluaciones</td><td>Todos</td><td>Gym</td><td>Cada informe y cada evaluación de bienvenida, al CRM.</td></tr>
+      <tr><td>Gimnasio: conversaciones de upsell</td><td>2</td><td>Gym</td><td>Socios básicos con 4+ semanas o que preguntan por los cambios de otros.</td></tr>
+    </tbody>
+  </table></div></div>
+</section>
+
+<section class="sec" id="c1">
+  <header><span class="label">Canal 1 · semanas 1 y 2</span><h2>Francotirador: <em>quien ya te dijo que sí</em></h2><p class="soft">"Normalmente vuelven después de un tiempo para conseguir un objetivo más alto o recuperarlo." Diciembre y enero son ese momento. La oferta "Regreso SPB" está en la Oferta; los mensajes, en el CRM (pestaña Reactivación).</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">Día 1</span><p class="soft">Lista en el CRM: Azalea, Emanuel, los ~15 de testimonios grabados, tus clientes activos (para referidos y testimonios) y los antiguos con buena relación. Etiqueta A, B, C o D (Oferta).</p></div>
+    <div class="card"><span class="badge">10 al día</span><p class="soft">Primero A (activos con resultados: testimonio y referidos), luego D (Azalea y Emanuel), luego B y C. Toque 1 hoy, toque 2 a los 3 días, toque 3 a los 7. Audio de 30 s mejor que texto: es tu fuerte.</p></div>
+    <div class="card"><span class="badge">Objetivo al 15 de enero</span><p class="soft"><b>4 regresos cerrados, 5 testimonios con permiso y 3 referidos</b>. Los testimonios van a tus destacadas y a la landing.</p></div>
+  </div>
+  <div class="card warn"><span class="label">Lo que cambia respecto a cómo lo hacías</span><p class="soft">Con Emanuel y Azalea terminaste en "cualquier duda yo quedo pendiente". Eso no es una oferta, es una despedida. Desde hoy cada conversación termina con una pregunta concreta y una fecha: "¿Te aparto lugar para empezar el lunes 5 de enero?". Y si dice que no, se cierra con cariño y pasas al siguiente.</p></div>
+</section>
+
+<section class="sec" id="c2">
+  <header><span class="label">Canal 2 · 100 conversaciones al día en 2 rondas de 50</span><h2>Donde están <em>las latinas que ya probaron</em></h2><p class="soft">No es spam: es buscar a tu cliente donde ya está y hablarle de algo suyo. 50 a las 2 pm y 50 a las 6 pm (hora de Coacalco), repartidas en bloques de 10–15.</p></header>
+  <div class="g2">
+    <div class="card"><span class="badge">Dónde buscarlas</span><ul class="l">
+      <li><b>Comentarios en cuentas de coaches latinos con mucho público en EE. UU.</b> (las que estudiaste: Antoni, Izan, y similares): la que comenta "ya lo intenté y no bajo" o "¿y si como tortillas?" es tuya.</li>
+      <li><b>Ubicaciones y hashtags de gimnasios</b> en ciudades con mucha población mexicana: Houston, Dallas, San Antonio, Los Ángeles, Chicago, Phoenix, Denver, Atlanta. Planet Fitness, LA Fitness, 24 Hour Fitness.</li>
+      <li><b>Hashtags en español + ciudad:</b> #mexicanaenhouston, #latinasenusa, #fitnesslatina, #mamálatina, #gymchicago.</li>
+      <li><b>Cuentas de comida mexicana y tiendas latinas</b> en EE. UU.: mira quién comenta y etiqueta.</li>
+      <li><b>Grupos de Facebook</b> de mexicanas o latinas en [ciudad]: participa con valor, no con links.</li>
+      <li><b>Tus seguidores actuales que viven allá</b> (revisa ubicaciones en sus perfiles): son los más calientes.</li>
+    </ul></div>
+    <div class="card"><span class="badge">Criterios · todos deben cumplirse</span><ul class="l">
+      <li>Vive en EE. UU. (ubicación, ciudad en la bio, contenido).</li>
+      <li>Escribe o habla en español.</li>
+      <li>Entre 30 y 45 aprox. Sobre todo mujeres; hombres si encajan.</li>
+      <li>Señales de poder adquisitivo y vida estable (trabajo, casa, viajes, gimnasio de pago).</li>
+      <li>Ya entrena o lo intentó: fotos en el gimnasio, comentarios sobre dietas o asesorías.</li>
+      <li>Activa en los últimos 7 días, perfil público.</li>
+      <li>No es coach ni vende planes. Nada de química ni "quemadores" a la vista.</li>
+    </ul></div>
+  </div>
+  <div class="card dark"><span class="label">Cómo no quemar la cuenta</span><ul class="l">
+    <li>Antes de escribir: sigue, dale like a 2 publicaciones y responde una historia. El DM llega como conversación, no a solicitudes.</li>
+    <li>Nunca 50 seguidas: bloques de 10–15 con descansos.</li>
+    <li>Varía los 7 mensajes y personaliza la primera frase con algo de su perfil. Ningún link en el primer mensaje.</li>
+    <li>Semana 1: 2 × 25. Semana 2: 2 × 50.</li>
+  </ul></div>
+  <div class="sec"><header><span class="label">7 mensajes de apertura · nunca vendas en el primero</span><h3>Escritos como hablas tú</h3></header><div class="ops" id="openers"></div></div>
+  <div class="card"><span class="label">El camino de la conversación</span><div class="path"><span>1 · Algo suyo</span><i>→</i><span>2 · Qué ha probado</span><i>→</i><span>3 · Qué le frustra</span><i>→</i><span>4 · Qué comida no quiere dejar</span><i>→</i><span>5 · "¿Te muestro cómo lo armaría yo?"</span></div>
+  <p class="soft"><b>Paso 5 en una frase:</b> "Por lo que me cuentas, no te faltan ganas: te faltó un sistema hecho a tu vida. Si quieres, llena esta aplicación (2 minutos) y en una videollamada de 30 minutos te digo exactamente cómo lo armaría en tu caso: [link]".</p>
+  <p class="soft"><b>Trucos para soltarte:</b> usa audios (30 s) desde el mensaje 2; responde con una pregunta, nunca con un emoji; copia sus palabras exactas ("me cuesta mucho bajar") en tu siguiente mensaje; si contesta corto, pregunta algo concreto de su vida (trabajo, horario, ciudad).</p></div>
+</section>
+
+<section class="sec" id="c3">
+  <header><span class="label">Canal 3 · bienvenidas y SISTEMA</span><h2>Cada seguidor nuevo es <em>una conversación</em></h2><p class="soft">Una clienta que paga por cercanía nota cuando le responde un bot. Las bienvenidas, la palabra SISTEMA y las respuestas a historias las contestas tú. Guarda estos textos como respuestas rápidas en Instagram, pero siempre con su nombre y una frase personal.</p></header>
+  <div class="g3" id="welcomes"></div>
+</section>
+
+<section class="sec" id="c4">
+  <header><span class="label">Canal 4 · anuncios de seguidores · EE. UU.</span><h2>Poco dinero, <em>muy bien apuntado</em></h2><p class="soft">Nunca has puesto anuncios y te ha ido bien orgánico. Esto no cambia eso: solo acelera que latinos de EE. UU. te sigan, vean tus casos y entren en tus canales 2 y 3. El anuncio no vende; vende la conversación.</p></header>
+  <div class="g3">
+    <div class="card"><span class="badge">La pieza</span><p class="soft">Reel de 30–45 s, <b>voz en off tuya</b> sobre clips tuyos entrenando, cocinando o en SPB. Un solo ángulo. Gancho en los 3 primeros segundos, 3 versiones (trial reels). Cierre: <b>"Sígueme para…"</b>. Subtítulos siempre. Se promociona la voz en off orgánica que mejor funcionó.</p></div>
+    <div class="card"><span class="badge">Configuración</span><p class="soft">Desde el reel: Promocionar → <b>Más visitas al perfil</b>. Público: <b>Estados Unidos, idioma español, +25</b> (o Advantage+ con idioma español). <b>5–10 USD al día</b>, un anuncio a la vez al principio. Se valora a los 2 días.</p></div>
+    <div class="card"><span class="badge">Semáforo (USD por seguidor)</span><ul class="l"><li><b>Menos de 1 USD:</b> mantener y escalar (hasta 10 USD/día).</li><li><b>Entre 1 y 1,5 USD:</b> cambia el gancho, mismo cuerpo.</li><li><b>Más de 1,5 USD:</b> se corta.</li></ul><p class="soft" style="font-size:13.5px">Apunta cada anuncio en el reporte semanal.</p></div>
+  </div>
+  <div class="card warn"><span class="label">Normas de Meta</span><p class="soft">Nunca "¿tienes llantita?", "¿te cuesta bajar?" ni nada que le diga a quien lo ve lo que le pasa a su cuerpo o a su salud. Habla en primera persona ("yo bajé de 93 a 81 kg") o con "la mayoría" ("la mayoría de mis clientas llegan después de otra asesoría"). Sin antes/después, sin "X kilos en Y semanas" y sin prometer resultados.</p></div>
+  <div class="g3" id="ads"></div>
+</section>
+
+<section class="sec" id="conv">
+  <header><span class="label">Conversión · de la conversación al cobro</span><h2>Aplicación → WhatsApp → <em>llamada</em></h2></header>
+  <div class="card dark"><div class="steps">
+    <div><p><b>Diagnóstico por DM</b> (pasos 1–4). Si encaja con el nicho, le mandas la aplicación.</p></div>
+    <div><p><b>Aplicación</b> en la landing con origen por canal (?utm_source=dm, bienvenida, anuncio, exclienta, gimnasio). Así sabes qué canal vende.</p></div>
+    <div><p><b>WhatsApp en menos de 1 hora</b> desde que llega: le escribes tú para agendar. Guárdala en contactos para que vea tus Estados.</p></div>
+    <div><p><b>Al agendar:</b> un caso parecido al suyo y un audio tuyo dándole las gracias. Recordatorio el día antes y 1 hora antes, siempre con la hora de su ciudad.</p></div>
+    <div><p><b>Videollamada de 40 minutos</b> con tu guion de cierre (Parte 6). Precio, silencio, link de pago en USD.</p></div>
+    <div><p><b>El mismo día:</b> bienvenida por audio, acceso a tu plataforma, cuestionario inicial y fecha de la videollamada de arranque.</p></div>
+  </div></div>
+  <div class="g2" id="waMsgs"></div>
+</section>
+
+<section class="sec" id="seg">
+  <header><span class="label">Seguimientos · días 2, 7 y 14</span><h2>El que no responde <em>no es un no</em></h2><p class="soft">El CRM te avisa cuándo toca cada uno. Después del día 14, a "Perdido" y a la lista de reactivación de 30 días.</p></header>
+  <div class="g3" id="seguimientos"></div>
+</section>
+
+<section class="sec" id="gym">
+  <header><span class="label">Embudo presencial · SPB Center</span><h2>De la visita de $100 <em>al Plan Cambio Físico</em></h2><p class="soft">Hoy: informe (3 planes) → visita de $75 → mensualidad → y "cuando ven los cambios de los demás", algunos piden el plan. Así se vuelve un sistema. El detalle de números está en la Parte 5.</p></header>
+  <div class="card"><div class="steps">
+    <div><p><b>Informe en recepción:</b> el entrenador de turno presenta primero el Plan Cambio Físico por trimestre (guion en la Oferta) y luego el básico. Ficha con nombre, WhatsApp, objetivo y cómo llegó → al CRM como "Gimnasio · informe".</p></div>
+    <div><p><b>Visita de prueba $100</b>, descontable si se inscribe ese día. Recorrido y tus redes, como ya haces.</p></div>
+    <div><p><b>Evaluación de bienvenida</b> en la primera semana: fotos, medidas, peso y objetivo. Se guarda la ficha.</p></div>
+    <div><p><b>Semana 4: segunda medición</b> y conversación de upsell contigo (6–10 am) o por WhatsApp: "esto lograste solo con el SPB SYSTEM; con tu plan sería esto".</p></div>
+    <div><p><b>Arranque SPB 8 semanas</b> (enero y septiembre): 15 cupos para socios básicos. Al terminar, trimestre.</p></div>
+    <div><p><b>Retención:</b> 7 días sin venir = mensaje del entrenador de turno. Renovación de trimestre 2 semanas antes de que acabe.</p></div>
+  </div></div>
+  <div class="g2" id="gymMsgs"></div>
+</section>
+
+<section class="sec" id="dia">
+  <header><span class="label">Tu día desde enero · hora de Coacalco</span><h2>El sistema cabe en tus tardes <em>y tus noches</em></h2><p class="soft">De noviembre a marzo, Coacalco va igual que el Centro de EE. UU., una hora detrás del Este y dos por delante del Pacífico. De marzo a noviembre EE. UU. adelanta una hora: revisa siempre la hora de su ciudad.</p></header>
+  <div class="card"><div class="tblwrap"><table class="tbl">
+    <thead><tr><th>Bloque</th><th>Qué haces</th><th>Tiempo</th></tr></thead>
+    <tbody>
+      <tr><td>6–10 am · SPB</td><td>VIP, piso, conversaciones de upsell con socios, evaluaciones de semana 4. Entrenas.</td><td>4 h</td></tr>
+      <tr><td>11 am–2 pm</td><td>CRM: seguimientos del día. Programaciones y menús de clientes. Publicar pieza 1.</td><td>3 h</td></tr>
+      <tr><td>2–3 pm</td><td>Ronda 1: 50 conversaciones. Responder.</td><td>1 h</td></tr>
+      <tr><td>3–6 pm</td><td>Contenido: grabar, YouTube, carruseles. Publicar pieza 2.</td><td>3 h</td></tr>
+      <tr><td>6–7 pm</td><td>Ronda 2: 50 conversaciones. Revisar anuncio.</td><td>1 h</td></tr>
+      <tr><td>7–9 pm</td><td>Llamadas con EE. UU. (8–10 pm en el Este, 5–7 pm en el Pacífico).</td><td>2 h</td></tr>
+      <tr><td>9–10 pm</td><td>Bienvenidas, respuestas a historias, reporte del día.</td><td>1 h</td></tr>
+    </tbody>
+  </table></div></div>
+  <div class="card dark"><span class="label">Semana 1, día por día</span><ul class="l">
+    <li><b>Lunes:</b> bio, nombre y enlace nuevos. CRM con antiguos clientes, Azalea y Emanuel. Primeros 10 toques.</li>
+    <li><b>Martes:</b> 2 × 25 conversaciones, 10 toques, mensaje de transición a trimestre a tus 20 de Plan Cambio Físico y 7 de personalizado.</li>
+    <li><b>Miércoles:</b> grabar 3 voces en off para anuncios; lanzar la mejor a 5 USD/día.</li>
+    <li><b>Jueves–viernes:</b> 2 × 25, toque 2 a los del lunes, primeras llamadas. Cartel de planes en recepción.</li>
+    <li><b>Sábado:</b> fijados nuevos y destacadas "Empieza aquí" y "Método SPB".</li>
+    <li><b>Domingo:</b> reporte semanal a Alberto. La semana 2 subes a 2 × 50.</li>
+  </ul></div>
+</section>
+</main>
+<div class="toast" id="toast">Copiado</div>
+<script>
+(function () {
+  var toast = document.getElementById("toast"), tt;
+  function show(m) { toast.textContent = m; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove("on"); }, 1400); }
+  function fallback(txt) { var ta = document.createElement("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand("copy"); } catch (e) {} document.body.removeChild(ta); show(ok ? "Copiado" : "Selecciona y copia a mano"); }
+  window.zCopy = function (txt) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function () { show("Copiado"); }, function () { fallback(txt); });
+    else fallback(txt);
+  };
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-copy]"); if (b) { var el = document.getElementById(b.getAttribute("data-copy")); if (el) window.zCopy(el.textContent.trim()); return; }
+    var c = e.target.closest("[data-cp]"); if (c) window.zCopy(c.getAttribute("data-cp"));
+  });
+})();
+</script>
+
+<script>
+(function () {
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  var uid = 0;
+  function copyCard(parent, badge, text, extraCls, note) {
+    var c = el("div", "card" + (extraCls ? " " + extraCls : ""));
+    var r = el("div", "row"); r.appendChild(el("span", "badge", badge));
+    var id = "c" + (uid++);
+    var b = el("button", "cp", "Copiar"); b.setAttribute("data-copy", id); r.appendChild(b); c.appendChild(r);
+    var s = el("div", "say", text); s.id = id; c.appendChild(s);
+    if (note) { var p = el("p", "soft", note); p.style.fontSize = "14px"; c.appendChild(p); }
+    parent.appendChild(c); return c;
+  }
+  [
+    ["1 · Su historia", "Hola [nombre]! Vi tu historia en el gym, se nota que le estás echando ganas 💪 ¿Cuánto llevas entrenando?"],
+    ["2 · Su comentario", "Hola [nombre], vi tu comentario en lo de [cuenta] sobre [tema]. Me lo dicen mucho mis clientas que vienen de otra asesoría. ¿Tú qué has probado hasta ahora?"],
+    ["3 · Ciudad", "¡Qué padre ver latinas entrenando así en [ciudad]! Yo soy coach en México y trabajo online con varias de allá. ¿Cómo le haces para entrenar con el ritmo de trabajo de allá?"],
+    ["4 · Pregunta directa", "Pregunta rápida de coach: ¿qué se te hace más difícil ahorita, la comida o ser constante con el entrenamiento?"],
+    ["5 · La comida", "Vi que subiste [comida]. Se ve buenísimo 😄 Muchas personas creen que para bajar grasa hay que dejar eso. ¿Tú lo has intentado así?"],
+    ["6 · Identificación", "Te escribo porque tu post de [tema] me recordó a muchas de mis clientas: entrenaban, hacían dieta y el fin de semana se les iba todo. ¿Te ha pasado o vas bien?"],
+    ["7 · Técnica", "Vi tu video de [ejercicio], muy bien. Un detalle que suele frenar ese ejercicio es [punto técnico]. ¿Lo sientes más en [músculo] o en [otro]?"]
+  ].forEach(function (o) { copyCard(document.getElementById("openers"), o[0], o[1], "chip"); });
+  [
+    ["Bienvenida · seguidor nuevo", "Hola [nombre], ¡gracias por seguirme! Para saber qué contenido te sirve más: ¿ahorita estás buscando bajar grasa, ganar músculo o las dos?"],
+    ["Bienvenida · desde anuncio", "¡Bienvenida, [nombre]! Llegaste por el video de [tema]. ¿Te identificaste con eso o te dio curiosidad? Cuéntame, ¿ya habías intentado con alguna asesoría o dieta?"],
+    ["Palabra SISTEMA", "¡Qué bueno que me escribes, [nombre]! Antes de contarte cómo trabajo, cuéntame tú: ¿dónde vives, qué has probado y qué es lo que más te frustra ahorita?"]
+  ].forEach(function (o) { copyCard(document.getElementById("welcomes"), o[0], o[1]); });
+  [
+    ["Día 2 · si no respondió", "[Nombre], ¿pudiste ver lo que te pregunté? Sin presión, me quedé con curiosidad de cómo vas."],
+    ["Día 7 · valor", "Hoy publiqué algo que me hizo pensar en lo que me contaste: [tema]. Si quieres, te digo cómo lo aplicaría en tu caso."],
+    ["Día 14 · cierre", "Te escribo por última vez para no molestarte. Si en algún momento quieres un sistema hecho a tu vida, escríbeme SISTEMA y lo vemos. ¡Mucho éxito!"]
+  ].forEach(function (o) { copyCard(document.getElementById("seguimientos"), o[0], o[1]); });
+  [
+    ["WhatsApp tras la aplicación", "Hola [nombre], soy Cryzz de SPB. Leí tu aplicación: [frase de lo que escribió]. Me gustaría verlo contigo en una videollamada de 30–40 minutos. ¿Te queda mejor [día] a las [hora de su ciudad] o [día] a las [hora]? (Te pongo la hora de [ciudad])."],
+    ["Recordatorio 1 hora antes", "[Nombre], en una hora nos vemos ([hora de su ciudad]). Te dejo el link: [link]. Ten a la mano qué has probado y qué comidas no quieres dejar 😉"],
+    ["Estados de WhatsApp · por bloques", "Lunes: un caso con permiso. Miércoles: un menú real con lo que le gusta a una clienta (sin datos). Viernes: \"esta semana tengo [X] lugares para empezar, respóndeme SISTEMA\". Guarda como contacto a cada lead para que vea tus Estados."]
+  ].forEach(function (o, i) { copyCard(document.getElementById("waMsgs"), o[0], o[1], i === 2 ? "chip" : ""); });
+  [
+    ["Upsell · semana 4 del socio", "[Nombre], ya llevas 4 semanas con el SPB SYSTEM y se nota la constancia 💪 En tu evaluación bajaste [dato real]. Si quieres que esto vaya más rápido, con tu Plan Cambio Físico te armo la rutina y la alimentación con lo que te gusta y te evalúo cada semana. Lo que ya pagaste este mes se descuenta. ¿Lo platicamos mañana en la mañana?"],
+    ["Socio que pregunta por otro", "¿Viste el cambio de [nombre, con su permiso]? Eso fue en [X] semanas con su Plan Cambio Físico. Si quieres te hago tu evaluación y te digo cómo lo armaría para ti."],
+    ["Retención · 7 días sin venir", "Hola [nombre], te extrañamos en SPB esta semana. ¿Todo bien? Te guardo tu rutina donde la dejaste. Si quieres te ajustamos los días a tu horario."],
+    ["Usuario de Total Pass / Wellhub", "[Nombre], ya vienes casi diario 💪 ¿Sabías que como socio directo tienes tu evaluación y tu rutina por nivel? El trimestre te sale en $1,950. Si quieres te explico. (Antes, confirma que tu contrato con las apps lo permite.)"]
+  ].forEach(function (o) { copyCard(document.getElementById("gymMsgs"), o[0], o[1]); });
+  var AD = [
+    { t: "Anuncio 1 · Mi primera definición", hooks: ["\"Mi primera definición fue sin carbohidratos, con faja y té de linaza. Fue un desastre.\"", "\"Durante años creí que para bajar grasa había que dejar las tortillas.\"", "\"La mayoría de las dietas te quitan justo lo que te gusta. Yo hago lo contrario.\""],
+      body: "A los 17 preparé mi primera competencia yo solo: quité todos los carbohidratos, hacía cardio con faja y tomaba té de limón con linaza para la panza. Terminé flaco, cansado y con un físico muy malo. Este año bajé de 93 a 81 kilos comiendo tortillas, arroz y pan, en las porciones correctas y con una comida libre a la semana. No era quitar comida. Era tener un sistema.",
+      cta: "Sígueme para aprender a bajar grasa sin dejar lo que te gusta.", clips: "Tú cocinando con tortillas o arroz · pesando comida en la báscula · entrenando en SPB · tú a cámara en el cierre" },
+    { t: "Anuncio 2 · Pagaron y rebotaron", hooks: ["\"La mayoría de mis clientes llegan después de pagar otra asesoría que no les funcionó.\"", "\"Pagar personalizado no es pagar niñera. Pero tampoco es pagar un PDF.\"", "\"Cuando alguien me dice 'mi cuerpo es el problema', casi nunca lo es.\""],
+      body: "La mayoría de las personas que llegan conmigo ya pagaron antes: una rutina copiada y pegada, comidas que no les gustaban todos los días y nadie que les preguntara cómo iban. Aguantaron unas semanas y rebotaron. No es falta de voluntad: cualquiera deja algo que paga y no le funciona. Lo que cambia es tener un sistema hecho a tu vida y alguien que lo revise cada semana.",
+      cta: "Sígueme si ya lo intentaste y quieres que esta vez sí se quede.", clips: "Tú revisando una evaluación en la computadora · escribiendo un menú · corrigiendo técnica en SPB · tú a cámara" },
+    { t: "Anuncio 3 · El fin de semana", hooks: ["\"Entre semana cumplo. El fin de semana como con mi familia. Y no pierdo el progreso.\"", "\"El fin de semana no te borra la semana. Lo que la borra es no planearlo.\"", "\"Yo no hago dieta los 7 días. Y aun así bajé 12 kilos este año.\""],
+      body: "La mayoría cree que un fin de semana con la familia les borra todo lo que hicieron. Por eso viven entre lunes de dieta y domingos de culpa. Lo que yo hago con mis clientes es que los 5 días hagan el trabajo que los otros 2 no pueden: porciones bien calculadas entre semana y un plan sencillo para salir, comer fuera y disfrutar. Si haces el 80 %, te llevas el 80 % del resultado.",
+      cta: "Sígueme para aprender a no perder tu progreso el fin de semana.", clips: "Tú en una comida familiar o taquería · tu báscula el lunes · entrenando · tú a cámara" }
+  ];
+  var ad = document.getElementById("ads");
+  AD.forEach(function (a, i) {
+    var c = el("div", "card" + (i === 0 ? " dark" : ""));
+    c.appendChild(el("h3", null, a.t));
+    c.appendChild(el("span", "label", "3 ganchos (0–3 s) · uno por versión"));
+    var ul = el("ul", "l"); a.hooks.forEach(function (h) { ul.appendChild(el("li", null, h)); }); c.appendChild(ul);
+    c.appendChild(el("span", "label", "Voz en off (3–40 s)"));
+    var id = "ad" + i; var s = el("div", "say", a.body + "\n\n" + a.cta); s.id = id; c.appendChild(s);
+    var b = el("button", "cp", "Copiar guion"); b.setAttribute("data-copy", id); b.style.width = "fit-content"; c.appendChild(b);
+    c.appendChild(el("span", "label", "Clips")); c.appendChild(el("p", "soft", a.clips));
+    ad.appendChild(c);
+  });
+})();
+</script>
