@@ -1,346 +1,465 @@
 <title>Cryzz Método SPB</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Método SPB de Cryzz Yovany: coach online para latinos en Estados Unidos que ya pagaron otra asesoría y rebotaron. Pierde grasa y gana músculo comiendo lo que te gusta.">
+<meta name="description" content="Cryzz Yovany, entrenador con gimnasio propio en Coacalco. Para latinos 🇺🇸🇲🇽 de 30 a 45 años que ya probaron otra asesoría o dieta y rebotaron: pierde grasa y gana músculo comiendo lo que te gusta.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&display=swap">
 <style>
-/* Landing de Cryzz Yovany (@cryzz.spb). Siempre oscura: negro y rojo, como sus portadas de Instagram. Carta de venta en una columna: hero, hueco de VSL, ¿te suena?, historia, Método SPB, casos de sus destacadas, cómo funciona desde EE. UU., para quién, pasos, aplicación, preguntas y cierre. Sin precios. */
-:root { --bg: #0a0a0b; --bg2: #121213; --panel: #17171a; --panel2: #1f1f23; --ink: #f5f3f2; --soft: #b9b3b0; --line: #2c2a2b; --red: #e0141e; --red2: #ff4a52; --red-ink: #fff; --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace; color-scheme: dark; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark; } }
-:root[data-theme="dark"] { color-scheme: dark; }
-:root[data-theme="light"] { color-scheme: dark; }
+/* Landing de Cryzz Yovany (@cryzz.spb) · estilo revista: papel, tinta negra y rojo SPB.
+   Portada con titular gigante, índice de casos con números grandes, carta del entrenador,
+   3 pasos, frases reales, para quién, preguntas y contraportada negra con la aplicación. Sin precios. */
+:root {
+  --paper: #f2ede4; --paper2: #e8e1d5; --ink: #111010; --soft: #57524c; --rule: #1110101f;
+  --red: #d3121b; --red-ink: #b80f17; --black: #0c0b0b; --on-black: #f2ede4; --on-black-soft: #b6aea4;
+  --f-disp: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-body: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper: #141312; --paper2: #1c1a19; --ink: #f2ede4; --soft: #b3aba1; --rule: #f2ede424; --red-ink: #ff4b53; color-scheme: dark; } }
+:root[data-theme="dark"] { --paper: #141312; --paper2: #1c1a19; --ink: #f2ede4; --soft: #b3aba1; --rule: #f2ede424; --red-ink: #ff4b53; color-scheme: dark; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16.5px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; padding-bottom: 78px; }
-.in { max-width: 1060px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-section { padding: clamp(48px, 8vw, 92px) 0; }
-h1, h2, h3 { margin: 0; font-family: var(--f-head); font-weight: 400; letter-spacing: .01em; text-wrap: balance; text-transform: uppercase; }
-h1 { font-size: clamp(44px, 8vw, 86px); line-height: .94; }
-h2 { font-size: clamp(32px, 5vw, 52px); line-height: 1; }
-h3 { font-size: 24px; line-height: 1.05; }
-h1 em, h2 em { font-style: normal; color: var(--red2); }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: 76px; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
 p { margin: 0; }
-.soft { color: var(--soft); }
-.label { display: block; margin-bottom: 10px; font: 600 11.5px/1.3 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--red2); }
-.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
-.brand { display: flex; align-items: center; gap: 10px; font: 700 15px/1.2 var(--f-body); }
-.brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--red); }
-.brand small { display: block; color: var(--soft); font-weight: 500; font-size: 12.5px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font: 800 15.5px/1.1 var(--f-body); padding: 16px 22px; border-radius: 8px; background: var(--red); color: var(--red-ink); text-decoration: none; border: 0; cursor: pointer; text-align: center; text-transform: uppercase; letter-spacing: .02em; }
-.btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--soft); }
-.btn.sm { padding: 11px 14px; font-size: 13.5px; }
-.hero { padding-top: 10px; background: radial-gradient(110% 80% at 85% 0%, rgba(224,20,30,.28) 0%, rgba(10,10,11,0) 60%); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(24px, 4vw, 52px); align-items: center; }
-.hero .lead { font-size: clamp(17px, 2vw, 19.5px); color: var(--soft); margin-top: 18px; max-width: 600px; }
-.hero .lead b { color: var(--ink); }
-.ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-.note { margin-top: 12px; font-size: 13.5px; color: var(--soft); }
-.hero figure { margin: 0; justify-self: center; width: 100%; max-width: 380px; position: relative; }
-.hero figure img { width: 100%; height: auto; display: block; border-radius: 14px; aspect-ratio: 437 / 568; object-fit: cover; box-shadow: 0 0 0 1px var(--line), 0 24px 60px rgba(0,0,0,.5); }
-.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 34px; }
-.fact { background: var(--panel); border-radius: 10px; padding: 14px; box-shadow: inset 0 0 0 1px var(--line); }
-.fact b { display: block; font: 400 32px/1 var(--f-head); color: var(--red2); }
-.fact span { font-size: 13.5px; color: var(--soft); }
-.vsl { border-radius: 14px; overflow: hidden; background: #000; aspect-ratio: 16 / 9; display: grid; max-width: 860px; margin: 0 auto; box-shadow: 0 0 0 1px var(--line); }
-.vsl iframe { width: 100%; height: 100%; border: 0; }
-.vsl-ph { display: grid; place-items: center; align-content: center; gap: 12px; color: var(--soft); font: 500 13px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; text-align: center; padding: 16px; border: 2px dashed #3a3536; border-radius: 14px; }
-.vsl-ph span { width: 64px; height: 64px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; font-size: 22px; }
-.pains { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px; }
-.pain { background: var(--panel); border-radius: 10px; padding: 18px 20px; font-size: 17px; box-shadow: inset 0 0 0 1px var(--line); }
-.pain::before { content: "“"; font: 400 40px/0 var(--f-head); color: var(--red2); display: block; height: 18px; }
-.turn { margin-top: 26px; font: 400 clamp(26px, 3.6vw, 38px)/1.08 var(--f-head); text-transform: uppercase; max-width: 900px; }
-.turn em { font-style: normal; color: var(--red2); }
-.band { background: var(--red); }
-.band .turn { margin: 0; color: #fff; }
-.story { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(20px, 4vw, 48px); align-items: start; margin-top: 10px; }
-.story img { width: 100%; height: auto; border-radius: 14px; display: block; aspect-ratio: 437 / 568; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
-.tl { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.tl li { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; align-items: baseline; }
-.tl b { font: 600 12px/1.3 var(--f-mono); color: var(--red2); letter-spacing: .04em; }
-.tl span { color: var(--soft); }
-.tl span strong { color: var(--ink); }
-.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.card { background: var(--panel); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; box-shadow: inset 0 0 0 1px var(--line); min-width: 0; }
-.card .n { font: 400 46px/1 var(--f-head); color: var(--red2); }
-.card i { color: #9a9390; font-size: 14.5px; }
-.phase { border-top: 3px solid var(--red); padding-top: 14px; display: grid; gap: 6px; }
-.cases { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.case { margin: 0; display: grid; gap: 8px; justify-items: center; text-align: center; }
-.case img { width: 100%; height: auto; max-width: 150px; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--panel2), 0 0 0 5px var(--red); display: block; }
-.case b { font: 400 30px/1 var(--f-head); color: var(--red2); }
-.case span { font-size: 14px; color: var(--soft); }
-.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 26px; }
-.quotes blockquote { margin: 0; background: var(--panel); border-left: 3px solid var(--red); border-radius: 8px; padding: 14px 16px; font-weight: 600; }
-.quotes small { display: block; margin-top: 6px; color: var(--soft); font-weight: 400; font-size: 13px; }
-ul.l { margin: 0; padding-left: 20px; color: var(--soft); display: grid; gap: 8px; }
-ul.l b { color: var(--ink); }
-.fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.fit .no { background: var(--bg2); }
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
-.form-box { margin-top: 26px; display: grid; gap: 14px; justify-items: start; }
-.form-embed { width: 100%; }
-.form-embed iframe { width: 100%; min-height: 900px; border: 0; border-radius: 12px; background: #fff; }
-.faq { display: grid; gap: 10px; margin-top: 24px; max-width: 860px; }
-.faq details { background: var(--panel); border-radius: 10px; padding: 16px 18px; box-shadow: inset 0 0 0 1px var(--line); }
-.faq summary { cursor: pointer; font-weight: 700; list-style: none; }
+h1, h2, h3 { margin: 0; font-weight: 400; }
+.in { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.kick { font: 700 11.5px/1.3 var(--f-body); letter-spacing: .18em; text-transform: uppercase; }
+.serif { font-family: var(--f-serif); font-style: italic; font-weight: 400; }
+.disp { font-family: var(--f-disp); text-transform: uppercase; letter-spacing: .005em; line-height: .88; }
+.red { color: var(--red-ink); }
+.flags { font-style: normal; letter-spacing: .02em; }
+
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; font: 800 15px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--ink); color: var(--ink); background: transparent; cursor: pointer; transition: transform .15s ease, background .15s ease, color .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.solid { background: var(--red); border-color: var(--red); color: #fff; }
+.btn.solid:hover { background: #a90e15; border-color: #a90e15; }
+.btn.light { border-color: var(--on-black); color: var(--on-black); }
+.btn:focus-visible, summary:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.ctas .btn { flex: 1 1 200px; }
+
+/* Cabecera tipo revista */
+.mast { border-bottom: 2px solid var(--ink); }
+.mast .in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; padding-bottom: 12px; }
+.logo { font: 400 26px/1 var(--f-disp); letter-spacing: .02em; text-decoration: none; }
+.logo b { color: var(--red); font-weight: 400; }
+.mast .meta { font: 600 11px/1.3 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--soft); text-align: right; }
+.mast .btn { min-height: 40px; padding: 0 16px; font-size: 13px; }
+
+/* Portada */
+.cover { padding: 22px 0 0; }
+.cover-grid { display: grid; gap: 22px; }
+.cover .kick { color: var(--red-ink); }
+.cover h1 { font-family: var(--f-disp); text-transform: uppercase; font-size: clamp(62px, 18.5vw, 150px); line-height: .92; letter-spacing: -.005em; margin-top: 10px; }
+.cover h1 span { display: block; }
+.cover h1 .outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
+.cover .deck { font: 400 clamp(24px, 6.4vw, 36px)/1.12 var(--f-serif); font-style: italic; max-width: 640px; }
+.cover .who { font-size: 16.5px; color: var(--soft); max-width: 560px; }
+.cover .who b { color: var(--ink); }
+.photo { position: relative; background: var(--black); overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12) brightness(1.08); }
+.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, #0c0b0bcc), var(--red); mix-blend-mode: multiply; opacity: .38; pointer-events: none; }
+.cover .photo { aspect-ratio: 4 / 3.4; }
+.cover .lines { position: absolute; z-index: 1; left: 14px; right: 14px; bottom: 14px; display: flex; flex-wrap: wrap; gap: 8px; color: #fff; }
+.cover .lines span { font: 800 12px/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; background: #0c0b0bd9; padding: 8px 10px; }
+.cover .lines span b { color: #ff5a61; }
+.cover .stamp { position: absolute; z-index: 1; top: 12px; right: 12px; width: 92px; height: 92px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; text-align: center; transform: rotate(-9deg); font: 400 15px/1 var(--f-disp); letter-spacing: .03em; text-transform: uppercase; padding: 10px; }
+.cover .stamp b { display: block; font-size: 34px; font-weight: 400; }
+.ticker { margin-top: 26px; background: var(--red); color: #fff; overflow: hidden; white-space: nowrap; }
+.ticker div { display: inline-block; padding: 12px 0; font: 400 22px/1 var(--f-disp); letter-spacing: .04em; text-transform: uppercase; animation: run 30s linear infinite; }
+.ticker i { font-style: normal; opacity: .6; margin: 0 16px; }
+@keyframes run { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ticker div { animation: none; } .btn { transition: none; } }
+
+/* Secciones */
+section { padding: clamp(56px, 10vw, 112px) 0; }
+.shead { display: grid; gap: 12px; margin-bottom: clamp(28px, 5vw, 48px); border-top: 2px solid var(--ink); padding-top: 14px; }
+.shead .num { font: 400 15px/1 var(--f-disp); letter-spacing: .1em; color: var(--red-ink); }
+.shead h2 { font-family: var(--f-disp); text-transform: uppercase; font-size: clamp(40px, 10vw, 92px); line-height: .9; }
+.shead p { font: 400 clamp(21px, 5vw, 28px)/1.2 var(--f-serif); font-style: italic; color: var(--soft); max-width: 720px; }
+
+/* Casos */
+.cases { display: grid; }
+.case { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.case .n { font: 400 clamp(84px, 26vw, 150px)/.8 var(--f-disp); letter-spacing: -.02em; color: var(--ink); }
+.case .n small { font-size: .36em; letter-spacing: .02em; margin-left: 4px; color: var(--red-ink); }
+.case .nm { display: block; margin-top: 8px; font: 800 13px/1.2 var(--f-body); letter-spacing: .16em; text-transform: uppercase; }
+.case img { width: clamp(108px, 30vw, 150px); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--red); }
+.case:nth-child(3) .n { color: var(--red-ink); }
+.sum { display: grid; gap: 10px; margin-top: 28px; }
+.sum b { font: 400 clamp(46px, 13vw, 88px)/.9 var(--f-disp); text-transform: uppercase; }
+.sum p { color: var(--soft); font-size: 15px; max-width: 560px; }
+
+/* Video */
+.vsl { background: var(--black); color: var(--on-black); }
+.vsl .shead { border-color: var(--on-black); }
+.vsl .shead p { color: var(--on-black-soft); }
+.vbox { position: relative; aspect-ratio: 16 / 9; background: #000; border: 2px solid #f2ede433; display: grid; place-items: center; text-align: center; padding: 20px; }
+.vbox iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vbox .play { width: 74px; height: 74px; border-radius: 50%; background: var(--red); display: grid; place-items: center; margin: 0 auto 14px; }
+.vbox .play::before { content: ""; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 6px; }
+.vbox p { color: var(--on-black-soft); font-size: 15px; }
+
+/* Carta del entrenador */
+.letter { display: grid; gap: 28px; }
+.letter .body p + p { margin-top: 16px; }
+.letter .body > p:first-child::first-letter { float: left; font: 400 92px/.78 var(--f-disp); color: var(--red); margin: 6px 10px 0 0; }
+.letter figure { margin: 0; }
+.letter figure img { width: 100%; border: 2px solid var(--ink); }
+.letter figcaption { margin-top: 8px; font-size: 13px; color: var(--soft); }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--ink); margin-top: 26px; }
+.facts div { padding: 14px 10px 14px 0; border-bottom: 1px solid var(--rule); }
+.facts b { display: block; font: 400 clamp(38px, 10vw, 54px)/.95 var(--f-disp); }
+.facts span { font-size: 14px; color: var(--soft); }
+.pull { margin: 34px 0 0; padding: 22px 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); font: 400 clamp(28px, 7.4vw, 46px)/1.08 var(--f-serif); font-style: italic; }
+.pull cite { display: block; margin-top: 12px; font: 800 12px/1 var(--f-body); letter-spacing: .16em; text-transform: uppercase; font-style: normal; color: var(--red-ink); }
+
+/* Antes */
+.before { background: var(--paper2); }
+.miss { display: grid; gap: 0; counter-reset: m; }
+.miss li { list-style: none; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.miss li::before { counter-increment: m; content: "✕"; font: 400 40px/1 var(--f-disp); color: var(--red); }
+.miss b { display: block; font: 400 26px/1 var(--f-disp); text-transform: uppercase; margin-bottom: 6px; letter-spacing: .01em; }
+.miss { margin: 0; padding: 0; }
+.verdict { margin-top: 28px; font: 400 clamp(26px, 7vw, 40px)/1.12 var(--f-serif); font-style: italic; }
+.verdict em { font-style: normal; font-family: var(--f-disp); text-transform: uppercase; color: var(--red-ink); letter-spacing: .01em; }
+
+/* Pasos */
+.steps { display: grid; gap: 0; }
+.step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 2px solid var(--ink); }
+.step .big { font: 400 clamp(88px, 24vw, 150px)/.78 var(--f-disp); color: var(--red); -webkit-text-stroke: 0; }
+.step h3 { font: 400 clamp(28px, 7vw, 40px)/.95 var(--f-disp); text-transform: uppercase; margin-bottom: 8px; }
+.step p { color: var(--soft); }
+.step p b { color: var(--ink); }
+.coachpic { margin-top: 28px; }
+.coachpic .photo { aspect-ratio: 16 / 10; }
+.coachpic p { margin-top: 8px; font-size: 13px; color: var(--soft); }
+
+/* Frases */
+.quotes { background: var(--black); color: var(--on-black); }
+.quotes .shead { border-color: var(--on-black); }
+.quotes .shead p { color: var(--on-black-soft); }
+.qgrid { display: grid; gap: 0; }
+.qgrid blockquote { margin: 0; padding: 22px 0; border-bottom: 1px solid #f2ede42e; font: 400 clamp(25px, 6.6vw, 36px)/1.14 var(--f-serif); font-style: italic; }
+.qgrid blockquote::before { content: "“"; display: block; font: 400 64px/.6 var(--f-disp); color: var(--red); margin-bottom: 4px; }
+.qnote { margin-top: 18px; font-size: 13px; color: var(--on-black-soft); }
+
+/* Para quién */
+.fit { display: grid; gap: 28px; }
+.fit h3 { font: 400 34px/1 var(--f-disp); text-transform: uppercase; padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 4px; }
+.fit ul { margin: 0; padding: 0; list-style: none; }
+.fit li { padding: 12px 0 12px 30px; border-bottom: 1px solid var(--rule); position: relative; }
+.fit li::before { position: absolute; left: 0; top: 11px; font: 800 17px/1.3 var(--f-body); }
+.fit .yes li::before { content: "✓"; color: var(--red-ink); }
+.fit .no li::before { content: "—"; color: var(--soft); }
+
+/* Preguntas */
+.faq { display: grid; border-top: 2px solid var(--ink); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) 28px; gap: 12px; align-items: center; padding: 18px 0; font: 700 18px/1.3 var(--f-body); }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; float: right; color: var(--red2); font-weight: 800; }
-.faq details[open] summary::after { content: "–"; }
-.faq p { margin-top: 10px; color: var(--soft); }
-.final { text-align: left; background: radial-gradient(90% 90% at 0% 100%, rgba(224,20,30,.25) 0%, rgba(10,10,11,0) 60%); }
-footer { border-top: 1px solid var(--line); padding: 26px 0 40px; color: var(--soft); font-size: 13.5px; }
-footer .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; margin-bottom: 10px; }
-footer a { color: var(--ink); }
-.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(10,10,11,.94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; gap: 10px; align-items: center; justify-content: center; }
-.sticky span { color: var(--soft); font-size: 13.5px; }
-@media (max-width: 900px) { .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); } .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 760px) { .hero-grid, .story, .g3, .g2, .fit, .steps, .pains, .quotes { grid-template-columns: 1fr; } .hero figure { max-width: 300px; } .story img { max-width: 320px; } .sticky span { display: none; } }
-@media (max-width: 420px) { .cases { grid-template-columns: repeat(2, minmax(0, 1fr)); } .top .btn { display: none; } }
+.faq summary::after { content: "+"; font: 400 34px/1 var(--f-disp); color: var(--red-ink); text-align: right; transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 0 20px; color: var(--soft); max-width: 760px; }
+
+/* Contraportada */
+.back { background: var(--red); color: #fff; padding-bottom: clamp(48px, 8vw, 88px); }
+.back h2 { font-family: var(--f-disp); text-transform: uppercase; font-size: clamp(66px, 20vw, 190px); line-height: .82; }
+.back .deck { margin-top: 18px; font: 400 clamp(24px, 6vw, 34px)/1.15 var(--f-serif); font-style: italic; max-width: 680px; }
+.back ol { margin: 26px 0 0; padding: 0; list-style: none; display: grid; gap: 0; border-top: 2px solid #fff; max-width: 760px; }
+.back ol li { padding: 12px 0; border-bottom: 1px solid #ffffff55; font-size: 16px; }
+.back ol li b { font-family: var(--f-disp); font-weight: 400; font-size: 20px; margin-right: 10px; }
+.back .btn.solid { background: var(--black); border-color: var(--black); }
+.back .btn.solid:hover { background: #000; }
+.back .btn.light { border-color: #fff; color: #fff; }
+.back .ctas { margin-top: 28px; max-width: 760px; }
+.formbox { margin-top: 24px; background: #fff; max-width: 760px; }
+.formbox iframe { display: block; width: 100%; height: 820px; border: 0; }
+.back .small { margin-top: 14px; font-size: 13.5px; color: #ffe1e2; max-width: 760px; }
+
+footer { background: var(--black); color: var(--on-black-soft); padding: 28px 0 32px; font-size: 13px; }
+footer .in { display: grid; gap: 8px; }
+footer b { color: var(--on-black); font: 400 22px/1 var(--f-disp); letter-spacing: .03em; }
+
+/* Barra fija móvil */
+.sticky { position: fixed; z-index: 20; left: 0; right: 0; bottom: 0; background: var(--black); border-top: 3px solid var(--red); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--on-black); }
+.sticky span { font: 400 18px/1.05 var(--f-disp); text-transform: uppercase; letter-spacing: .02em; }
+.sticky .btn { min-height: 46px; padding: 0 20px; }
+
+/* Escritorio */
+@media (min-width: 760px) {
+  .cover-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: end; gap: 40px; }
+  .cover .photo { aspect-ratio: 1 / 1.05; }
+  .cover .stamp { width: 112px; height: 112px; top: 18px; right: 18px; }
+  .cover .stamp b { font-size: 42px; }
+  .cases { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+  .case { grid-template-columns: 1fr; justify-items: start; padding: 22px 16px 22px 0; border-bottom: 0; border-right: 1px solid var(--rule); align-content: start; }
+  .case:last-child { border-right: 0; }
+  .case img { order: -1; width: 128px; margin-bottom: 18px; }
+  .case .n { font-size: clamp(76px, 8vw, 118px); }
+  .sum { grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 28px; }
+  .letter { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .letter .body { columns: 2; column-gap: 36px; }
+  .letter .body p { break-inside: avoid-column; }
+  .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .miss { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 28px; }
+  .miss li { grid-template-columns: 1fr; border-top: 2px solid var(--ink); border-bottom: 0; }
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 28px; }
+  .step { grid-template-columns: 1fr; grid-template-rows: auto 1fr; align-content: start; border-bottom: 0; border-top: 2px solid var(--ink); }
+  .step .big { font-size: 130px; height: 112px; overflow: hidden; }
+  .stepwrap { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .coachpic { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: end; }
+  .qgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+  .fit { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; }
+  .sticky { display: none; }
+  body { padding-bottom: 0; }
+}
+@media (max-width: 420px) { .mast .meta { display: none; } }
 </style>
 <!--
   PENDIENTE / PROVISIONAL (no se ve en la página):
-  - FORM: URL de la aplicación (Tally / Google Forms / plataforma). Hoy es un marcador.
-  - VSL_URL: video de presentación (YouTube/Vimeo embed) cuando lo grabe.
-  - WA_NUMBER: WhatsApp de trabajo en formato internacional sin "+". Vacío = no se muestra.
-  - Casos: son los recortes de sus destacadas (cifras públicas en su perfil). Confirmar permiso por escrito para usarlos aquí; tiempos y frases de cada caso [confirmar]. No inventar testimonios.
-  - Las frases de la sección "Lo que me dicen" son literales de su Tarea 2, sin nombre.
-  - Certificaciones: nombres exactos [confirmar].
+  - FORM: URL de la aplicación (Tally / Google Forms / plataforma) [confirmar]. Vacío = los botones bajan a la sección "Aplica".
+  - VSL_URL: video de presentación (embed de YouTube/Vimeo) cuando lo grabe [confirmar].
+  - WA_NUMBER: WhatsApp de trabajo en formato internacional sin "+" [confirmar]. Vacío = no se muestra.
+  - Casos: recortes de sus destacadas (cifras públicas en su perfil). Pedir permiso por escrito para usarlos aquí; tiempos de cada caso [confirmar]. No inventar testimonios.
+  - Fotos de Cryzz: recortes de sus reels públicos (casos/foto-entrenando.jpg, casos/foto-coach-clienta.jpg, casos/reel-2018-ahora.jpg). Mejor con fotos originales en alta [confirmar]; la clienta de la foto de entrenamiento, con permiso.
+  - Las frases de "Lo que me dicen" son literales de su Tarea 2, sin nombre.
 -->
-<div class="hero">
+
+<header class="mast">
   <div class="in">
-    <header class="top">
-      <div class="brand"><img src="casos/cryzz-avatar.jpg" alt="" width="224" height="224"><div>Cryzz Yovany<small>Coach · Método SPB · @cryzz.spb</small></div></div>
-      <a class="btn sm js-form" href="#aplicar">Aplicar</a>
-    </header>
-    <div class="hero-grid">
+    <a class="logo" href="#top" aria-label="Inicio">CRYZZ <b>·</b> SPB</a>
+    <span class="meta">Coaching online <span class="flags">🇺🇸🇲🇽</span><br>Desde SPB Center, Coacalco</span>
+    <a class="btn solid js-form" href="#aplica">Aplica</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="cover">
+    <div class="in cover-grid">
       <div>
-        <span class="label">Para latinas y latinos de 30 a 45 que viven en Estados Unidos</span>
-        <h1>Ya pagaste otra asesoría y rebotaste. <em>Esta vez, un sistema.</em></h1>
-        <p class="lead">Pierde grasa y gana músculo <b>comiendo lo que te gusta</b> (sí, tortillas, arroz y pan) y <b>sin perder tus fines de semana</b>. Te doy una estructura clara que solo tienes que repetir, te evalúo cada semana y al final te enseño a mantenerlo sin mí. 10 años entrenando gente y mi propio gimnasio en México; online, te atiendo yo.</p>
-        <div class="ctas">
-          <a class="btn js-form" href="#aplicar">Aplica y agenda tu llamada</a>
-          <a class="btn ghost" href="https://www.instagram.com/cryzz.spb/" target="_blank" rel="noopener">Escríbeme SISTEMA</a>
+        <p class="kick">Para latinos <span class="flags">🇺🇸🇲🇽</span> de 30 a 45 años · sobre todo mujeres</p>
+        <h1><span>Pierde</span><span class="red">grasa.</span><span>Gana</span><span class="outline">músculo.</span></h1>
+        <p class="deck" style="margin-top:18px">Comiendo lo que te gusta y sin perder tus fines de semana.</p>
+        <p class="who" style="margin-top:16px">Si ya probaste otra asesoría o dieta y rebotaste, esto es para ti. Soy <b>Cryzz Yovany</b>, entrenador desde hace 10 años y dueño de mi gimnasio, <b>SPB Center</b>, en Coacalco. Te armo el plan con tu comida y lo reviso contigo cada semana.</p>
+        <div class="ctas" style="margin-top:22px">
+          <a class="btn solid js-form" href="#aplica">Aplica en 2 minutos</a>
+          <a class="btn js-form" href="#aplica">Reservar llamada</a>
         </div>
-        <p class="note">La aplicación son 2 minutos. La leo yo y, si encajamos, te escribo para una videollamada a la hora de tu ciudad.</p>
       </div>
-      <figure><img src="casos/reel-2018-ahora.jpg" alt="Cryzz en 2018 y ahora: los resultados toman tiempo" width="437" height="568"></figure>
+      <figure class="photo" style="margin:0">
+        <img src="casos/foto-entrenando.jpg" alt="Cryzz entrenando en el gimnasio" width="437" height="296">
+        <div class="stamp"><span><b>+50</b>personas ayudadas</span></div>
+        <div class="lines"><span><b>10</b> años entrenando</span><span>Gimnasio propio</span><span>Online <span class="flags">🇺🇸🇲🇽</span></span></div>
+      </figure>
     </div>
-    <div class="facts">
-      <div class="fact"><b>10 años</b><span>Entrenando gente, 4 con gimnasio propio</span></div>
-      <div class="fact"><b>93 → 81 kg</b><span>Mi definición de este año, comiendo tortillas</span></div>
-      <div class="fact"><b>Cada semana</b><span>Te evalúo y ajusto tu plan</span></div>
-      <div class="fact"><b>3 fases</b><span>Estructura, progresión y libertad</span></div>
+    <div class="ticker" aria-hidden="true"><div>
+      Comida de casa<i>/</i>Revisión cada semana<i>/</i>Tortillas sí<i>/</i>Fines de semana libres<i>/</i>Te contesto yo<i>/</i>Sin quemadores<i>/</i>
+      Comida de casa<i>/</i>Revisión cada semana<i>/</i>Tortillas sí<i>/</i>Fines de semana libres<i>/</i>Te contesto yo<i>/</i>Sin quemadores<i>/</i>
+    </div></div>
+  </div>
+
+  <section id="casos">
+    <div class="in">
+      <div class="shead">
+        <span class="num">01 · Casos reales</span>
+        <h2>Kilos <span class="red">reales</span></h2>
+        <p>Cinco personas que entrenan conmigo. Las cifras son las de sus destacadas en mi Instagram.</p>
+      </div>
+      <div class="cases">
+        <div class="case"><div><div class="n">−10<small>kg</small></div><span class="nm">Cynthia</span></div><img src="casos/caso-cynthia.jpg" alt="Antes y después de Cynthia, −10 kg" width="155" height="155" loading="lazy"></div>
+        <div class="case"><div><div class="n">−12<small>kg</small></div><span class="nm">Margarita</span></div><img src="casos/caso-margarita.jpg" alt="Antes y después de Margarita, −12 kg" width="155" height="155" loading="lazy"></div>
+        <div class="case"><div><div class="n">−16<small>kg</small></div><span class="nm">Erick</span></div><img src="casos/caso-erick.jpg" alt="Antes y después de Erick, −16 kg" width="155" height="155" loading="lazy"></div>
+        <div class="case"><div><div class="n">−10<small>kg</small></div><span class="nm">Eduardo</span></div><img src="casos/caso-eduardo.jpg" alt="Antes y después de Eduardo, −10 kg" width="155" height="155" loading="lazy"></div>
+        <div class="case"><div><div class="n">−12<small>kg</small></div><span class="nm">Gemma</span></div><img src="casos/caso-gemma.jpg" alt="Antes y después de Gemma, −12 kg" width="155" height="155" loading="lazy"></div>
+      </div>
+      <div class="sum">
+        <b>60 kg <span class="red">menos</span></b>
+        <p>Entre los cinco. Mujeres y hombres. Cada cuerpo va a su ritmo: no te prometo kilos en un plazo; te prometo un plan que puedas seguir y revisarlo contigo cada semana.</p>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<section id="vsl" style="padding-top:20px">
-  <div class="in">
-    <div class="vsl" id="vslBox"><div class="vsl-ph"><span aria-hidden="true">▶</span>Video de presentación · pendiente de grabar</div></div>
-  </div>
-</section>
-
-<section id="problema">
-  <div class="in">
-    <span class="label">¿Te suena?</span>
-    <h2>Lo que me dicen casi todos los que llegan</h2>
-    <div class="pains">
-      <div class="pain">"A mi cuerpo le cuesta mucho bajar."</div>
-      <div class="pain">"Como cualquier cosa y luego luego engordo."</div>
-      <div class="pain">"Pagué un plan, lo seguí unas semanas y el fin de semana se me iba todo."</div>
-      <div class="pain">"Me mandaban comidas que no me gustaban, todos los días."</div>
-      <div class="pain">"Mi coach ni me contestaba."</div>
-      <div class="pain">"A mi edad ya no creo conseguir un buen cambio."</div>
+  <section class="vsl" id="video">
+    <div class="in">
+      <div class="shead">
+        <span class="num">02 · Antes de aplicar</span>
+        <h2>Mira esto <span class="red">primero</span></h2>
+        <p>En unos minutos te cuento cómo trabajo y si encajas.</p>
+      </div>
+      <div class="vbox" id="vslBox"><div><div class="play" aria-hidden="true"></div><p>El video está en camino. Mientras tanto, lee abajo cómo trabajo.</p></div></div>
     </div>
-    <p class="turn">No es tu cuerpo ni tu fuerza de voluntad. <em>Te faltó un sistema hecho a tu vida.</em></p>
-  </div>
-</section>
+  </section>
 
-<section class="band" style="padding:clamp(36px,6vw,60px) 0">
-  <div class="in"><p class="turn">"Lo primero que vas a dejar de hacer conmigo es complicarte la vida buscando la forma."</p></div>
-</section>
+  <section id="cryzz">
+    <div class="in">
+      <div class="shead">
+        <span class="num">03 · Tu entrenador</span>
+        <h2>Empecé con <span class="red">60 kilos</span> y una libreta</h2>
+      </div>
+      <div class="letter">
+        <div class="body">
+          <p>Tenía 15 años, pesaba unos 60 kilos y no había dinero para un entrenador. Aprendí solo: una libreta, una báscula y la comida de casa. Tortillas, frijoles, arroz, huevo, atún.</p>
+          <p>Cometí todos los errores. Cambiaba de rutina cada semana por YouTube y hacía abdomen diario. Mi primera definición fue quitando todos los carbohidratos, con faja y té de linaza. Fue un desastre.</p>
+          <p>En 2018 empecé a entrenar gente. Luego el powerlifting me enseñó a medir cada semana: quedé en 2.º lugar estatal. Vendí mi moto para abrir mi gimnasio, <b>SPB Center</b>, en Coacalco.</p>
+          <p>Este año bajé de 93 a 81 kilos comiendo tortillas, con una comida libre a la semana. Lo mismo que hago contigo: sencillo, con comida normal, y revisado cada semana.</p>
+        </div>
+        <figure>
+          <img src="casos/reel-2018-ahora.jpg" alt="Cryzz en 2018 y ahora" width="437" height="568" loading="lazy">
+          <figcaption>2018 → ahora. Los resultados toman tiempo.</figcaption>
+        </figure>
+      </div>
+      <div class="facts">
+        <div><b>10</b><span>años entrenando gente</span></div>
+        <div><b>+50</b><span>personas ayudadas</span></div>
+        <div><b>93→81</b><span>kg, mi definición de este año</span></div>
+        <div><b>2.º</b><span>lugar estatal de powerlifting</span></div>
+      </div>
+      <blockquote class="pull">“Siempre puedo ser 1 % mejor cada día. No necesito brincarme los pasos, solo darlos firmemente.”<cite>Cryzz Yovany</cite></blockquote>
+    </div>
+  </section>
 
-<section id="historia">
-  <div class="in">
-    <span class="label">Mi historia</span>
-    <h2>Empecé con 60 kilos, <em>una libreta y una báscula</em></h2>
-    <div class="story">
-      <img src="casos/fijado-asi-se-pierde-grasa.jpg" alt="Carrusel de Cryzz: así se pierde grasa, pirámide de alimentación, entrenamiento, actividad diaria, descanso y planeación" width="437" height="582" loading="lazy">
-      <ul class="tl">
-        <li><b>15 años</b><span>Pesaba unos 60 kilos y no podía pagar un entrenador. <strong>Aprendí a contar macros</strong> con una libreta, una báscula y lo que había en casa: tortillas, frijoles, arroz, huevo, atún.</span></li>
-        <li><b>Mis errores</b><span>Cambiaba de rutina cada semana por YouTube, hacía abdomen diario y mi primera definición la hice <strong>sin carbohidratos, con faja y té de linaza</strong>. Fue un desastre. Por eso no te lo voy a pedir a ti.</span></li>
-        <li><b>2018</b><span>Me contrataron de entrenador y lo primero que hice con mi sueldo fue pagarme una certificación. Después vinieron nutrición deportiva, hipertrofia y powerlifting [confirmar nombres].</span></li>
-        <li><b>Powerlifting</b><span>Aprendí a medir todo: <strong>2.º lugar en el selectivo estatal</strong> y 145 / 210 / 265 kg en banca, sentadilla y peso muerto.</span></li>
-        <li><b>SPB</b><span>Vendí mi moto para pagar la renta de mi primer local. Hoy es <strong>SPB Center</strong>, en Coacalco.</span></li>
-        <li><b>2026</b><span>Bajé de 93 a 81 kilos <strong>comiendo tortillas</strong> y con una comida libre a la semana. El mismo sistema que hago contigo.</span></li>
+  <section class="before" id="antes">
+    <div class="in">
+      <div class="shead">
+        <span class="num">04 · Lo que no funcionó</span>
+        <h2>Ya pagaste. <span class="red">Y rebotaste.</span></h2>
+        <p>La mayoría de quienes me escriben vienen de otra asesoría. Casi siempre falló lo mismo:</p>
+      </div>
+      <ul class="miss">
+        <li><div><b>Un plan copiado</b><p>La misma rutina que a otros cien. Nada pensado para tus días ni tu trabajo.</p></div></li>
+        <li><div><b>Comida que no te gusta</b><p>Lo mismo, diario. Aguantas unas semanas y lo dejas.</p></div></li>
+        <li><div><b>Nadie que te revise</b><p>Un PDF y a esperar un mes para saber si funciona.</p></div></li>
       </ul>
+      <p class="verdict">No era tu cuerpo. <em>Era el plan.</em></p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="metodo">
-  <div class="in">
-    <span class="label">Método SPB</span>
-    <h2>Sistema. Progresión. <em>Balance.</em></h2>
-    <p class="soft" style="margin-top:14px;max-width:760px;font-size:17px"><b style="color:var(--ink)">Para quién es:</b> Ayudo a latinos de 30 a 45 años que viven en Estados Unidos, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a perder grasa y ganar músculo con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.</p>
-    <div class="g3">
-      <div class="card"><span class="n">S</span><h3>Sistema</h3><p class="soft">De 1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo y al músculo que quieres mejorar. Nada que inventar: solo repetir.</p><i>"Me gusta que me mandes la comida que a mí me gusta: con eso no me aburro."</i></div>
-      <div class="card"><span class="n">P</span><h3>Progresión</h3><p class="soft">Te evalúo cada semana: peso, medidas, fotos y tus cargas. No esperas un mes para saber si funciona. Subes cuando toca, con técnica.</p><i>"No creí poder ver cambios desde la primera semana."</i></div>
-      <div class="card"><span class="n">B</span><h3>Balance</h3><p class="soft">Porciones correctas, no prohibiciones. Planeamos tu fin de semana, tus fiestas y tus viajes. Al final, flexibilizamos para que no rebotes.</p><i>"Ahora puedo comer otras cosas los fines de semana sin miedo a perder el progreso."</i></div>
+  <section id="como">
+    <div class="in">
+      <div class="shead">
+        <span class="num">05 · Cómo trabajo</span>
+        <h2>Tres <span class="red">pasos</span></h2>
+        <p>Así funciona el Método SPB. Sin nada raro.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="big">1</div><div><h3>Aplica y hablamos</h3><p>Llenas la aplicación (2 minutos) y hacemos una <b>videollamada de 30 minutos</b>. Te digo si te puedo ayudar y cómo. Si no encajas, te lo digo.</p></div></div>
+        <div class="step"><div class="big">2</div><div><h3>Tu plan, con tu comida</h3><p><b>De 1 a 3 menús con lo que te gusta</b>, calculados al gramo, y una rutina que cabe en tus días. En la plataforma, con videos de cada ejercicio.</p></div></div>
+        <div class="step"><div class="big">3</div><div><h3>Cada semana, lo revisamos</h3><p>Peso, medidas, fotos y tus cargas <b>cada semana</b>, no cada mes. Me escribes a mí por WhatsApp. Al final, lo vamos soltando para que <b>lo mantengas tú solo</b>.</p></div></div>
+      </div>
+      <div class="coachpic">
+        <figure class="photo" style="margin:0"><img src="casos/foto-coach-clienta.jpg" alt="Cryzz corrigiendo a una clienta en SPB Center" width="436" height="313" loading="lazy"></figure>
+        <p style="font:400 clamp(24px,6vw,32px)/1.15 var(--f-serif);font-style:italic;color:var(--ink)">“Prefiero tener 50 clientes bien atendidos que 100 atendidos a medias.” <span class="kick red" style="display:block;margin-top:10px;font-style:normal">Cryzz</span></p>
+      </div>
     </div>
-    <div class="g3">
-      <div class="phase"><span class="label" style="margin:0">Semanas 1–4</span><h3>Estructura</h3><p class="soft">Videollamada inicial, tus menús, tu rutina y tu primera evaluación.</p></div>
-      <div class="phase"><span class="label" style="margin:0">Semanas 5–12</span><h3>Progresión</h3><p class="soft">Subimos cargas y ajustamos porciones cada semana.</p></div>
-      <div class="phase"><span class="label" style="margin:0">Meses 4–6</span><h3>Libertad</h3><p class="soft">Salidas, viajes y comidas libres. Lo mantienes sin mí.</p></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="casos">
-  <div class="in">
-    <span class="label">Resultados reales</span>
-    <h2>Personas que <em>ya lo hicieron</em></h2>
-    <div class="cases">
-      <figure class="case"><img src="casos/caso-cynthia.jpg" alt="Antes y después de Cynthia: menos 10 kilos" width="155" height="155" loading="lazy"><b>−10 kg</b><span>Cynthia</span></figure>
-      <figure class="case"><img src="casos/caso-margarita.jpg" alt="Antes y después de Margarita: menos 12 kilos" width="155" height="155" loading="lazy"><b>−12 kg</b><span>Margarita</span></figure>
-      <figure class="case"><img src="casos/caso-gemma.jpg" alt="Antes y después de Gemma: menos 12 kilos" width="155" height="155" loading="lazy"><b>−12 kg</b><span>Gemma</span></figure>
-      <figure class="case"><img src="casos/caso-erick.jpg" alt="Antes y después de Erick: menos 16 kilos" width="155" height="155" loading="lazy"><b>−16 kg</b><span>Erick</span></figure>
-      <figure class="case"><img src="casos/caso-eduardo.jpg" alt="Antes y después de Eduardo: menos 10 kilos" width="155" height="155" loading="lazy"><b>−10 kg</b><span>Eduardo</span></figure>
+  <section class="quotes" id="frases">
+    <div class="in">
+      <div class="shead">
+        <span class="num">06 · Lo que me dicen</span>
+        <h2>En sus <span class="red">palabras</span></h2>
+        <p>Frases reales de mis clientes, tal cual me las escribieron.</p>
+      </div>
+      <div class="qgrid">
+        <blockquote>Ahora puedo comer otras cosas los fines de semana sin miedo a perder el progreso.</blockquote>
+        <blockquote>Pensé que no iba a bajar de peso con tanta comida, a veces ni me la acabo.</blockquote>
+        <blockquote>No creí poder ver cambios desde la primera semana, eso me motivó mucho.</blockquote>
+        <blockquote>Yo sentía que mi cuerpo era el problema o que no servía para esto.</blockquote>
+      </div>
+      <p class="qnote">Sin nombre por privacidad.</p>
     </div>
-    <p class="note" style="margin-top:18px">Casos de clientes de Cryzz, publicados en sus historias destacadas. Los resultados dependen de cada persona y de cuánto cumple su plan.</p>
-    <div class="quotes">
-      <blockquote>"Volví a sentir confianza en mi cuerpo y cómo me veo."<small>Cliente de SPB</small></blockquote>
-      <blockquote>"Pensé que no iba a bajar de peso con tanta comida, a veces ni me la acabo."<small>Cliente de SPB</small></blockquote>
-      <blockquote>"Nunca creí cargar los pesos que cargo ahora."<small>Cliente de SPB</small></blockquote>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="online">
-  <div class="in">
-    <span class="label">Desde Estados Unidos</span>
-    <h2>Tu coach está en México. <em>Tú, donde vivas.</em></h2>
-    <div class="g2">
-      <div class="card"><h3>Cómo funciona</h3><ul class="l">
-        <li><b>Videollamada inicial</b> a la hora de tu ciudad (tardes y noches del Este, Centro y Pacífico).</li>
-        <li><b>Tu plataforma</b> con tu plan de alimentación, tu rutina y videos de cada ejercicio.</li>
-        <li><b>Evaluación cada semana</b> y ajuste de tu plan.</li>
-        <li><b>WhatsApp conmigo</b>, no con un equipo: respuesta en menos de 24 horas.</li>
-        <li>Entrenas en tu gimnasio (Planet Fitness, LA Fitness o el que tengas) o en casa.</li>
-      </ul></div>
-      <div class="card"><h3>Con la comida de allá</h3><ul class="l">
-        <li>Tus menús se arman con lo que compras en Costco, Walmart o la tienda latina.</li>
-        <li>La comida de tu casa cabe en tu plan: tortillas, arroz, frijoles, pan.</li>
-        <li>Plan para Thanksgiving, diciembre y tus viajes a México.</li>
-        <li>Sin quemadores ni "pastillas mágicas": comida, entrenamiento y descanso.</li>
-      </ul></div>
+  <section id="para">
+    <div class="in">
+      <div class="shead">
+        <span class="num">07 · ¿Es para ti?</span>
+        <h2>Para quién <span class="red">sí</span>. Para quién no.</h2>
+      </div>
+      <div class="fit">
+        <div class="yes"><h3>Sí</h3><ul>
+          <li>Latinos <span class="flags">🇺🇸🇲🇽</span> de 30 a 45 años, sobre todo mujeres.</li>
+          <li>Ya probaste otra asesoría o dieta y rebotaste.</li>
+          <li>Quieres perder grasa y ganar músculo sin dejar la comida que te gusta.</li>
+          <li>Puedes entrenar al menos 3 días y mandarme tu revisión cada semana.</li>
+        </ul></div>
+        <div class="no"><h3>No</h3><ul>
+          <li>Buscas una pastilla mágica, quemadores o atajos.</li>
+          <li>Quieres resultados sin hacer tu parte.</li>
+          <li>Buscas un reto de 90 días para luego volver a lo de antes.</li>
+        </ul></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="para-quien">
-  <div class="in">
-    <span class="label">Para quién es</span>
-    <h2>Esto no es para todo el mundo</h2>
-    <div class="fit">
-      <div class="card"><h3>Es para ti si…</h3><ul class="l">
-        <li>Tienes entre 30 y 45 y vives en Estados Unidos (o en México y quieres trabajar así).</li>
-        <li>Ya pagaste alguna asesoría o dieta y no te funcionó, o rebotaste.</li>
-        <li>Quieres perder grasa y ganar músculo sin dejar lo que te gusta comer.</li>
-        <li>Te gusta tener una estructura clara y repetirla.</li>
-        <li>Vas a mandar tu evaluación cada semana y avisar en el momento si algo cambia.</li>
-      </ul></div>
-      <div class="card no"><h3>No es para ti si…</h3><ul class="l">
-        <li>Buscas atajos: quemadores, inyecciones o "30 kilos en 30 días".</li>
-        <li>Quieres un plan pero no piensas cumplirlo, y luego culpar al coach.</li>
-        <li>Quieres competir: yo trabajo para que te veas y te sientas mejor.</li>
-      </ul></div>
+  <section class="before" id="preguntas">
+    <div class="in">
+      <div class="shead">
+        <span class="num">08 · Preguntas</span>
+        <h2>Lo que <span class="red">me preguntan</span></h2>
+      </div>
+      <div class="faq">
+        <details><summary>Ya pagué otra asesoría y no me funcionó. ¿Por qué esta sí?</summary><p>Porque no es un plan copiado: tus menús se hacen con lo que te gusta, te reviso cada semana y me escribes a mí. La mayoría de mis clientes llegan justo después de una asesoría que no les funcionó.</p></details>
+        <details><summary>¿De verdad puedo comer tortillas, pan y arroz?</summary><p>Sí. No hace falta quitar alimentos: hace falta la porción correcta. Yo bajé de 93 a 81 kilos este año comiéndolos.</p></details>
+        <details><summary>Vivo en Estados Unidos y tú estás en México. ¿Funciona?</summary><p>Sí. Tienes tu plan y tus videos en la plataforma, me mandas tu revisión cada semana y hablamos por WhatsApp. Lo que necesito son tus datos y tu feedback, no que estés cerca. Las llamadas se agendan a la hora de tu ciudad.</p></details>
+        <details><summary>Vivo en México. ¿También me atiendes?</summary><p>Sí, online igual. Y si estás cerca de Coacalco, también puedes entrenar conmigo en SPB Center.</p></details>
+        <details><summary>Trabajo muchas horas. ¿Me da tiempo?</summary><p>Tu rutina se arma con los días que de verdad tienes. Mejor 3 días bien hechos que 5 que no cumples.</p></details>
+        <details><summary>¿Qué pasa los fines de semana?</summary><p>Se planean. Entre semana haces el trabajo y el fin de semana sales, comes con tu familia y no pierdes lo que avanzaste.</p></details>
+        <details><summary>¿Cuánto cuesta?</summary><p>Depende de tu caso y del tiempo que trabajemos. Te lo digo en la llamada, sin compromiso. Online se paga en dólares; en México, también en pesos.</p></details>
+        <details><summary>¿Tengo que tomar suplementos?</summary><p>No. Comida, entrenamiento y descanso son suficientes para casi todos. No vendo quemadores ni "pastillas mágicas".</p></details>
+        <details><summary>Tengo una condición de salud.</summary><p>No diagnostico ni trato nada médico. Si tienes una condición, primero tu médico; con su visto bueno, adaptamos tu plan.</p></details>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="pasos">
-  <div class="in">
-    <span class="label">Cómo empezar</span>
-    <h2>Tres pasos</h2>
-    <div class="steps">
-      <div class="card"><span class="n">01</span><h3>Aplicas</h3><p class="soft">2 minutos: dónde vives, qué has probado y qué comidas no quieres dejar.</p></div>
-      <div class="card"><span class="n">02</span><h3>Hablamos</h3><p class="soft">Si encajamos, te escribo por WhatsApp y agendamos una videollamada a la hora de tu ciudad.</p></div>
-      <div class="card"><span class="n">03</span><h3>Recibes tu sistema</h3><p class="soft">Videollamada inicial, tus menús, tu rutina y tu primera evaluación en la semana 1.</p></div>
+  <section class="back" id="aplica">
+    <div class="in">
+      <p class="kick" style="color:#ffd6d8">09 · Último paso <span class="flags">🇺🇸🇲🇽</span></p>
+      <h2 style="margin-top:12px">Aplica.</h2>
+      <p class="deck">Dos minutos. Si encajas, te escribo para agendar tu llamada.</p>
+      <ol>
+        <li><b>1</b>Me cuentas dónde vives, qué has probado y qué comida no dejarías.</li>
+        <li><b>2</b>Reviso tu aplicación yo mismo.</li>
+        <li><b>3</b>Hablamos 30 minutos por videollamada y decides.</li>
+      </ol>
+      <div class="ctas">
+        <a class="btn solid js-form" href="#aplica" id="formBtn">Llenar la aplicación</a>
+        <a class="btn light js-form" href="#aplica">Reservar llamada</a>
+        <a class="btn light js-wa" href="#" hidden>Escríbeme por WhatsApp</a>
+      </div>
+      <div class="formbox" id="formEmbed" hidden></div>
+      <p class="small">Atiendo a pocas personas a la vez para poder revisar a cada una cada semana. Tus datos solo los veo yo.</p>
     </div>
-  </div>
-</section>
-
-<section id="aplicar">
-  <div class="in">
-    <span class="label">Aplicación</span>
-    <h2>Deja de complicarte. <em>Empieza aquí.</em></h2>
-    <p class="soft" style="margin-top:12px;max-width:640px">La leo yo personalmente. Si veo que te puedo ayudar, te escribo para hablar. Si no, también te lo digo.</p>
-    <div class="form-box">
-      <div class="form-embed" id="formEmbed" hidden></div>
-      <a class="btn js-form" id="formBtn" href="#aplicar" target="_blank" rel="noopener">Llenar la aplicación</a>
-      <a class="btn ghost js-wa" href="#" target="_blank" rel="noopener" hidden>Prefiero WhatsApp</a>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="in">
-    <span class="label">Preguntas frecuentes</span>
-    <h2>Dudas rápidas</h2>
-    <div class="faq">
-      <details><summary>Ya pagué otra asesoría y no me funcionó. ¿Por qué esta sí?</summary><p>Porque no es un plan copiado: tus menús se hacen con lo que te gusta, te evalúo cada semana (no cada mes) y me escribes a mí. La mayoría de mis clientes llegan justo después de una asesoría que no les funcionó.</p></details>
-      <details><summary>¿De verdad puedo comer tortillas, pan y arroz?</summary><p>Sí. No necesitas restringir alimentos: necesitas las porciones correctas. Yo bajé de 93 a 81 kilos este año comiéndolos.</p></details>
-      <details><summary>¿Cómo me vas a entrenar si estás en México?</summary><p>Con tu plataforma (rutina y videos de cada ejercicio), revisión de técnica por video, evaluación semanal y WhatsApp. Lo que necesito son tus datos y tu feedback, no que estés cerca.</p></details>
-      <details><summary>Trabajo muchas horas. ¿Me da tiempo?</summary><p>Tu rutina se arma con los días que de verdad tienes. Mejor 3 días bien hechos que 5 que no cumples.</p></details>
-      <details><summary>¿Qué pasa los fines de semana?</summary><p>Se planean. Los 5 días hacen el trabajo y el fin de semana sales, comes con tu familia y no pierdes el progreso.</p></details>
-      <details><summary>Me da miedo que al terminar vuelva a subir.</summary><p>Por eso existe la fase de libertad: los últimos meses flexibilizamos el plan para que lo mantengas sin mí.</p></details>
-      <details><summary>¿Tengo que tomar suplementos?</summary><p>No. Comida, entrenamiento y descanso son suficientes para casi todos. No vendo quemadores ni "pastillas mágicas".</p></details>
-      <details><summary>Tengo una condición de salud.</summary><p>No diagnostico ni trato nada médico. Si tienes una condición, primero tu médico; con su visto bueno, adaptamos tu plan.</p></details>
-      <details><summary>¿Cuánto cuesta y cómo se paga?</summary><p>Depende de cuánto tiempo trabajemos juntos. Te lo explico en la llamada. Se paga en dólares con tarjeta y puede ser en dos pagos.</p></details>
-      <details><summary>Vivo en México. ¿También puedo?</summary><p>Sí, online igual. Y si estás cerca de Coacalco, también tengo planes presenciales en SPB Center.</p></details>
-    </div>
-  </div>
-</section>
-
-<section class="final">
-  <div class="in">
-    <span class="label">El siguiente paso</span>
-    <h2>Te doy el sistema. <em>Tú solo lo repites.</em></h2>
-    <div class="ctas">
-      <a class="btn js-form" href="#aplicar">Aplica y agenda tu llamada</a>
-      <a class="btn ghost" href="https://www.instagram.com/cryzz.spb/" target="_blank" rel="noopener">Escríbeme SISTEMA en Instagram</a>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
   <div class="in">
-    <div class="row"><span>© 2026 Cryzz Yovany · SPB · Coacalco, México</span><span><a href="https://www.instagram.com/cryzz.spb/" target="_blank" rel="noopener">@cryzz.spb</a></span></div>
-    <p>Este servicio no sustituye el consejo, diagnóstico ni tratamiento médico. Los resultados varían según cada persona y su cumplimiento del plan.</p>
+    <b>CRYZZ · SPB CENTER</b>
+    <span>@cryzz.spb · Coacalco, Estado de México · Coaching online para latinos <span class="flags">🇺🇸🇲🇽</span></span>
+    <span>Los resultados dependen de cada persona y de lo que cumpla. Esto no sustituye la consulta con tu médico.</span>
   </div>
 </footer>
 
-<div class="sticky"><span>Latinos en EE. UU. · Método SPB</span><a class="btn sm js-form" href="#aplicar">Aplicar</a></div>
+<div class="sticky"><span>¿Listo para que esta vez sí se quede?</span><a class="btn solid js-form" href="#aplica">Aplica</a></div>
+
 <script>
 (function () {
-  // [confirmar] URL de la aplicación (Tally, Google Forms o la plataforma de Cryzz). Vacío = el botón baja a esta sección.
-  var FORM = "";
-  // [confirmar] URL del video de presentación (embed de YouTube o Vimeo). Vacío = queda el hueco.
-  var VSL_URL = "";
-  // [confirmar] WhatsApp de trabajo en formato internacional sin "+" (ej.: 52155XXXXXXXX). Vacío = no se muestra.
-  var WA_NUMBER = "";
+  // Rellenar cuando estén listos [confirmar]
+  var FORM = "";       // URL de la aplicación (Tally / Google Forms / plataforma)
+  var VSL_URL = "";    // embed del video de presentación
+  var WA_NUMBER = "";  // WhatsApp de trabajo, formato internacional sin "+"
   if (FORM) document.querySelectorAll(".js-form").forEach(function (a) { a.href = FORM; a.target = "_blank"; a.rel = "noopener"; });
-  else { var fb = document.getElementById("formBtn"); fb.removeAttribute("target"); fb.removeAttribute("rel"); }
-  if (WA_NUMBER) document.querySelectorAll(".js-wa").forEach(function (a) { a.href = "https://wa.me/" + WA_NUMBER.replace(/\D/g, "") + "?text=" + encodeURIComponent("SISTEMA"); a.hidden = false; });
+  if (WA_NUMBER) document.querySelectorAll(".js-wa").forEach(function (a) { a.href = "https://wa.me/" + WA_NUMBER.replace(/\D/g, "") + "?text=" + encodeURIComponent("PLAN"); a.target = "_blank"; a.rel = "noopener"; a.hidden = false; });
   if (VSL_URL) { var box = document.getElementById("vslBox"); box.innerHTML = ""; var v = document.createElement("iframe"); v.src = VSL_URL; v.title = "Video de presentación de Cryzz"; v.allow = "autoplay; fullscreen; picture-in-picture"; v.loading = "lazy"; box.appendChild(v); }
   var fe = document.getElementById("formEmbed");
-  // Solo se incrusta cuando la página está publicada en su dominio; dentro del visor de Claude queda el botón.
-  if (fe && FORM && window.self === window.top && /tally\.so\/r\/|\/viewform/.test(FORM)) {
+  if (fe && FORM && /tally\.so\/r\/|\/viewform/.test(FORM)) {
     var f = document.createElement("iframe"); f.src = FORM + (/viewform/.test(FORM) ? (FORM.indexOf("?") < 0 ? "?" : "&") + "embedded=true" : ""); f.title = "Aplicación de Cryzz"; f.loading = "lazy";
     fe.appendChild(f); fe.hidden = false;
   }

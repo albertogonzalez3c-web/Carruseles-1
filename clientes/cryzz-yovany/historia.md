@@ -105,14 +105,16 @@ Otras: le dicen **"la vieja confiable"** y "su entrenador de cabecera".
 
 ## 8. Nicho decidido (y la contradicción resuelta)
 **Frase única (idéntica en todas las páginas):**
-> Ayudo a latinos de 30 a 45 años que viven en Estados Unidos, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a perder grasa y ganar músculo con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.
+> Latinos 🇺🇸🇲🇽 de 30 a 45 años, sobre todo mujeres, que ya probaron otra asesoría o dieta y rebotaron: pierde grasa y gana músculo comiendo lo que te gusta y sin perder tus fines de semana.
+
+**Cambio pedido por Alberto (22-nov-2026):** nada de "que viven en Estados Unidos" ni "EE. UU." en el nicho ni en titulares: van las banderas 🇺🇸🇲🇽 para no dejar fuera a los de México. Y lenguaje llano, como habla Cryzz: fuera "con un sistema claro", "hace falta un sistema" y frases de marketing. El público sigue siendo latinos en EE. UU. y en México con buen poder adquisitivo (anuncios segmentados a EE. UU.; precios en USD online y MXN presencial).
 
 **Por qué así**
-- La contradicción: él dice "100 % recomposición" y "70 % mujeres 30–40, conecto más con ellas y son capaces de invertir más"; Alberto quiere online a **latinos/mexicanos que viven en EE. UU.** en USD. Las dos cosas encajan: el mercado es EE. UU. (dónde está el dinero en USD) y la persona a la que le habla el contenido es, sobre todo, ella (donde ya tiene 70 % de clientes, los mejores casos y la conexión). Hombres entran (Erick −16 kg, Eduardo −10 kg) pero el contenido se escribe pensando en ella.
-- "Ya pagaron otra asesoría o dieta y rebotaron" es literal de sus mejores casos (Lalo, Erick Jovany, Nataly, Gemma: "experiencias malas con otra asesoría") y de su Fase 3. Filtra a quien ya sabe lo que es invertir y se toma en serio la asesoría (su hueco frente a Antoni).
-- "Comiendo lo que les gusta y sin perder sus fines de semana" son frases 4, 5 y 6 de sus clientes y su creencia n.º 2.
+- La contradicción: él dice "100 % recomposición" y "70 % mujeres 30–40, conecto más con ellas y son capaces de invertir más"; Alberto quiere online a **latinos/mexicanos** (sobre todo en EE. UU., en USD, y México con buen poder adquisitivo). Las dos cosas encajan: el mercado es online 🇺🇸🇲🇽 (dónde está el dinero en USD, sin cerrar la puerta a México) y la persona a la que le habla el contenido es, sobre todo, ella (donde ya tiene 70 % de clientes, los mejores casos y la conexión). Hombres entran (Erick −16 kg, Eduardo −10 kg) pero el contenido se escribe pensando en ella.
+- "Ya probaron otra asesoría o dieta y rebotaron" sale literal de sus mejores casos (Lalo, Erick Jovany, Nataly, Gemma: "experiencias malas con otra asesoría") y de su Fase 3. Filtra a quien ya sabe lo que es invertir y se toma en serio la asesoría (su hueco frente a Antoni).
+- "Comiendo lo que te gusta y sin perder tus fines de semana" son frases 4, 5 y 6 de sus clientes y su creencia n.º 2.
 - "Recomposición" no va en la frase pública (lo usan Holyfield, Sergio PG y Álvaro); se dice "perder grasa y ganar músculo", que además es lo que busca su cliente.
-- **México de alto nivel** queda como secundario: presencial VIP en SPB Center (Coacalco) y online si llegan (cobro en MXN o USD).
+- **México** entra en el mensaje (por eso las dos banderas): online en MXN o USD y presencial VIP en SPB Center (Coacalco).
 
 **Descartadas**
 1. Hombres latinos +30 en EE. UU. → es el nicho de **Zent** (y Jony 18–25, Sebastián 20–35 hombres). Pisaría a tres clientes de Alberto.
@@ -122,14 +124,14 @@ Otras: le dicen **"la vieja confiable"** y "su entrenador de cabecera".
 5. Powerlifting/competidores → él lo dejó al 100 % y no capta clientes ahí.
 6. Solo presencial Coacalco → techo de precio "limitado a la zona" (el básico lleva 4 años a $650).
 
-## 9. Método SPB (Sistema · Progresión · Balance)
-Nombre ligado a su marca (SPB = Smart PowerBuilding) y a su reel "Te doy un sistema".
-- **S · Sistema**: 1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo. Nada que inventar. *Historia:* a los 15, sin dinero, con libreta, báscula y la canasta básica; la despensa de 15 días que duró 5. "Sencillas, efectivas y rápidas."
-- **P · Progresión**: cada semana se mide (peso, medidas, fotos, cargas) y se ajusta; RIR, sobrecarga progresiva bien entendida. *Historia:* 2 años cambiando de rutina cada semana por YouTube, abdomen diario y series eternas; el powerlifting le enseñó a medir: de no saber qué hacía a 145/210/265 kg y al 2.º lugar estatal.
-- **B · Balance**: comes lo que te gusta en porciones correctas, sales el fin de semana sin miedo y al final flexibilizamos para que lo mantengas sin él. *Historia:* la definición de los 17 sin carbohidratos, con faja y té de linaza (muy mala) frente a 2024 (100 → 85 kg con pasos y días libres) y 2026 (93 → 81 kg con una comida libre a la semana).
-**Fases**: 1 · Estructura (semanas 1–4) · 2 · Progresión (semanas 5–12) · 3 · Libertad (meses 4–6).
+## 9. Método SPB
+Nombre ligado a su marca (SPB = Smart PowerBuilding). Ya no se vende como "Sistema, Progresión, Balance": se explica simple. **Dicho como lo diría él:** "Comes lo que te gusta en la porción correcta, cada semana lo revisamos y, al final, aprendes a mantenerlo tú solo."
+- **1 · Tu plan**: 1 a 3 menús con la comida que te gusta, calculados al gramo, y una rutina hecha a tu tiempo. Nada que inventar. *Historia:* a los 15, sin dinero, con libreta, báscula y la canasta básica; la despensa de 15 días que duró 5. "Sencillas, efectivas y rápidas."
+- **2 · Cada semana**: cada semana se mide (peso, medidas, fotos, cargas) y se ajusta; RIR, sobrecarga progresiva bien entendida. *Historia:* 2 años cambiando de rutina cada semana por YouTube, abdomen diario y series eternas; el powerlifting le enseñó a medir: de no saber qué hacía a 145/210/265 kg y al 2.º lugar estatal.
+- **3 · Tu vida**: comes lo que te gusta en porciones correctas, sales el fin de semana sin miedo y al final flexibilizamos para que lo mantengas sin él. *Historia:* la definición de los 17 sin carbohidratos, con faja y té de linaza (muy mala) frente a 2024 (100 → 85 kg con pasos y días libres) y 2026 (93 → 81 kg con una comida libre a la semana).
+**Fases**: 1 · Arrancar (semanas 1–4) · 2 · Avanzar (semanas 5–12) · 3 · Mantener (meses 4–6).
 **3 no negociables**: feedback semanal completo el día que toca (peso, medidas, fotos, pesos y repeticiones) · dudas en el momento, no el domingo en la noche · cumplir los días de entrenamiento y los menús que tú elegiste.
-**Palabra clave**: SISTEMA.
+**Palabra clave**: PLAN (antes SISTEMA; se cambia para quitar el tono de "sistema").
 
 ## 10. Sensibles: no publicar
 Separación de sus padres, conflicto con su papá, hermanos; ruptura amorosa (detonante y la de 2025); el "amigo" que robaba clientes; el año de fiesta (solo si él decide contarlo); la clienta Miriam (nunca); datos de Azalea (peso, nutriólogo anterior) y de Emanuel (presupuesto con su pareja); márgenes, ahorro, comisión de la nutricionista, renta de casa dentro de "herramientas"; certificaciones sin nombre exacto hasta confirmarlas. Fotos de clientes: las de las destacadas ya son públicas en su perfil; cualquier otra, con permiso por escrito. En anuncios nunca antes/después.

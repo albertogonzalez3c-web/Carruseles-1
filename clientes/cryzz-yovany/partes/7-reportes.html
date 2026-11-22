@@ -146,8 +146,8 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
   <header class="head">
     <span class="label">Cryzz Yovany · SPB · Parte 7 · Reporte para Alberto</span>
     <h1>Tus números, cada día. Online y gimnasio.</h1>
-    <p class="nm-line" style="--nm-a:#c8141c"><b>Nicho:</b> Ayudo a latinos de 30 a 45 años que viven en Estados Unidos, sobre todo mujeres, que ya pagaron otra asesoría o dieta y rebotaron, a perder grasa y ganar músculo con un sistema claro, comiendo lo que les gusta y sin perder sus fines de semana.</p>
-    <p class="nm-line" style="--nm-a:#0d0d0e"><b>Método SPB:</b> Sistema (1–3 menús con lo que le gusta, rutina a su tiempo) · Progresión (evaluación cada semana) · Balance (porciones, no prohibiciones; fines de semana sin miedo). Fases: Estructura (semanas 1–4), Progresión (5–12), Libertad (meses 4–6).</p>
+    <p class="nm-line" style="--nm-a:#c8141c"><b>Nicho:</b> Latinos 🇺🇸🇲🇽 de 30 a 45 años, sobre todo mujeres, que ya probaron otra asesoría o dieta y rebotaron: pierde grasa y gana músculo comiendo lo que te gusta y sin perder tus fines de semana.</p>
+    <p class="nm-line" style="--nm-a:#0d0d0e"><b>Método SPB:</b> tu plan (1–3 menús con lo que le gusta, rutina a su tiempo) · cada semana (revisión y ajuste) · tu vida (porciones, no prohibiciones; fines de semana sin miedo). Fases: arrancar (semanas 1–4), avanzar (5–12), mantener (meses 4–6).</p>
     <p class="soft">Cada noche lo del día (9–10 pm), cada domingo lo de la semana. Se guarda solo y Alberto lo ve en directo. Verde es objetivo cumplido; rojo es lo que hay que corregir mañana. Tú lo dijiste: creces cuando rompes la barrera con un plan y un objetivo claro.</p>
     <div class="bar">
       <label for="fecha">Día<input type="date" id="fecha"></label>
@@ -166,7 +166,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
           <div class="nums">
             <label>Ronda 1 (2 pm)<input data-d="r1" type="number" min="0" inputmode="numeric" placeholder="50"></label>
             <label>Ronda 2 (6 pm)<input data-d="r2" type="number" min="0" inputmode="numeric" placeholder="50"></label>
-            <label>Bienvenidas y SISTEMA (aparte de las rondas)<input data-d="bienv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Bienvenidas y PLAN (aparte de las rondas)<input data-d="bienv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
             <label>Francotirador: antiguos clientes y leads en pausa<input data-d="franco" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           </div>
           <div class="meter" aria-hidden="true"><i id="convBar" style="width:0"></i></div>
@@ -314,7 +314,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
           <div class="nums">
             <label>Seguidores al empezar la semana<input data-s="segIni" type="number" min="0" inputmode="numeric" placeholder="5543"></label>
             <label>Seguidores al acabar<input data-s="segFin" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-            <label>Mensajes con SISTEMA<input data-s="sistema" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+            <label>Mensajes con PLAN<input data-s="sistema" type="number" min="0" inputmode="numeric" placeholder="0"></label>
             <label>Seguidores nuevos de EE. UU. (aprox.)<input data-s="segUsa" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           </div>
           <label class="fld">Mejor pieza de la semana (enlace)<input data-s="mejorLink" placeholder="https://www.instagram.com/reel/…"></label>
@@ -710,7 +710,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
     var det = day.cerrado === true ? (day.cierres || []).map(function (c, i) { return "  " + (i + 1) + ". " + (c.clienta || "Cliente") + " · " + money(num(c.importe), c.moneda || "USD") + " · " + (c.plan || "") + " · " + (c.pago || "") + (c.como ? "\n     " + c.como : ""); }).join("\n") : "";
     var moods = { "1": "😞", "2": "😕", "3": "😐", "4": "🙂", "5": "🤩" };
     el("m-dia").textContent = "📲 Reporte de Cryzz · " + nice(f, true) + "\n\n" +
-      "Rondas: " + num(day.r1) + " + " + num(day.r2) + " = " + ron + "/100" + ck(ron >= 100) + " · Bienvenidas/SISTEMA: " + num(day.bienv) + " · Francotirador: " + num(day.franco) + " (total " + conv + ")\n" +
+      "Rondas: " + num(day.r1) + " + " + num(day.r2) + " = " + ron + "/100" + ck(ron >= 100) + " · Bienvenidas/PLAN: " + num(day.bienv) + " · Francotirador: " + num(day.franco) + " (total " + conv + ")\n" +
       "Respuestas: " + resp + " (" + pct(resp, conv) + ") · Calientes: " + num(day.calientes) + " · Aplicaciones: " + num(day.aplic) + "\n" +
       "Bienvenidas: " + yn(day.bienvenidas) + " · Seguimientos: " + yn(day.seguimientos) + "\n" +
       "Llamadas: " + num(day.agendadas) + " agendadas · " + he + " hechas · " + ci + (ci === 1 ? " cierre (" : " cierres (") + pct(ci, he) + ")\n" +
@@ -752,7 +752,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
     var tdone = sem.tareas.filter(function (t) { return t.hecha; }).length;
     var ckw = function (ok) { return ok ? " ✅" : " ❌"; };
     el("m-sem").textContent = "📊 Semana de Cryzz · " + weekLabel(w) + "\n\n" +
-      "VENTAS ONLINE\nRondas: " + a.rondas + "/700" + ckw(a.rondas >= 700) + " · Bienvenidas/SISTEMA: " + a.bienv + " · Francotirador: " + a.franco + "\nConversaciones totales: " + a.conv + " · Respuestas: " + a.resp + " (" + pct(a.resp, a.conv) + ") · Aplicaciones: " + a.aplic + "\n" +
+      "VENTAS ONLINE\nRondas: " + a.rondas + "/700" + ckw(a.rondas >= 700) + " · Bienvenidas/PLAN: " + a.bienv + " · Francotirador: " + a.franco + "\nConversaciones totales: " + a.conv + " · Respuestas: " + a.resp + " (" + pct(a.resp, a.conv) + ") · Aplicaciones: " + a.aplic + "\n" +
       "Agendadas: " + a.ag + " (" + pct(a.ag, a.resp) + ") · Hechas: " + a.he + " · Cierres: " + a.ci + " (" + pct(a.ci, a.he) + ")\n" +
       "Facturación: " + usd(a.usd) + " online · " + mxn(a.mxn) + " MXN presencial + productos · Días reportados: " + a.dias + "/7\n" +
       "Clientes online: " + num(sem.onAct) + " (" + num(sem.onUsa) + " en EE. UU.) · Renovaciones: " + num(sem.renov) + " · Nivel de precios: " + (sem.nivel === "" ? "—" : sem.nivel) + "\n\n" +
@@ -765,7 +765,7 @@ h1, h2, h3, .cs h3.ph { font-weight: 400; letter-spacing: .01em; }
       "Rol entrenador + casos: " + (rp == null ? "—" : rp + " %") + (rp != null ? ckw(rp >= 50) : "") + " · Trial reels: " + a.trial + "\n" +
       (trs.length ? trs.map(function (t) { return "  · " + (t.guion || "(sin título)") + (t.ganador ? " → gana: " + t.ganador : "") + (t.views ? " (" + t.views + " vistas)" : ""); }).join("\n") + "\n" : "") +
       ((sem.promos || []).length ? "Anuncios EE. UU.: " + usd(pa.g) + " · " + pa.s + " seguidores · " + (pa.cps == null ? "—" : usd(pa.cps) + " por seguidor") + (pa.cps == null ? "" : ckw(pa.cps < 1)) + "\n" + sem.promos.map(function (x) { var c = promoCps(x); return "  · " + (x.reel || "(sin título)") + ": " + num(x.dias) + " días · " + usd(num(x.gasto)) + " · " + num(x.seguidores) + " seg." + (c == null ? "" : " · " + usd(c) + "/seg.") + " → " + (x.decision || "Probando"); }).join("\n") + "\n" : "") +
-      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes SISTEMA: " + num(sem.sistema) + "\n" +
+      "Historias: " + a.historias + " · Días con CTA: " + a.cta + "/2" + ckw(a.cta >= 2) + " · Mensajes PLAN: " + num(sem.sistema) + "\n" +
       "WhatsApp: " + a.estados + " Estados · " + a.contactos + " contactos nuevos\n" +
       "Seguidores: " + (sem.segIni || "—") + " → " + (sem.segFin || "—") + (segD != null ? " (" + (segD >= 0 ? "+" : "") + segD + ")" : "") + (sem.segUsa ? " · de EE. UU.: " + sem.segUsa : "") + "\n" +
       (sem.mejorLink ? "Mejor pieza: " + sem.mejorLink + (sem.mejorPorque ? " · " + sem.mejorPorque : "") + "\n" : "") + "\n" +
