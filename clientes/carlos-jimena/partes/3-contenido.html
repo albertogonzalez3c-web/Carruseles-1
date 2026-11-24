@@ -1,0 +1,671 @@
+<title>Carlos Contenido</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #0b0b0c; --panel: #151517; --panel2: #1e1e21; --line: #2e2e33; --ink: #f4f2ef; --soft: #aaa6a1;
+  --red: #d42a30; --red-text: #ff6e72; --red-soft: #2e1214; --amber: #f0c060; --green: #66c486;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(36px, 6vw, 64px)/.98 var(--f-head); letter-spacing: .01em; }
+h2 { font: 400 clamp(26px, 3.4vw, 36px)/1.05 var(--f-head); letter-spacing: .01em; }
+h3 { font: 700 16.5px/1.3 var(--f-body); }
+h4 { font: 700 14.5px/1.3 var(--f-body); color: var(--red-text); }
+p { margin: 0; }
+a { color: var(--red-text); }
+em { font-style: normal; color: var(--red-text); }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--panel2); padding: 2px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+.label { font: 500 11px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.ph { color: var(--amber); font-weight: 700; }
+.hero { padding: calc(28px + env(safe-area-inset-top, 0px)) 0 22px; border-bottom: 1px solid var(--line); background: radial-gradient(120% 140% at 100% 0%, #3a0d10 0%, transparent 55%); }
+.hero .wrap { display: grid; gap: 12px; }
+.hero p.lead { font-size: 17px; max-width: 760px; color: #d9d5d0; }
+.tabs-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11, 11, 12, .94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { all: unset; cursor: pointer; white-space: nowrap; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--panel); color: var(--soft); }
+.tab[aria-selected="true"] { background: var(--red); color: #fff; }
+.tab:focus-visible, .btn:focus-visible, .cp:focus-visible, .chip:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+main { padding-block: 24px 70px; }
+.view { display: grid; gap: 22px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 6px; max-width: 820px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.acc { background: var(--red-soft); border-color: #5a1e22; }
+.card.red { background: var(--red); border-color: var(--red); color: #fff; }
+.card.red .label, .card.red .soft { color: #ffe1e2; }
+.card.flat { background: var(--panel2); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: #d6d2cd; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { position: relative; background: var(--panel2); border-left: 3px solid var(--red); border-radius: 10px; padding: 10px 12px; font-size: 14.5px; white-space: pre-line; color: #ece9e5; }
+.say .cp { float: right; margin: -2px -4px 6px 10px; }
+.cp, .btn { all: unset; box-sizing: border-box; cursor: pointer; font: 700 12px/1 var(--f-body); padding: 8px 11px; border-radius: 999px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); white-space: nowrap; }
+.cp.ok { background: var(--green); color: #08110b; border-color: var(--green); }
+.btn { font-size: 14px; padding: 12px 18px; background: var(--red); border-color: var(--red); color: #fff; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { all: unset; cursor: pointer; font: 700 13px/1 var(--f-body); padding: 9px 12px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); color: var(--soft); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tag { display: inline-block; width: fit-content; font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 7px; border-radius: 4px; background: var(--red-soft); color: var(--red-text); }
+.tw { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+table.t { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+table.t th { text-align: left; font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); background: var(--panel2); padding: 9px 10px; }
+table.t td { padding: 9px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+table.t td.n, table.t th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.big { font: 400 40px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.red .big { color: #fff; }
+.nm { background: var(--panel); border: 1px solid #5a1e22; border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; }
+.nm .nm-big { font-size: 18px; font-weight: 700; line-height: 1.4; }
+.note { border: 1.5px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; color: var(--soft); display: grid; gap: 6px; }
+details.more > summary { cursor: pointer; font-weight: 700; list-style: none; color: var(--red-text); }
+details.more > summary::-webkit-details-marker { display: none; }
+input, select, textarea { font: 500 14.5px/1.3 var(--f-body); padding: 10px 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); color: var(--ink); width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 70px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+label.f { display: grid; gap: 5px; font-size: 12.5px; font-weight: 700; color: var(--soft); min-width: 0; }
+img { max-width: 100%; display: block; }
+.shot { border-radius: 12px; border: 1px solid var(--line); width: 100%; height: auto; }
+.foot { color: var(--soft); font-size: 13px; padding-top: 18px; border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } .card { padding: 14px; } body { font-size: 15px; } }
+@media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
+</style>
+<style>
+.piece { display: grid; gap: 8px; }
+.piece .top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.piece .day { font: 400 26px/1 var(--f-head); }
+.piece dl { margin: 0; display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 6px 12px; font-size: 14.5px; }
+.piece dt { font: 500 11px/1.6 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.piece dd { margin: 0; }
+.piece dd ol { margin: 0; padding-left: 18px; }
+.ln-A { background: #3a0f12; color: #ff8a8e; } .ln-B { background: #10263a; color: #8cc4ff; } .ln-C { background: #3a2a0c; color: var(--amber); } .ln-D { background: #12301c; color: var(--green); } .ln-E { background: #2a1838; color: #d2a8ff; } .ln-CC, .ln-CV { background: var(--panel2); color: var(--ink); }
+.bank { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.it { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 8px; align-content: start; }
+.it .g { font-weight: 700; font-size: 15px; }
+.it .n { font-size: 13.5px; color: var(--soft); white-space: pre-line; }
+.it .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.mix { display: grid; grid-template-columns: 40fr 25fr 20fr 15fr; border-radius: 10px; overflow: hidden; font: 700 12.5px/1.2 var(--f-body); }
+.mix span { padding: 10px 8px; }
+pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); max-height: 420px; overflow: auto; background: var(--panel2); padding: 12px; border-radius: 10px; margin: 0; }
+.cnt-line { font: 500 12px/1 var(--f-mono); color: var(--soft); }
+@media (max-width: 760px) { .bank { grid-template-columns: 1fr; } .piece dl { grid-template-columns: 1fr; gap: 2px; } .piece dd { margin-bottom: 6px; } .mix { font-size: 11px; } }
+</style>
+<header class="hero"><div class="wrap">
+  <span class="label">Carlos Jimena · Fight Programming · Parte 3 · Contenido</span>
+  <h1>Tus atletas son <em>tu contenido</em></h1>
+  <p class="lead">Todo sale del sistema de contenido que te ha definido Alberto. Le hablas a un chaval de 18 a 27 que compite amateur en MMA o grappling y curra o estudia. Los profesionales salen como prueba, no como destinatario. Lo que no sé va como <span class="ph">[CARLOS: completar]</span>: no se inventa nada.</p>
+</div></header>
+<nav class="tabs-bar" aria-label="Secciones"><div class="wrap tabs" role="tablist">
+  <button class="tab" role="tab" data-v="sistema" aria-selected="true">El sistema</button>
+  <button class="tab" role="tab" data-v="semana" aria-selected="false">Semana tipo</button>
+  <button class="tab" role="tab" data-v="reac" aria-selected="false">Reacciones</button>
+  <button class="tab" role="tab" data-v="banco" aria-selected="false">Banco de ángulos</button>
+  <button class="tab" role="tab" data-v="hist" aria-selected="false">Historias</button>
+  <button class="tab" role="tab" data-v="yt" aria-selected="false">YouTube</button>
+  <button class="tab" role="tab" data-v="prueba" aria-selected="false">Prueba a saco</button>
+  <button class="tab" role="tab" data-v="grabar" aria-selected="false">Grabar</button>
+  <button class="tab" role="tab" data-v="cla" aria-selected="false">Claude Code editor</button>
+</div></nav>
+<main class="wrap">
+
+<section class="view" id="v-sistema">
+  <div class="nm"><span class="label">Tu nicho en una frase</span><p class="nm-big">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p></div>
+  <div class="sec"><div class="head"><span class="label">Las 4 líneas</span><h2>Qué publicas <em>y en qué proporción</em></h2></div>
+    <div class="mix" aria-hidden="true"><span class="ln-A">A · Reacción 40 %</span><span class="ln-B">B · Método 25 %</span><span class="ln-C">C · Sector 20 %</span><span class="ln-D">D · Día a día 15 %</span></div>
+    <div class="g2">
+      <div class="card"><span class="tag ln-A">A · 40 %</span><h3>Reacción a combates de tus atletas</h3><p class="soft">La columna. Un momento concreto, qué preparasteis, dónde se ve, qué no salió. Nadie más lo puede hacer: un preparador sin atletas no tiene a quién reaccionar. Tú tienes ocho con nombre y permiso.</p></div>
+      <div class="card"><span class="tag ln-B">B · 25 %</span><h3>Método y criterio</h3><p class="soft">Cómo se monta la semana de alguien que entrena su deporte 5 días y trabaja. Qué hace cada bloque y por qué. Cuándo tocar y cuándo no. Fight week. Fatiga. Lesiones.</p></div>
+      <div class="card"><span class="tag ln-C">C · 20 %</span><h3>Contra el sector</h3><p class="soft">Ejercicios milagro, cansancio disfrazado de entrenamiento, preparadores sin formación, promesas sin criterio. <b>Sin nombrar a nadie.</b></p></div>
+      <div class="card"><span class="tag ln-D">D · 15 %</span><h3>El día a día</h3><p class="soft">Pesaje, esquina, vestuario, campamento, una corrección en mitad de una sesión. <b>Sin lección al final.</b> Te parece normal porque lo vives; para el de fuera no lo es.</p></div>
+    </div>
+    <div class="g2">
+      <div class="card"><span class="label">Cómo escribes</span><ul class="l">
+        <li>Español de España, directo. Si usas un tecnicismo, lo explicas en la misma frase.</li>
+        <li>Una idea por pieza. Gancho concreto en 3 segundos.</li>
+        <li>Nada de preguntas retóricas ni "te voy a contar". Nada de épica ni motivación genérica.</li>
+        <li>Frases cortas, de gimnasio. Que lo puedas grabar en una toma sin guion delante.</li>
+      </ul></div>
+      <div class="card acc"><span class="label">Prohibido</span><ul class="l">
+        <li>Inventar resultados, títulos, marcas, fechas o combates. Si falta: <span class="ph">[CARLOS: completar]</span>.</li>
+        <li>Inventar números: cargas, %, tiempos, kilos.</li>
+        <li>Prescribir cargas a un atleta con nombre en público.</li>
+        <li>Consejos de bajada de peso con cifras, restricción o deshidratación.</li>
+        <li>Nombrar o señalar a otros preparadores.</li>
+        <li>Prometer resultados.</li>
+      </ul></div>
+    </div>
+    <div class="card"><span class="label">Cada semana · lo mínimo</span><ul class="l">
+      <li><b>6 piezas:</b> 2 reacción (A), 2 método (B), 1 contra el sector (C), 1 día a día (D).</li>
+      <li><b>3 de esas 6 en carrusel</b>, alternando conexión y valor (regla de Alberto): C y D suelen ir de conexión; B de valor.</li>
+      <li><b>Historias</b> todos los días, en 3 bloques.</li>
+      <li><b>1 vídeo de YouTube</b> a la semana (como mínimo, uno cada 15 días). De él sacas clips.</li>
+      <li><b>Gesto técnico / élite:</b> como mucho 1 a la semana, dentro del 25 % de método. Lo que manda es lo de tus atletas.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="view" id="v-semana" hidden>
+  <div class="sec"><div class="head"><span class="label">Antes de cada semana · pregunta y espera</span><h2>Las 4 preguntas <em>antes de planificar</em></h2></div>
+    <div class="g4">
+      <div class="card flat"><b>1</b><p>Qué combates de qué atletas hay disponibles esta semana.</p></div>
+      <div class="card flat"><b>2</b><p>Eventos, pesajes o campamentos en los próximos 7 días.</p></div>
+      <div class="card flat"><b>3</b><p>Qué pieza funcionó mejor la semana pasada.</p></div>
+      <div class="card flat"><b>4</b><p>Qué te han preguntado más por privado.</p></div>
+    </div>
+    <p class="say">Antes de montar la semana: 1) combates disponibles de mis atletas: [ ]. 2) Eventos, pesajes o campamentos en 7 días: [ ]. 3) La pieza que mejor funcionó la semana pasada: [ ]. 4) Lo que más me han preguntado por privado: [ ].</p>
+  </div>
+  <div class="sec"><div class="head"><span class="label">Semana tipo de ejemplo · formato del punto 7</span><h2>Lunes a domingo, <em>pieza por pieza</em></h2><p class="soft">Es un ejemplo con huecos. Lo que va en amarillo lo completas tú con datos reales. Si un atleta no ha dado el sí a esa pieza, no se publica.</p></div>
+    <div id="week" style="display:grid;gap:12px"></div>
+    <div class="g2">
+      <div class="card"><span class="label">Historias · todos los días</span><ul class="l">
+        <li><b>Lo que estás haciendo:</b> montando programas, revisando vídeos, en el tatami, de camino al evento.</li>
+        <li><b>Lo que enseñas:</b> una corrección, un porqué en una frase, el clip de la reacción de hoy.</li>
+        <li><b>La que pide algo:</b> "responde con tu disciplina", encuesta "¿compites este año?", "escríbeme CAMP si tienes fecha".</li>
+      </ul></div>
+      <div class="card acc"><span class="label">Qué grabar esta semana (una sesión, el miércoles)</span><ul class="l">
+        <li>Las 2 reacciones de la semana siguiente (clip + tú). Con el permiso del atleta pedido el martes.</li>
+        <li>Las 2 de método a cámara, seguidas.</li>
+        <li>La de contra el sector a cámara (o texto para carrusel).</li>
+        <li>Material de día a día: todo lo que pase, aunque esté mal grabado, a la carpeta.</li>
+        <li>3 ganchos distintos de la mejor reacción para trial reels.</li>
+        <li>Si hay evento: pesaje, vestuario, esquina. <span class="ph">[CARLOS: ¿tienes atletas en BRAVE el 28 de noviembre?]</span></li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="v-reac" hidden>
+  <div class="sec"><div class="head"><span class="label">Línea A · la serie</span><h2>Reacción a tus atletas: <em>formato fijo</em></h2><p class="soft">Siempre en este orden. 45 a 90 segundos. Un momento, una idea. Nunca acaba pidiendo nada: acaba en lo que corregís. Nunca felicitación sin análisis.</p></div>
+    <div class="g4">
+      <div class="card flat"><span class="tag ln-A">1</span><p><b>Un momento concreto.</b> Un intercambio, un derribo, el tercer asalto. Nunca el combate entero.</p></div>
+      <div class="card flat"><span class="tag ln-A">2</span><p><b>Qué preparasteis</b> para ese momento y cuánto tiempo.</p></div>
+      <div class="card flat"><span class="tag ln-A">3</span><p><b>Dónde se ve</b> en el vídeo. El momento que engancha.</p></div>
+      <div class="card flat"><span class="tag ln-A">4</span><p><b>Qué no salió</b> y qué vais a corregir.</p></div>
+    </div>
+    <div class="g2">
+      <div class="card"><span class="label">Plantilla · rellénala y grábala</span>
+        <p class="say">GANCHO (3 s): "Este [derribo / intercambio / tercer asalto] de [ATLETA] lo trabajamos [CARLOS: semanas] semanas."
+1 · EL MOMENTO: "[Asalto, minuto, qué pasa en una frase]."
+2 · LO QUE PREPARAMOS: "Las semanas de antes trabajamos [CARLOS: qué] porque [CARLOS: por qué]."
+3 · DÓNDE SE VE: "Mira aquí: [lo que se ve en la imagen]."
+4 · LO QUE NO SALIÓ: "Lo que no salió fue [CARLOS: qué]. La semana que viene trabajamos [CARLOS: qué]."</p>
+      </div>
+      <div class="card"><span class="label">Antes de publicar · mensaje al atleta</span>
+        <p class="say">Ey [nombre], estoy sacando una serie analizando combates de mis atletas desde el físico: un momento concreto, qué preparamos, dónde se ve y qué corregimos. Quiero hacer una con tu [momento] contra [rival] en [evento]. Antes de publicarla te la mando para que la veas tú primero. ¿Te parece bien? Y si te mola, cuando salga compártela en tus historias.</p>
+        <p class="say">[Nombre], aquí la tienes. Sale mañana a las [hora]. Si quieres cambiar algo, dímelo hoy. Cuando salga, si la compartes me haces un favor enorme 🙏</p>
+      </div>
+    </div>
+    <div class="sec"><div class="head"><span class="label">Ejemplos con tus atletas · completa los huecos</span><h3>Tres guiones ya montados</h3></div>
+      <div class="g3">
+        <div class="card"><span class="tag ln-A">Mouzid · voz sobre clip</span><p class="say">"Este derribo de Mouzid lo trabajamos [CARLOS: semanas] semanas."
+Momento: [CARLOS: asalto y minuto, evento].
+Preparamos: [CARLOS: qué trabajasteis para el cambio de nivel y por qué].
+Dónde se ve: fíjate en [lo que se ve: la entrada, la cadera, la pierna de apoyo].
+No salió: [CARLOS: qué]. Corregimos: [CARLOS: qué].</p></div>
+        <div class="card"><span class="tag ln-A">Bussolotti · pantalla partida</span><p class="say">"El tercer asalto de Bussolotti: aquí se ve el campamento."
+Momento: [CARLOS: qué pasa en el tercero].
+Preparamos: [CARLOS: cómo organizasteis cardio y fuerza en el camp].
+Dónde se ve: [ritmo, cómo sigue presionando, cómo se recupera].
+No salió: [CARLOS: qué]. Corregimos: [CARLOS: qué].</p></div>
+        <div class="card"><span class="tag ln-A">Grappling · ADCC / IBJJF</span><p class="say">"Esta salida de debajo de [ATLETA] no se entrena solo en el tatami."
+Momento: [CARLOS: torneo, ronda, posición].
+Preparamos: [CARLOS: qué trabajo de fuerza o pliometría y por qué].
+Dónde se ve: [cadera, explosividad en la salida].
+No salió: [CARLOS: qué]. Corregimos: [CARLOS: qué].</p></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card"><span class="label">Análisis de gesto técnico · desde el físico</span><p class="soft">Para cuando un gesto de un combate (tuyo o no) enseña algo. Explicas el criterio, nunca cargas ni series.</p>
+        <p class="say">GANCHO: "[Gesto] se gana antes del combate. Te explico dónde."
+1 · El gesto, en un frame: qué pasa.
+2 · Qué cualidad física hay detrás: [fuerza / potencia / velocidad / resistencia a repetirlo].
+3 · Cómo lo trabajamos en la semana tipo: [en qué día de los tres y por qué], sin cifras.
+4 · Lo que suele fallar en un amateur que curra: [CARLOS: tu observación].
+CIERRE: "En [atleta tuyo] lo corregimos así: [CARLOS: completar]."</p></div>
+      <div class="card"><span class="label">Élite · el combate de la semana</span><p class="soft">Combate UFC (o de nivel élite) de la semana. <b>No inventes resultados ni hechos:</b> solo lo que veas en el vídeo. Lo que no sepas, fuera.</p>
+        <p class="say">GANCHO: "[combate de la semana: CARLOS completar]. Lo que nadie está mirando es el físico."
+1 · El momento: [CARLOS: asalto y qué se ve].
+2 · Lo que dice del físico: [qué cualidad decidió ese momento].
+3 · Tendencia que ves en el nivel élite: [CARLOS: completar con lo que estés viendo].
+4 · Lo que puede copiar un amateur que entrena 5 días y curra: [el criterio, no la rutina].
+CIERRE: "Esto mismo es lo que trabajamos con [atleta tuyo] para [CARLOS: completar]."</p></div>
+    </div>
+    <div class="note"><b>Calendario de combates:</b> apúntalos en el CRM (pestaña Combates). Cada combate de un atleta tuyo genera: fight week en historias → reacción en las 2 semanas siguientes → testimonio a las 48 h. <b>Ritmo:</b> 2 reacciones a la semana, empezando por los atletas que más tiran en redes.</div>
+  </div>
+</section>
+
+<section class="view" id="v-banco" hidden>
+  <div class="sec"><div class="head"><span class="label">Banco de ángulos y carruseles</span><h2>Filtra, copia <em>y completa lo amarillo</em></h2><p class="soft">Cada gancho está pensado para tu cliente: amateur que compite y curra. Los huecos [CARLOS: …] son datos que solo tú tienes. Los carruseles llevan su estructura de slides.</p></div>
+    <div class="chips" id="filters" role="group" aria-label="Filtrar por línea">
+      <button type="button" class="chip" data-f="all" aria-pressed="true">Todos</button>
+      <button type="button" class="chip" data-f="A" aria-pressed="false">A · Reacción</button>
+      <button type="button" class="chip" data-f="E" aria-pressed="false">Gesto técnico / élite</button>
+      <button type="button" class="chip" data-f="B" aria-pressed="false">B · Método</button>
+      <button type="button" class="chip" data-f="C" aria-pressed="false">C · Contra el sector</button>
+      <button type="button" class="chip" data-f="D" aria-pressed="false">D · Día a día</button>
+      <button type="button" class="chip" data-f="CC" aria-pressed="false">Carrusel conexión</button>
+      <button type="button" class="chip" data-f="CV" aria-pressed="false">Carrusel valor</button>
+    </div>
+    <p class="cnt-line" id="bankCount"></p>
+    <div class="bank" id="bank"></div>
+  </div>
+</section>
+
+<section class="view" id="v-hist" hidden>
+  <div class="sec"><div class="head"><span class="label">Historias · 3 bloques al día</span><h2>Lo que haces, lo que enseñas <em>y lo que pides</em></h2><p class="soft">Entre 6 y 10 historias al día. Sin producción: móvil y ya. Es donde se calienta la gente que luego te escribe.</p></div>
+    <div class="g3">
+      <div class="card"><span class="tag ln-D">Bloque 1 · Lo que haces</span><ul class="l"><li>La mañana de programas: pantalla con la app (sin datos de nadie).</li><li>Revisando el vídeo de un atleta (con permiso, sin cifras).</li><li>Una sesión en el centro: una corrección.</li><li>De camino a un evento, pesaje, vestuario.</li></ul></div>
+      <div class="card"><span class="tag ln-B">Bloque 2 · Lo que enseñas</span><ul class="l"><li>El porqué de algo en una frase, con texto en pantalla.</li><li>El clip de la reacción del día + "entera en el perfil".</li><li>Pregunta que te hicieron por privado, contestada (sin nombre).</li><li>Un "esto sí / esto no" de método.</li></ul></div>
+      <div class="card"><span class="tag ln-A">Bloque 3 · La que pide algo</span><ul class="l"><li>Encuesta: "¿Compites este año? Sí / Quiero".</li><li>Caja: "¿Qué disciplina haces y qué se te atasca?"</li><li>"Si tienes combate en los próximos 3 meses, escríbeme CAMP".</li><li>"Responde con 🔥 y te mando la semana tipo de un competidor que curra".</li></ul></div>
+    </div>
+    <div class="g2">
+      <div class="card"><span class="label">Respuestas que abren conversación</span>
+        <p class="say">Ey, gracias por responder. ¿Qué disciplina haces y cuántos días entrenas a la semana?</p>
+        <p class="say">Buenas, me has escrito CAMP. ¿Para cuándo es el combate y en qué disciplina?</p>
+        <p class="say">Te mando la semana tipo ahora. Antes dime una cosa: ¿compites o entrenas por tu cuenta? Para no mandarte algo que no te sirva.</p>
+      </div>
+      <div class="card"><span class="label">Estados de WhatsApp · 3 al día</span><ul class="l">
+        <li><b>Mañana:</b> lo que estás haciendo (programas, centro).</li>
+        <li><b>Mediodía:</b> la pieza del día (reacción o método).</li>
+        <li><b>Tarde:</b> prueba: mensaje de un atleta (con permiso) o resultado de un test (dato real).</li>
+        <li>Guarda en el móvil del trabajo a cada persona con la que hables: si no te tienen guardado, no ven tus estados.</li>
+      </ul></div>
+    </div>
+    <div class="card acc"><span class="label">Fight Programming Lab (269 miembros)</span><p>Deja de repetir ahí lo que subes. Úsalo para tres cosas: aviso de cada reacción nueva ("sale la de [atleta]"), fight week de tus atletas en directo y aviso de plazas de camp cuando las abras. Una o dos veces por semana, no más.</p></div>
+  </div>
+</section>
+
+<section class="view" id="v-yt" hidden>
+  <div class="sec"><div class="head"><span class="label">YouTube · el contenido largo</span><h2>Un vídeo largo a la semana <em>y de él, los reels</em></h2><p class="soft">En YouTube te encuentran buscando. Y un vídeo de 12 minutos con tu atleta convence más que 20 reels. Grabas una vez, sacas 3–4 clips verticales.</p></div>
+    <div class="g3">
+      <div class="card"><h3>Breakdown de camp</h3><p class="soft">Las semanas de un atleta hasta el combate, explicadas.</p></div>
+      <div class="card"><h3>Reacción larga</h3><p class="soft">El combate de tu atleta asalto por asalto, desde el físico.</p></div>
+      <div class="card"><h3>"Cómo preparamos a X"</h3><p class="soft">Un atleta, un combate, lo que hicisteis y por qué.</p></div>
+      <div class="card"><h3>Fight week explicada</h3><p class="soft">Los 7 días antes: contraste, sprints el primer día, accesorio el último. Sin pautas de peso.</p></div>
+      <div class="card"><h3>La semana del que trabaja</h3><p class="soft">Cómo encaja la fuerza en alguien que entrena 5 días y curra.</p></div>
+      <div class="card"><h3>Élite del mes</h3><p class="soft">El combate grande, analizado desde el físico. Sin inventar hechos.</p></div>
+    </div>
+    <div class="card"><span class="label">8 títulos</span><ol class="l">
+      <li>Cómo preparamos a [ATLETA] para su combate en [EVENTO] (camp completo)</li>
+      <li>Reacciono al combate de [ATLETA]: asalto por asalto, desde el físico</li>
+      <li>Fight week explicada: lo que hace un luchador los 7 días antes del combate</li>
+      <li>La semana de un luchador amateur que trabaja: 2 días de fuerza y 1 de cardio</li>
+      <li>[combate de la semana: CARLOS completar] analizado por un preparador físico</li>
+      <li>Ejercicios milagro para luchadores: lo que nadie te explica</li>
+      <li>Del pesaje a la jaula: 24 horas en la esquina con [ATLETA]</li>
+      <li>Base, campamento y fight week: cómo se planifica un año de competidor</li>
+    </ol></div>
+    <div class="g3">
+      <div class="card"><span class="label">Guion 1 · Breakdown de camp (12–18 min)</span><ol class="l">
+        <li><b>0:00</b> El momento del combate que resume el camp (clip) + "esto empezó [CARLOS: semanas] semanas antes".</li>
+        <li><b>0:45</b> Quién es el atleta y qué combate era (solo datos reales).</li>
+        <li><b>2:00</b> Cómo estaba al empezar: tests de entrada, lesiones, horario de trabajo o estudios.</li>
+        <li><b>4:00</b> El plan por bloques: base → campamento → fight week. Qué y por qué, sin cargas.</li>
+        <li><b>9:00</b> Qué se ajustó por el camino (fatiga, molestias, sparring).</li>
+        <li><b>12:00</b> El combate: 2–3 momentos donde se ve el trabajo.</li>
+        <li><b>15:00</b> Qué no salió y qué corregís. Cierre sin pedir nada; en la descripción, el enlace.</li>
+      </ol></div>
+      <div class="card"><span class="label">Guion 2 · Reacción larga (10–15 min)</span><ol class="l">
+        <li><b>0:00</b> El mejor momento primero + nombre y hecho.</li>
+        <li><b>0:40</b> Contexto: evento, disciplina, qué preparasteis en general.</li>
+        <li><b>2:00</b> Asalto 1: un momento, qué preparasteis, dónde se ve.</li>
+        <li><b>5:00</b> Asalto 2: igual.</li>
+        <li><b>8:00</b> Asalto 3 / final: ritmo y gestión del esfuerzo.</li>
+        <li><b>11:00</b> Lo que no salió y el plan de las próximas semanas.</li>
+        <li><b>13:00</b> Si el atleta puede, 1 minuto suyo: qué notó.</li>
+      </ol></div>
+      <div class="card"><span class="label">Guion 3 · Fight week explicada (8–12 min)</span><ol class="l">
+        <li><b>0:00</b> "La fight week no es descansar. Es trabajar por contraste."</li>
+        <li><b>0:40</b> El error típico del amateur esa semana [CARLOS: el que más ves].</li>
+        <li><b>2:00</b> Día 1: sprints. Por qué al principio.</li>
+        <li><b>4:00</b> Contraste en 2–3 días: qué es y por qué espaciar estímulos.</li>
+        <li><b>6:30</b> Último día: accesorio. Por qué.</li>
+        <li><b>8:00</b> Lo que no tocas esa semana. Sin pautas de peso (eso, con un profesional).</li>
+        <li><b>10:00</b> Un atleta tuyo en su fight week (con permiso).</li>
+      </ol></div>
+    </div>
+    <div class="note">Descripción: 2 líneas sobre el vídeo + "Si compites amateur y quieres preparar tu próximo combate: [enlace a la aplicación]". Nada de "gratis".</div>
+  </div>
+</section>
+
+<section class="view" id="v-prueba" hidden>
+  <div class="sec"><div class="head"><span class="label">Acumular prueba · a saco</span><h2>Cada atleta deja <em>tres pruebas</em></h2><p class="soft">Un semestral se vende con prueba. Tienes años de atletas y casi nada guardado. Desde hoy, cada uno deja un testimonio escrito, uno en vídeo y una comparativa de rendimiento. Todo se apunta en el CRM (pestaña Prueba) con su estado y su permiso.</p></div>
+    <div class="g3">
+      <div class="card"><span class="tag">Escrito</span><h3>Testimonio escrito</h3><p class="soft">3–4 frases suyas o una captura de un mensaje que te mandó contento. Lo más fácil de conseguir.</p></div>
+      <div class="card"><span class="tag">Vídeo</span><h3>Vídeo testimonio</h3><p class="soft">30–60 s, móvil en vertical, con 4 preguntas guía. El que más vende.</p></div>
+      <div class="card"><span class="tag">Rendimiento</span><h3>Comparativa antes/después</h3><p class="soft">Mismo test, mismo protocolo, dos fechas. Con el dato que salga, sin redondear a favor.</p></div>
+    </div>
+    <div class="card"><span class="label">Cuándo pedirla</span><div class="tw"><table class="t">
+      <thead><tr><th>Momento</th><th>Qué pides</th></tr></thead>
+      <tbody>
+        <tr><td><b>Al entrar</b> (semana 1)</td><td>Tests de entrada grabados + permiso de imagen por escrito.</td></tr>
+        <tr><td><b>Semana 8–12</b></td><td>Retest + testimonio escrito.</td></tr>
+        <tr><td><b>48 h después de un combate</b></td><td>Si gana: vídeo testimonio. Si pierde: nada de resultado; si acaso, cómo vivió el proceso, y solo si le apetece.</td></tr>
+        <tr><td><b>Cuando te escribe contento</b></td><td>"¿Me dejas compartir esto?" en el momento.</td></tr>
+        <tr><td><b>Al volver de una lesión</b></td><td>Testimonio escrito (sin datos médicos).</td></tr>
+        <tr><td><b>Al renovar</b></td><td>Retest + vídeo testimonio.</td></tr>
+      </tbody></table></div></div>
+    <div class="g2">
+      <div class="card"><span class="label">Mensajes para pedirla</span>
+        <p class="say">Ey [nombre], ¿me haces un favor? Escríbeme en 3–4 frases cómo estabas antes de empezar conmigo y qué notas ahora entrenando. Con tus palabras, sin pensarlo mucho. Y dime si te parece bien que lo comparta con tu nombre.</p>
+        <p class="say">[Nombre], enhorabuena por el combate. Cuando te venga bien esta semana, ¿me grabas un vídeo de 30–60 s en vertical contestando esto? 1) Cómo llegabas antes a los combates. 2) Qué cambió en la preparación. 3) Qué notaste hoy en la jaula / en el tatami. 4) A quién se lo recomendarías. Si no te apetece, ningún problema.</p>
+        <p class="say">Esto que me has mandado me ha alegrado el día. ¿Te importa que lo comparta en historias? Puedo tapar tu nombre si prefieres.</p>
+        <p class="say">Toca retest, [nombre]. El [día] hacemos los mismos tests que al principio: mismo sitio, mismo calentamiento, grabado. Así vemos con datos cómo vas.</p>
+        <p class="say">Para publicar tu nombre, tu imagen o tus datos de los tests necesito tu sí por escrito. ¿Me confirmas aquí que te parece bien que use [testimonio / vídeo / comparativa] en Fight Programming?</p>
+      </div>
+      <div class="card"><span class="label">Protocolo de tests</span><ul class="l">
+        <li><b>Mismo sitio, misma hora, mismo calentamiento</b> en las dos fechas.</li>
+        <li><b>Graba cada test</b> (lateral, plano entero). Ese vídeo es la comparativa.</li>
+        <li><b>Salto:</b> el que uses (vertical con contramovimiento o horizontal). <span class="ph">[CARLOS: cuál y cómo lo mides]</span></li>
+        <li><b>Sprint:</b> 10 o 20 m, siempre igual. <span class="ph">[CARLOS: cómo cronometras]</span></li>
+        <li><b>Fuerza:</b> un básico que el atleta ya haga bien. Nunca un máximo en campamento.</li>
+        <li><b>Específico:</b> <span class="ph">[CARLOS: el test de condición que uses]</span></li>
+        <li>Apunta el dato tal cual sale en el CRM. Si no hay dato, se queda vacío. Nunca se rellena "a ojo".</li>
+        <li><b>Menores (tienes atletas de 17):</b> el permiso lo firma madre, padre o tutor.</li>
+      </ul></div>
+    </div>
+    <div class="card acc"><span class="label">Plantilla · vídeo comparativo (30–45 s)</span>
+      <p class="say">PANTALLA: partida. Izquierda "[fecha antes]", derecha "[fecha después]". Mismo test, mismo plano.
+GANCHO (3 s): "[ATLETA], [semanas] semanas después. Mismo test."
+1 · Qué test es y por qué lo usamos para un luchador (una frase).
+2 · Los dos intentos a la vez.
+3 · El dato real de cada uno en pantalla: [CARLOS: dato antes] → [CARLOS: dato después]. Si no hay dato medido, no se pone ninguno.
+4 · Qué hicimos entre medias, sin cargas: [CARLOS: qué].
+CIERRE: "Lo siguiente que vamos a mejorar: [CARLOS: qué]."</p>
+    </div>
+    <div class="note"><b>Dónde va cada prueba:</b> destacada "Testimonios", landing (con permiso), carrusel de conexión, la llamada (Fase 3 del guion) y los estados de WhatsApp. <b>Objetivo del primer mes:</b> 1 prueba por cada atleta con nombre y 1 de cada cliente activo que lleve más de 3 meses.</div>
+  </div>
+</section>
+
+<section class="view" id="v-grabar" hidden>
+  <div class="sec"><div class="head"><span class="label">Grabar bien, rápido</span><h2>Una sesión a la semana <em>y listo</em></h2></div>
+    <div class="g3">
+      <div class="card"><span class="label">Formatos</span><ul class="l"><li><b>Pantalla partida:</b> clip arriba, tú abajo.</li><li><b>Voz en off sobre el clip:</b> lo más rápido.</li><li><b>A cámara:</b> método y contra el sector.</li><li>9:16, subtítulos siempre, 45–90 s.</li></ul></div>
+      <div class="card"><span class="label">Clips de combate</span><ul class="l"><li>Pídele el clip al atleta (móvil de la esquina o el que le pase el evento).</li><li>Fragmentos cortos y con tu análisis encima, nunca el combate entero.</li><li>Si un vídeo de un evento da problemas de derechos en Instagram, usa el de la esquina. <span class="ph">[CARLOS: confirmar con cada evento si puedes usar sus imágenes]</span></li></ul></div>
+      <div class="card"><span class="label">La carpeta</span><ul class="l"><li>Todo lo que grabes va a <b>Contenido-Carlos/1-sin-editar</b>, aunque esté mal grabado.</li><li>Nombre: <code>fecha_atleta_momento.mp4</code>.</li><li>Pesajes, esquina, vestuario, campamentos.</li></ul></div>
+    </div>
+    <div class="sec"><div class="head"><span class="label">Voz en off · trial reels</span><h3>La misma reacción, 3 ganchos distintos</h3><p class="soft">Publica la mejor reacción de la semana como trial reel con 3 ganchos. A las 48 h te quedas con el que más retiene y ese va al perfil (y, si toca, a anuncio: Parte 4).</p></div>
+    <div class="g3">
+      <p class="say">Variante 1 · nombre + hecho: "Este derribo de [ATLETA] lo trabajamos [CARLOS: semanas] semanas."</p>
+      <p class="say">Variante 2 · lo que no se ve: "Lo que ves en este derribo de [ATLETA] empezó un lunes de sprints."</p>
+      <p class="say">Variante 3 · lo que falló: "A [ATLETA] le salió este derribo. Lo de después, no. Te explico qué cambiamos."</p>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="v-cla" hidden>
+  <div class="sec"><div class="head"><span class="label">Claude Code como editor</span><h2>Tú grabas. Claude edita en tu ordenador. <em>Tú das el visto bueno.</em></h2><p class="soft">Para sacar 6 piezas, historias y un YouTube a la semana sin pasarte la noche editando ni pagar 220 € cada 6 reels: Claude Code trabaja dentro de tu carpeta, monta la pantalla partida, corta silencios, subtitula y exporta con ffmpeg siguiendo tu manual (CLAUDE.md, que lleva dentro el sistema de contenido de Alberto). Nunca inventa cifras ni testimonios y nunca toca tus originales.</p></div>
+    <div class="g2">
+      <div class="card"><span class="label">Configúralo una vez (30–45 minutos)</span><ol class="l">
+        <li><b>Instala Claude Code.</b> Mac o Linux, en la Terminal: <code>curl -fsSL https://claude.ai/install.sh | bash</code>. Windows, en PowerShell: <code>irm https://claude.ai/install.ps1 | iex</code>. O la app de escritorio de Claude, pestaña <b>Code</b>.</li>
+        <li><b>Inicia sesión.</b> Escribe <code>claude</code> en la terminal (o abre la pestaña Code) y entra con tu cuenta.</li>
+        <li><b>Instala ffmpeg.</b> Mac: <code>brew install ffmpeg</code>. Windows: <code>winget install ffmpeg</code>. Linux: <code>sudo apt install ffmpeg</code>. O pídeselo a Claude: "instálame ffmpeg".</li>
+        <li><b>Crea la carpeta</b> <b>Contenido-Carlos</b> con 4 subcarpetas: <b>1-sin-editar/</b> (lo que grabas y los clips de combate), <b>2-editados/</b> (lo que exporta Claude), <b>3-recursos/</b> (logo de Fight Programming, fuentes, música, permisos de atletas) y <b>4-referencias/</b> (vídeos que te gustan, cada uno con un .txt: qué copiar y qué no). Abre Claude dentro: <code>cd Contenido-Carlos</code> y <code>claude</code>.</li>
+        <li><b>Instala las skills de Alberto.</b> Copia las carpetas que te pase Alberto en <code>~/.claude/skills/</code> (en Windows, <code>C:\Users\tu-usuario\.claude\skills\</code>). Reinicia Claude Code y escribe <code>/skills</code> para comprobar que salen.</li>
+        <li><b>Pega tu CLAUDE.md</b> en la raíz de Contenido-Carlos con el texto de la derecha. Claude lo lee cada vez que abres la carpeta.</li>
+      </ol></div>
+      <div class="card"><span class="label">CLAUDE.md · pégalo en la raíz de Contenido-Carlos</span>
+        <pre class="md" id="claudemd"></pre>
+        <button type="button" class="cp" data-copy="claudemd" style="justify-self:start">Copiar CLAUDE.md</button>
+      </div>
+    </div>
+    <div class="card acc"><span class="label">Rutina para educar a Claude · cada semana</span><ol class="l">
+      <li><b>Domingo:</b> abres Claude en la carpeta y le dices "empezamos semana". Te hace las 4 preguntas. Contestas.</li>
+      <li><b>Te devuelve la semana</b> en el formato del punto 7. Corriges lo que no dirías tú.</li>
+      <li><b>Miércoles:</b> grabas en lote y dejas todo en 1-sin-editar/ con nombre claro.</li>
+      <li><b>Claude edita</b> con las órdenes de abajo y exporta a 2-editados/.</li>
+      <li><b>Feedback concreto:</b> "subtítulos más grandes", "el gancho entra tarde", "el clip más arriba". Nunca solo "no me gusta".</li>
+      <li><b>Guardas lo aprendido</b> en "Lecciones" del CLAUDE.md (orden 8). En 3–4 semanas edita como tú.</li>
+    </ol></div>
+  </div>
+  <div class="sec"><div class="head"><span class="label">8 órdenes listas</span><h2>Copia, cambia lo de [corchetes] <em>y pégalo</em></h2></div>
+    <div class="g2">
+      <p class="say">1 · Empezamos semana. Hazme las 4 preguntas del punto 8 de CLAUDE.md y espera a que te conteste antes de proponer nada.</p>
+      <p class="say">2 · Con mis respuestas, devuélveme la semana completa en el formato del punto 7: lunes a domingo, 2 reacción, 2 método, 1 contra el sector, 1 día a día, 3 de ellas en carrusel alternando conexión y valor, historias en 3 bloques por día y "qué grabar esta semana". Donde falte un dato, pon [CARLOS: completar].</p>
+      <p class="say">3 · Edita la reacción: pon 1-sin-editar/[clip-combate].mp4 arriba y 1-sin-editar/[yo].mp4 abajo, pantalla partida 9:16, subtítulos quemados, máximo 90 s, corta silencios. Exporta a 2-editados/[nombre].mp4. No toques los originales.</p>
+      <p class="say">4 · De 1-sin-editar/[archivo].mp4: corta silencios y muletillas, subtítulos grandes en blanco con la palabra clave en rojo, 9:16, exporta a 2-editados/.</p>
+      <p class="say">5 · Del vídeo 2-editados/[reaccion].mp4 hazme 3 versiones para trial reels, cambiando solo los 3 primeros segundos con estos ganchos: [gancho 1] / [gancho 2] / [gancho 3].</p>
+      <p class="say">6 · Monta el vídeo comparativo con 1-sin-editar/[antes].mp4 y 1-sin-editar/[despues].mp4: pantalla partida, fechas arriba, texto "Mismo test" y SOLO estas cifras: [dato antes] → [dato después]. Si no te doy cifras, no pongas ninguna.</p>
+      <p class="say">7 · Del vídeo largo 1-sin-editar/[youtube].mp4 sácame 3 clips verticales de 45–90 s, cada uno con una sola idea y su gancho en los 3 primeros segundos. Dime el minuto de cada uno antes de exportar.</p>
+      <p class="say">8 · Guarda esto en "Lecciones" de CLAUDE.md para la próxima vez: [lo que he corregido hoy].</p>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function () {
+  var WEEK = [
+    { d: "Lunes", l: "B", ln: "Método", g: "Dos días de fuerza y uno de cardio. Así reparto la semana de un luchador que además trabaja.", c: ["Entrenas tu deporte casi todos los días: el físico va alrededor del tatami, no encima.", "Día 1 de fuerza: arranca con sprints. [CARLOS: tu porqué en una frase]", "Día 2 de fuerza: termina con explosivos. [CARLOS: tu porqué en una frase]", "Día 3: cardio, fuerza accesoria y pliometría."], ci: "Dónde cae cada día respecto a tus sesiones de tatami, en la próxima.", n: "Nada. A cámara en el centro, una toma.", f: "A cámara" },
+    { d: "Martes", l: "A", ln: "Reacción", g: "Este [momento] de [ATLETA 1] lo trabajamos [CARLOS: semanas] semanas.", c: ["El momento: [CARLOS: asalto, minuto, qué pasa].", "Lo que preparamos y cuánto tiempo: [CARLOS: completar].", "Dónde se ve: [lo que se ve en el clip].", "Lo que no salió: [CARLOS: completar]."], ci: "Lo que corregimos la semana que viene: [CARLOS: completar].", n: "Clip del combate + sí del atleta (pedido el domingo) + aviso el día antes.", f: "Pantalla partida (clip arriba, tú abajo)" },
+    { d: "Miércoles", l: "C", ln: "Contra el sector", g: "Si acabas reventado no significa que haya servido.", c: ["Cansancio no es entrenamiento.", "El circuito que te deja en el suelo vende en redes. No te prepara para el sábado.", "Si mañana tienes tatami, hoy no te puedes vaciar.", "Lo que mido es si rindes, no si sudas."], ci: "Cansancio no es entrenamiento. Punto.", n: "Texto + 1 foto tuya entrenando a un atleta.", f: "Carrusel de conexión" },
+    { d: "Jueves", l: "B", ln: "Método", g: "La fight week no es descansar. Es trabajar por contraste.", c: ["Contraste en 2 o 3 días, para espaciar los estímulos.", "Sprints el primer día de la semana.", "Trabajo accesorio el último.", "Lo que no se toca esa semana: [CARLOS: completar]. Del peso, ni una pauta: eso con un profesional."], ci: "Así llegó [ATLETA] a su último combate: [CARLOS: completar con permiso].", n: "4–6 fotos de una fight week real (con permiso).", f: "Carrusel de valor" },
+    { d: "Viernes", l: "A", ln: "Reacción", g: "El tercer asalto de [ATLETA 2]: aquí se ve el campamento.", c: ["El momento: [CARLOS: qué pasa en el tercero].", "Lo que preparamos: [CARLOS: cómo organizasteis el camp].", "Dónde se ve: [ritmo, presión, recuperación].", "Lo que no salió: [CARLOS: completar]."], ci: "Lo que corregimos: [CARLOS: completar].", n: "Clip + sí del atleta + aviso el día antes. Pídele que lo comparta.", f: "Voz en off sobre el clip" },
+    { d: "Sábado", l: "D", ln: "Día a día", g: "[Pesaje / esquina / vestuario] de [ATLETA] en [EVENTO].", c: ["Lo que pasó, en orden. Sin explicar nada.", "Las fotos o clips tal cual.", "Una frase tuya por slide, como mucho."], ci: "Sin lección. Acaba en la imagen.", n: "Lo que grabes del evento. [CARLOS: ¿atletas en BRAVE el 28/11?]", f: "Carrusel de conexión o reel sin voz" },
+    { d: "Domingo", l: "D", ln: "Historias + reporte", g: "Sin pieza en el feed. Historias de lo que hagas, reporte a Alberto y preguntas de la semana siguiente.", c: ["Reporte en la Parte 7.", "Contestas las 4 preguntas.", "Pides permiso a los 2 atletas de las reacciones de la semana siguiente."], ci: "—", n: "10 minutos.", f: "Historias" }
+  ];
+  var X = "[CARLOS: completar]";
+  var B = [
+    ["A", "Este derribo de Mouzid lo trabajamos [CARLOS: semanas] semanas.", "Ejemplo de forma de Alberto. Momento → preparación → dónde se ve → qué corregís."],
+    ["A", "El tercer asalto de Bussolotti: aquí se ve lo que hicimos en el campamento.", "Ritmo y gestión del esfuerzo. " + X],
+    ["A", "Fíjate en cómo arranca Giordano el primer intercambio. Eso no es suerte.", "Qué trabajasteis para la salida: " + X],
+    ["A", "Gil defiende este derribo en el [CARLOS: minuto]. Esto lo entrenamos así.", "Defensa de derribo desde el físico."],
+    ["A", "Baldo Mira en el último minuto: lo que preparamos para llegar ahí.", "El final del combate. " + X],
+    ["A", "Samuel Molina en el scramble: de dónde sale esa explosividad.", "Qué día de la semana tipo se ve aquí."],
+    ["A", "Cristian Amador contra la jaula: lo que hicimos fuera del tatami para este clinch.", X],
+    ["A", "Joel Amador cambia de nivel aquí. Este gesto lo preparamos [CARLOS: cómo].", X],
+    ["A", "Lo que no salió en el combate de [ATLETA] y lo que vamos a corregir.", "Toda la pieza es el punto 4. Con su sí."],
+    ["A", "Esta salida de debajo de [ATLETA] en [ADCC / IBJJF] no se entrena solo en el tatami.", "Grappling. " + X],
+    ["A", "Mira cómo vuelve [ATLETA] al segundo asalto. Eso se prepara.", "Recuperación entre asaltos."],
+    ["A", "Este sprint de [ATLETA] hacia la jaula empezó un lunes de sprints.", "Conecta con tu semana tipo."],
+    ["A", "[ATLETA] perdió este intercambio. Esto es lo que cambiamos después.", "Solo con su sí. Sin cebarte."],
+    ["A", "Por qué [ATLETA] no se vació en el primer asalto.", "Gestión del esfuerzo. " + X],
+    ["A", "La fight week de [ATLETA] y dónde se ve en el combate.", "Une fight week por contraste con un momento del combate."],
+    ["A", "El primer combate profesional de [ATLETA]: lo que preparamos para el ritmo del primer asalto.", X],
+    ["A", "Mismo atleta, dos combates. [ATLETA] antes y después de [CARLOS: qué cambió].", "Solo si los dos combates son reales y hay clip."],
+    ["A", "Lo que le dije a [ATLETA] en la esquina entre asaltos, y por qué.", "Sin exagerar lo que dijiste. Si no lo recuerdas, no."],
+    ["A", "Veo contigo por primera vez el combate de [ATLETA].", "Reacción en caliente; luego la versión corta."],
+    ["A", "El combate que más me ha enseñado como preparador: [ATLETA].", X],
+    ["E", "[combate de la semana: CARLOS completar]. Lo que nadie está mirando es el físico.", "Plantilla élite. Sin inventar resultados ni hechos."],
+    ["E", "Un derribo a dos piernas se gana antes del combate. Te explico dónde.", "Cualidad física + en qué día de la semana tipo + sin cargas."],
+    ["E", "El sprawl del tercer asalto no es técnica: es lo que te queda en las piernas.", "Criterio, no rutina."],
+    ["E", "Salir de debajo: fuerza que no se ve en el gimnasio.", "Grappling."],
+    ["E", "Lo que está haciendo el nivel élite en fuerza y lo que puedes copiar trabajando 8 horas.", "Tendencia: [CARLOS: la que estés viendo]."],
+    ["E", "El clinch no es de brazos.", "Qué cualidad hay detrás y cómo se entrena, sin cifras."],
+    ["E", "[combate UFC de la semana: CARLOS completar]: el ritmo del tercer asalto, explicado desde el físico.", "Solo lo que se ve en el vídeo."],
+    ["E", "Por qué un luchador cansado deja de cambiar de nivel.", "Del gesto a la preparación."],
+    ["B", "Dos días de fuerza y uno de cardio. Así reparto la semana de un competidor que además trabaja.", "De 'Lo primero'. Pieza fundacional."],
+    ["B", "Por qué uno de los días arranca con sprints y el otro acaba con explosivos.", "[CARLOS: tu porqué]."],
+    ["B", "La fight week no es descansar. Es trabajar por contraste.", "2–3 días, sprints el primero, accesorio el último."],
+    ["B", "Qué, cuándo, cuánto y por qué. Si tu preparador no te explica el porqué, no te está preparando.", "Tu método en una frase."],
+    ["B", "Entrenas tu deporte 5 días. Esto es lo que no tienes que hacer en el gimnasio.", X],
+    ["B", "Semana de mucho sparring: cuándo toco la fuerza y cuándo no.", "Cuándo tocar y cuándo no."],
+    ["B", "Si entrenas por la noche después de currar, así ordenaría tu semana.", "[CARLOS: tu criterio]."],
+    ["B", "La semana después del combate: lo que hacemos y por qué.", "Post-combate, vuelta a base."],
+    ["B", "Lesión que te saca del tatami: lo primero que miro.", "Criterio general. Sin diagnóstico ni pautas médicas: eso, con el fisio."],
+    ["B", "Pliometría para luchadores: para qué sirve en el combate.", "Del día 3 de la semana tipo."],
+    ["B", "Hay fatiga que suma y fatiga que te resta para el sábado.", "Gestión de la fatiga. [CARLOS: cómo la miras]."],
+    ["B", "Por qué te pido vídeo de tus series.", "Revisión de vídeos: lo que ves que el atleta no ve."],
+    ["B", "Base, campamento y fight week: las 3 fases del año de un competidor.", "Tu método en fases."],
+    ["B", "MMA y grappling no se preparan igual. Lo que cambia en la semana.", X],
+    ["B", "Lo que hago cuando un atleta me llega reventado del tatami.", "El tatami manda."],
+    ["B", "Cardio para MMA: lo que no es.", "[CARLOS: tu criterio]."],
+    ["C", "Gente sin formación vendiendo ejercicios milagro a luchadores.", "De 'Lo primero'. Sin nombrar a nadie."],
+    ["C", "Si acabas reventado no significa que haya servido. Cansancio no es entrenamiento.", "Tu no negociable 1."],
+    ["C", "Lo que están haciendo con este sector es cansar a la gente hasta que deje de creer en nadie.", "Tu enfado, tal cual."],
+    ["C", "El circuito que te deja tirado en el suelo vende. No te prepara.", "Contenido-cebo."],
+    ["C", "Un ejercicio raro no te hace mejor luchador.", "Ejercicio milagro."],
+    ["C", "Si tu plan es el mismo en campamento que fuera, no tienes plan.", "Fases."],
+    ["C", "Te venden rendimiento y te dan una rutina de culturismo con guantes.", "Sin señalar."],
+    ["C", "Nadie te puede prometer que vas a ganar. El que lo hace, te miente.", "Ni tú lo prometes."],
+    ["C", "Copiar el entreno de un campeón no te hace campeón. Él no curra 8 horas.", "Habla a tu cliente."],
+    ["C", "Más no es mejor. Mejor es mejor.", "Corto, a cámara."],
+    ["C", "El 'ejercicio específico' que no tiene nada de específico.", "Qué es específico de verdad: [CARLOS: tu criterio]."],
+    ["C", "Si nadie te explica por qué haces lo que haces, te están dando ejercicios, no criterio.", "El problema de fondo de tu cliente."],
+    ["D", "Pesaje de [ATLETA] en [EVENTO].", "Sin cifras de peso. Ambiente."],
+    ["D", "La esquina en [EVENTO], desde dentro.", X],
+    ["D", "Vestuario, 20 minutos antes de salir.", "Sin lección."],
+    ["D", "Una corrección en mitad de una sesión.", "El momento, tal cual."],
+    ["D", "Revisando los vídeos de mis atletas a las [hora].", "Lo que nadie ve."],
+    ["D", "La mañana de los lunes: montando los programas de la semana.", "Tu mañana completa."],
+    ["D", "Semana [x] de campamento de [ATLETA].", X],
+    ["D", "El calentamiento antes de salir a la jaula.", "Clip sin voz."],
+    ["D", "Lo que llevo en la mochila de esquina.", "Objeto a objeto."],
+    ["D", "El viaje a [EVENTO].", X],
+    ["D", "El día después del combate.", "Sin lección."],
+    ["D", "El mensaje que me mandó [ATLETA] después de pelear.", "Captura con permiso."],
+    ["CC", "Lo que veo en un pesaje y no sale en ningún vídeo.", "Slides: 1 portada con foto del pesaje · 2–6 una foto por slide con una línea · 7 'Esto es mi semana cuando hay evento'."],
+    ["CC", "Por qué preparo a luchadores.", "Slides: 1 tu foto en la esquina · 2 cómo empezaste [CARLOS: completar] · 3 tu primer atleta [CARLOS] · 4 lo que te engancha (el impacto) · 5 lo que te saca de quicio del sector · 6 Fight Programming."],
+    ["CC", "Lo que me saca de quicio de mi sector.", "Slides: 1 portada · 2 ejercicios milagro · 3 contenido que solo busca reventarte · 4 gente sin formación lucrándose · 5 el resultado: gente quemada · 6 lo que hago yo: qué, cuándo, cuánto y por qué."],
+    ["CC", "Cansancio no es entrenamiento.", "Slides: 1 frase · 2 la foto típica del que acaba en el suelo · 3 qué mido yo · 4 lo que pasa si te vacías antes del tatami · 5 cierre."],
+    ["CC", "Un día de esquina, foto a foto.", "Slides: 1 llegada · 2 pesaje · 3 vestuario · 4 calentamiento · 5 jaula · 6 después. Una línea por foto."],
+    ["CC", "Lo que me enseñan los que entrenan por ocio.", "Tu frase: 'suelen ser más objetivos y felices por el trabajo en sí'. Slides: 1 portada · 2–4 lo que ves en ellos · 5 lo que le falta al que solo mira si ganó."],
+    ["CC", "3 años entrenando al mismo chaval.", "[CARLOS: quién, con permiso]. Slides: antes · qué cambió · cómo trabajáis hoy · su frase."],
+    ["CC", "Lo que no te cuentan de un campamento.", "Slides: el cansancio, los horarios con el curro, las molestias, el bajón de la semana 5 [CARLOS: lo que tú veas]."],
+    ["CC", "Si tu preparador no te explica el porqué, no te está preparando.", "Slides: 1 frase · 2 'te dan ejercicios, no criterio' · 3 qué es el criterio · 4 cómo lo hago · 5 cierre."],
+    ["CC", "Cómo es mi semana: programas, vídeos, esquinas.", "Slides por día. Sin nada familiar ni de clientes sin permiso."],
+    ["CC", "El vestuario antes de salir.", "Fotos tal cual. Una línea. Sin lección."],
+    ["CV", "La semana del que trabaja.", "Slides: 1 'Entrenas 5 días y curras 8 horas' · 2 día 1 fuerza + sprints al inicio · 3 día 2 fuerza + explosivos al final · 4 día 3 cardio, accesoria, pliometría · 5 dónde va cada día respecto al tatami [CARLOS] · 6 resumen."],
+    ["CV", "Fight week por contraste.", "Slides: 1 'no es descansar' · 2 qué es el contraste · 3 primer día: sprints · 4 2–3 días espaciados · 5 último día: accesorio · 6 lo que no se toca. Sin pautas de peso."],
+    ["CV", "Qué, cuándo, cuánto y por qué: 4 preguntas antes de cualquier ejercicio.", "Una pregunta por slide con un ejemplo de tu semana tipo."],
+    ["CV", "Dónde meter la fuerza si entrenas tu deporte 5 días.", "[CARLOS: tu criterio por slide]."],
+    ["CV", "Semana de mucho tatami: cuándo tocar y cuándo no.", "Slides: señales · qué recortas · qué no tocas · ejemplo [CARLOS]."],
+    ["CV", "Lesión que te saca del tatami: lo que sí se puede seguir trabajando.", "Criterio general y 'con tu fisio'. Sin diagnósticos ni pautas médicas."],
+    ["CV", "Por qué un día arranca con sprints.", "Slides: el día · por qué al principio [CARLOS] · qué pasa si los pones al final · cierre."],
+    ["CV", "Post-combate: qué hacemos la semana después.", "Slides: lo que no se hace · lo que sí · vuelta a base [CARLOS]."],
+    ["CV", "Las señales de fatiga que miro en mis atletas.", "[CARLOS: tus señales, una por slide]. No inventes."],
+    ["CV", "Breakdown: lo que preparamos para el combate de [ATLETA].", "Frames del combate + qué preparasteis. Con permiso."],
+    ["CV", "Grappling y MMA: qué cambia en la preparación física.", "[CARLOS: tus diferencias, una por slide]."]
+  ];
+  var NAMES = { A: "A · Reacción", E: "Gesto técnico / élite", B: "B · Método", C: "C · Contra el sector", D: "D · Día a día", CC: "Carrusel conexión", CV: "Carrusel valor" };
+  function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
+  function hl(t) { return esc(t).replace(/\[([^\]]+)\]/g, '<span class="ph">[$1]</span>'); }
+  document.getElementById("week").innerHTML = WEEK.map(function (w) {
+    return '<article class="card piece"><div class="top"><span class="day">' + w.d + '</span><span class="tag ln-' + w.l + '">' + w.l + ' · ' + w.ln + '</span></div><dl>' +
+      '<dt>Gancho</dt><dd><b>' + hl(w.g) + '</b></dd><dt>Cuerpo</dt><dd><ol>' + w.c.map(function (x) { return "<li>" + hl(x) + "</li>"; }).join("") + '</ol></dd>' +
+      '<dt>Cierre</dt><dd>' + hl(w.ci) + '</dd><dt>Qué necesita</dt><dd>' + hl(w.n) + '</dd><dt>Formato</dt><dd>' + esc(w.f) + '</dd></dl></article>';
+  }).join("");
+  var bank = document.getElementById("bank"), f = "all";
+  function render() {
+    var list = B.filter(function (x) { return f === "all" || x[0] === f; });
+    bank.innerHTML = list.map(function (x) { return '<article class="it"><div class="row"><span class="tag ln-' + x[0] + '">' + NAMES[x[0]] + '</span><button type="button" class="cp" data-t="' + esc(x[1]).replace(/"/g, "&quot;") + '">Copiar</button></div><p class="g">' + hl(x[1]) + '</p><p class="n">' + hl(x[2]) + '</p></article>'; }).join("");
+    document.getElementById("bankCount").textContent = list.length + " de " + B.length + " ideas";
+    bank.querySelectorAll(".cp").forEach(function (b) { b.addEventListener("click", function () { window.cjCopy(b.dataset.t, b); }); });
+  }
+  document.querySelectorAll("#filters .chip").forEach(function (c) { c.addEventListener("click", function () { f = c.dataset.f; document.querySelectorAll("#filters .chip").forEach(function (o) { o.setAttribute("aria-pressed", o === c ? "true" : "false"); }); render(); }); });
+  render();
+  document.getElementById("claudemd").textContent = [
+"# CLAUDE.md · Contenido-Carlos (Fight Programming)",
+"",
+"Eres el editor y guionista de Carlos Jimena. Sigues el sistema de contenido que ha definido Alberto González. No lo cambias ni lo adornas.",
+"",
+"## 1. Quién es Carlos (no lo cambies, no lo adornes)",
+"- Preparador físico de alto rendimiento para deportes de contacto. Málaga. Centro presencial y programa online (Fight Programming).",
+"- Prepara a atletas con victorias en WOW, PFL y Cage Warriors, y con nivel ADCC e IBJJF.",
+"- Atletas con permiso para nombrar: Manuel Mouzid, Bussolotti, Giordano, Gil, Baldo Mira, Samuel Molina, Cristian Amador, Joel Amador.",
+"- Método en una frase: cercanía y didáctica. Qué, cuándo, cuánto y por qué.",
+"- Semana normal de un competidor: 2 días de fuerza (uno arranca con sprints, el otro termina con explosivos) y 1 día de cardio, fuerza accesoria y pliometría.",
+"- Fight week: trabajo por contraste en 2 o 3 días; sprints el primer día de la semana y trabajo accesorio el último.",
+"- Le saca de quicio: gente sin formación vendiendo ejercicios milagro, contenido-cebo que solo busca dejarte reventado y negocios que se lucran y acaban quemando a la gente.",
+"- Nicho: Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.",
+"",
+"## 2. A quién le habla",
+"Hombre de 18 a 27 años que compite en MMA o grappling a nivel amateur y lo compagina con trabajo o estudios. No vive del deporte. Entrena su disciplina casi todos los días y mete fuerza como puede, normalmente sin criterio. Quiere rendir más, no verse mejor. Le preocupan las lesiones que le dejan fuera. Nadie le ha explicado nunca el porqué: le dan ejercicios, no criterio.",
+"NO le hables al profesional. Los profesionales salen como PRUEBA, no como destinatario.",
+"",
+"## 3. Las cuatro líneas",
+"A. Reacción a combates de sus atletas: 40 %. Es la columna.",
+"B. Método y criterio: 25 % (semana del que entrena 5 días y trabaja, qué hace cada bloque y por qué, cuándo tocar y cuándo no, fight week, fatiga, lesiones). Aquí entran, como mucho 1 a la semana, los análisis de gesto técnico y del combate de élite de la semana.",
+"C. Contra el sector: 20 % (ejercicios milagro, cansancio disfrazado de entrenamiento, preparadores sin formación, promesas sin criterio). Sin nombrar a nadie.",
+"D. El día a día: 15 % (pesaje, esquina, vestuario, campamento, corrección en mitad de sesión). Sin lección al final.",
+"",
+"## 4. Serie de reacción (formato fijo, en este orden)",
+"1. Un momento concreto del combate (nunca el combate entero). 2. Qué prepararon para ese momento y cuánto tiempo. 3. Dónde se ve en el vídeo. 4. Qué no salió y qué van a corregir.",
+"Gancho: nombre del atleta + hecho concreto en 3 s (forma: \"Este derribo de [atleta] lo trabajamos seis semanas.\"). 45–90 s. Nunca acaba pidiendo nada: acaba en lo que corrigen. Nunca felicitación sin análisis. Formato: clip arriba y Carlos debajo, o voz encima del clip.",
+"Élite (UFC u otro): nunca inventes resultados ni hechos. Usa \"[combate de la semana: CARLOS completar]\" y analiza solo lo que Carlos te diga que se ve.",
+"",
+"## 5. Cómo escribes",
+"Español de España, directo, sin tecnicismos innecesarios (si usas uno, lo explicas en la misma frase). Una idea por pieza. Gancho concreto en 3 s, nada de preguntas retóricas ni \"te voy a contar\". Frases cortas, de gimnasio. Nada de motivación genérica ni épica. Grabable en una toma sin guion delante.",
+"",
+"## 6. Prohibido",
+"- Inventar resultados, títulos, marcas, fechas o combates. Si falta: [CARLOS: completar].",
+"- Inventar números (cargas, %, tiempos, kilos). En los vídeos comparativos, solo las cifras que Carlos te dé.",
+"- Prescribir cargas a un atleta con nombre en público.",
+"- Consejos de bajada de peso con cifras, restricción o deshidratación.",
+"- Nombrar o señalar a otros preparadores.",
+"- Promesas de resultado. Testimonios inventados. La palabra \"gratis\".",
+"",
+"## 7. Qué devuelves cada semana",
+"Lunes a domingo: 2 reacción, 2 método, 1 contra el sector, 1 día a día. 3 de esas piezas en carrusel, alternando conexión y valor. Por pieza:",
+"DÍA · LÍNEA / GANCHO literal / CUERPO 3–4 puntos / CIERRE / QUÉ NECESITA / FORMATO (a cámara / voz en off sobre clip / pantalla partida / carrusel).",
+"Al final: HISTORIAS, 3 bloques al día (lo que está haciendo / lo que enseña / la que pide algo) y QUÉ GRABAR ESTA SEMANA (una sola sesión).",
+"Si hay vídeo de YouTube esa semana: título, estructura por minutos y 3 clips verticales que salen de él.",
+"",
+"## 8. Antes de empezar, pregunta y espera",
+"1. Qué combates de qué atletas hay disponibles esta semana.",
+"2. Eventos, pesajes o campamentos en los próximos 7 días.",
+"3. Qué pieza funcionó mejor la semana pasada.",
+"4. Qué le han preguntado más por privado.",
+"No propongas nada hasta tener las 4 respuestas.",
+"",
+"## Edición (ffmpeg)",
+"- Carpetas: 1-sin-editar/ (originales, NUNCA se tocan), 2-editados/ (exportes), 3-recursos/ (logo Fight Programming, fuentes, música, permisos), 4-referencias/ (vídeos que gustan + .txt con qué copiar).",
+"- Vertical 9:16, 1080x1920. Subtítulos quemados, grandes, blancos, palabra clave en rojo (#D42A30). Máximo 90 s para reels.",
+"- Pantalla partida: clip del combate arriba, Carlos abajo. Corta silencios y muletillas. El gancho entra en el segundo 0.",
+"- Exporta con nombre fecha_atleta_tipo.mp4. Antes de exportar, dime la duración y el gancho.",
+"- Comparativas antes/después: mismo plano, fechas arriba, \"Mismo test\" y SOLO las cifras que te dé Carlos. Sin cifras, no pones ninguna.",
+"- Menores de edad: no se publica nada sin permiso de madre, padre o tutor. Pregunta si no lo sabes.",
+"",
+"## Ejemplos (los que funcionaron)",
+"- [fecha] [pieza] [por qué funcionó]",
+"",
+"## Lecciones",
+"- [lo que Carlos ha corregido y no hay que repetir]"
+  ].join("\n");
+})();
+</script>
+
+<script>
+(function () {
+  function copyText(t, b) {
+    function ok() { var o = b.textContent; b.textContent = "Copiado"; b.classList.add("ok"); setTimeout(function () { b.textContent = o; b.classList.remove("ok"); }, 1400); }
+    function fb() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) { b.textContent = "Selecciona y copia"; } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+  }
+  window.cjCopy = copyText;
+  window.cjSay = function (root) {
+    (root || document).querySelectorAll(".say:not([data-cp]):not(.nocp)").forEach(function (p) {
+      p.setAttribute("data-cp", "1");
+      var txt = p.textContent.trim();
+      var b = document.createElement("button"); b.type = "button"; b.className = "cp"; b.textContent = "Copiar";
+      b.addEventListener("click", function () { copyText(txt, b); });
+      p.insertBefore(b, p.firstChild);
+    });
+  };
+  window.cjSay();
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var el = document.getElementById(b.dataset.copy); if (el) copyText((el.value != null && el.tagName !== "PRE" ? el.value : el.textContent).trim(), b); });
+  });
+  var tabs = document.querySelectorAll(".tab[data-v]");
+  function show(v, push) {
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.v === v ? "true" : "false"); });
+    document.querySelectorAll("main > .view").forEach(function (s) { s.hidden = s.id !== "v-" + v; });
+    if (push) { try { history.replaceState(null, "", "#" + v); } catch (e) {} window.scrollTo(0, 0); }
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(t.dataset.v, true); }); });
+  if (tabs.length) { var h = (location.hash || "").slice(1); show(document.getElementById("v-" + h) ? h : tabs[0].dataset.v, false); }
+})();
+</script>

@@ -1,0 +1,649 @@
+<title>Fight Programming CRM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #0b0b0c; --panel: #151517; --panel2: #1e1e21; --line: #2e2e33; --ink: #f4f2ef; --soft: #aaa6a1;
+  --red: #d42a30; --red-text: #ff6e72; --red-soft: #2e1214; --amber: #f0c060; --green: #66c486;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(36px, 6vw, 64px)/.98 var(--f-head); letter-spacing: .01em; }
+h2 { font: 400 clamp(26px, 3.4vw, 36px)/1.05 var(--f-head); letter-spacing: .01em; }
+h3 { font: 700 16.5px/1.3 var(--f-body); }
+h4 { font: 700 14.5px/1.3 var(--f-body); color: var(--red-text); }
+p { margin: 0; }
+a { color: var(--red-text); }
+em { font-style: normal; color: var(--red-text); }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--panel2); padding: 2px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+.label { font: 500 11px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.ph { color: var(--amber); font-weight: 700; }
+.hero { padding: calc(28px + env(safe-area-inset-top, 0px)) 0 22px; border-bottom: 1px solid var(--line); background: radial-gradient(120% 140% at 100% 0%, #3a0d10 0%, transparent 55%); }
+.hero .wrap { display: grid; gap: 12px; }
+.hero p.lead { font-size: 17px; max-width: 760px; color: #d9d5d0; }
+.tabs-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11, 11, 12, .94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { all: unset; cursor: pointer; white-space: nowrap; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--panel); color: var(--soft); }
+.tab[aria-selected="true"] { background: var(--red); color: #fff; }
+.tab:focus-visible, .btn:focus-visible, .cp:focus-visible, .chip:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+main { padding-block: 24px 70px; }
+.view { display: grid; gap: 22px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 6px; max-width: 820px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.acc { background: var(--red-soft); border-color: #5a1e22; }
+.card.red { background: var(--red); border-color: var(--red); color: #fff; }
+.card.red .label, .card.red .soft { color: #ffe1e2; }
+.card.flat { background: var(--panel2); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: #d6d2cd; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { position: relative; background: var(--panel2); border-left: 3px solid var(--red); border-radius: 10px; padding: 10px 12px; font-size: 14.5px; white-space: pre-line; color: #ece9e5; }
+.say .cp { float: right; margin: -2px -4px 6px 10px; }
+.cp, .btn { all: unset; box-sizing: border-box; cursor: pointer; font: 700 12px/1 var(--f-body); padding: 8px 11px; border-radius: 999px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); white-space: nowrap; }
+.cp.ok { background: var(--green); color: #08110b; border-color: var(--green); }
+.btn { font-size: 14px; padding: 12px 18px; background: var(--red); border-color: var(--red); color: #fff; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { all: unset; cursor: pointer; font: 700 13px/1 var(--f-body); padding: 9px 12px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); color: var(--soft); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tag { display: inline-block; width: fit-content; font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 7px; border-radius: 4px; background: var(--red-soft); color: var(--red-text); }
+.tw { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+table.t { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+table.t th { text-align: left; font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); background: var(--panel2); padding: 9px 10px; }
+table.t td { padding: 9px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+table.t td.n, table.t th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.big { font: 400 40px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.red .big { color: #fff; }
+.nm { background: var(--panel); border: 1px solid #5a1e22; border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; }
+.nm .nm-big { font-size: 18px; font-weight: 700; line-height: 1.4; }
+.note { border: 1.5px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; color: var(--soft); display: grid; gap: 6px; }
+details.more > summary { cursor: pointer; font-weight: 700; list-style: none; color: var(--red-text); }
+details.more > summary::-webkit-details-marker { display: none; }
+input, select, textarea { font: 500 14.5px/1.3 var(--f-body); padding: 10px 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); color: var(--ink); width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 70px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+label.f { display: grid; gap: 5px; font-size: 12.5px; font-weight: 700; color: var(--soft); min-width: 0; }
+img { max-width: 100%; display: block; }
+.shot { border-radius: 12px; border: 1px solid var(--line); width: 100%; height: auto; }
+.foot { color: var(--soft); font-size: 13px; padding-top: 18px; border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } .card { padding: 14px; } body { font-size: 15px; } }
+@media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
+</style>
+<style>
+/* CRM de Carlos Jimena (Fight Programming). Colecciones: leads (luchadores: conversación → cliente), combates (calendario de combates de sus atletas para la serie de reacción), pruebas (testimonios y comparativas antes/después) y config/precios {nivel, ventasDesdeSubida}. */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11, 11, 12, .95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: grid; gap: 6px; padding-block: 10px 0; }
+.top .row1 { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: space-between; align-items: baseline; }
+.top b.brand { font: 400 22px/1 var(--f-head); letter-spacing: .02em; }
+.status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
+.status.err { color: var(--red-text); }
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
+.kpi b { font: 400 28px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.kpi span { font-size: 12px; color: var(--soft); font-weight: 600; }
+form.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+form.grid .full { grid-column: 1 / -1; }
+.tasks { display: grid; gap: 8px; }
+.task { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 12px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 11px 13px; }
+.task .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--amber); }
+.task.urgent .dot { background: var(--red); }
+.task.info .dot { background: #6aa8ff; }
+.task b { display: block; font-size: 14.5px; }
+.task span { color: var(--soft); font-size: 13px; }
+.empty { color: var(--soft); text-align: center; padding: 22px; background: var(--panel); border-radius: 12px; border: 1px dashed var(--line); }
+.board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 1fr); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px; display: grid; gap: 8px; align-content: start; min-height: 110px; }
+.col-h { display: flex; justify-content: space-between; padding: 2px 4px; font-weight: 800; font-size: 14px; }
+.col-h span { font: 500 12px/1 var(--f-mono); color: var(--soft); }
+.lead { all: unset; box-sizing: border-box; cursor: pointer; background: var(--panel2); border-radius: 10px; padding: 9px 11px; display: grid; gap: 3px; }
+.lead:focus-visible, .crow:focus-visible { outline: 3px solid var(--ink); }
+.lead b { font-size: 14px; }
+.lead .meta { font-size: 12px; color: var(--soft); }
+.lead .next { font-size: 12px; font-weight: 700; color: var(--amber); }
+.lead.warn .next { color: var(--red-text); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+.filters label.f { width: auto; }
+.drawer-bg { position: fixed; inset: 0; background: rgba(0, 0, 0, .55); z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(580px, 100%); background: var(--bg); border-left: 1px solid var(--line); z-index: 41; overflow-y: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) 16px; display: grid; gap: 12px; align-content: start; }
+.dhead { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fields .full { grid-column: 1 / -1; }
+.steps { display: flex; gap: 4px; flex-wrap: wrap; }
+.steps button { all: unset; cursor: pointer; font-size: 12.5px; font-weight: 700; padding: 7px 10px; border-radius: 999px; background: var(--panel); color: var(--soft); border: 1px solid var(--line); }
+.steps button[aria-pressed="true"] { background: var(--red); color: #fff; border-color: var(--red); }
+.check { display: grid; gap: 6px; }
+.check label { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 14px; cursor: pointer; background: var(--panel); border-radius: 10px; padding: 8px 10px; }
+.check input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--red); }
+.log { font-size: 12.5px; color: var(--soft); display: grid; gap: 3px; max-height: 140px; overflow-y: auto; }
+.hint { background: var(--red-soft); border: 1px solid #5a1e22; border-radius: 12px; padding: 12px; display: grid; gap: 8px; font-weight: 700; }
+.nv-prices { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.nv-prices div { background: var(--panel2); border-radius: 10px; padding: 10px; display: grid; gap: 2px; }
+.nv-prices b { font: 400 24px/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.nv-prices span { font-size: 12px; color: var(--soft); font-weight: 700; }
+.nv-prices .star { box-shadow: inset 0 0 0 1.5px var(--red); }
+.dots { display: flex; gap: 6px; } .dots i { width: 28px; height: 8px; border-radius: 9px; background: var(--panel2); } .dots i.on { background: var(--red); }
+.linkish { all: unset; cursor: pointer; font-size: 12.5px; color: var(--soft); text-decoration: underline; }
+.crow { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)); gap: 10px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13.5px; width: 100%; }
+.crow.head { cursor: default; background: none; border: 0; padding-block: 2px; font: 500 10.5px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); }
+.crow small { display: block; color: var(--soft); font-size: 12px; }
+.pill { display: inline-block; width: fit-content; font-size: 11.5px; font-weight: 800; padding: 4px 8px; border-radius: 999px; background: #12301c; color: var(--green); }
+.pill.r { background: var(--red-soft); color: var(--red-text); } .pill.a { background: #3a2a0c; color: var(--amber); } .pill.b { background: #10263a; color: #8cc4ff; }
+.ent { display: grid; gap: 8px; }
+.entry { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 8px; }
+.entry .eh { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 10px; align-items: center; }
+.entry .eg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.entry.soon { border-color: var(--red); }
+.entry.past { opacity: .85; }
+.mini { font-size: 12px; padding: 7px 8px; }
+@media (max-width: 980px) { .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } form.grid { grid-template-columns: 1fr 1fr; } .entry .eg { grid-template-columns: 1fr 1fr; } .nv-prices { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .kpis { grid-template-columns: 1fr 1fr; } form.grid { grid-template-columns: 1fr; } .fields { grid-template-columns: 1fr; } .crow { grid-template-columns: minmax(0, 1fr) auto; } .crow .hm { display: none; } .task { grid-template-columns: 10px minmax(0, 1fr); } .task .btn { grid-column: 2; justify-self: start; } .nv-prices { grid-template-columns: 1fr 1fr; } }
+</style>
+<header class="top"><div class="wrap">
+  <div class="row1"><b class="brand">Fight Programming · CRM</b><span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span></div>
+  <nav class="tabs" role="tablist" aria-label="Vistas">
+    <button class="tab" role="tab" data-v="hoy" id="tab-hoy" aria-selected="true">Hoy</button>
+    <button class="tab" role="tab" data-v="embudo" id="tab-embudo" aria-selected="false">Embudo</button>
+    <button class="tab" role="tab" data-v="clientes" id="tab-clientes" aria-selected="false">Clientes</button>
+    <button class="tab" role="tab" data-v="combates" id="tab-combates" aria-selected="false">Combates</button>
+    <button class="tab" role="tab" data-v="prueba" id="tab-prueba" aria-selected="false">Prueba</button>
+    <button class="tab" role="tab" data-v="proceso" id="tab-proceso" aria-selected="false">Proceso</button>
+  </nav>
+</div></header>
+<main class="wrap">
+
+<section class="view" id="v-hoy">
+  <div class="kpis" id="kpis"></div>
+  <section class="card" aria-labelledby="h-add">
+    <h2 id="h-add">Nueva conversación</h2>
+    <form class="grid" id="addForm" autocomplete="off">
+      <label class="f">Nombre<input id="n-nombre" required placeholder="Nombre"></label>
+      <label class="f">Instagram<input id="n-ig" placeholder="@usuario"></label>
+      <label class="f">WhatsApp<input id="n-tel" inputmode="tel" placeholder="+34 …"></label>
+      <label class="f">Ciudad<input id="n-ciudad" placeholder="Málaga, Canarias…"></label>
+      <label class="f">Disciplina<select id="n-disc"></select></label>
+      <label class="f">Nivel<select id="n-nivel"></select></label>
+      <label class="f">Origen<select id="n-origen"></select></label>
+      <label class="f">Le interesa<select id="n-serv"></select></label>
+      <label class="f">Próximo combate / evento<input id="n-evento" placeholder="Evento (si lo hay)"></label>
+      <label class="f">Fecha del combate<input id="n-fecha" type="date"></label>
+      <label class="f">Fase<select id="n-fase"></select></label>
+      <label class="f">Lesión que le limita<input id="n-lesion" placeholder="Si la hay, con sus palabras"></label>
+      <label class="f full">Lo que contó (sus palabras)<input id="n-notas" placeholder="Ej.: 22, curra en un almacén, compite amateur, se ahoga en el segundo asalto"></label>
+      <button class="btn" type="submit" id="addBtn">Añadir</button>
+    </form>
+    <p class="soft" id="addNote" aria-live="polite" style="font-size:13px"></p>
+  </section>
+  <h2>Qué toca hoy</h2>
+  <div class="tasks" id="todayList"><p class="empty">Cargando…</p></div>
+</section>
+
+<section class="view" id="v-embudo" hidden>
+  <div class="filters">
+    <h2 style="flex:1 1 200px">Embudo</h2>
+    <label class="f">Disciplina<select id="fDisc"><option value="">Todas</option></select></label>
+    <label class="f">Nivel<select id="fNivel"><option value="">Todos</option></select></label>
+    <label class="f">Fase<select id="fFase"><option value="">Todas</option></select></label>
+  </div>
+  <div class="board" id="board"></div>
+</section>
+
+<section class="view" id="v-clientes" hidden>
+  <div class="card" id="nivelCard"></div>
+  <div class="kpis" id="ckpis"></div>
+  <details class="card more"><summary>+ Añadir un cliente que ya tenías (tus 36 de ahora)</summary>
+    <form class="grid" id="addCli" autocomplete="off" style="margin-top:10px">
+      <label class="f">Nombre<input id="c-nombre" required placeholder="Nombre"></label>
+      <label class="f">WhatsApp<input id="c-tel" inputmode="tel" placeholder="+34 …"></label>
+      <label class="f">Disciplina<select id="c-disc"></select></label>
+      <label class="f">Plan<select id="c-plan"></select></label>
+      <label class="f">Lo que paga (€)<input id="c-imp" type="number" step="0.01" inputmode="decimal" placeholder="Ej.: 75"></label>
+      <label class="f">Fecha de alta<input id="c-alta" type="date" required></label>
+      <button class="btn" type="submit" id="c-btn">Añadir cliente</button>
+    </form>
+    <p class="soft" id="c-note" aria-live="polite" style="font-size:13px"></p>
+  </details>
+  <h2>Clientes</h2>
+  <div style="display:grid;gap:6px" id="clist"></div>
+  <p class="soft" style="font-size:13px"><b>Ingreso mensual equivalente</b>: cada pack repartido por sus meses (semestral de 600 € = 100 €/mes). <b>Cobrado por adelantado este mes</b>: importe de los packs dados de alta este mes (las 2 cuotas cuentan la que toca). Solo las ventas de 1:1 y Fight Camp suben la escalera.</p>
+</section>
+
+<section class="view" id="v-combates" hidden>
+  <div class="kpis" id="bkpis"></div>
+  <section class="card"><h2>Apuntar un combate</h2>
+    <p class="soft" style="font-size:13.5px">El calendario de tus atletas para la serie de reacción. Solo combates reales y confirmados. El resultado se apunta cuando haya pasado.</p>
+    <form class="grid" id="addCombate" autocomplete="off">
+      <label class="f">Atleta<input id="b-atleta" list="atletasList" required placeholder="Nombre"></label>
+      <label class="f">Evento<input id="b-evento" required placeholder="Evento"></label>
+      <label class="f">Fecha<input id="b-fecha" type="date" required></label>
+      <label class="f">Disciplina<select id="b-disc"></select></label>
+      <label class="f">Rival (opcional)<input id="b-rival" placeholder="Si es público"></label>
+      <label class="f">Nivel<select id="b-nivel"></select></label>
+      <button class="btn" type="submit" id="b-btn">Añadir combate</button>
+    </form>
+    <p class="soft" id="b-note" aria-live="polite" style="font-size:13px"></p>
+  </section>
+  <div class="ent" id="combList"></div>
+</section>
+
+<section class="view" id="v-prueba" hidden>
+  <div class="kpis" id="pkpis"></div>
+  <section class="card"><h2>Registrar una prueba</h2>
+    <p class="soft" style="font-size:13.5px">Testimonio escrito, vídeo testimonio, captura o comparativa de rendimiento. Los datos de los tests se apuntan tal cual salen; si no hay dato, se queda vacío.</p>
+    <form class="grid" id="addPrueba" autocomplete="off">
+      <label class="f">Atleta / cliente<input id="p-atleta" list="atletasList" required placeholder="Nombre"></label>
+      <label class="f">Tipo<select id="p-tipo"></select></label>
+      <label class="f">Test (si es comparativa)<select id="p-test"></select></label>
+      <label class="f">Estado<select id="p-estado"></select></label>
+      <button class="btn" type="submit" id="p-btn">Añadir</button>
+    </form>
+    <p class="soft" id="p-note" aria-live="polite" style="font-size:13px"></p>
+  </section>
+  <div class="filters"><label class="f">Ver<select id="fPrueba"><option value="">Todas</option></select></label></div>
+  <div class="ent" id="prList"></div>
+  <details class="card more"><summary>Mensajes para pedir pruebas</summary>
+    <div style="display:grid;gap:8px;margin-top:10px">
+      <p class="say">Ey [nombre], ¿me haces un favor? Escríbeme en 3–4 frases cómo estabas antes de empezar conmigo y qué notas ahora entrenando. Con tus palabras. Y dime si te parece bien que lo comparta con tu nombre.</p>
+      <p class="say">[Nombre], enhorabuena por el combate. Cuando te venga bien, ¿me grabas un vídeo de 30–60 s en vertical contestando: cómo llegabas antes a los combates, qué cambió en la preparación, qué notaste esta vez y a quién se lo recomendarías? Si no te apetece, ningún problema.</p>
+      <p class="say">Toca retest, [nombre]. El [día] hacemos los mismos tests que al principio: mismo sitio, mismo calentamiento, grabado.</p>
+      <p class="say">Para publicar tu nombre, tu imagen o tus datos de los tests necesito tu sí por escrito. ¿Me confirmas aquí que te parece bien que use [testimonio / vídeo / comparativa] en Fight Programming?</p>
+    </div>
+  </details>
+</section>
+
+<section class="view" id="v-proceso" hidden>
+  <div class="nm"><span class="label">Tu nicho en una frase</span><p class="nm-big">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p><p class="soft"><b>Método Fight Programming:</b> criterio · la semana del que trabaja · fatiga y lesiones bajo control. Base → campamento → fight week.</p></div>
+  <div class="g4">
+    <div class="card"><b>1 · Abrir</b><p class="soft">100 al día en 2 rondas de 50. Bienvenidas a mano. Comentarios de las reacciones. Recomendaciones.</p></div>
+    <div class="card"><b>2 · Cualificar</b><p class="soft">Disciplina, compite, próximo combate, días de tatami, trabajo, lesión, qué se le atasca. <b>Nunca precio.</b></p></div>
+    <div class="card"><b>3 · Llamada</b><p class="soft">Máximo a 3 días vista. Reacción de un atleta parecido al agendar. Recordatorio el día.</p></div>
+    <div class="card"><b>4 · Alta</b><p class="soft">Cobro adelantado o 2 cuotas. App. Tests de entrada. Permiso de imagen. Combate al calendario.</p></div>
+  </div>
+  <div class="g2">
+    <div class="card"><span class="label">Cualificar · en orden</span>
+      <p class="say">¿Qué disciplina haces? ¿MMA, grappling, BJJ, otra?</p>
+      <p class="say">¿Compites? ¿Amateur o ya has debutado como profesional?</p>
+      <p class="say">¿Tienes algún combate a la vista? ¿Para cuándo y dónde?</p>
+      <p class="say">¿Cuántos días entrenas tu deporte y qué haces ahora de físico?</p>
+      <p class="say">¿Curras o estudias? ¿Qué horario tienes?</p>
+      <p class="say">¿Alguna lesión o molestia que te esté sacando del tatami?</p>
+    </div>
+    <div class="card"><span class="label">Reglas</span><ul class="l">
+      <li>Nunca precio por mensaje. Precio en la llamada, semestral primero.</li>
+      <li>Seguimientos días 2, 7 y 14: la pestaña Hoy te los pone delante.</li>
+      <li>Combate de un atleta → fight week en historias → reacción → testimonio a las 48 h.</li>
+      <li>Cliente que lleva 8–12 semanas → retest. 3 semanas antes del fin → renovación con los datos delante.</li>
+      <li>Menores: permiso y pago con madre, padre o tutor.</li>
+      <li>Datos de salud y lesiones: solo aquí, nunca en contenido.</li>
+    </ul></div>
+  </div>
+</section>
+</main>
+<datalist id="atletasList"></datalist>
+<div class="drawer-bg" id="drawerBg" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Ficha"></aside>
+<script>
+(function () {
+  var DISC = ["MMA", "Grappling / BJJ", "Kickboxing / Muay thai", "Boxeo", "Lucha", "Otro"];
+  var NIVEL = ["Amateur", "Semi-pro", "Profesional", "No compite (ocio)"];
+  var FASE = ["Sin combate", "Off-season (base)", "Campamento", "Fight week", "Post-combate"];
+  var ORIGEN = ["Reacción a un atleta", "Post evento", "Recomendación", "Contenido de método", "Historias / encuesta", "Conversación en frío (100/día)", "Nuevo seguidor", "WhatsApp", "Fight Programming Lab", "YouTube", "Anuncio", "Aplicación (landing)", "Antiguo cliente", "Otro"];
+  var SERV = ["1:1 (no lo sabe aún)", "Fight Camp", "Base (programa general)", "Presencial Málaga"];
+  var ATLETAS = ["Manuel Mouzid", "Bussolotti", "Giordano", "Gil", "Baldo Mira", "Samuel Molina", "Cristian Amador", "Joel Amador"];
+  var STAGES = [{ id: "nuevo", n: "Nuevo" }, { id: "cualificando", n: "Cualificando" }, { id: "agendado", n: "Llamada agendada" }, { id: "hecha", n: "Llamada hecha" }, { id: "cliente", n: "Cliente" }, { id: "perdido", n: "Perdido" }];
+  var TIPO_P = ["Testimonio escrito", "Vídeo testimonio", "Comparativa de rendimiento", "Captura de mensaje"];
+  var TEST_P = ["—", "Salto", "Sprint", "Fuerza (básico)", "Test específico", "Otro"];
+  var ESTADO_P = ["Por pedir", "Pedido", "Recibido", "Publicado"];
+  var PERM_P = ["Sin pedir", "Pedido", "Sí, por escrito", "Sí, tutor (menor)", "No"];
+  var RES_B = ["Pendiente", "Victoria", "Derrota", "Empate", "Sin decisión"];
+  var PERM_B = ["Sin pedir", "Pedido", "Sí", "No"];
+  var REAC_B = ["Por grabar", "Grabada", "Publicada", "No se hace"];
+  /* Escalera (propuesta, confirmar): igual que la Parte 2 */
+  var LV = { "1:1 semestral": [600, 720, 865, 1040], "1:1 anual": [1080, 1295, 1555, 1865], "1:1 trimestral": [330, 395, 475, 570], "Fight Camp 8 semanas": [280, 335, 400, 480] };
+  var CUOTA = [315, 378, 454, 545];
+  var PLANS = [
+    { id: "1:1 semestral", m: 6, up: true }, { id: "1:1 semestral 2 cuotas", m: 6, up: true }, { id: "1:1 anual", m: 12, up: true }, { id: "1:1 trimestral", m: 3, up: true },
+    { id: "Fight Camp 8 semanas", m: 2, up: true }, { id: "1:1 mensual", m: 1, p: 140 }, { id: "Base mensual", m: 1, p: 45 }, { id: "Base trimestral", m: 3, p: 120 },
+    { id: "Presencial Málaga (mensual)", m: 1 }, { id: "Precio antiguo (mensual)", m: 1 }, { id: "Otro (APEX, suelto…)", m: 1 }
+  ];
+  var MAXN = 3, nivel = 0, ventasDesdeSubida = 0;
+  var db = null, leads = [], combates = [], pruebas = [], openId = null, busy = {}, deb = {};
+  var fDisc = "", fNivel = "", fFase = "", fPrueba = "";
+
+  function $(id) { return document.getElementById(id); }
+  function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
+  function now() { return new Date().toISOString(); }
+  function iso(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function today() { return iso(new Date()); }
+  function dd(a, b) { return Math.round((new Date((b || today()) + "T12:00:00") - new Date(a.slice(0, 10) + "T12:00:00")) / 86400000); }
+  function fmtD(f) { return f ? new Date(f.slice(0, 10) + "T12:00:00").toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "2-digit" }) : "—"; }
+  function addM(f, m) { var d = new Date(f + "T12:00:00"); d.setMonth(d.getMonth() + m); return iso(d); }
+  function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
+  /* Moneda: 1.040 € · 0,60 € */
+  function eur(n) { var r = Math.round(n * 100) / 100, neg = r < 0; r = Math.abs(r); var e = Math.floor(r + 1e-9), c = Math.round((r - e) * 100); if (c === 100) { e++; c = 0; } return (neg ? "−" : "") + String(e).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (c ? "," + String(c).padStart(2, "0") : "") + " €"; }
+  function opts(arr, sel) { return arr.map(function (x) { return '<option' + (x === sel ? " selected" : "") + '>' + esc(x) + '</option>'; }).join(""); }
+  function setStatus(t, err) { var s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
+  function errMsg(e, what) { return e && e.code === "invalid_argument" ? "No tienes permiso para editar en esta página" : (e && e.code === "quota_exceeded" ? "La base de datos está llena: borra fichas antiguas" : "No se ha podido " + (what || "guardar")); }
+  function plan(id) { return PLANS.find(function (p) { return p.id === id; }); }
+  function priceOf(id, n) { n = n == null ? nivel : n; if (LV[id]) return LV[id][n]; if (id === "1:1 semestral 2 cuotas") return CUOTA[n] * 2; var p = plan(id); return p && p.p ? p.p : 0; }
+  function firstCharge(id) { return id === "1:1 semestral 2 cuotas" ? CUOTA[nivel] : priceOf(id); }
+  function clients() { return leads.filter(function (l) { return l.etapa === "cliente"; }); }
+  function active(l) { return l.etapa === "cliente" && !l.baja; }
+  function monthly(l) { var p = plan(l.plan), m = p ? p.m : 1, imp = num(l.importe); if (l.plan === "1:1 semestral 2 cuotas") imp = imp * 2; return m ? imp / m : 0; }
+
+  /* Siguiente acción de cada ficha */
+  function next(l) {
+    var t = today(), s = l.seguimiento || {}, c = l.checks || {}, d = dd(l.creado || now());
+    if (l.etapa === "perdido") return { t: "Perdido" + (l.motivo ? " · " + l.motivo : ""), done: true };
+    if (l.etapa === "cliente") {
+      if (l.baja) return { t: "Baja el " + fmtD(l.baja), done: true };
+      if (l.combateFecha && dd(t, l.combateFecha) >= 0 && dd(t, l.combateFecha) <= 7) return { t: "Fight week: combate el " + fmtD(l.combateFecha), u: true };
+      if (l.combateFecha && dd(l.combateFecha) >= 1 && dd(l.combateFecha) <= 4 && !c.testiComb) return { t: "Combate pasado: pedir testimonio (48 h)", u: true, k: "testiComb" };
+      if (l.fin && dd(t, l.fin) <= 21 && dd(t, l.fin) >= -7 && !c.renov) return { t: "Renovación: retest + mensaje (acaba el " + fmtD(l.fin) + ")", u: dd(t, l.fin) <= 7, k: "renov" };
+      if (!c.testsIn) return { t: "Tests de entrada grabados", k: "testsIn" };
+      if (!c.permiso) return { t: "Permiso de imagen por escrito", k: "permiso" };
+      if (l.alta && dd(l.alta) >= 56 && !c.retest) return { t: "Retest (8–12 semanas)", k: "retest" };
+      return { t: "Cliente activo" + (l.fin ? " · hasta " + fmtD(l.fin) : ""), done: true };
+    }
+    if (l.etapa === "agendado") { if (l.llamada && l.llamada.slice(0, 10) <= t) return { t: "Llamada " + (l.llamada.slice(0, 10) === t ? "hoy" : "pasada: márcala"), u: true }; return { t: "Llamada el " + fmtD(l.llamada), info: true }; }
+    if (l.etapa === "hecha") { var h = l.hecha ? dd(l.hecha) : 0; for (var i = 1; i <= 4; i++) if (!c["post" + i] && h >= i - 1) return { t: "Día " + i + " tras la llamada", u: h > i - 1, k: "post" + i }; return { t: "Días 1–4 hechos: cierra o a perdido", u: true }; }
+    if (l.etapa === "nuevo" && !c.escrito) return { t: "Escribirle y cualificar", u: d >= 1, k: "escrito" };
+    var F = [[2, "d2"], [7, "d7"], [14, "d14"]];
+    for (var j = 0; j < F.length; j++) if (d >= F[j][0] && !s[F[j][1]]) return { t: "Seguimiento día " + F[j][0], u: d > F[j][0], seg: F[j][1] };
+    if (d > 14) return { t: "Sin respuesta tras día 14: a perdido", u: true };
+    return { t: "Cualificando", info: true };
+  }
+
+  async function patch(id, data, coll) {
+    if (!db) return; coll = coll || "leads";
+    var k = coll + id; if (busy[k]) await busy[k];
+    var p = db.collection(coll).doc(id).update(Object.assign({ actualizado: now() }, data));
+    busy[k] = p.catch(function () {});
+    try { await p; } catch (e) { setStatus(errMsg(e), true); }
+  }
+  function patchLater(id, data, coll) { var k = (coll || "leads") + id + Object.keys(data).join(); clearTimeout(deb[k]); deb[k] = setTimeout(function () { patch(id, data, coll); }, 600); }
+
+  /* KPIs y Hoy */
+  function kpi(v, t) { return '<div class="kpi"><b>' + v + '</b><span>' + esc(t) + '</span></div>'; }
+  function renderKpis() {
+    var open = leads.filter(function (l) { return ["nuevo", "cualificando", "agendado", "hecha"].indexOf(l.etapa) >= 0; });
+    var wk = leads.filter(function (l) { return l.creado && dd(l.creado) <= 6; }).length;
+    var ag = leads.filter(function (l) { return l.etapa === "agendado"; }).length;
+    var act = clients().filter(active), mrr = act.reduce(function (a, l) { return a + monthly(l); }, 0);
+    var soon = combates.filter(function (b) { var x = dd(today(), b.fecha); return x >= 0 && x <= 30; }).length;
+    $("kpis").innerHTML = kpi(open.length, "conversaciones abiertas") + kpi(wk, "nuevas en 7 días") + kpi(ag, "llamadas agendadas") + kpi(act.length, "clientes activos") + kpi(eur(mrr), "ingreso mensual equiv.") + kpi(soon, "combates en 30 días");
+  }
+  function renderToday() {
+    var items = [];
+    leads.forEach(function (l) { var n = next(l); if (!n.done && !(n.info && l.etapa !== "agendado")) items.push({ l: l, n: n, w: n.u ? 0 : (n.info ? 2 : 1) }); });
+    combates.forEach(function (b) {
+      var x = dd(today(), b.fecha);
+      if (x >= 0 && x <= 7) items.push({ b: b, t: "Fight week de " + b.atleta + " · " + b.evento + " (" + fmtD(b.fecha) + ")", s: "Historias de pesaje y esquina. Pide el clip.", w: 0 });
+      if (x < 0 && x >= -14 && b.reaccion !== "Publicada" && b.reaccion !== "No se hace") items.push({ b: b, t: "Reacción pendiente: " + b.atleta + " en " + b.evento, s: "Permiso: " + (b.permiso || "Sin pedir") + " · Reacción: " + (b.reaccion || "Por grabar"), w: 1 });
+    });
+    pruebas.forEach(function (p) { if (p.estado === "Pedido" && p.pedido && dd(p.pedido) >= 5) items.push({ p: p, t: "Recordar " + p.tipo.toLowerCase() + " a " + p.atleta, s: "Pedido hace " + dd(p.pedido) + " días", w: 1 }); });
+    items.sort(function (a, b) { return a.w - b.w; });
+    if (!items.length) { $("todayList").innerHTML = '<p class="empty">' + (db ? "Nada pendiente. Toca abrir conversaciones: 2 rondas de 50." : "El CRM necesita abrirse desde claude.ai con tu cuenta para guardar. La pestaña Proceso funciona igual.") + '</p>'; return; }
+    $("todayList").innerHTML = items.map(function (it, i) {
+      if (it.l) return '<div class="task' + (it.n.u ? " urgent" : (it.n.info ? " info" : "")) + '"><i class="dot"></i><div><b>' + esc(it.l.nombre) + ' · ' + esc(it.n.t) + '</b><span>' + esc([it.l.disciplina, it.l.nivel, it.l.fase, it.l.combateFecha ? "combate " + fmtD(it.l.combateFecha) : ""].filter(Boolean).join(" · ")) + '</span></div><button type="button" class="btn ghost mini" data-open="' + it.l.id + '">Abrir</button></div>';
+      return '<div class="task' + (it.w === 0 ? " urgent" : "") + '"><i class="dot"></i><div><b>' + esc(it.t) + '</b><span>' + esc(it.s) + '</span></div><button type="button" class="btn ghost mini" data-go="' + (it.b ? "combates" : "prueba") + '">Ver</button></div>';
+    }).join("");
+  }
+
+  /* Embudo */
+  function renderBoard() {
+    var list = leads.filter(function (l) { return (!fDisc || l.disciplina === fDisc) && (!fNivel || l.nivel === fNivel) && (!fFase || l.fase === fFase); });
+    $("board").innerHTML = STAGES.map(function (s) {
+      var ls = list.filter(function (l) { return (l.etapa || "nuevo") === s.id; });
+      return '<div class="col"><div class="col-h">' + s.n + '<span>' + ls.length + '</span></div>' + ls.map(function (l) { var n = next(l); return '<button type="button" class="lead' + (n.u ? " warn" : "") + '" data-open="' + l.id + '"><b>' + esc(l.nombre) + '</b><span class="meta">' + esc([l.disciplina, l.nivel, l.fase].filter(Boolean).join(" · ")) + '</span><span class="next">' + esc(n.t) + '</span></button>'; }).join("") + '</div>';
+    }).join("");
+  }
+
+  /* Clientes y escalera */
+  function renderNivel() {
+    var dots = ""; for (var i = 0; i <= MAXN; i++) dots += '<i class="' + (i <= nivel ? "on" : "") + '"></i>';
+    var pr = [["1:1 semestral", "El que recomiendas", 1], ["1:1 semestral 2 cuotas", "2 × " + eur(CUOTA[nivel])], ["1:1 anual", "Mejor precio/mes"], ["1:1 trimestral", "Si no llega a 6"], ["Fight Camp 8 semanas", "Con fecha de combate"]];
+    $("nivelCard").innerHTML = '<div class="filters" style="justify-content:space-between"><div><span class="label">Precios actuales · propuesta, confirmar</span><h3>Nivel ' + nivel + ' de ' + MAXN + '</h3></div><div class="dots" aria-hidden="true">' + dots + '</div></div>' +
+      '<div class="nv-prices">' + pr.map(function (p) { return '<div class="' + (p[2] ? "star" : "") + '"><span>' + esc(p[0]) + '</span><b>' + eur(priceOf(p[0])) + '</b><span>' + esc(p[1]) + '</span></div>'; }).join("") + '</div>' +
+      '<p class="soft" style="font-size:13px">Cada venta de 1:1 o Fight Camp sube un nivel (≈ +20 %) hasta el 3. Mensual 140 € y Base 45 €/mes no suben. ' + (ventasDesdeSubida ? "Ventas desde la última subida: " + ventasDesdeSubida + "." : "") + '</p>' +
+      (ventasDesdeSubida > 0 && nivel < MAXN ? '<div class="hint">Has cerrado ' + ventasDesdeSubida + ' venta(s) a este precio. Toca subir.<button type="button" class="btn" id="hintUp" style="justify-self:start">Subir a nivel ' + (nivel + 1) + '</button></div>' : "") +
+      '<div class="filters"><button type="button" class="btn ghost mini" id="nvUp"' + (nivel >= MAXN ? " disabled" : "") + '>' + (nivel >= MAXN ? "Estás en el máximo" : "Subir a nivel " + (nivel + 1)) + '</button>' + (nivel > 0 ? '<button type="button" class="linkish" id="nvDown">Bajar un nivel</button><span id="nvDownBox" hidden class="filters"><span class="soft" style="font-size:13px">¿Seguro? Solo si llevas 3 llamadas sin cerrar.</span><button type="button" class="btn ghost mini" id="nvDownYes">Sí, bajar</button></span>' : "") + '</div>';
+    $("nvUp").addEventListener("click", function () { setNivel(nivel + 1); });
+    if ($("hintUp")) $("hintUp").addEventListener("click", function () { setNivel(nivel + 1); });
+    if ($("nvDown")) { $("nvDown").addEventListener("click", function () { $("nvDownBox").hidden = false; }); $("nvDownYes").addEventListener("click", function () { setNivel(nivel - 1); }); }
+  }
+  var nivelBusy = Promise.resolve();
+  function saveNivel(n, v) {
+    if (!db) { nivel = n; ventasDesdeSubida = v; renderAll(); return; }
+    nivelBusy = nivelBusy.then(function () { return db.collection("config").doc("precios").set({ nivel: n, ventasDesdeSubida: v, actualizado: now() }); }).catch(function (e) { setStatus(e && e.code === "invalid_argument" ? "No tienes permiso para cambiar precios" : "No se han podido guardar los precios", true); });
+  }
+  function setNivel(n) { n = Math.max(0, Math.min(MAXN, n)); saveNivel(n, n > nivel ? 0 : ventasDesdeSubida); }
+  function renderClients() {
+    var cl = clients(), act = cl.filter(active), mrr = act.reduce(function (a, l) { return a + monthly(l); }, 0);
+    var ym = today().slice(0, 7), cobrado = 0;
+    cl.forEach(function (l) { if (!l.alta) return; var p = plan(l.plan); if (l.alta.slice(0, 7) === ym && p && p.m > 1) cobrado += num(l.importe); if (l.plan === "1:1 semestral 2 cuotas" && addM(l.alta, 3).slice(0, 7) === ym) cobrado += num(l.importe); });
+    var gone = cl.filter(function (l) { return l.baja && l.alta; }), vida = gone.length ? Math.round(gone.reduce(function (a, l) { return a + dd(l.alta, l.baja); }, 0) / gone.length / 30.4 * 10) / 10 : null;
+    var camp = act.filter(function (l) { return l.fase === "Campamento" || l.fase === "Fight week"; }).length;
+    $("ckpis").innerHTML = kpi(act.length, "clientes activos") + kpi(eur(mrr), "ingreso mensual equiv.") + kpi(eur(cobrado), "cobrado por adelantado este mes") + kpi(act.filter(function (l) { return plan(l.plan) && plan(l.plan).m >= 3; }).length, "en pack (3+ meses)") + kpi(camp, "en campamento / fight week") + kpi(vida == null ? "—" : String(vida).replace(".", ",") + " m", "vida media");
+    var head = '<div class="crow head"><span>Cliente</span><span class="hm">Disciplina</span><span class="hm">Plan</span><span class="hm">€/mes</span><span class="hm">Fase · combate</span><span>Estado</span></div>';
+    $("clist").innerHTML = cl.length ? head + cl.map(function (l) { var n = next(l); return '<button type="button" class="crow" data-open="' + l.id + '"><span><b>' + esc(l.nombre) + '</b><small>' + esc(l.nivel || "") + (l.alta ? " · alta " + fmtD(l.alta) : "") + '</small></span><span class="hm">' + esc(l.disciplina || "—") + '</span><span class="hm">' + esc(l.plan || "—") + (l.fin ? '<small>fin ' + fmtD(l.fin) + '</small>' : "") + '</span><span class="hm">' + eur(monthly(l)) + '</span><span class="hm">' + esc(l.fase || "—") + (l.combateFecha ? '<small>' + fmtD(l.combateFecha) + '</small>' : "") + '</span><span><span class="pill' + (l.baja ? " r" : (n.u ? " a" : "")) + '">' + (l.baja ? "Baja" : (n.done ? "Activo" : esc(n.t.split(":")[0]))) + '</span></span></button>'; }).join("") : '<p class="empty">Todavía no hay clientes. Empieza apuntando a los 36 que ya tienes (arriba).</p>';
+  }
+
+  /* Combates */
+  function renderCombates() {
+    var t = today(), pub = combates.filter(function (b) { return b.reaccion === "Publicada"; }).length, comp = combates.filter(function (b) { return b.compartida === "Sí"; }).length;
+    var prox = combates.filter(function (b) { return dd(t, b.fecha) >= 0; }).length;
+    $("bkpis").innerHTML = kpi(prox, "combates por venir") + kpi(combates.filter(function (b) { var x = dd(t, b.fecha); return x >= 0 && x <= 30; }).length, "en 30 días") + kpi(combates.filter(function (b) { return b.reaccion !== "Publicada" && b.reaccion !== "No se hace" && dd(t, b.fecha) < 0; }).length, "reacciones pendientes") + kpi(pub, "reacciones publicadas") + kpi(comp, "compartidas por el atleta") + kpi(combates.filter(function (b) { return b.permiso === "Sí"; }).length, "con permiso");
+    var list = combates.slice().sort(function (a, b) { var A = dd(t, a.fecha), B = dd(t, b.fecha); if ((A >= 0) !== (B >= 0)) return A >= 0 ? -1 : 1; return A >= 0 ? A - B : B - A; });
+    $("combList").innerHTML = list.length ? list.map(function (b) {
+      var x = dd(t, b.fecha);
+      return '<div class="entry' + (x >= 0 && x <= 7 ? " soon" : (x < 0 ? " past" : "")) + '"><div class="eh"><div><b>' + esc(b.atleta) + '</b> · ' + esc(b.evento) + (b.rival ? " vs " + esc(b.rival) : "") + '<br><span class="soft" style="font-size:13px">' + fmtD(b.fecha) + ' · ' + esc(b.disciplina || "") + ' · ' + esc(b.nivel || "") + (x >= 0 ? ' · faltan ' + x + ' días' : '') + '</span></div><button type="button" class="linkish" data-delb="' + b.id + '">Borrar</button></div>' +
+        '<div class="eg"><label class="f">Resultado<select class="mini" data-b="' + b.id + '" data-k="resultado">' + opts(RES_B, b.resultado || "Pendiente") + '</select></label><label class="f">Permiso para reaccionar<select class="mini" data-b="' + b.id + '" data-k="permiso">' + opts(PERM_B, b.permiso || "Sin pedir") + '</select></label><label class="f">Reacción<select class="mini" data-b="' + b.id + '" data-k="reaccion">' + opts(REAC_B, b.reaccion || "Por grabar") + '</select></label><label class="f">¿La compartió?<select class="mini" data-b="' + b.id + '" data-k="compartida">' + opts(["—", "Sí", "No"], b.compartida || "—") + '</select></label>' +
+        '<label class="f">Clip del combate<select class="mini" data-b="' + b.id + '" data-k="clip">' + opts(["No lo tengo", "Pedido", "Lo tengo"], b.clip || "No lo tengo") + '</select></label><label class="f">Testimonio 48 h<select class="mini" data-b="' + b.id + '" data-k="testimonio">' + opts(["—", "Pedido", "Recibido"], b.testimonio || "—") + '</select></label><label class="f" style="grid-column:span 2">Momento para la reacción<input class="mini" data-b="' + b.id + '" data-k="momento" data-t="1" value="' + esc(b.momento || "") + '" placeholder="Asalto, minuto, qué pasa"></label></div></div>';
+    }).join("") : '<p class="empty">Sin combates apuntados. Apunta los próximos de tus atletas (y los pasados que quieras usar para la serie).</p>';
+  }
+
+  /* Pruebas */
+  function renderPruebas() {
+    var rec = pruebas.filter(function (p) { return p.estado === "Recibido" || p.estado === "Publicado"; }).length;
+    $("pkpis").innerHTML = kpi(pruebas.length, "pruebas apuntadas") + kpi(pruebas.filter(function (p) { return p.estado === "Pedido"; }).length, "pedidas") + kpi(rec, "recibidas") + kpi(pruebas.filter(function (p) { return p.estado === "Publicado"; }).length, "publicadas") + kpi(pruebas.filter(function (p) { return /^Sí/.test(p.permiso || ""); }).length, "con permiso") + kpi(pruebas.filter(function (p) { return p.tipo === "Comparativa de rendimiento" && p.antes && p.despues; }).length, "comparativas completas");
+    var list = pruebas.filter(function (p) { return !fPrueba || p.tipo === fPrueba || p.estado === fPrueba; });
+    $("prList").innerHTML = list.length ? list.map(function (p) {
+      var comp = p.tipo === "Comparativa de rendimiento";
+      return '<div class="entry"><div class="eh"><div><b>' + esc(p.atleta) + '</b> · ' + esc(p.tipo) + (comp && p.test && p.test !== "—" ? " · " + esc(p.test) : "") + '</div><button type="button" class="linkish" data-delp="' + p.id + '">Borrar</button></div>' +
+        '<div class="eg"><label class="f">Estado<select class="mini" data-p="' + p.id + '" data-k="estado">' + opts(ESTADO_P, p.estado || "Por pedir") + '</select></label><label class="f">Permiso<select class="mini" data-p="' + p.id + '" data-k="permiso">' + opts(PERM_P, p.permiso || "Sin pedir") + '</select></label><label class="f" style="grid-column:span 2">Enlace o dónde está<input class="mini" data-p="' + p.id + '" data-k="enlace" data-t="1" value="' + esc(p.enlace || "") + '" placeholder="Carpeta, enlace al post…"></label>' +
+        (comp ? '<label class="f">Dato antes<input class="mini" data-p="' + p.id + '" data-k="antes" data-t="1" value="' + esc(p.antes || "") + '" placeholder="Tal cual se midió"></label><label class="f">Fecha antes<input type="date" class="mini" data-p="' + p.id + '" data-k="fechaAntes" value="' + esc(p.fechaAntes || "") + '"></label><label class="f">Dato después<input class="mini" data-p="' + p.id + '" data-k="despues" data-t="1" value="' + esc(p.despues || "") + '" placeholder="Vacío hasta el retest"></label><label class="f">Fecha después<input type="date" class="mini" data-p="' + p.id + '" data-k="fechaDespues" value="' + esc(p.fechaDespues || "") + '"></label>' : "") +
+        '<label class="f" style="grid-column:1/-1">Notas<input class="mini" data-p="' + p.id + '" data-k="notas" data-t="1" value="' + esc(p.notas || "") + '" placeholder="Qué dice, para qué pieza lo usarás"></label></div></div>';
+    }).join("") : '<p class="empty">Ninguna prueba todavía. Objetivo del primer mes: 1 por cada atleta con nombre y 1 de cada cliente con más de 3 meses.</p>';
+  }
+
+  function typing(id) { var a = document.activeElement; return !!(a && $(id).contains(a) && (a.tagName === "INPUT" || a.tagName === "SELECT" || a.tagName === "TEXTAREA")); }
+  function renderAll() {
+    renderKpis(); renderToday(); renderBoard(); renderNivel(); renderClients(); if (!typing("combList")) renderCombates(); if (!typing("prList")) renderPruebas();
+    var names = ATLETAS.concat(clients().map(function (l) { return l.nombre; })).filter(function (x, i, a) { return x && a.indexOf(x) === i; });
+    $("atletasList").innerHTML = names.map(function (n) { return '<option value="' + esc(n) + '">'; }).join("");
+    if (openId) { var l = leads.find(function (x) { return x.id === openId; }); if (l && !typing("drawer")) renderDrawer(l); }
+  }
+
+  /* Ficha */
+  function openLead(id) { openId = id; var l = leads.find(function (x) { return x.id === id; }); if (!l) return; renderDrawer(l); $("drawer").hidden = false; $("drawerBg").hidden = false; }
+  function closeLead() { openId = null; $("drawer").hidden = true; $("drawerBg").hidden = true; }
+  function msg(t, l) { return t.replace(/\{n\}/g, (l.nombre || "").split(" ")[0]); }
+  function renderDrawer(l) {
+    var c = l.checks || {}, s = l.seguimiento || {}, n = next(l), et = l.etapa || "nuevo";
+    var FOL = [["d2", "Día 2", "Ey {n}, ¿viste lo que te pregunté? Me quedé con la duda de qué haces ahora de físico."], ["d7", "Día 7", "{n}, me acordé de ti viendo esto: [reacción o pieza]. ¿Al final tienes combate a la vista?"], ["d14", "Día 14", "Te escribo por última vez para no ser pesado, {n}. Cuando tengas el próximo combate, escríbeme CAMP y lo preparamos. ¡Mucha suerte!"]];
+    var POST = [["post1", "Día 1: resumen con sus palabras (en 10 min)"], ["post2", "Día 2: reacción de un atleta parecido"], ["post3", "Día 3: propuesta por escrito con fecha"], ["post4", "Día 4: último mensaje"]];
+    var CLI = [["testsIn", "Tests de entrada grabados"], ["permiso", "Permiso de imagen por escrito (tutor si es menor)"], ["retest", "Retest (8–12 semanas)"], ["testiComb", "Testimonio pedido tras su combate"], ["renov", "Renovación hablada (3 semanas antes)"]];
+    var d = $("drawer");
+    d.innerHTML = '<div class="dhead"><div><span class="label">' + esc(STAGES.find(function (x) { return x.id === et; }).n) + '</span><h2>' + esc(l.nombre) + '</h2><p class="soft" style="font-size:13px">Siguiente: <b>' + esc(n.t) + '</b></p></div><button type="button" class="btn ghost mini" id="dClose">Cerrar</button></div>' +
+      '<div class="steps" role="group" aria-label="Etapa">' + STAGES.map(function (x) { return '<button type="button" data-st="' + x.id + '" aria-pressed="' + (x.id === et) + '">' + x.n + '</button>'; }).join("") + '</div>' +
+      (et === "agendado" ? '<label class="f">Fecha y hora de la llamada<input type="datetime-local" data-f="llamada" value="' + esc(l.llamada || "") + '"></label>' : "") +
+      (et === "perdido" ? '<label class="f">Motivo<select data-f="motivo">' + opts(["", "No contesta", "Precio", "No compite / no encaja", "Ya tiene preparador", "Más adelante", "Otro"], l.motivo || "") + '</select></label>' : "") +
+      (et === "cliente" ? '<div class="card flat"><span class="label">Venta</span><div class="fields"><label class="f">Plan<select id="dPlan" data-f="plan">' + opts([""].concat(PLANS.map(function (p) { return p.id; })), l.plan || "") + '</select></label><label class="f">Importe cobrado (€)<input data-f="importe" type="number" step="0.01" inputmode="decimal" value="' + esc(l.importe || "") + '"></label><label class="f">Alta<input type="date" data-f="alta" value="' + esc(l.alta || "") + '"></label><label class="f">Fin del pack<input type="date" data-f="fin" value="' + esc(l.fin || "") + '"></label><label class="f">Baja<input type="date" data-f="baja" value="' + esc(l.baja || "") + '"></label></div></div>' : "") +
+      '<div class="fields">' +
+        '<label class="f">Instagram<input data-f="ig" data-t="1" value="' + esc(l.ig || "") + '"></label><label class="f">WhatsApp<input data-f="tel" data-t="1" value="' + esc(l.tel || "") + '"></label>' +
+        '<label class="f">Disciplina<select data-f="disciplina">' + opts(DISC, l.disciplina) + '</select></label><label class="f">Nivel<select data-f="nivel">' + opts(NIVEL, l.nivel) + '</select></label>' +
+        '<label class="f">Próximo combate / evento<input data-f="combateEvento" data-t="1" value="' + esc(l.combateEvento || "") + '"></label><label class="f">Fecha del combate<input type="date" data-f="combateFecha" value="' + esc(l.combateFecha || "") + '"></label>' +
+        '<label class="f">Fase<select data-f="fase">' + opts(FASE, l.fase) + '</select></label><label class="f">Le interesa<select data-f="servicio">' + opts(SERV, l.servicio) + '</select></label>' +
+        '<label class="f">Origen<select data-f="origen">' + opts(ORIGEN, l.origen) + '</select></label><label class="f">Ciudad<input data-f="ciudad" data-t="1" value="' + esc(l.ciudad || "") + '"></label>' +
+        '<label class="f full">Lesión que le limita<input data-f="lesion" data-t="1" value="' + esc(l.lesion || "") + '"></label>' +
+        '<label class="f full">Trabajo / estudios y horario<input data-f="trabajo" data-t="1" value="' + esc(l.trabajo || "") + '"></label>' +
+        '<label class="f full">Sus palabras / notas<textarea data-f="notas" data-t="1">' + esc(l.notas || "") + '</textarea></label>' +
+      '</div>' +
+      (l.combateEvento && l.combateFecha ? '<button type="button" class="btn ghost mini" id="toCal" style="justify-self:start">Pasar el combate al calendario</button>' : "") +
+      (et === "nuevo" || et === "cualificando" ? '<div class="check"><label><input type="checkbox" data-c="escrito"' + (c.escrito ? " checked" : "") + '><span>Primer mensaje enviado</span></label>' + FOL.map(function (f) { return '<label><input type="checkbox" data-s="' + f[0] + '"' + (s[f[0]] ? " checked" : "") + '><span>' + f[1] + '<small>' + esc(msg(f[2], l)) + '</small></span></label>'; }).join("") + '</div><div style="display:grid;gap:6px">' + FOL.map(function (f) { return '<p class="say">' + esc(msg(f[2], l)) + '</p>'; }).join("") + '</div>' : "") +
+      (et === "hecha" ? '<div class="check">' + POST.map(function (p) { return '<label><input type="checkbox" data-c="' + p[0] + '"' + (c[p[0]] ? " checked" : "") + '><span>' + p[1] + '</span></label>'; }).join("") + '</div>' : "") +
+      (et === "cliente" ? '<div class="check">' + CLI.map(function (p) { return '<label><input type="checkbox" data-c="' + p[0] + '"' + (c[p[0]] ? " checked" : "") + '><span>' + p[1] + '</span></label>'; }).join("") + '</div><button type="button" class="btn ghost mini" id="toPrueba" style="justify-self:start">Registrar una prueba de ' + esc((l.nombre || "").split(" ")[0]) + '</button>' : "") +
+      '<div class="log">' + (l.log || []).slice(-8).reverse().map(function (x) { return '<span>' + fmtD(x.f) + ' · ' + esc(x.t) + '</span>'; }).join("") + '</div>' +
+      '<div class="filters"><button type="button" class="linkish" id="delAsk">Borrar ficha</button><span id="delBox" hidden class="filters"><span class="soft" style="font-size:13px">¿Seguro?</span><button type="button" class="btn ghost mini" id="delYes">Sí, borrar</button></span></div>';
+    window.cjSay(d);
+    $("dClose").addEventListener("click", closeLead);
+    d.querySelectorAll("[data-st]").forEach(function (b) { b.addEventListener("click", function () { setStage(l, b.dataset.st); }); });
+    d.querySelectorAll("[data-f]").forEach(function (i) {
+      if (i.dataset.t) i.addEventListener("input", function () { var o = {}; o[i.dataset.f] = i.value; patchLater(l.id, o); });
+      i.addEventListener("change", function () {
+        var o = {}; o[i.dataset.f] = i.value;
+        if (i.dataset.f === "plan" && i.value) { o.importe = String(firstCharge(i.value)); o.pago = i.value === "1:1 semestral 2 cuotas" ? "2 cuotas" : "Pago único"; var a = l.alta || today(); o.alta = a; o.fin = addM(a, plan(i.value).m); var was = l.plan && plan(l.plan) && plan(l.plan).up; if (plan(i.value).up && !was && !l.contada) { o.contada = true; saveNivel(nivel, ventasDesdeSubida + 1); } }
+        if (i.dataset.f === "alta" && l.plan && plan(l.plan)) o.fin = addM(i.value, plan(l.plan).m);
+        patch(l.id, o);
+      });
+    });
+    d.querySelectorAll("[data-c]").forEach(function (i) { i.addEventListener("change", function () { var cc = Object.assign({}, l.checks || {}); cc[i.dataset.c] = i.checked; patch(l.id, { checks: cc }); }); });
+    d.querySelectorAll("[data-s]").forEach(function (i) { i.addEventListener("change", function () { var ss = Object.assign({}, l.seguimiento || {}); ss[i.dataset.s] = i.checked; patch(l.id, { seguimiento: ss, etapa: et === "nuevo" ? "cualificando" : et }); }); });
+    if ($("toCal")) $("toCal").addEventListener("click", async function () { var b = this; b.disabled = true; try { await db.collection("combates").add({ atleta: l.nombre, evento: l.combateEvento, fecha: l.combateFecha, disciplina: l.disciplina || "MMA", nivel: l.nivel || "Amateur", rival: "", resultado: "Pendiente", permiso: "Sin pedir", reaccion: "Por grabar", compartida: "—", clip: "No lo tengo", testimonio: "—", momento: "", creado: now() }); b.textContent = "Añadido al calendario"; } catch (e) { b.disabled = false; setStatus(errMsg(e, "añadir"), true); } });
+    if ($("toPrueba")) $("toPrueba").addEventListener("click", function () { closeLead(); show("prueba"); $("p-atleta").value = l.nombre; $("p-atleta").focus(); });
+    $("delAsk").addEventListener("click", function () { $("delBox").hidden = false; });
+    $("delYes").addEventListener("click", async function () { try { await db.collection("leads").doc(l.id).delete(); closeLead(); } catch (e) { setStatus(errMsg(e, "borrar"), true); } });
+  }
+  function setStage(l, st) {
+    var o = { etapa: st, log: (l.log || []).concat([{ f: now(), t: "→ " + STAGES.find(function (x) { return x.id === st; }).n }]) };
+    if (st === "hecha" && !l.hecha) o.hecha = today();
+    if (st === "cliente" && !l.alta) o.alta = today();
+    patch(l.id, o);
+  }
+
+  function show(v) { document.querySelectorAll(".tab[data-v]").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.v === v ? "true" : "false"); }); document.querySelectorAll("main > .view").forEach(function (s) { s.hidden = s.id !== "v-" + v; }); }
+  document.addEventListener("click", function (e) {
+    var o = e.target.closest("[data-open]"); if (o) { openLead(o.dataset.open); return; }
+    var g = e.target.closest("[data-go]"); if (g) { show(g.dataset.go); return; }
+    var db1 = e.target.closest("[data-delb]"); if (db1 && db) { if (confirm("¿Borrar este combate?")) db.collection("combates").doc(db1.dataset.delb).delete().catch(function (er) { setStatus(errMsg(er, "borrar"), true); }); return; }
+    var dp = e.target.closest("[data-delp]"); if (dp && db) { if (confirm("¿Borrar esta prueba?")) db.collection("pruebas").doc(dp.dataset.delp).delete().catch(function (er) { setStatus(errMsg(er, "borrar"), true); }); }
+  });
+  $("drawerBg").addEventListener("click", closeLead);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeLead(); });
+  function bindEntry(sel, coll) {
+    document.addEventListener("change", function (e) { var i = e.target.closest(sel); if (!i) return; var o = {}; o[i.dataset.k] = i.value; if (coll === "pruebas" && i.dataset.k === "estado" && i.value === "Pedido") o.pedido = today(); patch(i.dataset.b || i.dataset.p, o, coll); });
+    document.addEventListener("input", function (e) { var i = e.target.closest(sel); if (!i || !i.dataset.t) return; var o = {}; o[i.dataset.k] = i.value; patchLater(i.dataset.b || i.dataset.p, o, coll); });
+  }
+  bindEntry("[data-b]", "combates"); bindEntry("[data-p]", "pruebas");
+
+  /* Selects */
+  $("n-disc").innerHTML = opts(DISC, "MMA"); $("n-nivel").innerHTML = opts(NIVEL, "Amateur"); $("n-origen").innerHTML = opts(ORIGEN); $("n-serv").innerHTML = opts(SERV); $("n-fase").innerHTML = opts(FASE, "Sin combate");
+  $("c-disc").innerHTML = opts(DISC, "MMA"); $("c-plan").innerHTML = opts(PLANS.map(function (p) { return p.id; }), "Precio antiguo (mensual)"); $("c-alta").value = today();
+  $("b-disc").innerHTML = opts(DISC, "MMA"); $("b-nivel").innerHTML = opts(NIVEL, "Amateur");
+  $("p-tipo").innerHTML = opts(TIPO_P); $("p-test").innerHTML = opts(TEST_P); $("p-estado").innerHTML = opts(ESTADO_P);
+  $("fDisc").innerHTML += opts(DISC); $("fNivel").innerHTML += opts(NIVEL); $("fFase").innerHTML += opts(FASE); $("fPrueba").innerHTML += opts(TIPO_P.concat(ESTADO_P));
+  $("fDisc").addEventListener("change", function () { fDisc = this.value; renderBoard(); });
+  $("fNivel").addEventListener("change", function () { fNivel = this.value; renderBoard(); });
+  $("fFase").addEventListener("change", function () { fFase = this.value; renderBoard(); });
+  $("fPrueba").addEventListener("change", function () { fPrueba = this.value; renderPruebas(); });
+
+  /* Altas */
+  function formErr(e) { return e && e.code === "quota_exceeded" ? "La base de datos está llena: borra fichas antiguas." : (e && e.code === "invalid_argument" ? "No tienes permiso para añadir en esta página." : "No se ha podido guardar. Inténtalo otra vez."); }
+  $("addForm").addEventListener("submit", async function (e) {
+    e.preventDefault(); if (!db) { $("addNote").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var nombre = $("n-nombre").value.trim(); if (!nombre) return;
+    var data = { nombre: nombre, ig: $("n-ig").value.trim(), tel: $("n-tel").value.trim(), ciudad: $("n-ciudad").value.trim(), disciplina: $("n-disc").value, nivel: $("n-nivel").value, origen: $("n-origen").value, servicio: $("n-serv").value, combateEvento: $("n-evento").value.trim(), combateFecha: $("n-fecha").value, fase: $("n-fase").value, lesion: $("n-lesion").value.trim(), notas: $("n-notas").value.trim(), trabajo: "", etapa: "nuevo", creado: now(), actualizado: now(), checks: {}, seguimiento: {}, log: [{ f: now(), t: "Alta en el CRM" }] };
+    $("addBtn").disabled = true;
+    try { await db.collection("leads").add(data); $("addForm").reset(); $("n-disc").value = "MMA"; $("n-nivel").value = "Amateur"; $("n-fase").value = "Sin combate"; $("addNote").textContent = "Apuntado. Siguiente: " + next(data).t + ". Recuerda: nada de precio por mensaje."; }
+    catch (err) { $("addNote").textContent = formErr(err); }
+    $("addBtn").disabled = false;
+  });
+  $("addCli").addEventListener("submit", async function (e) {
+    e.preventDefault(); if (!db) { $("c-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var pl = $("c-plan").value, alta = $("c-alta").value || today(), imp = $("c-imp").value || String(priceOf(pl) || "");
+    var data = { nombre: $("c-nombre").value.trim(), tel: $("c-tel").value.trim(), ig: "", disciplina: $("c-disc").value, nivel: "Amateur", origen: "Antiguo cliente", servicio: "1:1 (no lo sabe aún)", fase: "Sin combate", etapa: "cliente", plan: pl, importe: imp, alta: alta, fin: plan(pl).m > 1 ? addM(alta, plan(pl).m) : "", contada: true, creado: now(), actualizado: now(), checks: { testsIn: false }, seguimiento: {}, log: [{ f: now(), t: "Cliente que ya tenía" }] };
+    if (!data.nombre) return;
+    $("c-btn").disabled = true;
+    try { await db.collection("leads").add(data); $("addCli").reset(); $("c-plan").value = "Precio antiguo (mensual)"; $("c-alta").value = today(); $("c-note").textContent = "Cliente añadido."; } catch (err) { $("c-note").textContent = formErr(err); }
+    $("c-btn").disabled = false;
+  });
+  $("addCombate").addEventListener("submit", async function (e) {
+    e.preventDefault(); if (!db) { $("b-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var data = { atleta: $("b-atleta").value.trim(), evento: $("b-evento").value.trim(), fecha: $("b-fecha").value, disciplina: $("b-disc").value, nivel: $("b-nivel").value, rival: $("b-rival").value.trim(), resultado: "Pendiente", permiso: "Sin pedir", reaccion: "Por grabar", compartida: "—", clip: "No lo tengo", testimonio: "—", momento: "", creado: now() };
+    if (!data.atleta || !data.evento || !data.fecha) return;
+    $("b-btn").disabled = true;
+    try { await db.collection("combates").add(data); $("addCombate").reset(); $("b-disc").value = "MMA"; $("b-nivel").value = "Amateur"; $("b-note").textContent = "Combate apuntado."; } catch (err) { $("b-note").textContent = formErr(err); }
+    $("b-btn").disabled = false;
+  });
+  $("addPrueba").addEventListener("submit", async function (e) {
+    e.preventDefault(); if (!db) { $("p-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var est = $("p-estado").value;
+    var data = { atleta: $("p-atleta").value.trim(), tipo: $("p-tipo").value, test: $("p-test").value, estado: est, permiso: "Sin pedir", enlace: "", antes: "", fechaAntes: "", despues: "", fechaDespues: "", notas: "", pedido: est === "Pedido" ? today() : "", creado: now() };
+    if (!data.atleta) return;
+    $("p-btn").disabled = true;
+    try { await db.collection("pruebas").add(data); $("addPrueba").reset(); $("p-note").textContent = "Prueba apuntada."; } catch (err) { $("p-note").textContent = formErr(err); }
+    $("p-btn").disabled = false;
+  });
+
+  renderAll();
+  (async function () {
+    var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    if (!c) { setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true); ["addBtn", "c-btn", "b-btn", "p-btn"].forEach(function (id) { $(id).disabled = true; }); renderToday(); return; }
+    db = c;
+    var got = {}, timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
+    function ready(k) { got[k] = true; if (got.l && got.b && got.p) { clearTimeout(timer); setStatus(leads.length + " fichas · " + combates.length + " combates · " + pruebas.length + " pruebas · en directo"); } }
+    function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); }
+    db.collection("leads").orderBy("creado", "desc").onSnapshot(function (snap) { leads = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (!snap.metadata.fromCache) ready("l"); renderAll(); }, onErr);
+    db.collection("combates").orderBy("fecha", "asc").onSnapshot(function (snap) { combates = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (!snap.metadata.fromCache) ready("b"); renderAll(); }, onErr);
+    db.collection("pruebas").orderBy("creado", "desc").onSnapshot(function (snap) { pruebas = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (!snap.metadata.fromCache) ready("p"); renderAll(); }, onErr);
+    db.collection("config").onSnapshot(function (snap) { var d = snap.docs.find(function (x) { return x.id === "precios"; }), v = d ? d.data() : null; nivel = v && typeof v.nivel === "number" ? Math.max(0, Math.min(MAXN, v.nivel)) : 0; ventasDesdeSubida = v && v.ventasDesdeSubida ? v.ventasDesdeSubida : 0; renderAll(); }, function () {});
+  })();
+})();
+</script>
+
+<script>
+(function () {
+  function copyText(t, b) {
+    function ok() { var o = b.textContent; b.textContent = "Copiado"; b.classList.add("ok"); setTimeout(function () { b.textContent = o; b.classList.remove("ok"); }, 1400); }
+    function fb() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) { b.textContent = "Selecciona y copia"; } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+  }
+  window.cjCopy = copyText;
+  window.cjSay = function (root) {
+    (root || document).querySelectorAll(".say:not([data-cp]):not(.nocp)").forEach(function (p) {
+      p.setAttribute("data-cp", "1");
+      var txt = p.textContent.trim();
+      var b = document.createElement("button"); b.type = "button"; b.className = "cp"; b.textContent = "Copiar";
+      b.addEventListener("click", function () { copyText(txt, b); });
+      p.insertBefore(b, p.firstChild);
+    });
+  };
+  window.cjSay();
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var el = document.getElementById(b.dataset.copy); if (el) copyText((el.value != null && el.tagName !== "PRE" ? el.value : el.textContent).trim(), b); });
+  });
+  var tabs = document.querySelectorAll(".tab[data-v]");
+  function show(v, push) {
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.v === v ? "true" : "false"); });
+    document.querySelectorAll("main > .view").forEach(function (s) { s.hidden = s.id !== "v-" + v; });
+    if (push) { try { history.replaceState(null, "", "#" + v); } catch (e) {} window.scrollTo(0, 0); }
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(t.dataset.v, true); }); });
+  if (tabs.length) { var h = (location.hash || "").slice(1); show(document.getElementById("v-" + h) ? h : tabs[0].dataset.v, false); }
+})();
+</script>

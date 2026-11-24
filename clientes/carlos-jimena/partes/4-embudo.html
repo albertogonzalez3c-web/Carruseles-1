@@ -1,0 +1,298 @@
+<title>Carlos Embudo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #0b0b0c; --panel: #151517; --panel2: #1e1e21; --line: #2e2e33; --ink: #f4f2ef; --soft: #aaa6a1;
+  --red: #d42a30; --red-text: #ff6e72; --red-soft: #2e1214; --amber: #f0c060; --green: #66c486;
+  --f-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif; --f-body: "Inter", "Helvetica Neue", Arial, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15.5px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+h1 { font: 400 clamp(36px, 6vw, 64px)/.98 var(--f-head); letter-spacing: .01em; }
+h2 { font: 400 clamp(26px, 3.4vw, 36px)/1.05 var(--f-head); letter-spacing: .01em; }
+h3 { font: 700 16.5px/1.3 var(--f-body); }
+h4 { font: 700 14.5px/1.3 var(--f-body); color: var(--red-text); }
+p { margin: 0; }
+a { color: var(--red-text); }
+em { font-style: normal; color: var(--red-text); }
+code { font: 500 13px/1.4 var(--f-mono); background: var(--panel2); padding: 2px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+.label { font: 500 11px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--red-text); }
+.soft { color: var(--soft); }
+.ph { color: var(--amber); font-weight: 700; }
+.hero { padding: calc(28px + env(safe-area-inset-top, 0px)) 0 22px; border-bottom: 1px solid var(--line); background: radial-gradient(120% 140% at 100% 0%, #3a0d10 0%, transparent 55%); }
+.hero .wrap { display: grid; gap: 12px; }
+.hero p.lead { font-size: 17px; max-width: 760px; color: #d9d5d0; }
+.tabs-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11, 11, 12, .94); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { all: unset; cursor: pointer; white-space: nowrap; padding: 9px 14px; border-radius: 999px; font-weight: 700; font-size: 14px; background: var(--panel); color: var(--soft); }
+.tab[aria-selected="true"] { background: var(--red); color: #fff; }
+.tab:focus-visible, .btn:focus-visible, .cp:focus-visible, .chip:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+main { padding-block: 24px 70px; }
+.view { display: grid; gap: 22px; }
+.sec { display: grid; gap: 14px; }
+.sec > .head { display: grid; gap: 6px; max-width: 820px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.acc { background: var(--red-soft); border-color: #5a1e22; }
+.card.red { background: var(--red); border-color: var(--red); color: #fff; }
+.card.red .label, .card.red .soft { color: #ffe1e2; }
+.card.flat { background: var(--panel2); }
+.g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+ul.l, ol.l { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: #d6d2cd; }
+ul.l b, ol.l b { color: var(--ink); }
+.say { position: relative; background: var(--panel2); border-left: 3px solid var(--red); border-radius: 10px; padding: 10px 12px; font-size: 14.5px; white-space: pre-line; color: #ece9e5; }
+.say .cp { float: right; margin: -2px -4px 6px 10px; }
+.cp, .btn { all: unset; box-sizing: border-box; cursor: pointer; font: 700 12px/1 var(--f-body); padding: 8px 11px; border-radius: 999px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); white-space: nowrap; }
+.cp.ok { background: var(--green); color: #08110b; border-color: var(--green); }
+.btn { font-size: 14px; padding: 12px 18px; background: var(--red); border-color: var(--red); color: #fff; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { all: unset; cursor: pointer; font: 700 13px/1 var(--f-body); padding: 9px 12px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); color: var(--soft); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tag { display: inline-block; width: fit-content; font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 7px; border-radius: 4px; background: var(--red-soft); color: var(--red-text); }
+.tw { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
+table.t { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+table.t th { text-align: left; font: 500 11px/1.3 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--soft); background: var(--panel2); padding: 9px 10px; }
+table.t td { padding: 9px 10px; border-top: 1px solid var(--line); vertical-align: top; }
+table.t td.n, table.t th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.big { font: 400 40px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
+.card.red .big { color: #fff; }
+.nm { background: var(--panel); border: 1px solid #5a1e22; border-radius: 16px; padding: 16px 18px; display: grid; gap: 8px; }
+.nm .nm-big { font-size: 18px; font-weight: 700; line-height: 1.4; }
+.note { border: 1.5px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; color: var(--soft); display: grid; gap: 6px; }
+details.more > summary { cursor: pointer; font-weight: 700; list-style: none; color: var(--red-text); }
+details.more > summary::-webkit-details-marker { display: none; }
+input, select, textarea { font: 500 14.5px/1.3 var(--f-body); padding: 10px 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); color: var(--ink); width: 100%; min-width: 0; }
+textarea { resize: vertical; min-height: 70px; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+label.f { display: grid; gap: 5px; font-size: 12.5px; font-weight: 700; color: var(--soft); min-width: 0; }
+img { max-width: 100%; display: block; }
+.shot { border-radius: 12px; border: 1px solid var(--line); width: 100%; height: auto; }
+.foot { color: var(--soft); font-size: 13px; padding-top: 18px; border-top: 1px solid var(--line); }
+@media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } .card { padding: 14px; } body { font-size: 15px; } }
+@media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
+</style>
+<style>
+.flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.flow .card { gap: 6px; }
+.flow .n { width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; font-weight: 800; }
+.verdict { font-weight: 800; padding: 10px 12px; border-radius: 10px; background: var(--panel2); }
+@media (max-width: 900px) { .flow { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .flow { grid-template-columns: 1fr; } }
+</style>
+<header class="hero"><div class="wrap">
+  <span class="label">Carlos Jimena · Fight Programming · Parte 4 · Embudo</span>
+  <h1>Nunca precio <em>en el primer mensaje</em></h1>
+  <p class="lead">Hoy te escriben "¿cuánto vale?", das el precio y te dejan en visto. Desde "Lo primero" eso se acabó: preguntas qué practica, si compite y qué se le atasca, y luego llamada. Aquí tienes el camino entero con los mensajes para copiar.</p>
+</div></header>
+<nav class="tabs-bar" aria-label="Secciones"><div class="wrap tabs" role="tablist">
+  <button class="tab" role="tab" data-v="camino" aria-selected="true">El camino</button>
+  <button class="tab" role="tab" data-v="abrir" aria-selected="false">Abrir 100 al día</button>
+  <button class="tab" role="tab" data-v="cualif" aria-selected="false">Cualificar</button>
+  <button class="tab" role="tab" data-v="llamada" aria-selected="false">Llamada y seguimiento</button>
+  <button class="tab" role="tab" data-v="ads" aria-selected="false">Anuncios</button>
+</div></nav>
+<main class="wrap">
+
+<section class="view" id="v-camino">
+  <div class="nm"><span class="label">Tu nicho en una frase</span><p class="nm-big">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p></div>
+  <div class="flow">
+    <div class="card"><span class="n">1</span><h3>Contenido</h3><p class="soft">La reacción a un atleta tuyo. El atleta la comparte y su gente (tu cliente) te ve.</p></div>
+    <div class="card"><span class="n">2</span><h3>Conversación</h3><p class="soft">Instagram o WhatsApp. 100 al día en 2 rondas. Nunca precio.</p></div>
+    <div class="card"><span class="n">3</span><h3>Cualificar</h3><p class="soft">Disciplina, si compite, próximo combate, trabajo, lesiones, qué se le atasca.</p></div>
+    <div class="card"><span class="n">4</span><h3>Llamada</h3><p class="soft">20–30 min por videollamada, máximo a 3 días vista. Precio aquí.</p></div>
+    <div class="card"><span class="n">5</span><h3>Alta + tests</h3><p class="soft">Cobro, app, tests de entrada grabados, permiso de imagen. Empieza la prueba.</p></div>
+  </div>
+  <div class="g2">
+    <div class="card"><span class="label">Reglas</span><ul class="l">
+      <li><b>Nunca precio por mensaje.</b> Ni en el primero ni en el quinto.</li>
+      <li>Cada conversación acaba en una pregunta concreta o en una fecha. Nunca en "cualquier cosa me dices".</li>
+      <li>Audios mejor que texto. Eres de Málaga y eres cercano: que se note.</li>
+      <li>Todo al CRM: disciplina, nivel, próximo combate y fecha, fase, lesión. Lo que no está apuntado, no existe.</li>
+      <li>Seguimientos días 2, 7 y 14: el CRM te los marca.</li>
+      <li>Menores de 18: hablas con él, pero la llamada y el pago, con madre, padre o tutor delante.</li>
+    </ul></div>
+    <div class="card acc"><span class="label">Dónde entra cada uno</span><ul class="l">
+      <li><b>Con fecha de combate:</b> Fight Camp (y al acabar, semestral).</li>
+      <li><b>Compite pero sin fecha:</b> 1:1 semestral.</li>
+      <li><b>Por ocio o muy justo de dinero:</b> en la llamada, Base como plan B.</li>
+      <li><b>Profesional:</b> 1:1 o presencial, precio en llamada. No es a quien le hablas, pero si llega, se atiende.</li>
+      <li><b>Le cuesta mucho entender las tareas</b> (tú lo dijiste): mejor no forzar. Si no encaja, se le dice con cariño.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="view" id="v-abrir" hidden>
+  <div class="sec"><div class="head"><span class="label">100 conversaciones al día · 2 rondas de 50</span><h2>De dónde sacas <em>a los 100</em></h2><p class="soft">Ronda 1 a media mañana, ronda 2 por la tarde, cuando tu cliente sale de currar o de clase. 30–40 minutos cada una. No es vender: es abrir conversación.</p></div>
+    <div class="g3">
+      <div class="card"><span class="label">Calientes</span><ul class="l"><li>Los que comentan o comparten tus reacciones.</li><li>Los que responden a tus historias y encuestas.</li><li>Nuevos seguidores (bienvenida a mano, todos).</li></ul></div>
+      <div class="card"><span class="label">Templados</span><ul class="l"><li>Los que comentan en las publicaciones de tus atletas tras un combate.</li><li>Seguidores de eventos amateur donde pelean los tuyos. <span class="ph">[CARLOS: qué eventos y qué cuentas]</span></li><li>Miembros del Lab (269).</li></ul></div>
+      <div class="card"><span class="label">Recomendación</span><ul class="l"><li>Cada atleta tuyo: "¿a quién de tu gimnasio le vendría bien esto?"</li><li>Después de un combate bueno, se lo pides.</li><li>Antiguos clientes que lo dejaron.</li></ul></div>
+    </div>
+    <div class="g2">
+      <div class="card"><span class="label">Mensajes de apertura</span>
+        <p class="say">Ey [nombre], gracias por seguir. ¿Tú compites o entrenas por tu cuenta? ¿Qué disciplina?</p>
+        <p class="say">Buenas [nombre], vi tu comentario en la reacción de [atleta]. ¿Tú también peleas? ¿MMA o grappling?</p>
+        <p class="say">Ey, vi que estuviste en [evento] apoyando a [compañero]. ¿Tú compites también?</p>
+        <p class="say">[Nombre], ¿qué tal te fue el combate? Vi el vídeo que subiste. ¿Ya tienes el siguiente a la vista?</p>
+      </div>
+      <div class="card"><span class="label">Para pedir recomendaciones</span>
+        <p class="say">[Nombre], estoy cogiendo a un par de chavales más que compitan en amateur. ¿A quién de tu gimnasio le vendría bien esto? Con que me digas su Instagram, yo le escribo de tu parte.</p>
+        <p class="say">Ey [nombre], ¿te acuerdas de cuando entrenábamos juntos? Estoy montando bloques de campamento para gente que tiene combate. ¿Cómo andas ahora? ¿Compites?</p>
+      </div>
+    </div>
+    <div class="card acc"><span class="label">Cuando te preguntan "¿cuánto vale?"</span>
+      <p class="say">Ey, gracias por escribir. Depende mucho de lo que hagas y de si tienes combate cerca, porque no es lo mismo preparar un campamento que una temporada. Cuéntame: ¿qué practicas y compites?</p>
+      <p class="say">Te lo digo seguro, pero antes necesito saber si te puedo ayudar, que no le cojo a todo el mundo. ¿Qué disciplina haces, cuántos días entrenas y tienes algún combate a la vista?</p>
+      <p class="say">Buenas. El precio cambia según si es campamento para un combate o seguimiento de temporada. Lo vemos en una llamada de 20 minutos y te digo lo que te haría falta a ti. Antes, dime: ¿qué se te atasca ahora mismo?</p>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="v-cualif" hidden>
+  <div class="sec"><div class="head"><span class="label">Preguntas de luchador · en este orden</span><h2>3 a 6 mensajes <em>y a la llamada</em></h2><p class="soft">Cada respuesta va al CRM en su campo. Si a la 3.ª pregunta no compite, no entrena ni tiene intención, no fuerzas.</p></div>
+    <div class="g2">
+      <div class="card">
+        <p class="say">1 · ¿Qué disciplina haces? ¿MMA, grappling, BJJ, otra?</p>
+        <p class="say">2 · ¿Compites? ¿Amateur o ya has debutado como profesional?</p>
+        <p class="say">3 · ¿Tienes algún combate a la vista? ¿Para cuándo y dónde?</p>
+        <p class="say">4 · ¿Cuántos días entrenas tu deporte y qué haces ahora de físico?</p>
+        <p class="say">5 · ¿Curras o estudias? ¿Qué horario tienes?</p>
+        <p class="say">6 · ¿Alguna lesión o molestia que te esté sacando del tatami?</p>
+        <p class="say">7 · Y si tuvieras que decirme una cosa que se te atasca en el combate, ¿cuál sería?</p>
+      </div>
+      <div class="card"><span class="label">Pasar a la llamada</span>
+        <p class="say">Vale, con lo que me cuentas ya me hago una idea. Lo que te falta no es más físico, es que tenga un orden alrededor de tu tatami y de tu curro. ¿Te parece si lo vemos en una videollamada de 20 minutos y te digo cómo lo montaría para ti? ¿Mejor [día] a las [hora] o [día] a las [hora]?</p>
+        <p class="say">Con combate el [fecha] vamos con el tiempo justo para hacer un campamento en condiciones. Hablemos esta semana y te digo cómo lo organizaría hasta ese día. ¿[Día] a las [hora] o [día] a las [hora]?</p>
+        <span class="label" style="margin-top:6px">Al agendar</span>
+        <p class="say">Hecho, [día] a las [hora] por videollamada de WhatsApp. Mientras, mira esta reacción de [atleta]: él también [compaginaba trabajo / venía con una lesión / tenía combate en X semanas]. Así ves cómo trabajo. [enlace]</p>
+        <p class="say">Ey [nombre], hoy a las [hora] hablamos. Ten a mano tu horario de entrenos y, si tienes, algún vídeo de tu último combate.</p>
+      </div>
+    </div>
+    <div class="note">Si alguien te dice "solo quería el precio" después de 2 preguntas: "Sin problema. El camp de 8 semanas parte de [precio nivel actual] y el seguimiento de temporada se paga por bloques de 6 meses. Pero no te lo recomendaría sin saber qué necesitas. Si quieres lo vemos en 20 minutos." Solo en ese caso, y sin mandar tabla.</div>
+  </div>
+</section>
+
+<section class="view" id="v-llamada" hidden>
+  <div class="sec"><div class="head"><span class="label">La llamada y lo de después</span><h2>El guion completo está <em>en la Parte 6</em></h2></div>
+    <div class="g2">
+      <div class="card"><span class="label">Si no cierra en la llamada · días 1 a 4</span>
+        <p class="say">Día 1 (en 10 minutos): [Nombre], gracias por el rato. Resumiendo lo que me dijiste: [sus palabras: disciplina, combate, lo que se le atasca]. Lo que te propuse: [producto]. Cualquier duda, me la mandas por audio.</p>
+        <p class="say">Día 2: Te dejo la reacción de [atleta], que estaba en una situación parecida a la tuya: [enlace]. ¿Te surgió alguna duda?</p>
+        <p class="say">Día 3: Te paso por escrito lo que hablamos: [producto], qué incluye y el precio. Para empezar el [fecha] necesito confirmarlo antes del [fecha].</p>
+        <p class="say">Día 4: Último mensaje sobre esto, que no quiero agobiarte. Si quieres empezar el [fecha], me dices hoy. Si no, sin problema: sigue dándole y aquí estoy.</p>
+      </div>
+      <div class="card"><span class="label">Seguimiento de conversaciones · días 2, 7 y 14</span>
+        <p class="say">Día 2: Ey [nombre], ¿viste lo que te pregunté? Me quedé con la duda de qué haces ahora de físico.</p>
+        <p class="say">Día 7: [Nombre], me acordé de ti viendo esto: [reacción o pieza de método relacionada]. ¿Al final tienes combate a la vista?</p>
+        <p class="say">Día 14: Te escribo por última vez para no ser pesado. Cuando tengas el próximo combate, escríbeme CAMP y lo preparamos. ¡Mucha suerte!</p>
+      </div>
+    </div>
+    <div class="card acc"><span class="label">Después de pagar · primeras 48 h</span><ol class="l">
+      <li>Mensaje de bienvenida + acceso a la app (aquí sí, el enlace de Strivee).</li>
+      <li>Cuestionario de entrada: disciplina, horario de tatami, trabajo, lesiones, combate y fecha.</li>
+      <li><b>Tests de entrada grabados</b> la primera semana (Parte 3, Prueba). Se apuntan en el CRM.</li>
+      <li><b>Permiso de imagen por escrito.</b> Si es menor, de madre, padre o tutor.</li>
+      <li>Si tiene combate: se apunta en el calendario de combates del CRM.</li>
+      <li>Al Lab.</li>
+    </ol></div>
+  </div>
+</section>
+
+<section class="view" id="v-ads" hidden>
+  <div class="sec"><div class="head"><span class="label">Anuncios · solo cuando el resto funcione</span><h2>5–10 € al día <em>para que te sigan</em></h2><p class="soft">Primero contenido con atletas y conversaciones. Cuando lleves 2–3 semanas de reacciones publicadas y la cuenta principal ordenada, pruebas. Objetivo: <b>visitas al perfil</b>, no ventas. Lo que vende es el perfil y la conversación.</p></div>
+    <div class="g2">
+      <div class="card"><span class="label">La regla de Alberto</span><ul class="l">
+        <li>Promocionas reels de <b>voz en off</b> que tocan un ángulo y acaban en "sígueme".</li>
+        <li><b>5–10 € al día</b> por reel. Valoras a los <b>2 días</b>.</li>
+        <li><b>Menos de 1 € por seguidor:</b> mantener y escalar.</li>
+        <li><b>Entre 1 y 1,5 €:</b> cambiar el gancho.</li>
+        <li><b>Más de 1,5 €:</b> cortar.</li>
+      </ul></div>
+      <div class="card"><span class="label">Público · España, 18 a 30</span><ul class="l">
+        <li>La regla general de Alberto es +25, pero <b>tu cliente tiene de 18 a 27</b> (tus atletas van de 17 a 30 y la mayoría por debajo de 26–27). Con +25 te dejarías fuera a casi todos.</li>
+        <li>Desde 18, nunca menores.</li>
+        <li>Hombres y mujeres: deja que el algoritmo filtre por el vídeo. Sin intereses al principio.</li>
+        <li>Cuenta: <b>@fight.programming</b>, la principal.</li>
+      </ul></div>
+    </div>
+    <div class="card"><span class="label">Calculadora a los 2 días</span>
+      <div class="g3"><label class="f">Gasto (€)<input id="a-g" type="number" inputmode="decimal" placeholder="20"></label><label class="f">Seguidores ganados<input id="a-s" type="number" inputmode="numeric" placeholder="25"></label><div class="verdict" id="a-v" aria-live="polite">Mete gasto y seguidores.</div></div>
+    </div>
+    <div class="card acc"><span class="label">Normas de Meta · cómo hablas en un anuncio</span><ul class="l">
+      <li>Nunca "¿tienes lesiones?", "¿estás gordo?", "¿te cansas en el tercer asalto?" ni nada que le atribuya algo al que mira.</li>
+      <li>Primera persona ("a mis atletas les pasa…") o "la mayoría de los luchadores amateur…".</li>
+      <li>Nada de promesas de resultado ni de peso. Nada de "gratis".</li>
+      <li>Nombres de atletas solo con su permiso, y en anuncios, permiso específico para anuncios.</li>
+    </ul></div>
+    <div class="sec"><div class="head"><span class="label">3 guiones de voz en off "sígueme"</span><h3>Cada uno toca un ángulo</h3></div>
+      <div class="g3">
+        <div class="card"><span class="tag">B · Método</span><p class="say">IMAGEN: tú entrenando a un atleta, clips cortos.
+VOZ: "La mayoría de los luchadores amateur meten la fuerza donde pueden. Después del tatami, reventados, sin orden. Yo con mis atletas hago dos días de fuerza y uno de cardio, y cada uno tiene su sitio en la semana. Uno arranca con sprints. El otro acaba con explosivos. Y el tercero es cardio, accesoria y pliometría. No es entrenar más: es saber qué, cuándo, cuánto y por qué. Si compites y curras, sígueme. Aquí lo explico todo."</p></div>
+        <div class="card"><span class="tag">C · Sector</span><p class="say">IMAGEN: alguien tirado en el suelo tras un circuito; luego tú corrigiendo una técnica.
+VOZ: "Acabar reventado no significa que haya servido. En este sector se vende mucho cansancio disfrazado de entrenamiento, y a la mayoría de luchadores amateur nadie les ha explicado nunca el porqué de lo que hacen. Yo preparo a luchadores que pelean en PFL, WOW y Cage Warriors, y lo primero que les enseño es esto: cansancio no es entrenamiento. Sígueme si quieres entender lo que haces."</p></div>
+        <div class="card"><span class="tag">A · Reacción</span><p class="say">IMAGEN: el clip de la reacción de la semana (con permiso del atleta para anuncios).
+VOZ: "Este momento de [ATLETA] lo preparamos [CARLOS: semanas] semanas antes. [Una frase de lo que preparasteis.] Mira dónde se ve. Cada semana analizo un combate de mis atletas desde el físico: lo que salió y lo que no. Si compites, sígueme. Esto no lo vas a ver en otro sitio."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function () {
+  var g = document.getElementById("a-g"), s = document.getElementById("a-s"), v = document.getElementById("a-v");
+  function fmt(n) { var r = Math.round(n * 100) / 100; return r.toFixed(2).replace(".", ",") + " €"; }
+  function up() {
+    var a = parseFloat(String(g.value).replace(",", ".")), b = parseFloat(s.value);
+    if (!(a > 0) || !(b > 0)) { v.textContent = "Mete gasto y seguidores."; v.style.color = ""; return; }
+    var c = a / b;
+    v.textContent = fmt(c) + " por seguidor · " + (c < 1 ? "mantener y escalar" : (c <= 1.5 ? "cambiar el gancho" : "cortar"));
+    v.style.color = c < 1 ? "var(--green)" : (c <= 1.5 ? "var(--amber)" : "var(--red-text)");
+  }
+  g.addEventListener("input", up); s.addEventListener("input", up);
+})();
+</script>
+
+<script>
+(function () {
+  function copyText(t, b) {
+    function ok() { var o = b.textContent; b.textContent = "Copiado"; b.classList.add("ok"); setTimeout(function () { b.textContent = o; b.classList.remove("ok"); }, 1400); }
+    function fb() { var ta = document.createElement("textarea"); ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) { b.textContent = "Selecciona y copia"; } document.body.removeChild(ta); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+  }
+  window.cjCopy = copyText;
+  window.cjSay = function (root) {
+    (root || document).querySelectorAll(".say:not([data-cp]):not(.nocp)").forEach(function (p) {
+      p.setAttribute("data-cp", "1");
+      var txt = p.textContent.trim();
+      var b = document.createElement("button"); b.type = "button"; b.className = "cp"; b.textContent = "Copiar";
+      b.addEventListener("click", function () { copyText(txt, b); });
+      p.insertBefore(b, p.firstChild);
+    });
+  };
+  window.cjSay();
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () { var el = document.getElementById(b.dataset.copy); if (el) copyText((el.value != null && el.tagName !== "PRE" ? el.value : el.textContent).trim(), b); });
+  });
+  var tabs = document.querySelectorAll(".tab[data-v]");
+  function show(v, push) {
+    tabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.v === v ? "true" : "false"); });
+    document.querySelectorAll("main > .view").forEach(function (s) { s.hidden = s.id !== "v-" + v; });
+    if (push) { try { history.replaceState(null, "", "#" + v); } catch (e) {} window.scrollTo(0, 0); }
+  }
+  tabs.forEach(function (t) { t.addEventListener("click", function () { show(t.dataset.v, true); }); });
+  if (tabs.length) { var h = (location.hash || "").slice(1); show(document.getElementById("v-" + h) ? h : tabs[0].dataset.v, false); }
+})();
+</script>
