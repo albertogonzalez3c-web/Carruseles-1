@@ -99,6 +99,20 @@ pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); background: 
 .idea ol { margin: 0; padding-left: 20px; color: #d6d2cd; font-size: 14px; }
 #ideas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 @media (max-width: 720px) { #ideas { grid-template-columns: 1fr; } }
+.fl { display: grid; gap: 6px; }
+.fl > .label { color: var(--soft); }
+.ang { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ang li { background: var(--panel2); border-radius: 10px; padding: 10px 12px; display: grid; gap: 6px; }
+.ang li q { font-weight: 700; color: var(--ink); quotes: "«" "»"; }
+.ang li .fm { display: flex; flex-wrap: wrap; gap: 4px; }
+.ang li .fm .tag { background: var(--panel); color: var(--soft); }
+.gui { display: grid; gap: 10px; }
+.gui .tops { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.gui h4 { margin-top: 4px; }
+.gui ol.l { font-size: 14.5px; }
+#guiones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 860px) { #guiones { grid-template-columns: 1fr; } }
+.empty { color: var(--soft); font-size: 14px; }
 </style>
 <header class="hero"><div class="wrap">
   <span class="label">Carlos Jimena · Parte 3 · Contenido</span>
@@ -107,16 +121,52 @@ pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); background: 
   <div class="nm"><span class="label">Lo que haces, en una frase</span><p class="nm-big">Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.</p></div>
 </div></header>
 <nav class="tabs-bar" aria-label="Secciones"><div class="wrap tabs" role="tablist">
-  <button class="tab" role="tab" data-v="semana" aria-selected="true">Semana</button>
+  <button class="tab" role="tab" data-v="angulos" aria-selected="true">Ángulos</button>
+  <button class="tab" role="tab" data-v="semana" aria-selected="false">Semana</button>
   <button class="tab" role="tab" data-v="formatos" aria-selected="false">Formatos</button>
   <button class="tab" role="tab" data-v="ideas" aria-selected="false">Ideas</button>
+  <button class="tab" role="tab" data-v="guiones" aria-selected="false">Guiones</button>
   <button class="tab" role="tab" data-v="yt" aria-selected="false">YouTube</button>
   <button class="tab" role="tab" data-v="atletas" aria-selected="false">Atletas</button>
   <button class="tab" role="tab" data-v="cla" aria-selected="false">Claude Code editor</button>
 </div></nav>
 <main class="wrap">
 
-<section class="view" id="v-semana">
+<section class="view" id="v-angulos">
+  <div class="sec"><div class="head"><span class="label">Ángulos · de aquí sale todo</span><h2>Lo que le pasa a tu gente, dicho como lo dicen ellos</h2><p class="soft">Dos tipos de persona. Cada vídeo toca una de estas frases. Al lado, el formato que mejor le va. Las ideas y los guiones salen de aquí.</p></div>
+    <div class="g2">
+      <div class="card"><span class="label">Perfil 1 · El que compite</span><h3>Amateur de MMA o grappling, 18–27, curra o estudia</h3><p class="soft" style="font-size:14px">Entrena casi a diario. Mete fuerza como puede. Quiere rendir y no lesionarse.</p>
+      <ul class="ang">
+      <li><q>Llego reventado al sparring porque meto pesas sin cabeza.</q><span class="fm"><span class="tag">C1</span><span class="tag">Hablar a cámara</span><span class="tag">Carrusel valor</span></span></li>
+      <li><q>Me lesiono justo antes del combate.</q><span class="fm"><span class="tag">C2</span><span class="tag">Hablar a cámara</span><span class="tag">Reacción atleta</span></span></li>
+      <li><q>Mi entrenador de MMA me pone un físico que me deja muerto.</q><span class="fm"><span class="tag">C3</span><span class="tag">Hablar a cámara</span><span class="tag">Tendencia</span></span></li>
+      <li><q>Me ahogo en el segundo asalto y no sé si es cardio o cabeza.</q><span class="fm"><span class="tag">C4</span><span class="tag">Ranking</span><span class="tag">Reacción famoso</span></span></li>
+      <li><q>Curro 8 horas, entreno todos los días y no sé dónde meter la fuerza.</q><span class="fm"><span class="tag">C5</span><span class="tag">Carrusel valor</span><span class="tag">YouTube</span></span></li>
+      <li><q>Copio la rutina de un peleador de la UFC y a mí no me funciona.</q><span class="fm"><span class="tag">C6</span><span class="tag">Reacción famoso</span><span class="tag">Ranking</span></span></li>
+      <li><q>La semana del combate no sé si entrenar o descansar.</q><span class="fm"><span class="tag">C7</span><span class="tag">Hablar a cámara</span><span class="tag">Carrusel valor</span></span></li>
+      <li><q>Hago lo que me mandan, pero nadie me explica por qué.</q><span class="fm"><span class="tag">C8</span><span class="tag">Tendencia</span><span class="tag">Carrusel conexión</span></span></li>
+      <li><q>La semana antes de pelear tengo la cabeza a mil y entreno peor.</q><span class="fm"><span class="tag">C9</span><span class="tag">Hablar a cámara</span><span class="tag">Reacción atleta</span></span></li>
+      <li><q>Quiero rendir más en el tatami, no verme mejor en el espejo.</q><span class="fm"><span class="tag">C10</span><span class="tag">Tendencia</span><span class="tag">Ranking</span></span></li>
+      </ul><button type="button" class="btn ghost" data-goideas="Competidor" style="justify-self:start">Ver ideas del que compite</button></div>
+      <div class="card"><span class="label">Perfil 2 · El que entrena por gusto</span><h3>Hace contacto u otro deporte, no compite</h3><p class="soft" style="font-size:14px">Quiere estar fuerte, en forma y sin lesiones. Le inspira la élite.</p>
+      <ul class="ang">
+      <li><q>Quiero estar fuerte como un luchador, pero no voy a competir.</q><span class="fm"><span class="tag">H1</span><span class="tag">Hablar a cámara</span><span class="tag">Carrusel conexión</span></span></li>
+      <li><q>No sé si con 30 años y sin competir esto es para mí.</q><span class="fm"><span class="tag">H2</span><span class="tag">Hablar a cámara</span><span class="tag">Carrusel conexión</span></span></li>
+      <li><q>Voy a jiu-jitsu o a boxeo por gusto y siempre tengo alguna molestia.</q><span class="fm"><span class="tag">H3</span><span class="tag">Ranking</span><span class="tag">Carrusel valor</span></span></li>
+      <li><q>Entre el curro y todo lo demás, tengo 2 o 3 días como mucho.</q><span class="fm"><span class="tag">H4</span><span class="tag">Carrusel valor</span><span class="tag">YouTube</span></span></li>
+      <li><q>Me flipan los peleadores, pero sus entrenos me parecen de otro planeta.</q><span class="fm"><span class="tag">H5</span><span class="tag">Reacción famoso</span><span class="tag">Tendencia</span></span></li>
+      <li><q>Quiero algo con más sentido que acabar tirado en el suelo.</q><span class="fm"><span class="tag">H6</span><span class="tag">Hablar a cámara</span><span class="tag">Tendencia</span></span></li>
+      <li><q>Me da corte entrenar con un preparador de peleadores sin ser uno.</q><span class="fm"><span class="tag">H7</span><span class="tag">Hablar a cámara</span><span class="tag">Historias</span></span></li>
+      <li><q>Empiezo a tope, me lesiono y lo dejo. Siempre igual.</q><span class="fm"><span class="tag">H8</span><span class="tag">Hablar a cámara</span><span class="tag">Ranking</span></span></li>
+      <li><q>Quiero estar en forma para mi deporte, no solo para la foto.</q><span class="fm"><span class="tag">H9</span><span class="tag">Ranking</span><span class="tag">Reacción famoso</span></span></li>
+      <li><q>No sé qué hacer en el gimnasio los días que no tengo clase.</q><span class="fm"><span class="tag">H10</span><span class="tag">Carrusel valor</span><span class="tag">Ranking</span></span></li>
+      </ul><button type="button" class="btn ghost" data-goideas="Hobby" style="justify-self:start">Ver ideas del que entrena por gusto</button></div>
+    </div>
+    <div class="note"><b>Cómo se usa:</b> eliges una frase, la dices tal cual en los 3 primeros segundos y cuentas qué haces tú con eso. Una frase por vídeo. Los atletas salen como prueba, nunca con datos que no tengas: <span class="ph">[CARLOS: completar]</span>.</div>
+  </div>
+</section>
+
+<section class="view" id="v-semana" hidden>
   <div class="sec"><div class="head"><span class="label">Semana tipo</span><h2>Lo que sale cada día</h2></div>
     <div class="tw"><table class="t">
       <thead><tr><th>Día</th><th>@carlosjimena90</th><th>@fight.programming</th></tr></thead>
@@ -151,9 +201,17 @@ pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); background: 
 </section>
 
 <section class="view" id="v-ideas" hidden>
-  <div class="sec"><div class="head"><span class="label">Banco de ideas</span><h2>Filtra y graba</h2><p class="soft">Lo que va entre [corchetes] lo completas tú. Nunca inventes resultados, cifras ni cargas.</p></div>
-    <div class="chips" id="chips"></div>
+  <div class="sec"><div class="head"><span class="label">Banco de ideas</span><h2>Filtra y graba</h2><p class="soft">Lo que va entre [corchetes] lo completas tú. Nunca inventes resultados, cifras ni cargas. C1, H3… es el ángulo del que sale.</p></div>
+    <div class="fl"><span class="label">Para quién</span><div class="chips" id="pchips"></div></div>
+    <div class="fl"><span class="label">Formato</span><div class="chips" id="chips"></div></div>
     <div id="ideas"></div>
+  </div>
+</section>
+
+<section class="view" id="v-guiones" hidden>
+  <div class="sec"><div class="head"><span class="label">Guiones · 8 para grabar</span><h2>Una toma, sin papel</h2><p class="soft">Gancho, 3 ganchos para reels de prueba, el cuerpo en frases cortas, cierre y pie de post. Lo de [corchetes] lo pones tú.</p></div>
+    <div class="fl"><span class="label">Para quién</span><div class="chips" id="gchips"></div></div>
+    <div id="guiones"></div>
   </div>
 </section>
 
@@ -244,8 +302,14 @@ Mi frase: Entreno a luchadores de élite. Y a ti, compitas o no, con la misma ca
 Semana normal: 2 días de fuerza (uno arranca con sprints, otro acaba con explosivos) y 1 de cardio, accesorio y pliometría. Semana del combate: contraste en 2–3 días.
 
 ## A quién hablo
-Al que hace MMA, grappling u otro deporte de contacto, compita o no. También al que entrena por hobby y quiere estar fuerte, en forma y sin lesiones. Casi siempre curra o estudia.
+Dos perfiles. Cada pieza habla a uno:
+- El que compite: amateur de MMA o grappling, 18–27, curra o estudia, entrena casi a diario, mete fuerza sin criterio. Quiere rendir y no lesionarse.
+- El que entrena por gusto: contacto u otro deporte, no compite. Quiere estar fuerte, en forma y sin lesiones. Le inspira la élite.
 Los profesionales son la prueba y la inspiración, no a quien le vendo.
+
+## Ángulos (lo que dicen ellos; cada pieza toca uno)
+Compite: llego reventado al sparring · me lesiono antes del combate · el físico de mi entrenador me deja muerto · me ahogo en el segundo asalto · curro y no sé dónde meter la fuerza · copio rutinas de la UFC · no sé qué hacer la semana del combate · nadie me explica el porqué · cabeza a mil antes de pelear · quiero rendir, no verme bien.
+Por gusto: fuerte como un luchador sin competir · ¿con 30 y sin competir es para mí? · siempre alguna molestia · solo tengo 2–3 días · los entrenos de peleadores me parecen de otro planeta · algo con más sentido que acabar tirado · me da corte no ser peleador · empiezo a tope, me lesiono y lo dejo · en forma para mi deporte · no sé qué hacer los días sin clase.
 
 ## Cuentas
 - @carlosjimena90: todo lo nuevo. Aquí vendo.
@@ -312,7 +376,7 @@ Vertical 9:16. Subtítulos grandes en blanco. Corta silencios. Reacción: clip a
     ["Hablar a cámara", "El día que un atleta mío llegó reventado a un camp.", "Qué pasó y qué cambiaste. " + X],
     ["Hablar a cámara", "Lo que me saca de quicio de mi sector.", "Ejercicios milagro y vídeos que solo buscan dejarte reventado. Sin nombrar a nadie."],
     ["Hablar a cámara", "Cansarte no es entrenar.", "Acabar tirado en el suelo no significa que haya servido."],
-    ["Hablar a cámara", "Así es la semana de un amateur que curra 8 horas.", "2 días de fuerza y 1 de cardio, accesorio y pliometría."],
+    ["Hablar a cámara", "Así es la semana de un amateur que curra 8 horas.", "2 días de fuerza y 1 de cardio, accesorio y pliometría.", "Competidor"],
     ["Reacción atleta", "Este derribo de [atleta] lo trabajamos [CARLOS: semanas] semanas.", "Momento → qué preparasteis → dónde se ve → qué corregís. " + C],
     ["Reacción atleta", "El tercer asalto de [atleta]: aquí se ve el camp.", "Cómo llegó al final. " + C],
     ["Reacción atleta", "Lo que no salió en el combate de [atleta] y qué vamos a cambiar.", "Con su sí. " + C],
@@ -326,10 +390,10 @@ Vertical 9:16. Subtítulos grandes en blanco. Corta silencios. Reacción: clip a
     ["Reacción famoso", "Lo que dice el físico de [peleador] en su último combate.", "Resultado: " + C],
     ["Reacción famoso", "El error de preparación que veo en muchos combates del fin de semana.", "Sin nombrar a ningún preparador."],
     ["Ranking", "Top 5 ejercicios que haría un peleador con solo 2 días de gimnasio.", "Tu porqué en cada uno. Sin cargas."],
-    ["Ranking", "Top 5 errores de un amateur en su primer camp.", "De menos a más grave."],
+    ["Ranking", "Top 5 errores de un amateur en su primer camp.", "De menos a más grave.", "Competidor"],
     ["Ranking", "Cómo se preparan un boxeador, un grappler y uno de MMA: de menos a más físico.", "Lo que cambia en la semana."],
-    ["Ranking", "3 cosas que hago la semana del combate y 3 que no.", "Nada de pautas de peso."],
-    ["Ranking", "Top 5 cosas para no lesionarte el hombro si haces contacto por gusto.", "Para el de hobby. General, sin pautas médicas."],
+    ["Ranking", "3 cosas que hago la semana del combate y 3 que no.", "Nada de pautas de peso.", "Competidor"],
+    ["Ranking", "Top 5 cosas para no lesionarte el hombro si haces contacto por gusto.", "Para el de hobby. General, sin pautas médicas.", "Hobby"],
     ["Ranking", "Lo que más cansa en un combate: lo que cree la gente vs. lo que es.", "Ranking de la gente frente al tuyo."],
     ["Ranking", "Top 5 cosas que hace un profesional fuera del tatami y un amateur no.", "Descanso, orden, cabeza."],
     ["Tendencia", "POV: le dices a tu preparador que ayer hiciste 200 burpees.", "Tu cara. Cansarte no es entrenar."],
@@ -344,28 +408,157 @@ Vertical 9:16. Subtítulos grandes en blanco. Corta silencios. Reacción: clip a
     ["Carrusel conexión", "Lo que nadie ve de un camp.", ["Portada: foto de camp", "La primera semana", "El día que todo pesa", "La semana del combate", "El día del combate " + X]],
     ["Carrusel conexión", "Un día mío: el centro, la app y la esquina.", ["Mañana: programar", "Mediodía: vídeos de mis atletas", "Tarde: centro", "Noche: dudas por WhatsApp", "Por qué me gusta"]],
     ["Carrusel conexión", "Me importa más que entiendas que que sudes.", ["Portada: la frase", "Lo que me encontré al empezar", "Por qué explico cada cosa", "Lo que cambia en el atleta", "Mi forma de entrenar"]],
-    ["Carrusel conexión", "Lo que aprendí de la gente que entrena por gusto.", ["Portada", "Son más objetivos", "Disfrutan el trabajo en sí", "Lo que les copio a ellos", "Por qué también entreno a gente que no compite"]],
+    ["Carrusel conexión", "Lo que aprendí de la gente que entrena por gusto.", ["Portada", "Son más objetivos", "Disfrutan el trabajo en sí", "Lo que les copio a ellos", "Por qué también entreno a gente que no compite"], "Hobby"],
     ["Carrusel conexión", "La primera vez que un atleta mío ganó fuera.", ["Portada: foto " + X, "Cómo llegó", "La semana antes", "El combate " + C, "Lo que me llevé"]],
     ["Carrusel valor", "La semana de un luchador que trabaja: 3 días que caben.", ["Portada", "Día 1: fuerza, arranca con sprints", "Día 2: fuerza, acaba con explosivos", "Día 3: cardio, accesorio y pliometría", "Dónde van respecto al tatami"]],
-    ["Carrusel valor", "La semana del combate no es descansar.", ["Portada", "Contraste en 2–3 días", "Sprints el primer día", "Accesorio el último", "Del peso, ni una pauta: con un profesional"]],
+    ["Carrusel valor", "La semana del combate no es descansar.", ["Portada", "Contraste en 2–3 días", "Sprints el primer día", "Accesorio el último", "Del peso, ni una pauta: con un profesional"], "Competidor"],
     ["Carrusel valor", "Sprints al principio, explosivos al final: por qué.", ["Portada", "Qué es cada cosa", "Por qué ese orden " + X, "Qué pasa si lo cambias", "Resumen"]],
-    ["Carrusel valor", "5 señales de que tu físico te está quitando tatami.", ["Portada", "Llegas reventado al sparring", "Molestias que no se van", "Te ahogas siempre en el mismo asalto", "Entrenas mucho y no notas nada"]],
-    ["Carrusel valor", "Haces contacto por gusto: lo mínimo para no lesionarte.", ["Portada", "Calentar de verdad", "Fuerza 2 días", "Descanso", "Escuchar las molestias"]],
-    ["Carrusel valor", "La cabeza de un peleador vs. la de un corredor.", ["Portada", "El miedo", "El combate en la cabeza toda la semana", "Cómo cambia el entreno", "Por qué lo tengo en cuenta"]]
+    ["Carrusel valor", "5 señales de que tu físico te está quitando tatami.", ["Portada", "Llegas reventado al sparring", "Molestias que no se van", "Te ahogas siempre en el mismo asalto", "Entrenas mucho y no notas nada"], "Competidor"],
+    ["Carrusel valor", "Haces contacto por gusto: lo mínimo para no lesionarte.", ["Portada", "Calentar de verdad", "Fuerza 2 días", "Descanso", "Escuchar las molestias"], "Hobby"],
+    ["Carrusel valor", "La cabeza de un peleador vs. la de un corredor.", ["Portada", "El miedo", "El combate en la cabeza toda la semana", "Cómo cambia el entreno", "Por qué lo tengo en cuenta"]],
+    // --- Nuevas, salen de los ángulos (C = compite, H = por gusto) ---
+    ["Hablar a cámara", "Llegas reventado al sparring y lo llamas disciplina.", "C1 · Pesas sin cabeza = peor tatami. Dónde va la fuerza respecto al sparring.", "Competidor"],
+    ["Hablar a cámara", "Si te lesionas siempre en el camp, no es mala suerte.", "C2 · El cansancio que se acumula y lo que miras tú. Sin cifras.", "Competidor"],
+    ["Reacción atleta", "Esto casi deja a [atleta] fuera del camp. Así lo llevamos.", "C2 · Sin datos médicos y con su sí. " + X, "Competidor"],
+    ["Hablar a cámara", "Tu entrenador de MMA no tiene por qué ser tu preparador físico.", "C3 · Respeto al entrenador: cada uno a lo suyo. Sin señalar a nadie.", "Competidor"],
+    ["Tendencia", "Lo que me mandan de físico en el club vs. lo que necesito para pelear.", "C3 · Audio de expectativa vs. realidad. Sin nombrar clubes ni entrenadores.", "Competidor"],
+    ["Ranking", "Top 5 razones por las que te ahogas en el segundo asalto.", "C4 · De menos a más importante para ti. Cardio, cabeza, cómo llegas.", "Competidor"],
+    ["Reacción famoso", "Mira cuándo baja las manos [peleador]: eso no siempre es cardio.", "C4 · Cabeza o físico, solo lo que se ve. " + C, "Competidor"],
+    ["Hablar a cámara", "Curras 8 horas y entrenas MMA cada día. Tu fuerza va aquí.", "C5 · Dónde van los 2 días de fuerza respecto al tatami.", "Competidor"],
+    ["YouTube", "Monto delante de ti la semana de un amateur que curra.", "C5 · Pizarra: tatami, curro, fuerza, descanso. 10–15 min.", "Competidor"],
+    ["Reacción famoso", "Copiar la rutina de [peleador] te va a reventar. Te explico por qué.", "C6 · Él vive de esto; tú curras. Lo que sí copiarías. " + C, "Competidor"],
+    ["Ranking", "Ejercicios virales de peleadores: de menos a más útil para un amateur.", "C6 · Pantalla partida. Sin señalar a nadie.", "Competidor"],
+    ["Hablar a cámara", "La semana del combate no se gana entrenando más.", "C7 · Contraste en 2–3 días. Del peso, ni una pauta.", "Competidor"],
+    ["Tendencia", "POV: preguntas por qué haces sprints y tu preparador te lo explica.", "C8 · Qué, cuándo, cuánto y por qué.", "Competidor"],
+    ["Hablar a cámara", "Si no sabes por qué haces un ejercicio, pregúntalo antes de repetirlo.", "C8 · Ejercicios sí, criterio no. Lo que explicas tú a cada atleta.", "Competidor"],
+    ["Hablar a cámara", "La semana antes de pelear, tu cabeza gasta más que tus piernas.", "C9 · Nervios, sueño, el combate en la cabeza. Cómo lo tienes en cuenta.", "Competidor"],
+    ["Reacción atleta", "Así llegó [atleta] de cabeza a la semana del combate.", "C9 · Con su sí. " + C, "Competidor"],
+    ["Tendencia", "Entrenar para verte bien vs. entrenar para rendir en el tatami.", "C10 · Dos columnas, misma semana.", "Competidor"],
+    ["Hablar a cámara", "No compites. Y te entreno con la misma cabeza que a mis profesionales.", "H1 · Cambia el objetivo, no la forma de pensar.", "Hobby"],
+    ["Hablar a cámara", "Un preparador de peleadores no es solo para peleadores.", "H2 · La gente que entrena por gusto es la que más disfruta el trabajo.", "Hobby"],
+    ["Ranking", "Top 5 molestias del que hace contacto por gusto y qué miraría yo.", "H3 · General, sin pautas médicas. Si duele, a un profesional sanitario.", "Hobby"],
+    ["Hablar a cámara", "Si cada vez que vuelves a clase te duele algo, no siempre es la edad.", "H3 · Cómo llegas a clase y qué haces el resto de la semana.", "Hobby"],
+    ["YouTube", "Hago contacto por gusto y tengo 3 días: mi semana entera.", "H4 · De lunes a domingo, con clase y gimnasio.", "Hobby"],
+    ["Ranking", "Con 2 días de gimnasio a la semana, esto es lo primero que metería.", "H4 · Tu porqué en cada uno. Sin cargas.", "Hobby"],
+    ["Reacción famoso", "Lo que puedes copiar de [peleador] aunque no vayas a pelear nunca.", "H5 · La cualidad, no la rutina. " + C, "Hobby"],
+    ["Tendencia", "Entrenos de peleador en redes vs. lo que haría yo contigo.", "H5 · Expectativa vs. realidad.", "Hobby"],
+    ["Hablar a cámara", "Acabar tirado en el suelo no es estar en forma.", "H6 · Cansarte no es entrenar, también si no compites.", "Hobby"],
+    ["Tendencia", "POV: dejas de buscar el entreno que más cansa y empiezas a notar cosas.", "H6 · Audio de cambio.", "Hobby"],
+    ["Hablar a cámara", "En mi centro entrenan luchadores de élite y gente que nunca ha pisado una jaula.", "H7 · Nadie te mira raro. Mismo cuidado.", "Hobby"],
+    ["Historias", "Un día normal con alguien que entrena por gusto.", "H7 · Con su sí. Sin lección.", "Hobby"],
+    ["Hablar a cámara", "Empiezas a tope, te lesionas y lo dejas. Siempre igual.", "H8 · Por qué pasa y cómo lo ordenas tú.", "Hobby"],
+    ["Ranking", "3 cosas que hago con un luchador de élite y haría igual contigo.", "H9 · Calentamiento, orden de la semana, explicar el porqué.", "Hobby"],
+    ["Hablar a cámara", "Lo que haría los días que no tienes clase.", "H10 · Fuerza, algo de cardio, descanso. Sin cargas.", "Hobby"],
+    ["Tendencia", "Cosas que no sabías de entrenar con un preparador de peleadores sin ser peleador.", "H1 · Formato 'cosas que no sabías'.", "Hobby"],
+    ["Hablar a cámara", "Lo mismo que le explico a un profesional te lo explico a ti.", "C8 · H1 · Qué, cuándo, cuánto y por qué.", "Ambos"],
+    ["Ranking", "Top 5 señales de que tu entreno te quita más de lo que te da.", "C1 · H6 · De menos a más grave.", "Ambos"],
+    ["Reacción famoso", "El gesto de [peleador] que se entrena igual, compitas o no.", "C6 · H5 · Qué cualidad hay detrás. " + C, "Ambos"],
+    ["YouTube", "Reacciono a vuestras rutinas: los que compiten y los que entrenan por gusto.", "C1 · H6 · Con permiso de quien la manda. Sin burlas.", "Ambos"],
+    ["Hablar a cámara", "Cansarte no es entrenar. Y lesionarte no es de valientes.", "C2 · H8 · Una idea, menos de 1 minuto.", "Ambos"],
+    ["Carrusel conexión", "No compites. Y te entreno igual que a mis luchadores.", ["Portada: tú en el centro + la frase", "Entreno a luchadores de élite", "También a gente que no va a pelear nunca", "Son de los que más disfrutan el trabajo", "Misma cabeza: qué, cuándo, cuánto y por qué", "Si entrenas por gusto, también es para ti"], "Hobby"],
+    ["Carrusel conexión", "No vienen a pelear. Vienen a no romperse.", ["Portada: foto entrenando a alguien que no compite (con su sí)", "Curran y tienen poco tiempo", "De dónde venía uno de ellos " + X, "Lo que hicimos: ordenar su semana", "Lo que ha cambiado " + X, "Lo que me enseñan ellos a mí"], "Hobby"],
+    ["Carrusel valor", "Entrenas contacto por gusto: tu semana en 3 días.", ["Portada", "Día 1: fuerza", "Día 2: fuerza y algo explosivo", "Día 3: cardio, accesorio y movilidad", "Lejos de la clase más dura", "Lo que no hace falta: acabar reventado"], "Hobby"],
+    ["Carrusel valor", "5 errores del que entrena por gusto y acaba lesionado.", ["Portada", "Empezar a tope", "Copiar la rutina de un profesional", "Calentar dos minutos", "Gimnasio, clase y cardio el mismo día sin orden", "Aguantar molestias hasta que paran solas"], "Hobby"]
   ];
-  var F = ["Todas", "Hablar a cámara", "Reacción atleta", "Reacción famoso", "Ranking", "Tendencia", "Carrusel conexión", "Carrusel valor", "Historias"], cur = "Todas";
+  var F = ["Todas", "Hablar a cámara", "Reacción atleta", "Reacción famoso", "Ranking", "Tendencia", "YouTube", "Carrusel conexión", "Carrusel valor", "Historias"], cur = "Todas";
+  var P = ["Todos", "Competidor", "Hobby", "Ambos"], pcur = "Todos";
+  var PL = { Todos: "Todos", Competidor: "El que compite", Hobby: "Por gusto", Ambos: "Los dos" };
+  function prof(i) { return i[3] || "Ambos"; }
+  function okP(i, p) { return p === "Todos" || prof(i) === p; }
+  function okF(i, f) { return f === "Todas" || i[0] === f; }
   function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
-  var chips = document.getElementById("chips"), box = document.getElementById("ideas");
-  chips.innerHTML = F.map(function (f) { var n = f === "Todas" ? I.length : I.filter(function (i) { return i[0] === f; }).length; return '<button type="button" class="chip" data-f="' + f + '" aria-pressed="' + (f === cur) + '">' + f + ' · ' + n + '</button>'; }).join("");
+  var chips = document.getElementById("chips"), pchips = document.getElementById("pchips"), box = document.getElementById("ideas");
+  function drawChips() {
+    chips.innerHTML = F.map(function (f) { var n = I.filter(function (i) { return okF(i, f) && okP(i, pcur); }).length; return '<button type="button" class="chip" data-f="' + f + '" aria-pressed="' + (f === cur) + '">' + f + ' · ' + n + '</button>'; }).join("");
+    pchips.innerHTML = P.map(function (p) { var n = I.filter(function (i) { return okP(i, p) && okF(i, cur); }).length; return '<button type="button" class="chip" data-p="' + p + '" aria-pressed="' + (p === pcur) + '">' + PL[p] + ' · ' + n + '</button>'; }).join("");
+  }
   function render() {
-    box.innerHTML = I.filter(function (i) { return cur === "Todas" || i[0] === cur; }).map(function (i) {
+    drawChips();
+    var L = I.filter(function (i) { return okF(i, cur) && okP(i, pcur); });
+    box.innerHTML = L.length ? L.map(function (i) {
       var body = Array.isArray(i[2]) ? '<ol>' + i[2].map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ol>' : '<p class="soft" style="font-size:14px">' + esc(i[2]) + '</p>';
-      return '<div class="idea"><span class="tag">' + esc(i[0]) + '</span><p class="say g">' + esc(i[1]) + '</p>' + body + '</div>';
-    }).join("");
+      return '<div class="idea" data-fmt="' + esc(i[0]) + '" data-prof="' + prof(i) + '"><div class="chips"><span class="tag">' + esc(i[0]) + '</span><span class="tag" style="background:var(--panel2);color:var(--soft)">' + PL[prof(i)] + '</span></div><p class="say g">' + esc(i[1]) + '</p>' + body + '</div>';
+    }).join("") : '<p class="empty">No hay ideas con esa mezcla. Cambia un filtro.</p>';
     if (window.cjSay) window.cjSay(box);
   }
-  chips.addEventListener("click", function (e) { var b = e.target.closest("[data-f]"); if (!b) return; cur = b.dataset.f; chips.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", c.dataset.f === cur ? "true" : "false"); }); render(); });
+  chips.addEventListener("click", function (e) { var b = e.target.closest("[data-f]"); if (!b) return; cur = b.dataset.f; render(); });
+  pchips.addEventListener("click", function (e) { var b = e.target.closest("[data-p]"); if (!b) return; pcur = b.dataset.p; render(); });
+  document.querySelectorAll("[data-goideas]").forEach(function (b) {
+    b.addEventListener("click", function () { pcur = b.dataset.goideas; cur = "Todas"; render(); var t = document.querySelector('.tab[data-v="ideas"]'); if (t) t.click(); });
+  });
   render();
+
+  // --- Guiones ---
+  var G = [
+    { p: "Competidor", f: "Hablar a cámara", a: "C1",
+      g: "Llegas reventado al sparring y crees que te faltan ganas.",
+      alt: ["Meter pesas sin cabeza te quita tatami.", "Si después de pierna no puedes hacer sparring, algo está mal.", "El gimnasio está para que pelees mejor, no peor."],
+      c: ["Entrenas MMA casi todos los días.", "Y la fuerza la metes donde cabe, como puedes.", "Pierna fuerte el día antes del sparring, y luego te arrastras.", "La fuerza tiene que ir donde no te quite tatami.", "A mis luchadores primero les miro la semana de tatami. Luego pongo los 2 días de fuerza."],
+      k: "Primero tu semana. Luego las pesas.",
+      pie: "La fuerza va donde no te quita tatami. Cuéntame qué día metes tú la pierna." },
+    { p: "Competidor", f: "Reacción atleta", a: "C2 · C9",
+      g: "Este momento de [atleta] en [evento] lo preparamos [CARLOS: semanas] semanas.",
+      alt: ["Mira cómo llega [atleta] a este [asalto].", "Lo que trabajamos en el camp de [atleta] está en estos 5 segundos.", "Lo que no salió en el combate de [atleta] y qué vamos a cambiar."],
+      c: ["[combate: CARLOS completar]. Momento: [asalto y minuto].", "Para esto preparamos [qué: CARLOS] durante [CARLOS: semanas] semanas.", "Fíjate aquí: [lo que se ve: la salida, las piernas, el ritmo].", "Lo que no salió: [CARLOS completar].", "En el próximo camp corregimos [CARLOS completar]."],
+      k: "Eso es lo que toca ahora: [la corrección].",
+      pie: "Un momento, lo que preparamos y lo que vamos a cambiar. Con el sí de [atleta]." },
+    { p: "Competidor", f: "Ranking", a: "C4",
+      g: "Top 5 razones por las que te ahogas en el segundo asalto.",
+      alt: ["Te ahogas en el segundo asalto y no siempre es cardio.", "Si siempre te fundes en el mismo asalto, mira esto.", "Más cardio no siempre arregla quedarte sin gas."],
+      c: ["5: llegas cansado del gimnasio a pelear o a hacer sparring.", "4: sales a tope el primer minuto.", "3: los nervios. La cabeza también gasta.", "2: tu cardio no se parece a un combate.", "1: nadie ha mirado tu semana entera."],
+      k: "Antes de meter más cardio, mira lo demás.",
+      pie: "El número 1 es el que más veo. ¿En cuál te ves tú?" },
+    { p: "Competidor", f: "Tendencia", a: "C3 · C8",
+      g: "POV: preguntas por qué haces este ejercicio y te dicen \"porque sí\".",
+      alt: ["Lo que te mandan vs. lo que entiendes.", "Si no sabes por qué lo haces, no lo hagas a ciegas.", "Cansarte no es entrenar."],
+      c: ["Audio de expectativa vs. realidad, pantalla partida.", "Lado 1: te mandan una tanda que te deja muerto, sin más.", "Lado 2: te explican qué es, cuándo, cuánto y por qué.", "Un peleador que entiende lo que hace lo hace mejor.", "Mis atletas saben por qué hacen cada cosa."],
+      k: "Pregunta siempre el porqué.",
+      pie: "Ejercicios te dan en cualquier sitio. El porqué, pocos. Sin señalar a nadie." },
+    { p: "Hobby", f: "Hablar a cámara", a: "H1",
+      g: "Entreno a luchadores de élite. Y a gente que no va a pelear nunca.",
+      alt: ["No compites. Te entreno con la misma cabeza.", "Lo que le explico a un profesional te lo explico a ti.", "No hace falta pelear para entrenar como un peleador."],
+      c: ["Mis atletas tienen victorias en WOW, PFL y Cage Warriors.", "Pero también entreno a gente que viene por gusto.", "Y son de los que más disfrutan el trabajo.", "Con ellos cambia el objetivo, no la cabeza.", "Qué haces, cuándo, cuánto y por qué. Igual que con un profesional."],
+      k: "Compitas o no, la misma cabeza.",
+      pie: "Más fuerte, en forma y sin lesiones. Compitas o no." },
+    { p: "Hobby", f: "Hablar a cámara", a: "H2 · H7",
+      g: "Un preparador de peleadores no es solo para peleadores.",
+      alt: ["Tienes 30 años, no compites y crees que esto no es para ti.", "Me da igual que no vayas a pisar una jaula.", "En mi centro entrena élite y gente que nunca ha peleado."],
+      c: ["Mucha gente piensa que esto es solo para los que compiten.", "Yo entreno a gente que curra y no va a pelear.", "Lo que buscan: estar fuertes, en forma y sin lesiones.", "Su semana cabe en 2 o 3 días.", "Cambia el objetivo. El cuidado es el mismo."],
+      k: "Si entrenas por gusto, también es para ti.",
+      pie: "No hace falta competir para entrenar con cabeza." },
+    { p: "Hobby", f: "Reacción famoso", a: "H5 · H9",
+      g: "Lo que puedes copiar de [peleador] aunque no vayas a pelear nunca.",
+      alt: ["Copia la cualidad de [peleador], no su rutina.", "Este gesto de [peleador] te sirve aunque no compitas.", "Lo que no copiaría nunca de [peleador] si entrenas por gusto."],
+      c: ["[combate: CARLOS completar]. Mira este momento: [minuto].", "Eso que ves es [cualidad: CARLOS completar].", "Él lo trabaja con un camp entero, porque vive de esto.", "Tú lo puedes trabajar en tu semana, con 2 o 3 días.", "Lo que no copiaría: [CARLOS completar]."],
+      k: "Copia la cualidad, no la rutina.",
+      pie: "Te inspira la élite. Bien. Entrena con su cabeza, no con su horario." },
+    { p: "Hobby", f: "Ranking", a: "H3 · H8",
+      g: "Top 5 errores del que hace contacto por gusto y acaba lesionado.",
+      alt: ["Empiezas a tope, te lesionas y lo dejas. Estos son los motivos.", "5 errores que te sacan del tatami aunque no compitas.", "Si siempre tienes una molestia, mira el número 1."],
+      c: ["5: copiar la rutina de un profesional.", "4: gimnasio, clase y cardio el mismo día, sin orden.", "3: calentar dos minutos.", "2: aguantar una molestia hasta que se va sola.", "1: empezar a tope para recuperar el tiempo perdido."],
+      k: "No se trata de entrenar más. Se trata de poder volver mañana.",
+      pie: "Entrenar por gusto también se hace con cabeza. Si algo duele, a un profesional sanitario." }
+  ];
+  var GP = ["Todos", "Competidor", "Hobby"], gcur = "Todos";
+  var gchips = document.getElementById("gchips"), gbox = document.getElementById("guiones");
+  function gtext(x) { return "GANCHO: " + x.g + "\n\n" + x.c.join("\n") + "\n\nCIERRE: " + x.k + "\n\nPIE: " + x.pie; }
+  function grender() {
+    gchips.innerHTML = GP.map(function (p) { var n = G.filter(function (x) { return p === "Todos" || x.p === p; }).length; return '<button type="button" class="chip" data-gp="' + p + '" aria-pressed="' + (p === gcur) + '">' + PL[p] + ' · ' + n + '</button>'; }).join("");
+    gbox.innerHTML = G.map(function (x, n) { return [x, n]; }).filter(function (z) { return gcur === "Todos" || z[0].p === gcur; }).map(function (z) {
+      var x = z[0], n = z[1];
+      return '<div class="card gui" data-prof="' + x.p + '"><div class="tops"><span class="label">Guion ' + (n + 1) + '</span><span class="tag">' + esc(x.f) + '</span><span class="tag" style="background:var(--panel2);color:var(--soft)">' + PL[x.p] + ' · ' + esc(x.a) + '</span></div>' +
+        '<h4>Gancho (3 s)</h4><p class="say g">' + esc(x.g) + '</p>' +
+        '<h4>3 ganchos para reels de prueba</h4>' + x.alt.map(function (a) { return '<p class="say">' + esc(a) + '</p>'; }).join("") +
+        '<h4>Cuerpo (una toma)</h4><ol class="l">' + x.c.map(function (c) { return '<li>' + esc(c) + '</li>'; }).join("") + '</ol>' +
+        '<h4>Cierre</h4><p class="say">' + esc(x.k) + '</p>' +
+        '<h4>Pie de post</h4><p class="say">' + esc(x.pie) + '</p>' +
+        '<button type="button" class="cp" data-g="' + n + '" style="justify-self:start">Copiar guion entero</button></div>';
+    }).join("");
+    if (window.cjSay) window.cjSay(gbox);
+  }
+  gchips.addEventListener("click", function (e) { var b = e.target.closest("[data-gp]"); if (!b) return; gcur = b.dataset.gp; grender(); });
+  gbox.addEventListener("click", function (e) { var b = e.target.closest("[data-g]"); if (!b || !window.cjCopy) return; window.cjCopy(gtext(G[+b.dataset.g]), b); });
+  grender();
 })();
 </script>
 
