@@ -1,4 +1,4 @@
-<title>Auditoría del negocio</title>
+<title>Carlos Números</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -83,206 +83,73 @@ img { max-width: 100%; display: block; }
 @media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } .card { padding: 14px; } body { font-size: 15px; } }
 @media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
-</style>
-<style>
-.kp { display: grid; gap: 6px; }
-.kp .soft { font-size: 13.5px; }
-.calc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.out { display: grid; gap: 4px; background: var(--panel2); border-radius: 12px; padding: 12px; }
-.out b { font: 400 30px/1 var(--f-head); color: var(--red-text); font-variant-numeric: tabular-nums; }
-.out span { font-size: 12.5px; color: var(--soft); }
-table.t input { padding: 7px 8px; font-size: 14px; max-width: 110px; text-align: right; }
-.issue { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
-.issue .n { font: 400 32px/1 var(--f-head); color: var(--red-text); }
-@media (max-width: 620px) { .calc { grid-template-columns: 1fr 1fr; } }
+.prof { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; }
+.prof img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--line); }
+.cnt { font: 500 11px/1 var(--f-mono); color: var(--green); }
+.cnt.bad { color: var(--red-text); }
+pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); background: var(--panel2); padding: 12px; border-radius: 10px; margin: 0; max-height: 420px; overflow: auto; }
+.price { display: flex; flex-wrap: wrap; gap: 6px; }
+.price span { background: var(--panel2); border-radius: 10px; padding: 8px 10px; font-size: 13px; color: var(--soft); display: grid; gap: 2px; }
+.price span b { font: 400 24px/1 var(--f-head); color: var(--ink); font-variant-numeric: tabular-nums; }
+.price span.star { box-shadow: inset 0 0 0 1.5px var(--red); }
 </style>
 <header class="hero"><div class="wrap">
-  <span class="label">Carlos Jimena · Fight Programming · Parte 5</span>
-  <h1>Auditoría de <em>tu negocio</em></h1>
-  <p class="lead">Con tus números de arranque, sin adornos. El problema no son los costes: casi no tienes. El problema es que cobras poco, todo mes a mes, vendes cinco cosas a la vez y das el precio por mensaje. Todo lo que no me diste va como <span class="ph">[CARLOS: completar]</span>.</p>
+  <span class="label">Carlos Jimena · Parte 5 · Números</span>
+  <h1>Lo que entra, lo que pagas <em>y lo que te queda</em></h1>
+  <p class="lead">Una tabla, hoy y con los precios nuevos. Propuesta, confirmar.</p>
+  <div class="nm"><span class="label">Lo que haces, en una frase</span><p class="nm-big">Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.</p></div>
 </div></header>
-<nav class="tabs-bar" aria-label="Secciones"><div class="wrap tabs" role="tablist">
-  <button class="tab" role="tab" data-v="foto" aria-selected="true">La foto</button>
-  <button class="tab" role="tab" data-v="mal" aria-selected="false">Qué está mal</button>
-  <button class="tab" role="tab" data-v="hora" aria-selected="false">Tu hora real</button>
-  <button class="tab" role="tab" data-v="plan" aria-selected="false">Propuesta</button>
-  <button class="tab" role="tab" data-v="proy" aria-selected="false">Proyección 3/6/12</button>
-  <button class="tab" role="tab" data-v="conf" aria-selected="false">Confirmar</button>
-</div></nav>
-<main class="wrap">
+<main class="wrap view">
 
-<section class="view" id="v-foto">
-  <div class="nm"><span class="label">Tu nicho en una frase</span><p class="nm-big">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p></div>
+<section class="sec">
+  <div class="head"><span class="label">Al mes</span><h2>Hoy frente a la propuesta</h2><p class="soft">La propuesta es un ejemplo a 6 meses: la mitad de los de Élite siguen con su precio, los nuevos entran al precio nuevo. No es una previsión.</p></div>
+  <div class="tw"><table class="t">
+    <thead><tr><th></th><th class="n">Hoy</th><th class="n">Con la propuesta</th></tr></thead>
+    <tbody>
+      <tr><td>Élite</td><td class="n">30 × ~75 € = 2.250 €</td><td class="n">15 × 75 € + 13 × 120 € = 2.685 €</td></tr>
+      <tr><td>Camp Plan → Forma</td><td class="n">6 × 40 € = 240 €</td><td class="n">10 × 45 € = 450 €</td></tr>
+      <tr><td>Fight Camp</td><td class="n">—</td><td class="n">1 × 290 € = 290 €</td></tr>
+      <tr><td><b>Entra</b></td><td class="n"><b>2.490 €</b></td><td class="n"><b>3.425 €</b></td></tr>
+      <tr><td>App (Strivee)</td><td class="n">−78 €</td><td class="n">−78 €</td></tr>
+      <tr><td>Pasarela (3 € por cobro)</td><td class="n">−18 €</td><td class="n">−30 €</td></tr>
+      <tr><td>Editor (220 € los 6 reels)</td><td class="n">de vez en cuando</td><td class="n">−220 €</td></tr>
+      <tr><td><b>Te queda</b></td><td class="n"><b>2.394 €</b></td><td class="n"><b style="color:var(--green)">3.097 €</b></td></tr>
+    </tbody>
+  </table></div>
+  <ul class="l">
+    <li>Los ~75 € de hoy son una media estimada: <span class="ph">[CARLOS: lo que paga cada uno]</span>.</li>
+    <li>Si pasas de 50 clientes, la app sube a 120 €. Con 38 no.</li>
+    <li>Con packs cobras por adelantado: 5 semestrales de Élite son 3.600 € de golpe.</li>
+    <li>Apunta tus horas reales en el reporte. Con eso vemos lo que ganas por hora de verdad.</li>
+  </ul>
+</section>
+
+<section class="sec">
+  <div class="head"><span class="label">Subir precio</span><h2>Cada venta, un poco más</h2></div>
+  <div class="card"><p>Cada vez que cierres un Élite o un Fight Camp, el siguiente lo ofreces un 20 % más caro. Hasta 3 subidas. El CRM te avisa.</p>
+    <div class="tw"><table class="t">
+      <thead><tr><th></th><th class="n">Ahora</th><th class="n">1ª subida</th><th class="n">2ª</th><th class="n">3ª</th></tr></thead>
+      <tbody>
+        <tr><td>Élite semestral</td><td class="n">720 €</td><td class="n">865 €</td><td class="n">1.040 €</td><td class="n">1.245 €</td></tr>
+        <tr><td>Fight Camp</td><td class="n">290 €</td><td class="n">350 €</td><td class="n">420 €</td><td class="n">505 €</td></tr>
+      </tbody>
+    </table></div>
+    <p class="soft" style="font-size:13px">Si llevas 3 llamadas seguidas sin cerrar, bajas una.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="head"><span class="label">El orden</span><h2>Qué va primero</h2></div>
   <div class="g4">
-    <div class="card kp"><span class="label">Facturas al mes</span><b class="big">≈ 2.500 €</b><span class="soft">Tu cifra. Unas 24 h al mes según tu cuenta.</span></div>
-    <div class="card kp"><span class="label">Clientes</span><b class="big">≈ 36</b><span class="soft">6 en Camp Plan (40 €) y 30 en Elite (120 €, "no a ese precio").</span></div>
-    <div class="card kp"><span class="label">Media real por cliente</span><b class="big">≈ 69 €</b><span class="soft">al mes (2.500 / 36). El Elite real ronda 75 €, no 120.</span></div>
-    <div class="card kp red"><span class="label">Costes fijos</span><b class="big">≈ 96 €</b><span class="soft">al mes: app 78 € + pasarela ~18 €. Te queda ~96 % antes de impuestos.</span></div>
-  </div>
-  <div class="sec"><div class="head"><span class="label">De dónde viene y a dónde va</span><h2>Tu cuenta de resultados <em>de un mes normal</em></h2><p class="soft">Ingresos por producto calculados con tus datos. El reparto exacto del Elite no me lo diste: está estimado para que cuadre con tus 2.500 €.</p></div>
-    <div class="tw"><table class="t">
-      <thead><tr><th>Concepto</th><th>Detalle</th><th class="n">€ / mes</th></tr></thead>
-      <tbody>
-        <tr><td><b>Camp Plan</b> (programa general)</td><td>6 clientes × 40 € · por pasarela de la app</td><td class="n">240 €</td></tr>
-        <tr><td><b>Elite Plan</b> (1:1)</td><td>30 clientes, precios variados (estimado ≈ 75 € de media) · transferencia o Bizum</td><td class="n">≈ 2.260 €</td></tr>
-        <tr><td><b>Presencial / APEX</b></td><td><span class="ph">[CARLOS: ¿va dentro de los 2.500 o aparte?]</span></td><td class="n">—</td></tr>
-        <tr><td><b>Total ingresos</b></td><td></td><td class="n"><b>≈ 2.500 €</b></td></tr>
-        <tr><td>App (Strivee)</td><td>78 €/mes · sube a 120 € si pasas de 50 clientes (ilimitados)</td><td class="n">−78 €</td></tr>
-        <tr><td>Pasarela</td><td>3 € por cobro del plan general (6 × 3)</td><td class="n">−18 €</td></tr>
-        <tr><td>Editor / filmmaker</td><td>220 € por 6 reels, de vez en cuando (36,67 € por reel)</td><td class="n">0 a −220 €</td></tr>
-        <tr><td>Cuota de autónomo, IRPF, IVA</td><td><span class="ph">[CARLOS: completar con tu gestor]</span></td><td class="n">—</td></tr>
-        <tr><td><b>Te queda antes de impuestos</b></td><td>sin editor · con editor</td><td class="n"><b>≈ 2.404 € · 2.184 €</b></td></tr>
-      </tbody>
-    </table></div>
-    <div class="card acc"><span class="label">Lectura</span><p>Con un 96 % de margen, recortar gastos no te cambia la vida. Lo que te la cambia es cobrar más por cliente y cobrarlo antes. Cuando pases de 50 clientes, la app sube 42 € al mes: eso lo paga la sexta parte de un camp.</p></div>
+    <div class="card acc"><span class="big">1</span><h3>Planes y precios</h3><p class="soft">Esta semana. Lo de la Parte 2.</p></div>
+    <div class="card"><span class="big">2</span><h3>Casos de tus atletas</h3><p class="soft">Una ficha y un vídeo de cada uno. Parte 3, pestaña Atletas.</p></div>
+    <div class="card"><span class="big">3</span><h3>Contenido</h3><p class="soft">La semana tipo en @carlosjimena90.</p></div>
+    <div class="card"><span class="big">4</span><h3>Tu red de contactos</h3><p class="soft">Gimnasios, entrenadores, promotoras. Solo cuando lo de antes esté hecho. No antes.</p></div>
   </div>
 </section>
 
-<section class="view" id="v-mal" hidden>
-  <div class="sec"><div class="head"><span class="label">Los hallazgos</span><h2>Qué está mal, <em>en orden de dinero</em></h2></div>
-    <div class="card issue"><span class="n">1</span><div><h3>Cobras por debajo de tu prueba</h3><p class="soft">Preparas a gente con victorias en PFL, WOW y Cage Warriors y nivel ADCC e IBJJF, y de media te entran unos 69 € por cliente. El Elite dice 120 €, pero tú mismo dices que tus 30 "no a ese precio". Hay gente que cobra lo mismo sin un solo atleta que lo demuestre.</p></div></div>
-    <div class="card issue"><span class="n">2</span><div><h3>Todo mes a mes y cobrado a mano</h3><p class="soft">Transferencia o Bizum cada mes. Cero dinero por adelantado. Cada mes el cliente vuelve a decidir si sigue, y el momento de más riesgo es justo después del combate: "ya he peleado, lo paro". Y tú pierdes tiempo persiguiendo pagos.</p></div></div>
-    <div class="card issue"><span class="n">3</span><div><h3>Cinco cosas a la vez</h3><p class="soft">Online 1:1, programa general (Camp Plan), APEX Hybrid / APEX Health, Fight Programming y presencial, repartidas en dos cuentas. "Camp Plan" encima se llama como un campamento de combate y no lo es. El que entra no sabe qué compra, así que pregunta el precio.</p></div></div>
-    <div class="card issue"><span class="n">4</span><div><h3>Precio en el primer mensaje = visto</h3><p class="soft">Tú lo dijiste: "Hola, quería información del programa y cuánto vale… al dar precio me dejan sin leer o visto y se acabó". Sin conversación, tu precio se compara con una app de 10 €. Desde "Lo primero" ya no das precio por mensaje: se da en la llamada.</p></div></div>
-    <div class="card issue"><span class="n">5</span><div><h3>Tu hora vale menos de lo que crees</h3><p class="soft">Los 104 €/h salen de 2.500 € entre 24 h. Pero tú mismo cuentas una mañana entera a la semana solo para crear y subir programas, "sin contar revisión de vídeos y luego las dudas". Si lo sumas todo, tu hora puede estar en la mitad. Haz la cuenta en la pestaña siguiente.</p></div></div>
-    <div class="card issue"><span class="n">6</span><div><h3>Retienes bien y no lo cobras</h3><p class="soft">Chicos con 3 años contigo, pocos se van antes de los 3 meses. Eso es lo más difícil del negocio y ya lo tienes. Si duran 6 meses de todas formas, cobrar 6 meses por adelantado no es pedir más: es cobrar antes lo que ya pasa.</p></div></div>
-    <div class="card issue"><span class="n">7</span><div><h3>Sin lista, sin datos</h3><p class="soft">Teléfonos en el móvil del trabajo, correos que no tienes, la entrevista inicial que no encuentras. No hay CRM. Sin lista no sabes quién está a punto de irse, quién tiene combate ni a quién pedirle un testimonio.</p></div></div>
-  </div>
-  <div class="note"><b>Lo que NO hacemos ahora</b> (decisión de Alberto): ni email marketing ni LinkedIn. Instagram, WhatsApp, YouTube y conversaciones. Punto.</div>
-</section>
-
-<section class="view" id="v-hora" hidden>
-  <div class="sec"><div class="head"><span class="label">Calculadora · pon tus horas reales</span><h2>¿Cuánto <em>cobras por hora</em> de verdad?</h2><p class="soft">Los valores de ejemplo están puestos a ojo: "una mañana completa" ≈ 5 h. Cámbialos por los tuyos.</p></div>
-    <div class="card">
-      <div class="calc">
-        <label class="f">Ingresos al mes (€)<input id="h-ing" type="number" inputmode="decimal" value="2500"></label>
-        <label class="f">Crear, subir y renovar programas (h/semana)<input id="h-prog" type="number" inputmode="decimal" value="5"></label>
-        <label class="f">Revisar vídeos (h/semana)<input id="h-vid" type="number" inputmode="decimal" value="3"></label>
-        <label class="f">Dudas y atención (h/semana)<input id="h-dud" type="number" inputmode="decimal" value="3"></label>
-        <label class="f">Contenido y mensajes (h/semana)<input id="h-cont" type="number" inputmode="decimal" value="0"></label>
-        <label class="f">Clientes activos<input id="h-cli" type="number" inputmode="numeric" value="36"></label>
-      </div>
-      <div class="g4" style="margin-top:6px">
-        <div class="out"><span>Horas al mes</span><b id="o-h">—</b></div>
-        <div class="out"><span>€ por hora real</span><b id="o-eh">—</b></div>
-        <div class="out"><span>Minutos por cliente y semana</span><b id="o-min">—</b></div>
-        <div class="out"><span>Tu cuenta (24 h)</span><b>104 €</b></div>
-      </div>
-      <p class="soft" id="o-read" style="font-size:14px"></p>
-    </div>
-  </div>
-</section>
-
-<section class="view" id="v-plan" hidden>
-  <div class="sec"><div class="head"><span class="label">La propuesta · todo "propuesta, confirmar"</span><h2>Cuatro movimientos, <em>en este orden</em></h2></div>
-    <div class="g2">
-      <div class="card"><span class="tag">1 · Ordenar</span><h3>De cinco cosas a dos productos y un camp</h3><ul class="l"><li><b>Fight Programming 1:1</b> (hoy "Elite") = lo que vendes.</li><li><b>Fight Camp</b> = para el que tiene fecha de combate.</li><li><b>Base</b> (hoy "Camp Plan") = plan B en la llamada.</li><li>Presencial: solo por llamada. APEX: fuera de redes.</li></ul></div>
-      <div class="card"><span class="tag">2 · Packs</span><h3>Adelantado o en 2 cuotas</h3><ul class="l"><li>Semestral 600 € (o 2 × 315 €) ★ · Anual 1.080 € · Trimestral 330 €.</li><li>Mensual 140 € solo como último recurso.</li><li>Clientes actuales: semestral con −10 % sobre lo que pagan hoy.</li></ul></div>
-      <div class="card"><span class="tag">3 · Escalera</span><h3>+20 % por venta hasta nivel 3</h3><ul class="l"><li>Cada venta de 1:1 o camp sube un nivel: 600 → 720 → 865 → 1.040 € el semestral.</li><li>El CRM lleva la cuenta y te avisa.</li><li>Si dejas de cerrar 3 llamadas seguidas, no subes: revisas el guion antes de tocar el precio.</li></ul></div>
-      <div class="card"><span class="tag">4 · Upsell de camp</span><h3>Cada combate es una venta</h3><ul class="l"><li>Cliente en Base con combate a la vista → Fight Camp (8 semanas, 280 €; +35 € por semana extra hasta 12).</li><li>Al acabar el camp → 1:1 semestral, con la reacción a su combate y su retest delante.</li><li>Cliente 1:1 → el camp va incluido. Ahí la venta es la renovación.</li></ul></div>
-    </div>
-    <div class="card acc"><span class="label">Lo que hace que esto funcione</span><ul class="l">
-      <li><b>Prueba a saco</b>: reacciones de tus atletas, testimonios y comparativas antes/después (Parte 3, pestaña Prueba). Sin eso, un semestral de 600 € cuesta el doble de vender.</li>
-      <li><b>Conversaciones</b>: nunca precio por mensaje, llamada siempre (Parte 4).</li>
-      <li><b>CRM y reporte</b> cada día: lo que no está apuntado no existe.</li>
-    </ul></div>
-  </div>
-</section>
-
-<section class="view" id="v-proy" hidden>
-  <div class="sec"><div class="head"><span class="label">Proyección · supuestos a la vista, cámbialos</span><h2>A 3, 6 y 12 meses, <em>conservador y realista</em></h2><p class="soft">Mes 0 = hoy, con ~36 clientes y ~2.500 €/mes. Los actuales siguen mes a mes y se van yendo poco a poco. Cada venta nueva se cobra entera al entrar (las cuotas no cambian el total). Al acabar su pack, una parte renueva. No incluye pasar a los actuales a semestral: eso es caja extra.</p></div>
-    <div class="tw"><table class="t" id="supTab">
-      <thead><tr><th>Supuesto</th><th class="n">Conservador</th><th class="n">Realista</th></tr></thead>
-      <tbody>
-        <tr><td>Ventas nuevas al mes (1:1 + camp)</td><td class="n"><input data-s="c.ventas" type="number" value="2"></td><td class="n"><input data-s="r.ventas" type="number" value="4"></td></tr>
-        <tr><td>Nivel medio de precios (0 a 3)</td><td class="n"><input data-s="c.nivel" type="number" step="0.5" value="0.5"></td><td class="n"><input data-s="r.nivel" type="number" step="0.5" value="1.5"></td></tr>
-        <tr><td>Mezcla: % semestral</td><td class="n"><input data-s="c.sem" type="number" value="50"></td><td class="n"><input data-s="r.sem" type="number" value="50"></td></tr>
-        <tr><td>Mezcla: % anual</td><td class="n"><input data-s="c.anu" type="number" value="10"></td><td class="n"><input data-s="r.anu" type="number" value="15"></td></tr>
-        <tr><td>Mezcla: % trimestral</td><td class="n"><input data-s="c.tri" type="number" value="20"></td><td class="n"><input data-s="r.tri" type="number" value="15"></td></tr>
-        <tr><td>Mezcla: % Fight Camp</td><td class="n"><input data-s="c.camp" type="number" value="20"></td><td class="n"><input data-s="r.camp" type="number" value="20"></td></tr>
-        <tr><td>% que renueva al acabar su pack</td><td class="n"><input data-s="c.ren" type="number" value="50"></td><td class="n"><input data-s="r.ren" type="number" value="65"></td></tr>
-        <tr><td>Bajas al mes de los clientes actuales (%)</td><td class="n"><input data-s="c.baja" type="number" value="5"></td><td class="n"><input data-s="r.baja" type="number" value="3"></td></tr>
-        <tr><td>Editor 220 €/mes (1 = sí, 0 = no)</td><td class="n"><input data-s="c.ed" type="number" value="0"></td><td class="n"><input data-s="r.ed" type="number" value="1"></td></tr>
-      </tbody>
-    </table></div>
-    <div class="tw"><table class="t">
-      <thead><tr><th>Resultado</th><th class="n">Hoy</th><th class="n">Mes 3 cons.</th><th class="n">Mes 3 real.</th><th class="n">Mes 6 cons.</th><th class="n">Mes 6 real.</th><th class="n">Mes 12 cons.</th><th class="n">Mes 12 real.</th></tr></thead>
-      <tbody id="proyBody"></tbody>
-    </table></div>
-    <div class="card acc"><span class="label">Lo que dicen los números</span><ul class="l" id="readout"></ul></div>
-    <p class="soft" style="font-size:13px">"Ingreso mensual equivalente" = lo que te entra repartido por mes (un semestral de 600 € cuenta 100 €/mes). "Cobrado en el mes" = lo que entra de verdad en la cuenta ese mes, con los packs pagados por adelantado. Costes: app 78 € (120 € si pasas de 50 clientes) + editor si lo marcas. Antes de impuestos.</p>
-  </div>
-</section>
-
-<section class="view" id="v-conf" hidden>
-  <div class="sec"><div class="head"><span class="label">Me faltan datos</span><h2>Lo que tienes que <em>confirmar</em></h2></div>
-    <div class="card"><ul class="l">
-      <li><span class="ph">[CARLOS: completar]</span> Lista de tus 36 clientes con lo que paga cada uno (Elite real, no 120).</li>
-      <li><span class="ph">[CARLOS: completar]</span> Horas reales a la semana: programar, vídeos, dudas.</li>
-      <li><span class="ph">[CARLOS: completar]</span> Presencial: cuántos, a cuánto, cuántas horas y si va dentro de los 2.500 €.</li>
-      <li><span class="ph">[CARLOS: completar]</span> APEX Hybrid / APEX Health: qué es, cuántos clientes y qué pagan.</li>
-      <li><span class="ph">[CARLOS: completar]</span> Qué permite la pasarela de la app: packs, cuotas, comisión.</li>
-      <li><span class="ph">[CARLOS: completar]</span> Autónomo, IRPF e IVA: con tu gestor.</li>
-      <li><span class="ph">[CARLOS: completar]</span> Cuánto dura de media un cliente (en meses) y cuántos se van justo después de un combate.</li>
-      <li><span class="ph">[CARLOS: confirmar]</span> Precios de la escalera (todos son propuesta).</li>
-    </ul></div>
-  </div>
-</section>
+<p class="foot">Parte 5 de 7 · Cifras: las tuyas, sin inventar · Mentoría Alberto González</p>
 </main>
-<script>
-(function () {
-  function $(id) { return document.getElementById(id); }
-  function num(v) { var n = parseFloat(String(v).replace(",", ".")); return isNaN(n) ? 0 : n; }
-  function eur(n, dec) { var r = Math.round(n * 100) / 100, neg = r < 0; r = Math.abs(r); var ent = Math.floor(r), c = Math.round((r - ent) * 100); if (c === 100) { ent += 1; c = 0; } var s = String(ent).replace(/\B(?=(\d{3})+(?!\d))/g, "."); return (neg ? "−" : "") + s + (dec && c ? "," + String(c).padStart(2, "0") : "") + " €"; }
-  /* Tu hora */
-  function hora() {
-    var ing = num($("h-ing").value), hs = num($("h-prog").value) + num($("h-vid").value) + num($("h-dud").value) + num($("h-cont").value), hm = hs * 4.33, cli = num($("h-cli").value);
-    $("o-h").textContent = hm ? Math.round(hm) + " h" : "—";
-    $("o-eh").textContent = hm ? eur(ing / hm, true) : "—";
-    $("o-min").textContent = cli ? Math.round(hs * 60 / cli) + " min" : "—";
-    $("o-read").textContent = hm ? (ing / hm < 104 ? "Con estas horas tu hora real es " + eur(ing / hm, true) + ", no 104 €. La solución no es trabajar menos: es cobrar más por cliente y cobrarlo por adelantado." : "Con estas horas estás por encima de tu cuenta de 104 €/h. Comprueba que no te dejas los vídeos y las dudas.") : "";
-  }
-  ["h-ing", "h-prog", "h-vid", "h-dud", "h-cont", "h-cli"].forEach(function (id) { $(id).addEventListener("input", hora); });
-  hora();
-  /* Proyección */
-  var P = { sem: { p: [600, 720, 865, 1040], d: 6 }, anu: { p: [1080, 1295, 1555, 1865], d: 12 }, tri: { p: [330, 395, 475, 570], d: 3 }, camp: { p: [280, 335, 400, 480], d: 2 } };
-  function price(k, lv) { lv = Math.max(0, Math.min(3, lv)); var a = P[k].p, i = Math.floor(lv), f = lv - i; return i >= 3 ? a[3] : a[i] + (a[i + 1] - a[i]) * f; }
-  function sup(s) { var o = {}; document.querySelectorAll('[data-s^="' + s + '."]').forEach(function (i) { o[i.dataset.s.split(".")[1]] = num(i.value); }); return o; }
-  function sim(o) {
-    var legC = 36, legR = 2500, cohorts = [], out = [], acum = 0;
-    var mixT = (o.sem + o.anu + o.tri + o.camp) || 1;
-    for (var m = 1; m <= 12; m++) {
-      legC *= (1 - o.baja / 100); legR *= (1 - o.baja / 100);
-      var cash = legR;
-      cohorts.forEach(function (c) { if (c.end === m) { var keep = c.n * o.ren / 100; if (keep > 0) { var k2 = c.k === "camp" ? "sem" : c.k; cohorts.push({ k: k2, n: keep, start: m, end: m + P[k2].d, pr: price(k2, o.nivel) }); cash += keep * price(k2, o.nivel); } } });
-      ["sem", "anu", "tri", "camp"].forEach(function (k) { var n = o.ventas * o[k] / mixT; if (n > 0) { var pr = price(k, o.nivel); cohorts.push({ k: k, n: n, start: m, end: m + P[k].d, pr: pr }); cash += n * pr; } });
-      var act = cohorts.filter(function (c) { return c.start <= m && c.end > m; });
-      var nNew = act.reduce(function (a, c) { return a + c.n; }, 0), mrrNew = act.reduce(function (a, c) { return a + c.n * c.pr / P[c.k].d; }, 0);
-      var clientes = legC + nNew, costes = (clientes > 50 ? 120 : 78) + (o.ed ? 220 : 0);
-      acum += cash;
-      out[m] = { cli: clientes, mrr: legR + mrrNew, cash: cash, acum: acum, margen: cash - costes, costes: costes };
-    }
-    return out;
-  }
-  function render() {
-    var c = sim(sup("c")), r = sim(sup("r"));
-    var rows = [["Clientes activos", "cli", function (v) { return Math.round(v); }, 36], ["Ingreso mensual equivalente", "mrr", eur, 2500], ["Cobrado en el mes", "cash", eur, 2500], ["Cobrado acumulado desde hoy", "acum", eur, 0], ["Te queda ese mes (tras app y editor)", "margen", eur, 2404]];
-    $("proyBody").innerHTML = rows.map(function (row) {
-      var f = row[2], h = '<tr><td>' + row[0] + '</td><td class="n">' + (row[1] === "acum" ? "—" : f(row[3])) + '</td>';
-      [3, 6, 12].forEach(function (m) { h += '<td class="n">' + f(c[m][row[1]]) + '</td><td class="n"><b>' + f(r[m][row[1]]) + '</b></td>'; });
-      return h + '</tr>';
-    }).join("");
-    var li = [];
-    li.push("En el escenario realista, a 12 meses tu ingreso mensual equivalente pasa de 2.500 € a " + eur(r[12].mrr) + " con " + Math.round(r[12].cli) + " clientes.");
-    li.push("Conservador: " + eur(c[12].mrr) + " al mes equivalente a 12 meses. Con solo " + sup("c").ventas + " ventas al mes ya superas lo de hoy.");
-    li.push("Lo que más mueve el resultado es el % de renovación: súbelo o bájalo 10 puntos y mira. Por eso los tests de rendimiento y la reacción a su combate van antes de cada renovación.");
-    if (r[12].cli > 50) li.push("Pasas de 50 clientes: la app sube a 120 €. Ya está incluido. Ojo con tus horas: con más de 50, o automatizas (plantillas de bloque, vídeos de técnica grabados una vez) o se te come la semana.");
-    $("readout").innerHTML = li.map(function (t) { return "<li>" + t + "</li>"; }).join("");
-  }
-  document.querySelectorAll("[data-s]").forEach(function (i) { i.addEventListener("input", render); });
-  render();
-})();
-</script>
 
 <script>
 (function () {

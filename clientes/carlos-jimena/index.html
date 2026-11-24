@@ -83,7 +83,17 @@ img { max-width: 100%; display: block; }
 @media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } .card { padding: 14px; } body { font-size: 15px; } }
 @media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
+.prof { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; }
+.prof img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--line); }
+.cnt { font: 500 11px/1 var(--f-mono); color: var(--green); }
+.cnt.bad { color: var(--red-text); }
+pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); background: var(--panel2); padding: 12px; border-radius: 10px; margin: 0; max-height: 420px; overflow: auto; }
+.price { display: flex; flex-wrap: wrap; gap: 6px; }
+.price span { background: var(--panel2); border-radius: 10px; padding: 8px 10px; font-size: 13px; color: var(--soft); display: grid; gap: 2px; }
+.price span b { font: 400 24px/1 var(--f-head); color: var(--ink); font-variant-numeric: tabular-nums; }
+.price span.star { box-shadow: inset 0 0 0 1.5px var(--red); }
 </style>
+<!--NOCOMMONJS-->
 <style>
 body { background: #070707; }
 .lnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(7, 7, 7, .92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #1d1d20; }
@@ -92,7 +102,7 @@ body { background: #070707; }
 .lnav img { width: 38px; height: 38px; border-radius: 50%; }
 .lhero { padding: 40px 0 34px; background: radial-gradient(90% 120% at 85% 10%, #4a0b10 0%, transparent 60%); }
 .lhero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 28px; align-items: center; }
-.lhero h1 { font-size: clamp(44px, 7.4vw, 86px); line-height: .92; }
+.lhero h1 { font-size: clamp(44px, 7.4vw, 84px); line-height: .92; }
 .lhero p.sub { font-size: 18px; color: #dcd7d2; max-width: 600px; margin-top: 14px; }
 .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; align-items: center; }
 .cta .btn { font-size: 16px; padding: 15px 22px; }
@@ -101,144 +111,88 @@ body { background: #070707; }
 .himg { border-radius: 18px; overflow: hidden; border: 1px solid #2a2a2e; position: relative; max-width: 360px; justify-self: end; width: 100%; }
 .himg img { width: 100%; height: auto; }
 .himg span { position: absolute; left: 12px; bottom: 12px; font: 400 22px/1 var(--f-head); background: var(--red); padding: 6px 10px; border-radius: 6px; }
-section.ls { padding: 54px 0; border-top: 1px solid #1a1a1d; }
+section.ls { padding: 50px 0; border-top: 1px solid #1a1a1d; }
 section.ls .wrap { display: grid; gap: 18px; }
 section.ls h2 { font-size: clamp(32px, 4.6vw, 52px); }
-.vsl { aspect-ratio: 16 / 9; border-radius: 16px; border: 1.5px dashed #5a1e22; display: grid; place-items: center; text-align: center; padding: 20px; background: #120a0b; color: var(--soft); }
 .ath { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .ath .card { gap: 6px; }
 .ath b { font: 400 24px/1 var(--f-head); letter-spacing: .02em; }
-.pillars { counter-reset: p; }
-.pillars .card h3::before { counter-increment: p; content: "0" counter(p) " · "; color: var(--red-text); }
-.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-.phases div { padding: 16px; background: var(--panel); border-right: 1px solid var(--line); display: grid; gap: 6px; }
-.phases div:last-child { border-right: 0; }
-.phases b { font: 400 28px/1 var(--f-head); }
 form.apply { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 form.apply .full { grid-column: 1 / -1; }
-details.q { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-details.q summary { cursor: pointer; font-weight: 700; }
-details.q p { margin-top: 8px; color: #d6d2cd; }
 .lfoot { padding: 30px 0 calc(40px + env(safe-area-inset-bottom, 0px)); color: var(--soft); font-size: 13px; border-top: 1px solid #1a1a1d; }
-@media (max-width: 820px) { .lhero .wrap { grid-template-columns: 1fr; } .himg { justify-self: start; max-width: 300px; } .ath { grid-template-columns: 1fr 1fr; } .phases { grid-template-columns: 1fr; } .phases div { border-right: 0; border-bottom: 1px solid var(--line); } }
-@media (max-width: 520px) { form.apply { grid-template-columns: 1fr; } .ath { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 820px) { .lhero .wrap { grid-template-columns: 1fr; } .himg { justify-self: start; max-width: 300px; } .ath { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { form.apply { grid-template-columns: 1fr; } }
 </style>
 <nav class="lnav" aria-label="Fight Programming"><div class="wrap"><span class="lg"><img src="casos/fp-logo.jpg" alt="">Fight Programming</span><a class="btn" href="#aplica" style="padding:10px 16px">Aplica</a></div></nav>
+
 <header class="lhero"><div class="wrap">
   <div>
-    <span class="label">Preparación física para luchadores amateur · Málaga y online</span>
-    <h1>Entrenas, curras <em>y compites.</em> Te falta el porqué.</h1>
-    <p class="sub">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p>
-    <div class="cta"><a class="btn" href="#aplica">Aplica a Fight Programming</a><a class="btn ghost" href="#atletas">Ver a mis atletas</a></div>
-    <div class="proof"><span>Victorias en PFL</span><span>WOW</span><span>Cage Warriors</span><span>Nivel ADCC e IBJJF</span></div>
+    <span class="label">Carlos Jimena · Preparador físico · Málaga</span>
+    <h1>Entreno a luchadores <em>de élite.</em></h1>
+    <p class="sub">Atletas con victorias en PFL, WOW y Cage Warriors, y nivel ADCC e IBJJF. Sé cómo funciona la cabeza de un peleador, y entreno contando con ella.</p>
+    <div class="cta"><a class="btn" href="#aplica">Aplica</a><a class="btn ghost" href="#atletas">Ver a mis atletas</a></div>
+    <div class="proof"><span>PFL</span><span>WOW</span><span>Cage Warriors</span><span>ADCC</span><span>IBJJF</span></div>
   </div>
-  <div class="himg"><img src="casos/carlos-hero.jpg" alt="Carlos Jimena explicando en su centro de entrenamiento" width="344" height="470"><span>Carlos Jimena</span></div>
+  <div class="himg"><img src="casos/carlos-hero.jpg" alt="Carlos Jimena en su centro de entrenamiento" width="344" height="470"><span>Carlos Jimena</span></div>
 </div></header>
 
 <section class="ls"><div class="wrap">
-  <div class="vsl" role="img" aria-label="Hueco para el vídeo de presentación"><div><span class="label">Vídeo · 2–3 minutos</span><p style="margin-top:8px">[VÍDEO: CARLOS grabar] Quién eres, a quién preparas, cómo es una semana contigo y una reacción corta a un atleta tuyo.</p></div></div>
-</div></section>
-
-<section class="ls"><div class="wrap">
-  <span class="label">¿Te suena?</span>
-  <h2>Entrenas tu deporte casi todos los días. <em>La fuerza la metes como puedes.</em></h2>
-  <div class="g3">
-    <div class="card"><h3>Sin criterio</h3><p class="soft">Te dan ejercicios, no te explican por qué. Copias lo que ves en redes y no sabes si te sirve para el combate.</p></div>
-    <div class="card"><h3>Sin hueco</h3><p class="soft">Curras o estudias. Entre el tatami y el trabajo, el físico va donde cabe. Y a veces te deja sin piernas para la clase.</p></div>
-    <div class="card"><h3>Lesiones</h3><p class="soft">Lo que más te preocupa no es verte mejor: es la molestia que te saca del tatami semanas.</p></div>
+  <span class="label">Y a ti también</span>
+  <h2>Compitas o no, <em>con la misma cabeza.</em></h2>
+  <p class="sub" style="font-size:18px;color:#dcd7d2;max-width:700px">Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.</p>
+  <div class="g2">
+    <div class="card"><h3>Si compites</h3><p class="soft">Te preparo igual que a ellos: tu semana alrededor del tatami y del curro, el cansancio controlado y el combate en el calendario.</p></div>
+    <div class="card"><h3>Si entrenas por gusto</h3><p class="soft">Haces contacto u otro deporte y quieres estar más fuerte, en forma y sin lesiones. Mismo criterio, otro objetivo.</p></div>
   </div>
 </div></section>
 
 <section class="ls" id="atletas"><div class="wrap">
   <span class="label">Mis atletas</span>
-  <h2>Ellos son la prueba. <em>El programa es para ti.</em></h2>
-  <p class="soft" style="max-width:720px">Preparo a profesionales con victorias en PFL, WOW y Cage Warriors y a competidores de nivel ADCC e IBJJF. Pero la mayoría de los que llevo son como tú: compiten en amateur y curran o estudian. Lo que funciona arriba, ordenado para tu semana.</p>
+  <h2>Con ellos <em>trabajo.</em></h2>
   <div class="ath">
-    <div class="card"><b>Manuel Mouzid</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Bussolotti</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Giordano</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Gil</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Baldo Mira</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Samuel Molina</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Cristian Amador</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
-    <div class="card"><b>Joel Amador</b><span class="soft ph">[CARLOS: disciplina · evento · foto con permiso]</span></div>
+    <div class="card"><b>Manuel Mouzid</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Bussolotti</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Giordano</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Gil</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Baldo Mira</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Samuel Molina</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Cristian Amador</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
+    <div class="card"><b>Joel Amador</b><span class="soft ph">[CARLOS: disciplina · evento · foto]</span></div>
   </div>
+  <div class="g2">
+    <div class="card"><span class="label">En vídeo</span><p class="ph">[CARLOS: vídeo de un atleta, con permiso]</p></div>
+    <div class="card"><span class="label">Con sus palabras</span><p class="ph">[CARLOS: testimonio con nombre y permiso]</p></div>
+  </div>
+</div></section>
+
+<section class="ls"><div class="wrap">
+  <span class="label">Cómo funciona</span>
+  <h2>3 pasos</h2>
   <div class="g3">
-    <div class="card"><span class="label">Testimonio</span><p class="ph">[CARLOS: testimonio escrito con nombre y permiso]</p></div>
-    <div class="card"><span class="label">Vídeo testimonio</span><p class="ph">[CARLOS: vídeo con permiso]</p></div>
-    <div class="card"><span class="label">Antes / después</span><p class="ph">[CARLOS: comparativa de rendimiento real, mismo test, con permiso]</p></div>
-  </div>
-</div></section>
-
-<section class="ls"><div class="wrap">
-  <span class="label">Método Fight Programming</span>
-  <h2>Qué, cuándo, cuánto <em>y por qué.</em></h2>
-  <div class="g3 pillars">
-    <div class="card"><h3>Criterio</h3><p class="soft">Cada cosa que haces, con su explicación. Si no lo entiendes, no lo hacemos.</p></div>
-    <div class="card"><h3>La semana del que trabaja</h3><p class="soft">Dos días de fuerza (uno arranca con sprints, el otro acaba con explosivos) y uno de cardio, accesoria y pliometría. Alrededor de tu tatami y de tu curro, no encima.</p></div>
-    <div class="card"><h3>Fatiga y lesiones bajo control</h3><p class="soft">Me mandas vídeo, lo reviso y ajustamos cada semana. Cansancio no es entrenamiento.</p></div>
-  </div>
-  <div class="phases">
-    <div><b>Base</b><span class="soft">Fuera de campamento: fuerza y motor.</span></div>
-    <div><b>Campamento</b><span class="soft">Las semanas hasta el combate. Todo apunta a ese día.</span></div>
-    <div><b>Fight week</b><span class="soft">Trabajo por contraste en 2–3 días. Llegas fresco, no vacío.</span></div>
-  </div>
-</div></section>
-
-<section class="ls"><div class="wrap">
-  <span class="label">Dos formas de trabajar conmigo</span>
-  <h2>Con combate a la vista <em>o para toda la temporada.</em></h2>
-  <div class="g2">
-    <div class="card acc"><span class="tag">Fight Camp</span><h3>Tienes fecha</h3><ul class="l"><li>Tu campamento de hoy al combate.</li><li>Fight week por contraste, por escrito.</li><li>Revisión de vídeo cada semana.</li><li>Después del combate, vuelta a base.</li></ul></div>
-    <div class="card"><span class="tag">Fight Programming 1:1</span><h3>Quieres rendir toda la temporada</h3><ul class="l"><li>Tu programa cada semana en la app.</li><li>Revisión de vídeos y ajustes por lesiones y eventos.</li><li>Si sale combate, el campamento va incluido.</li><li>Tests de salto, sprint y fuerza al entrar y cada 8–12 semanas.</li></ul></div>
-  </div>
-  <p class="soft">El precio depende de si es campamento o temporada. Lo vemos en una llamada de 20 minutos, después de que apliques.</p>
-</div></section>
-
-<section class="ls"><div class="wrap">
-  <span class="label">Para quién no es</span>
-  <h2>No le cojo <em>a todo el mundo.</em></h2>
-  <div class="g2">
-    <div class="card"><ul class="l"><li>Si buscas verte mejor en la playa, esto no es para ti.</li><li>Si buscas un ejercicio milagro, tampoco.</li><li>Si no vas a mandar vídeos ni a contarme cómo vas, no funciona.</li></ul></div>
-    <div class="card"><ul class="l"><li>Si compites o quieres competir en MMA o grappling, sí.</li><li>Si curras o estudias y quieres que el físico encaje, sí.</li><li>Si quieres entender lo que haces, sí.</li></ul></div>
+    <div class="card"><span class="big">1</span><h3>Aplicas</h3><p class="soft">Me cuentas qué entrenas y qué quieres. 2 minutos.</p></div>
+    <div class="card"><span class="big">2</span><h3>Hablamos</h3><p class="soft">20 minutos por llamada. Si encaja, te digo cómo lo haría.</p></div>
+    <div class="card"><span class="big">3</span><h3>Entrenas</h3><p class="soft">Tu plan en la app, revisión de tus vídeos y yo por WhatsApp.</p></div>
   </div>
 </div></section>
 
 <section class="ls" id="aplica"><div class="wrap">
   <span class="label">Aplica</span>
-  <h2>Cuéntame cómo entrenas. <em>Te escribo yo.</em></h2>
-  <p class="soft">Rellénalo y se abre WhatsApp con tus respuestas. Lo miro yo personalmente y te contesto. Si encaja, hacemos una llamada de 20 minutos.</p>
+  <h2>Cuéntame. <em>Te contesto yo.</em></h2>
+  <p class="soft">Al enviarlo se abre WhatsApp con tus respuestas.</p>
   <form class="apply card" id="apply" autocomplete="on">
     <label class="f">Nombre<input id="a-nombre" required autocomplete="given-name"></label>
-    <label class="f">Edad<input id="a-edad" type="number" min="14" max="60" inputmode="numeric" required></label>
-    <label class="f">Disciplina<select id="a-disc"><option>MMA</option><option>Grappling / BJJ</option><option>Kickboxing / Muay thai</option><option>Boxeo</option><option>Otra</option></select></label>
-    <label class="f">¿Compites?<select id="a-nivel"><option>Amateur</option><option>Quiero empezar a competir</option><option>Semi-pro / pro</option><option>No compito</option></select></label>
-    <label class="f">Próximo combate (si lo hay)<input id="a-comb" placeholder="Evento"></label>
-    <label class="f">Fecha<input id="a-fecha" type="date"></label>
-    <label class="f">Días que entrenas tu deporte<input id="a-dias" placeholder="Ej.: 5"></label>
-    <label class="f">¿Curras o estudias? Horario<input id="a-trab" placeholder="Ej.: almacén, 8 a 16"></label>
-    <label class="f full">¿Alguna lesión o molestia que te saque del tatami?<input id="a-les"></label>
-    <label class="f full">¿Qué se te atasca en el combate?<textarea id="a-atasca" required></textarea></label>
+    <label class="f">Edad<input id="a-edad" type="number" min="14" max="70" inputmode="numeric" required></label>
+    <label class="f">¿Qué entrenas?<select id="a-disc"><option>MMA</option><option>Grappling / BJJ</option><option>Kickboxing / Muay thai</option><option>Boxeo</option><option>Otro deporte</option></select></label>
+    <label class="f">¿Compites?<select id="a-nivel"><option>Sí, amateur</option><option>Sí, profesional</option><option>Quiero empezar</option><option>No, entreno por gusto</option></select></label>
+    <label class="f full">¿Qué quieres conseguir?<textarea id="a-quiero" required placeholder="Ej.: llegar entero al tercer asalto / estar más fuerte sin lesionarme"></textarea></label>
+    <label class="f">Combate a la vista (si lo hay)<input id="a-comb" placeholder="Evento y fecha"></label>
     <label class="f">Instagram<input id="a-ig" placeholder="@usuario"></label>
-    <label class="f">Ciudad<input id="a-ciudad"></label>
-    <p class="soft full" id="a-menor" hidden style="font-size:13.5px">Eres menor de 18: puedes aplicar, pero la llamada la hacemos con tu madre, padre o tutor delante.</p>
+    <p class="soft full" id="a-menor" hidden style="font-size:13.5px">Si tienes menos de 18, la llamada la hacemos con tu madre, padre o tutor.</p>
     <button class="btn full" type="submit" style="justify-self:start">Enviar por WhatsApp</button>
   </form>
 </div></section>
 
-<section class="ls"><div class="wrap">
-  <span class="label">Dudas</span>
-  <h2>Preguntas rápidas</h2>
-  <div style="display:grid;gap:8px">
-    <details class="q"><summary>¿Cuánto cuesta?</summary><p>Depende de si es un campamento para un combate o toda la temporada. Por eso primero aplicas y luego lo vemos en 20 minutos. Se paga por bloques, no tienes que decidir cada mes.</p></details>
-    <details class="q"><summary>Mi entrenador de MMA ya me da físico.</summary><p>Perfecto. Yo no le quito sitio: él te prepara la técnica y el combate, yo que llegues a sus clases con piernas y sin lesiones. Si quieres, hablo con él para encajarlo.</p></details>
-    <details class="q"><summary>Hago BJJ / grappling, no MMA. ¿Sirve?</summary><p>Sí. Preparo a gente que compite en grappling con nivel ADCC e IBJJF. La semana cambia, el criterio es el mismo.</p></details>
-    <details class="q"><summary>¿Es online o presencial?</summary><p>Online, con la app y revisión de vídeos, para toda España. En Málaga hay plazas presenciales contadas: pregúntalo en la llamada.</p></details>
-    <details class="q"><summary>¿Me ayudas a dar el peso?</summary><p>No doy pautas de bajada de peso. Para eso, un profesional de nutrición. Yo me encargo de que llegues al combate con el físico preparado.</p></details>
-  </div>
-</div></section>
-
-<footer class="lfoot"><div class="wrap" style="display:grid;gap:6px"><span class="lg" style="font:400 20px/1 var(--f-head)">Fight Programming · Carlos Jimena</span><span>Málaga · @fight.programming · @carlosjimena90</span><span>Los nombres de atletas aparecen con su permiso. No se prometen resultados: se trabaja con criterio.</span></div></footer>
+<footer class="lfoot"><div class="wrap">Fight Programming · Carlos Jimena · Málaga · <a href="https://www.instagram.com/carlosjimena90/">@carlosjimena90</a> · <a href="https://www.instagram.com/fight.programming/">@fight.programming</a></div></footer>
 <script>
 (function () {
   var WA = "34655020100";
@@ -246,9 +200,8 @@ details.q p { margin-top: 8px; color: #d6d2cd; }
   document.getElementById("a-edad").addEventListener("input", function () { var n = parseInt(this.value, 10); document.getElementById("a-menor").hidden = !(n > 0 && n < 18); });
   document.getElementById("apply").addEventListener("submit", function (e) {
     e.preventDefault();
-    var t = ["Hola Carlos, acabo de aplicar a Fight Programming.", "Nombre: " + v("a-nombre") + " (" + v("a-edad") + " años)", "Disciplina: " + v("a-disc") + " · " + v("a-nivel"), "Próximo combate: " + (v("a-comb") || "—") + (v("a-fecha") ? " (" + v("a-fecha") + ")" : ""), "Entreno mi deporte: " + (v("a-dias") || "—") + " días", "Trabajo / estudios: " + (v("a-trab") || "—"), "Lesión: " + (v("a-les") || "ninguna"), "Lo que se me atasca: " + v("a-atasca"), "Instagram: " + (v("a-ig") || "—") + " · " + (v("a-ciudad") || "")].join("\n");
+    var t = ["Hola Carlos, te escribo desde la web.", "Nombre: " + v("a-nombre") + " (" + v("a-edad") + " años)", "Entreno: " + v("a-disc") + " · " + v("a-nivel"), "Quiero: " + v("a-quiero"), "Combate: " + (v("a-comb") || "—"), "Instagram: " + (v("a-ig") || "—")].join("\n");
     window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(t), "_blank", "noopener");
   });
 })();
 </script>
-<!--NOCOMMONJS-->

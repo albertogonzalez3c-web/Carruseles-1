@@ -10,12 +10,27 @@ Fuentes: `capturas/arranque.txt` (sus respuestas), `capturas/lo-primero.txt` (do
 - Problema principal: su autoridad no se ve fuera del sector; le preguntan el precio por mensaje y le dejan en visto.
 
 ## Nicho (frase única, igual en todas las páginas)
-Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.
+Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.
 
-**Método Fight Programming**
-- Pilares: **Criterio** (qué, cuándo, cuánto y por qué) · **La semana del que trabaja** (2 días de fuerza, uno arranca con sprints y otro acaba con explosivos, + 1 de cardio, fuerza accesoria y pliometría) · **Fatiga y lesiones bajo control**.
-- Fases: **Base → Campamento → Fight week** (contraste en 2–3 días, sprints el primer día, accesorio el último).
-- No negociables: cansancio no es entrenamiento · cada cosa con su porqué · el tatami manda.
+- **Su diferencia:** sabe cómo funciona la cabeza de un peleador (que no es como la de otro deportista) y la tiene en cuenta al programar.
+- **Su autoridad:** trabaja con la élite (victorias en WOW, PFL, Cage Warriors; nivel ADCC/IBJJF). Los profesionales son prueba e inspiración, no a quien se le vende.
+- **A quién vende:** al que hace contacto (MMA, grappling…) y compite, y también al que entrena contacto u otro deporte por hobby y quiere estar en forma. "Entreno a profesionales; a ti te entreno con la misma cabeza, compitas o no."
+- **Tono (feedback de Alberto):** sencillo, corto, frases de gimnasio. Nada de jerga de marketing ("embudo", "escalera", "posicionamiento") en lo que lee Carlos. Cada página, 3–5 minutos.
+
+**Método Fight Programming** (versión corta)
+- Pilares: **La cabeza del peleador** · **La semana que te cabe** (2 días de fuerza, uno arranca con sprints y otro acaba con explosivos, + 1 de cardio, accesorio y pliometría) · **Sin lesiones**.
+- Fases: **Base → Camp → Semana del combate** (contraste en 2–3 días, sprints el primer día, accesorio el último).
+- Normas: cansarte no es entrenar · cada cosa con su porqué · el tatami manda.
+
+## Prioridad de trabajo (en este orden)
+1. **Ordenar planes y precios** con buen margen (Parte 2 y 5).
+2. **Prueba social a fondo**: una ficha y un vídeo de cada atleta (Parte 3 pestaña Atletas, CRM pestaña Prueba).
+3. **Contenido** en @carlosjimena90 (Parte 3).
+4. **Solo después**, tirar de su red de contactos (que es enorme). No antes.
+
+## Dos cuentas
+- **@carlosjimena90** (personal): todo el contenido nuevo. Aquí vende. Enlace para aplicar.
+- **@fight.programming**: casi solo recompartir a sus atletas (combates, resultados, pesajes, camps). Poco contenido nuevo.
 
 ## Perfil (capturas)
 - **@carlosjimena90**: "Carlos Jimena | Entrenador Online de Rendimiento" · 624 posts · 3.565 seguidores · 1.724 seguidos · categoría "Sportsperson · **AI-generated profile**" (recomendado quitarla). Bio: "Papá de Einar / Founder @fight.programming / Entrenador Online 1:1 / El deporte es mi estilo de vida ❤️". Enlace train.strivee.app/program… "and 2 more". Destacadas "Online Training" (APEX Hybrid) y "Prg. Híbrido". Fijados: reel "un entrenamiento con criterio", foto entrenando a una chica, APEX Health. Le sigue albertomentor.
@@ -48,17 +63,19 @@ Manuel Mouzid, Bussolotti, Giordano, Gil, Baldo Mira, Samuel Molina, Cristian Am
 ## Lo que ya le dio Alberto ("Lo primero") y se respeta
 - Foco: contenido con sus atletas, dos semanas, reporte el domingo (5 líneas).
 - Serie de reacción a combates de sus atletas, 2 a la semana; formato momento → preparación → dónde se ve → qué no salió.
-- Recomendación: la serie vive en **@fight.programming**; la personal no se cierra.
+- Recomendación inicial: la serie vivía en @fight.programming. **Cambio (feedback de Alberto):** el contenido nuevo va a @carlosjimena90; @fight.programming recomparte a sus atletas.
 - **Desde hoy no da precio en el primer mensaje**: pregunta qué practica, si compite y qué se le atasca; luego llamada. Lo que cobra se revisa con los números delante.
 - Carpeta: todo lo que grabe (pesajes, esquina, vestuario, campamentos) va a la carpeta.
 
 ## Propuesta de oferta (todo "propuesta, confirmar")
-- **Fight Programming 1:1** (hoy Elite): semestral 600 € (o 2 × 315 €) ★ · anual 1.080 € · trimestral 330 € · mensual 140 € solo como último recurso.
-- **Fight Camp** 8 semanas: 280 € (+35 €/semana extra hasta 12). Upsell para clientes de Base con combate y entrada para leads con fecha. Al acabar → semestral.
-- **Base** (hoy Camp Plan): 45 €/mes o 120 €/trimestre, solo plan B.
+Máximo 3 productos + presencial:
+- **Fight Programming Élite** (compite; sustituye a Elite Plan y online 1:1): mensual 140 € · trimestral 390 € · **semestral 720 € ★** (o 2 × 375 €) · anual 1.320 €. Camp incluido si sale pelea.
+- **Fight Programming Forma** (entrena por hobby; sustituye a Camp Plan 40 €): mensual 55 € · trimestral 150 € · **semestral 270 € ★** · anual 480 €.
+- **Fight Camp 8 semanas** (tiene fecha y no está en Élite): 290 €. Al acabar → Élite semestral.
 - **Presencial Málaga**: solo por llamada, precio [CARLOS].
-- Escalera +20 % por venta de 1:1 o camp, hasta nivel 3 (semestral 600 → 720 → 865 → 1.040 €). CRM: `config/precios {nivel, ventasDesdeSubida}`.
-- Clientes actuales: semestral adelantado con −10 % sobre lo que pagan hoy.
+- Subida +20 % por venta de Élite o Camp, hasta 3 subidas (semestral 720 → 865 → 1.040 → 1.245 €). CRM: `config/precios {nivel, ventasDesdeSubida}`.
+- Clientes actuales: siguen con su precio; opción semestral con −10 % sobre lo que pagan hoy.
+- Margen (ejemplo a 6 meses, Parte 5): hoy entra ~2.490 € y quedan ~2.394 € (app 78 €, pasarela 18 €); con la propuesta entra 3.425 € y quedan 3.097 € (app 78 €, pasarela 30 €, editor 220 €).
 
 ## Sensible / no publicar
 - Familia ("Papá de Einar"): solo si él quiere y solo en la personal.

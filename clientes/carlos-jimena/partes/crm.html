@@ -157,7 +157,7 @@ form.grid .full { grid-column: 1 / -1; }
   <div class="row1"><b class="brand">Fight Programming · CRM</b><span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span></div>
   <nav class="tabs" role="tablist" aria-label="Vistas">
     <button class="tab" role="tab" data-v="hoy" id="tab-hoy" aria-selected="true">Hoy</button>
-    <button class="tab" role="tab" data-v="embudo" id="tab-embudo" aria-selected="false">Embudo</button>
+    <button class="tab" role="tab" data-v="embudo" id="tab-embudo" aria-selected="false">Conversaciones</button>
     <button class="tab" role="tab" data-v="clientes" id="tab-clientes" aria-selected="false">Clientes</button>
     <button class="tab" role="tab" data-v="combates" id="tab-combates" aria-selected="false">Combates</button>
     <button class="tab" role="tab" data-v="prueba" id="tab-prueba" aria-selected="false">Prueba</button>
@@ -176,14 +176,16 @@ form.grid .full { grid-column: 1 / -1; }
       <label class="f">WhatsApp<input id="n-tel" inputmode="tel" placeholder="+34 …"></label>
       <label class="f">Ciudad<input id="n-ciudad" placeholder="Málaga, Canarias…"></label>
       <label class="f">Disciplina<select id="n-disc"></select></label>
+      <label class="f">Tipo<select id="n-tipo"></select></label>
       <label class="f">Nivel<select id="n-nivel"></select></label>
+      <label class="f">Viene de la cuenta<select id="n-cuenta"></select></label>
       <label class="f">Origen<select id="n-origen"></select></label>
       <label class="f">Le interesa<select id="n-serv"></select></label>
       <label class="f">Próximo combate / evento<input id="n-evento" placeholder="Evento (si lo hay)"></label>
       <label class="f">Fecha del combate<input id="n-fecha" type="date"></label>
       <label class="f">Fase<select id="n-fase"></select></label>
       <label class="f">Lesión que le limita<input id="n-lesion" placeholder="Si la hay, con sus palabras"></label>
-      <label class="f full">Lo que contó (sus palabras)<input id="n-notas" placeholder="Ej.: 22, curra en un almacén, compite amateur, se ahoga en el segundo asalto"></label>
+      <label class="f full">Lo que contó (sus palabras)<input id="n-notas" placeholder="Ej.: 22, curra en un almacén, se ahoga en el segundo asalto"></label>
       <button class="btn" type="submit" id="addBtn">Añadir</button>
     </form>
     <p class="soft" id="addNote" aria-live="polite" style="font-size:13px"></p>
@@ -194,8 +196,10 @@ form.grid .full { grid-column: 1 / -1; }
 
 <section class="view" id="v-embudo" hidden>
   <div class="filters">
-    <h2 style="flex:1 1 200px">Embudo</h2>
+    <h2 style="flex:1 1 200px">Conversaciones</h2>
     <label class="f">Disciplina<select id="fDisc"><option value="">Todas</option></select></label>
+    <label class="f">Tipo<select id="fTipo"><option value="">Todos</option></select></label>
+    <label class="f">Cuenta<select id="fCuenta"><option value="">Todas</option></select></label>
     <label class="f">Nivel<select id="fNivel"><option value="">Todos</option></select></label>
     <label class="f">Fase<select id="fFase"><option value="">Todas</option></select></label>
   </div>
@@ -205,11 +209,12 @@ form.grid .full { grid-column: 1 / -1; }
 <section class="view" id="v-clientes" hidden>
   <div class="card" id="nivelCard"></div>
   <div class="kpis" id="ckpis"></div>
-  <details class="card more"><summary>+ Añadir un cliente que ya tenías (tus 36 de ahora)</summary>
+  <details class="card more"><summary>+ Añadir un cliente que ya tenías</summary>
     <form class="grid" id="addCli" autocomplete="off" style="margin-top:10px">
       <label class="f">Nombre<input id="c-nombre" required placeholder="Nombre"></label>
       <label class="f">WhatsApp<input id="c-tel" inputmode="tel" placeholder="+34 …"></label>
       <label class="f">Disciplina<select id="c-disc"></select></label>
+      <label class="f">Tipo<select id="c-tipo"></select></label>
       <label class="f">Plan<select id="c-plan"></select></label>
       <label class="f">Lo que paga (€)<input id="c-imp" type="number" step="0.01" inputmode="decimal" placeholder="Ej.: 75"></label>
       <label class="f">Fecha de alta<input id="c-alta" type="date" required></label>
@@ -219,7 +224,7 @@ form.grid .full { grid-column: 1 / -1; }
   </details>
   <h2>Clientes</h2>
   <div style="display:grid;gap:6px" id="clist"></div>
-  <p class="soft" style="font-size:13px"><b>Ingreso mensual equivalente</b>: cada pack repartido por sus meses (semestral de 600 € = 100 €/mes). <b>Cobrado por adelantado este mes</b>: importe de los packs dados de alta este mes (las 2 cuotas cuentan la que toca). Solo las ventas de 1:1 y Fight Camp suben la escalera.</p>
+  <p class="soft" style="font-size:13px"><b>Ingreso mensual equivalente:</b> cada pack repartido por sus meses (semestral de 720 € = 120 €/mes). Solo Élite y Fight Camp suben el precio.</p>
 </section>
 
 <section class="view" id="v-combates" hidden>
@@ -242,8 +247,13 @@ form.grid .full { grid-column: 1 / -1; }
 
 <section class="view" id="v-prueba" hidden>
   <div class="kpis" id="pkpis"></div>
-  <section class="card"><h2>Registrar una prueba</h2>
-    <p class="soft" style="font-size:13.5px">Testimonio escrito, vídeo testimonio, captura o comparativa de rendimiento. Los datos de los tests se apuntan tal cual salen; si no hay dato, se queda vacío.</p>
+  <section class="card"><h2>Casos de tus atletas</h2>
+    <p class="soft" style="font-size:13.5px">Una ficha por atleta. Lo que no sepas, vacío o [CARLOS: completar]. Nada inventado.</p>
+    <div class="ent" id="casosList"></div>
+    <form class="filters" id="addCaso" autocomplete="off"><label class="f" style="flex:1 1 200px">Otro atleta<input id="cs-nombre" placeholder="Nombre"></label><button class="btn" type="submit" id="cs-btn">Añadir</button></form>
+    <p class="soft" id="cs-note" aria-live="polite" style="font-size:13px"></p>
+  </section>
+  <section class="card"><h2>Testimonios y comparativas</h2>
     <form class="grid" id="addPrueba" autocomplete="off">
       <label class="f">Atleta / cliente<input id="p-atleta" list="atletasList" required placeholder="Nombre"></label>
       <label class="f">Tipo<select id="p-tipo"></select></label>
@@ -255,42 +265,30 @@ form.grid .full { grid-column: 1 / -1; }
   </section>
   <div class="filters"><label class="f">Ver<select id="fPrueba"><option value="">Todas</option></select></label></div>
   <div class="ent" id="prList"></div>
-  <details class="card more"><summary>Mensajes para pedir pruebas</summary>
+  <details class="card more"><summary>Mensajes para pedírselo</summary>
     <div style="display:grid;gap:8px;margin-top:10px">
-      <p class="say">Ey [nombre], ¿me haces un favor? Escríbeme en 3–4 frases cómo estabas antes de empezar conmigo y qué notas ahora entrenando. Con tus palabras. Y dime si te parece bien que lo comparta con tu nombre.</p>
-      <p class="say">[Nombre], enhorabuena por el combate. Cuando te venga bien, ¿me grabas un vídeo de 30–60 s en vertical contestando: cómo llegabas antes a los combates, qué cambió en la preparación, qué notaste esta vez y a quién se lo recomendarías? Si no te apetece, ningún problema.</p>
-      <p class="say">Toca retest, [nombre]. El [día] hacemos los mismos tests que al principio: mismo sitio, mismo calentamiento, grabado.</p>
-      <p class="say">Para publicar tu nombre, tu imagen o tus datos de los tests necesito tu sí por escrito. ¿Me confirmas aquí que te parece bien que use [testimonio / vídeo / comparativa] en Fight Programming?</p>
+      <p class="say">Ey [nombre], quiero contar tu caso en mis redes: de dónde venías, qué trabajamos y cómo te fue. ¿Te parece bien? Lo ves tú antes de que salga.</p>
+      <p class="say">[nombre], ¿grabamos el próximo día un vídeo cortito juntos? Te hago 5 preguntas sobre cómo entrenabas antes y cómo ahora. 3 minutos.</p>
+      <p class="say">Toca repetir los tests, [nombre]. El [día], mismo sitio y mismo calentamiento. Lo grabamos.</p>
+      <p class="say">Para publicar tu nombre y tu imagen necesito tu sí por escrito. ¿Me lo confirmas por aquí?</p>
     </div>
   </details>
 </section>
 
 <section class="view" id="v-proceso" hidden>
-  <div class="nm"><span class="label">Tu nicho en una frase</span><p class="nm-big">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p><p class="soft"><b>Método Fight Programming:</b> criterio · la semana del que trabaja · fatiga y lesiones bajo control. Base → campamento → fight week.</p></div>
+  <div class="nm"><span class="label">Lo que haces, en una frase</span><p class="nm-big">Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.</p><p class="soft">Compite → Élite o Fight Camp. Entrena por gusto → Forma. Precios: propuesta, confirmar.</p></div>
   <div class="g4">
-    <div class="card"><b>1 · Abrir</b><p class="soft">100 al día en 2 rondas de 50. Bienvenidas a mano. Comentarios de las reacciones. Recomendaciones.</p></div>
-    <div class="card"><b>2 · Cualificar</b><p class="soft">Disciplina, compite, próximo combate, días de tatami, trabajo, lesión, qué se le atasca. <b>Nunca precio.</b></p></div>
-    <div class="card"><b>3 · Llamada</b><p class="soft">Máximo a 3 días vista. Reacción de un atleta parecido al agendar. Recordatorio el día.</p></div>
-    <div class="card"><b>4 · Alta</b><p class="soft">Cobro adelantado o 2 cuotas. App. Tests de entrada. Permiso de imagen. Combate al calendario.</p></div>
+    <div class="card"><b>1 · Hablar</b><p class="soft">100 al día en 2 rondas de 50: nuevos seguidores, comentarios, respuestas a historias.</p></div>
+    <div class="card"><b>2 · Preguntar</b><p class="soft">Qué entrena, si compite o es por gusto, qué quiere. <b>Nunca precio por mensaje.</b></p></div>
+    <div class="card"><b>3 · Llamada</b><p class="soft">Máximo a 3 días vista. Recordatorio el mismo día.</p></div>
+    <div class="card"><b>4 · Alta</b><p class="soft">Cobro por adelantado o 2 pagos. App. Permiso de imagen. Combate al calendario.</p></div>
   </div>
-  <div class="g2">
-    <div class="card"><span class="label">Cualificar · en orden</span>
-      <p class="say">¿Qué disciplina haces? ¿MMA, grappling, BJJ, otra?</p>
-      <p class="say">¿Compites? ¿Amateur o ya has debutado como profesional?</p>
-      <p class="say">¿Tienes algún combate a la vista? ¿Para cuándo y dónde?</p>
-      <p class="say">¿Cuántos días entrenas tu deporte y qué haces ahora de físico?</p>
-      <p class="say">¿Curras o estudias? ¿Qué horario tienes?</p>
-      <p class="say">¿Alguna lesión o molestia que te esté sacando del tatami?</p>
-    </div>
-    <div class="card"><span class="label">Reglas</span><ul class="l">
-      <li>Nunca precio por mensaje. Precio en la llamada, semestral primero.</li>
-      <li>Seguimientos días 2, 7 y 14: la pestaña Hoy te los pone delante.</li>
-      <li>Combate de un atleta → fight week en historias → reacción → testimonio a las 48 h.</li>
-      <li>Cliente que lleva 8–12 semanas → retest. 3 semanas antes del fin → renovación con los datos delante.</li>
-      <li>Menores: permiso y pago con madre, padre o tutor.</li>
-      <li>Datos de salud y lesiones: solo aquí, nunca en contenido.</li>
-    </ul></div>
-  </div>
+  <div class="card"><ul class="l">
+    <li>Seguimientos días 2, 7 y 14: la pestaña Hoy te los pone delante.</li>
+    <li>Combate de un atleta → historias de la semana → reacción → testimonio a las 48 h.</li>
+    <li>Menores: permiso y pago con madre, padre o tutor.</li>
+    <li>Lesiones y salud: solo aquí, nunca en contenido.</li>
+  </ul></div>
 </section>
 </main>
 <datalist id="atletasList"></datalist>
@@ -299,10 +297,12 @@ form.grid .full { grid-column: 1 / -1; }
 <script>
 (function () {
   var DISC = ["MMA", "Grappling / BJJ", "Kickboxing / Muay thai", "Boxeo", "Lucha", "Otro"];
-  var NIVEL = ["Amateur", "Semi-pro", "Profesional", "No compite (ocio)"];
+  var NIVEL = ["Amateur", "Semi-pro", "Profesional", "No compite"];
   var FASE = ["Sin combate", "Off-season (base)", "Campamento", "Fight week", "Post-combate"];
   var ORIGEN = ["Reacción a un atleta", "Post evento", "Recomendación", "Contenido de método", "Historias / encuesta", "Conversación en frío (100/día)", "Nuevo seguidor", "WhatsApp", "Fight Programming Lab", "YouTube", "Anuncio", "Aplicación (landing)", "Antiguo cliente", "Otro"];
-  var SERV = ["1:1 (no lo sabe aún)", "Fight Camp", "Base (programa general)", "Presencial Málaga"];
+  var SERV = ["Élite (compite)", "Fight Camp 8 semanas", "Forma (entrena por gusto)", "Presencial Málaga"];
+  var TIPO = ["Competidor", "Hobby"];
+  var CUENTA = ["@carlosjimena90", "@fight.programming", "Recomendación", "Web / WhatsApp", "Otro"];
   var ATLETAS = ["Manuel Mouzid", "Bussolotti", "Giordano", "Gil", "Baldo Mira", "Samuel Molina", "Cristian Amador", "Joel Amador"];
   var STAGES = [{ id: "nuevo", n: "Nuevo" }, { id: "cualificando", n: "Cualificando" }, { id: "agendado", n: "Llamada agendada" }, { id: "hecha", n: "Llamada hecha" }, { id: "cliente", n: "Cliente" }, { id: "perdido", n: "Perdido" }];
   var TIPO_P = ["Testimonio escrito", "Vídeo testimonio", "Comparativa de rendimiento", "Captura de mensaje"];
@@ -312,17 +312,18 @@ form.grid .full { grid-column: 1 / -1; }
   var RES_B = ["Pendiente", "Victoria", "Derrota", "Empate", "Sin decisión"];
   var PERM_B = ["Sin pedir", "Pedido", "Sí", "No"];
   var REAC_B = ["Por grabar", "Grabada", "Publicada", "No se hace"];
-  /* Escalera (propuesta, confirmar): igual que la Parte 2 */
-  var LV = { "1:1 semestral": [600, 720, 865, 1040], "1:1 anual": [1080, 1295, 1555, 1865], "1:1 trimestral": [330, 395, 475, 570], "Fight Camp 8 semanas": [280, 335, 400, 480] };
-  var CUOTA = [315, 378, 454, 545];
+  /* Subidas de precio (propuesta, confirmar): igual que la Parte 2 */
+  var LV = { "Élite semestral": [720, 865, 1040, 1245], "Élite anual": [1320, 1585, 1900, 2280], "Élite trimestral": [390, 470, 565, 675], "Fight Camp 8 semanas": [290, 350, 420, 505] };
+  var CUOTA = [375, 450, 540, 650];
   var PLANS = [
-    { id: "1:1 semestral", m: 6, up: true }, { id: "1:1 semestral 2 cuotas", m: 6, up: true }, { id: "1:1 anual", m: 12, up: true }, { id: "1:1 trimestral", m: 3, up: true },
-    { id: "Fight Camp 8 semanas", m: 2, up: true }, { id: "1:1 mensual", m: 1, p: 140 }, { id: "Base mensual", m: 1, p: 45 }, { id: "Base trimestral", m: 3, p: 120 },
-    { id: "Presencial Málaga (mensual)", m: 1 }, { id: "Precio antiguo (mensual)", m: 1 }, { id: "Otro (APEX, suelto…)", m: 1 }
+    { id: "Élite semestral", m: 6, up: true }, { id: "Élite semestral 2 cuotas", m: 6, up: true }, { id: "Élite anual", m: 12, up: true }, { id: "Élite trimestral", m: 3, up: true },
+    { id: "Fight Camp 8 semanas", m: 2, up: true }, { id: "Élite mensual", m: 1, p: 140 },
+    { id: "Forma mensual", m: 1, p: 55 }, { id: "Forma trimestral", m: 3, p: 150 }, { id: "Forma semestral", m: 6, p: 270 }, { id: "Forma anual", m: 12, p: 480 },
+    { id: "Presencial Málaga (mensual)", m: 1 }, { id: "Precio antiguo (mensual)", m: 1 }, { id: "Otro", m: 1 }
   ];
   var MAXN = 3, nivel = 0, ventasDesdeSubida = 0;
-  var db = null, leads = [], combates = [], pruebas = [], openId = null, busy = {}, deb = {};
-  var fDisc = "", fNivel = "", fFase = "", fPrueba = "";
+  var db = null, leads = [], combates = [], pruebas = [], casos = {}, casosOpen = {}, openId = null, busy = {}, deb = {};
+  var fDisc = "", fNivel = "", fFase = "", fPrueba = "", fTipo = "", fCuenta = "";
 
   function $(id) { return document.getElementById(id); }
   function esc(t) { var d = document.createElement("div"); d.textContent = t == null ? "" : String(t); return d.innerHTML; }
@@ -339,11 +340,12 @@ form.grid .full { grid-column: 1 / -1; }
   function setStatus(t, err) { var s = $("status"); s.textContent = t; s.className = "status" + (err ? " err" : ""); }
   function errMsg(e, what) { return e && e.code === "invalid_argument" ? "No tienes permiso para editar en esta página" : (e && e.code === "quota_exceeded" ? "La base de datos está llena: borra fichas antiguas" : "No se ha podido " + (what || "guardar")); }
   function plan(id) { return PLANS.find(function (p) { return p.id === id; }); }
-  function priceOf(id, n) { n = n == null ? nivel : n; if (LV[id]) return LV[id][n]; if (id === "1:1 semestral 2 cuotas") return CUOTA[n] * 2; var p = plan(id); return p && p.p ? p.p : 0; }
-  function firstCharge(id) { return id === "1:1 semestral 2 cuotas" ? CUOTA[nivel] : priceOf(id); }
+  function priceOf(id, n) { n = n == null ? nivel : n; if (LV[id]) return LV[id][n]; if (id === "Élite semestral 2 cuotas") return CUOTA[n] * 2; var p = plan(id); return p && p.p ? p.p : 0; }
+  function firstCharge(id) { return id === "Élite semestral 2 cuotas" ? CUOTA[nivel] : priceOf(id); }
+  function tipoOf(l) { return l.tipo || (l.nivel === "No compite" || l.nivel === "No compite (ocio)" ? "Hobby" : "Competidor"); }
   function clients() { return leads.filter(function (l) { return l.etapa === "cliente"; }); }
   function active(l) { return l.etapa === "cliente" && !l.baja; }
-  function monthly(l) { var p = plan(l.plan), m = p ? p.m : 1, imp = num(l.importe); if (l.plan === "1:1 semestral 2 cuotas") imp = imp * 2; return m ? imp / m : 0; }
+  function monthly(l) { var p = plan(l.plan), m = p ? p.m : 1, imp = num(l.importe); if (l.plan === "Élite semestral 2 cuotas") imp = imp * 2; return m ? imp / m : 0; }
 
   /* Siguiente acción de cada ficha */
   function next(l) {
@@ -399,27 +401,27 @@ form.grid .full { grid-column: 1 / -1; }
     items.sort(function (a, b) { return a.w - b.w; });
     if (!items.length) { $("todayList").innerHTML = '<p class="empty">' + (db ? "Nada pendiente. Toca abrir conversaciones: 2 rondas de 50." : "El CRM necesita abrirse desde claude.ai con tu cuenta para guardar. La pestaña Proceso funciona igual.") + '</p>'; return; }
     $("todayList").innerHTML = items.map(function (it, i) {
-      if (it.l) return '<div class="task' + (it.n.u ? " urgent" : (it.n.info ? " info" : "")) + '"><i class="dot"></i><div><b>' + esc(it.l.nombre) + ' · ' + esc(it.n.t) + '</b><span>' + esc([it.l.disciplina, it.l.nivel, it.l.fase, it.l.combateFecha ? "combate " + fmtD(it.l.combateFecha) : ""].filter(Boolean).join(" · ")) + '</span></div><button type="button" class="btn ghost mini" data-open="' + it.l.id + '">Abrir</button></div>';
+      if (it.l) return '<div class="task' + (it.n.u ? " urgent" : (it.n.info ? " info" : "")) + '"><i class="dot"></i><div><b>' + esc(it.l.nombre) + ' · ' + esc(it.n.t) + '</b><span>' + esc([tipoOf(it.l), it.l.disciplina, it.l.fase, it.l.combateFecha ? "combate " + fmtD(it.l.combateFecha) : ""].filter(Boolean).join(" · ")) + '</span></div><button type="button" class="btn ghost mini" data-open="' + it.l.id + '">Abrir</button></div>';
       return '<div class="task' + (it.w === 0 ? " urgent" : "") + '"><i class="dot"></i><div><b>' + esc(it.t) + '</b><span>' + esc(it.s) + '</span></div><button type="button" class="btn ghost mini" data-go="' + (it.b ? "combates" : "prueba") + '">Ver</button></div>';
     }).join("");
   }
 
   /* Embudo */
   function renderBoard() {
-    var list = leads.filter(function (l) { return (!fDisc || l.disciplina === fDisc) && (!fNivel || l.nivel === fNivel) && (!fFase || l.fase === fFase); });
+    var list = leads.filter(function (l) { return (!fDisc || l.disciplina === fDisc) && (!fNivel || l.nivel === fNivel) && (!fFase || l.fase === fFase) && (!fTipo || tipoOf(l) === fTipo) && (!fCuenta || l.cuenta === fCuenta); });
     $("board").innerHTML = STAGES.map(function (s) {
       var ls = list.filter(function (l) { return (l.etapa || "nuevo") === s.id; });
-      return '<div class="col"><div class="col-h">' + s.n + '<span>' + ls.length + '</span></div>' + ls.map(function (l) { var n = next(l); return '<button type="button" class="lead' + (n.u ? " warn" : "") + '" data-open="' + l.id + '"><b>' + esc(l.nombre) + '</b><span class="meta">' + esc([l.disciplina, l.nivel, l.fase].filter(Boolean).join(" · ")) + '</span><span class="next">' + esc(n.t) + '</span></button>'; }).join("") + '</div>';
+      return '<div class="col"><div class="col-h">' + s.n + '<span>' + ls.length + '</span></div>' + ls.map(function (l) { var n = next(l); return '<button type="button" class="lead' + (n.u ? " warn" : "") + '" data-open="' + l.id + '"><b>' + esc(l.nombre) + '</b><span class="meta">' + esc([tipoOf(l), l.disciplina, l.cuenta].filter(Boolean).join(" · ")) + '</span><span class="next">' + esc(n.t) + '</span></button>'; }).join("") + '</div>';
     }).join("");
   }
 
   /* Clientes y escalera */
   function renderNivel() {
     var dots = ""; for (var i = 0; i <= MAXN; i++) dots += '<i class="' + (i <= nivel ? "on" : "") + '"></i>';
-    var pr = [["1:1 semestral", "El que recomiendas", 1], ["1:1 semestral 2 cuotas", "2 × " + eur(CUOTA[nivel])], ["1:1 anual", "Mejor precio/mes"], ["1:1 trimestral", "Si no llega a 6"], ["Fight Camp 8 semanas", "Con fecha de combate"]];
+    var pr = [["Élite semestral", "El que recomiendas", 1], ["Élite semestral 2 cuotas", "2 × " + eur(CUOTA[nivel])], ["Élite anual", "Mejor precio/mes"], ["Élite trimestral", "Si no llega a 6"], ["Fight Camp 8 semanas", "Con fecha de combate"]];
     $("nivelCard").innerHTML = '<div class="filters" style="justify-content:space-between"><div><span class="label">Precios actuales · propuesta, confirmar</span><h3>Nivel ' + nivel + ' de ' + MAXN + '</h3></div><div class="dots" aria-hidden="true">' + dots + '</div></div>' +
       '<div class="nv-prices">' + pr.map(function (p) { return '<div class="' + (p[2] ? "star" : "") + '"><span>' + esc(p[0]) + '</span><b>' + eur(priceOf(p[0])) + '</b><span>' + esc(p[1]) + '</span></div>'; }).join("") + '</div>' +
-      '<p class="soft" style="font-size:13px">Cada venta de 1:1 o Fight Camp sube un nivel (≈ +20 %) hasta el 3. Mensual 140 € y Base 45 €/mes no suben. ' + (ventasDesdeSubida ? "Ventas desde la última subida: " + ventasDesdeSubida + "." : "") + '</p>' +
+      '<p class="soft" style="font-size:13px">Cada venta de Élite o Fight Camp sube un nivel (+20 %) hasta el 3. Élite mensual y Forma no suben. ' + (ventasDesdeSubida ? "Ventas desde la última subida: " + ventasDesdeSubida + "." : "") + '</p>' +
       (ventasDesdeSubida > 0 && nivel < MAXN ? '<div class="hint">Has cerrado ' + ventasDesdeSubida + ' venta(s) a este precio. Toca subir.<button type="button" class="btn" id="hintUp" style="justify-self:start">Subir a nivel ' + (nivel + 1) + '</button></div>' : "") +
       '<div class="filters"><button type="button" class="btn ghost mini" id="nvUp"' + (nivel >= MAXN ? " disabled" : "") + '>' + (nivel >= MAXN ? "Estás en el máximo" : "Subir a nivel " + (nivel + 1)) + '</button>' + (nivel > 0 ? '<button type="button" class="linkish" id="nvDown">Bajar un nivel</button><span id="nvDownBox" hidden class="filters"><span class="soft" style="font-size:13px">¿Seguro? Solo si llevas 3 llamadas sin cerrar.</span><button type="button" class="btn ghost mini" id="nvDownYes">Sí, bajar</button></span>' : "") + '</div>';
     $("nvUp").addEventListener("click", function () { setNivel(nivel + 1); });
@@ -435,12 +437,12 @@ form.grid .full { grid-column: 1 / -1; }
   function renderClients() {
     var cl = clients(), act = cl.filter(active), mrr = act.reduce(function (a, l) { return a + monthly(l); }, 0);
     var ym = today().slice(0, 7), cobrado = 0;
-    cl.forEach(function (l) { if (!l.alta) return; var p = plan(l.plan); if (l.alta.slice(0, 7) === ym && p && p.m > 1) cobrado += num(l.importe); if (l.plan === "1:1 semestral 2 cuotas" && addM(l.alta, 3).slice(0, 7) === ym) cobrado += num(l.importe); });
+    cl.forEach(function (l) { if (!l.alta) return; var p = plan(l.plan); if (l.alta.slice(0, 7) === ym && p && p.m > 1) cobrado += num(l.importe); if (l.plan === "Élite semestral 2 cuotas" && addM(l.alta, 3).slice(0, 7) === ym) cobrado += num(l.importe); });
     var gone = cl.filter(function (l) { return l.baja && l.alta; }), vida = gone.length ? Math.round(gone.reduce(function (a, l) { return a + dd(l.alta, l.baja); }, 0) / gone.length / 30.4 * 10) / 10 : null;
     var camp = act.filter(function (l) { return l.fase === "Campamento" || l.fase === "Fight week"; }).length;
-    $("ckpis").innerHTML = kpi(act.length, "clientes activos") + kpi(eur(mrr), "ingreso mensual equiv.") + kpi(eur(cobrado), "cobrado por adelantado este mes") + kpi(act.filter(function (l) { return plan(l.plan) && plan(l.plan).m >= 3; }).length, "en pack (3+ meses)") + kpi(camp, "en campamento / fight week") + kpi(vida == null ? "—" : String(vida).replace(".", ",") + " m", "vida media");
+    $("ckpis").innerHTML = kpi(act.length, "clientes activos") + kpi(eur(mrr), "ingreso mensual equiv.") + kpi(eur(cobrado), "cobrado por adelantado este mes") + kpi(act.filter(function (l) { return tipoOf(l) === "Competidor"; }).length + " / " + act.filter(function (l) { return tipoOf(l) === "Hobby"; }).length, "competidores / hobby") + kpi(camp, "en campamento / fight week") + kpi(vida == null ? "—" : String(vida).replace(".", ",") + " m", "vida media");
     var head = '<div class="crow head"><span>Cliente</span><span class="hm">Disciplina</span><span class="hm">Plan</span><span class="hm">€/mes</span><span class="hm">Fase · combate</span><span>Estado</span></div>';
-    $("clist").innerHTML = cl.length ? head + cl.map(function (l) { var n = next(l); return '<button type="button" class="crow" data-open="' + l.id + '"><span><b>' + esc(l.nombre) + '</b><small>' + esc(l.nivel || "") + (l.alta ? " · alta " + fmtD(l.alta) : "") + '</small></span><span class="hm">' + esc(l.disciplina || "—") + '</span><span class="hm">' + esc(l.plan || "—") + (l.fin ? '<small>fin ' + fmtD(l.fin) + '</small>' : "") + '</span><span class="hm">' + eur(monthly(l)) + '</span><span class="hm">' + esc(l.fase || "—") + (l.combateFecha ? '<small>' + fmtD(l.combateFecha) + '</small>' : "") + '</span><span><span class="pill' + (l.baja ? " r" : (n.u ? " a" : "")) + '">' + (l.baja ? "Baja" : (n.done ? "Activo" : esc(n.t.split(":")[0]))) + '</span></span></button>'; }).join("") : '<p class="empty">Todavía no hay clientes. Empieza apuntando a los 36 que ya tienes (arriba).</p>';
+    $("clist").innerHTML = cl.length ? head + cl.map(function (l) { var n = next(l); return '<button type="button" class="crow" data-open="' + l.id + '"><span><b>' + esc(l.nombre) + '</b><small>' + esc(tipoOf(l)) + (l.alta ? " · alta " + fmtD(l.alta) : "") + '</small></span><span class="hm">' + esc(l.disciplina || "—") + '</span><span class="hm">' + esc(l.plan || "—") + (l.fin ? '<small>fin ' + fmtD(l.fin) + '</small>' : "") + '</span><span class="hm">' + eur(monthly(l)) + '</span><span class="hm">' + esc(l.fase || "—") + (l.combateFecha ? '<small>' + fmtD(l.combateFecha) + '</small>' : "") + '</span><span><span class="pill' + (l.baja ? " r" : (n.u ? " a" : "")) + '">' + (l.baja ? "Baja" : (n.done ? "Activo" : esc(n.t.split(":")[0]))) + '</span></span></button>'; }).join("") : '<p class="empty">Todavía no hay clientes. Empieza apuntando a los 36 que ya tienes (arriba).</p>';
   }
 
   /* Combates */
@@ -457,10 +459,34 @@ form.grid .full { grid-column: 1 / -1; }
     }).join("") : '<p class="empty">Sin combates apuntados. Apunta los próximos de tus atletas (y los pasados que quieras usar para la serie).</p>';
   }
 
+  /* Casos de atletas */
+  var CS_F = [["disciplina", "Disciplina y nivel", "Ej.: MMA, profesional"], ["venia", "De dónde venía", "Cómo llegó a ti"], ["trabajamos", "Qué trabajasteis", ""], ["porque", "Por qué eso", ""], ["como", "Cómo lo consiguió", ""], ["resultado", "Combate y resultado", "[CARLOS: completar] · solo si es real"]];
+  var CS_VID = ["Sin pedir", "Pedido", "Grabado", "Publicado"], CS_JUN = ["Nada", "Entreno grabado", "Esquina grabada", "Publicado"], CS_PER = ["Sin pedir", "Pedido", "Sí, por escrito", "Sí, tutor (menor)", "No"];
+  var csTimers = {};
+  function slug(t) { return String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "atleta"; }
+  function caseList() { var o = {}; ATLETAS.forEach(function (n) { o[slug(n)] = Object.assign({ nombre: n }, casos[slug(n)] || {}); }); Object.keys(casos).forEach(function (k) { if (!o[k]) o[k] = casos[k]; }); return o; }
+  function caseDone(c) { var n = 0; CS_F.forEach(function (f) { if (c[f[0]] && String(c[f[0]]).trim()) n++; }); if (c.video === "Grabado" || c.video === "Publicado") n++; if (c.juntos && c.juntos !== "Nada") n++; return n; }
+  function renderCasos() {
+    var L = caseList();
+    $("casosList").innerHTML = Object.keys(L).map(function (k) { var c = L[k], d = caseDone(c);
+      return '<details class="entry" data-csd="' + k + '"' + (casosOpen[k] ? " open" : "") + '><summary class="eh" style="cursor:pointer"><b>' + esc(c.nombre) + '</b><span class="pill' + (d >= 8 ? "" : (d ? " a" : " r")) + '">' + d + ' / 8</span></summary><div class="fields" style="margin-top:8px">' +
+        CS_F.map(function (f) { return '<label class="f' + (f[0] === "disciplina" ? "" : " full") + '">' + f[1] + '<textarea class="mini" rows="2" data-cs="' + k + '" data-k="' + f[0] + '" placeholder="' + esc(f[2]) + '">' + esc(c[f[0]] || "") + '</textarea></label>'; }).join("") +
+        '<label class="f">Vídeo testimonio<select class="mini" data-cs="' + k + '" data-k="video">' + opts(CS_VID, c.video || "Sin pedir") + '</select></label><label class="f">Contenido juntos<select class="mini" data-cs="' + k + '" data-k="juntos">' + opts(CS_JUN, c.juntos || "Nada") + '</select></label><label class="f">Permiso<select class="mini" data-cs="' + k + '" data-k="permiso">' + opts(CS_PER, c.permiso || "Sin pedir") + '</select></label></div></details>';
+    }).join("");
+  }
+  function saveCaso(k, key, val) {
+    var L = caseList(), c = Object.assign({}, L[k]); c[key] = val; c.actualizado = now(); casos[k] = c;
+    if (!db) return; clearTimeout(csTimers[k]);
+    csTimers[k] = setTimeout(function () { db.collection("casos").doc(k).set(casos[k]).catch(function (e) { setStatus(errMsg(e), true); }); }, 600);
+  }
+  document.addEventListener("input", function (e) { var i = e.target.closest("[data-cs]"); if (i) saveCaso(i.dataset.cs, i.dataset.k, i.value); });
+  document.addEventListener("change", function (e) { var i = e.target.closest("[data-cs]"); if (i && i.tagName === "SELECT") { saveCaso(i.dataset.cs, i.dataset.k, i.value); renderCasos(); renderPruebas(); } });
+  document.addEventListener("toggle", function (e) { var d = e.target; if (d.dataset && d.dataset.csd) casosOpen[d.dataset.csd] = d.open; }, true);
+
   /* Pruebas */
   function renderPruebas() {
     var rec = pruebas.filter(function (p) { return p.estado === "Recibido" || p.estado === "Publicado"; }).length;
-    $("pkpis").innerHTML = kpi(pruebas.length, "pruebas apuntadas") + kpi(pruebas.filter(function (p) { return p.estado === "Pedido"; }).length, "pedidas") + kpi(rec, "recibidas") + kpi(pruebas.filter(function (p) { return p.estado === "Publicado"; }).length, "publicadas") + kpi(pruebas.filter(function (p) { return /^Sí/.test(p.permiso || ""); }).length, "con permiso") + kpi(pruebas.filter(function (p) { return p.tipo === "Comparativa de rendimiento" && p.antes && p.despues; }).length, "comparativas completas");
+    var CL = caseList(), ck = Object.keys(CL); $("pkpis").innerHTML = kpi(ck.filter(function (k) { return caseDone(CL[k]) >= 8; }).length + " / " + ck.length, "casos completos") + kpi(ck.filter(function (k) { return CL[k].video === "Grabado" || CL[k].video === "Publicado"; }).length, "vídeos de atletas") + kpi(pruebas.length, "pruebas apuntadas") + kpi(pruebas.filter(function (p) { return p.estado === "Pedido"; }).length, "pedidas") + kpi(pruebas.filter(function (p) { return p.estado === "Publicado"; }).length, "publicadas") + kpi(pruebas.filter(function (p) { return p.tipo === "Comparativa de rendimiento" && p.antes && p.despues; }).length, "comparativas completas");
     var list = pruebas.filter(function (p) { return !fPrueba || p.tipo === fPrueba || p.estado === fPrueba; });
     $("prList").innerHTML = list.length ? list.map(function (p) {
       var comp = p.tipo === "Comparativa de rendimiento";
@@ -468,12 +494,12 @@ form.grid .full { grid-column: 1 / -1; }
         '<div class="eg"><label class="f">Estado<select class="mini" data-p="' + p.id + '" data-k="estado">' + opts(ESTADO_P, p.estado || "Por pedir") + '</select></label><label class="f">Permiso<select class="mini" data-p="' + p.id + '" data-k="permiso">' + opts(PERM_P, p.permiso || "Sin pedir") + '</select></label><label class="f" style="grid-column:span 2">Enlace o dónde está<input class="mini" data-p="' + p.id + '" data-k="enlace" data-t="1" value="' + esc(p.enlace || "") + '" placeholder="Carpeta, enlace al post…"></label>' +
         (comp ? '<label class="f">Dato antes<input class="mini" data-p="' + p.id + '" data-k="antes" data-t="1" value="' + esc(p.antes || "") + '" placeholder="Tal cual se midió"></label><label class="f">Fecha antes<input type="date" class="mini" data-p="' + p.id + '" data-k="fechaAntes" value="' + esc(p.fechaAntes || "") + '"></label><label class="f">Dato después<input class="mini" data-p="' + p.id + '" data-k="despues" data-t="1" value="' + esc(p.despues || "") + '" placeholder="Vacío hasta el retest"></label><label class="f">Fecha después<input type="date" class="mini" data-p="' + p.id + '" data-k="fechaDespues" value="' + esc(p.fechaDespues || "") + '"></label>' : "") +
         '<label class="f" style="grid-column:1/-1">Notas<input class="mini" data-p="' + p.id + '" data-k="notas" data-t="1" value="' + esc(p.notas || "") + '" placeholder="Qué dice, para qué pieza lo usarás"></label></div></div>';
-    }).join("") : '<p class="empty">Ninguna prueba todavía. Objetivo del primer mes: 1 por cada atleta con nombre y 1 de cada cliente con más de 3 meses.</p>';
+    }).join("") : '<p class="empty">Ningún testimonio todavía.</p>';
   }
 
   function typing(id) { var a = document.activeElement; return !!(a && $(id).contains(a) && (a.tagName === "INPUT" || a.tagName === "SELECT" || a.tagName === "TEXTAREA")); }
   function renderAll() {
-    renderKpis(); renderToday(); renderBoard(); renderNivel(); renderClients(); if (!typing("combList")) renderCombates(); if (!typing("prList")) renderPruebas();
+    renderKpis(); renderToday(); renderBoard(); renderNivel(); renderClients(); if (!typing("combList")) renderCombates(); if (!typing("prList")) renderPruebas(); if (!typing("casosList")) renderCasos();
     var names = ATLETAS.concat(clients().map(function (l) { return l.nombre; })).filter(function (x, i, a) { return x && a.indexOf(x) === i; });
     $("atletasList").innerHTML = names.map(function (n) { return '<option value="' + esc(n) + '">'; }).join("");
     if (openId) { var l = leads.find(function (x) { return x.id === openId; }); if (l && !typing("drawer")) renderDrawer(l); }
@@ -492,10 +518,11 @@ form.grid .full { grid-column: 1 / -1; }
     d.innerHTML = '<div class="dhead"><div><span class="label">' + esc(STAGES.find(function (x) { return x.id === et; }).n) + '</span><h2>' + esc(l.nombre) + '</h2><p class="soft" style="font-size:13px">Siguiente: <b>' + esc(n.t) + '</b></p></div><button type="button" class="btn ghost mini" id="dClose">Cerrar</button></div>' +
       '<div class="steps" role="group" aria-label="Etapa">' + STAGES.map(function (x) { return '<button type="button" data-st="' + x.id + '" aria-pressed="' + (x.id === et) + '">' + x.n + '</button>'; }).join("") + '</div>' +
       (et === "agendado" ? '<label class="f">Fecha y hora de la llamada<input type="datetime-local" data-f="llamada" value="' + esc(l.llamada || "") + '"></label>' : "") +
-      (et === "perdido" ? '<label class="f">Motivo<select data-f="motivo">' + opts(["", "No contesta", "Precio", "No compite / no encaja", "Ya tiene preparador", "Más adelante", "Otro"], l.motivo || "") + '</select></label>' : "") +
+      (et === "perdido" ? '<label class="f">Motivo<select data-f="motivo">' + opts(["", "No contesta", "Precio", "No encaja", "Ya tiene preparador", "Más adelante", "Otro"], l.motivo || "") + '</select></label>' : "") +
       (et === "cliente" ? '<div class="card flat"><span class="label">Venta</span><div class="fields"><label class="f">Plan<select id="dPlan" data-f="plan">' + opts([""].concat(PLANS.map(function (p) { return p.id; })), l.plan || "") + '</select></label><label class="f">Importe cobrado (€)<input data-f="importe" type="number" step="0.01" inputmode="decimal" value="' + esc(l.importe || "") + '"></label><label class="f">Alta<input type="date" data-f="alta" value="' + esc(l.alta || "") + '"></label><label class="f">Fin del pack<input type="date" data-f="fin" value="' + esc(l.fin || "") + '"></label><label class="f">Baja<input type="date" data-f="baja" value="' + esc(l.baja || "") + '"></label></div></div>' : "") +
       '<div class="fields">' +
         '<label class="f">Instagram<input data-f="ig" data-t="1" value="' + esc(l.ig || "") + '"></label><label class="f">WhatsApp<input data-f="tel" data-t="1" value="' + esc(l.tel || "") + '"></label>' +
+        '<label class="f">Tipo<select data-f="tipo">' + opts(TIPO, tipoOf(l)) + '</select></label><label class="f">Viene de<select data-f="cuenta">' + opts(CUENTA, l.cuenta) + '</select></label>' +
         '<label class="f">Disciplina<select data-f="disciplina">' + opts(DISC, l.disciplina) + '</select></label><label class="f">Nivel<select data-f="nivel">' + opts(NIVEL, l.nivel) + '</select></label>' +
         '<label class="f">Próximo combate / evento<input data-f="combateEvento" data-t="1" value="' + esc(l.combateEvento || "") + '"></label><label class="f">Fecha del combate<input type="date" data-f="combateFecha" value="' + esc(l.combateFecha || "") + '"></label>' +
         '<label class="f">Fase<select data-f="fase">' + opts(FASE, l.fase) + '</select></label><label class="f">Le interesa<select data-f="servicio">' + opts(SERV, l.servicio) + '</select></label>' +
@@ -517,7 +544,7 @@ form.grid .full { grid-column: 1 / -1; }
       if (i.dataset.t) i.addEventListener("input", function () { var o = {}; o[i.dataset.f] = i.value; patchLater(l.id, o); });
       i.addEventListener("change", function () {
         var o = {}; o[i.dataset.f] = i.value;
-        if (i.dataset.f === "plan" && i.value) { o.importe = String(firstCharge(i.value)); o.pago = i.value === "1:1 semestral 2 cuotas" ? "2 cuotas" : "Pago único"; var a = l.alta || today(); o.alta = a; o.fin = addM(a, plan(i.value).m); var was = l.plan && plan(l.plan) && plan(l.plan).up; if (plan(i.value).up && !was && !l.contada) { o.contada = true; saveNivel(nivel, ventasDesdeSubida + 1); } }
+        if (i.dataset.f === "plan" && i.value) { o.importe = String(firstCharge(i.value)); o.pago = i.value === "Élite semestral 2 cuotas" ? "2 cuotas" : "Pago único"; var a = l.alta || today(); o.alta = a; o.fin = addM(a, plan(i.value).m); var was = l.plan && plan(l.plan) && plan(l.plan).up; if (plan(i.value).up && !was && !l.contada) { o.contada = true; saveNivel(nivel, ventasDesdeSubida + 1); } }
         if (i.dataset.f === "alta" && l.plan && plan(l.plan)) o.fin = addM(i.value, plan(l.plan).m);
         patch(l.id, o);
       });
@@ -552,13 +579,16 @@ form.grid .full { grid-column: 1 / -1; }
   bindEntry("[data-b]", "combates"); bindEntry("[data-p]", "pruebas");
 
   /* Selects */
-  $("n-disc").innerHTML = opts(DISC, "MMA"); $("n-nivel").innerHTML = opts(NIVEL, "Amateur"); $("n-origen").innerHTML = opts(ORIGEN); $("n-serv").innerHTML = opts(SERV); $("n-fase").innerHTML = opts(FASE, "Sin combate");
+  $("n-disc").innerHTML = opts(DISC, "MMA"); $("n-nivel").innerHTML = opts(NIVEL, "Amateur"); $("n-tipo").innerHTML = opts(TIPO, "Competidor"); $("n-cuenta").innerHTML = opts(CUENTA, "@carlosjimena90"); $("c-tipo").innerHTML = opts(TIPO, "Competidor"); $("fTipo").innerHTML += opts(TIPO); $("fCuenta").innerHTML += opts(CUENTA);
+  $("n-tipo").addEventListener("change", function () { if (this.value === "Hobby") { $("n-nivel").value = "No compite"; $("n-serv").value = "Forma (entrena por gusto)"; } }); $("n-origen").innerHTML = opts(ORIGEN); $("n-serv").innerHTML = opts(SERV); $("n-fase").innerHTML = opts(FASE, "Sin combate");
   $("c-disc").innerHTML = opts(DISC, "MMA"); $("c-plan").innerHTML = opts(PLANS.map(function (p) { return p.id; }), "Precio antiguo (mensual)"); $("c-alta").value = today();
   $("b-disc").innerHTML = opts(DISC, "MMA"); $("b-nivel").innerHTML = opts(NIVEL, "Amateur");
   $("p-tipo").innerHTML = opts(TIPO_P); $("p-test").innerHTML = opts(TEST_P); $("p-estado").innerHTML = opts(ESTADO_P);
   $("fDisc").innerHTML += opts(DISC); $("fNivel").innerHTML += opts(NIVEL); $("fFase").innerHTML += opts(FASE); $("fPrueba").innerHTML += opts(TIPO_P.concat(ESTADO_P));
   $("fDisc").addEventListener("change", function () { fDisc = this.value; renderBoard(); });
   $("fNivel").addEventListener("change", function () { fNivel = this.value; renderBoard(); });
+  $("fTipo").addEventListener("change", function () { fTipo = this.value; renderBoard(); });
+  $("fCuenta").addEventListener("change", function () { fCuenta = this.value; renderBoard(); });
   $("fFase").addEventListener("change", function () { fFase = this.value; renderBoard(); });
   $("fPrueba").addEventListener("change", function () { fPrueba = this.value; renderPruebas(); });
 
@@ -567,16 +597,16 @@ form.grid .full { grid-column: 1 / -1; }
   $("addForm").addEventListener("submit", async function (e) {
     e.preventDefault(); if (!db) { $("addNote").textContent = "La base de datos no está disponible en esta vista."; return; }
     var nombre = $("n-nombre").value.trim(); if (!nombre) return;
-    var data = { nombre: nombre, ig: $("n-ig").value.trim(), tel: $("n-tel").value.trim(), ciudad: $("n-ciudad").value.trim(), disciplina: $("n-disc").value, nivel: $("n-nivel").value, origen: $("n-origen").value, servicio: $("n-serv").value, combateEvento: $("n-evento").value.trim(), combateFecha: $("n-fecha").value, fase: $("n-fase").value, lesion: $("n-lesion").value.trim(), notas: $("n-notas").value.trim(), trabajo: "", etapa: "nuevo", creado: now(), actualizado: now(), checks: {}, seguimiento: {}, log: [{ f: now(), t: "Alta en el CRM" }] };
+    var data = { nombre: nombre, ig: $("n-ig").value.trim(), tel: $("n-tel").value.trim(), ciudad: $("n-ciudad").value.trim(), disciplina: $("n-disc").value, tipo: $("n-tipo").value, cuenta: $("n-cuenta").value, nivel: $("n-nivel").value, origen: $("n-origen").value, servicio: $("n-serv").value, combateEvento: $("n-evento").value.trim(), combateFecha: $("n-fecha").value, fase: $("n-fase").value, lesion: $("n-lesion").value.trim(), notas: $("n-notas").value.trim(), trabajo: "", etapa: "nuevo", creado: now(), actualizado: now(), checks: {}, seguimiento: {}, log: [{ f: now(), t: "Alta en el CRM" }] };
     $("addBtn").disabled = true;
-    try { await db.collection("leads").add(data); $("addForm").reset(); $("n-disc").value = "MMA"; $("n-nivel").value = "Amateur"; $("n-fase").value = "Sin combate"; $("addNote").textContent = "Apuntado. Siguiente: " + next(data).t + ". Recuerda: nada de precio por mensaje."; }
+    try { await db.collection("leads").add(data); $("addForm").reset(); $("n-disc").value = "MMA"; $("n-nivel").value = "Amateur"; $("n-tipo").value = "Competidor"; $("n-cuenta").value = "@carlosjimena90"; $("n-fase").value = "Sin combate"; $("addNote").textContent = "Apuntado. Siguiente: " + next(data).t + ". Nada de precio por mensaje."; }
     catch (err) { $("addNote").textContent = formErr(err); }
     $("addBtn").disabled = false;
   });
   $("addCli").addEventListener("submit", async function (e) {
     e.preventDefault(); if (!db) { $("c-note").textContent = "La base de datos no está disponible en esta vista."; return; }
     var pl = $("c-plan").value, alta = $("c-alta").value || today(), imp = $("c-imp").value || String(priceOf(pl) || "");
-    var data = { nombre: $("c-nombre").value.trim(), tel: $("c-tel").value.trim(), ig: "", disciplina: $("c-disc").value, nivel: "Amateur", origen: "Antiguo cliente", servicio: "1:1 (no lo sabe aún)", fase: "Sin combate", etapa: "cliente", plan: pl, importe: imp, alta: alta, fin: plan(pl).m > 1 ? addM(alta, plan(pl).m) : "", contada: true, creado: now(), actualizado: now(), checks: { testsIn: false }, seguimiento: {}, log: [{ f: now(), t: "Cliente que ya tenía" }] };
+    var data = { nombre: $("c-nombre").value.trim(), tel: $("c-tel").value.trim(), ig: "", disciplina: $("c-disc").value, tipo: $("c-tipo").value, cuenta: "Otro", nivel: $("c-tipo").value === "Hobby" ? "No compite" : "Amateur", origen: "Antiguo cliente", servicio: "Élite (compite)", fase: "Sin combate", etapa: "cliente", plan: pl, importe: imp, alta: alta, fin: plan(pl).m > 1 ? addM(alta, plan(pl).m) : "", contada: true, creado: now(), actualizado: now(), checks: { testsIn: false }, seguimiento: {}, log: [{ f: now(), t: "Cliente que ya tenía" }] };
     if (!data.nombre) return;
     $("c-btn").disabled = true;
     try { await db.collection("leads").add(data); $("addCli").reset(); $("c-plan").value = "Precio antiguo (mensual)"; $("c-alta").value = today(); $("c-note").textContent = "Cliente añadido."; } catch (err) { $("c-note").textContent = formErr(err); }
@@ -589,6 +619,13 @@ form.grid .full { grid-column: 1 / -1; }
     $("b-btn").disabled = true;
     try { await db.collection("combates").add(data); $("addCombate").reset(); $("b-disc").value = "MMA"; $("b-nivel").value = "Amateur"; $("b-note").textContent = "Combate apuntado."; } catch (err) { $("b-note").textContent = formErr(err); }
     $("b-btn").disabled = false;
+  });
+  $("addCaso").addEventListener("submit", function (e) {
+    e.preventDefault(); var n = $("cs-nombre").value.trim(); if (!n) return; if (!db) { $("cs-note").textContent = "La base de datos no está disponible en esta vista."; return; }
+    var k = slug(n); if (caseList()[k]) { $("cs-note").textContent = "Ya está en la lista."; return; }
+    casos[k] = { nombre: n, creado: now() }; casosOpen[k] = true;
+    db.collection("casos").doc(k).set(casos[k]).then(function () { $("addCaso").reset(); $("cs-note").textContent = "Añadido."; }, function (er) { $("cs-note").textContent = formErr(er); });
+    renderCasos();
   });
   $("addPrueba").addEventListener("submit", async function (e) {
     e.preventDefault(); if (!db) { $("p-note").textContent = "La base de datos no está disponible en esta vista."; return; }
@@ -603,14 +640,15 @@ form.grid .full { grid-column: 1 / -1; }
   renderAll();
   (async function () {
     var c = window.claude && window.claude.use ? await window.claude.use("db") : null;
-    if (!c) { setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true); ["addBtn", "c-btn", "b-btn", "p-btn"].forEach(function (id) { $(id).disabled = true; }); renderToday(); return; }
+    if (!c) { setStatus("Sin base de datos en esta vista: abre la página desde claude.ai con tu cuenta.", true); ["addBtn", "c-btn", "b-btn", "p-btn", "cs-btn"].forEach(function (id) { $(id).disabled = true; }); renderToday(); return; }
     db = c;
     var got = {}, timer = setTimeout(function () { setStatus("La base de datos tarda en responder…", true); }, 10000);
-    function ready(k) { got[k] = true; if (got.l && got.b && got.p) { clearTimeout(timer); setStatus(leads.length + " fichas · " + combates.length + " combates · " + pruebas.length + " pruebas · en directo"); } }
+    function ready(k) { got[k] = true; if (got.l && got.b && got.p && got.c) { clearTimeout(timer); setStatus(leads.length + " fichas · " + combates.length + " combates · " + pruebas.length + " pruebas · en directo"); } }
     function onErr(e) { clearTimeout(timer); setStatus(e && e.code === "revoked" ? "Acceso retirado" : "No se ha podido leer la base de datos", true); }
     db.collection("leads").orderBy("creado", "desc").onSnapshot(function (snap) { leads = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (!snap.metadata.fromCache) ready("l"); renderAll(); }, onErr);
     db.collection("combates").orderBy("fecha", "asc").onSnapshot(function (snap) { combates = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (!snap.metadata.fromCache) ready("b"); renderAll(); }, onErr);
     db.collection("pruebas").orderBy("creado", "desc").onSnapshot(function (snap) { pruebas = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); if (!snap.metadata.fromCache) ready("p"); renderAll(); }, onErr);
+    db.collection("casos").onSnapshot(function (snap) { snap.docs.forEach(function (d) { if (!csTimers[d.id] || !typing("casosList")) casos[d.id] = d.data(); }); if (!snap.metadata.fromCache) ready("c"); renderAll(); }, onErr);
     db.collection("config").onSnapshot(function (snap) { var d = snap.docs.find(function (x) { return x.id === "precios"; }), v = d ? d.data() : null; nivel = v && typeof v.nivel === "number" ? Math.max(0, Math.min(MAXN, v.nivel)) : 0; ventasDesdeSubida = v && v.ventasDesdeSubida ? v.ventasDesdeSubida : 0; renderAll(); }, function () {});
   })();
 })();

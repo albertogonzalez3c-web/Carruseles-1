@@ -85,7 +85,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
 </style>
 <style>
-/* Reporte de Carlos Jimena para Alberto: diario (conversaciones, llamadas, cierres por pack, piezas por línea A/B/C/D, carruseles, YouTube, historias, estados, pruebas) y semanal (5 líneas de "Lo primero", pautado vs publicado, testimonios, ventas por pack, MRR, cobrado por adelantado, anuncios, horas). Colecciones diario/{fecha} y semana/{YYYY-Www}. */
+/* Reporte de Carlos Jimena: diario/{fecha} y semana/{YYYY-Www}. */
 .bar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
 .bar label { display: grid; gap: 4px; font-size: 12.5px; font-weight: 700; color: var(--soft); }
 .status { font: 500 12px/1.3 var(--f-mono); color: var(--soft); }
@@ -112,7 +112,7 @@ img { max-width: 100%; display: block; }
 .calc b { font-variant-numeric: tabular-nums; white-space: nowrap; }
 pre.copy { white-space: pre-wrap; font: 500 13px/1.5 var(--f-mono); background: var(--panel2); padding: 12px; border-radius: 10px; margin: 0; max-height: 360px; overflow: auto; }
 .closes { display: grid; gap: 8px; background: var(--panel2); border-radius: 12px; padding: 10px; }
-.close-row { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.5fr) minmax(0, .9fr) auto; gap: 8px; align-items: end; }
+.close-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, .8fr) auto; gap: 8px; align-items: end; }
 .mood { display: flex; gap: 6px; }
 .mood button { all: unset; cursor: pointer; font-size: 22px; padding: 4px 8px; border-radius: 10px; background: var(--panel2); }
 .mood button[aria-pressed="true"] { background: var(--red); }
@@ -124,10 +124,10 @@ pre.copy { white-space: pre-wrap; font: 500 13px/1.5 var(--f-mono); background: 
 @media (max-width: 520px) { .nums.c3 { grid-template-columns: 1fr 1fr; } .close-row { grid-template-columns: 1fr 1fr; } }
 </style>
 <header class="hero"><div class="wrap">
-  <span class="label">Carlos Jimena · Fight Programming · Parte 7 · Reporte</span>
-  <h1>Lo del día, cada noche. <em>Lo de la semana, el domingo.</em></h1>
-  <p class="lead">Se guarda solo y Alberto lo ve en directo. Cinco minutos. Verde es objetivo cumplido; rojo es lo que toca mañana.</p>
-  <div class="nm"><span class="label">Tu nicho en una frase</span><p class="nm-big" style="font-size:15.5px">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p></div>
+  <span class="label">Carlos Jimena · Parte 7 · Reporte</span>
+  <h1>Cada noche, 2 minutos. <em>El domingo, 5.</em></h1>
+  <p class="lead">Se guarda solo y Alberto lo ve al momento.</p>
+  <div class="nm"><span class="label">Lo que haces, en una frase</span><p class="nm-big" style="font-size:15.5px">Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.</p></div>
   <div class="bar"><label for="fecha">Día<input type="date" id="fecha"></label><span class="status" id="status" aria-live="polite">Conectando con la base de datos…</span></div>
 </div></header>
 <main class="wrap" style="display:grid;gap:22px">
@@ -140,66 +140,56 @@ pre.copy { white-space: pre-wrap; font: 500 13px/1.5 var(--f-mono); background: 
         <div class="nums">
           <label>Ronda 1<input data-d="r1" type="number" min="0" inputmode="numeric" placeholder="50"></label>
           <label>Ronda 2<input data-d="r2" type="number" min="0" inputmode="numeric" placeholder="50"></label>
-          <label>Bienvenidas y respuestas a historias<input data-d="bienv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           <label>Han respondido<input data-d="resp" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Preguntaron el precio (y no lo diste)<input data-d="precio" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Cualificados (compite + encaja)<input data-d="cualif" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Encajan (compite o hobby con ganas)<input data-d="cualif" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         </div>
         <div class="meter" aria-hidden="true"><i id="convBar" style="width:0"></i></div>
         <div class="goal" id="convGoal"></div>
-        <div class="yn"><span>¿Seguimientos del CRM (días 2, 7 y 14) hechos?</span><div class="seg" data-yn="seguimientos"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
+        <div class="yn"><span>¿Seguimientos del CRM hechos?</span><div class="seg" data-yn="seguimientos"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
       </div>
       <div class="grp"><div class="gh">Llamadas y ventas</div>
         <div class="nums"><label>Llamadas agendadas<input data-d="agendadas" type="number" min="0" inputmode="numeric" placeholder="0"></label><label>Llamadas hechas<input data-d="hechas" type="number" min="0" inputmode="numeric" placeholder="0"></label></div>
         <div class="yn"><span>¿Cerraste algo hoy?</span><div class="seg"><button type="button" id="closedYes" aria-pressed="false">Sí</button><button type="button" id="closedNo" aria-pressed="false">No</button></div></div>
         <div class="closes" id="closesBox" hidden><span class="label">Ventas de hoy</span><div id="closesList" style="display:grid;gap:8px"></div><button type="button" class="btn ghost" id="addClose" style="justify-self:start;padding:8px 12px;font-size:13px">+ Otra venta</button></div>
       </div>
-      <div class="grp"><div class="gh">Contenido publicado <small>semana: 2 A · 2 B · 1 C · 1 D · 3 carruseles</small></div>
+      <div class="grp"><div class="gh">@carlosjimena90 <small>lo nuevo</small></div>
         <div class="nums c3">
-          <label>A · Reacción<input data-d="pA" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>B · Método<input data-d="pB" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>C · Contra el sector<input data-d="pC" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>D · Día a día<input data-d="pD" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>…de ellas, carrusel conexión<input data-d="cc" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>…de ellas, carrusel valor<input data-d="cv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Gesto técnico / élite<input data-d="pE" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Trial reels<input data-d="trial" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>A cámara<input data-d="yap" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Reacción a tu atleta<input data-d="reac" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Reacción a un famoso<input data-d="fam" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Ranking<input data-d="rank" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Tendencia<input data-d="tend" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           <label>YouTube<input data-d="yt" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Carrusel conexión<input data-d="cc" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Carrusel valor<input data-d="cv" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           <label>Historias<input data-d="hist" type="number" min="0" inputmode="numeric" placeholder="6–10"></label>
-          <label>Estados de WhatsApp<input data-d="estados" type="number" min="0" inputmode="numeric" placeholder="3"></label>
-          <label>Privados tras la reacción<input data-d="privados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Estados de WhatsApp<input data-d="estados" type="number" min="0" inputmode="numeric" placeholder="2–3"></label>
+          <label>Privados que te llegaron<input data-d="privados" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         </div>
-        <div class="yn"><span>¿El atleta compartió la reacción de hoy?</span><div class="seg" data-yn="compartio"><button type="button" data-v="si" aria-pressed="false">Sí</button><button type="button" data-v="no" aria-pressed="false">No</button></div></div>
       </div>
-      <div class="grp"><div class="gh">Prueba <small>acumular a saco</small></div>
+      <div class="grp"><div class="gh">@fight.programming <small>recompartir</small></div>
+        <div class="nums"><label>Recompartidos de atletas<input data-d="fpRep" type="number" min="0" inputmode="numeric" placeholder="0"></label><label>Atletas que compartieron lo tuyo<input data-d="fpComp" type="number" min="0" inputmode="numeric" placeholder="0"></label></div>
+      </div>
+      <div class="grp"><div class="gh">Casos de atletas</div>
         <div class="nums c3">
-          <label>Pruebas pedidas<input data-d="tPed" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Testimonios escritos recibidos<input data-d="tEsc" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Vídeo testimonios recibidos<input data-d="tVid" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Comparativas completadas<input data-d="tComp" type="number" min="0" inputmode="numeric" placeholder="0"></label>
-          <label>Tests hechos (entrada o retest)<input data-d="tests" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Fichas avanzadas<input data-d="casos" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Vídeos grabados<input data-d="tVid" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           <label>Permisos por escrito<input data-d="perm" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         </div>
       </div>
-      <div class="grp"><div class="gh">Ánimo <small>opcional</small></div>
-        <div class="mood" id="mood" role="group" aria-label="Cómo te has sentido hoy"><button type="button" data-v="1" aria-label="1 de 5" aria-pressed="false">😞</button><button type="button" data-v="2" aria-label="2 de 5" aria-pressed="false">😕</button><button type="button" data-v="3" aria-label="3 de 5" aria-pressed="false">😐</button><button type="button" data-v="4" aria-label="4 de 5" aria-pressed="false">🙂</button><button type="button" data-v="5" aria-label="5 de 5" aria-pressed="false">🔥</button></div>
-        <label class="fld">Una frase sobre el día<textarea data-d="nota" placeholder="Ej.: reacción de Mouzid publicada y compartida; 3 privados preguntando por camp"></textarea></label>
-      </div>
+      <label class="fld">Una frase sobre el día<textarea data-d="nota" placeholder="Ej.: reacción de Mouzid publicada, la compartió; 3 privados"></textarea></label>
       <span class="saved" id="sv-dia"></span>
     </form>
   </div>
   <div class="colr">
-    <div class="card"><span class="label">Cálculos del día</span><div class="calc">
-      <div><span>Conversaciones en rondas (objetivo 100)</span><b id="o-conv">0 / 100</b></div>
+    <div class="card"><span class="label">Hoy en números</span><div class="calc">
+      <div><span>Conversaciones (objetivo 100)</span><b id="o-conv">0 / 100</b></div>
       <div><span>% de respuesta</span><b id="o-resp">—</b></div>
-      <div><span>% cualificados sobre respuestas</span><b id="o-cual">—</b></div>
-      <div><span>% de cierre (ventas / llamadas hechas)</span><b id="o-close">—</b></div>
+      <div><span>% de cierre (ventas / llamadas)</span><b id="o-close">—</b></div>
       <div><span>Vendido hoy</span><b id="o-eur">0 €</b></div>
-      <div><span>Piezas publicadas (A+B+C+D)</span><b id="o-piezas">0</b></div>
-      <div><span>Historias (objetivo 6–10)</span><b id="o-hist">0</b></div>
-      <div><span>Estados (objetivo 3)</span><b id="o-est">0</b></div>
+      <div><span>Piezas en @carlosjimena90</span><b id="o-piezas">0</b></div>
     </div></div>
-    <div class="card"><span class="label">Mensaje diario para Alberto</span><pre class="copy" id="m-dia"></pre><button type="button" class="btn" data-copy="m-dia" style="justify-self:start">Copiar mensaje</button></div>
+    <div class="card"><span class="label">Mensaje para Alberto</span><pre class="copy" id="m-dia"></pre><button type="button" class="btn" data-copy="m-dia" style="justify-self:start">Copiar mensaje</button></div>
   </div>
 </div>
 
@@ -208,66 +198,57 @@ pre.copy { white-space: pre-wrap; font: 500 13px/1.5 var(--f-mono); background: 
     <form class="card" id="formSem" autocomplete="off">
       <span class="label">Cada domingo</span>
       <div class="wk"><button type="button" class="btn ghost" id="wkPrev" aria-label="Semana anterior" style="padding:8px 12px">←</button><b id="wkLabel"></b><button type="button" class="btn ghost" id="wkNext" aria-label="Semana siguiente" style="padding:8px 12px">→</button></div>
-      <div class="grp"><div class="gh">Las 5 líneas de "Lo primero"</div>
-        <label class="fld">1 · Cuenta elegida<select data-s="cuenta"><option value="">—</option><option>@fight.programming</option><option>@carlosjimena90</option></select></label>
-        <label class="fld">2 · Reacciones publicadas y de qué atletas<input data-s="reacAtletas" placeholder="Ej.: Mouzid (martes), Bussolotti (viernes)"></label>
-        <div class="nums"><label>3 · Cuántos atletas la compartieron<input data-s="compartieron" type="number" min="0" inputmode="numeric" placeholder="auto"></label><label>4 · Privados recibidos esta semana<input data-s="privados" type="number" min="0" inputmode="numeric" placeholder="auto"></label></div>
-        <label class="fld">4 · De qué iban los privados<input data-s="privadosDe" placeholder="Ej.: 3 preguntando por camp, 2 por lesión de hombro"></label>
+      <div class="grp"><div class="gh">5 líneas</div>
+        <label class="fld">1 · Planes y precios: ¿qué has cerrado o cambiado?<input data-s="planes" placeholder="Ej.: Forma ya en la app; 3 actuales pasan a semestral"></label>
+        <label class="fld">2 · Casos de atletas: ¿de quién has avanzado?<input data-s="casosDe" placeholder="Ej.: Mouzid ficha hecha, vídeo con Gil el jueves"></label>
+        <label class="fld">3 · De qué iban los privados<input data-s="privadosDe" placeholder="Ej.: 3 por camp, 2 de hobby preguntando por el hombro"></label>
+        <label class="fld">4 · La pieza que más movió (enlace)<input data-s="mejorLink" placeholder="https://…"></label>
         <label class="fld">5 · Qué te ha frenado<textarea data-s="frenos" placeholder="Sin rodeos"></textarea></label>
       </div>
-      <div class="grp"><div class="gh">Contenido: pautado frente a publicado</div>
-        <div class="tw"><table class="t" style="min-width:0"><thead><tr><th>Línea / formato</th><th class="n">Pautado</th><th class="n">Publicado</th></tr></thead><tbody id="contBody"></tbody></table></div>
-        <p class="note2">"Publicado" se suma solo con tus reportes diarios de la semana.</p>
-        <label class="fld">La pieza que más movió (enlace)<input data-s="mejorLink" placeholder="https://…"></label>
-        <label class="fld">Por qué crees que funcionó<input data-s="mejorPorque"></label>
+      <div class="grp"><div class="gh">Contenido: lo pautado y lo publicado</div>
+        <div class="tw"><table class="t" style="min-width:0"><thead><tr><th>Qué</th><th class="n">Pautado</th><th class="n">Hecho</th></tr></thead><tbody id="contBody"></tbody></table></div>
+        <p class="note2">"Hecho" se suma solo con los reportes de cada noche.</p>
       </div>
-      <div class="grp"><div class="gh">Dinero <small>lo ves en el CRM, pestaña Clientes</small></div>
+      <div class="grp"><div class="gh">Dinero <small>del CRM, pestaña Clientes</small></div>
         <div class="nums">
-          <label>Clientes activos<input data-s="activos" type="number" min="0" inputmode="numeric" placeholder="36"></label>
+          <label>Clientes competidores<input data-s="comp" type="number" min="0" inputmode="numeric" placeholder="0"></label>
+          <label>Clientes hobby<input data-s="hobby" type="number" min="0" inputmode="numeric" placeholder="0"></label>
           <label>Ingreso mensual equivalente (€)<input data-s="mrr" type="number" min="0" step="0.01" inputmode="decimal" placeholder="2500"></label>
-          <label>Nivel de precios (0–3)<input data-s="nivel" type="number" min="0" max="3" inputmode="numeric" placeholder="0"></label>
           <label>Bajas esta semana<input data-s="bajas" type="number" min="0" inputmode="numeric" placeholder="0"></label>
         </div>
-        <div class="tw"><table class="t" style="min-width:0"><thead><tr><th>Ventas por pack (de tus reportes)</th><th class="n">Nº</th><th class="n">€</th></tr></thead><tbody id="packBody"></tbody></table></div>
+        <div class="tw"><table class="t" style="min-width:0"><thead><tr><th>Ventas de la semana</th><th class="n">Nº</th><th class="n">€</th></tr></thead><tbody id="packBody"></tbody></table></div>
       </div>
-      <div class="grp"><div class="gh">Anuncios <small>solo si estás probando</small></div>
-        <div class="nums c3"><label>Gasto (€)<input data-s="adGasto" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0"></label><label>Seguidores ganados<input data-s="adSeg" type="number" min="0" inputmode="numeric" placeholder="0"></label><label>Días activo<input data-s="adDias" type="number" min="0" inputmode="numeric" placeholder="0"></label></div>
-        <div class="goal" id="adGoal"></div>
+      <div class="grp"><div class="gh">Horas de la semana</div>
+        <div class="nums"><label>Programas y vídeos de clientes<input data-s="hProg" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0"></label><label>Contenido y mensajes<input data-s="hCont" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0"></label></div>
       </div>
-      <div class="grp"><div class="gh">Tus horas esta semana</div>
-        <div class="nums"><label>Programas<input data-s="hProg" type="number" min="0" step="0.5" inputmode="decimal" placeholder="5"></label><label>Revisión de vídeos<input data-s="hVid" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0"></label><label>Dudas y atención<input data-s="hDud" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0"></label><label>Contenido y mensajes<input data-s="hCont" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0"></label></div>
-      </div>
-      <div class="grp"><div class="gh">Para Alberto</div>
-        <label class="fld">Victorias de la semana<textarea data-s="victorias"></textarea></label>
-        <label class="fld">Dudas para la mentoría<textarea data-s="dudas"></textarea></label>
-      </div>
+      <label class="fld">Dudas para Alberto<textarea data-s="dudas"></textarea></label>
       <span class="saved" id="sv-sem"></span>
     </form>
   </div>
   <div class="colr">
-    <div class="card"><span class="label">Resumen de la semana</span><div class="calc">
+    <div class="card"><span class="label">La semana</span><div class="calc">
       <div><span>Conversaciones</span><b id="w-conv">0</b></div>
       <div><span>Llamadas hechas</span><b id="w-llam">0</b></div>
-      <div><span>Ventas</span><b id="w-ven">0</b></div>
+      <div><span>Ventas (competidor · hobby)</span><b id="w-ven">0</b></div>
       <div><span>Vendido</span><b id="w-eur">0 €</b></div>
-      <div><span>Cobrado por adelantado (packs)</span><b id="w-adel">0 €</b></div>
-      <div><span>Testimonios (escritos + vídeo)</span><b id="w-test">0</b></div>
-      <div><span>Comparativas completadas</span><b id="w-comp">0</b></div>
-      <div><span>Piezas (objetivo 6)</span><b id="w-piezas">0</b></div>
+      <div><span>Piezas en @carlosjimena90</span><b id="w-piezas">0</b></div>
       <div><span>Cumplimiento del contenido</span><b id="w-cump">0 %</b></div>
-      <div><span>Horas trabajadas · € por hora</span><b id="w-hora">—</b></div>
+      <div><span>Vídeos de atletas</span><b id="w-test">0</b></div>
+      <div><span>Horas · € por hora</span><b id="w-hora">—</b></div>
     </div></div>
     <div class="card"><span class="label">Reporte del domingo para Alberto</span><pre class="copy" id="m-sem"></pre><button type="button" class="btn" data-copy="m-sem" style="justify-self:start">Copiar reporte</button></div>
   </div>
 </div>
 
-<section class="card"><span class="label">Historial</span><div class="tw"><table class="t"><thead><tr><th>Semana</th><th class="n">Conv.</th><th class="n">Llamadas</th><th class="n">Ventas</th><th class="n">Vendido</th><th class="n">Reacciones</th><th class="n">Piezas</th><th class="n">Testimonios</th><th class="n">Privados</th></tr></thead><tbody id="histBody"></tbody></table></div></section>
+<section class="card"><span class="label">Historial</span><div class="tw"><table class="t"><thead><tr><th>Semana</th><th class="n">Conv.</th><th class="n">Llamadas</th><th class="n">Ventas</th><th class="n">Vendido</th><th class="n">Piezas</th><th class="n">Vídeos atletas</th><th class="n">Privados</th></tr></thead><tbody id="histBody"></tbody></table></div></section>
 </main>
 <script>
 (function () {
-  var DNUM = ["r1", "r2", "bienv", "resp", "precio", "cualif", "agendadas", "hechas", "pA", "pB", "pC", "pD", "cc", "cv", "pE", "trial", "yt", "hist", "estados", "privados", "tPed", "tEsc", "tVid", "tComp", "tests", "perm"];
-  var PACKS = ["1:1 semestral", "1:1 semestral 2 cuotas", "1:1 anual", "1:1 trimestral", "Fight Camp", "1:1 mensual", "Base", "Presencial", "Cliente actual a semestral", "Otro"];
-  var PAUTA = [["A · Reacción", ["pA"], 2], ["B · Método", ["pB"], 2], ["C · Contra el sector", ["pC"], 1], ["D · Día a día", ["pD"], 1], ["Carruseles (conexión + valor)", ["cc", "cv"], 3], ["YouTube", ["yt"], 1], ["Historias", ["hist"], 42], ["Estados de WhatsApp", ["estados"], 21]];
+  var DNUM = ["r1", "r2", "resp", "cualif", "agendadas", "hechas", "yap", "reac", "fam", "rank", "tend", "yt", "cc", "cv", "hist", "estados", "privados", "fpRep", "fpComp", "casos", "tVid", "perm"];
+  var PACKS = ["Élite semestral", "Élite semestral 2 pagos", "Élite anual", "Élite trimestral", "Élite mensual", "Fight Camp", "Forma semestral", "Forma anual", "Forma trimestral", "Forma mensual", "Presencial", "Cliente actual a semestral", "Otro"];
+  var TIPOS = ["Competidor", "Hobby"];
+  var PIEZAS = ["yap", "reac", "fam", "rank", "tend", "cc", "cv", "yt"];
+  var PAUTA = [["A cámara", ["yap"], 2], ["Reacciones (atleta + famoso)", ["reac", "fam"], 2], ["Ranking", ["rank"], 1], ["Carruseles (conexión + valor)", ["cc", "cv"], 3], ["YouTube", ["yt"], 1], ["Historias", ["hist"], 42], ["Recompartidos en @fight.programming", ["fpRep"], 3]];
   var db = null, diaMap = {}, semMap = {}, day = null, sem = null, curWeek = null, timers = {}, chains = {}, dirty = {}, fetched = {};
   function el(id) { return document.getElementById(id); }
   function num(x) { var n = parseFloat(String(x == null ? "" : x).replace(",", ".")); return isNaN(n) ? 0 : n; }
@@ -283,8 +264,9 @@ pre.copy { white-space: pre-wrap; font: 500 13px/1.5 var(--f-mono); background: 
   function weekDays(w) { var m = weekStart(w), o = []; for (var i = 0; i < 7; i++) { var d = new Date(m); d.setDate(m.getDate() + i); o.push(iso(d)); } return o; }
   function shiftWeek(w, k) { var m = weekStart(w); m.setDate(m.getDate() + 7 * k); return isoWeek(iso(m)); }
   function weekLabel(w) { var d = weekDays(w), o = { day: "numeric", month: "short" }; return new Date(d[0] + "T12:00:00").toLocaleDateString("es-ES", o) + " – " + new Date(d[6] + "T12:00:00").toLocaleDateString("es-ES", o); }
-  function blankDay(f) { var o = { fecha: f, seguimientos: null, compartio: null, cerrado: null, cierres: [], animo: "", nota: "" }; DNUM.forEach(function (k) { o[k] = ""; }); return o; }
-  function blankSem(w) { var p = semMap[shiftWeek(w, -1)]; return { semana: w, cuenta: p && p.cuenta || "", reacAtletas: "", compartieron: "", privados: "", privadosDe: "", frenos: "", mejorLink: "", mejorPorque: "", activos: p && p.activos || "", mrr: p && p.mrr || "", nivel: p && p.nivel || "", bajas: "", adGasto: "", adSeg: "", adDias: "", hProg: "", hVid: "", hDud: "", hCont: "", victorias: "", dudas: "" }; }
+  function blankDay(f) { var o = { fecha: f, seguimientos: null, cerrado: null, cierres: [], nota: "" }; DNUM.forEach(function (k) { o[k] = ""; }); return o; }
+  function blankSem(w) { var p = semMap[shiftWeek(w, -1)]; return { semana: w, planes: "", casosDe: "", privadosDe: "", mejorLink: "", frenos: "", comp: p && p.comp || "", hobby: p && p.hobby || "", mrr: p && p.mrr || "", bajas: "", hProg: "", hCont: "", dudas: "" }; }
+  function blankClose() { return { nombre: "", pack: PACKS[0], tipo: "Competidor", importe: "" }; }
 
   /* Guardado: set() con debounce, una escritura a la vez por documento */
   function schedule(col, id, getData, sv) { var k = col + "/" + id; dirty[k] = true; el(sv).textContent = db ? "Guardando…" : "Sin base de datos: no se guarda."; clearTimeout(timers[k]); timers[k] = setTimeout(function () { flush(col, id, getData, sv); }, 600); }
@@ -296,79 +278,74 @@ pre.copy { white-space: pre-wrap; font: 500 13px/1.5 var(--f-mono); background: 
   function saveSem() { var w = sem.semana; semMap[w] = clone(sem); schedule("semana", w, function () { return sem.semana === w ? sem : semMap[w]; }, "sv-sem"); }
 
   function ventasOf(d) { return d && d.cerrado === true ? (d.cierres || []) : []; }
-  function piezasOf(d) { return d ? num(d.pA) + num(d.pB) + num(d.pC) + num(d.pD) : 0; }
+  function piezasOf(d) { return d ? PIEZAS.reduce(function (s, k) { return s + num(d[k]); }, 0) : 0; }
   function setPressed(box, v) { box.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.v === v ? "true" : "false"); }); }
   function yn(v) { return v === true ? "si" : (v === false ? "no" : ""); }
   function fillDay() {
     document.querySelectorAll("[data-d]").forEach(function (i) { if (document.activeElement !== i) i.value = day[i.dataset.d] == null ? "" : day[i.dataset.d]; });
     document.querySelectorAll("[data-yn]").forEach(function (b) { setPressed(b, yn(day[b.dataset.yn])); });
-    setPressed(el("mood"), String(day.animo || "")); renderCloses();
+    renderCloses();
   }
+  function sel(i, k, arr, v) { return '<select data-ci="' + i + '" data-ck="' + k + '">' + arr.map(function (p) { return "<option" + (p === v ? " selected" : "") + ">" + p + "</option>"; }).join("") + '</select>'; }
   function renderCloses() {
     el("closedYes").setAttribute("aria-pressed", day.cerrado === true ? "true" : "false"); el("closedNo").setAttribute("aria-pressed", day.cerrado === false ? "true" : "false");
     el("closesBox").hidden = day.cerrado !== true;
-    el("closesList").innerHTML = (day.cierres || []).map(function (c, i) { return '<div class="close-row"><label class="fld">Nombre<input data-ci="' + i + '" data-ck="nombre" value="' + esc(c.nombre || "") + '"></label><label class="fld">Pack<select data-ci="' + i + '" data-ck="pack">' + PACKS.map(function (p) { return "<option" + (p === c.pack ? " selected" : "") + ">" + p + "</option>"; }).join("") + '</select></label><label class="fld">€ cobrados<input data-ci="' + i + '" data-ck="importe" type="number" step="0.01" inputmode="decimal" value="' + esc(c.importe || "") + '"></label><button type="button" class="btn ghost" data-rm="' + i + '" style="padding:8px 10px;font-size:12px" aria-label="Quitar">✕</button></div>'; }).join("");
+    el("closesList").innerHTML = (day.cierres || []).map(function (c, i) { return '<div class="close-row"><label class="fld">Nombre<input data-ci="' + i + '" data-ck="nombre" value="' + esc(c.nombre || "") + '"></label><label class="fld">Plan' + sel(i, "pack", PACKS, c.pack) + '</label><label class="fld">Tipo' + sel(i, "tipo", TIPOS, c.tipo || "Competidor") + '</label><label class="fld">€ cobrados<input data-ci="' + i + '" data-ck="importe" type="number" step="0.01" inputmode="decimal" value="' + esc(c.importe || "") + '"></label><button type="button" class="btn ghost" data-rm="' + i + '" style="padding:8px 10px;font-size:12px" aria-label="Quitar venta">Quitar</button></div>'; }).join("");
   }
-  el("closesList").addEventListener("input", function (e) { var i = e.target.dataset.ci; if (i == null) return; day.cierres[+i][e.target.dataset.ck] = e.target.value; saveDay(); update(); });
-  el("closesList").addEventListener("change", function (e) { var i = e.target.dataset.ci; if (i == null) return; day.cierres[+i][e.target.dataset.ck] = e.target.value; saveDay(); update(); });
-  el("closesList").addEventListener("click", function (e) { var b = e.target.closest("[data-rm]"); if (!b) return; day.cierres.splice(+b.dataset.rm, 1); if (!day.cierres.length) day.cierres.push({ nombre: "", pack: PACKS[0], importe: "" }); saveDay(); renderCloses(); update(); });
-  el("closedYes").addEventListener("click", function () { day.cerrado = true; if (!day.cierres || !day.cierres.length) day.cierres = [{ nombre: "", pack: PACKS[0], importe: "" }]; saveDay(); renderCloses(); update(); });
+  function onClose(e) { var i = e.target.dataset.ci; if (i == null) return; day.cierres[+i][e.target.dataset.ck] = e.target.value; if (e.target.dataset.ck === "pack" && /^Forma/.test(e.target.value)) { day.cierres[+i].tipo = "Hobby"; renderCloses(); } saveDay(); update(); }
+  el("closesList").addEventListener("input", onClose);
+  el("closesList").addEventListener("change", onClose);
+  el("closesList").addEventListener("click", function (e) { var b = e.target.closest("[data-rm]"); if (!b) return; day.cierres.splice(+b.dataset.rm, 1); if (!day.cierres.length) day.cierres.push(blankClose()); saveDay(); renderCloses(); update(); });
+  el("closedYes").addEventListener("click", function () { day.cerrado = true; if (!day.cierres || !day.cierres.length) day.cierres = [blankClose()]; saveDay(); renderCloses(); update(); });
   el("closedNo").addEventListener("click", function () { day.cerrado = false; saveDay(); renderCloses(); update(); });
-  el("addClose").addEventListener("click", function () { day.cierres.push({ nombre: "", pack: PACKS[0], importe: "" }); saveDay(); renderCloses(); });
+  el("addClose").addEventListener("click", function () { day.cierres.push(blankClose()); saveDay(); renderCloses(); });
   document.querySelectorAll("[data-d]").forEach(function (i) { i.addEventListener("input", function () { day[i.dataset.d] = i.value; saveDay(); update(); }); });
   document.querySelectorAll("[data-yn]").forEach(function (b) { b.addEventListener("click", function (e) { var t = e.target.closest("button"); if (!t) return; day[b.dataset.yn] = t.dataset.v === "si"; setPressed(b, t.dataset.v); saveDay(); update(); }); });
-  el("mood").addEventListener("click", function (e) { var t = e.target.closest("button"); if (!t) return; day.animo = t.dataset.v; setPressed(el("mood"), t.dataset.v); saveDay(); update(); });
   document.querySelectorAll("[data-s]").forEach(function (i) { var h = function () { sem[i.dataset.s] = i.value; saveSem(); update(); }; i.addEventListener("input", h); i.addEventListener("change", h); });
 
   function weekAgg(w) {
-    var a = { conv: 0, llam: 0, ven: 0, eur: 0, adel: 0, test: 0, comp: 0, piezas: 0, privados: 0, compartio: 0, packs: {} }; DNUM.forEach(function (k) { a[k] = 0; });
-    weekDays(w).forEach(function (f) { var d = diaMap[f]; if (!d) return; DNUM.forEach(function (k) { a[k] += num(d[k]); }); a.conv += num(d.r1) + num(d.r2) + num(d.bienv); a.llam += num(d.hechas); a.piezas += piezasOf(d); a.test += num(d.tEsc) + num(d.tVid); a.comp += num(d.tComp); a.privados += num(d.privados); if (d.compartio === true) a.compartio++;
-      ventasOf(d).forEach(function (c) { a.ven++; a.eur += num(c.importe); if (c.pack && !/mensual|Base|Otro/.test(c.pack)) a.adel += num(c.importe); var p = a.packs[c.pack || "Otro"] = a.packs[c.pack || "Otro"] || { n: 0, e: 0 }; p.n++; p.e += num(c.importe); }); });
+    var a = { conv: 0, llam: 0, ven: 0, venC: 0, venH: 0, eur: 0, piezas: 0, packs: {} }; DNUM.forEach(function (k) { a[k] = 0; });
+    weekDays(w).forEach(function (f) { var d = diaMap[f]; if (!d) return; DNUM.forEach(function (k) { a[k] += num(d[k]); }); a.conv += num(d.r1) + num(d.r2); a.llam += num(d.hechas); a.piezas += piezasOf(d);
+      ventasOf(d).forEach(function (c) { a.ven++; if (c.tipo === "Hobby") a.venH++; else a.venC++; a.eur += num(c.importe); var p = a.packs[c.pack || "Otro"] = a.packs[c.pack || "Otro"] || { n: 0, e: 0 }; p.n++; p.e += num(c.importe); }); });
     return a;
   }
   function compliance(a) { var t = 0, ok = 0; PAUTA.forEach(function (p) { var pub = p[1].reduce(function (s, k) { return s + a[k]; }, 0); t += 1; ok += Math.min(1, pub / p[2]); }); return Math.round(ok / t * 100); }
   function update() {
     var d = day, conv = num(d.r1) + num(d.r2), resp = num(d.resp), v = ventasOf(d), ve = v.reduce(function (s, c) { return s + num(c.importe); }, 0);
     el("convBar").style.width = Math.min(100, conv) + "%"; el("o-conv").textContent = conv + " / 100";
-    var g = el("convGoal"); g.textContent = conv >= 100 ? "Objetivo cumplido." : (conv ? "Te faltan " + (100 - conv) + " para las 100." : ""); g.className = "goal" + (conv >= 100 ? " ok" : (conv ? " bad" : ""));
-    el("o-resp").textContent = pct(resp, conv + num(d.bienv)); el("o-cual").textContent = pct(num(d.cualif), resp); el("o-close").textContent = pct(v.length, num(d.hechas)); el("o-eur").textContent = eur(ve);
-    el("o-piezas").textContent = piezasOf(d); el("o-hist").textContent = num(d.hist); el("o-est").textContent = num(d.estados);
+    var g = el("convGoal"); g.textContent = conv >= 100 ? "Objetivo cumplido." : (conv ? "Te faltan " + (100 - conv) + "." : ""); g.className = "goal" + (conv >= 100 ? " ok" : (conv ? " bad" : ""));
+    el("o-resp").textContent = pct(resp, conv); el("o-close").textContent = pct(v.length, num(d.hechas)); el("o-eur").textContent = eur(ve); el("o-piezas").textContent = piezasOf(d);
     el("m-dia").textContent = ["Reporte " + new Date(d.fecha + "T12:00:00").toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" }),
-      "Conversaciones: " + conv + "/100 (+" + num(d.bienv) + " bienvenidas) · respondieron " + resp + " · cualificados " + num(d.cualif) + " · preguntaron precio " + num(d.precio),
+      "Conversaciones: " + conv + "/100 · respondieron " + resp + " · encajan " + num(d.cualif),
       "Llamadas: " + num(d.agendadas) + " agendadas · " + num(d.hechas) + " hechas",
-      "Ventas: " + (v.length ? v.map(function (c) { return (c.nombre || "?") + " · " + (c.pack || "") + " · " + eur(num(c.importe)); }).join(" | ") : "ninguna"),
-      "Piezas: A " + num(d.pA) + " · B " + num(d.pB) + " · C " + num(d.pC) + " · D " + num(d.pD) + " (carrusel conexión " + num(d.cc) + ", valor " + num(d.cv) + ") · élite " + num(d.pE) + " · YouTube " + num(d.yt) + " · trial " + num(d.trial),
-      "Historias " + num(d.hist) + " · estados " + num(d.estados) + " · privados tras reacción " + num(d.privados) + (d.compartio === true ? " · el atleta la compartió" : (d.compartio === false ? " · no la compartió" : "")),
-      "Prueba: pedidas " + num(d.tPed) + " · escritos " + num(d.tEsc) + " · vídeos " + num(d.tVid) + " · comparativas " + num(d.tComp) + " · tests " + num(d.tests) + " · permisos " + num(d.perm),
-      "Seguimientos: " + (d.seguimientos === true ? "sí" : (d.seguimientos === false ? "no" : "—")) + (d.animo ? " · ánimo " + d.animo + "/5" : ""), d.nota ? "Nota: " + d.nota : ""].filter(Boolean).join("\n");
-    /* semana */
+      "Ventas: " + (v.length ? v.map(function (c) { return (c.nombre || "?") + " · " + (c.pack || "") + " · " + (c.tipo || "Competidor") + " · " + eur(num(c.importe)); }).join(" | ") : "ninguna"),
+      "@carlosjimena90: a cámara " + num(d.yap) + " · reacción atleta " + num(d.reac) + " · famoso " + num(d.fam) + " · ranking " + num(d.rank) + " · tendencia " + num(d.tend) + " · carrusel conexión " + num(d.cc) + " / valor " + num(d.cv) + " · YouTube " + num(d.yt),
+      "Historias " + num(d.hist) + " · estados " + num(d.estados) + " · privados " + num(d.privados),
+      "@fight.programming: recompartidos " + num(d.fpRep) + " · atletas que compartieron " + num(d.fpComp),
+      "Casos: fichas " + num(d.casos) + " · vídeos " + num(d.tVid) + " · permisos " + num(d.perm),
+      "Seguimientos: " + (d.seguimientos === true ? "sí" : (d.seguimientos === false ? "no" : "—")), d.nota ? "Nota: " + d.nota : ""].filter(Boolean).join("\n");
     var w = curWeek, a = weekAgg(w), s = sem;
     el("wkLabel").textContent = weekLabel(w);
     el("contBody").innerHTML = PAUTA.map(function (p) { var pub = p[1].reduce(function (x, k) { return x + a[k]; }, 0); return '<tr><td>' + p[0] + '</td><td class="n">' + p[2] + '</td><td class="n" style="color:' + (pub >= p[2] ? "var(--green)" : "var(--red-text)") + '"><b>' + pub + '</b></td></tr>'; }).join("");
     var pk = Object.keys(a.packs); el("packBody").innerHTML = pk.length ? pk.map(function (k) { return '<tr><td>' + esc(k) + '</td><td class="n">' + a.packs[k].n + '</td><td class="n">' + eur(a.packs[k].e) + '</td></tr>'; }).join("") : '<tr><td colspan="3" class="soft">Sin ventas esta semana.</td></tr>';
-    var ag = num(s.adGasto), as = num(s.adSeg), adg = el("adGoal");
-    if (ag > 0 && as > 0) { var cps = ag / as; adg.textContent = eur(cps) + " por seguidor" + (num(s.adDias) < 2 ? " · se valora a los 2 días" : (cps < 1 ? " · por debajo de 1 €: mantener y escalar" : (cps <= 1.5 ? " · entre 1 y 1,5 €: cambia el gancho" : " · más de 1,5 €: cortar"))); adg.className = "goal" + (cps < 1 ? " ok" : (cps > 1.5 ? " bad" : "")); } else { adg.textContent = ""; }
-    var hrs = num(s.hProg) + num(s.hVid) + num(s.hDud) + num(s.hCont), mrr = num(s.mrr);
-    el("w-conv").textContent = a.conv; el("w-llam").textContent = a.llam; el("w-ven").textContent = a.ven; el("w-eur").textContent = eur(a.eur); el("w-adel").textContent = eur(a.adel); el("w-test").textContent = a.test; el("w-comp").textContent = a.comp; el("w-piezas").textContent = a.piezas; el("w-cump").textContent = compliance(a) + " %";
+    var hrs = num(s.hProg) + num(s.hCont), mrr = num(s.mrr);
+    el("w-conv").textContent = a.conv; el("w-llam").textContent = a.llam; el("w-ven").textContent = a.ven + " (" + a.venC + " · " + a.venH + ")"; el("w-eur").textContent = eur(a.eur); el("w-piezas").textContent = a.piezas; el("w-cump").textContent = compliance(a) + " %"; el("w-test").textContent = a.tVid;
     el("w-hora").textContent = hrs ? hrs + " h" + (mrr ? " · " + eur(mrr / (hrs * 4.33)) + "/h" : "") : "—";
-    var comp = s.compartieron !== "" && s.compartieron != null ? s.compartieron : a.compartio, priv = s.privados !== "" && s.privados != null ? s.privados : a.privados;
     el("m-sem").textContent = ["Reporte semana " + weekLabel(w),
-      "1. Cuenta elegida: " + (s.cuenta || "—"),
-      "2. Reacciones publicadas: " + a.pA + (s.reacAtletas ? " (" + s.reacAtletas + ")" : ""),
-      "3. Atletas que la compartieron: " + comp,
-      "4. Privados: " + priv + (s.privadosDe ? " · " + s.privadosDe : ""),
-      "5. Lo que me ha frenado: " + (s.frenos || "—"),
-      "", "Piezas: A " + a.pA + "/2 · B " + a.pB + "/2 · C " + a.pC + "/1 · D " + a.pD + "/1 · carruseles " + (a.cc + a.cv) + "/3 · YouTube " + a.yt + "/1 · élite " + a.pE + " · cumplimiento " + compliance(a) + " %",
-      "La que más movió: " + (s.mejorLink || "—") + (s.mejorPorque ? " · " + s.mejorPorque : ""),
-      "Conversaciones " + a.conv + " · llamadas " + a.llam + " · ventas " + a.ven + " · vendido " + eur(a.eur) + " · por adelantado " + eur(a.adel),
-      "Ventas por pack: " + (pk.length ? pk.map(function (k) { return k + " ×" + a.packs[k].n; }).join(", ") : "ninguna"),
-      "Testimonios " + a.test + " · comparativas " + a.comp + " · pruebas pedidas " + a.tPed,
-      "Clientes activos " + (s.activos || "—") + " · ingreso mensual equiv. " + (s.mrr ? eur(mrr) : "—") + " · nivel de precios " + (s.nivel || "0") + " · bajas " + (s.bajas || "0"),
-      ag ? "Anuncios: " + eur(ag) + " · " + as + " seguidores" : "", hrs ? "Horas: " + hrs : "",
-      s.victorias ? "Victorias: " + s.victorias : "", s.dudas ? "Dudas: " + s.dudas : ""].filter(function (x, i) { return x !== "" || i === 6; }).join("\n");
+      "1. Planes y precios: " + (s.planes || "—"),
+      "2. Casos de atletas: " + (s.casosDe || "—") + " · vídeos " + a.tVid + " · permisos " + a.perm,
+      "3. Privados: " + a.privados + (s.privadosDe ? " · " + s.privadosDe : ""),
+      "4. La que más movió: " + (s.mejorLink || "—"),
+      "5. Me ha frenado: " + (s.frenos || "—"),
+      "",
+      "@carlosjimena90: a cámara " + a.yap + "/2 · reacciones " + (a.reac + a.fam) + "/2 · ranking " + a.rank + "/1 · tendencia " + a.tend + " · carruseles " + (a.cc + a.cv) + "/3 · YouTube " + a.yt + "/1 · cumplimiento " + compliance(a) + " %",
+      "@fight.programming: recompartidos " + a.fpRep + " · atletas que compartieron " + a.fpComp,
+      "Conversaciones " + a.conv + " · llamadas " + a.llam + " · ventas " + a.ven + " (competidor " + a.venC + ", hobby " + a.venH + ") · " + eur(a.eur),
+      "Clientes: competidores " + (s.comp || "—") + " · hobby " + (s.hobby || "—") + " · ingreso mensual " + (s.mrr ? eur(mrr) : "—") + " · bajas " + (s.bajas || "0"),
+      hrs ? "Horas: " + hrs : "", s.dudas ? "Dudas: " + s.dudas : ""].filter(function (x, i) { return x !== "" || i === 6; }).join("\n");
     var weeks = Object.keys(semMap); weekDaysAll().forEach(function (x) { if (weeks.indexOf(x) < 0) weeks.push(x); });
     weeks.sort().reverse();
-    el("histBody").innerHTML = weeks.length ? weeks.slice(0, 10).map(function (x) { var b = weekAgg(x); return '<tr><td>' + weekLabel(x) + '</td><td class="n">' + b.conv + '</td><td class="n">' + b.llam + '</td><td class="n">' + b.ven + '</td><td class="n">' + eur(b.eur) + '</td><td class="n">' + b.pA + '</td><td class="n">' + b.piezas + '</td><td class="n">' + b.test + '</td><td class="n">' + b.privados + '</td></tr>'; }).join("") : '<tr><td colspan="9" class="soft">Todavía no hay semanas con datos.</td></tr>';
+    el("histBody").innerHTML = weeks.length ? weeks.slice(0, 10).map(function (x) { var b = weekAgg(x); return '<tr><td>' + weekLabel(x) + '</td><td class="n">' + b.conv + '</td><td class="n">' + b.llam + '</td><td class="n">' + b.ven + '</td><td class="n">' + eur(b.eur) + '</td><td class="n">' + b.piezas + '</td><td class="n">' + b.tVid + '</td><td class="n">' + b.privados + '</td></tr>'; }).join("") : '<tr><td colspan="8" class="soft">Todavía no hay semanas con datos.</td></tr>';
   }
   function weekDaysAll() { var o = []; Object.keys(diaMap).forEach(function (f) { var w = isoWeek(f); if (o.indexOf(w) < 0) o.push(w); }); return o; }
   function fillSem() { document.querySelectorAll("[data-s]").forEach(function (i) { if (document.activeElement !== i) i.value = sem[i.dataset.s] == null ? "" : sem[i.dataset.s]; }); }

@@ -83,131 +83,75 @@ img { max-width: 100%; display: block; }
 @media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g3 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .g2, .g3 { grid-template-columns: 1fr; } .card { padding: 14px; } body { font-size: 15px; } }
 @media (max-width: 400px) { .g4 { grid-template-columns: 1fr 1fr; } }
-</style>
-<style>
-.ladder { display: grid; gap: 10px; }
-.step { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
-.step .lv { font: 400 30px/1 var(--f-head); color: var(--red-text); }
-.step.star { border-color: var(--red); background: var(--red-soft); }
-.step .pr { font: 400 26px/1 var(--f-head); text-align: right; }
-.step .pr small { display: block; font: 500 11px/1.3 var(--f-mono); color: var(--soft); }
-.pill3 { display: grid; gap: 6px; }
-.pill3 div { background: var(--panel2); border-radius: 10px; padding: 10px 12px; }
-@media (max-width: 620px) { .step { grid-template-columns: 1fr; gap: 6px; } .step .pr { text-align: left; } }
+.prof { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; }
+.prof img { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--line); }
+.cnt { font: 500 11px/1 var(--f-mono); color: var(--green); }
+.cnt.bad { color: var(--red-text); }
+pre.md { white-space: pre-wrap; font: 500 12.5px/1.5 var(--f-mono); background: var(--panel2); padding: 12px; border-radius: 10px; margin: 0; max-height: 420px; overflow: auto; }
+.price { display: flex; flex-wrap: wrap; gap: 6px; }
+.price span { background: var(--panel2); border-radius: 10px; padding: 8px 10px; font-size: 13px; color: var(--soft); display: grid; gap: 2px; }
+.price span b { font: 400 24px/1 var(--f-head); color: var(--ink); font-variant-numeric: tabular-nums; }
+.price span.star { box-shadow: inset 0 0 0 1.5px var(--red); }
 </style>
 <header class="hero"><div class="wrap">
-  <span class="label">Carlos Jimena · Fight Programming · Parte 2 · Oferta</span>
-  <h1>Dos productos claros <em>y un camp</em></h1>
-  <p class="lead">Hoy vendes cinco cosas a la vez: online 1:1, programa general, APEX Hybrid, Fight Programming y presencial. El luchador no sabe qué compra y acaba preguntando el precio. Aquí lo ordenamos. Todos los precios son <b>propuesta, confirmar</b>.</p>
+  <span class="label">Carlos Jimena · Parte 2 · Lo que vendes</span>
+  <h1>Tres planes <em>y el presencial</em></h1>
+  <p class="lead">Hoy tienes cinco cosas sueltas y un precio que casi nadie paga. Lo dejamos en tres. Todo es propuesta: lo confirmamos juntos.</p>
+  <div class="nm"><span class="label">Lo que haces, en una frase</span><p class="nm-big">Entreno a luchadores de élite. Y a ti, compitas o no, con la misma cabeza: más fuerte, en forma y sin lesiones.</p></div>
 </div></header>
-<nav class="tabs-bar" aria-label="Secciones"><div class="wrap tabs" role="tablist">
-  <button class="tab" role="tab" data-v="metodo" aria-selected="true">Nicho y método</button>
-  <button class="tab" role="tab" data-v="escalera" aria-selected="false">Escalera</button>
-  <button class="tab" role="tab" data-v="precios" aria-selected="false">Precios</button>
-  <button class="tab" role="tab" data-v="actuales" aria-selected="false">Tus clientes de ahora</button>
-</div></nav>
-<main class="wrap">
+<main class="wrap view">
 
-<section class="view" id="v-metodo">
-  <div class="nm"><span class="label">Tu nicho en una frase</span>
-    <p class="nm-big">Preparación física para luchadores amateur de MMA y grappling, de 18 a 27 años, que compaginan el deporte con trabajo o estudios: rinde más el día del combate sabiendo qué, cuándo, cuánto y por qué entrenas.</p>
-    <p class="soft">A quién no: al profesional que vive del deporte. Ese aparece como prueba, no como cliente al que le hablas. Si te llega, perfecto, pero el contenido no va para él.</p>
+<section class="sec">
+  <div class="head"><span class="label">Cómo entrenas · Método Fight Programming</span><h2>Lo mismo para todos</h2></div>
+  <div class="g3">
+    <div class="card"><h3>La cabeza del peleador</h3><p class="soft">Un peleador no piensa como otro deportista: miedo, ego, cansancio, el combate en la cabeza. Lo tienes en cuenta al programar.</p></div>
+    <div class="card"><h3>La semana que te cabe</h3><p class="soft">2 días de fuerza (uno con sprints, otro con explosivos) y 1 de cardio, accesorio y pliometría. Alrededor del tatami y del curro.</p></div>
+    <div class="card"><h3>Sin lesiones</h3><p class="soft">Controlas el cansancio y las molestias para que no pierda días de entreno.</p></div>
   </div>
-  <div class="sec"><div class="head"><span class="label">Método Fight Programming</span><h2>3 pilares, <em>cada uno sale de lo que ya haces</em></h2></div>
-    <div class="g3">
-      <div class="card"><span class="tag">Pilar 1</span><h3>Criterio</h3><p class="soft">Qué, cuándo, cuánto y por qué. Cada ejercicio con su explicación.</p><p class="say nocp" style="border-color:var(--line)">Viene de ti: "me intereso yo más por enseñarles a entrenar que ellos mismos por saber por qué y cuánto y cuándo".</p></div>
-      <div class="card"><span class="tag">Pilar 2</span><h3>La semana del que trabaja</h3><p class="soft">2 días de fuerza (uno arranca con sprints, otro acaba con explosivos) y 1 de cardio, accesoria y pliometría, encajados alrededor de su tatami.</p><p class="say nocp" style="border-color:var(--line)">Viene de ti: el 90 % de tus atletas compagina el deporte con trabajo o estudios.</p></div>
-      <div class="card"><span class="tag">Pilar 3</span><h3>Fatiga y lesiones bajo control</h3><p class="soft">Lesiones que te sacan del tatami, eventos y gestión de la fatiga. Cansancio no es entrenamiento.</p><p class="say nocp" style="border-color:var(--line)">Viene de ti: lo que te saca de quicio del sector, el contenido que solo busca dejarte reventado.</p></div>
+  <p class="soft" style="font-size:14px"><b>El año:</b> base → camp → semana del combate. <b>Tus 3 normas:</b> cansarte no es entrenar · cada cosa con su porqué · el tatami manda.</p>
+</section>
+
+<section class="sec">
+  <div class="head"><span class="label">Los planes · propuesta, confirmar</span><h2>Qué vendes y a cuánto</h2></div>
+  <div class="g2">
+    <div class="card acc"><span class="tag">Compite</span><h3>Fight Programming Élite</h3>
+      <p class="soft">Para el que compite o va a competir. Plan tuyo cada semana en la app, revisión de vídeos, control de cansancio, lesiones y combates. Si sale pelea, el camp va incluido.</p>
+      <div class="price"><span>Mensual<b>140 €</b></span><span>Trimestral<b>390 €</b>130 €/mes</span><span class="star">Semestral ★<b>720 €</b>120 €/mes</span><span>Anual<b>1.320 €</b>110 €/mes</span></div>
     </div>
-    <div class="g2">
-      <div class="card"><span class="label">3 fases</span><div class="pill3">
-        <div><b>1 · Base.</b> Fuera de campamento. Fuerza y motor con la semana tipo.</div>
-        <div><b>2 · Campamento.</b> Las semanas hasta el combate. Todo apunta a ese día.</div>
-        <div><b>3 · Fight week.</b> Contraste en 2–3 días: sprints el primer día, accesorio el último. Después del combate, vuelta a base.</div>
-      </div></div>
-      <div class="card acc"><span class="label">3 no negociables</span><div class="pill3">
-        <div><b>Cansancio no es entrenamiento.</b> No acabas reventado porque sí.</div>
-        <div><b>Cada cosa con su porqué.</b> Si no lo entiendes, no lo hacemos.</div>
-        <div><b>El tatami manda.</b> El físico se ajusta a tu semana de deporte, no al revés.</div>
-      </div></div>
+    <div class="card"><span class="tag">Entrena por gusto</span><h3>Fight Programming Forma</h3>
+      <p class="soft">Para el que hace contacto u otro deporte por hobby y quiere estar fuerte, en forma y sin lesiones. Programa en la app con la misma cabeza, 3 días a la semana, una revisión de técnica al mes y dudas por WhatsApp.</p>
+      <div class="price"><span>Mensual<b>55 €</b></span><span>Trimestral<b>150 €</b>50 €/mes</span><span class="star">Semestral ★<b>270 €</b>45 €/mes</span><span>Anual<b>480 €</b>40 €/mes</span></div>
     </div>
-    <div class="note">Esto no lleva promesas de resultado. La prueba son tus atletas y sus combates: eso lo cuenta la serie de reacciones, no la oferta.</div>
+    <div class="card"><span class="tag">Tiene combate</span><h3>Fight Camp · 8 semanas</h3>
+      <p class="soft">Para quien tiene fecha y no está en Élite. Cuando acaba el combate, le ofreces Élite semestral.</p>
+      <div class="price"><span class="star">Pago único<b>290 €</b></span></div>
+    </div>
+    <div class="card"><span class="tag">Málaga</span><h3>Presencial</h3>
+      <p class="soft">Solo por llamada. No se anuncia precio.</p>
+      <div class="price"><span>Precio<b class="ph" style="font:700 15px/1.3 var(--f-body)">[CARLOS: completar]</b></span></div>
+    </div>
+  </div>
+  <div class="note"><b>Cómo se cobra:</b> por adelantado. El semestral de Élite también en 2 pagos de 375 €. El mensual solo si no hay otra forma. En la app, que no ponga "gratis" en ningún sitio que vea el cliente.</div>
+</section>
+
+<section class="sec">
+  <div class="head"><span class="label">Lo de ahora</span><h2>Qué pasa con lo que tienes</h2></div>
+  <div class="tw"><table class="t">
+    <thead><tr><th>Hoy</th><th>Pasa a</th></tr></thead>
+    <tbody>
+      <tr><td>Elite Plan (120 €, pero casi nadie lo paga)</td><td>Élite</td></tr>
+      <tr><td>Camp Plan (40 €/mes)</td><td>Forma</td></tr>
+      <tr><td>Online 1:1</td><td>Élite</td></tr>
+      <tr><td>APEX Hybrid / APEX Health</td><td>Dentro de Forma, o se cierran <span class="ph">[CARLOS: confirmar]</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="card"><h3>Los clientes que ya tienes</h3>
+    <p class="soft">Siguen con su precio. Si quieren, les ofreces el semestral con un 10 % menos de lo que pagan hoy.</p>
+    <p class="say">Ey [nombre], estoy ordenando los planes. Tú sigues igual, no cambia nada. Pero si te viene mejor, puedes pagar 6 meses de golpe con un 10 % menos de lo que pagas ahora. Dime y te lo preparo.</p>
   </div>
 </section>
 
-<section class="view" id="v-escalera" hidden>
-  <div class="sec"><div class="head"><span class="label">La escalera</span><h2>De cinco cosas sueltas <em>a una escalera</em></h2><p class="soft">El 1:1 es lo que vendes. El camp es la puerta para el que tiene combate. El programa general solo se ofrece a quien no llega al 1:1. El presencial no se anuncia.</p></div>
-    <div class="ladder">
-      <div class="step"><span class="lv">01</span><div><h3>Fight Programming Base</h3><p class="soft">Lo que hoy es "Camp Plan": programa general en la app, misma metodología, sin seguimiento individual. <b>Solo como plan B</b> en la llamada si no llega al 1:1.</p></div><div class="pr">45 €<small>al mes · propuesta</small></div></div>
-      <div class="step"><span class="lv">02</span><div><h3>Fight Camp</h3><p class="soft">Para el que ya tiene fecha. De hoy al combate: campamento, fight week por contraste, revisión de vídeo semanal y vuelta a base. Al acabar, se le ofrece el 1:1 semestral.</p></div><div class="pr">280 €<small>8 semanas · nivel 0</small></div></div>
-      <div class="step star"><span class="lv">03</span><div><h3>Fight Programming 1:1 · semestral</h3><p class="soft">Lo que hoy es "Elite Plan". Tu programa cada semana, revisión de vídeos, ajustes por lesiones y eventos, camp incluido si sale combate, tests de rendimiento al entrar y cada 8–12 semanas. <b>El que recomiendas siempre primero.</b></p></div><div class="pr">600 €<small>6 meses · o 2 × 315 €</small></div></div>
-      <div class="step"><span class="lv">04</span><div><h3>Presencial Málaga</h3><p class="soft">Plazas contadas, solo por llamada, nunca en redes. <span class="ph">[CARLOS: precio y horas que tienes hoy]</span></p></div><div class="pr">—<small>confirmar</small></div></div>
-    </div>
-    <div class="g2">
-      <div class="card"><span class="label">Qué sale de la escalera</span><ul class="l">
-        <li><b>APEX Hybrid / APEX Health:</b> no es para luchadores. Sigues con quien lo tenga, pero no se anuncia en ninguna de las dos cuentas.</li>
-        <li><b>"Entrenador Online 1:1"</b> como algo aparte: es lo mismo que el 1:1 de Fight Programming. Un solo nombre.</li>
-        <li><b>Mes suelto como primera opción:</b> solo existe como último recurso (140 €/mes, sin permanencia).</li>
-      </ul></div>
-      <div class="card"><span class="label">Qué metes en el 1:1 (sin coste extra para ti)</span><ul class="l">
-        <li><b>Tests de rendimiento</b> al entrar y cada 8–12 semanas (salto, sprint, un básico de fuerza). Es la comparativa antes/después que vas a acumular.</li>
-        <li><b>Análisis de su combate</b> por vídeo después de cada pelea: qué salió y qué corregís.</li>
-        <li><b>Plan de fight week</b> por escrito.</li>
-        <li><b>Acceso al Fight Programming Lab.</b></li>
-      </ul></div>
-    </div>
-  </div>
-</section>
-
-<section class="view" id="v-precios" hidden>
-  <div class="sec"><div class="head"><span class="label">Precios · propuesta, confirmar</span><h2>Pago por adelantado <em>y escalera +20 %</em></h2><p class="soft">Empiezas en nivel 0. Cada venta de 1:1 o de Fight Camp te permite subir un nivel (≈ +20 %) hasta el 3. El CRM lleva la cuenta en <code>config/precios</code>. Base y mensual no suben.</p></div>
-    <div class="tw"><table class="t">
-      <thead><tr><th>Producto</th><th class="n">Nivel 0</th><th class="n">Nivel 1</th><th class="n">Nivel 2</th><th class="n">Nivel 3</th><th>€/mes (nivel 0)</th></tr></thead>
-      <tbody>
-        <tr><td><b>1:1 semestral</b> ★</td><td class="n">600 €</td><td class="n">720 €</td><td class="n">865 €</td><td class="n">1.040 €</td><td>100 €</td></tr>
-        <tr><td>1:1 semestral en 2 cuotas</td><td class="n">2 × 315 €</td><td class="n">2 × 378 €</td><td class="n">2 × 454 €</td><td class="n">2 × 545 €</td><td>105 €</td></tr>
-        <tr><td>1:1 anual</td><td class="n">1.080 €</td><td class="n">1.295 €</td><td class="n">1.555 €</td><td class="n">1.865 €</td><td>90 €</td></tr>
-        <tr><td>1:1 trimestral</td><td class="n">330 €</td><td class="n">395 €</td><td class="n">475 €</td><td class="n">570 €</td><td>110 €</td></tr>
-        <tr><td>Fight Camp 8 semanas</td><td class="n">280 €</td><td class="n">335 €</td><td class="n">400 €</td><td class="n">480 €</td><td>≈ 140 €</td></tr>
-        <tr><td>Semana extra de camp (hasta 12)</td><td class="n">35 €</td><td class="n">42 €</td><td class="n">50 €</td><td class="n">60 €</td><td>—</td></tr>
-        <tr><td>1:1 mensual (último recurso)</td><td class="n" colspan="4">140 € al mes, sin permanencia</td><td>140 €</td></tr>
-        <tr><td>Base (programa general)</td><td class="n" colspan="4">45 € al mes · o 120 € el trimestre</td><td>45 €</td></tr>
-      </tbody>
-    </table></div>
-    <div class="g2">
-      <div class="card"><span class="label">Por qué así</span><ul class="l">
-        <li>Hoy el Elite está a 120 €/mes, pero tus 30 no lo pagan: de media te entran unos <b>69 € por cliente y mes</b> (2.500 € entre ~36). El semestral a 100 €/mes ya es una subida real para la mayoría.</li>
-        <li>Tus clientes duran: tienes chicos con 3 años y pocos se van antes de los 3 meses. Pedir 6 meses por adelantado no es pedir nada raro: es cobrar antes lo que ya pasa.</li>
-        <li>El mensual a 140 € existe para que el semestral parezca lo que es: lo lógico.</li>
-        <li>El camp cuesta más por semana que el 1:1 porque es más intenso para ti (fight week, más vídeo, más mensajes).</li>
-      </ul></div>
-      <div class="card"><span class="label">Cómo se cobra</span><ul class="l">
-        <li><b>Adelantado</b> por transferencia o Bizum, como ya haces. Una vez, no cada mes.</li>
-        <li><b>2 cuotas:</b> la primera al entrar, la segunda a los 3 meses. El CRM te la recuerda.</li>
-        <li>Si la pasarela de la app permite cobrar packs o cuotas con tarjeta, mejor: menos trabajo y menos olvidos. <span class="ph">[CARLOS: confirmar qué permite la pasarela y qué comisión cobra en packs]</span></li>
-        <li><b>Renovación:</b> 3 semanas antes del final, mensaje + tests de rendimiento. Se renueva con los números delante.</li>
-        <li>Factura siempre. <span class="ph">[CARLOS: confirmar con tu gestor IVA y facturación]</span></li>
-      </ul></div>
-    </div>
-    <div class="note"><b>El precio no va por mensaje.</b> Ni el primero ni el tercero. Se da en la llamada, con el semestral primero. Lo tienes en la Parte 4 (embudo) y en la Parte 6 (guion de cierre).</div>
-  </div>
-</section>
-
-<section class="view" id="v-actuales" hidden>
-  <div class="sec"><div class="head"><span class="label">Sin romper nada</span><h2>Los que ya están contigo <em>no pagan el castigo</em></h2><p class="soft">No subes de golpe a nadie que lleva años contigo. Les ofreces pasarse a pago por adelantado con ventaja. Ganas caja y ellos pagan menos que el nuevo.</p></div>
-    <div class="g2">
-      <div class="card"><span class="label">La propuesta (confirmar)</span><ul class="l">
-        <li>Clientes actuales del Elite: <b>semestral adelantado = 6 × lo que pagan hoy − 10 %</b>, solo si lo cogen antes de <span class="ph">[CARLOS: fecha]</span>.</li>
-        <li>Quien prefiera seguir mes a mes, sigue a su precio hasta <span class="ph">[CARLOS: fecha]</span>. Después, el mensual nuevo.</li>
-        <li>Clientes del Camp Plan (6): pasan a "Base" al mismo precio. Al que tenga combate a la vista, le ofreces Fight Camp.</li>
-      </ul></div>
-      <div class="card"><span class="label">Mensaje para tus clientes actuales</span>
-        <p class="say">Ey [nombre], te escribo a ti antes que a nadie. Estoy ordenando Fight Programming y a partir de [fecha] el 1:1 va por bloques de 6 meses. A los que lleváis tiempo conmigo os lo dejo más barato que a nadie: si te pasas al bloque de 6 meses antes del [fecha], te sale a [importe] en vez de [6 × tu cuota actual]. Si prefieres seguir mes a mes, también puedes, sin problema. ¿Lo hablamos 10 minutos esta semana?</p>
-      </div>
-    </div>
-    <div class="note"><b>Antes de mandarlo:</b> apunta en el CRM a cada cliente actual con lo que paga hoy (pestaña Clientes → añadir cliente que ya tenías). Sin esa lista no sabes cuánto ganas ni a quién escribir primero. <span class="ph">[CARLOS: lista de clientes y lo que paga cada uno]</span></div>
-  </div>
-</section>
+<p class="foot">Parte 2 de 7 · Precios: propuesta, confirmar · Mentoría Alberto González</p>
 </main>
 
 <script>
